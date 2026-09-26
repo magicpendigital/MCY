@@ -1,5 +1,67 @@
 # Mobile Prototype Agent Guide
 
+## MCY product direction — confirmed 2026-09-24
+
+- The primary experience is daily check-in → a short AI conversation → a concrete practice plan for today → practice → honest reflection → a better-informed next choice.
+- Help the learner know what to practice today, how to follow it, and how to continue. A large course/video library or a standalone chatbot is not the primary entry point.
+- Courses, the teacher's own content, and human-led classes support this loop. AI-assisted selection is part of the intended core product, not merely a post-practice summary.
+- Continue from the existing prototype as the design and interaction base, preserving all runtime boundaries below.
+- Reflection must allow unchanged, worse, uncertain, and skipped responses. Never present missing feedback as improvement or demo statistics as observed outcomes.
+- The user authorized building an interactive prototype for review, then explicitly expanded P1 on 2026-09-26 to include the learner app on web and native mobile, Supabase learner-data integration, Vercel deployment, Android installation on the connected device, and iOS project preparation. This still does not authorize payments, real AI processing, or production data use beyond the explicitly scoped learner records. Technical choices, prices, and roadmap gates in the review report remain proposals.
+
+## Learner platform scope — confirmed 2026-09-26
+
+- Keep the existing browser experience inside the iPhone / Pixel simulator as the review surface and verify both presets. Also package the same learner app as a fullscreen native Capacitor app in P1; do not confuse the simulator shell with native distribution. Optimize the wide web UI in a later phase.
+- Deploy the learner web build to Vercel. Install the Android debug build on the user's connected Android phone; prepare the iOS project, URL scheme, and data configuration for later real-iPhone testing.
+- The initial P1 backend scope was Supabase email authentication, learner profile, append-only consent evidence, and explicitly consented check-ins. On 2026-09-26 the user expanded the next P1 step to a staging-only, invite-gated teacher trial for private lesson drafts and media uploads. AI inference, learner-visible publishing, session/run/reflection sync, commerce, support/data-request processing, and production release remain out of scope until their API/content/policy gates are approved.
+- The public Supabase publishable key may ship in the client. Never put a service-role/secret key in Vite variables, web assets, or native bundles. Keep build-time Supabase URL/key configuration in ignored `.env.local` for local/native builds and the Vercel project environment for hosted builds.
+- Preserve the existing simulator runtime and protected device chrome. If the user explicitly authorizes a runtime change for native packaging, verify simulator/native behavior first, then refresh only the affected `mobile-runtime.lock.json` hashes and run `npm run check:runtime`.
+
+## Teacher trial expansion — confirmed 2026-09-26
+
+- Prepare a staging-only, invite-only teacher pilot so trial teachers can create lesson drafts and upload private media for review. Do not expose drafts in the learner catalog or publish them from the teacher account.
+- Teacher role grants and teacher-profile activation must be server-controlled and auditable. A user must never create or elevate their own teacher role through profile fields or direct table writes. Require a verified owner to issue invitations; assign an independent reviewer before any publish gate is implemented.
+- Store trial media in a private bucket and issue narrowly scoped, short-lived upload/download access. Keep uploads staged until content type/size, ownership, rights evidence, and security scanning are addressed. Teachers must have no learner-record access by default.
+- The current `mcy-staging` project is on the Free plan (50 MB maximum file size and 1 GB storage). Keep any first trial under that cap and treat it as non-production test content. Do not upgrade the plan or create paid storage without explicit user direction.
+- A confirmed staging test account was bootstrapped with all nine global application roles on 2026-09-26, with a system audit event; keep its email out of committed documentation. No active teacher profile, teacher API, private media bucket, or external teacher roster exists yet. Before invitations or real uploads, confirm the teacher roster, permitted media types/typical file size, and the privacy/rights statement shown to teachers.
+
+## Durable visual direction — confirmed 2026-09-25
+
+- The six-panel concept image provided by the user is the visual source of truth for the prototype's app-owned UI: warm ivory canvas, dark forest-green typography, terracotta primary CTA, editorial serif headings, soft photographic yoga imagery, restrained cards, and generous calm spacing. The original concept's leaf mark has since been superseded by the user's selected abstract working mark, Khoảng mở (2026-09-26).
+- Keep the concept's visual anatomy: photographic welcome; body-map check-in with selectable regions and energy faces; today's practice recommendation with hero photo, movement previews, and a gentler alternative; illustrated practice screen with a circular progress control; before/after body reflection; journey with body-map and an honest trend view.
+- Preserve the newer product loop by placing the short AI conversation between the concept's check-in and today's recommendation. This interaction must use the same visual language, not a generic chat UI.
+- Concept imagery and trend values are illustrative. The prototype must not label a body region as improved or draw measured progress without user-entered feedback; unselected, unchanged, worse, and skipped responses remain distinct.
+
+## Brand direction to test — 2026-09-25
+
+- Vietnam-facing name: **Một chút yoga**. International name hypothesis: **A Little Yoga**. Use one shared symbol, palette, photography and voice across both; do not treat the English name as validated yet.
+- Vietnamese slogan: **Một chút yoga, vạn chút an yên**. Proposed English adaptation: **A little yoga. A little more peace.** The English line is an adaptation of meaning, not a literal translation.
+- The invitation **Make room for a little yoga.** is a candidate campaign line. Validate whether English-speaking users read “little” as approachable rather than children’s yoga or only very short sessions before committing internationally.
+- On 2026-09-25, the user questioned why the logo must use a leaf and asked whether another symbol could work. Treat the leaf as a candidate from the visual concept, not a finalized brand requirement. Explore and compare non-leaf symbols against it while preserving the current prototype until a symbol is selected.
+- The user then supplied a pale-sage logo reference showing a gender-neutral seated yoga figure with a small sprout above the head and a handwritten wordmark. Explore this as a new brand candidate. Evaluate it across print/social media, in-app identity, app icons, splash and loading motion, and vector production. Keep the original artwork as a visual reference, simplify the mark for small sizes, and do not treat the reference wordmark or the new symbol as finalized without selection and validation.
+- The user found the full and compact seated marks inconsistent because their line treatments differed, and read the two leaves above the head as a hair bow. New logo explorations should use one consistent monoline treatment and omit the top sprout unless separately validated.
+- The user then requested another exploration centered on a leaf or sprout. Test these as standalone plant symbols, not attached to a human head. Compare options using the same monoline geometry at all sizes and on both light and dark backgrounds; no logo direction is approved yet.
+- The user asked whether the asymmetric sprout could be stylized to evoke a yoga pose. Explore this through the sprout's own posture and base while retaining a clear plant silhouette and the same monoline system; do not imply a final approval.
+- The user selected “Nghiêng thở” as the direction to refine, but found the first sketch too heavy, with thick strokes and insufficient grace or immediate visual impact. Refine that sprout's stroke, proportions, curvature, and negative space while preserving its recognizable plant posture; selection of the direction is not approval of a final logo.
+- The user requested three new fine-line concepts: a seated meditation pose, a tree that suggests half of a seated meditator, and a hybrid. Keep the linework refined, professional, and clean at small sizes; this remains an exploration, not final logo approval.
+- The user now wants the leaf-and-meditator hybrid refined in two possible ways: a leaf canopy sheltering the seated figure, or a leaf replacing the head and showing upward growth. Explore both with thin, clean vector lines and do not treat either as approved.
+- The user then clarified that the yoga-pose figure concept does not match their intent and invited abstract ideas. Shift the next logo exploration to abstract marks; do not keep forcing a literal person-in-pose silhouette.
+- On 2026-09-26, the user selected **Khoảng mở** as the working mark for this phase. Use the same open arc and point geometry across light/dark variants, the app icon, in-app mark, and brand motion. This selection guides the current handoff and prototype, but does not establish trademark clearance or permanently close future brand validation.
+- Use the supplied brand guidelines, design tokens, and motion specification as the implementation handoff. Keep “A Little Yoga” and its campaign language as research hypotheses until tested with English-speaking users.
+
+## Check-in and journey prototype direction — approved 2026-09-25
+
+- Make the body map a way to enter separate, self-reported observations for each region. Keep a text region list alongside the illustration; allow left/right shoulder detail, a level, and a free note. Keep “no discomfort now,” “unsure,” and “skip” distinct from an unselected region.
+- The body illustration may be neutral, feminine, or masculine, chosen as a visual preference. Do not require gender disclosure or infer gender, recommendations, or health state from the illustration. Keep the face neutral; use explicit labels and region points for state.
+- The journey uses a selectable timeline of actual snapshots. Selecting a point shows the same body illustration with region markers and notes from that point. Preserve gaps and multiple records on one day. A clearly labeled sample timeline may demonstrate the idea, but must never be presented as a user's outcome.
+- Compare like-for-like self-reports by region and time. Do not generate an improvement percentage, smooth missing days, or interpret yoga as having cured pain. Post-practice reflection can mark each region as better, unchanged, worse, uncertain, or omitted independently from the overall feeling.
+
+## Body illustration feedback — 2026-09-25
+
+- The current full-body illustrations render too small for the four upper-body selection regions (neck, shoulder, upper back, lower back). In the check-in and journey screens, make the relevant anatomy substantially larger and easier to select; do not keep a full-body view merely to fill the screen. Any decision to add lower-body regions should follow the supported practice content and user need, not the existing image's shape.
+- Use transparent upper-body assets with the same head-through-upper-thigh framing for neutral, feminine, and masculine display preferences. The neck, shoulders, upper back, and lower back must remain visible; keep the map markers aligned on every illustration and place left/right shoulder markers from the back-view user's perspective.
+- Use the warm ivory app canvas behind the transparent figures so no image rectangle appears. Keep check-in and journey layouts responsive to short landscape viewports; prefer a two-column landscape layout over locking mobile orientation.
+
 ## Prototype Instructions
 
 In ChatGPT Work Mode, run `sites-preview start "$PWD"`, open `http://terminal.local:4173/` in the cloud browser, and verify the rendered app and its primary interactions. Keep that preview open and tell the user to inspect it in the cloud browser; do not present the local URL as a user-facing chat link. In Codex Desktop, run the local server yourself, open the preview in the in-app browser, and provide the clickable local URL. Do not deploy to Sites unless the user explicitly asks to share, publish, or deploy. Do not give the user server-start instructions when you can run it.

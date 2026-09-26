@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title id="title">Phương án C — hai lá tiếp nối</title>
+  <path d="M15 50C20 27 36 17 61 15C60 36 44 49 15 50Z" fill="#25372D"/>
+  <path d="M39 84C43 59 61 44 86 41C86 65 68 82 39 84Z" fill="#25372D"/>
+  <path d="M20 52C33 55 43 51 52 43" fill="none" stroke="#25372D" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

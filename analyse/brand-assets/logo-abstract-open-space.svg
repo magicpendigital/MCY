@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title" style="color:#25372D">
+  <title id="title">Khoảng mở — Một chút yoga</title>
+  <g fill="none" stroke="currentColor" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M67 19C53 12 36 15 25 26C13 38 12 56 21 70C29 82 44 87 58 82"/>
+    <circle cx="74" cy="34" r="3.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg>

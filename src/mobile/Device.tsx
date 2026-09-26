@@ -1,6 +1,7 @@
-import { createContext, type PropsWithChildren, useContext, useMemo, useState } from "react";
+import { createContext, type PropsWithChildren, useContext, useEffect, useMemo, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ChevronDownIcon } from "@radix-ui/react-icons";
+import { Capacitor } from "@capacitor/core";
 import { mobileAssets } from "./assets";
 import { iphoneGeometry, pixelGeometry, type MobileDeviceGeometry } from "./geometry";
 
@@ -46,18 +47,56 @@ type MobileDeviceContextValue = {
   device: MobileDevicePreset;
   deviceId: MobileDeviceId;
   setDeviceId: (deviceId: MobileDeviceId) => void;
+  native: boolean;
 };
 
 const MobileDeviceContext = createContext<MobileDeviceContextValue | null>(null);
 
 export function MobileDeviceProvider({ children }: PropsWithChildren) {
-  const [deviceId, setDeviceId] = useState<MobileDeviceId>("iphone");
+  const native = Capacitor.isNativePlatform();
+  const platform = Capacitor.getPlatform();
+  const nativeDeviceId: MobileDeviceId = platform === "ios" ? "iphone" : "pixel-10";
+  const [previewDeviceId, setPreviewDeviceId] = useState<MobileDeviceId>("iphone");
+  const [viewport, setViewport] = useState(() => getNativeViewport());
+  const deviceId = native ? nativeDeviceId : previewDeviceId;
+  const setDeviceId = (next: MobileDeviceId) => { if (!native) setPreviewDeviceId(next); };
+  const baseDevice = mobileDevices[deviceId];
+  const device = native
+    ? {
+        ...baseDevice,
+        geometry: {
+          device: { width: viewport.width, height: viewport.height },
+          screen: { x: 0, y: 0, width: viewport.width, height: viewport.height, radius: 0 },
+          safeArea: { top: viewport.safeTop, bottom: viewport.safeBottom },
+          keyboard: { height: 0 },
+        },
+      }
+    : baseDevice;
+
+  useEffect(() => {
+    if (!native) return;
+    const update = () => setViewport(getNativeViewport());
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+    };
+  }, [native]);
   const value = useMemo(
-    () => ({ device: mobileDevices[deviceId], deviceId, setDeviceId }),
-    [deviceId],
+    () => ({ device, deviceId, setDeviceId, native }),
+    [device, deviceId, native],
   );
 
   return <MobileDeviceContext.Provider value={value}>{children}</MobileDeviceContext.Provider>;
+}
+
+function getNativeViewport() {
+  if (typeof window === "undefined") return { width: 393, height: 852, safeTop: 0, safeBottom: 0 };
+  const root = getComputedStyle(document.documentElement);
+  const safeTop = Number.parseFloat(root.getPropertyValue("--native-safe-area-top")) || 0;
+  const safeBottom = Number.parseFloat(root.getPropertyValue("--native-safe-area-bottom")) || 0;
+  return { width: window.innerWidth, height: window.innerHeight, safeTop, safeBottom };
 }
 
 export function useMobileDevice() {
@@ -71,7 +110,9 @@ export function useMobileDevice() {
 }
 
 export function DevicePicker() {
-  const { device, deviceId, setDeviceId } = useMobileDevice();
+  const { device, deviceId, setDeviceId, native } = useMobileDevice();
+
+  if (native) return null;
 
   return (
     <DropdownMenu.Root>

@@ -1,0 +1,14 @@
+# Preserve the exact line endings expected by the mobile runtime lock on Windows.
+/AGENTS.md text eol=lf
+/mobile-runtime.lock.json text eol=lf
+/scripts/*.mjs text eol=lf
+/vite.config.ts text eol=lf
+/src/App.tsx text eol=lf
+/src/main.tsx text eol=lf
+/src/styles.css text eol=lf
+/src/Prototype.tsx text eol=lf
+/src/prototype.css text eol=lf
+/src/mobile/** text eol=lf
+/public/assets/android/*.svg text eol=lf
+/public/assets/status/*.svg text eol=lf
+/worker/index.js text eol=lf

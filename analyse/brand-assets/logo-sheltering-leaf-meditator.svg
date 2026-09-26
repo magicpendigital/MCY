@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title" style="color:#25372D">
+  <title id="title">Tán chở che — Một chút yoga</title>
+  <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M51 42C32 42 16 31 17 16C35 13 50 24 54 40Z"/>
+    <path d="M51 40C40 31 29 23 19 17"/>
+    <path d="M52 41C51 44 50 46 50 48.5"/>
+    <circle cx="50" cy="56" r="4"/>
+    <path d="M50 60C50 66 50 72 50 78"/>
+    <path d="M45 62C40 65 37 69 35 74"/>
+    <path d="M55 62C60 65 63 69 65 74"/>
+    <path d="M35 74C29 74 23 76 20 79C17 82 19 85 23 87C33 90 43 84 50 78C57 84 67 90 77 87C81 85 83 82 80 79C77 76 71 74 65 74"/>
+  </g>
+</svg>

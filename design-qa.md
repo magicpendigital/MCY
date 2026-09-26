@@ -1,66 +1,25 @@
-# Design QA — Một chút Yoga MVP
+# MCY prototype visual and interaction QA — 2026-09-25
 
-## Comparison target
+**Source visual truth:** `C:\Users\Admin\AppData\Local\Temp\codex-clipboard-0babd210-7680-40e3-8b24-0c410aef41ab.png` (1043 × 1508 montage; check-in, reflection and journey panels). Product changes approved in `analyse/ux-audit-2026-09-25/MCY_CHECKIN_JOURNEY_PLAN.md` take precedence where the early concept implied unmeasured improvement.
 
-- Source visual truth: `../generated_images/exec-c9015967-22a5-449c-856f-999cd5fc0f80.png`
-- Focused Welcome source crop: `public/assets/qa-reference-welcome.png` (326 × 731 px)
-- Browser-rendered implementation evidence: `http://terminal.local:4173/qa-compare.html`, opened and captured in the Cloud Browser on 2026-09-20.
-- Comparison state: Welcome screen, iPhone template, content-only assessment. The source concept intentionally has no device frame; template-owned device chrome was excluded from the fidelity judgement.
-- Source density normalization: source crop is a generated storyboard panel at 326 × 731 px. The QA comparison surface places it in a 393 × 852 CSS-px comparison slot using cover scaling.
-- Implementation viewport: mobile runtime’s iPhone app content target is 393 × 852 CSS px. The Cloud Browser rendered the surrounding phone stage at a reduced scale to fit its visible window; the implementation remained browser-rendered, and the comparison surface retained the same app state.
+**Rendered implementation:** `http://127.0.0.1:4173/`, Codex in-app browser tab 2. Captures were displayed in this task during QA; the browser capture API did not export a screenshot file path. iPhone screen measured **393 × 852 CSS px at DPR 1** with a 1400 × 1200 test viewport; Pixel 10 was also inspected at the ordinary preview size. The source check-in panel is about 336 × 734 px inside the montage, so comparison used anatomy, hierarchy and interaction state rather than a raw pixel overlay. The viewport override is reset after QA.
 
-## Full-view comparison evidence
+**States compared:** empty check-in with body map and energy choices; selected shoulder and region editor; body illustration picker; before/after reflection; live journey snapshot; synthetic day-30, day-20 skipped, day-1 multi-record and comparison states. The working app was captured in the browser at each key state. Console error log was empty.
 
-The QA surface shows the selected Welcome visual and the browser-rendered implementation side-by-side. Both retain the ivory base, deep green editorial type, muted terracotta CTA, calm sage apparel, right-anchored photo, roomy hierarchy, and handwritten note as the emotional accent.
+## Findings and iteration
 
-## Focused region comparison
+1. **[P2 fixed] Check-in hierarchy:** The first implementation put the region fallback list before the energy question, hiding the concept's energy card below the first viewport. The energy card now sits immediately after the body image; the text region list remains available by scrolling. Re-captured on the iPhone at 393 × 852: heading, body points, energy card and fixed CTA appear together.
+2. **[P2 fixed] Check-in CTA color:** The initial footer used terracotta, while the check-in panel in the source uses forest green. The check-in footer is now forest green; the recommendation CTA remains terracotta.
+3. **[P1 fixed] Reflection state:** Reusing the pre-practice observation as an editor default had preselected a post-practice level. The editor now starts with no post level and a disabled save button, while retaining the shoulder side as context. Each region has an explicit “Giữ như trước” action.
+4. **[P2 fixed] Timeline discoverability:** The first 30-day strip began at day 1 even when day 30 was selected. The 30-day view now lists only recorded days, newest first, and keeps skipped records explicit. The 7-day view still exposes blank days without inventing values.
+5. **[P2 fixed] Region sheet:** The first sheet required scrolling to find “Lưu vùng này”. A taller snap shows the action on iPhone and Pixel. Text entry remains keyboard-aware.
 
-The Welcome header, benefit list, hero image placement, handwritten encouragement, and primary CTA were all readable in the same browser capture. A separate crop was unnecessary because the comparison surface keeps these important regions large enough to assess together.
+**Current full-view comparison:** The same ivory, forest-green, terracotta and serif language remains visible. The app keeps the concept's body map, energy faces, photo-led recommendation, circular timer, paired reflection and journey body map. The approved extensions add side-specific input, optional illustration style, multiple snapshot records and a short AI conversation. The body figure is a soft photographic illustration rather than the earlier flat silhouette; this is a deliberate visual prototype variant to review with learners.
 
-## Findings
+**Focused comparison:** On the iPhone check-in capture, all four marker targets sit on the named neck/shoulder/upper-back/lower-back regions, and the shoulder editor keeps left/right choice legible. On the reflection capture, the pre and post illustrations remain separate and no post marker appears until the learner chooses a level. On the journey capture, a selected day shows its own body map and notes rather than a generic trend image. Copy labels synthetic outcomes and does not claim a percentage or a cure.
 
-No actionable P0, P1, or P2 findings remain.
+**Interaction checks:** iPhone and Pixel navigation; region selection and editing; style picker; dialogue to recommendation to practice to reflection to journey; no-match content path; synthetic timeline day switch; multiple records in one day; comparison; and modal confirmation when replacing recorded regions. `npm run build` and protected runtime integrity passed. `git diff --check` found no whitespace errors. The browser console had no errors.
 
-- [P3] The generated Welcome photograph uses a different pose and room from the concept board.
-  - Evidence: the selected board shows a closer sitting pose; the app uses a purpose-built full-body editorial image with equivalent palette and subject framing.
-  - Impact: minor illustration variance only; hierarchy and brand tone are preserved.
-  - Follow-up: replace with a commissioned brand shoot when a production photography library exists.
+**Remaining P3 / next research round:** Validate whether adults prefer the photographic body illustration or a flatter map, whether the small energy labels remain comfortable at larger text settings, and whether the 30-day newest-first order matches user expectations. A 5–7-person usability test remains future work; no learner outcomes or production integrations were tested.
 
-## Required fidelity surfaces
-
-- Fonts and typography: Georgia provides the editorial serif hierarchy of the source; the template’s Roboto supports legible labels, buttons, and small UI text. Weights, wrapping, and line height were checked in the Welcome comparison.
-- Spacing and layout rhythm: the implementation uses the mobile safe-area header, consistent 20–25 px content insets, a full-height right image, and an anchored CTA that remains above the home indicator.
-- Colors and visual tokens: ivory, deep evergreen, muted sage, terracotta, and low-contrast warm surfaces map to the selected direction. Primary-action contrast is maintained.
-- Image quality and asset fidelity: all non-standard imagery is raster artwork or photography. Standard interface icons use Radix Icons; no custom SVG or HTML-drawn assets were used for the body maps or photography.
-- Copy and app-specific text: the Vietnamese copy uses “Một chút Yoga” and clearly distinguishes teacher feedback from AI summaries.
-
-## Primary interactions tested in Cloud Browser
-
-- Welcome → Check-in
-- Select a body area and energy level; selected controls report `aria-pressed="true"`
-- Check-in → Today’s Practice, using the selected area in the recommendation
-- Start Practice; pause / continue state changes
-- Finish Practice → Post-practice Reflection; enter and save a reflection
-- Progress shows the saved-reflection confirmation
-- Open a teacher milestone → teacher workspace → enter a note → send confirmation
-- Open an AI milestone and verify the distinct AI source and data basis
-
-## Console check
-
-No application console errors were observed. The browser console contained Chrome extension metadata errors from `chrome-extension://…`, outside the prototype.
-
-## Implementation checklist
-
-- [x] Preserve mobile runtime integrity
-- [x] Use the selected visual direction and generated assets
-- [x] Implement the core learner flow
-- [x] Implement teacher and AI feedback distinctions
-- [x] Implement plan explanation and teacher note preview
-- [x] Verify primary interactions and build output
-
-## Follow-up polish
-
-- Replace generated imagery with a commissioned photo library when available.
-- Test English typography and handwritten-card font pairs once the international brand name is finalized.
-
-final result: passed
+**final result: passed**

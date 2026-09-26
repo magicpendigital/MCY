@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title id="title">Khoảng mở — một chỗ dành cho mình</title>
+  <path d="M21 80V47C21 28 33 17 50 17C67 17 79 28 79 47V59" fill="none" stroke="#25372D" stroke-width="9" stroke-linecap="round"/>
+  <path d="M38 80H56" fill="none" stroke="#25372D" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="76" cy="78" r="7" fill="#25372D"/>
+</svg>

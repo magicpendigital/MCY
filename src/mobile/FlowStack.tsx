@@ -54,7 +54,7 @@ function FlowProvider({ value, children }: PropsWithChildren<{ value: FlowContro
   return <FlowContext.Provider value={value}>{children}</FlowContext.Provider>;
 }
 
-export function FlowStack({ initial }: { initial: FlowScreen }) {
+export function FlowStack({ initial, children }: { initial: FlowScreen; children?: ReactNode }) {
   const { device } = useMobileDevice();
   const keyboard = useKeyboard();
   const { bottomInset, keyboardDragging } = useKeyboardInsets();
@@ -228,6 +228,7 @@ export function FlowStack({ initial }: { initial: FlowScreen }) {
             {footer}
           </footer>
         ) : null}
+        {children}
       </div>
     </FlowProvider>
   );

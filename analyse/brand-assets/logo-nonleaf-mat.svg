@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title id="title">Tấm thảm yoga nhìn từ trên</title>
+  <rect x="13" y="30" width="74" height="44" rx="18" fill="none" stroke="#25372D" stroke-width="7.5"/>
+  <path d="M34 34C40 44 40 61 34 70" fill="none" stroke="#25372D" stroke-width="7.5" stroke-linecap="round"/>
+  <path d="M49 52H73" fill="none" stroke="#25372D" stroke-width="6" stroke-linecap="round"/>
+</svg>

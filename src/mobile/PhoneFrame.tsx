@@ -40,10 +40,10 @@ export function useScreenPortal() {
 function getDeviceScale(deviceWidth: number, deviceHeight: number) {
   if (typeof window === "undefined") return 1;
 
-  const horizontal = (window.innerWidth - 48) / deviceWidth;
-  const vertical = (window.innerHeight - 48) / deviceHeight;
+  const horizontal = Math.max(0, (window.innerWidth - 48) / deviceWidth);
+  const vertical = Math.max(0, (window.innerHeight - 48) / deviceHeight);
 
-  return Math.max(0.42, Math.min(horizontal, vertical, 1));
+  return Math.min(horizontal, vertical, 1);
 }
 
 function useDeviceScale(deviceWidth: number, deviceHeight: number) {
@@ -62,12 +62,38 @@ function useDeviceScale(deviceWidth: number, deviceHeight: number) {
 }
 
 export function PhoneFrame({ children }: PropsWithChildren) {
-  const { device } = useMobileDevice();
+  const { device, native } = useMobileDevice();
   const { geometry } = device;
   const scale = useDeviceScale(geometry.device.width, geometry.device.height);
   const screenRef = useRef<HTMLDivElement | null>(null);
   const contextValue = useMemo(() => ({ screenRef }), []);
   const mobileCursor = useMobileCursor();
+
+  if (native) {
+    return (
+      <ScreenPortalContext.Provider value={contextValue}>
+        <div className="native-mobile-stage" data-native-shell="true">
+          <div className="native-mobile-device" onDragStartCapture={suppressNativeDrag}>
+            <div
+              ref={screenRef}
+              className="device-screen native-mobile-screen"
+              data-device={device.id}
+              data-platform={device.platform}
+              data-phone-screen
+              data-native-shell="true"
+              data-testid="device-screen"
+              style={{
+                "--device-safe-area-bottom": `${geometry.safeArea.bottom}px`,
+                "--native-safe-area-top": `${geometry.safeArea.top}px`,
+              } as CSSProperties}
+            >
+              {children}
+            </div>
+          </div>
+        </div>
+      </ScreenPortalContext.Provider>
+    );
+  }
 
   return (
     <ScreenPortalContext.Provider value={contextValue}>

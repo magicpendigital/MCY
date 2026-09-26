@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title" style="color:#25372D">
+  <title id="title">Mầm nghiêng thở — Một chút yoga</title>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 83C48 68 52 55 62 44"/>
+    <path d="M62 44C72 29 80 25 88 28C86 43 77 51 62 44Z"/>
+    <path d="M52 60C42 47 31 45 23 50C30 62 40 66 52 60Z"/>
+    <path d="M29 84C43 80 59 80 72 84"/>
+  </g>
+</svg>

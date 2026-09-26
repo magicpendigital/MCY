@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title" style="color:#25372D">
+  <title id="title">Một chút yoga — người ngồi tập với mầm nhỏ, bản cô đọng</title>
+  <g fill="currentColor">
+    <path d="M50 17C45 8 38 6 31 8C34 16 41 20 50 17Z"/>
+    <path d="M50 17C52 8 59 4 68 6C66 15 59 19 50 17Z"/>
+    <circle cx="50" cy="31" r="12"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M43 43C35 44 31 50 27 61C22 73 16 76 11 72"/>
+    <path d="M57 43C65 44 69 50 73 61C78 73 84 76 89 72"/>
+    <path d="M24 73C15 73 13 85 22 88C34 92 44 85 50 79"/>
+    <path d="M76 73C85 73 87 85 78 88C66 92 56 85 50 79"/>
+    <path d="M31 73C39 71 46 75 50 79C54 75 61 71 69 73"/>
+  </g>
+</svg>

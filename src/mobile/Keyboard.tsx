@@ -16,6 +16,7 @@ import { useMobileDevice } from "./Device";
 
 type KeyboardContextValue = {
   visible: boolean;
+  native: boolean;
   height: number;
   fullHeight: number;
   progress: number;
@@ -35,12 +36,12 @@ type KeyboardInputProps = InputHTMLAttributes<HTMLInputElement> & {
 const KeyboardContext = createContext<KeyboardContextValue | null>(null);
 
 export function KeyboardProvider({ children }: PropsWithChildren) {
-  const { device } = useMobileDevice();
+  const { device, native } = useMobileDevice();
   const [visible, setVisible] = useState(false);
   const [dragOffset, setRawDragOffset] = useState(0);
   const [isDragging, setDragging] = useState(false);
   const [focusedElement, setFocusedElement] = useState<HTMLElement | null>(null);
-  const fullHeight = device.geometry.keyboard.height;
+  const fullHeight = native ? 0 : device.geometry.keyboard.height;
   const setDragOffset = (offset: number) => {
     setRawDragOffset(Math.max(0, Math.min(fullHeight, offset)));
   };
@@ -48,6 +49,7 @@ export function KeyboardProvider({ children }: PropsWithChildren) {
   const value = useMemo<KeyboardContextValue>(
     () => ({
       visible,
+      native,
       height: visible ? Math.max(0, fullHeight - dragOffset) : 0,
       fullHeight,
       dragOffset,
@@ -57,9 +59,10 @@ export function KeyboardProvider({ children }: PropsWithChildren) {
       setDragOffset,
       setDragging,
       show: (element) => {
+        setFocusedElement(element ?? null);
+        if (native) return;
         setRawDragOffset(0);
         setDragging(false);
-        setFocusedElement(element ?? null);
         setVisible(true);
       },
       hide: () => {
@@ -69,7 +72,7 @@ export function KeyboardProvider({ children }: PropsWithChildren) {
         setVisible(false);
       },
     }),
-    [dragOffset, focusedElement, fullHeight, isDragging, visible],
+    [dragOffset, focusedElement, fullHeight, isDragging, native, visible],
   );
 
   return <KeyboardContext.Provider value={value}>{children}</KeyboardContext.Provider>;
@@ -87,7 +90,17 @@ export function useKeyboard() {
 
 export function useKeyboardInsets() {
   const keyboard = useKeyboard();
-  const { device } = useMobileDevice();
+  const { device, native } = useMobileDevice();
+  if (native) {
+    return {
+      keyboardHeight: 0,
+      keyboardFullHeight: 0,
+      keyboardDragging: false,
+      bottomInset: device.geometry.safeArea.bottom,
+      availableHeight: device.geometry.screen.height - device.geometry.safeArea.bottom,
+      isKeyboardVisible: false,
+    };
+  }
   const reservesAndroidNavigation = device.platform === "android" && !keyboard.visible;
 
   return {

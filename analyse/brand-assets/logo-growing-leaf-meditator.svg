@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title" style="color:#25372D">
+  <title id="title">Lá vươn — Một chút yoga</title>
+  <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 50C37 34 40 17 61 11C75 26 69 43 50 50Z"/>
+    <path d="M50 50C54 37 58 24 61 11"/>
+    <path d="M50 50C50 59 50 68 50 78"/>
+    <path d="M50 62C44 62 39 67 36 73"/>
+    <path d="M50 62C56 62 61 67 64 73"/>
+    <path d="M36 73C29 73 23 76 20 79C17 82 19 85 23 87C33 90 43 84 50 78C57 84 67 90 77 87C81 85 83 82 80 79C77 76 71 73 64 73"/>
+  </g>
+</svg>

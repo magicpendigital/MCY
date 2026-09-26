@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title" style="color:#25372D">
+  <title id="title">Mầm ngồi vững — Một chút yoga</title>
+  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50 74C49 62 50 48 56 35"/>
+    <path d="M55 42C62 27 76 22 84 25C81 39 71 47 55 42Z"/>
+    <path d="M50 58C42 48 34 47 27 51C33 60 41 63 50 58Z"/>
+    <path d="M50 74C40 69 28 70 18 77C27 85 42 86 50 77C58 86 73 85 82 77C72 70 60 69 50 74Z"/>
+  </g>
+</svg>

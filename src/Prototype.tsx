@@ -1,310 +1,1345 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
+import { App as CapacitorApp } from "@capacitor/app";
+import { Capacitor } from "@capacitor/core";
+import type { EmailOtpType } from "@supabase/supabase-js";
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  BarChartIcon,
-  CalendarIcon,
-  CheckCircledIcon,
-  CheckIcon,
-  Cross1Icon,
-  DotFilledIcon,
-  HeartIcon,
-  HomeIcon,
-  InfoCircledIcon,
-  LightningBoltIcon,
-  MagicWandIcon,
-  PauseIcon,
-  PersonIcon,
-  PlayIcon,
-  ReaderIcon,
-  StarFilledIcon,
+  ArrowLeftIcon, ArrowRightIcon, BarChartIcon, CheckIcon, ClockIcon,
+  HeartIcon, HomeIcon, InfoCircledIcon, MagicWandIcon, PauseIcon,
+  PersonIcon, PlayIcon, ReaderIcon, ResetIcon,
 } from "@radix-ui/react-icons";
-import { FlowStack, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow } from "./mobile";
+import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
+import { authRedirectUrl, backendConfigured, clientChannel, supabase } from "./backend/supabase";
+import {
+  deleteLearnerCheckin,
+  emptyConsentState,
+  loadLearnerSnapshot,
+  saveConsentEvent,
+  saveLearnerCheckin,
+  type ConsentPurpose,
+  type ConsentState,
+  type CheckinPayload,
+  type LearnerCheckin,
+  type LearnerObservation,
+} from "./backend/learnerData";
 
-type Focus = "Cổ & vai" | "Lưng trên" | "Lưng dưới";
-type MessageKind = "teacher" | "ai";
-const safeAreaHeader = () => <div aria-hidden="true" />;
+type Energy = "Rất thấp" | "Thấp" | "Bình thường" | "Khá ổn" | "Tràn đầy";
+type BodyRegion = "Cổ" | "Vai" | "Lưng trên" | "Lưng dưới";
+type BodyStyle = "neutral" | "feminine" | "masculine";
+type BodyLevel = "Không khó chịu" | "Nhẹ" | "Vừa" | "Nhiều";
+type BodyStatus = "reported" | "none_now" | "uncertain" | "skipped" | null;
+type Observation = { region: BodyRegion; side: "Không rõ bên" | "Trái" | "Phải" | "Hai bên"; level: BodyLevel | null; status: "reported" | "uncertain"; note: string };
+type Intent = "Thả lỏng" | "Bắt nhịp" | "Tập trung";
+type DialogueChoice = "Nhiều hướng dẫn" | "Nhịp chậm" | "Ít lời" | "Không nằm sàn" | null;
+type Outcome = "Dễ chịu hơn" | "Như cũ" | "Khó chịu hơn" | "Chưa rõ" | null;
+type Pace = "Vừa" | "Hơi nhanh" | "Hơi chậm" | null;
+type SessionId = "reset-8" | "slow-9" | "short-5" | "steady-12";
+
+type Session = {
+  id: SessionId;
+  title: string;
+  minutes: number;
+  level: string;
+  image: string;
+  description: string;
+  detail: string;
+  imageAlt: string;
+};
+type MockDataRequest = { id: string; kind: "Xuất dữ liệu" | "Xóa tài khoản" | "Hỗ trợ"; status: string; date: string; detail: string };
+
+const SESSIONS: Session[] = [
+  { id: "reset-8", title: "Thư giãn cổ & vai", minutes: 8, level: "Nhẹ nhàng · Có hướng dẫn", image: "/assets/today-neck-stretch.png", imageAlt: "Hình minh họa thả lỏng cổ và vai", description: "Một buổi nhẹ để bắt đầu theo nhịp riêng của bạn.", detail: "Buổi mẫu hoàn chỉnh · không cần dụng cụ" },
+  { id: "slow-9", title: "Chậm lại để theo rõ", minutes: 9, level: "Nhịp chậm · Nhiều hướng dẫn", image: "/assets/practice-shoulder-stretch.png", imageAlt: "Hình minh họa thực hành nhẹ nhàng", description: "Một lựa chọn nhịp chậm hơn khi bạn muốn có thêm thời gian theo hướng dẫn.", detail: "Buổi mẫu hoàn chỉnh · không cần dụng cụ" },
+  { id: "short-5", title: "Một khoảng nghỉ ngắn", minutes: 5, level: "Ngắn · Nhẹ", image: "/assets/motion-chest-open.png", imageAlt: "Hình minh họa buổi tập ngắn", description: "Bắt đầu và khép lại trọn vẹn trong một khoảng thời gian ngắn.", detail: "Buổi mẫu hoàn chỉnh · không cần dụng cụ" },
+  { id: "steady-12", title: "Trở về nhịp đều", minutes: 12, level: "Êm · Có hướng dẫn", image: "/assets/today-neck-stretch.png", imageAlt: "Hình minh họa buổi yoga theo nhịp đều", description: "Dành thêm một chút thời gian để theo trọn một buổi có cấu trúc.", detail: "Buổi mẫu hoàn chỉnh · không cần dụng cụ" },
+];
+
+type Snapshot = {
+  id: string; day: number; date: string; time: string; kind: "Trước tập" | "Sau tập" | "Ghi riêng";
+  status: BodyStatus; observations: Observation[]; sessionId?: SessionId; remoteId?: string;
+  outcome?: Outcome; pace?: Pace; note?: string; endedEarly?: boolean; feedbackSkipped?: boolean; sample?: boolean;
+};
+
+type DemoState = {
+  day: number;
+  minutes: number;
+  energy: Energy | null;
+  regions: BodyRegion[];
+  bodyStyle: BodyStyle;
+  bodyStatus: BodyStatus;
+  preObservations: Observation[];
+  postObservations: Observation[];
+  postBodyStatus: BodyStatus;
+  intent: Intent;
+  dialogueChoice: DialogueChoice;
+  dialogueText: string;
+  unrecognizedText: string;
+  chosenPlanId: SessionId | null;
+  outcome: Outcome;
+  pace: Pace;
+  note: string;
+  endedEarly: boolean;
+  rememberPace: boolean;
+  usePreviousFeedback: boolean;
+  history: Snapshot[];
+  signedIn: boolean;
+  userId: string | null;
+  backendStatus: "loading" | "ready" | "error";
+  backendError: string;
+  remoteCheckins: Snapshot[];
+  currentRemoteCheckinId: string | null;
+  pendingCheckinIdempotencyKey: string | null;
+  accountEmail: string;
+  authReturnTo: string;
+  authMode: "create" | "login";
+  authCode: string;
+  displayName: string;
+  onboardingComplete: boolean;
+  termsAccepted: boolean;
+  privacyAccepted: boolean;
+  consentBaseline: ConsentState;
+  aiConsent: boolean;
+  saveFeedbackConsent: boolean;
+  teacherShareConsent: boolean;
+  marketingConsent: boolean;
+  shareActive: boolean;
+  notificationEnabled: boolean;
+  emailUpdates: boolean;
+  dataRequests: MockDataRequest[];
+  syncStatus: "saved" | "failed";
+  lastReflection: Snapshot | null;
+};
+
+const initialState: DemoState = {
+  day: 1, minutes: 10, energy: null, regions: [], bodyStyle: "neutral", bodyStatus: null, preObservations: [], postObservations: [], postBodyStatus: null, intent: "Bắt nhịp",
+  dialogueChoice: null, dialogueText: "", unrecognizedText: "",
+  chosenPlanId: null, outcome: null, pace: null, note: "",
+  endedEarly: false, rememberPace: true, usePreviousFeedback: false, history: [],
+  signedIn: false, userId: null, backendStatus: backendConfigured ? "loading" : "ready", backendError: "", remoteCheckins: [], currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null,
+  accountEmail: "", authReturnTo: "home", authMode: "create", authCode: "", displayName: "",
+  onboardingComplete: false, termsAccepted: false, privacyAccepted: false, consentBaseline: emptyConsentState, aiConsent: false, saveFeedbackConsent: false, teacherShareConsent: false,
+  marketingConsent: false, shareActive: false, notificationEnabled: false, emailUpdates: false, dataRequests: [], syncStatus: "saved", lastReflection: null,
+};
+
+const DemoContext = createContext<{ state: DemoState; setState: Dispatch<SetStateAction<DemoState>> } | null>(null);
+function useDemo() {
+  const context = useContext(DemoContext);
+  if (!context) throw new Error("Prototype state missing");
+  const update = (patch: Partial<DemoState>) => context.setState(previous => ({ ...previous, ...patch }));
+  return { ...context, update };
+}
+function latestFeedback(state: DemoState) {
+  const previous = [...state.history].reverse().find(item => item.kind === "Sau tập");
+  return state.saveFeedbackConsent && state.rememberPace && state.usePreviousFeedback && previous?.outcome !== "Khó chịu hơn" && !previous?.endedEarly ? previous : undefined;
+}
+function suggestedSession(state: DemoState): SessionId {
+  if (state.minutes <= 5) return "short-5";
+  const previous = latestFeedback(state);
+  if ((previous?.pace === "Hơi nhanh" || state.dialogueChoice === "Nhịp chậm") && state.minutes >= 9) return "slow-9";
+  if (state.minutes >= 15 && (state.energy === "Khá ổn" || state.energy === "Tràn đầy") && state.dialogueChoice !== "Không nằm sàn") return "steady-12";
+  return "reset-8";
+}
+function activeSession(state: DemoState) {
+  return SESSIONS.find(session => session.id === (state.chosenPlanId ?? suggestedSession(state))) ?? SESSIONS[0];
+}
+function planReason(state: DemoState) {
+  if (state.chosenPlanId) return "Bạn đã tự chọn buổi này trong các nội dung mẫu.";
+  const previous = latestFeedback(state);
+  if (state.minutes <= 5) return "Bạn có khoảng 5 phút; đây là một buổi ngắn hoàn chỉnh.";
+  if (previous?.pace === "Hơi nhanh" && state.minutes >= 9) return "Bạn từng phản hồi nhịp hơi nhanh. Lần này ưu tiên buổi chậm hơn, trong thời gian bạn có.";
+  if (state.dialogueChoice === "Nhịp chậm") return "Bạn muốn nhịp chậm hơn và có đủ thời gian cho buổi này.";
+  if (state.minutes >= 15 && (state.energy === "Khá ổn" || state.energy === "Tràn đầy")) return "Bạn có thêm thời gian và muốn một buổi có nhịp đều.";
+  return (state.regions.length ? "Bạn đã đánh dấu " + state.regions.join(", ").toLowerCase() + ". " : "") + "Bạn muốn " + state.intent.toLowerCase() + ", có " + state.minutes + " phút" + (state.energy ? " và năng lượng " + state.energy.toLowerCase() : "") + ". Đây là lựa chọn nội dung, không phải đánh giá sức khỏe.";
+}
+function unsupportedPlanRequest(state: DemoState) {
+  if (state.dialogueChoice === "Không nằm sàn") return "Bộ nội dung mẫu chưa xác nhận buổi nào đáp ứng yêu cầu “không nằm sàn”.";
+  if (state.regions.some(region => region !== "Cổ" && region !== "Vai")) return `Bộ nội dung mẫu chưa có buổi được xác nhận phù hợp với ${state.regions.filter(region => region !== "Cổ" && region !== "Vai").join(", ").toLowerCase()}.`;
+  if (state.dialogueChoice === "Nhịp chậm" && state.minutes < 9) return "Trong khoảng 5 phút, bộ nội dung mẫu chưa có buổi được xác nhận có nhịp chậm hơn.";
+  return null;
+}
+
+function BrandMark({ animated = false }: { animated?: boolean }) {
+  return <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false" className={animated ? "mcy-open-space-mark mcy-open-space-mark-animated" : "mcy-open-space-mark"}>
+    <path className="mcy-mark-arc" d="M67 19C53 12 36 15 25 26C13 38 12 56 21 70C29 82 44 87 58 82" fill="none" stroke="currentColor" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" pathLength="100" />
+    <circle className="mcy-mark-point" cx="74" cy="34" r="3.5" fill="currentColor" />
+  </svg>;
+}
+function Brand({ compact = false }: { compact?: boolean }) {
+  return <span className={compact ? "mcy-brand compact" : "mcy-brand mcy-brand-animated"}><BrandMark animated={!compact} /><span className="mcy-brand-wordmark">Một chút yoga</span></span>;
+}
+const BODY_REGIONS: BodyRegion[] = ["Cổ", "Vai", "Lưng trên", "Lưng dưới"];
+const BODY_LEVELS: BodyLevel[] = ["Không khó chịu", "Nhẹ", "Vừa", "Nhiều"];
+const BODY_STYLES: { id: BodyStyle; label: string; image: string }[] = [
+  { id: "neutral", label: "Trung tính", image: "/assets/body-map-neutral-upper.png" },
+  { id: "feminine", label: "Hình thể nữ", image: "/assets/body-map-feminine-upper.png" },
+  { id: "masculine", label: "Hình thể nam", image: "/assets/body-map-masculine-upper.png" },
+];
+const REGION_POSITION: Record<BodyRegion, { x: number; y: number }> = {
+  "Cổ": { x: 50, y: 27 }, "Vai": { x: 50, y: 35 },
+  "Lưng trên": { x: 50, y: 47 }, "Lưng dưới": { x: 50, y: 68 },
+};
+const SHOULDER_POSITION = { Trái: { x: 35, y: 35 }, Phải: { x: 65, y: 35 } } as const;
+const demoEpoch = new Date();
+demoEpoch.setHours(0, 0, 0, 0);
+function dateForDay(day: number) {
+  const date = new Date(demoEpoch);
+  date.setDate(date.getDate() + day - 1);
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+}
+function prettyDate(iso: string) { const [year, month, day] = iso.split("-"); return `${day}/${month}/${year}`; }
+function snapshotLabel(snapshot: Snapshot) { return `${prettyDate(snapshot.date)} · ${snapshot.time} · ${snapshot.kind}`; }
+function observationLabel(observation: Observation) {
+  return `${observation.region}${observation.side === "Không rõ bên" ? "" : ` · ${observation.side.toLowerCase()}`} · ${observation.status === "uncertain" ? "Chưa rõ" : observation.level ?? "Chưa ghi"}`;
+}
+function makeSnapshot(day: number, kind: Snapshot["kind"], status: BodyStatus, observations: Observation[], extra: Partial<Snapshot> = {}): Snapshot {
+  return { id: crypto.randomUUID(), day, date: dateForDay(day), time: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }), kind, status, observations: observations.map(item => ({ ...item })), ...extra };
+}
+function localDateOrdinal(isoDate: string) { return Math.floor(Date.parse(`${isoDate}T00:00:00Z`) / 86_400_000); }
+function dateFromOrdinal(ordinal: number) { return new Date(ordinal * 86_400_000).toISOString().slice(0, 10); }
+function todayLocalDate() {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+}
+function mapDatabaseObservation(row: LearnerObservation): Observation {
+  const region: BodyRegion = row.region_code === "neck" ? "Cổ" : row.region_code === "upper_back" ? "Lưng trên" : row.region_code === "lower_back" ? "Lưng dưới" : "Vai";
+  const side: Observation["side"] = row.region_code === "shoulder_left" ? "Trái" : row.region_code === "shoulder_right" ? "Phải" : "Không rõ bên";
+  const level: BodyLevel | null = row.state === "no_discomfort" ? "Không khó chịu" : row.level === 1 ? "Nhẹ" : row.level === 2 ? "Vừa" : row.level !== null && row.level >= 3 ? "Nhiều" : null;
+  return { region, side, level, status: row.state === "uncertain" || row.state === "skipped" ? "uncertain" : "reported", note: row.note ?? "" };
+}
+function snapshotFromDatabase(row: LearnerCheckin, rows: LearnerObservation[]): Snapshot {
+  const date = row.local_date;
+  return {
+    id: row.id,
+    remoteId: row.id,
+    day: localDateOrdinal(date),
+    date,
+    time: new Date(row.created_at).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
+    kind: row.capture_type === "standalone" ? "Ghi riêng" : "Trước tập",
+    status: (row.body_status as BodyStatus) ?? null,
+    observations: rows.filter(item => item.checkin_id === row.id).map(mapDatabaseObservation),
+  };
+}
+function consentStateForDemo(state: DemoState): ConsentState {
+  return {
+    terms: state.termsAccepted,
+    privacy: state.privacyAccepted,
+    wellbeing_data: state.saveFeedbackConsent,
+    ai_processing: state.aiConsent,
+    teacher_sharing: state.teacherShareConsent,
+    notifications: state.notificationEnabled,
+    marketing: state.marketingConsent,
+  };
+}
+async function persistConsentChanges(
+  state: DemoState,
+  source: "onboarding" | "settings",
+): Promise<ConsentState> {
+  const client = supabase;
+  if (!client || !state.userId) return state.consentBaseline;
+  const next = consentStateForDemo(state);
+  const events = (Object.keys(next) as ConsentPurpose[]).filter(purpose => next[purpose] !== state.consentBaseline[purpose]);
+  await Promise.all(events.map(purpose => saveConsentEvent(
+    client,
+    purpose,
+    next[purpose],
+    purpose === "terms" ? "terms-review-0.1" : "privacy-review-0.1",
+    source,
+    crypto.randomUUID(),
+    clientChannel(),
+  )));
+  return next;
+}
+async function persistProfile(state: DemoState, displayName: string, bodyStyle: BodyStyle) {
+  if (!supabase || !state.userId) return;
+  const { error } = await supabase.from("profiles").upsert({
+    user_id: state.userId,
+    display_name: displayName.trim() || null,
+    locale: "vi-VN",
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Ho_Chi_Minh",
+    body_display_preference: bodyStyle,
+  }, { onConflict: "user_id" });
+  if (error) throw new Error(error.message);
+}
+function toLearnerCheckinPayload(state: DemoState, captureType: CheckinPayload["captureType"], idempotencyKey: string): CheckinPayload {
+  const observations: CheckinPayload["observations"] = [];
+  for (const item of state.preObservations) {
+    const sides: { code: CheckinPayload["observations"][number]["regionCode"]; side: Observation["side"] }[] = item.region === "Vai"
+      ? item.side === "Hai bên"
+        ? [{ code: "shoulder_left", side: "Trái" }, { code: "shoulder_right", side: "Phải" }]
+        : [{ code: item.side === "Trái" ? "shoulder_left" : item.side === "Phải" ? "shoulder_right" : "shoulder_unspecified", side: item.side }]
+      : [{ code: item.region === "Cổ" ? "neck" : item.region === "Lưng trên" ? "upper_back" : "lower_back", side: "Không rõ bên" }];
+    for (const { code } of sides) {
+      const clear = item.level === "Không khó chịu";
+      const state = item.status === "uncertain" || (!clear && !item.level) ? "uncertain" : clear ? "no_discomfort" : "discomfort";
+      observations.push({
+        regionCode: code,
+        state,
+        level: state === "discomfort" ? Math.max(1, BODY_LEVELS.indexOf(item.level!)) : null,
+        note: item.note.trim() || null,
+      });
+    }
+  }
+  const energyValues: Energy[] = ["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"];
+  return {
+    localDate: dateForDay(state.day),
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Ho_Chi_Minh",
+    energyLevel: state.energy ? energyValues.indexOf(state.energy) : null,
+    bodyStatus: state.bodyStatus,
+    captureType,
+    observations,
+    idempotencyKey,
+  };
+}
+async function persistCurrentCheckin(
+  state: DemoState,
+  setState: Dispatch<SetStateAction<DemoState>>,
+  captureType: CheckinPayload["captureType"],
+) {
+  if (!supabase || !state.userId || !state.saveFeedbackConsent) return null;
+  const idempotencyKey = state.pendingCheckinIdempotencyKey ?? crypto.randomUUID();
+  setState(previous => ({ ...previous, pendingCheckinIdempotencyKey: idempotencyKey, backendStatus: "loading", backendError: "" }));
+  const payload = toLearnerCheckinPayload(state, captureType, idempotencyKey);
+  const saved = await saveLearnerCheckin(supabase, payload);
+  const row: LearnerCheckin = {
+    id: saved.checkin_id,
+    user_id: state.userId,
+    local_date: payload.localDate,
+    local_timezone: payload.timezone,
+    energy_level: payload.energyLevel,
+    overall_note: null,
+    body_status: state.bodyStatus,
+    capture_type: captureType,
+    idempotency_key: idempotencyKey,
+    created_at: saved.created_at,
+    updated_at: saved.created_at,
+  };
+  const snapshot = snapshotFromDatabase(row, payload.observations.map((item, index) => ({
+    id: `${saved.checkin_id}-${index}`,
+    checkin_id: saved.checkin_id,
+    user_id: state.userId!,
+    region_code: item.regionCode,
+    state: item.state,
+    level: item.level,
+    note: item.note,
+    created_at: saved.created_at,
+    updated_at: saved.created_at,
+  })));
+  setState(previous => ({
+    ...previous,
+    remoteCheckins: [...previous.remoteCheckins.filter(item => item.remoteId !== saved.checkin_id), snapshot],
+    currentRemoteCheckinId: saved.checkin_id,
+    pendingCheckinIdempotencyKey: null,
+    backendStatus: "ready",
+    backendError: "",
+  }));
+  return snapshot;
+}
+async function handleNativeAuthUrl(url: string) {
+  if (!supabase) return;
+  const callback = new URL(url);
+  const params = new URLSearchParams(callback.hash.replace(/^#/, ""));
+  const code = callback.searchParams.get("code");
+  const tokenHash = callback.searchParams.get("token_hash") ?? params.get("token_hash");
+  const type = callback.searchParams.get("type") ?? params.get("type");
+  const accessToken = params.get("access_token");
+  const refreshToken = params.get("refresh_token");
+  if (code) {
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) throw error;
+    return;
+  }
+  if (accessToken && refreshToken) {
+    const { error } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+    if (error) throw error;
+    return;
+  }
+  if (tokenHash && type) {
+    const { error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type: type as EmailOtpType });
+    if (error) throw error;
+  }
+}
+function sampleSnapshots(): Snapshot[] {
+  const rows: { day: number; time: string; kind: Snapshot["kind"]; body: [BodyLevel | null, BodyLevel | null]; status?: BodyStatus; outcome?: Outcome; endedEarly?: boolean }[] = [
+    { day: 1, time: "08:00", kind: "Trước tập", body: ["Vừa", "Nhẹ"] },
+    { day: 1, time: "08:20", kind: "Sau tập", body: ["Nhẹ", "Nhẹ"], outcome: "Dễ chịu hơn" },
+    { day: 2, time: "08:10", kind: "Ghi riêng", body: ["Nhẹ", "Vừa"] },
+    { day: 4, time: "07:45", kind: "Ghi riêng", body: ["Vừa", "Vừa"] },
+    { day: 11, time: "09:00", kind: "Trước tập", body: ["Nhiều", null], endedEarly: true },
+    { day: 20, time: "08:30", kind: "Ghi riêng", body: [null, null], status: "skipped" },
+    { day: 30, time: "08:05", kind: "Ghi riêng", body: ["Không khó chịu", "Nhẹ"] },
+  ];
+  return rows.map((row, index) => ({
+    id: `sample-${index}`, day: row.day, date: `2026-10-${String(row.day).padStart(2, "0")}`, time: row.time,
+    kind: row.kind, status: row.status ?? "reported", sample: true, outcome: row.outcome, endedEarly: row.endedEarly,
+    observations: row.status === "skipped" ? [] : (["Cổ", "Vai"] as BodyRegion[]).map((region, regionIndex) => ({
+      region, side: region === "Vai" ? "Trái" : "Không rõ bên", level: row.body[regionIndex],
+      status: row.body[regionIndex] === null ? "uncertain" : "reported",
+      note: row.day === 1 && region === "Cổ" ? row.kind === "Sau tập" ? "Sau buổi này thấy nhẹ hơn một chút." : "Cảm thấy căng khi bắt đầu ngày." : row.day === 30 && region === "Cổ" ? "Hôm nay thấy thoải mái hơn khi quay đầu." : "",
+    })),
+  }));
+}
+function BodyMap({ observations, bodyStyle, compact = false, onSelect, showAll = true }: { observations: Observation[]; bodyStyle: BodyStyle; compact?: boolean; onSelect?: (region: BodyRegion, side?: Observation["side"]) => void; showAll?: boolean }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const image = BODY_STYLES.find(item => item.id === bodyStyle)?.image ?? BODY_STYLES[0].image;
+  useEffect(() => setImageFailed(false), [image]);
+  const points: { key: string; region: BodyRegion; item?: Observation; side?: Observation["side"]; x: number; y: number }[] = [];
+  BODY_REGIONS.forEach(region => {
+    const item = observations.find(entry => entry.region === region);
+    if ((!onSelect || !showAll) && !item) return;
+    if (region !== "Vai") { points.push({ key: region, region, item, ...REGION_POSITION[region] }); return; }
+    if (!item) {
+      if (onSelect) (["Trái", "Phải"] as const).forEach(side => points.push({ key: `Vai-${side}`, region, item, side, ...SHOULDER_POSITION[side] }));
+      return;
+    }
+    if (item.side === "Hai bên") { (["Trái", "Phải"] as const).forEach(side => points.push({ key: `Vai-${side}`, region, item, side, ...SHOULDER_POSITION[side] })); return; }
+    if (item.side === "Trái" || item.side === "Phải") { points.push({ key: `Vai-${item.side}`, region, item, side: item.side, ...SHOULDER_POSITION[item.side] }); return; }
+    points.push({ key: "Vai-khong-ro", region, item, x: REGION_POSITION.Vai.x, y: REGION_POSITION.Vai.y });
+  });
+  return <div className={`mcy-body-map-v2${compact ? " compact" : ""}`}>
+    <div className="mcy-body-art">
+      {imageFailed ? <p className="mcy-body-fallback">Hình minh họa chưa tải. Bạn vẫn có thể chọn vùng trong danh sách.</p> : <img src={image} alt="Minh họa phần thân trên nhìn từ phía sau" onError={() => setImageFailed(true)} />}
+      {!imageFailed && points.map(({ key, region, item, side, x, y }) => {
+        const className = `mcy-map-pin${item ? ` is-${item.status === "uncertain" ? "uncertain" : item.level === "Không khó chịu" ? "clear" : item.level === "Nhiều" ? "high" : "reported"}` : ""}`;
+        const style = { left: `${x}%`, top: `${y}%` };
+        const label = side ? `${region} ${side.toLowerCase()}` : region;
+        const marker = item?.status === "uncertain" ? "?" : item?.level === "Không khó chịu" ? "✓" : item ? "•" : "+";
+        return onSelect ? <button key={key} type="button" className={className} style={style} aria-label={`${label}: ${item ? observationLabel(item) : "chưa ghi, chạm để chọn"}`} onClick={() => onSelect(region, side)}><span aria-hidden="true">{marker}</span></button> : <span key={key} className={className} style={style} aria-label={observationLabel(item!)}><span aria-hidden="true">{marker}</span></span>;
+      })}
+    </div>
+    {!compact && <small className="mcy-body-orientation">Nhìn từ phía sau · bên trái/phải theo bạn</small>}
+  </div>;
+}
+function BodyStylePicker({ value, onChange }: { value: BodyStyle; onChange: (style: BodyStyle) => void }) {
+  const [open, setOpen] = useState(false);
+  return <><button className="mcy-style-link" onClick={() => setOpen(true)}>Đổi hình minh họa <ArrowRightIcon /></button>
+    <BottomSheet open={open} onOpenChange={setOpen} title="Chọn hình minh họa" description="Chọn hình giúp bạn dễ xác định vùng cơ thể hơn. Có thể đổi bất cứ lúc nào." snap={0.57}>
+      <div className="mcy-style-options">{BODY_STYLES.map(style => <button key={style.id} className={value === style.id ? "selected" : ""} onClick={() => { onChange(style.id); setOpen(false); }} aria-pressed={value === style.id}><img src={style.image} alt="" /><strong>{style.label}</strong>{value === style.id && <CheckIcon />}</button>)}</div>
+      <p className="mcy-sheet-footnote">Đây chỉ là hình hiển thị; không dùng để suy ra giới tính hoặc chọn bài tập.</p>
+    </BottomSheet></>;
+}
+function RegionEditor({ region, current, suggestedSide, onSave, onDelete, onClose }: { region: BodyRegion | null; current?: Observation; suggestedSide?: Observation["side"]; onSave: (value: Observation) => void; onDelete?: () => void; onClose: () => void }) {
+  const keyboard = useKeyboard();
+  const [level, setLevel] = useState<BodyLevel | "Chưa rõ" | null>(current?.status === "uncertain" ? "Chưa rõ" : current?.level ?? null);
+  const [side, setSide] = useState<Observation["side"]>(suggestedSide ?? current?.side ?? "Không rõ bên");
+  const [note, setNote] = useState(current?.note ?? "");
+  useEffect(() => { setLevel(current?.status === "uncertain" ? "Chưa rõ" : current?.level ?? null); setSide(suggestedSide ?? current?.side ?? "Không rõ bên"); setNote(current?.note ?? ""); }, [region, current?.level, current?.side, current?.note, current?.status, suggestedSide]);
+  const close = () => { keyboard.hide(); onClose(); };
+  return <BottomSheet open={Boolean(region)} onOpenChange={open => { if (!open) close(); }} title={region ? `Ghi nhận vùng ${region.toLowerCase()}` : "Ghi nhận vùng"} description="Ở vùng này, ngay lúc này bạn thấy khó chịu ở mức nào?" snap={0.9}>
+    {region && <div className="mcy-region-editor">
+      <div className="mcy-editor-options">{([...BODY_LEVELS, "Chưa rõ"] as const).map(value => <Choice key={value} selected={level === value} onClick={() => setLevel(value)}>{value}</Choice>)}</div>
+      {region === "Vai" && <><strong>Bên nào?</strong><div className="mcy-editor-options side">{(["Không rõ bên", "Trái", "Phải", "Hai bên"] as Observation["side"][]).map(value => <Choice key={value} selected={side === value} onClick={() => setSide(value)}>{value}</Choice>)}</div></>}
+      <label className="mcy-editor-note">Ghi chú riêng vùng này <small>không bắt buộc</small><KeyboardTextarea placeholder={region === "Vai" ? "Ví dụ: vai trái căng khi ngồi lâu..." : region === "Cổ" ? "Ví dụ: cổ mỏi khi ngồi lâu..." : "Ví dụ: vùng này căng khi ngồi lâu..."} value={note} onChange={event => setNote(event.target.value)} onBlur={() => keyboard.hide()} /></label>
+      <button className="mcy-action" disabled={!level} onClick={() => { if (!level) return; keyboard.hide(); onSave({ region, side: region === "Vai" ? side : "Không rõ bên", level: level === "Chưa rõ" ? null : level, status: level === "Chưa rõ" ? "uncertain" : "reported", note: note.trim() }); onClose(); }}>Lưu vùng này <ArrowRightIcon /></button>
+      {current && onDelete && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); onDelete(); onClose(); }}>Xóa vùng này</button>}
+    </div>}
+  </BottomSheet>;
+}
+function EnergyFace({ level }: { level: number }) {
+  return <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="currentColor" opacity=".14" /><circle cx="12" cy="15" r="1.2" fill="currentColor" /><circle cx="24" cy="15" r="1.2" fill="currentColor" /><path d={level < 2 ? "M12 25 Q18 20 24 25" : level === 2 ? "M13 23 Q18 25 23 23" : "M11 21 Q18 29 25 21"} stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" /></svg>;
+}
+function Header({ title, back = false }: { title?: string; back?: boolean }) {
+  const flow = useFlow();
+  useLayoutEffect(() => {
+    const screen = document.querySelector<HTMLElement>("[data-phone-screen]");
+    if (screen) screen.scrollTop = 0;
+  }, [flow.current.key]);
+  return <div className="mcy-header">{back ? <button className="mcy-icon-button" aria-label="Quay lại" onClick={() => flow.pop()}><ArrowLeftIcon /></button> : <span />}<span className="mcy-header-title" aria-label={title ?? "Một chút yoga"}>Một chút yoga</span><span /></div>;
+}
+function Action({ children, onClick, disabled = false, secondary = false }: { children: React.ReactNode; onClick: () => void; disabled?: boolean; secondary?: boolean }) {
+  return <button className={secondary ? "mcy-action secondary" : "mcy-action"} onClick={event => { event.currentTarget.blur(); onClick(); }} disabled={disabled}>{children}<ArrowRightIcon /></button>;
+}
+function Choice({ selected, onClick, children }: { selected: boolean; onClick?: () => void; children: React.ReactNode }) {
+  return <button className={selected ? "mcy-choice selected" : "mcy-choice"} aria-pressed={selected} onClick={() => onClick?.()}>{children}</button>;
+}
+function Eyebrow({ children }: { children: React.ReactNode }) { return <div className="mcy-eyebrow">{children}</div>; }
+function DemoNote({ children }: { children: React.ReactNode }) { return <p className="mcy-demo-note"><InfoCircledIcon />{children}</p>; }
+function authErrorMessage(cause: unknown, fallback: string) {
+  const message = cause && typeof cause === "object" && "message" in cause && typeof cause.message === "string"
+    ? cause.message
+    : "";
+  if (/rate.?limit|too many requests|over_email_send_rate_limit/i.test(message)) {
+    return "Dịch vụ email đang tạm giới hạn yêu cầu. Hãy dùng email mới nhất đã gửi và tránh bấm gửi lại liên tục. Nếu liên kết hết hạn, chờ giới hạn hồi hoặc cấu hình SMTP riêng để tiếp tục kiểm thử.";
+  }
+  return message || fallback;
+}
 
 const ROUTES: Record<string, FlowScreen> = {
-  welcome: { id: "welcome", header: safeAreaHeader, headerHeight: 0, render: () => <WelcomeScreen /> },
-  checkin: { id: "checkin", header: safeAreaHeader, headerHeight: 0, render: () => <CheckinScreen />, footer: () => <BottomNav />, footerHeight: 70 },
-  today: { id: "today", header: safeAreaHeader, headerHeight: 0, render: () => <TodayScreen />, footer: () => <BottomNav />, footerHeight: 70 },
-  practice: { id: "practice", header: safeAreaHeader, headerHeight: 0, render: () => <PracticeScreen /> },
-  reflection: { id: "reflection", header: safeAreaHeader, headerHeight: 0, render: () => <ReflectionScreen />, footer: () => <BottomNav />, footerHeight: 70 },
-  progress: { id: "progress", header: safeAreaHeader, headerHeight: 0, render: () => <ProgressScreen />, footer: () => <BottomNav />, footerHeight: 70 },
-  message: { id: "message", header: safeAreaHeader, headerHeight: 0, render: () => <MessageScreen /> },
-  plans: { id: "plans", header: safeAreaHeader, headerHeight: 0, render: () => <PlansScreen /> },
-  teacher: { id: "teacher", header: safeAreaHeader, headerHeight: 0, render: () => <TeacherStudio /> },
+  welcome: { id: "welcome", render: () => <WelcomeScreen /> },
+  home: { id: "home", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <HomeScreen /> },
+  checkin: { id: "checkin", header: () => <Header title="Check-in hôm nay" back />, headerHeight: 55, footer: () => <CheckinFooter />, footerHeight: 140, render: () => <CheckinScreen /> },
+  dialogue: { id: "dialogue", header: () => <Header title="Cùng chọn buổi tập" back />, headerHeight: 55, render: () => <DialogueScreen /> },
+  plan: { id: "plan", header: () => <Header title="Kế hoạch hôm nay" back />, headerHeight: 55, footer: () => <PlanFooter />, footerHeight: 94, render: () => <PlanScreen /> },
+  practice: { id: "practice", header: () => <Header title="Xem trước buổi tập" back />, headerHeight: 55, render: () => <PracticeScreen /> },
+  reflection: { id: "reflection", header: () => <Header title="Phản hồi của bạn" back />, headerHeight: 55, footer: () => <ReflectionFooter />, footerHeight: 104, render: () => <ReflectionScreen /> },
+  journey: { id: "journey", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <JourneyScreen /> },
+  discover: { id: "discover", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <DiscoverScreen /> },
+  profile: { id: "profile", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <ProfileScreen /> },
+  authEmail: { id: "auth-email", header: () => <Header title="Tài khoản" back />, headerHeight: 55, render: () => <AuthEmailScreen /> },
+  authCode: { id: "auth-code", header: () => <Header title="Xác minh email" back />, headerHeight: 55, render: () => <AuthCodeScreen /> },
+  consent: { id: "consent", header: () => <Header title="Quyền dữ liệu" back />, headerHeight: 55, render: () => <ConsentScreen /> },
+  onboarding: { id: "onboarding", header: () => <Header title="Bắt đầu vừa đủ" back />, headerHeight: 55, render: () => <OnboardingScreen /> },
+  editProfile: { id: "edit-profile", header: () => <Header title="Hồ sơ của bạn" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="edit" /> },
+  privacy: { id: "privacy", header: () => <Header title="Quyền riêng tư" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="privacy" /> },
+  memory: { id: "memory", header: () => <Header title="AI và điều được nhớ" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="memory" /> },
+  sharing: { id: "sharing", header: () => <Header title="Chia sẻ với giáo viên" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="sharing" /> },
+  security: { id: "security", header: () => <Header title="Bảo mật tài khoản" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="security" /> },
+  notifications: { id: "notifications", header: () => <Header title="Nhắc tập" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="notifications" /> },
+  access: { id: "access", header: () => <Header title="Nội dung và quyền" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="access" /> },
+  help: { id: "help", header: () => <Header title="Hướng dẫn và hỗ trợ" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="help" /> },
+  exportData: { id: "export-data", header: () => <Header title="Yêu cầu xuất dữ liệu" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="export" /> },
+  deleteAccount: { id: "delete-account", header: () => <Header title="Xóa tài khoản" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="delete" /> },
+  requests: { id: "requests", header: () => <Header title="Trạng thái yêu cầu" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="requests" /> },
+  sync: { id: "sync", header: () => <Header title="Lưu phản hồi" back />, headerHeight: 55, render: () => <SyncScreen /> },
+  discoverDetail: { id: "discover-detail", header: () => <Header title="Chi tiết nội dung" back />, headerHeight: 55, render: () => <DiscoverDetailScreen /> },
+  readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
 };
 
 export default function Prototype() {
-  const [focus, setFocus] = useState<Focus>("Cổ & vai");
-  const [energy, setEnergy] = useState("Bình thường");
-  const [note, setNote] = useState("");
-  const [reflectionSaved, setReflectionSaved] = useState(false);
-  const [messageKind, setMessageKind] = useState<MessageKind>("teacher");
-  const [teacherNote, setTeacherNote] = useState(
-    "Trong những buổi vừa rồi, bạn đã chủ động chọn biến thể phù hợp và bình tĩnh hơn khi chuyển động. Cảm ơn bạn vì đã kiên nhẫn với cơ thể mình.",
-  );
-  const [teacherSent, setTeacherSent] = useState(false);
-
-  const app = useMemo(
-    () => ({
-      focus, setFocus, energy, setEnergy, note, setNote, reflectionSaved,
-      setReflectionSaved, messageKind, setMessageKind, teacherNote, setTeacherNote,
-      teacherSent, setTeacherSent,
-    }),
-    [energy, focus, messageKind, note, reflectionSaved, teacherNote, teacherSent],
-  );
-
-  return <YogaAppContext.Provider value={app}><FlowStack initial={ROUTES.welcome} /></YogaAppContext.Provider>;
+  const [state, setState] = useState<DemoState>(initialState);
+  useLayoutEffect(() => { document.title = "Một chút yoga · Prototype"; }, []);
+  useLayoutEffect(() => {
+    const screen = document.querySelector<HTMLElement>("[data-phone-screen]");
+    if (!screen) return;
+    const keepChromeFixed = () => {
+      if (screen.scrollTop !== 0) screen.scrollTop = 0;
+      if (screen.scrollLeft !== 0) screen.scrollLeft = 0;
+    };
+    screen.addEventListener("scroll", keepChromeFixed);
+    keepChromeFixed();
+    return () => screen.removeEventListener("scroll", keepChromeFixed);
+  }, []);
+  useEffect(() => {
+    if (!supabase) {
+      setState(previous => ({ ...previous, backendStatus: "ready" }));
+      return;
+    }
+    let active = true;
+    let appUrlListener: { remove: () => Promise<void> } | null = null;
+    const handledAuthUrls = new Set<string>();
+    const receiveNativeAuthUrl = async (url: string) => {
+      if (handledAuthUrls.has(url)) return;
+      handledAuthUrls.add(url);
+      try {
+        await handleNativeAuthUrl(url);
+      } catch (error) {
+        if (active) setState(previous => ({ ...previous, backendStatus: "error", backendError: error instanceof Error ? error.message : "Liên kết xác minh không còn hiệu lực." }));
+      }
+    };
+    const hydrate = async (session: import("@supabase/supabase-js").Session | null) => {
+      if (!active) return;
+      if (!session) {
+        setState(previous => ({
+          ...previous,
+          signedIn: false,
+          userId: null,
+          remoteCheckins: [],
+          currentRemoteCheckinId: null,
+          termsAccepted: false,
+          privacyAccepted: false,
+          aiConsent: false,
+          saveFeedbackConsent: false,
+          teacherShareConsent: false,
+          marketingConsent: false,
+          notificationEnabled: false,
+          consentBaseline: emptyConsentState,
+          backendStatus: "ready",
+          backendError: "",
+        }));
+        return;
+      }
+      setState(previous => ({ ...previous, backendStatus: "loading", backendError: "" }));
+      try {
+        const data = await loadLearnerSnapshot(supabase!);
+        if (!active) return;
+        const remoteCheckins = data.checkins.map(row => snapshotFromDatabase(row, data.observations));
+        const bodyStyle = data.profile?.body_display_preference;
+        setState(previous => ({
+          ...previous,
+          signedIn: true,
+          userId: session.user.id,
+          accountEmail: session.user.email ?? previous.accountEmail,
+          displayName: data.profile?.display_name ?? previous.displayName,
+          bodyStyle: bodyStyle === "feminine" || bodyStyle === "masculine" ? bodyStyle : "neutral",
+          termsAccepted: data.consents.terms,
+          privacyAccepted: data.consents.privacy,
+          aiConsent: data.consents.ai_processing,
+          saveFeedbackConsent: data.consents.wellbeing_data,
+          teacherShareConsent: data.consents.teacher_sharing,
+          marketingConsent: data.consents.marketing,
+          notificationEnabled: data.consents.notifications,
+          consentBaseline: data.consents,
+          onboardingComplete: Boolean(data.profile),
+          remoteCheckins,
+          currentRemoteCheckinId: previous.currentRemoteCheckinId ?? remoteCheckins.at(-1)?.remoteId ?? null,
+          backendStatus: "ready",
+          backendError: "",
+        }));
+      } catch (error) {
+        if (!active) return;
+        setState(previous => ({
+          ...previous,
+          signedIn: true,
+          userId: session.user.id,
+          accountEmail: session.user.email ?? previous.accountEmail,
+          backendStatus: "error",
+          backendError: error instanceof Error ? error.message : "Chưa đọc được dữ liệu tài khoản.",
+        }));
+      }
+    };
+    void supabase.auth.getSession().then(({ data, error }) => {
+      if (error) setState(previous => ({ ...previous, backendStatus: "error", backendError: error.message }));
+      else void hydrate(data.session);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      window.setTimeout(() => { void hydrate(session); }, 0);
+    });
+    if (Capacitor.isNativePlatform()) {
+      void CapacitorApp.addListener("appUrlOpen", ({ url }) => { void receiveNativeAuthUrl(url); }).then(listener => {
+        if (active) appUrlListener = listener;
+        else void listener.remove();
+      }).catch(error => {
+        if (active) setState(previous => ({ ...previous, backendStatus: "error", backendError: error instanceof Error ? error.message : "Chưa bật được liên kết đăng nhập trên thiết bị." }));
+      });
+      void CapacitorApp.getLaunchUrl().then(launch => {
+        if (launch?.url) void receiveNativeAuthUrl(launch.url);
+      }).catch(() => undefined);
+    }
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+      void appUrlListener?.remove();
+    };
+  }, []);
+  return <DemoContext.Provider value={{ state, setState }}><FlowStack initial={ROUTES.welcome}><AuthSessionRouter /></FlowStack></DemoContext.Provider>;
 }
 
-type YogaApp = {
-  focus: Focus;
-  setFocus: (focus: Focus) => void;
-  energy: string;
-  setEnergy: (energy: string) => void;
-  note: string;
-  setNote: (note: string) => void;
-  reflectionSaved: boolean;
-  setReflectionSaved: (saved: boolean) => void;
-  messageKind: MessageKind;
-  setMessageKind: (kind: MessageKind) => void;
-  teacherNote: string;
-  setTeacherNote: (note: string) => void;
-  teacherSent: boolean;
-  setTeacherSent: (sent: boolean) => void;
-};
-
-const YogaAppContext = createContext<YogaApp | null>(null);
-
-function useYogaApp() {
-  const app = useContext(YogaAppContext);
-  if (!app) throw new Error("Yoga app context is missing");
-  return app;
-}
-
-function Brand({ compact = false }: { compact?: boolean }) {
-  return <div className={compact ? "brand brand-compact" : "brand"} aria-label="Một chút Yoga"><span className="brand-mark"><HeartIcon /></span><span>Một chút Yoga</span></div>;
-}
-
-function Topbar({ title, action }: { title?: string; action?: React.ReactNode }) {
+function AuthSessionRouter() {
+  const { state } = useDemo();
   const flow = useFlow();
-  return <div className="topbar"><button className="icon-button" aria-label="Quay lại" onClick={() => flow.pop()}><ArrowLeftIcon /></button>{title ? <div className="topbar-title">{title}</div> : <Brand compact />}<div className="topbar-action">{action}</div></div>;
-}
-
-function PrimaryButton({ children, onClick, className = "" }: { children: React.ReactNode; onClick: () => void; className?: string }) {
-  return <button className={"primary-button " + className} onClick={onClick}>{children}<ArrowRightIcon /></button>;
+  useEffect(() => {
+    if (!state.signedIn) return;
+    if (["welcome", "authEmail", "authCode"].includes(flow.current.id)) {
+      flow.replace(ROUTES.consent);
+    }
+  }, [flow, state.signedIn, state.userId]);
+  return null;
 }
 
 function WelcomeScreen() {
   const flow = useFlow();
-  return (
-    <MobileScroll className="app-scroll welcome-screen">
-      <main className="welcome-content">
-        <Brand />
-        <div className="welcome-copy">
-          <h1>Nhẹ nhàng hôm nay<br />cho một cơ thể bình yên hơn ngày mai</h1>
-          <div className="value-list">
-            <p><span><LightningBoltIcon /></span> Giảm căng mỏi<br />cổ · vai · lưng</p>
-            <p><span><HeartIcon /></span> Lắng nghe cơ thể<br />mỗi ngày</p>
-            <p><span><CheckCircledIcon /></span> Tập an toàn, phù hợp<br />cho người mới</p>
-          </div>
-        </div>
-        <img className="welcome-photo" src="/assets/welcome-portrait.png" alt="Người phụ nữ ngồi thư giãn trên thảm yoga" />
-        <p className="welcome-script">Một cơ thể an yên<br />bắt đầu từ những điều nhỏ bé</p>
-        <PrimaryButton onClick={() => flow.push(ROUTES.checkin)}>Bắt đầu hành trình</PrimaryButton>
-      </main>
-    </MobileScroll>
-  );
+  const { update } = useDemo();
+  return <MobileScroll className="mcy-scroll welcome"><main className="mcy-welcome">
+    <img className="mcy-welcome-photo" src="/assets/welcome-portrait.png" alt="Người ngồi thư giãn trên thảm yoga" />
+    <div className="mcy-welcome-top"><Brand /><p>Một chút yoga,<br />vạn chút an yên</p></div>
+    <div className="mcy-welcome-benefits"><div><span><PersonIcon /></span>Giảm căng mỏi<br />cổ · vai · lưng</div><div><span><HeartIcon /></span>Lắng nghe cơ thể<br />mỗi ngày</div><div><span><MagicWandIcon /></span>Chọn bài vừa sức<br />cùng trợ lý AI</div></div>
+    <div className="mcy-welcome-bottom"><p>“An yên bắt đầu từ<br />những điều nhỏ bé”</p><Action onClick={() => flow.push(ROUTES.checkin)}>Thử tìm hiểu như khách</Action><div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>Tạo tài khoản</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>Đăng nhập</button></div><small>Đăng nhập và lưu check-in có đồng ý · AI và nội dung vẫn là mẫu</small></div>
+  </main></MobileScroll>;
+}
+
+function AuthEmailScreen() {
+  const flow = useFlow();
+  const keyboard = useKeyboard();
+  const { state, update } = useDemo();
+  const [email, setEmail] = useState(state.accountEmail);
+  const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
+  const submit = async () => {
+    keyboard.hide();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError("Kiểm tra lại địa chỉ email bạn vừa nhập."); return; }
+    if (!supabase) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
+    setSending(true);
+    setError("");
+    try {
+      const { error: authError } = await supabase.auth.signInWithOtp({
+        email: email.trim(),
+        options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl() },
+      });
+      if (authError) { setError(authErrorMessage(authError, "Chưa gửi được email xác minh. Hãy thử lại sau.")); return; }
+      update({ accountEmail: email.trim(), authCode: "" });
+      flow.replace(ROUTES.authCode);
+    } catch (cause) {
+      setError(authErrorMessage(cause, "Chưa gửi được email xác minh. Hãy thử lại sau."));
+    } finally {
+      setSending(false);
+    }
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
+    <Eyebrow>{state.authMode === "create" ? "TẠO TÀI KHOẢN" : "ĐĂNG NHẬP"}</Eyebrow>
+    <h1>Dùng email bạn có thể mở ngay.</h1>
+    <p className="mcy-lead">Gửi email xác minh tới địa chỉ này. Nếu email có mã 6 chữ số, bạn có thể nhập ở bước tiếp theo; nếu có liên kết đăng nhập, hãy mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
+    <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
+    {error && <div className="mcy-form-error" role="alert">{error}</div>}
+    <div className="mcy-inline-note"><InfoCircledIcon />Chỉ dùng để đăng nhập và gửi biên nhận yêu cầu. Không cần nhập số điện thoại, ngày sinh hay tên thật.</div>
+    {!backendConfigured && <div className="mcy-alert">Backend chưa kết nối ở môi trường hiện tại. Bạn vẫn có thể xem và thử luồng khách.</div>}
+    <Action disabled={sending || !backendConfigured} onClick={submit}>{sending ? "Đang gửi…" : "Gửi email xác minh"}</Action>
+    {state.authReturnTo === "dialogue" && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); flow.replace(ROUTES.plan); }}>Tiếp tục như khách với lựa chọn mẫu</button>}
+    <DemoNote>Email xác minh chỉ dùng qua Supabase Auth. Hãy hoàn tất trên cùng thiết bị để tiếp tục đúng phiên.</DemoNote>
+  </main></MobileScroll>;
+}
+
+function AuthCodeScreen() {
+  const flow = useFlow();
+  const keyboard = useKeyboard();
+  const { state, update } = useDemo();
+  const [code, setCode] = useState(state.authCode);
+  const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const [verifying, setVerifying] = useState(false);
+  const [resending, setResending] = useState(false);
+  const verify = async () => {
+    keyboard.hide();
+    if (code.length !== 6) { setError("Nhập đủ 6 chữ số để tiếp tục."); return; }
+    if (!supabase) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
+    setVerifying(true);
+    try {
+      const { data, error: authError } = await supabase.auth.verifyOtp({ email: state.accountEmail, token: code, type: "email" });
+      if (authError || !data.user) { setError("Mã không hợp lệ hoặc đã hết hạn. Hãy kiểm tra hộp thư và thử lại."); return; }
+      update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? state.accountEmail, backendStatus: "loading", backendError: "" });
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Chưa xác minh được mã. Hãy thử lại.");
+    } finally {
+      setVerifying(false);
+    }
+  };
+  const resend = async () => {
+    if (!supabase) return;
+    setResending(true);
+    try {
+      const { error: authError } = await supabase.auth.signInWithOtp({ email: state.accountEmail, options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl() } });
+      if (authError) {
+        setError(authErrorMessage(authError, "Chưa gửi lại được email xác minh."));
+        setNotice("");
+      } else {
+        setError("");
+        setNotice("Email xác minh mới đã được gửi. Mã hoặc liên kết cũ có thể hết hiệu lực.");
+      }
+    } catch (cause) {
+      setNotice("");
+      setError(authErrorMessage(cause, "Chưa gửi lại được email xác minh."));
+    } finally {
+      setResending(false);
+    }
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
+    <Eyebrow>XÁC MINH EMAIL</Eyebrow><h1>Kiểm tra hộp thư của bạn.</h1>
+    <p className="mcy-lead">Email đã gửi tới <strong>{state.accountEmail}</strong>. Nếu thư có mã 6 chữ số, nhập mã bên dưới. Nếu thư có liên kết, mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
+    <label className="mcy-form-field">Mã 6 chữ số (nếu email có mã)<KeyboardInput inputMode="numeric" autoComplete="one-time-code" aria-label="Mã xác minh" placeholder="123456" value={code} onChange={event => { setCode(event.target.value.replace(/\D/g, "").slice(0, 6)); setError(""); }} onBlur={() => keyboard.hide()} /></label>
+    <div className="mcy-code-hint">Mã hoặc liên kết chỉ dùng một lần. Không gửi mã cho người khác.</div>
+    {error && <div className="mcy-form-error" role="alert">{error}</div>}
+    {notice && <div className="mcy-inline-note" role="status"><InfoCircledIcon />{notice}</div>}
+    <Action disabled={verifying} onClick={verify}>{verifying ? "Đang xác minh…" : "Xác minh email"}</Action>
+    <div className="mcy-auth-secondary"><button disabled={resending} onClick={() => { setCode(""); void resend(); }}>{resending ? "Đang gửi…" : "Gửi lại email"}</button><button onClick={() => flow.replace(ROUTES.authEmail)}>Đổi email</button></div>
+    <DemoNote>Mở liên kết trên cùng thiết bị đã yêu cầu xác minh. Trên điện thoại, liên kết sẽ quay lại ứng dụng.</DemoNote>
+  </main></MobileScroll>;
+}
+
+function ConsentScreen() {
+  const flow = useFlow();
+  const { state, update, setState } = useDemo();
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const togglePurpose = (key: "aiConsent" | "saveFeedbackConsent" | "teacherShareConsent" | "marketingConsent") => {
+    if (key === "aiConsent") update({ aiConsent: !state.aiConsent });
+    if (key === "saveFeedbackConsent") update({ saveFeedbackConsent: !state.saveFeedbackConsent });
+    if (key === "teacherShareConsent") update({ teacherShareConsent: !state.teacherShareConsent });
+    if (key === "marketingConsent") update({ marketingConsent: !state.marketingConsent });
+  };
+  const continueNext = async (discardDraft = false) => {
+    if (!state.termsAccepted || !state.privacyAccepted || saving) return;
+    setSaving(true);
+    setError("");
+    try {
+      const baseline = await persistConsentChanges(state, "onboarding");
+      setState(previous => ({
+        ...previous,
+        consentBaseline: baseline,
+        ...(discardDraft ? { preObservations: [], regions: [], bodyStatus: null, energy: null, pendingCheckinIdempotencyKey: null } : {}),
+      }));
+      if (state.onboardingComplete) {
+        if (!discardDraft && state.authReturnTo === "dialogue" && state.saveFeedbackConsent) {
+          await persistCurrentCheckin({ ...state, consentBaseline: baseline, privacyAccepted: true }, setState, "practice_preparation");
+        }
+        if (state.authReturnTo === "profile" || state.authReturnTo === "security") { flow.pop(); return; }
+        const destination = discardDraft ? "home" : state.authReturnTo === "dialogue" ? state.aiConsent ? "readiness" : "plan" : state.authReturnTo;
+        flow.replace(ROUTES[destination] ?? ROUTES.home);
+      } else flow.replace(ROUTES.onboarding);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Chưa lưu được lựa chọn của bạn.");
+    } finally {
+      setSaving(false);
+    }
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
+    <Eyebrow>A05 · QUYỀN VÀ ĐIỀU KHOẢN</Eyebrow><h1>Bạn chọn dữ liệu nào được dùng.</h1>
+    <p className="mcy-lead">Mỗi mục đích là một lựa chọn riêng. Điều khoản và thông báo quyền riêng tư hiện là bản review, chưa phải nội dung pháp lý cuối cùng.</p>
+    <section className="mcy-consent-card required"><span className="mcy-tag">CẦN ĐỂ TIẾP TỤC TRONG APP</span><strong>Điều khoản dịch vụ và thông báo quyền riêng tư</strong><p>Supabase đã xác minh email. Đồng ý để tiếp tục sử dụng tài khoản trong app; lựa chọn và phiên bản được ghi thành sự kiện.</p><button aria-pressed={state.termsAccepted && state.privacyAccepted} onClick={() => { const value = !(state.termsAccepted && state.privacyAccepted); update({ termsAccepted: value, privacyAccepted: value }); }}><i>{state.termsAccepted && state.privacyAccepted ? "✓" : ""}</i>{state.termsAccepted && state.privacyAccepted ? "Đã đồng ý bản review" : "Tôi đồng ý điều khoản và thông báo (bản review)"}</button></section>
+    {([
+      ["aiConsent", "Cho phép xử lý check-in bằng AI", "P1 hiện chưa gửi dữ liệu tới AI; lựa chọn được ghi để quản lý đồng ý, không tạo chẩn đoán.", state.aiConsent],
+      ["saveFeedbackConsent", "Lưu check-in cơ thể và năng lượng", "Cho phép lưu các lần check-in và ghi chú để xem trong Hành trình. Phản hồi sau bài mẫu chưa lưu server.", state.saveFeedbackConsent],
+      ["teacherShareConsent", "Chia sẻ với một giáo viên cụ thể", "Mặc định tắt. Chỉ bật khi bạn chọn đúng lớp, phạm vi và thời gian.", state.teacherShareConsent],
+      ["marketingConsent", "Nhận tin về nội dung mới", "Tùy chọn; tách khỏi thông báo dịch vụ và nhắc tập.", state.marketingConsent],
+    ] as const).map(([key, title, description, value]) => <section className="mcy-consent-card" key={key}><strong>{title}</strong><p>{description}</p><button aria-pressed={value} onClick={() => togglePurpose(key)}><i>{value ? "✓" : ""}</i>{value ? "Cho phép" : "Không cho phép"}</button></section>)}
+    <div className="mcy-form-error subtle">Từ chối AI vẫn dùng được lựa chọn mẫu. Từ chối lưu thì check-in chỉ còn trong phiên và không được ghi vào tài khoản.</div>
+    {error && <div className="mcy-form-error" role="alert">Chưa lưu được lựa chọn: {error}</div>}
+    {state.onboardingComplete && state.authReturnTo === "dialogue" && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.saveFeedbackConsent ? "Xác nhận tiếp tục sẽ gắn nháp với tài khoản của bạn." : "Bạn chưa cho phép lưu check-in; nháp chỉ dùng trong phiên này."} Nếu không muốn dùng nháp nữa, chọn Bỏ nháp.</p></div>}
+    <Action disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(); }}>{saving ? "Đang lưu lựa chọn…" : state.onboardingComplete && state.authReturnTo === "dialogue" ? state.saveFeedbackConsent ? "Xác nhận chuyển nháp" : "Tiếp tục với nháp trong phiên" : "Tiếp tục"}</Action>
+    {state.onboardingComplete && state.authReturnTo === "dialogue" && <button className="mcy-quiet-link" disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(true); }}>Bỏ nháp</button>}
+    <DemoNote>Mỗi thay đổi được ghi vào consent ledger riêng của tài khoản. Nội dung pháp lý vẫn là bản review.</DemoNote>
+  </main></MobileScroll>;
+}
+
+function OnboardingScreen() {
+  const flow = useFlow();
+  const keyboard = useKeyboard();
+  const { state, update, setState } = useDemo();
+  const [name, setName] = useState(state.displayName);
+  const [showTransfer, setShowTransfer] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const complete = async (discardDraft = false) => {
+    if (saving) return;
+    keyboard.hide();
+    setSaving(true);
+    setError("");
+    try {
+      const displayName = name.trim();
+      const nextState = discardDraft ? {
+        ...state,
+        preObservations: [],
+        regions: [],
+        bodyStatus: null,
+        energy: null,
+        pendingCheckinIdempotencyKey: null,
+      } : state;
+      await persistProfile(nextState, displayName, nextState.bodyStyle);
+      if (!discardDraft && nextState.authReturnTo === "dialogue" && nextState.saveFeedbackConsent) {
+        await persistCurrentCheckin({ ...nextState, displayName, onboardingComplete: true }, setState, "practice_preparation");
+      }
+      update({
+        displayName,
+        onboardingComplete: true,
+        backendStatus: "ready",
+        backendError: "",
+        ...(discardDraft ? {
+          preObservations: [], regions: [], bodyStatus: null, energy: null,
+          pendingCheckinIdempotencyKey: null,
+        } : {}),
+      });
+      if (state.authReturnTo === "profile" || state.authReturnTo === "security") { flow.pop(); return; }
+      const destination = discardDraft ? "home" : state.authReturnTo === "dialogue" ? state.aiConsent ? "readiness" : "plan" : state.authReturnTo;
+      flow.replace(ROUTES[destination] ?? ROUTES.home);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Chưa hoàn tất được thiết lập tài khoản.");
+    } finally {
+      setSaving(false);
+    }
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
+    <Eyebrow>A04 · THIẾT LẬP TỐI THIỂU</Eyebrow><h1>Chỉ thêm điều hữu ích.</h1>
+    <p className="mcy-lead">Tên hiển thị không bắt buộc. Hình minh họa là sở thích hiển thị, không dùng để suy luận giới hay sức khỏe.</p>
+    <label className="mcy-form-field">Tên hiển thị · tùy chọn<KeyboardInput autoComplete="nickname" aria-label="Tên hiển thị" placeholder="Bạn muốn được gọi là gì?" value={name} onChange={event => setName(event.target.value)} onBlur={() => keyboard.hide()} /></label>
+    <section className="mcy-account-panel"><strong>Hình minh họa cơ thể</strong><p>Chọn hình dễ dùng nhất; có thể đổi bất cứ lúc nào.</p><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></section>
+    {showTransfer && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.preObservations.length || state.regions.length ? `${state.preObservations.length || state.regions.length} vùng đã ghi, ${state.minutes} phút${state.energy ? `, năng lượng ${state.energy}` : ""}.` : "Chưa có ghi nhận cơ thể trong phiên này."} Tiếp tục sẽ gắn nháp với tài khoản hiện tại theo lựa chọn lưu của bạn.</p><div className="mcy-auth-secondary"><button disabled={saving} onClick={() => { void complete(); }}>Xác nhận chuyển nháp</button><button disabled={saving} onClick={() => { void complete(true); }}>Bỏ nháp</button></div></div>}
+    {error && <div className="mcy-form-error" role="alert">{error}</div>}
+    {!showTransfer && <Action disabled={saving} onClick={() => setShowTransfer(true)}>Tiếp tục</Action>}
+    {!showTransfer && <button className="mcy-quiet-link" disabled={saving} onClick={() => { if (state.authReturnTo === "dialogue") setShowTransfer(true); else void complete(); }}>{saving ? "Đang lưu…" : "Để sau"}</button>}
+    <DemoNote>Hồ sơ và lựa chọn được đồng bộ với tài khoản. Check-in chỉ ghi server nếu bạn đã cho phép lưu.</DemoNote>
+  </main></MobileScroll>;
+}
+
+function ReadinessScreen() {
+  const flow = useFlow();
+  const [result, setResult] = useState<"within_scope" | "unknown" | "needs_review" | "stop_guidance" | null>(null);
+  const choose = (value: NonNullable<typeof result>) => setResult(value);
+  const advance = () => {
+    if (result === "within_scope") flow.replace(ROUTES.dialogue);
+    else if (result === "unknown") flow.replace(ROUTES.plan);
+    else if (result === "needs_review") flow.replace(ROUTES.help);
+    else if (result === "stop_guidance") flow.replace(ROUTES.home);
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-readiness-page"><Eyebrow>A06 · PHẠM VI HỖ TRỢ</Eyebrow><h1>Trước khi chọn bài, kiểm tra điều cần thiết.</h1><p className="mcy-lead">Câu hỏi mô phỏng này cần được chuyên môn duyệt trước beta. Đây không phải chẩn đoán hay đánh giá an toàn y tế.</p><div className="mcy-account-panel"><strong>Ngay lúc này, bạn muốn tiếp tục vận động nhẹ nhàng không?</strong><p>Chọn theo cảm nhận của bạn. Bạn có thể bỏ qua và chọn nội dung mẫu thủ công.</p></div><div className="mcy-readiness-options"><button aria-pressed={result === "within_scope"} onClick={() => choose("within_scope")}><strong>Tôi muốn tiếp tục nhẹ nhàng</strong><small>Đi tới hội thoại AI mô phỏng, nếu đã cho phép.</small></button><button aria-pressed={result === "unknown"} onClick={() => choose("unknown")}><strong>Tôi chưa chắc</strong><small>Không dùng AI cá nhân hóa; chỉ xem nội dung mẫu.</small></button><button aria-pressed={result === "needs_review"} onClick={() => choose("needs_review")}><strong>Tôi cần người xem cùng</strong><small>Đi tới hỗ trợ, không tự sinh hướng dẫn.</small></button><button aria-pressed={result === "stop_guidance"} onClick={() => choose("stop_guidance")}><strong>Tôi muốn dừng hôm nay</strong><small>Không gợi ý bài tập. Có thể quay lại sau.</small></button></div>{result === "stop_guidance" && <div className="mcy-alert">Mình sẽ không đề xuất bài lúc này. Nếu bạn cần hỗ trợ khẩn cấp, hãy liên hệ dịch vụ phù hợp tại nơi bạn đang ở.</div>}{result === "needs_review" && <div className="mcy-alert">Chưa có người hỗ trợ trực tiếp trong prototype. Bạn có thể gửi câu hỏi; không có phiên tư vấn nào được tạo.</div>}<Action disabled={!result} onClick={advance}>{result === "within_scope" ? "Tiếp tục trao đổi" : result === "unknown" ? "Xem lựa chọn mẫu" : result === "needs_review" ? "Mở hỗ trợ" : "Kết thúc ở đây"}</Action><button className="mcy-quiet-link" onClick={() => flow.replace(ROUTES.plan)}>Bỏ qua câu hỏi · chỉ xem buổi mẫu</button><DemoNote>Trạng thái `within_scope`, `unknown`, `needs_review` và `stop_guidance` là dữ liệu giả, chưa tạo policy hoặc quyết định lâm sàng.</DemoNote></main></MobileScroll>;
+}
+
+function HomeScreen() {
+  const flow = useFlow();
+  const { state } = useDemo();
+  const previous = [...state.history].reverse().find(item => item.kind === "Sau tập");
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page">
+    <Eyebrow>{previous ? "MỘT LẦN QUAY LẠI, KHÔNG CẦN VỘI" : "MỖI BUỔI BẮT ĐẦU TỪ HÔM NAY"}</Eyebrow>
+    <h1>{previous ? "Hôm nay bạn muốn bắt đầu thế nào?" : "Một chút thời gian cho chính mình."}</h1>
+    <p className="mcy-lead">Chia sẻ một chút về hôm nay. MCY sẽ giúp bạn chọn một buổi trong nội dung của giáo viên.</p>
+    {previous && state.saveFeedbackConsent && state.rememberPace && previous.pace === "Hơi nhanh" && previous.outcome !== "Khó chịu hơn" && !previous.endedEarly ? <div className="mcy-memory-hint"><MagicWandIcon /><span>Lần trước bạn nói nhịp hơi nhanh. Lần này bạn có thể chọn chậm hơn.</span></div> : null}
+    <div className="mcy-home-photo"><img src="/assets/today-neck-stretch.png" alt="Hình minh họa buổi tập yoga tại nhà" /><span>Buổi tập hôm nay, theo nhịp của bạn</span></div>
+    <div className="mcy-home-cta"><Action onClick={() => flow.push(ROUTES.checkin)}>{previous ? "Chọn buổi tiếp theo" : "Chọn buổi hôm nay"}</Action><span>Chỉ vài bước để đến một kế hoạch rõ ràng</span></div>
+    <div className="mcy-section-label">BẠN SẼ ĐI QUA</div>
+    <div className="mcy-steps-list"><div><b>01</b><span>Check-in ngắn<small>Thời gian, năng lượng và ý muốn của bạn.</small></span></div><div><b>02</b><span>Trao đổi và chọn<small>Một buổi có lý do, có quyền điều chỉnh.</small></span></div><div><b>03</b><span>Phản hồi trung thực<small>Lần sau lựa chọn sẽ xét điều bạn đã chia sẻ.</small></span></div></div>
+    <DemoNote>AI và bài tập đang dùng tình huống mẫu. Nếu đăng nhập, hồ sơ, lựa chọn quyền và check-in đã đồng ý lưu sẽ kết nối với Supabase staging.</DemoNote>
+  </main></MobileScroll>;
 }
 
 function CheckinScreen() {
   const flow = useFlow();
-  const { focus, setFocus, energy, setEnergy } = useYogaApp();
-  const focusPoints: { label: Focus; position: string }[] = [
-    { label: "Cổ & vai", position: "focus-neck" },
-    { label: "Lưng trên", position: "focus-upper" },
-    { label: "Lưng dưới", position: "focus-lower" },
-  ];
-  return (
-    <MobileScroll className="app-scroll">
-      <main className="screen-content checkin-content">
-        <Topbar />
-        <h1>Hôm nay, cơ thể bạn thế nào?</h1>
-        <p className="lead">Chạm vào vùng đang căng mỏi để chọn bài tập phù hợp. Bạn có thể đổi lựa chọn bất cứ lúc nào.</p>
-        <section className="body-selector" aria-label="Chọn vùng cơ thể cần chú ý">
-          <img src="/assets/body-map-neutral.png" alt="Sơ đồ vùng cơ thể phía sau" />
-          {focusPoints.map((point) => (
-            <button key={point.label} className={"body-point " + point.position + (focus === point.label ? " selected" : "")} onClick={() => setFocus(point.label)} aria-pressed={focus === point.label}>
-              <span className="point-dot" />{point.label}
-            </button>
-          ))}
-        </section>
-        <section className="energy-panel" aria-label="Chọn mức năng lượng">
-          <h2>Năng lượng của bạn hôm nay?</h2>
-          <div className="energy-options">
-            {["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"].map((option, index) => (
-              <button key={option} className={energy === option ? "energy-choice selected" : "energy-choice"} onClick={() => setEnergy(option)} aria-pressed={energy === option}>
-                <span><DotFilledIcon /></span>{option}
-              </button>
-            ))}
-          </div>
-        </section>
-        <div className="row-actions"><button className="text-button" onClick={() => flow.push(ROUTES.today)}>Bỏ qua</button><PrimaryButton onClick={() => flow.push(ROUTES.today)}>Tiếp tục</PrimaryButton></div>
-      </main>
-    </MobileScroll>
-  );
+  const { state, update, setState } = useDemo();
+  const [editing, setEditing] = useState<BodyRegion | null>(null);
+  const [editingSide, setEditingSide] = useState<Observation["side"] | undefined>();
+  const [pendingStatus, setPendingStatus] = useState<"none_now" | "uncertain" | "skipped" | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const selected = editing ? state.preObservations.find(item => item.region === editing) : undefined;
+  const openRegion = (region: BodyRegion, side?: Observation["side"]) => { setEditingSide(side); setEditing(region); };
+  const closeRegion = () => { setEditing(null); setEditingSide(undefined); };
+  const saveObservation = (observation: Observation) => setState(previous => ({ ...previous, bodyStatus: "reported", preObservations: [...previous.preObservations.filter(item => item.region !== observation.region), observation], regions: [...new Set([...previous.regions, observation.region])] }));
+  const deleteObservation = () => { if (!editing) return; setState(previous => { const next = previous.preObservations.filter(item => item.region !== editing); return { ...previous, preObservations: next, regions: next.map(item => item.region), bodyStatus: next.length ? "reported" : null }; }); };
+  const chooseStatus = (value: "none_now" | "uncertain" | "skipped") => {
+    if (state.preObservations.length) setPendingStatus(value);
+    else update({ bodyStatus: value, preObservations: [], regions: [] });
+  };
+  const standalone = async () => {
+    if (saving) return;
+    setSaving(true);
+    setSaveError("");
+    try {
+      const remote = await persistCurrentCheckin(state, setState, "standalone");
+      setState(previous => ({
+        ...previous,
+        history: !remote && previous.saveFeedbackConsent ? [...previous.history, makeSnapshot(previous.day, "Ghi riêng", previous.bodyStatus, previous.preObservations)] : previous.history,
+        preObservations: [], postObservations: [], regions: [], bodyStatus: null, energy: null,
+        pendingCheckinIdempotencyKey: null,
+      }));
+    } catch (cause) {
+      setSaveError(cause instanceof Error ? cause.message : "Chưa lưu được check-in. Kiểm tra mạng rồi thử lại.");
+      setSaving(false);
+      return;
+    }
+    setSaving(false);
+    flow.push(ROUTES.journey);
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-checkin-page">
+    <h1>Hôm nay, cơ thể bạn cảm thấy thế nào?</h1>
+    <p className="mcy-lead">Chạm vào vùng bạn thấy căng, mỏi hoặc khó chịu. Bạn cũng có thể chọn tên vùng bên dưới.</p>
+    <div className="mcy-checkin-content">
+      <div className="mcy-checkin-illustration"><BodyMap observations={state.preObservations} bodyStyle={state.bodyStyle} onSelect={openRegion} /><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>
+      <div className="mcy-checkin-fields">
+        <section className="mcy-energy-card"><h2>Năng lượng của bạn hôm nay? <small>không bắt buộc</small></h2><div className="mcy-energy-options">{(["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"] as Energy[]).map((value, index) => <button key={value} aria-pressed={state.energy === value} onClick={() => update({ energy: value })}><EnergyFace level={index} /><span>{value}</span></button>)}</div></section>
+        <div className="mcy-region-list" aria-label="Chọn vùng cơ thể">{BODY_REGIONS.map(region => { const item = state.preObservations.find(entry => entry.region === region); return <button key={region} className={item ? "selected" : ""} onClick={() => openRegion(region)}><span>{region}</span><small>{item ? observationLabel(item).split(" · ").slice(1).join(" · ") : "Chạm để ghi"}</small><ArrowRightIcon /></button>; })}</div>
+        <div className="mcy-body-status-actions"><p>Nếu bạn không muốn chọn vùng:</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>Không thấy khó chịu</Choice><Choice selected={state.bodyStatus === "uncertain"} onClick={() => chooseStatus("uncertain")}>Chưa xác định</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>Bỏ qua phần này</Choice></div></div>
+        {state.bodyStatus && state.bodyStatus !== "reported" && <p className="mcy-status-caption">Đã chọn: {state.bodyStatus === "none_now" ? "Không thấy khó chịu hiện tại" : state.bodyStatus === "uncertain" ? "Chưa xác định được vùng" : "Bỏ qua phần cơ thể"}. Bạn có thể đổi lại.</p>}
+        <section className="mcy-field-section compact"><h2>Hôm nay bạn có bao lâu?</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time, chosenPlanId: null })}>{time} phút</Choice>)}</div></section>
+        <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? "Đang lưu check-in…" : "Chỉ ghi lại cảm nhận hôm nay, không chọn bài"}</button>
+        {saveError && <div className="mcy-form-error" role="alert">Chưa lưu được check-in: {saveError}</div>}
+        <div className="mcy-inline-note"><InfoCircledIcon />Bạn chỉ cần chia sẻ điều mình thấy. Đây không phải đánh giá sức khỏe.</div>
+      </div>
+    </div>
+    <RegionEditor region={editing} current={selected} suggestedSide={editingSide} onClose={closeRegion} onSave={saveObservation} onDelete={deleteObservation} />
+    <BottomSheet open={Boolean(pendingStatus)} onOpenChange={open => { if (!open) setPendingStatus(null); }} title="Đổi lựa chọn vùng cơ thể" description="Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau." snap={0.38}><div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { update({ bodyStatus: pendingStatus, preObservations: [], regions: [] }); setPendingStatus(null); }}>Đổi lựa chọn <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setPendingStatus(null)}>Giữ các vùng đã ghi</button></div></BottomSheet>
+  </main></MobileScroll>;
 }
 
-function TodayScreen() {
+function CheckinFooter() {
   const flow = useFlow();
-  const { focus, energy } = useYogaApp();
-  return (
-    <MobileScroll className="app-scroll">
-      <main className="screen-content today-content">
-        <Topbar />
-        <div className="eyebrow">Bài tập hôm nay</div>
-        <h1>Dành riêng cho bạn</h1>
-        <p className="lead">Dựa trên vùng <strong>{focus}</strong> và năng lượng <strong>{energy.toLowerCase()}</strong>, đây là buổi tập nhẹ nhàng cho hôm nay.</p>
-        <section className="practice-hero">
-          <img src="/assets/today-neck-stretch.png" alt="Tư thế giãn cổ vai nhẹ nhàng" />
-          <div className="practice-hero-copy"><span className="duration"><CalendarIcon />12 phút</span><h2>Thư giãn<br />{focus.toLowerCase()}</h2><p>Nhẹ nhàng · An toàn · Vừa sức</p></div>
-        </section>
-        <section className="move-list"><h2>Bạn sẽ thực hành các động tác:</h2><div className="move-tiles"><MiniMove label="Xoay cổ nhẹ" image="/assets/motion-chest-open.png" /><MiniMove label="Giãn vai" image="/assets/practice-shoulder-stretch.png" /><MiniMove label="Mở ngực" image="/assets/motion-chest-open.png" /></div></section>
-        <button className="gentle-option"><span><HeartIcon /></span><span><strong>Có phiên bản nhẹ hơn</strong><small>Phù hợp cho ngày mệt mỏi hoặc mới bắt đầu.</small></span><ArrowRightIcon /></button>
-        <PrimaryButton onClick={() => flow.push(ROUTES.practice)}>Bắt đầu bài tập</PrimaryButton>
-      </main>
-    </MobileScroll>
-  );
+  const { state, update, setState } = useDemo();
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const continueToDialogue = async () => {
+    if (saving) return;
+    update({ dialogueChoice: null, dialogueText: "", unrecognizedText: "", chosenPlanId: null, usePreviousFeedback: false });
+    if (!state.signedIn) { update({ authReturnTo: "dialogue", authMode: "create" }); flow.push(ROUTES.authEmail); return; }
+    if (!state.aiConsent) { update({ authReturnTo: "dialogue" }); flow.push(ROUTES.consent); return; }
+    setSaving(true);
+    setError("");
+    try {
+      await persistCurrentCheckin(state, setState, "practice_preparation");
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Chưa lưu được check-in. Kiểm tra mạng rồi thử lại.");
+      setSaving(false);
+      return;
+    }
+    setSaving(false);
+    flow.push(ROUTES.dialogue);
+  };
+  const continueAsGuest = () => { update({ chosenPlanId: null, dialogueChoice: null }); flow.push(ROUTES.plan); };
+  return <div className="mcy-flow-footer single mcy-checkin-footer">{error && <div className="mcy-form-error footer-error" role="alert">Chưa đồng bộ được: {error}</div>}<Action disabled={saving} onClick={() => { void continueToDialogue(); }}>{saving ? "Đang đồng bộ…" : state.signedIn ? "Tiếp tục với trợ lý mẫu" : "Đăng nhập để xem trợ lý mẫu"}</Action><button className="mcy-quiet-link" disabled={saving} onClick={continueAsGuest}>Tiếp tục như khách với buổi mẫu</button></div>;
 }
 
-function MiniMove({ label, image }: { label: string; image: string }) {
-  return <div className="mini-move"><img src={image} alt="" /><span>{label}</span></div>;
+function DialogueScreen() {
+  const flow = useFlow();
+  const keyboard = useKeyboard();
+  const { state, update } = useDemo();
+  const prior = state.saveFeedbackConsent && state.rememberPace ? [...state.history].reverse().find(item => item.kind === "Sau tập") : undefined;
+  const choose = (choice: DialogueChoice) => { keyboard.hide(); update({ dialogueChoice: choice, unrecognizedText: "" }); };
+  const submitText = () => {
+    const value = state.dialogueText.trim();
+    if (!value) return;
+    const lower = value.toLocaleLowerCase("vi");
+    let choice: DialogueChoice = null;
+    if (lower.includes("chậm")) choice = "Nhịp chậm";
+    else if (lower.includes("sàn") || lower.includes("đứng")) choice = "Không nằm sàn";
+    else if (lower.includes("hướng dẫn") || lower.includes("giải thích")) choice = "Nhiều hướng dẫn";
+    else if (lower.includes("ít lời")) choice = "Ít lời";
+    keyboard.hide();
+    update({ dialogueChoice: choice, unrecognizedText: choice ? "" : value, dialogueText: "" });
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-dialogue">
+    <div className="mcy-step-count">BƯỚC 02 / 03 <span>Trao đổi ngắn</span></div>
+    <h1>Chọn một buổi hợp với hôm nay.</h1>
+    <p className="mcy-lead">Bạn có thể trả lời nhanh hoặc viết một câu ngắn.</p>
+    <div className="mcy-conversation">
+      <div className="mcy-ai-avatar"><MagicWandIcon /> <span>TRỢ LÝ · MÔ PHỎNG</span></div>
+      <div className="mcy-bubble ai">Mình biết bạn có <strong>{state.minutes} phút</strong>{state.energy ? <>, năng lượng <strong>{state.energy.toLowerCase()}</strong></> : null}{state.regions.length ? <> và muốn chú ý <strong>{state.regions.join(", ").toLowerCase()}</strong></> : null}. Có điều gì nên ưu tiên khi chọn buổi?</div>
+      {prior?.outcome === "Khó chịu hơn" ? <div className="mcy-bubble ai quiet">Lần trước bạn chọn “khó chịu hơn”. Mình sẽ không tự dùng phản hồi đó để gợi ý buổi tập. Nếu cảm giác còn tiếp diễn, bạn có thể dừng và tìm hỗ trợ phù hợp.</div> : prior?.pace === "Hơi nhanh" && !prior.endedEarly ? <div className="mcy-bubble ai quiet">Lần trước bạn nói nhịp hơi nhanh. Bạn có muốn dùng phản hồi này để ưu tiên buổi chậm hơn?</div> : null}
+      {prior?.pace === "Hơi nhanh" && prior.outcome !== "Khó chịu hơn" && !prior.endedEarly ? <div className="mcy-prior-actions"><Choice selected={state.usePreviousFeedback} onClick={() => update({ usePreviousFeedback: true })}>Dùng phản hồi cũ</Choice><Choice selected={!state.usePreviousFeedback} onClick={() => update({ usePreviousFeedback: false })}>Không dùng lần này</Choice></div> : null}
+      {state.dialogueChoice ? <><div className="mcy-bubble mine">{state.dialogueChoice}</div><div className="mcy-bubble ai">{state.dialogueChoice === "Nhịp chậm" ? "Mình sẽ ưu tiên một buổi có nhịp chậm trong thời gian bạn có." : state.dialogueChoice === "Không nằm sàn" ? "Mình đã ghi nhận cho hôm nay. Prototype chưa có đủ metadata để xác nhận mọi buổi không nằm sàn, nên thẻ kế hoạch sẽ nhắc bạn kiểm tra nội dung trước khi bắt đầu." : state.dialogueChoice === "Ít lời" ? "Mình sẽ để bạn xem một lựa chọn gọn và dễ bắt đầu." : "Mình sẽ ưu tiên buổi có thêm hướng dẫn rõ ràng."}</div></> : null}
+      {state.unrecognizedText ? <><div className="mcy-bubble mine">{state.unrecognizedText}</div><div className="mcy-bubble ai">Mình chưa mô phỏng được ý này. Bạn có thể chọn một nhu cầu mẫu bên dưới; mình sẽ không giả là đã hiểu câu vừa rồi.</div></> : null}
+    </div>
+    <div className="mcy-section-label">CHỌN NHANH</div>
+    <div className="mcy-chip-grid dialogue-chips">{(["Nhiều hướng dẫn", "Nhịp chậm", "Ít lời", "Không nằm sàn"] as Exclude<DialogueChoice, null>[]).map(choice => <Choice key={choice} selected={state.dialogueChoice === choice} onClick={() => choose(choice)}>{choice}</Choice>)}</div>
+    <div className="mcy-composer"><KeyboardInput aria-label="Nói thêm với trợ lý mô phỏng" placeholder="Ví dụ: Hôm nay muốn nhịp chậm..." value={state.dialogueText} onChange={event => update({ dialogueText: event.target.value })} onKeyDown={event => { if (event.key === "Enter") submitText(); }} onBlur={() => keyboard.hide()} /><button aria-label="Gửi câu trả lời" onClick={submitText}><ArrowRightIcon /></button></div>
+    <DemoNote>Trợ lý ở đây là kịch bản tương tác, chỉ nhận diện vài nhu cầu mẫu. Kế hoạch và câu trả lời chưa đến từ AI thật.</DemoNote>
+    <Action onClick={() => { keyboard.hide(); update({ chosenPlanId: null }); flow.push(ROUTES.plan); }} disabled={Boolean(state.unrecognizedText)}>Xem kế hoạch hôm nay</Action>
+    <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); update({ dialogueChoice: null, unrecognizedText: "", chosenPlanId: null }); flow.push(ROUTES.plan); }}>Chọn nhanh theo check-in</button>
+  </main></MobileScroll>;
+}
+
+function PlanScreen() {
+  const flow = useFlow();
+  const { state, update, setState } = useDemo();
+  const session = activeSession(state);
+  const prior = latestFeedback(state);
+  const alternatives = SESSIONS.filter(item => item.id !== session.id && item.minutes <= state.minutes);
+  const unsupportedRequest = unsupportedPlanRequest(state);
+  if (unsupportedRequest) {
+    return <MobileScroll className="mcy-scroll"><main className="mcy-page">
+      <div className="mcy-step-count">BƯỚC 03 / 03 <span>Chưa có lựa chọn đủ rõ</span></div>
+      <h1>Mình chưa chọn được buổi phù hợp.</h1>
+      <p className="mcy-lead">{unsupportedRequest} MCY sẽ không đoán thay bạn.</p>
+      <div className="mcy-empty large"><InfoCircledIcon /><strong>Chưa có buổi khớp điều kiện này</strong><p>Bạn có thể giữ lại ghi nhận hôm nay hoặc sửa vùng đã chọn.</p></div>
+      <button className="mcy-standalone-link" onClick={() => { setState(previous => ({ ...previous, history: [...previous.history, makeSnapshot(previous.day, "Ghi riêng", previous.bodyStatus, previous.preObservations)], preObservations: [], regions: [], bodyStatus: null })); flow.push(ROUTES.journey); }}>Giữ lại check-in hôm nay, không tập</button>
+      <button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.checkin)}>Sửa vùng check-in</button>
+    </main></MobileScroll>;
+  }
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-plan-page">
+    <h1>Bài tập hôm nay</h1><h2 className="mcy-subtitle">Dành riêng cho bạn</h2>
+    <p className="mcy-lead">{state.regions.length ? `Bạn đã chọn ${state.regions.join(", ")}. ` : ""}Đây là một buổi nhẹ từ nội dung mẫu của MCY. Bạn có thể đổi bài.</p>
+    <article className="mcy-plan-hero"><img src={session.image} alt={session.imageAlt} /><span className="mcy-plan-time"><ClockIcon />{session.minutes} phút</span><div><h2>{session.title}</h2><p>{session.level} · {session.detail}</p></div></article>
+    <section className="mcy-movements"><h3>Bạn sẽ thực hành các phần:</h3><Carousel ariaLabel="Các phần trong buổi tập" className="mcy-movement-carousel" contentClassName="mcy-movement-track">{["Xoay cổ nhẹ", "Giãn vai", "Mở ngực"].map((label, index) => <article key={label}><img src={["/assets/today-neck-stretch.png", "/assets/practice-shoulder-stretch.png", "/assets/motion-chest-open.png"][index]} alt={`Minh họa ${label.toLowerCase()}`} /><span>{label}</span></article>)}</Carousel></section>
+    {alternatives.length ? <button className="mcy-gentle-option" onClick={() => update({ chosenPlanId: alternatives[0].id })}><span><BrandMark /></span><span><strong>Muốn một phiên bản khác?</strong><small>{alternatives[0].title} · {alternatives[0].minutes} phút</small></span><ArrowRightIcon /></button> : null}
+    <div className="mcy-reason-card"><span className="mcy-source-icon"><MagicWandIcon /></span><div><span className="mcy-tag">VÌ SAO GỢI Ý BUỔI NÀY?</span><p>{planReason(state)}</p>{prior?.pace === "Hơi nhanh" && state.chosenPlanId === null && state.minutes >= 9 ? <small>Dựa trên phản hồi bạn đã đồng ý dùng trong phiên demo này.</small> : null}</div></div>
+    <DemoNote>Đề xuất và nội dung hiện là bản mô phỏng; hình ảnh chưa phải video hướng dẫn hoàn chỉnh.</DemoNote>
+  </main></MobileScroll>;
+}
+
+function PlanFooter() {
+  const flow = useFlow();
+  const { state } = useDemo();
+  const unsupported = Boolean(unsupportedPlanRequest(state));
+  return <div className="mcy-flow-footer single"><Action onClick={() => unsupported ? flow.pop() : flow.push(ROUTES.practice)}>{unsupported ? "Sửa lựa chọn" : "Bắt đầu bài tập"}</Action></div>;
 }
 
 function PracticeScreen() {
   const flow = useFlow();
-  const [isPaused, setPaused] = useState(false);
-  const [step, setStep] = useState(3);
-  return (
-    <MobileScroll className="app-scroll practice-content-scroll">
-      <main className="screen-content practice-content">
-        <Topbar title="Bài tập 3 / 6" action={<button className="text-button small" onClick={() => flow.push(ROUTES.reflection)}>Kết thúc</button>} />
-        <h1>Giãn vai và cổ bên</h1>
-        <p className="lead compact">Thả lỏng cổ – vai, hít thở sâu và chậm.</p>
-        <div className="practice-image-wrap"><img src="/assets/practice-shoulder-stretch.png" alt="Hướng dẫn giãn vai và cổ bên" /><span className="step-pill">{step} / 6</span></div>
-        <section className="cue-panel"><InfoCircledIcon /><div><strong>Thực hiện nhẹ nhàng</strong><ul><li>Giữ lưng thẳng, vai thả lỏng.</li><li>Hít thở chậm, không kéo căng quá mức.</li></ul></div></section>
-        <div className="timer-row"><button className="round-control" onClick={() => setPaused(!isPaused)} aria-label={isPaused ? "Tiếp tục" : "Tạm dừng"}>{isPaused ? <PlayIcon /> : <PauseIcon />}<small>{isPaused ? "Tiếp tục" : "Tạm dừng"}</small></button><div className="breath-timer"><strong>00:28</strong><span>{isPaused ? "Đang tạm dừng" : "Hít thở đều"}</span></div><button className="round-control" onClick={() => setStep(Math.min(6, step + 1))} aria-label="Bỏ qua"><ArrowRightIcon /><small>Bỏ qua</small></button></div>
-        <button className="gentle-option"><span><HeartIcon /></span><span><strong>Động tác nhẹ hơn</strong><small>Ngồi trên ghế nếu bạn cảm thấy không thoải mái.</small></span><ArrowRightIcon /></button>
-        <PrimaryButton onClick={() => flow.push(ROUTES.reflection)}>Hoàn thành buổi tập</PrimaryButton>
-      </main>
-    </MobileScroll>
-  );
+  const { state, update } = useDemo();
+  const session = activeSession(state);
+  const [step, setStep] = useState(0);
+  const [paused, setPaused] = useState(true);
+  const [started, setStarted] = useState(false);
+  const [remaining, setRemaining] = useState(30);
+  useEffect(() => {
+    if (paused || remaining === 0) return;
+    const interval = window.setInterval(() => setRemaining(value => Math.max(0, value - 1)), 1000);
+    return () => window.clearInterval(interval);
+  }, [paused, remaining]);
+  const steps = ["Xoay cổ nhẹ", "Giãn vai và cổ bên", "Mở ngực"];
+  const descriptions = ["Giữ lưng thẳng, chuyển động chậm và dừng nếu không thoải mái.", "Giữ vai thả lỏng, hít thở đều và không kéo căng quá mức.", "Mở ngực nhẹ nhàng, chọn phạm vi chuyển động vừa sức."];
+  const nextStep = () => { if (step < 2) { setStep(step + 1); setRemaining(30); setPaused(true); setStarted(false); } else finish(false); };
+  const finish = (endedEarly: boolean) => { update({ endedEarly }); flow.push(ROUTES.reflection); };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-practice-page">
+    <div className="mcy-practice-heading"><span>Bài {step + 1} / 3</span><h1>{steps[step]}</h1><p>{descriptions[step]}</p></div>
+    <div className="mcy-practice-image"><img src={["/assets/today-neck-stretch.png", "/assets/practice-shoulder-stretch.png", "/assets/motion-chest-open.png"][step]} alt={`Hình tĩnh minh họa ${steps[step].toLowerCase()}`} /><span>MINH HỌA · CHƯA CÓ VIDEO</span></div>
+    <div className="mcy-practice-tip"><BrandMark /><span>{descriptions[step]}</span></div>
+    <div className="mcy-timer-controls"><button onClick={() => { setStarted(true); setPaused(!paused); }} disabled={remaining === 0} aria-pressed={started && !paused} aria-label={remaining === 0 ? "Đồng hồ đã hết" : !started ? "Bắt đầu đồng hồ" : paused ? "Tiếp tục đồng hồ" : "Tạm dừng đồng hồ"}><span>{paused ? <PlayIcon /> : <PauseIcon />}</span>{remaining === 0 ? "Đã xong" : !started ? "Bắt đầu" : paused ? "Tiếp tục" : "Tạm dừng"}</button><div className="mcy-timer" style={{ background: `conic-gradient(#516b54 ${(30 - remaining) / 30 * 100}%, #d9e1d4 0)` }}><div><strong>00:{String(remaining).padStart(2, "0")}</strong><span>Đồng hồ mẫu</span></div></div><button onClick={nextStep} aria-label={step === 2 ? "Đến phản hồi" : "Phần tiếp theo"}><span><ArrowRightIcon /></span>{step === 2 ? "Kết thúc" : "Bỏ qua"}</button></div>
+    <div className="mcy-inline-note"><InfoCircledIcon />Đồng hồ 30 giây chỉ minh họa giao diện, không ghi nhận thời gian tập thực tế.</div>
+    <Action onClick={() => finish(false)}>Đến phần phản hồi</Action>
+    <button className="mcy-quiet-link" onClick={() => finish(true)}>Dừng buổi và ghi lại cảm nhận</button>
+  </main></MobileScroll>;
 }
 
 function ReflectionScreen() {
+  const keyboard = useKeyboard();
+  const { state, update, setState } = useDemo();
+  const [editing, setEditing] = useState<BodyRegion | null>(null);
+  const [chooseNewRegion, setChooseNewRegion] = useState(false);
+  const current = editing ? state.postObservations.find(item => item.region === editing) : undefined;
+  const suggestedSide = editing ? state.preObservations.find(item => item.region === editing)?.side : undefined;
+  const saveRegion = (value: Observation) => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: [...previous.postObservations.filter(item => item.region !== value.region), value] }));
+  const removeRegion = () => { if (!editing) return; setState(previous => { const next = previous.postObservations.filter(item => item.region !== editing); return { ...previous, postObservations: next, postBodyStatus: next.length ? "reported" : null }; }); };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-reflection-page">
+    <h1>Sau buổi tập,<br />cơ thể bạn thế nào?</h1><p className="mcy-lead">Ghi lại cảm giác ở từng vùng. Một vùng có thể khác vùng còn lại.</p>
+    <div className="mcy-before-after"><div><BodyMap observations={state.preObservations} bodyStyle={state.bodyStyle} compact /><span>Trước tập</span></div><span className="mcy-before-arrow"><ArrowRightIcon /></span><div><BodyMap observations={state.postObservations} bodyStyle={state.bodyStyle} compact /><span>Sau tập</span></div></div>
+    <p className="mcy-reflection-hint">Màu điểm thể hiện mức bạn tự ghi tại từng thời điểm. Chưa ghi không có nghĩa là không khó chịu.</p>
+    <section className="mcy-field-section"><h2>Vùng bạn đã chọn trước tập</h2>{state.preObservations.length ? <div className="mcy-reflection-regions">{state.preObservations.map(item => { const after = state.postObservations.find(entry => entry.region === item.region); return <div key={item.region} className="mcy-reflection-region-row"><button onClick={() => setEditing(item.region)}><span><strong>{item.region}</strong><small>Trước: {item.status === "uncertain" ? "Chưa rõ" : item.level ?? "Chưa ghi"}</small></span><span><small>Sau tập</small><strong>{after ? after.status === "uncertain" ? "Chưa rõ" : after.level : "Chạm để ghi"}</strong></span><ArrowRightIcon /></button><button className="mcy-keep-region" onClick={() => saveRegion({ ...item, note: "" })}>Giữ như trước ở vùng này</button></div>; })}</div> : <p className="mcy-inline-note">Bạn chưa chọn vùng ở check-in. Bạn vẫn có thể ghi cảm nhận chung bên dưới.</p>}</section>
+    <button className="mcy-standalone-link" onClick={() => setChooseNewRegion(true)}>Ghi thêm vùng khác sau tập</button>
+    {state.preObservations.length > 0 && <div className="mcy-post-options"><button onClick={() => update({ postObservations: state.preObservations.map(item => ({ ...item, note: "" })), postBodyStatus: "reported" })}>Giữ như trước cho tất cả vùng</button><button onClick={() => update({ postObservations: [], postBodyStatus: "uncertain" })}>Chưa rõ sau tập</button></div>}
+    <section className="mcy-field-section"><h2>Cảm nhận chung <small>không bắt buộc</small></h2><div className="mcy-reflection-grid">{(["Dễ chịu hơn", "Như cũ", "Khó chịu hơn", "Chưa rõ"] as Exclude<Outcome, null>[]).map(value => <Choice key={value} selected={state.outcome === value} onClick={() => update({ outcome: value })}>{value}</Choice>)}</div></section>
+    <section className="mcy-field-section compact"><h2>Nhịp buổi này <small>không bắt buộc</small></h2><div className="mcy-chip-grid">{(["Vừa", "Hơi nhanh", "Hơi chậm"] as Exclude<Pace, null>[]).map(value => <Choice key={value} selected={state.pace === value} onClick={() => update({ pace: value })}>{value}</Choice>)}</div></section>
+    {state.outcome === "Khó chịu hơn" ? <div className="mcy-alert">Bạn đã chọn “Khó chịu hơn”. Prototype sẽ không tự gợi bài để xử lý cảm giác này. Nếu đang không ổn, hãy dừng tập và tìm hỗ trợ phù hợp.</div> : null}
+    <label className="mcy-note-label">Muốn nói thêm? <small>Chỉ lưu trong phiên demo trên trang này</small><KeyboardTextarea placeholder="Ví dụ: Mình muốn nhịp chậm hơn..." value={state.note} onChange={event => update({ note: event.target.value })} onBlur={() => keyboard.hide()} /></label>
+    <DemoNote>Cảm nhận chung không tự điền mức cho từng vùng. Sơ đồ chỉ phản ánh những mức bạn chủ động ghi.</DemoNote>
+    <RegionEditor region={editing} current={current} suggestedSide={suggestedSide} onSave={saveRegion} onClose={() => setEditing(null)} onDelete={removeRegion} />
+    <BottomSheet open={chooseNewRegion} onOpenChange={setChooseNewRegion} title="Chọn vùng sau tập" description="Chỉ ghi mức bạn thấy lúc này; vùng mới không tự có mức trước tập." snap={0.48}><div className="mcy-picker-list">{BODY_REGIONS.map(region => <button key={region} onClick={() => { setChooseNewRegion(false); setEditing(region); }}>{region}</button>)}</div></BottomSheet>
+  </main></MobileScroll>;
+}
+
+function ReflectionFooter() {
   const flow = useFlow();
-  const { note, setNote, setReflectionSaved } = useYogaApp();
-  const save = () => { setReflectionSaved(true); flow.push(ROUTES.progress); };
-  return (
-    <MobileScroll className="app-scroll">
-      <main className="screen-content reflection-content">
-        <Topbar />
-        <h1>Sau buổi tập,<br />cơ thể bạn thế nào?</h1>
-        <p className="lead">Cảm nhận sự khác biệt, dù là nhỏ nhất.</p>
-        <section className="before-after" aria-label="So sánh cảm nhận trước và sau buổi tập"><BodyState title="Trước tập" image="/assets/body-map-neutral.png" type="before" /><ArrowRightIcon /><BodyState title="Sau tập" image="/assets/body-map-comfort.png" type="after" /></section>
-        <div className="comfort-legend"><span className="legend-high" />Căng nhiều <span className="legend-mid" />Căng nhẹ <span className="legend-good" />Thoải mái</div>
-        <label className="reflection-field">Cảm nhận của bạn <em>(không bắt buộc)</em><KeyboardTextarea placeholder="Ví dụ: Cổ nhẹ hơn, dễ chịu hơn..." value={note} onChange={(event) => setNote(event.target.value)} onBlur={(event) => event.currentTarget.blur()} /></label>
-        <PrimaryButton onClick={save}>Lưu lại</PrimaryButton>
-      </main>
-    </MobileScroll>
-  );
+  const keyboard = useKeyboard();
+  const { state, setState } = useDemo();
+  const session = activeSession(state);
+  const save = (skip: boolean) => {
+    keyboard.hide();
+    setState(previous => {
+      const before = makeSnapshot(previous.day, "Trước tập", previous.bodyStatus, previous.preObservations, { sessionId: session.id });
+      const after = makeSnapshot(previous.day, "Sau tập", skip ? "skipped" : previous.postBodyStatus ?? (previous.postObservations.length ? "reported" : null), skip ? [] : previous.postObservations, { sessionId: session.id, outcome: skip ? null : previous.outcome, pace: skip ? null : previous.pace, note: skip ? "" : previous.note, endedEarly: previous.endedEarly, feedbackSkipped: skip });
+      const localBefore = previous.currentRemoteCheckinId ? [] : [before];
+      return { ...previous, history: previous.saveFeedbackConsent ? [...previous.history, ...localBefore, after] : previous.history, lastReflection: after, preObservations: [], postObservations: [], bodyStatus: null, postBodyStatus: null, regions: [], outcome: null, pace: null, note: "", chosenPlanId: null, syncStatus: "saved" };
+    });
+    flow.push(ROUTES.sync);
+  };
+  return <div className="mcy-flow-footer"><button className="mcy-quiet-link" onClick={() => save(true)}>Bỏ qua</button><Action onClick={() => save(false)}>Lưu phản hồi</Action></div>;
 }
 
-function BodyState({ title, image, type }: { title: string; image: string; type: string }) {
-  return <div className={"body-state " + type}><img src={image} alt={title} /><span>{title}</span></div>;
-}
-
-function ProgressScreen() {
+function JourneyScreen() {
   const flow = useFlow();
-  const { reflectionSaved, setMessageKind } = useYogaApp();
-  const openMessage = (kind: MessageKind) => { setMessageKind(kind); flow.push(ROUTES.message); };
-  return (
-    <MobileScroll className="app-scroll">
-      <main className="screen-content progress-content">
-        <div className="progress-brand-row"><Brand compact /><button className="plans-link" onClick={() => flow.push(ROUTES.plans)}>Quyền lợi <ArrowRightIcon /></button></div>
-        <h1>Hành trình của bạn</h1>
-        <p className="lead">Những thay đổi nhỏ đang tạo nên một cơ thể dễ chịu hơn.</p>
-        <div className="segmented" role="tablist"><button className="active" role="tab">Theo vùng cơ thể</button><button role="tab">Theo thời gian</button></div>
-        <section className="body-progress"><img src="/assets/body-map-comfort.png" alt="Bản đồ cảm nhận vùng cơ thể" /><div className="body-progress-labels"><p><strong>Cổ & vai</strong><span>Tự ghi nhận: dễ chịu hơn</span></p><p><strong>Lưng trên</strong><span>Đang theo dõi</span></p><p><strong>Lưng dưới</strong><span>Chưa đủ dữ liệu</span></p></div></section>
-        <section className="trend-card"><div><span className="trend-icon"><BarChartIcon /></span><span><strong>Cảm giác dễ chịu hơn theo thời gian</strong><small>Dựa trên 7 buổi tập gần nhất</small></span></div><div className="trend-lines" aria-label="Biểu đồ tăng dần qua 7 buổi"><i /><i /><i /><i /><i /><i /><i /></div></section>
-        {reflectionSaved ? <div className="saved-note"><CheckIcon /> Cảm nhận hôm nay đã được lưu vào hành trình.</div> : null}
-        <section className="milestones"><div className="section-title"><h2>Dấu mốc của bạn</h2><button className="text-button" onClick={() => flow.push(ROUTES.plans)}>Tìm hiểu</button></div><Milestone type="teacher" onClick={() => openMessage("teacher")} /><Milestone type="ai" onClick={() => openMessage("ai")} /></section>
-      </main>
-    </MobileScroll>
-  );
+  const { state, setState, update } = useDemo();
+  const [showSample, setShowSample] = useState(false);
+  const [range, setRange] = useState<7 | 30>(7);
+  const [selectedDay, setSelectedDay] = useState(localDateOrdinal(todayLocalDate()));
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [detailRegion, setDetailRegion] = useState<BodyRegion | null>(null);
+  const [editingRegion, setEditingRegion] = useState<BodyRegion | null>(null);
+  const [compare, setCompare] = useState(false);
+  const [compareA, setCompareA] = useState<string | null>(null);
+  const [compareB, setCompareB] = useState<string | null>(null);
+  const [comparePicker, setComparePicker] = useState<"A" | "B" | null>(null);
+  const [trendRegion, setTrendRegion] = useState<BodyRegion>("Cổ");
+  const [deletePending, setDeletePending] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState("");
+  const sourceSnapshots = showSample ? sampleSnapshots() : [...state.remoteCheckins, ...state.history];
+  const snapshots = sourceSnapshots
+    .map(item => ({ ...item, day: localDateOrdinal(item.date) }))
+    .sort((left, right) => left.date.localeCompare(right.date) || left.time.localeCompare(right.time));
+  const maxDay = showSample ? localDateOrdinal("2026-10-30") : Math.max(localDateOrdinal(todayLocalDate()), ...snapshots.map(item => item.day));
+  const days = Array.from({ length: range }, (_, index) => maxDay - (range - 1 - index));
+  const selected = snapshots.find(item => item.id === selectedId && item.day === selectedDay);
+  const daySnapshots = snapshots.filter(item => item.day === selectedDay);
+  const detail = selected?.observations.find(item => item.region === detailRegion);
+  const editCurrent = selected?.observations.find(item => item.region === editingRegion);
+  const a = snapshots.find(item => item.id === compareA);
+  const b = snapshots.find(item => item.id === compareB);
+  const compatible = Boolean(a && b && (a.kind === b.kind || (a.kind !== "Sau tập" && b.kind !== "Sau tập") || (a.date === b.date && [a.kind, b.kind].includes("Trước tập") && [a.kind, b.kind].includes("Sau tập"))));
+  const trend = snapshots.filter(item => item.kind !== "Sau tập" && item.observations.some(observation => observation.region === trendRegion));
+  const chooseDay = (day: number) => { setSelectedDay(day); setSelectedId(snapshots.filter(item => item.day === day).at(-1)?.id ?? null); setDetailRegion(null); };
+  const toggleSample = () => { const next = !showSample; const values = next ? sampleSnapshots() : [...state.remoteCheckins, ...state.history]; const latest = values.at(-1); const ordinal = latest ? localDateOrdinal(latest.date) : localDateOrdinal(todayLocalDate()); setShowSample(next); setRange(next ? 30 : 7); setSelectedDay(next ? localDateOrdinal("2026-10-30") : ordinal); setSelectedId(next ? "sample-6" : latest?.id ?? null); setCompare(false); };
+  const saveEdited = (value: Observation) => { if (!selected || selected.sample || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => item.id === selected.id ? { ...item, status: "reported", observations: [...item.observations.filter(entry => entry.region !== value.region), value] } : item) })); };
+  const deleteEdited = () => { if (!selected || !editingRegion || selected.sample || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => { if (item.id !== selected.id) return item; const observations = item.observations.filter(entry => entry.region !== editingRegion); return { ...item, observations, status: observations.length ? "reported" : null }; }) })); };
+  const deleteSelected = async () => {
+    if (!selected || selected.sample || deleting) return;
+    setDeleting(true);
+    setDeleteError("");
+    try {
+      if (selected.remoteId) {
+        if (!supabase) throw new Error("Backend chưa kết nối.");
+        const deleted = await deleteLearnerCheckin(supabase, selected.remoteId);
+        if (!deleted) throw new Error("Không tìm thấy bản ghi thuộc tài khoản này.");
+        setState(previous => ({ ...previous, remoteCheckins: previous.remoteCheckins.filter(item => item.remoteId !== selected.remoteId) }));
+      } else {
+        setState(previous => ({ ...previous, history: previous.history.filter(item => item.id !== selected.id) }));
+      }
+      setSelectedId(null);
+      setDeletePending(false);
+    } catch (cause) {
+      setDeleteError(cause instanceof Error ? cause.message : "Chưa xóa được bản ghi.");
+    } finally {
+      setDeleting(false);
+    }
+  };
+  const startNext = () => { update({ day: state.day + 1, dialogueChoice: null, chosenPlanId: null, minutes: 10, energy: null, regions: [], preObservations: [], postObservations: [], bodyStatus: null, postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly: false, usePreviousFeedback: false, lastReflection: null, currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null }); flow.push(ROUTES.checkin); };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-journey-page">
+    <h1>Hành trình của bạn</h1><p className="mcy-lead">Nhìn lại cảm nhận qua từng lần ghi. Mỗi mốc là điều bạn đã chọn tại thời điểm đó.</p>
+    <div className="mcy-journey-toolbar"><div className="mcy-view-tabs"><button aria-pressed={range === 7} onClick={() => setRange(7)}>7 ngày</button><button aria-pressed={range === 30} onClick={() => setRange(30)}>30 ngày</button></div><button className="mcy-example-link" onClick={toggleSample}>{showSample ? "Về hành trình của tôi" : "Xem hành trình mẫu"}</button></div>
+    {showSample && <div className="mcy-sample-banner"><InfoCircledIcon />Dữ liệu minh họa 30 ngày. Không phải kết quả của người học.</div>}
+    <div className="mcy-timeline-head"><strong>{range === 30 ? "Các mốc có ghi nhận · mới nhất trước" : "Chọn ngày để xem lại"}</strong><button onClick={() => chooseDay(snapshots.at(-1)?.day ?? maxDay)}>Đến gần nhất</button></div>
+    <Carousel ariaLabel="Các ngày trong hành trình" className="mcy-timeline-carousel" contentClassName="mcy-timeline-track">{days.map(day => { const count = snapshots.filter(item => item.day === day).length; const date = dateFromOrdinal(day); return <button key={day} className={selectedDay === day ? "selected" : ""} aria-pressed={selectedDay === day} onClick={() => chooseDay(day)}><small>THÁNG {Number(date.slice(5, 7))}</small><strong>{date.slice(8, 10)}</strong><span>{count ? `${count} lần ghi` : "Chưa ghi"}</span></button>; })}</Carousel>
+    <section className="mcy-snapshot-card" aria-label="Bản ghi đang chọn">
+      <div className="mcy-snapshot-heading"><span>{showSample ? "BẢN GHI MINH HỌA" : selected?.remoteId ? "ĐÃ LƯU TRÊN TÀI KHOẢN" : "BẢN GHI TRONG PHIÊN"}</span><h2>{selected ? snapshotLabel(selected) : `${prettyDate(dateFromOrdinal(selectedDay))} · Chưa có ghi nhận`}</h2></div>
+      {daySnapshots.length > 1 && <Carousel ariaLabel="Các lần ghi trong ngày" className="mcy-record-carousel" contentClassName="mcy-record-track">{daySnapshots.map(item => <button key={item.id} aria-pressed={selectedId === item.id} onClick={() => setSelectedId(item.id)}>{item.time} · {item.kind}</button>)}</Carousel>}
+      {selected ? <div className="mcy-snapshot-body">
+        <div className="mcy-snapshot-map"><BodyMap observations={selected.observations} bodyStyle={state.bodyStyle} onSelect={region => setDetailRegion(region)} showAll={false} /><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>
+        <div className="mcy-snapshot-details">
+          <div className="mcy-snapshot-list">{selected.observations.length ? selected.observations.map(item => <button key={`${item.region}-${item.side}`} onClick={() => setDetailRegion(item.region)}><span className="mcy-snapshot-dot" /><span><strong>{item.region}{item.side === "Không rõ bên" ? "" : ` · ${item.side.toLowerCase()}`}</strong><small>{item.status === "uncertain" ? "Chưa rõ" : item.level}{item.note ? " · Có ghi chú" : ""}</small></span><ArrowRightIcon /></button>) : <p>{selected.status === "none_now" ? "Bạn đã ghi nhận không thấy khó chịu tại thời điểm này." : selected.status === "uncertain" ? "Bạn đã chọn chưa rõ." : selected.status === "skipped" ? "Bạn đã bỏ qua phần ghi nhận cơ thể ở mốc này." : "Chưa có mức cảm nhận cho bản ghi này."}</p>}</div>
+          {selected.outcome && <div className="mcy-snapshot-meta">Cảm nhận chung sau buổi: <strong>{selected.outcome}</strong></div>}
+          {selected.endedEarly && <div className="mcy-snapshot-meta">Buổi tập đã dừng sớm.</div>}
+          {selected.note && <blockquote className="mcy-snapshot-note">“{selected.note}”</blockquote>}
+          {!selected.sample && <button className="mcy-delete-link" onClick={() => { setDeleteError(""); setDeletePending(true); }}>Xóa bản ghi này</button>}
+        </div>
+      </div> : <div className="mcy-snapshot-empty">Ngày này chưa có ghi nhận. Không thể suy ra tình trạng từ ngày trước.</div>}
+    </section>
+    <button className="mcy-compare-toggle" onClick={() => { setCompare(!compare); setCompareA(snapshots.find(item => item.kind !== "Sau tập")?.id ?? null); setCompareB(selected?.id ?? snapshots.at(-1)?.id ?? null); }}>{compare ? "Đóng so sánh" : "So với lần khác"}<ArrowRightIcon /></button>
+    {compare && <section className="mcy-compare-card"><h2>So hai lần ghi</h2><p>So các mức do bạn tự ghi, không suy ra phần trăm cải thiện. “Chưa ghi” không phải mức 0.</p><div className="mcy-compare-pickers"><button onClick={() => setComparePicker("A")}><small>MỐC A</small><strong>{a ? snapshotLabel(a) : "Chọn mốc"}</strong></button><button onClick={() => setComparePicker("B")}><small>MỐC B</small><strong>{b ? snapshotLabel(b) : "Chọn mốc"}</strong></button></div>{!compatible ? <p className="mcy-compare-warning">Hãy chọn hai lần check-in, hai phản hồi cùng loại, hoặc trước và sau cùng một ngày.</p> : <div className="mcy-compare-rows">{BODY_REGIONS.map(region => { const av = a?.observations.find(item => item.region === region); const bv = b?.observations.find(item => item.region === region); const differentSides = av && bv && av.side !== bv.side && av.side !== "Không rõ bên" && bv.side !== "Không rõ bên"; return <div key={region}><strong>{region}</strong><span>{av ? `${av.status === "uncertain" ? "Chưa rõ" : av.level}${av.side === "Không rõ bên" ? "" : ` (${av.side.toLowerCase()})`}` : "Chưa ghi"} <ArrowRightIcon /> {bv ? `${bv.status === "uncertain" ? "Chưa rõ" : bv.level}${bv.side === "Không rõ bên" ? "" : ` (${bv.side.toLowerCase()})`}` : "Chưa ghi"}{differentSides && <small>Khác bên</small>}</span></div>; })}</div>}</section>}
+    <section className="mcy-region-trend"><h2>Nhìn theo từng vùng</h2><p>Các mức được ghi ở lần check-in hoặc ghi riêng. Phản hồi sau tập được xem trong snapshot của buổi đó.</p><Carousel ariaLabel="Chọn vùng xem theo thời gian" className="mcy-trend-carousel" contentClassName="mcy-trend-track">{BODY_REGIONS.map(region => <button key={region} aria-pressed={trendRegion === region} onClick={() => setTrendRegion(region)}>{region}</button>)}</Carousel><div className="mcy-trend-observations">{trend.length ? trend.map(item => { const observation = item.observations.find(entry => entry.region === trendRegion)!; return <button key={item.id} onClick={() => { setSelectedDay(item.day); setSelectedId(item.id); }}><span>{prettyDate(item.date)}</span><strong>{observation.status === "uncertain" ? "Chưa rõ" : observation.level}</strong><ArrowRightIcon /></button>; }) : <p>Chưa có mức được ghi cho vùng này.</p>}</div><small>{trend.length <= 1 ? "Chưa đủ lần ghi để nói về xu hướng." : "Các ngày thiếu dữ liệu vẫn là khoảng trống, không được ước tính."}</small></section>
+    {snapshots.length === 0 && <div className="mcy-empty large"><ReaderIcon /><strong>Chưa có bản ghi nào</strong><p>Bạn có thể thử check-in hoặc mở hành trình mẫu để xem cách timeline hoạt động.</p></div>}
+    {!showSample && <Action onClick={startNext}>Thử lần quay lại tiếp theo</Action>}
+    <DemoNote>Check-in được đồng bộ khi bạn đã cho phép lưu. Phản hồi sau bài tập mẫu chỉ còn trong phiên này; không tạo thống kê tiến bộ.</DemoNote>
+    <BottomSheet open={Boolean(detailRegion)} onOpenChange={open => { if (!open) setDetailRegion(null); }} title={detailRegion ?? "Chi tiết vùng"} description={selected ? snapshotLabel(selected) : "Bản ghi đang xem"} snap={0.49}><div className="mcy-detail-sheet">{detail ? <><strong>{observationLabel(detail)}</strong><p>{detail.note || "Không có ghi chú riêng cho vùng này."}</p>{!selected?.sample && !selected?.remoteId && <button className="mcy-quiet-link" onClick={() => { setEditingRegion(detail.region); setDetailRegion(null); }}>Sửa ghi nhận vùng này</button>}</> : <p>Vùng này chưa được ghi tại thời điểm đang xem.</p>}</div></BottomSheet>
+    <RegionEditor region={editingRegion} current={editCurrent} onSave={saveEdited} onDelete={deleteEdited} onClose={() => setEditingRegion(null)} />
+    <BottomSheet open={Boolean(comparePicker)} onOpenChange={open => { if (!open) setComparePicker(null); }} title={`Chọn mốc ${comparePicker ?? ""}`} snap={0.63}><div className="mcy-picker-list">{snapshots.map(item => <button key={item.id} onClick={() => { if (comparePicker === "A") setCompareA(item.id); else setCompareB(item.id); setComparePicker(null); }}>{snapshotLabel(item)}</button>)}</div></BottomSheet>
+    <BottomSheet open={deletePending} onOpenChange={setDeletePending} title="Xóa bản ghi?" description={selected?.remoteId ? "Xóa check-in khỏi tài khoản và lịch sử trên server." : "Bản ghi sẽ biến mất khỏi hành trình trong phiên này."} snap={0.36}><div className="mcy-sheet-actions">{deleteError && <div className="mcy-form-error" role="alert">{deleteError}</div>}<button className="mcy-action danger-action" disabled={deleting} onClick={() => { void deleteSelected(); }}>{deleting ? "Đang xóa…" : "Xóa bản ghi"} <ArrowRightIcon /></button><button className="mcy-quiet-link" disabled={deleting} onClick={() => setDeletePending(false)}>Giữ bản ghi</button></div></BottomSheet>
+  </main></MobileScroll>;
 }
 
-function Milestone({ type, onClick }: { type: MessageKind; onClick: () => void }) {
-  const teacher = type === "teacher";
-  return <button className={"milestone-card " + type} onClick={onClick}><span className="message-source">{teacher ? <PersonIcon /> : <MagicWandIcon />}{teacher ? "Nhận xét từ giáo viên" : "Tổng kết tự động từ Trợ lý AI"}</span><strong>{teacher ? "Một chặng đường đáng ghi nhận" : "Bạn đang dần tạo nhịp tập đều"}</strong><p>{teacher ? "Giáo viên Mai Anh · Khóa Cổ vai nhẹ nhàng" : "Dựa trên 7 buổi tập và phản hồi của bạn"}</p><span className="open-card">Xem lời nhắn <ArrowRightIcon /></span></button>;
-}
-
-function MessageScreen() {
+function DiscoverScreen() {
   const flow = useFlow();
-  const { messageKind, teacherNote } = useYogaApp();
-  const teacher = messageKind === "teacher";
-  return (
-    <MobileScroll className="app-scroll">
-      <main className="screen-content message-content">
-        <Topbar />
-        <div className={"message-card-detail " + (teacher ? "teacher" : "ai")}><div className="message-card-top"><span className="message-source">{teacher ? <PersonIcon /> : <MagicWandIcon />}{teacher ? "Nhận xét từ giáo viên" : "Tổng kết từ Trợ lý AI"}</span><span>20.09.2026</span></div><h1>{teacher ? "Một chặng đường đáng ghi nhận" : "Bạn đang dần tạo nhịp tập đều"}</h1><div className="sticker-line"><StarFilledIcon /><span>{teacher ? "Cảm ơn bạn vì đã kiên nhẫn với cơ thể mình." : "Mỗi lần trở lại thảm tập đều là một bước tiến."}</span></div><p>{teacher ? teacherNote : "Trong 7 buổi tập gần nhất, bạn đã hoàn thành 5 buổi và thường ghi nhận vùng cổ vai dễ chịu hơn sau khi tập."}</p>{teacher ? <div className="message-attribution"><PersonIcon /><span><strong>Mai Anh</strong><small>Giáo viên của Khóa Cổ vai nhẹ nhàng</small></span></div> : <div className="message-attribution"><MagicWandIcon /><span><strong>Trợ lý AI</strong><small>Dựa trên nhật ký và phản hồi bạn đã cung cấp</small></span></div>}</div>
-        <section className="message-basis"><h2>{teacher ? "Điều giáo viên đã ghi nhận" : "Căn cứ của tổng kết"}</h2><ul>{teacher ? <><li>Bạn biết chọn biến thể phù hợp khi cơ thể mệt.</li><li>Hơi thở đều hơn khi chuyển động.</li></> : <><li>5/7 buổi tập đã hoàn thành.</li><li>4 lần bạn ghi nhận cổ vai dễ chịu hơn.</li></>}</ul></section>
-        <button className="outline-button" onClick={() => flow.push(ROUTES.teacher)}><ReaderIcon />Xem trải nghiệm giáo viên gửi lời nhắn</button>
-        <PrimaryButton onClick={() => flow.pop()}>Trở lại hành trình</PrimaryButton>
-      </main>
-    </MobileScroll>
-  );
+  const { update } = useDemo();
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page">
+    <Eyebrow>KHÁM PHÁ NỘI DUNG</Eyebrow><h1>Một danh mục nhỏ, có chủ đích.</h1><p className="mcy-lead">Các buổi mẫu thể hiện cách nội dung của giáo viên hỗ trợ lựa chọn hằng buổi. Đây chưa phải thư viện được phát hành.</p>
+    <div className="mcy-catalog">{SESSIONS.map(item => <button className="mcy-catalog-card" key={item.id} onClick={() => { update({ minutes: item.minutes, chosenPlanId: item.id, dialogueChoice: null }); flow.push(ROUTES.plan); }}><img src={item.image} alt="" /><span><small>{item.minutes} PHÚT · BUỔI MẪU</small><strong>{item.title}</strong><em>{item.level}</em></span><ArrowRightIcon /></button>)}</div>
+    <button className="mcy-account-row" onClick={() => flow.push(ROUTES.discoverDetail)}><span><strong>Hướng dẫn chọn buổi tập</strong><small>Góc kiến thức · nguồn và ngày rà soát</small></span><ArrowRightIcon /></button>
+    <div className="mcy-offer-card"><span className="mcy-tag">HƯỚNG PHÁT TRIỂN ĐỀ XUẤT</span><h2>Đồng hành tự tập</h2><p>Check-in, một lựa chọn có căn cứ và nội dung của MCY. Khóa kỹ năng cùng giáo viên có thể là một đường học sâu hơn khi bạn cần.</p><small>Chưa mở bán · chưa chốt giá hay quyền lợi</small></div>
+  </main></MobileScroll>;
 }
 
-function PlansScreen() {
+function ProfileScreen() {
   const flow = useFlow();
-  return (
-    <MobileScroll className="app-scroll">
-      <main className="screen-content plans-content">
-        <Topbar title="Hình thức đồng hành" />
-        <h1>Chọn cách<br />bạn muốn được đồng hành</h1>
-        <p className="lead">Hai quyền lợi độc lập. Bạn có thể dùng một, hoặc kết hợp cả hai.</p>
-        <section className="plan-card teacher"><span className="plan-kicker"><PersonIcon />KHÓA HỌC CÙNG GIÁO VIÊN</span><h2>Được giáo viên theo sát trong khóa học</h2><p>Mỗi khóa có giáo viên phụ trách, quan sát và gửi nhận xét tại các dấu mốc của chính khóa học đó.</p><ul><li><CheckIcon />Nhận xét trực tiếp từ giáo viên</li><li><CheckIcon />Dấu mốc theo hành trình khóa học</li><li><CheckIcon />Lời nhắn được giáo viên duyệt và gửi</li></ul><button className="outline-button" onClick={() => flow.push(ROUTES.teacher)}>Xem cách tạo lời nhắn</button></section>
-        <section className="plan-card ai"><span className="plan-kicker"><MagicWandIcon />TRỢ LÝ AI · GÓI THUÊ BAO</span><h2>Tổng kết tự động cho việc tự tập</h2><p>Trợ lý AI tổng hợp check-in, nhật ký và phản hồi trong giới hạn gói bạn đăng ký.</p><ul><li><CheckIcon />Phân tích theo dữ liệu bạn đã cung cấp</li><li><CheckIcon />Tổng kết tự động khi đủ dữ liệu</li><li><CheckIcon />Card được tạo theo mẫu chuẩn của Một chút Yoga</li></ul><button className="primary-button small-button" onClick={() => flow.pop()}>Khám phá gói AI<ArrowRightIcon /></button></section>
-      </main>
-    </MobileScroll>
-  );
+  const { state, setState, update } = useDemo();
+  const [signingOut, setSigningOut] = useState(false);
+  const [error, setError] = useState("");
+  const feedback = state.saveFeedbackConsent ? [...state.history].reverse().find(item => item.pace === "Hơi nhanh") : undefined;
+  const signOut = async () => {
+    if (!supabase) return;
+    setSigningOut(true);
+    setError("");
+    const { error: signOutError } = await supabase.auth.signOut({ scope: "local" });
+    setSigningOut(false);
+    if (signOutError) setError(signOutError.message);
+  };
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-account-home">
+    <Eyebrow>CÁ NHÂN · {state.signedIn ? "TÀI KHOẢN HỌC VIÊN" : "KHÁCH"}</Eyebrow><h1>{state.signedIn ? `Chào${state.displayName ? `, ${state.displayName}` : " bạn"}.` : "Bạn kiểm soát tài khoản và dữ liệu."}</h1>
+    <p className="mcy-lead">{state.signedIn ? `${state.accountEmail} · Đã xác minh qua Supabase Auth.` : "Bạn vẫn có thể xem nội dung mẫu. Đăng nhập để lưu hồ sơ, lựa chọn quyền và check-in đã đồng ý."}</p>
+    {!state.signedIn ? <div className="mcy-profile-card"><span className="mcy-tag">L01 · TÀI KHOẢN</span><strong>Lưu hành trình trên tài khoản của bạn</strong><p>Đăng nhập bằng email để đồng bộ hồ sơ, quyền dữ liệu và check-in có đồng ý.</p><button onClick={() => { update({ authMode: "create", authReturnTo: "profile" }); flow.push(ROUTES.authEmail); }}>Tạo tài khoản hoặc đăng nhập</button></div> : <div className="mcy-profile-card"><span className="mcy-tag">TRẠNG THÁI</span><strong>Đang dùng tài khoản học viên</strong><p>Hồ sơ, consent và check-in được lưu theo lựa chọn của bạn. Buổi tập và tính năng AI vẫn là nội dung mẫu.</p><button disabled={signingOut} onClick={() => { void signOut(); }}>{signingOut ? "Đang đăng xuất…" : "Đăng xuất thiết bị này"}</button></div>}
+    {error && <div className="mcy-form-error" role="alert">{error}</div>}
+    <div className="mcy-account-group"><span className="mcy-section-label">HỒ SƠ VÀ QUYỀN DỮ LIỆU</span>
+      <AccountRow title="Thông tin cá nhân" detail={state.displayName || "Tên tùy chọn · ngôn ngữ · hình minh họa"} onClick={() => flow.push(ROUTES.editProfile)} />
+      <AccountRow title="AI và điều được nhớ" detail={feedback ? "Có phản hồi mẫu để xem nguồn và cách rút lại" : "Chưa có thông tin được nhớ"} onClick={() => flow.push(ROUTES.memory)} />
+      <AccountRow title="Quyền riêng tư và đồng ý" detail="Mỗi mục đích, phiên bản và cách thay đổi" onClick={() => flow.push(ROUTES.privacy)} />
+      <AccountRow title="Bảo mật tài khoản" detail="Email, phiên đăng nhập và xác minh lại" onClick={() => flow.push(ROUTES.security)} />
+      <AccountRow title="Nhắc tập và thông báo" detail="Tùy chọn kênh, giờ và múi giờ" onClick={() => flow.push(ROUTES.notifications)} />
+      <AccountRow title="Nội dung và quyền đang có" detail="Nội dung mẫu · chưa mở bán" onClick={() => flow.push(ROUTES.access)} />
+      <AccountRow title="Chia sẻ với giáo viên" detail={state.shareActive ? "Đang bật trong bản mô phỏng" : "Mặc định tắt · chọn đúng lớp và phạm vi"} onClick={() => flow.push(ROUTES.sharing)} />
+    </div>
+    <div className="mcy-account-group"><span className="mcy-section-label">TRỢ GIÚP VÀ YÊU CẦU</span>
+      <AccountRow title="Hướng dẫn và liên hệ" detail="Tìm câu trả lời hoặc gửi yêu cầu hỗ trợ" onClick={() => flow.push(ROUTES.help)} />
+      <AccountRow title="Xuất dữ liệu" detail="Yêu cầu mock · cần xác minh lại" onClick={() => flow.push(ROUTES.exportData)} />
+      <AccountRow title="Yêu cầu đã gửi" detail={`${state.dataRequests.length} yêu cầu trong phiên demo`} onClick={() => flow.push(ROUTES.requests)} />
+      <AccountRow title="Xóa tài khoản" detail="Xem phạm vi và xác nhận từng bước" onClick={() => flow.push(ROUTES.deleteAccount)} danger />
+    </div>
+    <button className="mcy-reset" onClick={() => { setState(previous => ({ ...initialState, userId: previous.userId, signedIn: previous.signedIn, accountEmail: previous.accountEmail, onboardingComplete: previous.onboardingComplete, consentBaseline: previous.consentBaseline, termsAccepted: previous.termsAccepted, privacyAccepted: previous.privacyAccepted, aiConsent: previous.aiConsent, saveFeedbackConsent: previous.saveFeedbackConsent, teacherShareConsent: previous.teacherShareConsent, marketingConsent: previous.marketingConsent, notificationEnabled: previous.notificationEnabled, remoteCheckins: previous.remoteCheckins })); flow.replace(ROUTES.home); }}><ResetIcon />Bắt đầu lại luồng minh họa</button>
+    <DemoNote>Hồ sơ, lựa chọn quyền và check-in được lưu theo trạng thái tài khoản. Bài tập, AI, memory và yêu cầu hỗ trợ/xuất/xóa vẫn là phần minh họa.</DemoNote>
+  </main></MobileScroll>;
 }
 
-function TeacherStudio() {
+function AccountRow({ title, detail, onClick, danger = false }: { title: string; detail: string; onClick: () => void; danger?: boolean }) {
+  return <button className={`mcy-account-row${danger ? " danger" : ""}`} onClick={onClick}><span><strong>{title}</strong><small>{detail}</small></span><ArrowRightIcon /></button>;
+}
+
+type AccountPanel = "edit" | "privacy" | "memory" | "sharing" | "security" | "notifications" | "access" | "help" | "export" | "delete" | "requests";
+function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
   const flow = useFlow();
-  const { teacherNote, setTeacherNote, teacherSent, setTeacherSent } = useYogaApp();
-  return (
-    <MobileScroll className="app-scroll">
-      <main className="screen-content teacher-studio">
-        <Topbar title="Không gian giáo viên" />
-        <div className="teacher-for"><div className="avatar">MA</div><span><small>HỌC VIÊN</small><strong>Minh Anh · Buổi 7</strong></span></div>
-        <h1>Tạo lời nhắn<br />dành cho Minh Anh</h1>
-        <p className="lead">Hệ thống sẽ dàn trang theo mẫu chuẩn. Giáo viên kiểm tra nội dung trước khi gửi.</p>
-        <label className="reflection-field">Ghi chú của giáo viên<KeyboardTextarea value={teacherNote} onChange={(event) => setTeacherNote(event.target.value)} onBlur={(event) => event.currentTarget.blur()} /></label>
-        <section className="mini-preview"><span className="message-source"><PersonIcon />NHẬN XÉT TỪ GIÁO VIÊN</span><h2>Một chặng đường đáng ghi nhận</h2><p>{teacherNote}</p><small>Mai Anh · Khóa Cổ vai nhẹ nhàng</small></section>
-        {teacherSent ? <div className="success-box"><CheckCircledIcon />Đã gửi lời nhắn tới Minh Anh.</div> : null}
-        <PrimaryButton onClick={() => setTeacherSent(true)}>Gửi lời nhắn</PrimaryButton>
-        <button className="text-button centered" onClick={() => flow.pop()}><Cross1Icon />Đóng bản minh họa</button>
-      </main>
-    </MobileScroll>
-  );
+  const keyboard = useKeyboard();
+  const { state, setState, update } = useDemo();
+  const [query, setQuery] = useState("");
+  const [note, setNote] = useState("");
+  const [deleteText, setDeleteText] = useState("");
+  const [reauth, setReauth] = useState(false);
+  const [error, setError] = useState("");
+  const [name, setName] = useState(state.displayName);
+  const [simulateSaveFailure, setSimulateSaveFailure] = useState(false);
+  const latest = state.saveFeedbackConsent ? [...state.history].reverse().find(item => item.kind === "Sau tập") : undefined;
+  const addRequest = (kind: MockDataRequest["kind"], detail: string) => {
+    const request: MockDataRequest = { id: `REQ-${String(state.dataRequests.length + 1).padStart(4, "0")}`, kind, status: "Đã nhận trong phiên demo · chưa xử lý server", date: new Date().toLocaleDateString("vi-VN"), detail };
+    setState(previous => ({ ...previous, dataRequests: [...previous.dataRequests, request] }));
+    return request;
+  };
+  const createDataRequest = (kind: "Xuất dữ liệu" | "Xóa tài khoản") => {
+    keyboard.hide(); setError("");
+    if (!reauth) { setError("Xác minh lại danh tính trong bước mô phỏng trước khi gửi yêu cầu."); return; }
+    if (kind === "Xóa tài khoản" && deleteText !== "XÓA") { setError("Nhập chính xác “XÓA” để xác nhận ý định."); return; }
+    addRequest(kind, kind === "Xuất dữ liệu" ? "Hồ sơ, đồng ý, check-in và phản hồi được chọn; file chưa được tạo." : "Đã ghi nhận ý định; không có dữ liệu thật nào bị xóa trong prototype.");
+    flow.replace(ROUTES.requests);
+  };
+  const submitTicket = () => {
+    if (!note.trim()) { setError("Viết một câu mô tả để tạo yêu cầu demo."); return; }
+    addRequest("Hỗ trợ", `${query || "Hỗ trợ chung"} · ${note.trim()}`); keyboard.hide(); flow.replace(ROUTES.requests);
+  };
+  const changeConsent = async (purpose: ConsentPurpose, granted: boolean, patch: Partial<DemoState>) => {
+    setError("");
+    try {
+      if (supabase && state.userId && state.consentBaseline[purpose] !== granted) {
+        await saveConsentEvent(supabase, purpose, granted, purpose === "terms" ? "terms-review-0.1" : "privacy-review-0.1", "settings", crypto.randomUUID(), clientChannel());
+      }
+      setState(previous => ({ ...previous, ...patch, consentBaseline: { ...previous.consentBaseline, [purpose]: granted } }));
+    } catch (cause) {
+      setError(cause instanceof Error ? `Chưa lưu được lựa chọn quyền: ${cause.message}` : "Chưa lưu được lựa chọn quyền.");
+    }
+  };
+  const saveProfileChanges = async () => {
+    keyboard.hide();
+    setError("");
+    if (simulateSaveFailure) { setError("Chưa lưu được do lỗi kết nối mô phỏng. Giá trị đang giữ trong màn hình."); return; }
+    try {
+      await persistProfile(state, name, state.bodyStyle);
+      update({ displayName: name.trim() });
+      setError(state.userId ? "Hồ sơ đã lưu vào tài khoản." : "Hồ sơ chỉ được giữ trong phiên khách.");
+    } catch (cause) {
+      setError(cause instanceof Error ? `Chưa lưu được hồ sơ: ${cause.message}` : "Chưa lưu được hồ sơ.");
+    }
+  };
+  const screen = (eyebrow: string, title: string, description: string, content: React.ReactNode) => <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-account-detail"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p className="mcy-lead">{description}</p>{content}<DemoNote>Hồ sơ và lựa chọn quyền của tài khoản đã kết nối với Supabase staging. AI, chia sẻ giáo viên và các yêu cầu hỗ trợ/dữ liệu vẫn là phần mô phỏng.</DemoNote></main></MobileScroll>;
+  if (panel === "edit") return screen("L02 · HỒ SƠ", "Thông tin tối thiểu, do bạn sửa.", "Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.", <><label className="mcy-form-field">Tên hiển thị<KeyboardInput autoComplete="nickname" aria-label="Tên hiển thị" value={name} onChange={event => setName(event.target.value)} onBlur={() => keyboard.hide()} placeholder="Tên gọi trong ứng dụng" /></label><div className="mcy-account-panel"><strong>Ngôn ngữ và múi giờ</strong><div className="mcy-chip-grid"><Choice selected>Tiếng Việt</Choice><Choice selected={false} onClick={() => setError("Bản review chưa đổi locale, đây là quyết định cần xác nhận.")}>English · giả thuyết</Choice><Choice selected>Asia/Bangkok</Choice></div></div><div className="mcy-account-panel"><strong>Hình body map</strong><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>{error && <div className="mcy-form-error" role="alert">{error}</div>}<Action onClick={() => { void saveProfileChanges(); }}>Lưu thay đổi</Action><button className="mcy-state-link" onClick={() => setSimulateSaveFailure(!simulateSaveFailure)}>{simulateSaveFailure ? "Tắt lỗi mạng mô phỏng" : "Mô phỏng lỗi lưu"}</button><button className="mcy-state-link" onClick={() => setError("Có phiên bản mới hơn trên thiết bị khác. Bản review chưa hỗ trợ giải quyết diff.")}>Mô phỏng xung đột hai thiết bị</button><button className="mcy-quiet-link" onClick={() => flow.pop()}>Hủy</button></>);
+  if (panel === "memory") return screen("L03 · AI VÀ MEMORY", "Bạn xem được nguồn của mọi điều được nhớ.", "Không có suy luận sức khỏe dài hạn. Một phản hồi khó chịu hơn không thành sở thích mặc định.", <><div className="mcy-account-panel"><span className="mcy-tag">TRẠNG THÁI</span>{latest && state.rememberPace ? <><strong>Nhịp buổi trước hơi nhanh</strong><p>Nguồn: phản hồi mẫu sau buổi · phạm vi: gợi ý nhịp lần kế tiếp · dữ liệu chỉ trong phiên.</p><button className="mcy-toggle" aria-pressed={state.rememberPace} onClick={() => update({ rememberPace: false, usePreviousFeedback: false })}>Tắt và xóa memory mẫu</button></> : <><strong>Chưa có memory đang bật</strong><p>Phản hồi sau buổi hiện chỉ nằm trong phiên; chưa được lưu vào tài khoản.</p></>}</div><div className="mcy-account-panel"><strong>Trợ lý AI</strong><p>{state.aiConsent ? "Đã ghi lựa chọn AI; tính năng AI chưa được kết nối." : "AI đang tắt. Bạn có thể chọn buổi mẫu bằng đường thủ công."}</p><button className="mcy-toggle" aria-pressed={state.aiConsent} onClick={() => { void changeConsent("ai_processing", !state.aiConsent, { aiConsent: !state.aiConsent, usePreviousFeedback: false }); }}>{state.aiConsent ? "Rút đồng ý AI" : "Cho phép AI trong lần chọn tới"}</button></div><AccountRow title="Xem quyền theo mục đích" detail="Rút đồng ý và xem ảnh hưởng" onClick={() => flow.push(ROUTES.privacy)} />{error && <div className="mcy-form-error" role="alert">{error}</div>}</>);
+  if (panel === "privacy") return screen("L04 · QUYỀN RIÊNG TƯ", "Mỗi mục đích có phạm vi riêng.", "Các lựa chọn đã đăng nhập được ghi thành sự kiện vào consent ledger. Quyền đồng ý chia sẻ không tự cấp quyền xem dữ liệu cho giáo viên.", <><div className="mcy-consent-card required"><span className="mcy-tag">BẮT BUỘC KHI ĐĂNG NHẬP</span><strong>Điều khoản dịch vụ · bản review 0.1</strong><p>{state.termsAccepted && state.privacyAccepted ? "Đã ghi lựa chọn điều khoản và quyền riêng tư cho tài khoản này." : "Chưa ghi nhận đồng ý trong tài khoản."} Chính sách vẫn cần được rà soát trước khi mở cho người dùng.</p></div><PrivacyToggle title="Dùng check-in với trợ lý AI" detail="Lựa chọn được lưu; tính năng AI chưa kết nối ở P1." value={state.aiConsent} onToggle={value => { void changeConsent("ai_processing", value, { aiConsent: value, usePreviousFeedback: false }); }} /><PrivacyToggle title="Lưu check-in trong hành trình" detail="Cho phép lưu check-in mới; phản hồi sau bài mẫu chưa được đồng bộ." value={state.saveFeedbackConsent} onToggle={value => { void changeConsent("wellbeing_data", value, { saveFeedbackConsent: value, rememberPace: value ? state.rememberPace : false, usePreviousFeedback: false }); }} /><PrivacyToggle title="Đồng ý chia sẻ với giáo viên" detail="Đây là lựa chọn consent; không có giáo viên hay quyền truy cập nào đang được cấp." value={state.teacherShareConsent} onToggle={value => { void changeConsent("teacher_sharing", value, { teacherShareConsent: value }); }} /><PrivacyToggle title="Tin nội dung và marketing" detail="Tách khỏi nhắc tập và thông báo dịch vụ." value={state.marketingConsent} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value }); }} />{error && <div className="mcy-form-error" role="alert">{error}</div>}<div className="mcy-policy-meta"><span>Điều khoản: review 0.1</span><span>Quyền riêng tư: review 0.1</span><span>Không có quyền giáo viên được cấp</span></div><AccountRow title="Mở cài đặt chia sẻ" detail="Xem phạm vi đề xuất; chưa có giáo viên được nối" onClick={() => flow.push(ROUTES.sharing)} /></>);
+  if (panel === "sharing") return screen("L05 · ĐANG THỬ NGHIỆM", "Chọn rõ người nhận và dữ liệu.", "Tính năng này chỉ là giả định nếu gói hỗ trợ giáo viên được duyệt. Mặc định chia sẻ đang tắt.", <><div className="mcy-account-panel"><span className="mcy-tag">NGƯỜI NHẬN MẪU</span><strong>Cô Mai Anh · lớp Cổ vai nhẹ nhàng</strong><p>Fixture để review. Lớp, giáo viên và phân công không tồn tại trên hệ thống.</p></div><div className="mcy-section-label">PHẠM VI CÓ THỂ CHIA SẺ</div><div className="mcy-consent-card"><strong>Phản hồi sau buổi · tối đa 30 ngày</strong><p>Không gồm ghi chú vùng cơ thể, chat AI, hoặc lịch sử ngoài lớp.</p><button aria-pressed={state.shareActive} onClick={() => update({ shareActive: !state.shareActive, teacherShareConsent: !state.shareActive })}><i>{state.shareActive ? "✓" : ""}</i>{state.shareActive ? "Đang bật trong mô phỏng" : "Cho phép phạm vi này"}</button></div><div className={state.shareActive ? "mcy-inline-note" : "mcy-alert"}>{state.shareActive ? "Giáo viên chỉ xem dữ liệu trong phạm vi đã chọn. Khi rút quyền, request mới và bản nháp gửi tiếp theo phải bị chặn." : "Chưa cấp quyền. Không có dữ liệu nào được chia sẻ."}</div><AccountRow title="Quyền riêng tư" detail="Rút đồng ý và xem các mục đích khác" onClick={() => flow.push(ROUTES.privacy)} /></>);
+  if (panel === "security") return screen("L06 · BẢO MẬT", "Kiểm soát email và phiên đang mở.", "Step-up verification, quản lý thiết bị và khôi phục danh tính cần được kiểm tra ở server.", <><div className="mcy-account-panel"><strong>Email đăng nhập</strong><p>{state.accountEmail || "Chưa đăng nhập"} · {state.signedIn ? "đã xác minh trong mô phỏng" : "guest"}</p><button className="mcy-toggle" onClick={() => { update({ authMode: "login", authReturnTo: "security" }); flow.push(ROUTES.authEmail); }}>Đổi email có xác minh</button></div>{!state.signedIn && <div className="mcy-alert">Phiên đã hết hạn trong mô phỏng. Nháp hiện tại chưa được gửi; đăng nhập lại để tiếp tục.</div>}<div className="mcy-account-row static"><span><strong>Thiết bị này</strong><small>{state.signedIn ? "Phiên hiện tại · hoạt động vừa xong" : "Phiên đã hết hạn · draft giữ trong tab"}</small></span><span className="mcy-state-pill">{state.signedIn ? "HIỆN TẠI" : "HẾT HẠN"}</span></div><div className="mcy-account-row static"><span><strong>Trình duyệt khác</strong><small>Hoạt động 2 ngày trước · vị trí không thu thập</small></span><button onClick={() => setError("Đã gửi yêu cầu đăng xuất thiết bị khác trong mô phỏng.")}>Đăng xuất</button></div><button className="mcy-state-link" onClick={() => { update({ signedIn: false }); setError(""); }}>Mô phỏng phiên hết hạn / role bị rút</button>{!state.signedIn && <button className="mcy-toggle" onClick={() => { update({ authMode: "login", authReturnTo: "security" }); flow.push(ROUTES.authEmail); }}>Đăng nhập lại</button>}<PrivacyToggle title="MFA nhân sự" detail="Chỉ áp dụng teacher/owner ở workspace staff." value={false} onToggle={() => setError("Bản review staff có màn MFA mô phỏng riêng.")} /><p className="mcy-inline-note">Mất email hoặc nghi trùng tài khoản? Gửi yêu cầu hỗ trợ khôi phục có người kiểm, không tự gộp dữ liệu.</p><AccountRow title="Yêu cầu hỗ trợ danh tính" detail="Tạo ticket, nhận mã và xem trạng thái" onClick={() => flow.push(ROUTES.help)} />{error && <div className="mcy-form-error subtle">{error}</div>}</>);
+  if (panel === "notifications") return screen("L07 · THÔNG BÁO", "Nhắc tập theo lịch của bạn.", "Backend chưa gửi push hoặc email nhắc. Lựa chọn thông báo của tài khoản được lưu để dùng khi dịch vụ được triển khai.", <><PrivacyToggle title="Nhắc tập trong ứng dụng" detail="Múi giờ lấy từ thiết bị · lịch gửi chưa được cấu hình." value={state.notificationEnabled} onToggle={value => { void changeConsent("notifications", value, { notificationEnabled: value }); }} /><PrivacyToggle title="Email cập nhật nội dung" detail="Tùy chọn marketing; không ảnh hưởng email đăng nhập." value={state.emailUpdates} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value, emailUpdates: value }); }} />{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}<div className="mcy-account-panel"><strong>Giờ yên lặng</strong><p>Chưa có lịch nhắc nào được gửi hoặc lên lịch.</p></div></>);
+  if (panel === "access") return screen("L08 · QUYỀN NỘI DUNG", "Những gì đang mở cho bạn.", "Chưa có sản phẩm bán hoặc đơn hàng. Nội dung mẫu không đại diện cho quyền lợi trả phí.", <><div className="mcy-access-card"><span className="mcy-tag">PUBLIC · MẪU</span><strong>Buổi tập trong prototype</strong><p>Truy cập để review · không có quyền phát hành hoặc video hoàn chỉnh.</p></div><div className="mcy-empty large"><ReaderIcon /><strong>Chưa có khóa học hay giao dịch</strong><p>Chưa mở bán. Không có đơn, ngày hết hạn hay quyền hỗ trợ.</p></div><button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.discover)}>Xem danh mục public mẫu</button><p className="mcy-inline-note">Gói commerce và quyền mua chưa được phê duyệt.</p></>);
+  if (panel === "help") return screen("L09 · HỖ TRỢ", "Tìm hướng dẫn hoặc gửi yêu cầu.", "Mỗi yêu cầu có mã và trạng thái. Ghi chú riêng không hiển thị cho người gửi.", <><label className="mcy-form-field">Tìm hướng dẫn<KeyboardInput aria-label="Tìm hướng dẫn" value={query} onChange={event => setQuery(event.target.value)} onBlur={() => keyboard.hide()} placeholder="Ví dụ: phản hồi sau tập" /></label><div className="mcy-help-results">{["Cách ghi nhận từng vùng cơ thể", "Nếu muốn dừng giữa buổi", "Cách xem và xóa một bản ghi", "AI dùng check-in trong phạm vi nào?"].filter(item => !query || item.toLocaleLowerCase("vi").includes(query.toLocaleLowerCase("vi"))).map(item => <AccountRow key={item} title={item} detail="Hướng dẫn mẫu · ngày rà soát 26/09/2026" onClick={() => flow.push(ROUTES.discoverDetail)} />)}</div><div className="mcy-section-label">GỬI YÊU CẦU HỖ TRỢ</div><div className="mcy-chip-grid"><Choice selected={query === "Tập"} onClick={() => setQuery("Tập")}>Tập</Choice><Choice selected={query === "Media"} onClick={() => setQuery("Media")}>Media</Choice><Choice selected={query === "Quyền dữ liệu"} onClick={() => setQuery("Quyền dữ liệu")}>Quyền dữ liệu</Choice><Choice selected={query === "Khác"} onClick={() => setQuery("Khác")}>Khác</Choice></div><label className="mcy-form-field">Mô tả<KeyboardTextarea aria-label="Mô tả yêu cầu" placeholder="Mô tả ngắn điều đã xảy ra..." value={note} onChange={event => setNote(event.target.value)} onBlur={() => keyboard.hide()} /></label>{error && <div className="mcy-form-error">{error}</div>}<Action onClick={submitTicket}>Tạo ticket mẫu</Action><AccountRow title="Email không còn truy cập?" detail="Yêu cầu phục hồi danh tính có người xử lý" onClick={() => setError("Đã chọn quy trình khôi phục danh tính; vui lòng mô tả tình huống ở trên.")} /></>);
+  if (panel === "export") return screen("L10 · XUẤT DỮ LIỆU", "Chọn dữ liệu cần yêu cầu.", "File thật cần được tạo riêng, có thời hạn và xác thực trước khi tải. Bản demo không tạo file hay gửi email.", <><div className="mcy-consent-card"><strong>Phạm vi đề xuất</strong><p>Hồ sơ và cài đặt · consent · snapshot check-in/phản hồi · ticket của bạn.</p><p>Không gồm bản sao hạ tầng, dữ liệu người khác hoặc file công khai.</p></div><label className="mcy-reauth"><input type="checkbox" checked={reauth} onChange={event => setReauth(event.target.checked)} />Tôi vừa xác minh lại danh tính trong bước demo</label>{error && <div className="mcy-form-error">{error}</div>}<Action onClick={() => createDataRequest("Xuất dữ liệu")}>Gửi yêu cầu xuất dữ liệu</Action><button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.requests)}>Xem yêu cầu đã gửi</button></>);
+  if (panel === "delete") return screen("L11 · XÓA TÀI KHOẢN", "Đọc phạm vi trước khi xác nhận.", "Chính sách giữ lại hoặc xóa dữ liệu cần được duyệt trước khi có dữ liệu thật.", <><div className="mcy-alert">Không có gì bị xóa từ màn này. Bản review chỉ tạo một yêu cầu mock có biên nhận; quyền mẫu cũng không có giá trị mua.</div><div className="mcy-account-panel"><strong>Dự kiến cần được quyết định</strong><ul><li>Hồ sơ và phiên đăng nhập</li><li>Check-in, ghi chú và phản hồi</li><li>Ticket, bản sao lưu và nghĩa vụ lưu giữ</li><li>Quyền lớp hoặc giao dịch nếu sau này mở bán</li></ul></div><label className="mcy-reauth"><input type="checkbox" checked={reauth} onChange={event => setReauth(event.target.checked)} />Xác minh lại danh tính trong bước demo</label><label className="mcy-form-field">Nhập XÓA để xác nhận<KeyboardInput aria-label="Nhập XÓA để xác nhận" value={deleteText} onChange={event => setDeleteText(event.target.value.toUpperCase())} onBlur={() => keyboard.hide()} placeholder="XÓA" /></label>{error && <div className="mcy-form-error">{error}</div>}<button className="mcy-action danger-action" onClick={() => createDataRequest("Xóa tài khoản")}>Tạo yêu cầu xóa mẫu <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.help)}>Cần trợ giúp? Tạo ticket</button></>);
+  return screen("L12 · TRẠNG THÁI YÊU CẦU", "Mỗi yêu cầu có một trạng thái.", "Mã và thời điểm giúp bạn biết việc đã được tiếp nhận hay còn cần thao tác.", <>{state.dataRequests.length ? state.dataRequests.map(request => <div className="mcy-request-card" key={request.id}><div><span className="mcy-state-pill">{request.status}</span><small>{request.date} · {request.id}</small></div><strong>{request.kind}</strong><p>{request.detail}</p>{request.status.includes("lỗi") && <button className="mcy-toggle" onClick={() => setState(previous => ({ ...previous, dataRequests: previous.dataRequests.map(item => item.id === request.id ? { ...item, status: "Đã nhận trong phiên demo · chưa xử lý server" } : item) }))}>Thử lại cùng mã yêu cầu</button>}</div>) : <div className="mcy-empty large"><InfoCircledIcon /><strong>Chưa có yêu cầu</strong><p>Ticket, xuất dữ liệu hoặc xóa tài khoản sẽ xuất hiện ở đây sau khi được gửi.</p></div>}<div className="mcy-auth-state-row"><button onClick={() => setState(previous => ({ ...previous, dataRequests: previous.dataRequests.map((item, index) => index === 0 ? { ...item, status: "lỗi mạng · cần kiểm tra trạng thái trước khi thử lại" } : item) }))} disabled={!state.dataRequests.length}>Mô phỏng job lỗi</button><button onClick={() => setError("Các tác vụ phá dữ liệu phải kiểm tra trạng thái server trước retry.")}>Vì sao không retry tự động?</button></div>{error && <div className="mcy-form-error subtle">{error}</div>}<AccountRow title="Tạo yêu cầu xuất" detail="Chọn phạm vi, xác minh lại" onClick={() => flow.push(ROUTES.exportData)} /><AccountRow title="Liên hệ hỗ trợ" detail="Gửi ticket có mã biên nhận" onClick={() => flow.push(ROUTES.help)} /></>);
+}
+
+function PrivacyToggle({ title, detail, value, onToggle }: { title: string; detail: string; value: boolean; onToggle: (value: boolean) => void }) {
+  return <div className="mcy-account-panel mcy-toggle-row"><span><strong>{title}</strong><small>{detail}</small></span><button aria-pressed={value} className={value ? "on" : ""} onClick={() => onToggle(!value)}><i>{value ? "✓" : ""}</i><span>{value ? "Bật" : "Tắt"}</span></button></div>;
+}
+
+function SyncScreen() {
+  const flow = useFlow();
+  const { state, update } = useDemo();
+  const latest = state.lastReflection ?? state.history.at(-1);
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-sync-page"><Eyebrow>L14 · KẾT THÚC BUỔI</Eyebrow><h1>{state.syncStatus === "failed" ? "Chưa đồng bộ được." : "Phản hồi đã giữ trong phiên này."}</h1><p className="mcy-lead">{state.syncStatus === "failed" ? "Kết nối mô phỏng bị gián đoạn. Bản ghi vẫn còn trong tab; kiểm trạng thái trước khi gửi lại để tránh tạo trùng." : "Không có kết nối máy chủ nên đây chưa phải xác nhận lưu từ server."}</p><div className={`mcy-sync-card ${state.syncStatus}`}><span className="mcy-state-pill">{state.syncStatus === "failed" ? "LỖI KẾT NỐI · CÒN NHÁP TRONG TAB" : state.saveFeedbackConsent ? "BẢN GHI TRONG PHIÊN DEMO · CÓ THỂ XEM HÀNH TRÌNH" : "CHỈ GIỮ TẠM TRONG TAB · KHÔNG THÊM VÀO HÀNH TRÌNH"}</span><strong>{latest?.feedbackSkipped ? "Bạn đã chọn bỏ qua phản hồi" : latest?.kind === "Sau tập" ? latest.endedEarly ? "Buổi dừng sớm" : latest.outcome || latest.observations.length || latest.status === "uncertain" || latest.status === "none_now" ? "Phản hồi sau tập" : "Chưa có cảm nhận nào được ghi" : "Chưa ghi nhận phản hồi sau tập"}</strong><p>{latest?.outcome ? `Cảm nhận chung: ${latest.outcome}. ` : "Không có phản hồi chung được cung cấp. "}{latest?.status === "skipped" && !latest.feedbackSkipped ? "Phần vùng cơ thể chưa được ghi. " : ""}{latest?.observations.length ? `${latest.observations.length} vùng được ghi riêng.` : "Không có mức vùng được suy ra."}</p></div>{state.syncStatus === "failed" ? <Action onClick={() => update({ syncStatus: "saved" })}>Thử lại trong mô phỏng</Action> : <button className="mcy-state-link" onClick={() => update({ syncStatus: "failed" })}>Mô phỏng mất mạng và retry</button>}{!state.saveFeedbackConsent && <p className="mcy-inline-note">Bạn chưa cho phép lưu phản hồi cho lần sau; bản ghi hiện tại không xuất hiện trong Journey và không được dùng làm memory.</p>}<Action secondary onClick={() => flow.replace(ROUTES.journey)}>Mở hành trình</Action><button className="mcy-quiet-link" onClick={() => flow.replace(ROUTES.home)}>Xong, về hôm nay</button><DemoNote>Phản hồi “như cũ”, “khó chịu hơn”, “chưa rõ” và bỏ qua luôn được giữ riêng. Không phản hồi không được tính là tiến bộ.</DemoNote></main></MobileScroll>;
+}
+
+function DiscoverDetailScreen() {
+  const [revoked, setRevoked] = useState(false);
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-detail"><Eyebrow>L13 · BÀI KIẾN THỨC MẪU</Eyebrow>{revoked ? <><h1>Nội dung không còn khả dụng.</h1><p className="mcy-lead">Bản này đã bị rút ở một locale. Quay về danh mục; không tự thay bằng nội dung khác.</p><div className="mcy-empty large"><ReaderIcon /><strong>Không tìm thấy phiên bản hiện hành</strong><p>Liên kết được giữ lại để bạn biết nội dung đã thay đổi.</p></div></> : <><h1>Chọn một buổi theo điều bạn cần hôm nay.</h1><p className="mcy-lead">Một hướng dẫn ngắn về cách dùng check-in và kế hoạch mẫu.</p><div className="mcy-article-meta"><span>Người viết: nhóm nội dung MCY</span><span>Nguồn: blueprint sản phẩm v0.3</span><span>Rà soát: 26/09/2026 · bản mẫu</span></div><section className="mcy-article-body"><p>Check-in là điều bạn tự ghi nhận ở thời điểm hiện tại. Nó không thay cho chẩn đoán, và không bắt buộc phải điền tất cả vùng.</p><p>Nếu không có nội dung đã được xác nhận khớp lựa chọn của bạn, prototype sẽ nói rõ chưa có lựa chọn thay vì đoán.</p><p>Hãy dừng nếu bài tập không phù hợp với cảm nhận của bạn. Phản hồi có thể là dễ chịu hơn, như cũ, khó chịu hơn, chưa rõ hoặc bỏ qua.</p></section><button className="mcy-account-row" onClick={() => setRevoked(true)}><span><strong>Mô phỏng bản dịch đã bị rút</strong><small>Trang lỗi và quay lại đúng danh mục</small></span><ArrowRightIcon /></button></>}<DemoNote>Nội dung mẫu cần nguồn, tác giả, locale và ngày rà soát. Không phải tư vấn y tế.</DemoNote></main></MobileScroll>;
 }
 
 function BottomNav() {
   const flow = useFlow();
-  return <nav className="bottom-nav" aria-label="Điều hướng chính"><button onClick={() => flow.replace(ROUTES.checkin)}><HomeIcon /><span>Trang chủ</span></button><button onClick={() => flow.replace(ROUTES.today)}><PlayIcon /><span>Luyện tập</span></button><button onClick={() => flow.replace(ROUTES.progress)}><BarChartIcon /><span>Tiến trình</span></button><button onClick={() => flow.push(ROUTES.plans)}><PersonIcon /><span>Cá nhân</span></button></nav>;
+  const current = flow.current.id;
+  const items = [
+    { id: "home", label: "Hôm nay", icon: <HomeIcon /> },
+    { id: "journey", label: "Hành trình", icon: <BarChartIcon /> },
+    { id: "discover", label: "Khám phá", icon: <PlayIcon /> },
+    { id: "profile", label: "Cá nhân", icon: <PersonIcon /> },
+  ];
+  return <nav className="mcy-bottom-nav" aria-label="Điều hướng chính">{items.map(item => <button key={item.id} aria-current={current === item.id ? "page" : undefined} onClick={() => { if (current !== item.id) flow.replace(ROUTES[item.id]); }}>{item.icon}<span>{item.label}</span></button>)}</nav>;
 }

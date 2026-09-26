@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Một chút yoga · Khảo sát hướng logo</title>
+  <style>
+    :root { --ivory:#FBF6ED; --paper:#FFFCF6; --forest:#25372D; --muted:#59675E; --terra:#91482F; --sage:#E7EDDF; --line:#D9DED3; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--ivory); color:var(--forest); font-family:Arial, "Be Vietnam Pro", sans-serif; -webkit-font-smoothing:antialiased; }
+    .wrap { max-width:1440px; padding:48px 52px 90px; margin:auto; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.19em; font-size:11px; font-weight:700; color:var(--terra); }
+    h1,h2,h3,.wordmark { font-family:Georgia,"Times New Roman",serif; font-weight:400; }
+    header { display:flex; gap:42px; align-items:end; justify-content:space-between; border-bottom:1px solid var(--line); padding-bottom:32px; }
+    h1 { font-size:clamp(42px,5vw,74px); line-height:.98; letter-spacing:-.045em; margin:15px 0 0; }
+    .intro { max-width:420px; line-height:1.55; color:var(--muted); font-size:15px; margin:0; }
+    .meta { display:flex; gap:12px; align-items:center; margin:24px 0 32px; color:var(--muted); font-size:12px; }
+    .meta span { display:inline-block; width:5px; height:5px; border-radius:50%; background:var(--terra); }
+    .baseline { display:flex; gap:26px; align-items:center; background:var(--sage); border-radius:22px; padding:18px 28px; margin-bottom:28px; }
+    .baseline img { width:58px; height:58px; flex:none; }
+    .baseline .label { font-size:11px; text-transform:uppercase; letter-spacing:.16em; color:var(--terra); font-weight:bold; margin-bottom:6px; }
+    .baseline p { margin:0; font-size:14px; line-height:1.5; color:var(--muted); }
+    .baseline strong { color:var(--forest); }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    .card { background:var(--paper); border:1px solid #E9E6DD; border-radius:25px; overflow:hidden; min-width:0; box-shadow:0 8px 28px rgba(37,55,45,.035); }
+    .card-head { padding:25px 27px 18px; display:flex; justify-content:space-between; align-items:baseline; }
+    .card-head h2 { font-size:27px; letter-spacing:-.035em; line-height:1.1; margin:0; }
+    .card-head b { font-size:11px; color:var(--terra); letter-spacing:.1em; }
+    .card .story { color:var(--muted); font-size:13px; line-height:1.5; margin:0; padding:0 27px; min-height:60px; }
+    .hero { height:224px; display:grid; place-items:center; margin:12px 18px 0; border-radius:18px; background:var(--ivory); }
+    .hero img { width:142px; height:142px; }
+    .sample-label { padding:20px 27px 10px; font-size:10px; text-transform:uppercase; font-weight:bold; letter-spacing:.16em; color:#777F75; }
+    .lockup { height:83px; margin:0 27px; display:flex; gap:14px; align-items:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .lockup img { width:42px; height:42px; }
+    .wordmark { font-size:26px; letter-spacing:-.035em; white-space:nowrap; }
+    .sizes { display:flex; gap:24px; padding:2px 27px 20px; align-items:end; }
+    .size { display:flex; flex-direction:column; align-items:center; gap:7px; font-size:10px; color:var(--muted); }
+    .tile { display:grid; place-items:center; background:var(--forest); border-radius:22%; box-shadow:0 3px 7px rgba(37,55,45,.13); }
+    .tile.large { width:72px; height:72px; }
+    .tile.medium { width:48px; height:48px; }
+    .tile.small { width:28px; height:28px; }
+    .tile img { width:75%; height:75%; filter:brightness(0) invert(1); }
+    .tile.small img { width:82%; height:82%; }
+    .reverse { display:flex; align-items:center; gap:16px; margin:0 18px; background:var(--forest); color:var(--ivory); border-radius:16px; padding:15px 19px; }
+    .reverse img { width:38px; height:38px; filter:brightness(0) invert(1); }
+    .reverse .wordmark { font-size:22px; }
+    .notes { padding:21px 27px 27px; display:grid; gap:12px; }
+    .note { display:grid; grid-template-columns:64px 1fr; column-gap:8px; font-size:12px; line-height:1.45; }
+    .note b { color:var(--terra); font-size:10px; text-transform:uppercase; letter-spacing:.1em; padding-top:2px; }
+    .note span { color:var(--muted); }
+    .recommendation { margin-top:27px; display:flex; justify-content:space-between; gap:40px; background:var(--forest); border-radius:24px; color:var(--ivory); padding:33px 39px; }
+    .recommendation h3 { font-size:31px; margin:7px 0 0; letter-spacing:-.03em; }
+    .recommendation p { max-width:670px; margin:0; line-height:1.55; font-size:14px; color:#E7EDDF; }
+    .recommendation .eyebrow { color:#D9A991; }
+    .footer { display:flex; justify-content:space-between; gap:20px; margin-top:25px; font-size:12px; line-height:1.5; color:var(--muted); }
+    .footer a { color:var(--terra); }
+    @media(max-width:1100px) { .grid { grid-template-columns:1fr; } .card { display:grid; grid-template-columns:1fr 1fr; } .card-head,.card .story { grid-column:1; } .hero { grid-column:1; grid-row:3 / span 3; min-height:265px; } .sample-label,.lockup,.sizes,.reverse,.notes { grid-column:2; } .sample-label { padding-top:26px; } .notes { align-content:start; } }
+    @media(max-width:680px) { .wrap { padding:30px 18px 60px; } header,.recommendation,.footer { display:block; } .intro { margin-top:20px; } .baseline { align-items:start; padding:19px; gap:15px; } .baseline img { width:42px;height:42px; } .card { display:block; } .card .story { min-height:auto; } .hero { height:210px; } .recommendation p { margin-top:15px; } .footer>* { display:block; margin-top:9px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div><div class="eyebrow">Brand kit · Logo exploration · 25.09.2026</div><h1>Một chiếc lá.<br>Ba cách kể.</h1></div>
+      <p class="intro">Các hướng dưới đây cùng giữ ngôn ngữ lá và bảng màu của <strong>Một chút yoga</strong>. Mỗi hướng được xem như dấu hình độc lập, chữ ký thương hiệu và icon nhỏ để chọn ra hướng cần tinh chỉnh.</p>
+    </header>
+    <div class="meta">Bản khảo sát trực quan <span></span> Chưa phải logo cuối cùng <span></span> Wordmark là mô phỏng kiểu chữ</div>
+    <div class="baseline">
+      <img src="./brand-assets/leaf-mark.svg" alt="Dấu ba lá hiện tại" />
+      <div><div class="label">Điểm xuất phát · dấu ba lá hiện tại</div><p><strong>Điềm tĩnh, cân đối, gắn với nguyên mẫu.</strong> Cụm ba lá có thể bị đọc như hoa sen hoặc thương hiệu spa. Ba đề xuất bên dưới thử nói rõ hơn về một bước nhỏ, sự quay lại và sự đáp lời.</p></div>
+    </div>
+    <section class="grid" aria-label="Ba phương án logo mới">
+      <article class="card">
+        <div class="card-head"><h2>Lá đơn</h2><b>HƯỚNG A</b></div>
+        <p class="story">Một việc nhỏ để bắt đầu. Đường gân rỗng như một khoảng thở và lối đi bên trong chiếc lá.</p>
+        <div class="hero"><img src="./brand-assets/logo-option-a-single-leaf.svg" alt="Logo chiếc lá đơn với đường gân mở" /></div>
+        <div class="sample-label">Dấu hình + tên Việt</div>
+        <div class="lockup"><img src="./brand-assets/logo-option-a-single-leaf.svg" alt="" /><div class="wordmark">Một chút yoga</div></div>
+        <div class="sample-label">Cỡ icon thử nghiệm</div>
+        <div class="sizes"><div class="size"><div class="tile large"><img src="./brand-assets/logo-option-a-single-leaf.svg" alt="" /></div>72 px</div><div class="size"><div class="tile medium"><img src="./brand-assets/logo-option-a-single-leaf.svg" alt="" /></div>48 px</div><div class="size"><div class="tile small"><img src="./brand-assets/logo-option-a-single-leaf.svg" alt="" /></div>28 px</div></div>
+        <div class="reverse"><img src="./brand-assets/logo-option-a-single-leaf.svg" alt="" /><div class="wordmark">Một chút yoga</div></div>
+        <div class="notes"><div class="note"><b>Mạnh</b><span>Ít chi tiết; dễ đọc nhỏ; phù hợp cả tên Việt và Anh.</span></div><div class="note"><b>Cần thử</b><span>Có thể bị đọc như lông vũ; cần nét riêng ở viền và đường gân.</span></div></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><h2>Vòng mở</h2><b>HƯỚNG B</b></div>
+        <p class="story">Một vòng thực hành có thể quay lại vào ngày mai. Vòng không khép kín để dành chỗ cho nhịp riêng.</p>
+        <div class="hero"><img src="./brand-assets/logo-option-b-open-circle.svg" alt="Logo chiếc lá nằm trong vòng tròn mở" /></div>
+        <div class="sample-label">Dấu hình + tên Việt</div>
+        <div class="lockup"><img src="./brand-assets/logo-option-b-open-circle.svg" alt="" /><div class="wordmark">Một chút yoga</div></div>
+        <div class="sample-label">Cỡ icon thử nghiệm</div>
+        <div class="sizes"><div class="size"><div class="tile large"><img src="./brand-assets/logo-option-b-open-circle.svg" alt="" /></div>72 px</div><div class="size"><div class="tile medium"><img src="./brand-assets/logo-option-b-open-circle.svg" alt="" /></div>48 px</div><div class="size"><div class="tile small"><img src="./brand-assets/logo-option-b-open-circle.svg" alt="" /></div>28 px</div></div>
+        <div class="reverse"><img src="./brand-assets/logo-option-b-open-circle.svg" alt="" /><div class="wordmark">Một chút yoga</div></div>
+        <div class="notes"><div class="note"><b>Mạnh</b><span>Liên hệ trực tiếp vòng check-in → tập → phản hồi.</span></div><div class="note"><b>Cần thử</b><span>Vòng có thể gợi biểu tượng tải; nét mảnh cần xem ở 28 px.</span></div></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><h2>Hai lá</h2><b>HƯỚNG C</b></div>
+        <p class="story">Một quan sát được đáp lại bằng lựa chọn phù hợp. Hai hình lá lệch nhau tạo nhịp tiếp nối.</p>
+        <div class="hero"><img src="./brand-assets/logo-option-c-two-leaves.svg" alt="Logo hai chiếc lá tiếp nối theo đường chéo" /></div>
+        <div class="sample-label">Dấu hình + tên Việt</div>
+        <div class="lockup"><img src="./brand-assets/logo-option-c-two-leaves.svg" alt="" /><div class="wordmark">Một chút yoga</div></div>
+        <div class="sample-label">Cỡ icon thử nghiệm</div>
+        <div class="sizes"><div class="size"><div class="tile large"><img src="./brand-assets/logo-option-c-two-leaves.svg" alt="" /></div>72 px</div><div class="size"><div class="tile medium"><img src="./brand-assets/logo-option-c-two-leaves.svg" alt="" /></div>48 px</div><div class="size"><div class="tile small"><img src="./brand-assets/logo-option-c-two-leaves.svg" alt="" /></div>28 px</div></div>
+        <div class="reverse"><img src="./brand-assets/logo-option-c-two-leaves.svg" alt="" /><div class="wordmark">Một chút yoga</div></div>
+        <div class="notes"><div class="note"><b>Mạnh</b><span>Có chuyển động nhẹ và khác cụm ba lá đang dùng.</span></div><div class="note"><b>Cần thử</b><span>Khoảng cách hai lá phải rõ ở cỡ nhỏ; tránh bị đọc như mầm cây.</span></div></div>
+      </article>
+    </section>
+    <section class="recommendation">
+      <div><div class="eyebrow">Hướng ưu tiên đề xuất</div><h3>A · Lá đơn</h3></div>
+      <p>Hướng A diễn đạt “một chút” trực tiếp nhất và có hình khối gọn cho icon, giao diện và ấn phẩm. Nên giữ B làm phương án đối chứng trong thử nghiệm nhận diện; quyết định cuối cùng cần dựa trên phản hồi người dùng và tra cứu nhãn hiệu.</p>
+    </section>
+    <div class="footer"><span>Phác thảo vector để chọn hướng. Chưa chốt kiểu chữ, chưa kiểm tra nhãn hiệu.</span><span>Chi tiết đánh giá: <a href="./LOGO_OPTIONS_2026-09-25.md">LOGO_OPTIONS_2026-09-25.md</a></span></div>
+  </main>
+</body>
+</html>
