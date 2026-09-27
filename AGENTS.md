@@ -81,6 +81,12 @@
 - Preserve the iPhone/Pixel review surface. The actual-mobile-browser presentation mode was implemented in the authorized 2026-09-27 runtime change; hiding the bezel alone is insufficient because viewport, safe areas and keyboard behavior also differ.
 - The user requested a comparison of self-hosting and embedded video platforms such as YouTube. Treat provider choices and budgets as proposals; that analysis did not authorize uploading/publishing teacher videos, subscribing to paid services, or changing staging privacy gates.
 
+## Responsive learner-flow follow-up — 2026-09-27
+
+- On short mobile viewports, keep the welcome screen's guest/account actions visible when its content can fit; let the welcome composition and imagery adapt to the actual available height instead of positioning the actions at the bottom of a fixed 852px canvas.
+- Keep the primary action and its meaningful alternative available in an inset, opaque safe-area footer for the core dialogue, practice, check-in, plan and reflection steps. Keep longer content scrollable above it, with bottom padding derived from the FlowStack footer height. Do not cover content or protected device chrome.
+- Verify the main learner loop on a short portrait viewport as well as both simulator presets, mobile web and short landscape. A visible control is not enough: check that it remains tappable, keyboard-attached surfaces still move with the runtime, and scroll can reach the final content.
+
 ## Prototype Instructions
 
 In ChatGPT Work Mode, run `sites-preview start "$PWD"`, open `http://terminal.local:4173/` in the cloud browser, and verify the rendered app and its primary interactions. Keep that preview open and tell the user to inspect it in the cloud browser; do not present the local URL as a user-facing chat link. In Codex Desktop, run the local server yourself, open the preview in the in-app browser, and provide the clickable local URL. Do not deploy to Sites unless the user explicitly asks to share, publish, or deploy. Do not give the user server-start instructions when you can run it.

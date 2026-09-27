@@ -489,9 +489,9 @@ const ROUTES: Record<string, FlowScreen> = {
   welcome: { id: "welcome", render: () => <WelcomeScreen /> },
   home: { id: "home", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <HomeScreen /> },
   checkin: { id: "checkin", header: () => <Header title="Check-in hôm nay" back />, headerHeight: 55, footer: () => <CheckinFooter />, footerHeight: 176, render: () => <CheckinScreen /> },
-  dialogue: { id: "dialogue", header: () => <Header title="Cùng chọn buổi tập" back />, headerHeight: 55, render: () => <DialogueScreen /> },
+  dialogue: { id: "dialogue", header: () => <Header title="Cùng chọn buổi tập" back />, headerHeight: 55, footer: () => <DialogueFooter />, footerHeight: 104, render: () => <DialogueScreen /> },
   plan: { id: "plan", header: () => <Header title="Kế hoạch hôm nay" back />, headerHeight: 55, footer: () => <PlanFooter />, footerHeight: 94, render: () => <PlanScreen /> },
-  practice: { id: "practice", header: () => <Header title="Xem trước buổi tập" back />, headerHeight: 55, render: () => <PracticeScreen /> },
+  practice: { id: "practice", header: () => <Header title="Xem trước buổi tập" back />, headerHeight: 55, footer: () => <PracticeFooter />, footerHeight: 104, render: () => <PracticeScreen /> },
   reflection: { id: "reflection", header: () => <Header title="Phản hồi của bạn" back />, headerHeight: 55, footer: () => <ReflectionFooter />, footerHeight: 104, render: () => <ReflectionScreen /> },
   journey: { id: "journey", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <JourneyScreen /> },
   discover: { id: "discover", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <DiscoverScreen /> },
@@ -1026,7 +1026,6 @@ function CheckinFooter() {
 }
 
 function DialogueScreen() {
-  const flow = useFlow();
   const keyboard = useKeyboard();
   const { state, update } = useDemo();
   const locale = state.locale;
@@ -1061,9 +1060,18 @@ function DialogueScreen() {
     <div className="mcy-chip-grid dialogue-chips">{(["Nhiều hướng dẫn", "Nhịp chậm", "Ít lời", "Không nằm sàn"] as Exclude<DialogueChoice, null>[]).map((choice, index) => <Choice key={choice} selected={state.dialogueChoice === choice} onClick={() => choose(choice)}>{msg(locale, quickKeys[index])}</Choice>)}</div>
     <div className="mcy-composer"><KeyboardInput aria-label={msg(locale, "dialogue.inputLabel")} placeholder={msg(locale, "dialogue.inputPlaceholder")} value={state.dialogueText} onChange={event => update({ dialogueText: event.target.value })} onKeyDown={event => { if (event.key === "Enter") submitText(); }} onBlur={() => keyboard.hide()} /><button aria-label={msg(locale, "dialogue.send")} onClick={submitText}><ArrowRightIcon /></button></div>
     <DemoNote>{msg(locale, "dialogue.demo")}</DemoNote>
-    <Action onClick={() => { keyboard.hide(); update({ chosenPlanId: null }); flow.push(ROUTES.plan); }} disabled={Boolean(state.unrecognizedText)}>{msg(locale, "dialogue.viewPlan")}</Action>
-    <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); update({ dialogueChoice: null, unrecognizedText: "", chosenPlanId: null }); flow.push(ROUTES.plan); }}>{msg(locale, "dialogue.sampleChoice")}</button>
   </main></MobileScroll>;
+}
+
+function DialogueFooter() {
+  const flow = useFlow();
+  const keyboard = useKeyboard();
+  const { state, update } = useDemo();
+  const locale = state.locale;
+  return <div className="mcy-flow-footer">
+    <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); update({ dialogueChoice: null, unrecognizedText: "", chosenPlanId: null }); flow.push(ROUTES.plan); }}>{msg(locale, "dialogue.sampleChoice")}</button>
+    <Action disabled={Boolean(state.unrecognizedText)} onClick={() => { keyboard.hide(); update({ chosenPlanId: null }); flow.push(ROUTES.plan); }}>{msg(locale, "dialogue.viewPlan")}</Action>
+  </div>;
 }
 
 function PlanScreen() {
@@ -1128,9 +1136,21 @@ function PracticeScreen() {
     <div className="mcy-practice-tip"><BrandMark /><span>{descriptions[step]}</span></div>
     <div className="mcy-timer-controls"><button onClick={() => { setStarted(true); setPaused(!paused); }} disabled={remaining === 0} aria-pressed={started && !paused} aria-label={msg(locale, remaining === 0 ? "practice.timerDone" : !started ? "practice.startTimer" : paused ? "practice.resumeTimer" : "practice.pauseTimer")}><span>{paused ? <PlayIcon /> : <PauseIcon />}</span>{remaining === 0 ? msg(locale, "practice.done") : !started ? msg(locale, "practice.start") : paused ? msg(locale, "practice.resume") : msg(locale, "practice.pause")}</button><div className="mcy-timer" style={{ background: `conic-gradient(#516b54 ${(30 - remaining) / 30 * 100}%, #d9e1d4 0)` }}><div><strong>00:{String(remaining).padStart(2, "0")}</strong><span>{msg(locale, "practice.timerSample")}</span></div></div><button onClick={nextStep} aria-label={msg(locale, step === 2 ? "practice.end" : "practice.next")}><span><ArrowRightIcon /></span>{step === 2 ? msg(locale, "practice.finishButton") : msg(locale, "practice.skip")}</button></div>
     <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "practice.timerNote")}</div>
-    <Action onClick={() => finish(false)}>{msg(locale, "practice.finish")}</Action>
-    <button className="mcy-quiet-link" onClick={() => finish(true)}>{msg(locale, "practice.stop")}</button>
   </main></MobileScroll>;
+}
+
+function PracticeFooter() {
+  const flow = useFlow();
+  const { state, update } = useDemo();
+  const locale = state.locale;
+  const finish = (endedEarly: boolean) => {
+    update({ endedEarly });
+    flow.push(ROUTES.reflection);
+  };
+  return <div className="mcy-flow-footer">
+    <button className="mcy-quiet-link" onClick={() => finish(true)}>{msg(locale, "practice.stop")}</button>
+    <Action onClick={() => finish(false)}>{msg(locale, "practice.finish")}</Action>
+  </div>;
 }
 
 function ReflectionScreen() {

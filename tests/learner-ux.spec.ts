@@ -78,7 +78,7 @@ for (const device of ["iphone", "pixel-10"] as const) {
     await expect(page.getByRole("heading", { name: "Bài tập hôm nay" })).toBeVisible();
     await page.locator(".flow-fixed-footer .mcy-action").click();
     await expect(page.getByRole("heading", { name: "Xoay cổ nhẹ" })).toBeVisible();
-    await page.locator("[data-testid=flow-current] .mcy-action").click();
+    await page.locator(".flow-fixed-footer .mcy-action").click();
     await expect(page.getByRole("heading", { name: /Sau buổi tập/ })).toBeVisible();
     await page.getByRole("button", { name: "Khó chịu hơn" }).click();
     await expect(page.locator(".mcy-alert")).toContainText("không tự gợi bài");
@@ -122,7 +122,7 @@ test("internal English preview follows check-in, sample practice and honest refl
     await expect(page.locator(".mcy-plan-hero h2")).toHaveText("Relax your neck and shoulders");
     await page.locator(".flow-fixed-footer .mcy-action").tap();
     await expect(page.getByRole("heading", { name: "Gentle neck turns" })).toBeVisible();
-    await page.locator("[data-testid=flow-current] .mcy-action").tap();
+    await page.locator(".flow-fixed-footer .mcy-action").tap();
     await expect(page.getByRole("heading", { name: /How does your body feel after practice/ })).toBeVisible();
     await page.getByRole("button", { name: "Worse" }).tap();
     await expect(page.locator(".mcy-alert")).toContainText("won't recommend a session");
@@ -154,5 +154,31 @@ test("short portrait and landscape mobile viewports keep the check-in actions re
     } finally {
       await page.close();
     }
+  }
+});
+
+test("short portrait keeps welcome, lesson and reflection actions inside the viewport", async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 320, height: 568 }, isMobile: true, hasTouch: true });
+  try {
+    await page.goto("/?mode=web");
+    const welcomeAction = page.locator(".mcy-welcome-bottom .mcy-action");
+    await expect(welcomeAction).toBeInViewport();
+    await welcomeAction.tap();
+
+    await page.locator(".flow-fixed-footer .mcy-action").tap();
+    await page.getByRole("button", { name: "Xem buổi mẫu như khách" }).tap();
+    const planAction = page.locator(".flow-fixed-footer .mcy-action");
+    await expect(planAction).toBeInViewport();
+    await planAction.tap();
+
+    const practiceAction = page.locator(".flow-fixed-footer .mcy-action");
+    await expect(practiceAction).toBeInViewport();
+    await expect(page.locator(".flow-fixed-footer .mcy-flow-footer")).toHaveCSS("background-color", "rgb(255, 252, 247)");
+    await practiceAction.tap();
+
+    const reflectionAction = page.locator(".flow-fixed-footer .mcy-action");
+    await expect(reflectionAction).toBeInViewport();
+  } finally {
+    await page.close();
   }
 });
