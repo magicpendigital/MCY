@@ -235,3 +235,41 @@ test("short portrait keeps welcome, lesson and reflection actions inside the vie
     await page.close();
   }
 });
+
+test("consent continue action stays fixed and tappable while the policy cards scroll", async ({ browser }) => {
+  for (const viewport of [{ width: 320, height: 568 }, { width: 390, height: 844 }]) {
+    const page = await browser.newPage({ viewport, isMobile: true, hasTouch: true });
+    try {
+      await page.goto("/?mode=web&review-screen=consent");
+      const action = page.locator(".mcy-consent-footer .mcy-action");
+      await expect(page.getByRole("heading", { name: "Bạn chọn dữ liệu nào được dùng." })).toBeVisible();
+      await expect(action).toBeVisible();
+      await expect(action).toBeEnabled();
+      const metrics = () => page.locator(".flow-fixed-footer").evaluate(footer => {
+        const footerRect = footer.getBoundingClientRect();
+        const actionRect = footer.querySelector(".mcy-action")!.getBoundingClientRect();
+        return {
+          footerBottom: footerRect.bottom,
+          actionBottom: actionRect.bottom,
+          viewportHeight: window.innerHeight,
+          leftInset: actionRect.left,
+          rightInset: window.innerWidth - actionRect.right,
+        };
+      });
+      const initial = await metrics();
+      expect(initial.footerBottom).toBeLessThanOrEqual(initial.viewportHeight);
+      expect(initial.actionBottom).toBeLessThanOrEqual(initial.viewportHeight);
+      expect(initial.leftInset).toBeGreaterThanOrEqual(15);
+      expect(initial.rightInset).toBeGreaterThanOrEqual(15);
+
+      await page.locator(".mcy-scroll").evaluate(scroll => scroll.scrollTo({ top: scroll.scrollHeight, behavior: "instant" }));
+      await expect(action).toBeInViewport();
+      const afterScroll = await metrics();
+      expect(afterScroll.actionBottom).toBeLessThanOrEqual(afterScroll.viewportHeight);
+      await action.tap();
+      await expect(page.getByRole("heading", { name: "Một chút thời gian cho chính mình." })).toBeVisible();
+    } finally {
+      await page.close();
+    }
+  }
+});

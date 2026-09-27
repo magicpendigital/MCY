@@ -15,6 +15,24 @@ export type ConsentPurpose =
   | "notifications"
   | "marketing";
 export type ConsentState = Record<ConsentPurpose, boolean>;
+export type ConsentPolicyVersions = Partial<Record<ConsentPurpose, string>>;
+
+// These are version IDs for the current Vietnamese review text, not a claim
+// that the text has completed legal review. Bump each ID when its copy changes.
+export const REQUIRED_CONSENT_POLICY_VERSIONS = {
+  terms: "terms-review-0.1",
+  privacy: "privacy-review-0.1",
+} as const;
+
+export function hasCurrentRequiredConsent(
+  consents: ConsentState,
+  versions: ConsentPolicyVersions,
+): boolean {
+  return consents.terms
+    && consents.privacy
+    && versions.terms === REQUIRED_CONSENT_POLICY_VERSIONS.terms
+    && versions.privacy === REQUIRED_CONSENT_POLICY_VERSIONS.privacy;
+}
 
 export const emptyConsentState: ConsentState = {
   terms: false,
@@ -44,6 +62,7 @@ export type CheckinPayload = {
 export type LearnerSnapshotData = {
   profile: LearnerProfile | null;
   consents: ConsentState;
+  consentPolicyVersions: ConsentPolicyVersions;
   checkins: LearnerCheckin[];
   observations: LearnerObservation[];
 };
@@ -54,9 +73,10 @@ function unwrap<T>(result: { data: T | null; error: { message: string } | null }
 }
 
 export async function loadLearnerSnapshot(client: LearnerClient): Promise<LearnerSnapshotData> {
-  const [profileResult, consentResult, checkinResult] = await Promise.all([
+  const [profileResult, consentResult, consentVersionsResult, checkinResult] = await Promise.all([
     client.from("profiles").select("*").maybeSingle(),
     client.rpc("get_my_consent_state"),
+    client.rpc("get_my_consent_policy_versions"),
     client
       .from("checkins")
       .select("id,user_id,local_date,local_timezone,energy_level,overall_note,body_status,capture_type,idempotency_key,created_at,updated_at")
@@ -65,6 +85,7 @@ export async function loadLearnerSnapshot(client: LearnerClient): Promise<Learne
   ]);
   const profile = unwrap(profileResult);
   const rawConsents = unwrap(consentResult) as Partial<ConsentState> | null;
+  const rawConsentVersions = unwrap(consentVersionsResult) as ConsentPolicyVersions | null;
   const checkins = unwrap(checkinResult) ?? [];
   const ids = checkins.map((row) => row.id);
   const observationResult = ids.length
@@ -77,6 +98,9 @@ export async function loadLearnerSnapshot(client: LearnerClient): Promise<Learne
   return {
     profile,
     consents: { ...emptyConsentState, ...(rawConsents ?? {}) },
+    consentPolicyVersions: Object.fromEntries(
+      Object.entries(rawConsentVersions ?? {}).filter(([, version]) => typeof version === "string"),
+    ) as ConsentPolicyVersions,
     checkins,
     observations: unwrap(observationResult) ?? [],
   };
@@ -105,7 +129,7 @@ export async function saveConsentEvent(
 
 export async function saveLearnerCheckin(client: LearnerClient, payload: CheckinPayload) {
   const rows = unwrap(
-    await client.rpc("save_my_checkin", {
+    await client.rpc("save_my_checkin_with_current_consent", {
       p_local_date: payload.localDate,
       p_local_timezone: payload.timezone,
       p_energy_level: payload.energyLevel,

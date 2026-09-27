@@ -19,9 +19,12 @@ import {
   deleteLearnerCheckin,
   emptyConsentState,
   loadLearnerSnapshot,
+  hasCurrentRequiredConsent,
+  REQUIRED_CONSENT_POLICY_VERSIONS,
   saveConsentEvent,
   saveLearnerCheckin,
   type ConsentPurpose,
+  type ConsentPolicyVersions,
   type ConsentState,
   type CheckinPayload,
   type LearnerCheckin,
@@ -106,6 +109,7 @@ type DemoState = {
   termsAccepted: boolean;
   privacyAccepted: boolean;
   consentBaseline: ConsentState;
+  consentPolicyVersions: ConsentPolicyVersions;
   aiConsent: boolean;
   saveFeedbackConsent: boolean;
   teacherShareConsent: boolean;
@@ -126,7 +130,7 @@ const initialState: DemoState = {
   endedEarly: false, rememberPace: true, usePreviousFeedback: false, history: [],
   signedIn: false, userId: null, backendStatus: backendConfigured ? "loading" : "ready", backendError: "", remoteCheckins: [], currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null,
   accountEmail: "", authReturnTo: "home", authMode: "create", authCode: "", displayName: "",
-  onboardingComplete: false, termsAccepted: false, privacyAccepted: false, consentBaseline: emptyConsentState, aiConsent: false, saveFeedbackConsent: false, teacherShareConsent: false,
+  onboardingComplete: false, termsAccepted: false, privacyAccepted: false, consentBaseline: emptyConsentState, consentPolicyVersions: {}, aiConsent: false, saveFeedbackConsent: false, teacherShareConsent: false,
   marketingConsent: false, shareActive: false, notificationEnabled: false, emailUpdates: false, dataRequests: [], syncStatus: "saved", lastReflection: null,
 };
 
@@ -243,21 +247,35 @@ function consentStateForDemo(state: DemoState): ConsentState {
 async function persistConsentChanges(
   state: DemoState,
   source: "onboarding" | "settings",
-): Promise<ConsentState> {
+): Promise<{ consents: ConsentState; policyVersions: ConsentPolicyVersions }> {
   const client = supabase;
-  if (!client || !state.userId) return state.consentBaseline;
+  if (!client || !state.userId) return { consents: state.consentBaseline, policyVersions: state.consentPolicyVersions };
   const next = consentStateForDemo(state);
-  const events = (Object.keys(next) as ConsentPurpose[]).filter(purpose => next[purpose] !== state.consentBaseline[purpose]);
+  const events = (Object.keys(next) as ConsentPurpose[]).filter(purpose => {
+    const requiredPolicyVersion = purpose === "terms"
+      ? REQUIRED_CONSENT_POLICY_VERSIONS.terms
+      : purpose === "privacy" ? REQUIRED_CONSENT_POLICY_VERSIONS.privacy : null;
+    const needsReacceptance = requiredPolicyVersion !== null
+      && state.consentPolicyVersions[purpose] !== requiredPolicyVersion
+      && next[purpose];
+    return next[purpose] !== state.consentBaseline[purpose] || needsReacceptance;
+  });
   await Promise.all(events.map(purpose => saveConsentEvent(
     client,
     purpose,
     next[purpose],
-    purpose === "terms" ? "terms-review-0.1:vi-VN" : "privacy-review-0.1:vi-VN",
+    purpose === "terms" ? REQUIRED_CONSENT_POLICY_VERSIONS.terms : REQUIRED_CONSENT_POLICY_VERSIONS.privacy,
     source,
     crypto.randomUUID(),
     clientChannel(),
   )));
-  return next;
+  const policyVersions = { ...state.consentPolicyVersions };
+  for (const purpose of events) {
+    policyVersions[purpose] = purpose === "terms"
+      ? REQUIRED_CONSENT_POLICY_VERSIONS.terms
+      : REQUIRED_CONSENT_POLICY_VERSIONS.privacy;
+  }
+  return { consents: next, policyVersions };
 }
 async function persistProfile(state: DemoState, displayName: string, bodyStyle: BodyStyle, locale: AppLocale = state.locale) {
   if (!supabase || !state.userId) return;
@@ -516,8 +534,26 @@ const ROUTES: Record<string, FlowScreen> = {
   readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
 };
 
+function finishAtAuthDestination(flow: ReturnType<typeof useFlow>, destination: string) {
+  const target = ROUTES[destination] ?? ROUTES.home;
+  let targetIndex = -1;
+  flow.stack.forEach((entry, index) => { if (entry.id === target.id) targetIndex = index; });
+  const stepsToPop = targetIndex >= 0 ? flow.stack.length - targetIndex - 1 : flow.stack.length - 1;
+  for (let index = 0; index < stepsToPop; index += 1) flow.pop();
+  if (targetIndex < 0) flow.replace(target);
+}
+
 export default function Prototype() {
-  const [state, setState] = useState<DemoState>(initialState);
+  const reviewConsentScreen = import.meta.env.DEV && new URLSearchParams(window.location.search).get("review-screen") === "consent";
+  const [state, setState] = useState<DemoState>(() => reviewConsentScreen ? {
+    ...initialState,
+    signedIn: true,
+    onboardingComplete: true,
+    termsAccepted: true,
+    privacyAccepted: true,
+    consentBaseline: { ...emptyConsentState, terms: true, privacy: true },
+    consentPolicyVersions: REQUIRED_CONSENT_POLICY_VERSIONS,
+  } : initialState);
   useLayoutEffect(() => {
     document.title = state.locale === "en-US" ? "A Little Yoga · Preview" : "Một chút yoga · Prototype";
     document.documentElement.lang = state.locale === "en-US" ? "en" : "vi";
@@ -534,6 +570,7 @@ export default function Prototype() {
     return () => screen.removeEventListener("scroll", keepChromeFixed);
   }, []);
   useEffect(() => {
+    if (reviewConsentScreen) return;
     if (!supabase) {
       setState(previous => ({ ...previous, backendStatus: "ready" }));
       return;
@@ -567,6 +604,7 @@ export default function Prototype() {
           marketingConsent: false,
           notificationEnabled: false,
           consentBaseline: emptyConsentState,
+          consentPolicyVersions: {},
           backendStatus: "ready",
           backendError: "",
         }));
@@ -586,14 +624,15 @@ export default function Prototype() {
           displayName: data.profile?.display_name ?? previous.displayName,
           locale: data.profile?.locale === "en-US" ? "en-US" : "vi-VN",
           bodyStyle: bodyStyle === "feminine" || bodyStyle === "masculine" ? bodyStyle : "neutral",
-          termsAccepted: data.consents.terms,
-          privacyAccepted: data.consents.privacy,
+          termsAccepted: data.consents.terms && data.consentPolicyVersions.terms === REQUIRED_CONSENT_POLICY_VERSIONS.terms,
+          privacyAccepted: data.consents.privacy && data.consentPolicyVersions.privacy === REQUIRED_CONSENT_POLICY_VERSIONS.privacy,
           aiConsent: data.consents.ai_processing,
           saveFeedbackConsent: data.consents.wellbeing_data,
           teacherShareConsent: data.consents.teacher_sharing,
           marketingConsent: data.consents.marketing,
           notificationEnabled: data.consents.notifications,
           consentBaseline: data.consents,
+          consentPolicyVersions: data.consentPolicyVersions,
           onboardingComplete: Boolean(data.profile),
           remoteCheckins,
           currentRemoteCheckinId: previous.currentRemoteCheckinId ?? remoteCheckins.at(-1)?.remoteId ?? null,
@@ -635,19 +674,20 @@ export default function Prototype() {
       subscription.unsubscribe();
       void appUrlListener?.remove();
     };
-  }, []);
-  return <DemoContext.Provider value={{ state, setState }}><FlowStack initial={ROUTES.welcome}><AuthSessionRouter /></FlowStack></DemoContext.Provider>;
+  }, [reviewConsentScreen]);
+  return <DemoContext.Provider value={{ state, setState }}><FlowStack initial={reviewConsentScreen ? ROUTES.consent : ROUTES.welcome}><AuthSessionRouter /></FlowStack></DemoContext.Provider>;
 }
 
 function AuthSessionRouter() {
   const { state } = useDemo();
   const flow = useFlow();
   useEffect(() => {
-    if (!state.signedIn) return;
-    if ([ROUTES.welcome.id, ROUTES.authEmail.id, ROUTES.authCode.id].includes(flow.current.id)) {
-      flow.replace(ROUTES.consent);
-    }
-  }, [flow, state.signedIn, state.userId]);
+    if (!state.signedIn || state.backendStatus !== "ready") return;
+    if (![ROUTES.welcome.id, ROUTES.authEmail.id, ROUTES.authCode.id].includes(flow.current.id)) return;
+    if (!hasCurrentRequiredConsent(consentStateForDemo(state), state.consentPolicyVersions)) flow.replace(ROUTES.consent);
+    else if (!state.onboardingComplete) flow.replace(ROUTES.onboarding);
+    else finishAtAuthDestination(flow, state.authReturnTo);
+  }, [flow, state.authReturnTo, state.backendStatus, state.consentPolicyVersions, state.onboardingComplete, state.privacyAccepted, state.signedIn, state.termsAccepted]);
   return null;
 }
 
@@ -711,6 +751,7 @@ function AuthEmailScreen() {
     <h1>Dùng email bạn có thể mở ngay.</h1>
     <p className="mcy-lead">Gửi email xác minh tới địa chỉ này. Nếu email có mã 6 chữ số, bạn có thể nhập ở bước tiếp theo; nếu có liên kết đăng nhập, hãy mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
     <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
+    {state.authMode === "create" && <div className="mcy-inline-note" role="note"><InfoCircledIcon />Giáo viên cũng đăng ký bằng email xác minh. Quyền giáo viên chỉ được cấp qua lời mời đã kiểm tra; pilot hiện chưa mở đăng ký công khai.</div>}
     {error && <div className="mcy-form-error" role="alert">{error}</div>}
     <div className="mcy-inline-note"><InfoCircledIcon />Chỉ dùng để đăng nhập và gửi biên nhận yêu cầu. Không cần nhập số điện thoại, ngày sinh hay tên thật.</div>
     {!backendConfigured && <div className="mcy-alert">Backend chưa kết nối ở môi trường hiện tại. Bạn vẫn có thể xem và thử luồng khách.</div>}
@@ -812,19 +853,19 @@ function ConsentFooter() {
     setSaving(true);
     setError("");
     try {
-      const baseline = await persistConsentChanges(state, "onboarding");
+      const saved = await persistConsentChanges(state, "onboarding");
       setState(previous => ({
         ...previous,
-        consentBaseline: baseline,
+        consentBaseline: saved.consents,
+        consentPolicyVersions: saved.policyVersions,
         ...(discardDraft ? { preObservations: [], regions: [], bodyStatus: null, energy: null, pendingCheckinIdempotencyKey: null } : {}),
       }));
       if (state.onboardingComplete) {
         if (!discardDraft && state.authReturnTo === "dialogue" && state.saveFeedbackConsent) {
-          await persistCurrentCheckin({ ...state, consentBaseline: baseline, privacyAccepted: true }, setState, "practice_preparation");
+          await persistCurrentCheckin({ ...state, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions, privacyAccepted: true }, setState, "practice_preparation");
         }
-        if (state.authReturnTo === "profile" || state.authReturnTo === "security") { flow.pop(); return; }
         const destination = discardDraft ? "home" : state.authReturnTo === "dialogue" ? state.aiConsent ? "readiness" : "plan" : state.authReturnTo;
-        flow.replace(ROUTES[destination] ?? ROUTES.home);
+        finishAtAuthDestination(flow, destination);
       } else flow.replace(ROUTES.onboarding);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Chưa lưu được lựa chọn của bạn.");
@@ -876,9 +917,8 @@ function OnboardingScreen() {
           pendingCheckinIdempotencyKey: null,
         } : {}),
       });
-      if (state.authReturnTo === "profile" || state.authReturnTo === "security") { flow.pop(); return; }
       const destination = discardDraft ? "home" : state.authReturnTo === "dialogue" ? state.aiConsent ? "readiness" : "plan" : state.authReturnTo;
-      flow.replace(ROUTES[destination] ?? ROUTES.home);
+      finishAtAuthDestination(flow, destination);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Chưa hoàn tất được thiết lập tài khoản.");
     } finally {
@@ -1357,7 +1397,7 @@ function ProfileScreen() {
       <AccountRow title="Yêu cầu đã gửi" detail={`${state.dataRequests.length} yêu cầu trong phiên demo`} onClick={() => flow.push(ROUTES.requests)} />
       <AccountRow title="Xóa tài khoản" detail="Xem phạm vi và xác nhận từng bước" onClick={() => flow.push(ROUTES.deleteAccount)} danger />
     </div>
-    <button className="mcy-reset" onClick={() => { setState(previous => ({ ...initialState, userId: previous.userId, signedIn: previous.signedIn, accountEmail: previous.accountEmail, onboardingComplete: previous.onboardingComplete, consentBaseline: previous.consentBaseline, termsAccepted: previous.termsAccepted, privacyAccepted: previous.privacyAccepted, aiConsent: previous.aiConsent, saveFeedbackConsent: previous.saveFeedbackConsent, teacherShareConsent: previous.teacherShareConsent, marketingConsent: previous.marketingConsent, notificationEnabled: previous.notificationEnabled, remoteCheckins: previous.remoteCheckins })); flow.replace(ROUTES.home); }}><ResetIcon />Bắt đầu lại luồng minh họa</button>
+    <button className="mcy-reset" onClick={() => { setState(previous => ({ ...initialState, userId: previous.userId, signedIn: previous.signedIn, accountEmail: previous.accountEmail, onboardingComplete: previous.onboardingComplete, consentBaseline: previous.consentBaseline, consentPolicyVersions: previous.consentPolicyVersions, termsAccepted: previous.termsAccepted, privacyAccepted: previous.privacyAccepted, aiConsent: previous.aiConsent, saveFeedbackConsent: previous.saveFeedbackConsent, teacherShareConsent: previous.teacherShareConsent, marketingConsent: previous.marketingConsent, notificationEnabled: previous.notificationEnabled, remoteCheckins: previous.remoteCheckins })); flow.replace(ROUTES.home); }}><ResetIcon />Bắt đầu lại luồng minh họa</button>
     <DemoNote>Hồ sơ, lựa chọn quyền và check-in được lưu theo trạng thái tài khoản. Bài tập, AI, memory và yêu cầu hỗ trợ/xuất/xóa vẫn là phần minh họa.</DemoNote>
   </main></MobileScroll>;
 }
@@ -1400,9 +1440,10 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
     setError("");
     try {
       if (supabase && state.userId && state.consentBaseline[purpose] !== granted) {
-        await saveConsentEvent(supabase, purpose, granted, purpose === "terms" ? "terms-review-0.1:vi-VN" : "privacy-review-0.1:vi-VN", "settings", crypto.randomUUID(), clientChannel());
+        await saveConsentEvent(supabase, purpose, granted, purpose === "terms" ? REQUIRED_CONSENT_POLICY_VERSIONS.terms : REQUIRED_CONSENT_POLICY_VERSIONS.privacy, "settings", crypto.randomUUID(), clientChannel());
       }
-      setState(previous => ({ ...previous, ...patch, consentBaseline: { ...previous.consentBaseline, [purpose]: granted } }));
+      const policyVersion = purpose === "terms" ? REQUIRED_CONSENT_POLICY_VERSIONS.terms : REQUIRED_CONSENT_POLICY_VERSIONS.privacy;
+      setState(previous => ({ ...previous, ...patch, consentBaseline: { ...previous.consentBaseline, [purpose]: granted }, consentPolicyVersions: { ...previous.consentPolicyVersions, [purpose]: policyVersion } }));
     } catch (cause) {
       setError(cause instanceof Error ? `Chưa lưu được lựa chọn quyền: ${cause.message}` : "Chưa lưu được lựa chọn quyền.");
     }
