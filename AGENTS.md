@@ -84,6 +84,8 @@
 ## Responsive learner-flow follow-up — 2026-09-27
 
 - On short mobile viewports, keep the welcome screen's guest/account actions visible when its content can fit; let the welcome composition and imagery adapt to the actual available height instead of positioning the actions at the bottom of a fixed 852px canvas.
+- Keep the welcome screen's guest, create-account and login actions in a persistent inset footer; prevent the wordmark from crossing the subject's face, and compact the welcome content and image crop on short landscape screens so its essential benefits stay visible above the footer.
+- Keep the consent screen's Continue action in an inset, opaque footer while consent purposes remain scrollable. This layout change does not decide whether the consent screen should recur at login; that policy needs version-aware consent state and legal review before implementation.
 - Keep the primary action and its meaningful alternative available in an inset, opaque safe-area footer for the core dialogue, practice, check-in, plan and reflection steps. Keep longer content scrollable above it, with bottom padding derived from the FlowStack footer height. Do not cover content or protected device chrome.
 - Verify the main learner loop on a short portrait viewport as well as both simulator presets, mobile web and short landscape. A visible control is not enough: check that it remains tappable, keyboard-attached surfaces still move with the runtime, and scroll can reach the final content.
 

@@ -486,7 +486,7 @@ function authErrorMessage(cause: unknown, fallback: string) {
 }
 
 const ROUTES: Record<string, FlowScreen> = {
-  welcome: { id: "welcome", render: () => <WelcomeScreen /> },
+  welcome: { id: "welcome", footer: () => <WelcomeFooter />, footerHeight: 156, render: () => <WelcomeScreen /> },
   home: { id: "home", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <HomeScreen /> },
   checkin: { id: "checkin", header: () => <Header title="Check-in hôm nay" back />, headerHeight: 55, footer: () => <CheckinFooter />, footerHeight: 176, render: () => <CheckinScreen /> },
   dialogue: { id: "dialogue", header: () => <Header title="Cùng chọn buổi tập" back />, headerHeight: 55, footer: () => <DialogueFooter />, footerHeight: 104, render: () => <DialogueScreen /> },
@@ -498,7 +498,7 @@ const ROUTES: Record<string, FlowScreen> = {
   profile: { id: "profile", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <ProfileScreen /> },
   authEmail: { id: "auth-email", header: () => <Header title="Tài khoản" back />, headerHeight: 55, render: () => <AuthEmailScreen /> },
   authCode: { id: "auth-code", header: () => <Header title="Xác minh email" back />, headerHeight: 55, render: () => <AuthCodeScreen /> },
-  consent: { id: "consent", header: () => <Header title="Quyền dữ liệu" back />, headerHeight: 55, render: () => <ConsentScreen /> },
+  consent: { id: "consent", header: () => <Header title="Quyền dữ liệu" back />, headerHeight: 55, footer: () => <ConsentFooter />, footerHeight: 164, render: () => <ConsentScreen /> },
   onboarding: { id: "onboarding", header: () => <Header title="Bắt đầu vừa đủ" back />, headerHeight: 55, render: () => <OnboardingScreen /> },
   editProfile: { id: "edit-profile", header: () => <Header title="Hồ sơ của bạn" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="edit" /> },
   privacy: { id: "privacy", header: () => <Header title="Quyền riêng tư" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="privacy" /> },
@@ -652,15 +652,31 @@ function AuthSessionRouter() {
 }
 
 function WelcomeScreen() {
-  const flow = useFlow();
-  const { state, update } = useDemo();
+  const { state } = useDemo();
   const locale = state.locale;
   return <MobileScroll className="mcy-scroll welcome"><main className="mcy-welcome">
     <img className="mcy-welcome-photo" src="/assets/welcome-portrait.png" alt={locale === "en-US" ? "A woman resting on a yoga mat" : "Người ngồi thư giãn trên thảm yoga"} />
-    <div className="mcy-welcome-top"><Brand locale={locale} /><button className="mcy-language-toggle" aria-label={msg(locale, locale === "vi-VN" ? "locale.switchToEnglish" : "locale.switchToVietnamese")} onClick={() => update({ locale: locale === "vi-VN" ? "en-US" : "vi-VN" })}>{locale === "vi-VN" ? "VI / EN*" : "EN / VI"}</button><p>{msg(locale, "brand.slogan")}</p>{locale === "en-US" && <small className="mcy-slogan-note">{msg(locale, "brand.sloganNote")}</small>}</div>
+    <div className="mcy-welcome-top"><Brand locale={locale} /><LocaleToggle /><p>{msg(locale, "brand.slogan")}</p>{locale === "en-US" && <small className="mcy-slogan-note">{msg(locale, "brand.sloganNote")}</small>}</div>
     <div className="mcy-welcome-benefits"><div><span><PersonIcon /></span>{msg(locale, "welcome.benefit1")}</div><div><span><HeartIcon /></span>{msg(locale, "welcome.benefit2")}</div><div><span><MagicWandIcon /></span>{msg(locale, "welcome.benefit3")}</div></div>
-    <div className="mcy-welcome-bottom"><p>{msg(locale, "welcome.quote")}</p><Action onClick={() => { update({ checkinStep: 1 }); flow.push(ROUTES.checkin); }}>{msg(locale, "welcome.tryGuest")}</Action><div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.login")}</button></div><small>{msg(locale, "welcome.note")}</small></div>
+    <p className="mcy-welcome-quote">{msg(locale, "welcome.quote")}</p>
   </main></MobileScroll>;
+}
+
+function LocaleToggle() {
+  const { state, update } = useDemo();
+  const locale = state.locale;
+  return <button className="mcy-language-toggle" aria-label={msg(locale, locale === "vi-VN" ? "locale.switchToEnglish" : "locale.switchToVietnamese")} onClick={() => update({ locale: locale === "vi-VN" ? "en-US" : "vi-VN" })}>{locale === "vi-VN" ? "VI / EN*" : "EN / VI"}</button>;
+}
+
+function WelcomeFooter() {
+  const flow = useFlow();
+  const { state, update } = useDemo();
+  const locale = state.locale;
+  return <div className="mcy-flow-footer mcy-welcome-footer mcy-welcome-bottom">
+    <Action onClick={() => { update({ checkinStep: 1 }); flow.push(ROUTES.checkin); }}>{msg(locale, "welcome.tryGuest")}</Action>
+    <div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.login")}</button></div>
+    <small>{msg(locale, "welcome.note")}</small>
+  </div>;
 }
 
 function AuthEmailScreen() {
@@ -761,16 +777,36 @@ function AuthCodeScreen() {
 }
 
 function ConsentScreen() {
-  const flow = useFlow();
-  const { state, update, setState } = useDemo();
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
+  const { state, update } = useDemo();
   const togglePurpose = (key: "aiConsent" | "saveFeedbackConsent" | "teacherShareConsent" | "marketingConsent") => {
     if (key === "aiConsent") update({ aiConsent: !state.aiConsent });
     if (key === "saveFeedbackConsent") update({ saveFeedbackConsent: !state.saveFeedbackConsent });
     if (key === "teacherShareConsent") update({ teacherShareConsent: !state.teacherShareConsent });
     if (key === "marketingConsent") update({ marketingConsent: !state.marketingConsent });
   };
+  return <MobileScroll className="mcy-scroll"><main lang="vi" className="mcy-page mcy-auth-page">
+    <Eyebrow>A05 · QUYỀN VÀ ĐIỀU KHOẢN</Eyebrow><h1>Bạn chọn dữ liệu nào được dùng.</h1>
+    <p className="mcy-lead">Mỗi mục đích là một lựa chọn riêng. Điều khoản và thông báo quyền riêng tư hiện là bản review, chưa phải nội dung pháp lý cuối cùng.</p>
+    {state.locale === "en-US" && <div className="mcy-locale-note" role="note">This consent screen is shown in Vietnamese. Consent evidence records the language displayed as vi-VN.</div>}
+    <section className="mcy-consent-card required"><span className="mcy-tag">CẦN ĐỂ TIẾP TỤC TRONG APP</span><strong>Điều khoản dịch vụ và thông báo quyền riêng tư</strong><p>Supabase đã xác minh email. Đồng ý để tiếp tục sử dụng tài khoản trong app; lựa chọn và phiên bản được ghi thành sự kiện.</p><button aria-pressed={state.termsAccepted && state.privacyAccepted} onClick={() => { const value = !(state.termsAccepted && state.privacyAccepted); update({ termsAccepted: value, privacyAccepted: value }); }}><i>{state.termsAccepted && state.privacyAccepted ? "✓" : ""}</i>{state.termsAccepted && state.privacyAccepted ? "Đã đồng ý bản review" : "Tôi đồng ý điều khoản và thông báo (bản review)"}</button></section>
+    {([
+      ["aiConsent", "Cho phép xử lý check-in bằng AI", "P1 hiện chưa gửi dữ liệu tới AI; lựa chọn được ghi để quản lý đồng ý, không tạo chẩn đoán.", state.aiConsent],
+      ["saveFeedbackConsent", "Lưu check-in cơ thể và năng lượng", "Cho phép lưu các lần check-in và ghi chú để xem trong Hành trình. Phản hồi sau bài mẫu chưa lưu server.", state.saveFeedbackConsent],
+      ["teacherShareConsent", "Chia sẻ với một giáo viên cụ thể", "Mặc định tắt. Chỉ bật khi bạn chọn đúng lớp, phạm vi và thời gian.", state.teacherShareConsent],
+      ["marketingConsent", "Nhận tin về nội dung mới", "Tùy chọn; tách khỏi thông báo dịch vụ và nhắc tập.", state.marketingConsent],
+    ] as const).map(([key, title, description, value]) => <section className="mcy-consent-card" key={key}><strong>{title}</strong><p>{description}</p><button aria-pressed={value} onClick={() => togglePurpose(key)}><i>{value ? "✓" : ""}</i>{value ? "Cho phép" : "Không cho phép"}</button></section>)}
+    <div className="mcy-form-error subtle">Từ chối AI vẫn dùng được lựa chọn mẫu. Từ chối lưu thì check-in chỉ còn trong phiên và không được ghi vào tài khoản.</div>
+    {state.onboardingComplete && state.authReturnTo === "dialogue" && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.saveFeedbackConsent ? "Xác nhận tiếp tục sẽ gắn nháp với tài khoản của bạn." : "Bạn chưa cho phép lưu check-in; nháp chỉ dùng trong phiên này."} Nếu không muốn dùng nháp nữa, chọn Bỏ nháp.</p></div>}
+    <DemoNote>Mỗi thay đổi được ghi vào consent ledger riêng của tài khoản. Nội dung pháp lý vẫn là bản review.</DemoNote>
+  </main></MobileScroll>;
+}
+
+function ConsentFooter() {
+  const flow = useFlow();
+  const { state, setState } = useDemo();
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const hasTransferDraft = state.onboardingComplete && state.authReturnTo === "dialogue";
   const continueNext = async (discardDraft = false) => {
     if (!state.termsAccepted || !state.privacyAccepted || saving) return;
     setSaving(true);
@@ -796,24 +832,11 @@ function ConsentScreen() {
       setSaving(false);
     }
   };
-  return <MobileScroll className="mcy-scroll"><main lang="vi" className="mcy-page mcy-auth-page">
-    <Eyebrow>A05 · QUYỀN VÀ ĐIỀU KHOẢN</Eyebrow><h1>Bạn chọn dữ liệu nào được dùng.</h1>
-    <p className="mcy-lead">Mỗi mục đích là một lựa chọn riêng. Điều khoản và thông báo quyền riêng tư hiện là bản review, chưa phải nội dung pháp lý cuối cùng.</p>
-    {state.locale === "en-US" && <div className="mcy-locale-note" role="note">This consent screen is shown in Vietnamese. Consent evidence records the language displayed as vi-VN.</div>}
-    <section className="mcy-consent-card required"><span className="mcy-tag">CẦN ĐỂ TIẾP TỤC TRONG APP</span><strong>Điều khoản dịch vụ và thông báo quyền riêng tư</strong><p>Supabase đã xác minh email. Đồng ý để tiếp tục sử dụng tài khoản trong app; lựa chọn và phiên bản được ghi thành sự kiện.</p><button aria-pressed={state.termsAccepted && state.privacyAccepted} onClick={() => { const value = !(state.termsAccepted && state.privacyAccepted); update({ termsAccepted: value, privacyAccepted: value }); }}><i>{state.termsAccepted && state.privacyAccepted ? "✓" : ""}</i>{state.termsAccepted && state.privacyAccepted ? "Đã đồng ý bản review" : "Tôi đồng ý điều khoản và thông báo (bản review)"}</button></section>
-    {([
-      ["aiConsent", "Cho phép xử lý check-in bằng AI", "P1 hiện chưa gửi dữ liệu tới AI; lựa chọn được ghi để quản lý đồng ý, không tạo chẩn đoán.", state.aiConsent],
-      ["saveFeedbackConsent", "Lưu check-in cơ thể và năng lượng", "Cho phép lưu các lần check-in và ghi chú để xem trong Hành trình. Phản hồi sau bài mẫu chưa lưu server.", state.saveFeedbackConsent],
-      ["teacherShareConsent", "Chia sẻ với một giáo viên cụ thể", "Mặc định tắt. Chỉ bật khi bạn chọn đúng lớp, phạm vi và thời gian.", state.teacherShareConsent],
-      ["marketingConsent", "Nhận tin về nội dung mới", "Tùy chọn; tách khỏi thông báo dịch vụ và nhắc tập.", state.marketingConsent],
-    ] as const).map(([key, title, description, value]) => <section className="mcy-consent-card" key={key}><strong>{title}</strong><p>{description}</p><button aria-pressed={value} onClick={() => togglePurpose(key)}><i>{value ? "✓" : ""}</i>{value ? "Cho phép" : "Không cho phép"}</button></section>)}
-    <div className="mcy-form-error subtle">Từ chối AI vẫn dùng được lựa chọn mẫu. Từ chối lưu thì check-in chỉ còn trong phiên và không được ghi vào tài khoản.</div>
-    {error && <div className="mcy-form-error" role="alert">Chưa lưu được lựa chọn: {error}</div>}
-    {state.onboardingComplete && state.authReturnTo === "dialogue" && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.saveFeedbackConsent ? "Xác nhận tiếp tục sẽ gắn nháp với tài khoản của bạn." : "Bạn chưa cho phép lưu check-in; nháp chỉ dùng trong phiên này."} Nếu không muốn dùng nháp nữa, chọn Bỏ nháp.</p></div>}
-    <Action disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(); }}>{saving ? "Đang lưu lựa chọn…" : state.onboardingComplete && state.authReturnTo === "dialogue" ? state.saveFeedbackConsent ? "Xác nhận chuyển nháp" : "Tiếp tục với nháp trong phiên" : "Tiếp tục"}</Action>
-    {state.onboardingComplete && state.authReturnTo === "dialogue" && <button className="mcy-quiet-link" disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(true); }}>Bỏ nháp</button>}
-    <DemoNote>Mỗi thay đổi được ghi vào consent ledger riêng của tài khoản. Nội dung pháp lý vẫn là bản review.</DemoNote>
-  </main></MobileScroll>;
+  return <div className="mcy-flow-footer mcy-consent-footer">
+    {error && <div className="mcy-consent-footer-error" role="alert">Chưa lưu được lựa chọn: {error}</div>}
+    <Action disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(); }}>{saving ? "Đang lưu lựa chọn…" : hasTransferDraft ? state.saveFeedbackConsent ? "Xác nhận chuyển nháp" : "Tiếp tục với nháp trong phiên" : "Tiếp tục"}</Action>
+    {hasTransferDraft && <button className="mcy-quiet-link" disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(true); }}>Bỏ nháp</button>}
+  </div>;
 }
 
 function OnboardingScreen() {

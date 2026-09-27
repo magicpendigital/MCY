@@ -605,6 +605,19 @@ button { cursor: pointer; }
 .mcy-welcome-auth button, .mcy-auth-secondary button, .mcy-auth-state-row button, .mcy-state-link { min-height:36px; padding:6px 8px; border:0; background:transparent; color:#586e58; font-size:11px; font-weight:800; }
 .mcy-welcome-auth button:first-child { color:var(--mcy-clay); }
 .mcy-welcome-bottom small { line-height:1.45; }
+.mcy-flow-footer.mcy-welcome-footer,
+.mcy-flow-footer.mcy-consent-footer { display:grid; grid-template-columns:minmax(0,1fr); align-content:center; gap:2px; padding:8px 20px calc(var(--device-safe-area-bottom,34px) + 8px); border-top:1px solid #e9e6de; background:var(--color-canvas); box-shadow:0 -9px 24px rgb(40 61 49 / 7%); }
+.mcy-flow-footer.mcy-welcome-footer { gap:0; }
+.mcy-flow-footer.mcy-welcome-footer .mcy-action,
+.mcy-flow-footer.mcy-consent-footer .mcy-action { width:100%; min-height:48px; flex:none; }
+.mcy-flow-footer.mcy-consent-footer .mcy-quiet-link { width:100%; min-height:32px; margin:0; }
+.mcy-consent-footer-error { max-height:32px; overflow:auto; padding:4px 7px; border-left:2px solid #a94d42; border-radius:0 6px 6px 0; background:#f8ebe7; color:#8e493f; font-size:10px; line-height:1.35; scrollbar-width:none; }
+.mcy-consent-footer-error::-webkit-scrollbar { display:none; }
+.mcy-flow-footer.mcy-welcome-footer .mcy-welcome-auth { gap:22px; margin:1px 0 0; }
+.mcy-flow-footer.mcy-welcome-footer .mcy-welcome-auth button { min-height:32px; }
+.mcy-flow-footer.mcy-welcome-footer small { display:block; margin-top:3px; color:#7c776f; font-size:9px; line-height:1.35; text-align:center; }
+.mobile-app-viewport:not([data-platform="android"]) .flow-fixed-footer:has(.mcy-welcome-footer, .mcy-consent-footer) { background:var(--color-canvas); }
+.mobile-app-viewport:not([data-platform="android"]) .flow-fixed-footer:has(.mcy-welcome-footer, .mcy-consent-footer)::after { position:absolute; top:100%; right:0; left:0; height:var(--device-safe-area-bottom,0px); background:var(--color-canvas); content:""; pointer-events:none; }
 .mcy-form-field { display:flex; flex-direction:column; gap:8px; margin:17px 0; color:var(--mcy-ink); font-size:12px; font-weight:780; }
 .mcy-form-field input, .mcy-form-field textarea { width:100%; min-height:49px; padding:11px 13px; border:1px solid #dfe5da; border-radius:11px; outline-color:#879a7f; background:var(--mcy-paper); color:var(--mcy-ink); font-size:13px; }
 .mcy-form-field textarea { min-height:100px; resize:vertical; line-height:1.5; }
@@ -691,47 +704,69 @@ button { cursor: pointer; }
   .mcy-welcome-bottom .mcy-action { min-height:43px; }
 }
 
-/* Keep the primary learner action attached to the usable viewport on short screens. */
+/* Keep welcome content scrollable while anchoring its choices above device chrome. */
 .mcy-welcome {
   display:flex;
   min-height:100%;
   height:auto;
   flex-direction:column;
   overflow:visible;
-  padding:clamp(48px, 9svh, 76px) 20px calc(var(--mobile-safe-area-height) + 18px);
+  padding:clamp(38px, 7svh, 64px) 20px calc(var(--flow-footer-height, 156px) + var(--mobile-safe-area-height) + 18px);
+  background:#f6f0e8;
 }
-.mcy-welcome-top, .mcy-welcome-benefits, .mcy-welcome-bottom { flex:none; }
-.mcy-welcome-benefits { margin-top:clamp(12px, 4svh, 36px); }
-.mcy-welcome-bottom {
-  position:relative;
-  right:auto;
-  bottom:auto;
-  left:auto;
-  margin-top:auto;
-  padding-top:clamp(14px, 3svh, 28px);
-}
-.mcy-welcome-bottom > p { margin-bottom:clamp(10px, 4svh, 32px); }
+.mcy-welcome-top, .mcy-welcome-benefits, .mcy-welcome-quote { flex:none; }
+.mcy-welcome-photo { inset:0; height:100%; border-radius:0; object-position:16% center; }
+.mcy-welcome::after { inset:0; height:auto; background:linear-gradient(90deg,#fffaf5f5 0%,#fffaf5ed 40%,#fffaf59c 62%,#fffaf51f 82%,transparent 100%),linear-gradient(0deg,#fffaf5 0%,#fffaf500 34%); }
+.mcy-welcome-top .mcy-brand { font-size:36px; }
+.mcy-welcome-top .mcy-brand .mcy-open-space-mark { width:51px; height:51px; margin-left:clamp(58px,18cqi,74px); }
+.mcy-welcome-top > p { max-width:255px; margin:5px 0 0 3px; color:#425549; font-size:clamp(14px,4cqi,16px); line-height:1.36; }
+.mcy-welcome-benefits { gap:11px; margin-top:clamp(20px, 4svh, 34px); }
+.mcy-welcome-benefits > div { gap:10px; font-size:12px; }
+.mcy-welcome-benefits > div > span { width:39px; height:39px; }
+.mcy-welcome-benefits svg { width:21px; height:21px; }
+.mcy-welcome-quote { position:relative; z-index:2; max-width:265px; margin:auto 0 0 5px; padding-top:clamp(25px, 5svh, 42px); color:#455d4a; font:italic 19px/1.28 "Times New Roman", Georgia, serif; }
+.mcy-welcome-bottom { position:relative; right:auto; bottom:auto; left:auto; }
+.mcy-flow-footer.mcy-welcome-footer .mcy-action { min-height:48px; }
+.mcy-welcome-top .mcy-language-toggle { top:0; }
 .mcy-plan-hero { height:clamp(175px, 38svh, 225px); }
 .mcy-practice-image { height:clamp(190px, 42svh, 352px); }
 
-@media (max-height:680px) and (orientation:portrait) {
-  .mcy-welcome { padding-top:48px; padding-bottom:calc(var(--mobile-safe-area-height) + 12px); }
-  .mcy-welcome-top .mcy-brand { font-size:34px; }
-  .mcy-welcome-top .mcy-brand .mcy-open-space-mark { width:42px; height:42px; margin-left:70px; }
-  .mcy-welcome-top > p { margin-top:5px; font-size:14px; }
-  .mcy-welcome-benefits { gap:8px; margin-top:14px; }
-  .mcy-welcome-benefits > div { gap:9px; font-size:12px; }
-  .mcy-welcome-benefits > div > span { width:36px; height:36px; }
-  .mcy-welcome-benefits svg { width:19px; height:19px; }
-  .mcy-welcome-bottom { padding-top:14px; }
-  .mcy-welcome-bottom > p { margin-bottom:12px; font-size:18px; }
-  .mcy-welcome-bottom .mcy-action { min-height:48px; }
-  .mcy-welcome-auth { margin-top:4px; }
-  .mcy-welcome-auth button { min-height:30px; }
-  .mcy-welcome-bottom small { margin-top:4px; font-size:9px; }
+.mobile-app-viewport[data-runtime-mode="web"] .mcy-welcome {
+  min-height:var(--web-viewport-height,100dvh);
 }
 
-@media (max-height:580px) and (orientation:portrait) {
-  .mcy-welcome-bottom > p { display:none; }
-  .mcy-welcome-benefits { margin-top:9px; }
+@media (max-height:680px) and (orientation:portrait) {
+  .flow-fixed-footer:has(.mcy-welcome-footer) { height:clamp(128px,23svh,156px); }
+  .flow-fixed-footer:has(.mcy-consent-footer) { height:clamp(148px,27svh,164px); }
+  .mcy-welcome { padding-top:35px; }
+  .mcy-welcome-top .mcy-brand { font-size:31px; }
+  .mcy-welcome-top .mcy-brand .mcy-open-space-mark { width:39px; height:39px; margin-left:clamp(54px,17cqi,68px); }
+  .mcy-welcome-top > p { margin-top:4px; font-size:13px; }
+  .mcy-welcome-benefits { gap:7px; margin-top:12px; }
+  .mcy-welcome-benefits > div { gap:8px; font-size:11px; }
+  .mcy-welcome-benefits > div > span { width:33px; height:33px; }
+  .mcy-welcome-benefits svg { width:18px; height:18px; }
+  .mcy-welcome-quote { display:none; }
+  .mcy-flow-footer.mcy-welcome-footer { padding-top:6px; }
+  .mcy-flow-footer.mcy-welcome-footer .mcy-action { min-height:44px; }
+  .mcy-flow-footer.mcy-welcome-footer .mcy-welcome-auth button { min-height:28px; }
+  .mcy-flow-footer.mcy-welcome-footer small { font-size:8px; }
+}
+
+@media (max-height:520px) and (orientation:landscape) {
+  .flow-fixed-footer:has(.mcy-welcome-footer) { height:clamp(124px,34svh,140px); }
+  .mcy-welcome { padding-top:16px; }
+  .mcy-welcome-photo { object-position:16% 23%; }
+  .mcy-welcome-top .mcy-brand { font-size:27px; }
+  .mcy-welcome-top .mcy-brand .mcy-open-space-mark { width:36px; height:36px; margin-left:50px; }
+  .mcy-welcome-top > p { margin-top:3px; font-size:12px; }
+  .mcy-welcome-benefits { grid-template-columns:minmax(0,1fr); gap:6px; max-width:45%; margin-top:10px; }
+  .mcy-welcome-benefits > div { gap:7px; font-size:10px; }
+  .mcy-welcome-benefits > div > span { width:31px; height:31px; }
+  .mcy-welcome-benefits svg { width:17px; height:17px; }
+  .mcy-welcome-quote { display:none; }
+  .mcy-flow-footer.mcy-welcome-footer { padding-top:6px; }
+  .mcy-flow-footer.mcy-welcome-footer .mcy-action { min-height:42px; }
+  .mcy-flow-footer.mcy-welcome-footer .mcy-welcome-auth button { min-height:24px; }
+  .mcy-flow-footer.mcy-welcome-footer small { display:none; }
 }

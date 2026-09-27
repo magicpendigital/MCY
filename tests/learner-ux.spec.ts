@@ -157,12 +157,65 @@ test("short portrait and landscape mobile viewports keep the check-in actions re
   }
 });
 
+test("short landscape keeps welcome choices and all benefits clear of the fixed footer", async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true });
+  try {
+    await page.goto("/?mode=web");
+    const welcomeAction = page.locator(".mcy-welcome-bottom .mcy-action");
+    await expect(welcomeAction).toBeInViewport();
+    await expect(page.getByRole("button", { name: "Tạo tài khoản" })).toBeInViewport();
+    const layout = await page.evaluate(() => {
+      const screen = document.querySelector("[data-testid=device-screen]")!.getBoundingClientRect();
+      const footer = document.querySelector(".flow-fixed-footer")!.getBoundingClientRect();
+      const action = document.querySelector(".mcy-welcome-bottom .mcy-action")!.getBoundingClientRect();
+      const benefits = Array.from(document.querySelectorAll(".mcy-welcome-benefits > div"), item => item.getBoundingClientRect());
+      return {
+        footerHeight: footer.height,
+        footerTop: footer.top,
+        benefitsBottom: Math.max(...benefits.map(item => item.bottom)),
+        leftInset: action.left - screen.left,
+        rightInset: screen.right - action.right,
+      };
+    });
+    expect(layout.footerHeight).toBeLessThanOrEqual(140);
+    expect(layout.benefitsBottom).toBeLessThanOrEqual(layout.footerTop);
+    expect(layout.leftInset).toBeGreaterThanOrEqual(15);
+    expect(layout.rightInset).toBeGreaterThanOrEqual(15);
+  } finally {
+    await page.close();
+  }
+});
+
 test("short portrait keeps welcome, lesson and reflection actions inside the viewport", async ({ browser }) => {
   const page = await browser.newPage({ viewport: { width: 320, height: 568 }, isMobile: true, hasTouch: true });
   try {
     await page.goto("/?mode=web");
     const welcomeAction = page.locator(".mcy-welcome-bottom .mcy-action");
     await expect(welcomeAction).toBeInViewport();
+    await expect(page.getByRole("button", { name: "Tạo tài khoản" })).toBeInViewport();
+    const welcomeLayout = await page.evaluate(() => {
+      const screen = document.querySelector("[data-testid=device-screen]")!.getBoundingClientRect();
+      const action = document.querySelector(".mcy-welcome-bottom .mcy-action")!.getBoundingClientRect();
+      const wordmark = document.querySelector(".mcy-welcome .mcy-brand-wordmark")!.getBoundingClientRect();
+      const brand = document.querySelector(".mcy-welcome .mcy-brand")!;
+      const scroll = document.querySelector(".mcy-scroll.welcome")!;
+      return {
+        leftInset: action.left - screen.left,
+        rightInset: screen.right - action.right,
+        actionBottom: action.bottom,
+        screenBottom: screen.bottom,
+        brandFontSize: Number.parseFloat(getComputedStyle(brand).fontSize),
+        wordmarkRight: wordmark.right,
+        screenRight: screen.right,
+        horizontalOverflow: scroll.scrollWidth > scroll.clientWidth,
+      };
+    });
+    expect(welcomeLayout.leftInset).toBeGreaterThanOrEqual(15);
+    expect(welcomeLayout.rightInset).toBeGreaterThanOrEqual(15);
+    expect(welcomeLayout.actionBottom).toBeLessThanOrEqual(welcomeLayout.screenBottom);
+    expect(welcomeLayout.brandFontSize).toBeLessThanOrEqual(36);
+    expect(welcomeLayout.wordmarkRight).toBeLessThanOrEqual(welcomeLayout.screenRight);
+    expect(welcomeLayout.horizontalOverflow).toBe(false);
     await welcomeAction.tap();
 
     await page.locator(".flow-fixed-footer .mcy-action").tap();
