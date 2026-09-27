@@ -62,7 +62,7 @@ function useDeviceScale(deviceWidth: number, deviceHeight: number) {
 }
 
 export function PhoneFrame({ children }: PropsWithChildren) {
-  const { device, native } = useMobileDevice();
+  const { device, native, webMode } = useMobileDevice();
   const { geometry } = device;
   const scale = useDeviceScale(geometry.device.width, geometry.device.height);
   const screenRef = useRef<HTMLDivElement | null>(null);
@@ -89,6 +89,32 @@ export function PhoneFrame({ children }: PropsWithChildren) {
             >
               {children}
             </div>
+          </div>
+        </div>
+      </ScreenPortalContext.Provider>
+    );
+  }
+
+  if (webMode) {
+    return (
+      <ScreenPortalContext.Provider value={contextValue}>
+        <div className="mobile-web-stage" data-runtime-mode="web">
+          <div
+            ref={screenRef}
+            className="device-screen web-mobile-screen"
+            data-device={device.id}
+            data-platform={device.platform}
+            data-runtime-mode="web"
+            data-phone-screen
+            data-testid="device-screen"
+            onDragStartCapture={suppressNativeDrag}
+            style={{
+              "--device-safe-area-bottom": `${geometry.safeArea.bottom}px`,
+              "--native-safe-area-top": `${geometry.safeArea.top}px`,
+              "--web-viewport-height": `${geometry.screen.height}px`,
+            } as CSSProperties}
+          >
+            {children}
           </div>
         </div>
       </ScreenPortalContext.Provider>

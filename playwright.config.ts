@@ -9,6 +9,7 @@ export default defineConfig({
   use: {
     baseURL: `http://127.0.0.1:${testPort}`,
     viewport: { width: 1100, height: 1100 },
+    ...(process.env.MCY_PLAYWRIGHT_CHANNEL ? { launchOptions: { channel: process.env.MCY_PLAYWRIGHT_CHANNEL } } : {}),
   },
   webServer: {
     command: `npm run dev -- --port ${testPort}`,

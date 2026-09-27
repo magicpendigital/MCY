@@ -36,12 +36,12 @@ type KeyboardInputProps = InputHTMLAttributes<HTMLInputElement> & {
 const KeyboardContext = createContext<KeyboardContextValue | null>(null);
 
 export function KeyboardProvider({ children }: PropsWithChildren) {
-  const { device, native } = useMobileDevice();
+  const { device, native, webMode } = useMobileDevice();
   const [visible, setVisible] = useState(false);
   const [dragOffset, setRawDragOffset] = useState(0);
   const [isDragging, setDragging] = useState(false);
   const [focusedElement, setFocusedElement] = useState<HTMLElement | null>(null);
-  const fullHeight = native ? 0 : device.geometry.keyboard.height;
+  const fullHeight = native || webMode ? 0 : device.geometry.keyboard.height;
   const setDragOffset = (offset: number) => {
     setRawDragOffset(Math.max(0, Math.min(fullHeight, offset)));
   };
@@ -60,7 +60,7 @@ export function KeyboardProvider({ children }: PropsWithChildren) {
       setDragging,
       show: (element) => {
         setFocusedElement(element ?? null);
-        if (native) return;
+        if (native || webMode) return;
         setRawDragOffset(0);
         setDragging(false);
         setVisible(true);
@@ -72,7 +72,7 @@ export function KeyboardProvider({ children }: PropsWithChildren) {
         setVisible(false);
       },
     }),
-    [dragOffset, focusedElement, fullHeight, isDragging, native, visible],
+    [dragOffset, focusedElement, fullHeight, isDragging, native, visible, webMode],
   );
 
   return <KeyboardContext.Provider value={value}>{children}</KeyboardContext.Provider>;
@@ -90,8 +90,18 @@ export function useKeyboard() {
 
 export function useKeyboardInsets() {
   const keyboard = useKeyboard();
-  const { device, native } = useMobileDevice();
+  const { device, native, webMode } = useMobileDevice();
   if (native) {
+    return {
+      keyboardHeight: 0,
+      keyboardFullHeight: 0,
+      keyboardDragging: false,
+      bottomInset: device.geometry.safeArea.bottom,
+      availableHeight: device.geometry.screen.height - device.geometry.safeArea.bottom,
+      isKeyboardVisible: false,
+    };
+  }
+  if (webMode) {
     return {
       keyboardHeight: 0,
       keyboardFullHeight: 0,

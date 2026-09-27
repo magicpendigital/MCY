@@ -20,13 +20,13 @@ export function MobileRuntime({ children }: PropsWithChildren) {
 }
 
 function RuntimeContent({ children }: PropsWithChildren) {
-  const { device, native } = useMobileDevice();
+  const { device, native, webMode } = useMobileDevice();
 
   useEffect(() => {
     if (!native) return;
     void NativeStatusBar.setOverlaysWebView({ overlay: false });
     void NativeStatusBar.setStyle({ style: NativeStatusBarStyle.Light });
-    void NativeStatusBar.setBackgroundColor({ color: "#f6f0e8" });
+    void NativeStatusBar.setBackgroundColor({ color: "#FFFCF7" });
     if (device.platform === "ios") {
       void NativeKeyboard.setResizeMode({ mode: NativeKeyboardResize.Native });
     }
@@ -34,17 +34,17 @@ function RuntimeContent({ children }: PropsWithChildren) {
 
   return (
     <>
-      {!native && <KeyboardPreview />}
-      {!native && <StatusBar />}
+      {!native && !webMode && <KeyboardPreview />}
+      {!native && !webMode && <StatusBar />}
       <MobileAppViewport>{children}</MobileAppViewport>
-      {!native && <HomeIndicator />}
-      {!native && <KeyboardDock />}
+      {!native && !webMode && <HomeIndicator />}
+      {!native && !webMode && <KeyboardDock />}
     </>
   );
 }
 
 function MobileAppViewport({ children }: PropsWithChildren) {
-  const { device } = useMobileDevice();
+  const { device, webMode } = useMobileDevice();
   const keyboard = useKeyboard();
 
   return (
@@ -53,6 +53,7 @@ function MobileAppViewport({ children }: PropsWithChildren) {
       data-keyboard-visible={keyboard.visible ? "true" : "false"}
       data-native={Capacitor.isNativePlatform() ? "true" : "false"}
       data-platform={device.platform}
+      data-runtime-mode={webMode ? "web" : "simulator"}
       data-testid="mobile-app-viewport"
     >
       {children}

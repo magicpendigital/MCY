@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "check:runtime": "node scripts/check-mobile-runtime.mjs",
+    "check:bundle-secrets": "node scripts/check-client-bundle-secrets.mjs",
+    "assets:android": "node scripts/generate-brand-android-assets.mjs",
     "update:runtime-lock": "node scripts/update-mobile-runtime-lock.mjs",
     "test:runtime": "playwright test",
     "test:sites": "node --test tests/sites-worker.test.mjs",

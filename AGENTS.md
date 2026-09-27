@@ -1,5 +1,12 @@
 # Mobile Prototype Agent Guide
 
+## MCY skills and change review — active 2026-09-27
+
+- For any MCY feature, data, media, runtime, or release change, read [mcy-change-review](skills/mcy-change-review/SKILL.md) and select evidence by the actual diff. For learner-facing UI, copy, or visual assets also read [mcy-brand-ux](skills/mcy-brand-ux/SKILL.md). These repository skills travel with MCY; unrelated `nilaza-*` skills describe a different application and do not govern this one.
+- [Implementation plan](analyse/MCY_IMPLEMENTATION_PLAN_2026-09-27.md) orders the approved UX direction and proposed future gates. Its phases are not evidence that a feature has shipped. The 2026-09-27 request authorized this plan and repository skill/review-guidance updates; it did not itself publish media, enable AI, or release production features. Later explicit user instructions set later scope.
+- On each change, compare the latest explicit user decision, this guide, current source/configuration and dated proposals. Update or mark superseded instructions in the same change when a durable decision changes. Recheck provider limits, prices, external account state, and actual test availability before acting; do not carry dated snapshots forward as live facts.
+- A skill or checklist cannot guarantee zero defects or secure a repository by itself. Record PASS/FAIL/CHƯA CHẠY evidence and residual risk. CI, required checks, protected branch/reviewer rules and restricted deploy/database permissions are separate enforcement layers; do not claim they are active without verifying them.
+
 ## MCY product direction — confirmed 2026-09-24
 
 - The primary experience is daily check-in → a short AI conversation → a concrete practice plan for today → practice → honest reflection → a better-informed next choice.
@@ -11,7 +18,7 @@
 
 ## Learner platform scope — confirmed 2026-09-26
 
-- Keep the existing browser experience inside the iPhone / Pixel simulator as the review surface and verify both presets. Also package the same learner app as a fullscreen native Capacitor app in P1; do not confuse the simulator shell with native distribution. Optimize the wide web UI in a later phase.
+- Keep the existing browser experience inside the iPhone / Pixel simulator as the review surface and verify both presets. On narrow mobile browsers, open the same learner app without the device frame or simulated status/keyboard chrome; `?mode=review` keeps the simulator and picker, while `?mode=web` explicitly forces the frameless browser surface. Also package the same learner app as a fullscreen native Capacitor app in P1; do not confuse the simulator shell with native distribution. Optimize the wide web UI in a later phase.
 - Deploy the learner web build to Vercel. Install the Android debug build on the user's connected Android phone; prepare the iOS project, URL scheme, and data configuration for later real-iPhone testing.
 - The initial P1 backend scope was Supabase email authentication, learner profile, append-only consent evidence, and explicitly consented check-ins. On 2026-09-26 the user expanded the next P1 step to a staging-only, invite-gated teacher trial for private lesson drafts and media uploads. AI inference, learner-visible publishing, session/run/reflection sync, commerce, support/data-request processing, and production release remain out of scope until their API/content/policy gates are approved.
 - The public Supabase publishable key may ship in the client. Never put a service-role/secret key in Vite variables, web assets, or native bundles. Keep build-time Supabase URL/key configuration in ignored `.env.local` for local/native builds and the Vercel project environment for hosted builds.
@@ -22,8 +29,9 @@
 - Prepare a staging-only, invite-only teacher pilot so trial teachers can create lesson drafts and upload private media for review. Do not expose drafts in the learner catalog or publish them from the teacher account.
 - Teacher role grants and teacher-profile activation must be server-controlled and auditable. A user must never create or elevate their own teacher role through profile fields or direct table writes. Require a verified owner to issue invitations; assign an independent reviewer before any publish gate is implemented.
 - Store trial media in a private bucket and issue narrowly scoped, short-lived upload/download access. Keep uploads staged until content type/size, ownership, rights evidence, and security scanning are addressed. Teachers must have no learner-record access by default.
-- The current `mcy-staging` project is on the Free plan (50 MB maximum file size and 1 GB storage). Keep any first trial under that cap and treat it as non-production test content. Do not upgrade the plan or create paid storage without explicit user direction.
-- A confirmed staging test account was bootstrapped with all nine global application roles on 2026-09-26, with a system audit event; keep its email out of committed documentation. No active teacher profile, teacher API, private media bucket, or external teacher roster exists yet. Before invitations or real uploads, confirm the teacher roster, permitted media types/typical file size, and the privacy/rights statement shown to teachers.
+- On 2026-09-26, `mcy-staging` was on the Free plan with a reported 50 MB/file and 1 GB storage limit. Recheck quota and usage before an upload; treat any first trial as non-production test content. Do not upgrade the plan or create paid storage without explicit user direction.
+- On 2026-09-26, a staging test account was bootstrapped with all nine global application roles and a system audit event; keep its email out of committed documentation. At that date no active teacher profile, teacher API, private media bucket, or external teacher roster existed. Recheck current state before invitations or real uploads and confirm roster, file types/sizes and teacher privacy/rights statement.
+- The migration `20260925163500_harden_mcy_schema.sql` permits authenticated self-writes to `public.teachers` by RLS policy, although server-controlled teacher activation is the intended boundary. Check live ACL/RLS and prohibit self-activation before any teacher pilot; do not assume the migration name means this issue is solved.
 
 ## Durable visual direction — confirmed 2026-09-25
 
@@ -32,22 +40,14 @@
 - Preserve the newer product loop by placing the short AI conversation between the concept's check-in and today's recommendation. This interaction must use the same visual language, not a generic chat UI.
 - Concept imagery and trend values are illustrative. The prototype must not label a body region as improved or draw measured progress without user-entered feedback; unselected, unchanged, worse, and skipped responses remain distinct.
 
-## Brand direction to test — 2026-09-25
+## Brand direction — current decision and research hypotheses
 
-- Vietnam-facing name: **Một chút yoga**. International name hypothesis: **A Little Yoga**. Use one shared symbol, palette, photography and voice across both; do not treat the English name as validated yet.
-- Vietnamese slogan: **Một chút yoga, vạn chút an yên**. Proposed English adaptation: **A little yoga. A little more peace.** The English line is an adaptation of meaning, not a literal translation.
+- Vietnam-facing name: **Một chút yoga**. English-facing name selected by the user on 2026-09-27: **A Little Yoga**. Use one shared symbol, palette, photography and voice across both; validate broader international positioning before release.
+- Vietnamese slogan corrected by the user on 2026-09-27: **Vạn chút an yên**, shortened from **Một chút yoga, vạn chút an yên**. English slogan selected by the user on 2026-09-27: **A little more peace**. These names and slogans are used in the locale-aware welcome and app header; the remaining English interface is still incomplete and internal.
 - The invitation **Make room for a little yoga.** is a candidate campaign line. Validate whether English-speaking users read “little” as approachable rather than children’s yoga or only very short sessions before committing internationally.
-- On 2026-09-25, the user questioned why the logo must use a leaf and asked whether another symbol could work. Treat the leaf as a candidate from the visual concept, not a finalized brand requirement. Explore and compare non-leaf symbols against it while preserving the current prototype until a symbol is selected.
-- The user then supplied a pale-sage logo reference showing a gender-neutral seated yoga figure with a small sprout above the head and a handwritten wordmark. Explore this as a new brand candidate. Evaluate it across print/social media, in-app identity, app icons, splash and loading motion, and vector production. Keep the original artwork as a visual reference, simplify the mark for small sizes, and do not treat the reference wordmark or the new symbol as finalized without selection and validation.
-- The user found the full and compact seated marks inconsistent because their line treatments differed, and read the two leaves above the head as a hair bow. New logo explorations should use one consistent monoline treatment and omit the top sprout unless separately validated.
-- The user then requested another exploration centered on a leaf or sprout. Test these as standalone plant symbols, not attached to a human head. Compare options using the same monoline geometry at all sizes and on both light and dark backgrounds; no logo direction is approved yet.
-- The user asked whether the asymmetric sprout could be stylized to evoke a yoga pose. Explore this through the sprout's own posture and base while retaining a clear plant silhouette and the same monoline system; do not imply a final approval.
-- The user selected “Nghiêng thở” as the direction to refine, but found the first sketch too heavy, with thick strokes and insufficient grace or immediate visual impact. Refine that sprout's stroke, proportions, curvature, and negative space while preserving its recognizable plant posture; selection of the direction is not approval of a final logo.
-- The user requested three new fine-line concepts: a seated meditation pose, a tree that suggests half of a seated meditator, and a hybrid. Keep the linework refined, professional, and clean at small sizes; this remains an exploration, not final logo approval.
-- The user now wants the leaf-and-meditator hybrid refined in two possible ways: a leaf canopy sheltering the seated figure, or a leaf replacing the head and showing upward growth. Explore both with thin, clean vector lines and do not treat either as approved.
-- The user then clarified that the yoga-pose figure concept does not match their intent and invited abstract ideas. Shift the next logo exploration to abstract marks; do not keep forcing a literal person-in-pose silhouette.
+- Earlier leaf, sprout and seated-figure explorations were candidates and are superseded for this phase by the chosen abstract working mark. Do not apply their old construction instructions to current UI or restart those explorations without a new request.
 - On 2026-09-26, the user selected **Khoảng mở** as the working mark for this phase. Use the same open arc and point geometry across light/dark variants, the app icon, in-app mark, and brand motion. This selection guides the current handoff and prototype, but does not establish trademark clearance or permanently close future brand validation.
-- Use the supplied brand guidelines, design tokens, and motion specification as the implementation handoff. Keep “A Little Yoga” and its campaign language as research hypotheses until tested with English-speaking users.
+- Use the supplied brand guidelines, design tokens, and motion specification as the implementation handoff. The campaign invitation remains a hypothesis until tested with English-speaking users.
 
 ## Check-in and journey prototype direction — approved 2026-09-25
 
@@ -62,19 +62,37 @@
 - Use transparent upper-body assets with the same head-through-upper-thigh framing for neutral, feminine, and masculine display preferences. The neck, shoulders, upper back, and lower back must remain visible; keep the map markers aligned on every illustration and place left/right shoulder markers from the back-view user's perspective.
 - Use the warm ivory app canvas behind the transparent figures so no image rectangle appears. Keep check-in and journey layouts responsive to short landscape viewports; prefer a two-column landscape layout over locking mobile orientation.
 
+## UI/UX review feedback — 2026-09-26
+
+- The user reported incomplete brand-kit application, missing branded launcher icons, and broken-looking Vietnamese typography. The 2026-09-27 implementation uses the current Khoảng mở mark for app identity and Roboto with Vietnamese glyph subsets for app-owned UI. Preserve typography checks for diacritics, weights, scale and fallback behavior.
+- The check-in screen did not make below-the-fold controls discoverable. It now uses a two-step flow with a visible scroll cue, explicit step state, one primary next-step action and separate skip/sample actions. Destructive skip confirms before clearing existing region entries.
+- Fixed bottom actions use horizontal insets and an opaque safe-area surface. Keep final content scrollable above the footer, prevent text from showing through at the screen edge, and preserve iOS/Android protected chrome.
+- The 2026-09-26 request asked for analysis and a plan. Later implementation requests may proceed within their explicit scope; this historical plan-only limit is not a standing ban.
+
+## UI/UX plan follow-up — 2026-09-27
+
+- The user accepted the preceding UI/UX direction. The 2026-09-27 prototype implements the two-step check-in, distinct skip meanings, brand/font fixes, inset opaque action surfaces and a mobile-browser mode without device chrome. Keep desktop simulator review available through an explicit review mode.
+- Keep the body-orientation caption outside the illustration bounds with visible separation from both the image and illustration-picker control.
+- The current localization layer supports Vietnamese and an explicitly internal, incomplete English preview on the main learner loop. Reuse the existing profile locale field; do not claim complete English support or add a schema migration unless a concrete data need requires it. Consent, account, support and Journey remain Vietnamese and say so in the UI.
+- The narrow/mobile browser defaults to the unframed app; `?mode=web` forces it and `?mode=review&device=iphone` or `?mode=review&device=pixel-10` preserves the simulator for review. Keep Capacitor native mode separate and verify runtime changes against simulator plus native behavior before changing its lock hashes.
+- Portrait/landscape lesson media, illustrated yoga knowledge and recorded meditation remain future content proposals. AI meditation guidance, teacher publishing, external uploads, new backend scope and production release still require their stated authorization and safety gates.
+- User-supplied lesson source folder: `D:\nilaza\documents`. Local metadata inspection found 38 portrait MOV files, mostly 1080x1920 (one 1080x1918), about 17–63 seconds each and 551 MB total. Metadata is not a content, instructional-quality, rights, or codec-playback review. Do not upload, transcribe, translate, or send these files to AI services based on this planning request.
+- Preserve the iPhone/Pixel review surface. The actual-mobile-browser presentation mode was implemented in the authorized 2026-09-27 runtime change; hiding the bezel alone is insufficient because viewport, safe areas and keyboard behavior also differ.
+- The user requested a comparison of self-hosting and embedded video platforms such as YouTube. Treat provider choices and budgets as proposals; that analysis did not authorize uploading/publishing teacher videos, subscribing to paid services, or changing staging privacy gates.
+
 ## Prototype Instructions
 
 In ChatGPT Work Mode, run `sites-preview start "$PWD"`, open `http://terminal.local:4173/` in the cloud browser, and verify the rendered app and its primary interactions. Keep that preview open and tell the user to inspect it in the cloud browser; do not present the local URL as a user-facing chat link. In Codex Desktop, run the local server yourself, open the preview in the in-app browser, and provide the clickable local URL. Do not deploy to Sites unless the user explicitly asks to share, publish, or deploy. Do not give the user server-start instructions when you can run it.
 
 Before planning or implementing any mobile-app change, read this `AGENTS.md` in full. It is the source of truth for the template's runtime and component guidance.
 
-Before making substantial visual changes, use the Product Design plugin's `get-context` skill when the visual source is unclear or no longer matches the current goal. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.
+Before making substantial visual changes, inspect the current brand/design files and user-provided references; when context remains unclear, use an available Product Design audit or context capability. Do not depend on a `get-context` skill unless it actually exists. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.
 
 When implementing from a selected generated mock, treat that image as the source of truth for layout, component anatomy, density, spacing, color, typography, visible content, and hierarchy.
 
 ## Editing Boundary
 
-- Build app-specific UI in `src/Prototype.tsx` and `src/prototype.css`.
+- Build ordinary app-specific UI in `src/Prototype.tsx` and `src/prototype.css`. Authorized i18n, media, web-mode or native work that genuinely needs other files must define that scope and its checks explicitly; this sentence alone is not permission to change protected runtime.
 - Treat `src/App.tsx`, `src/main.tsx`, `src/styles.css`, `src/mobile/`, `public/assets/iphone/`, `public/assets/android/`, `public/assets/status/`, `vite.config.ts`, `worker/index.js`, and `scripts/prepare-sites-build.mjs` as protected runtime files. Do not edit, replace, remove, or recreate them unless the user explicitly asks to change the mobile runtime itself. For an explicit runtime change, update the affected lock hashes only after verifying the new runtime behavior.
 - Run `npm run check:runtime` before preview or handoff. If it fails, restore the protected runtime instead of weakening or bypassing the check.
 - `npm run build` preserves the mobile runtime and prepares the static Cloudflare Worker output required by Sites. Before a Sites handoff, confirm `dist/client/index.html`, `dist/server/index.js`, `dist/.openai/hosting.json`, and source `.openai/hosting.json` exist, then run `npm run test:sites`. Do not replace this project with a Vinext starter.

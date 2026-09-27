@@ -36,7 +36,7 @@ These are production-ready animation briefs. Use Concept A in the app; retain B 
 | 1.20–1.70 s | Vietnamese wordmark fades in; slogan follows after a 120 ms delay. |
 | 1.70–3.60 s | Quiet still hold for social, film title, or teacher content. |
 
-Use the slogan “Một chút yoga, vạn chút an yên”. For English work, label the name and line as a research hypothesis.
+Use “Vạn chút an yên” for the Vietnamese lockup and “A little more peace” for the English lockup. The English name is “A Little Yoga”. The earlier full Vietnamese line is historical; broader English UI copy remains an internal preview pending localization review.
 
 ### C. Open on the word — content intro
 

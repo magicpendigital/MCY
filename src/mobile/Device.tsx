@@ -48,6 +48,7 @@ type MobileDeviceContextValue = {
   deviceId: MobileDeviceId;
   setDeviceId: (deviceId: MobileDeviceId) => void;
   native: boolean;
+  webMode: boolean;
 };
 
 const MobileDeviceContext = createContext<MobileDeviceContextValue | null>(null);
@@ -56,8 +57,13 @@ export function MobileDeviceProvider({ children }: PropsWithChildren) {
   const native = Capacitor.isNativePlatform();
   const platform = Capacitor.getPlatform();
   const nativeDeviceId: MobileDeviceId = platform === "ios" ? "iphone" : "pixel-10";
-  const [previewDeviceId, setPreviewDeviceId] = useState<MobileDeviceId>("iphone");
+  const params = typeof window === "undefined" ? new URLSearchParams() : new URLSearchParams(window.location.search);
+  const forcedReview = params.get("mode") === "review" || params.has("device");
+  const forcedWeb = params.get("mode") === "web";
+  const [webMode, setWebMode] = useState(() => !native && shouldUseMobileWebView(forcedWeb, forcedReview));
+  const [previewDeviceId, setPreviewDeviceId] = useState<MobileDeviceId>(() => params.get("device") === "pixel-10" ? "pixel-10" : "iphone");
   const [viewport, setViewport] = useState(() => getNativeViewport());
+  const [webViewport, setWebViewport] = useState(() => getWebViewport());
   const deviceId = native ? nativeDeviceId : previewDeviceId;
   const setDeviceId = (next: MobileDeviceId) => { if (!native) setPreviewDeviceId(next); };
   const baseDevice = mobileDevices[deviceId];
@@ -71,21 +77,40 @@ export function MobileDeviceProvider({ children }: PropsWithChildren) {
           keyboard: { height: 0 },
         },
       }
-    : baseDevice;
+    : webMode
+      ? {
+          ...baseDevice,
+          geometry: {
+            device: { width: webViewport.width, height: webViewport.height },
+            screen: { x: 0, y: 0, width: webViewport.width, height: webViewport.height, radius: 0 },
+            safeArea: { top: webViewport.safeTop, bottom: webViewport.safeBottom },
+            keyboard: { height: 0 },
+          },
+        }
+      : baseDevice;
 
   useEffect(() => {
-    if (!native) return;
-    const update = () => setViewport(getNativeViewport());
+    if (native) return;
+    const update = () => {
+      setWebMode(forcedWeb || (!forcedReview && shouldUseMobileWebView(false, false)));
+      setViewport(getNativeViewport());
+      setWebViewport(getWebViewport());
+    };
+    const media = window.matchMedia("(max-width: 600px), ((pointer: coarse) and (max-height: 600px))");
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
+    window.visualViewport?.addEventListener("resize", update);
+    media.addEventListener("change", update);
     return () => {
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
+      window.visualViewport?.removeEventListener("resize", update);
+      media.removeEventListener("change", update);
     };
-  }, [native]);
+  }, [forcedReview, forcedWeb, native]);
   const value = useMemo(
-    () => ({ device, deviceId, setDeviceId, native }),
-    [device, deviceId, native],
+    () => ({ device, deviceId, setDeviceId, native, webMode }),
+    [device, deviceId, native, webMode],
   );
 
   return <MobileDeviceContext.Provider value={value}>{children}</MobileDeviceContext.Provider>;
@@ -99,6 +124,26 @@ function getNativeViewport() {
   return { width: window.innerWidth, height: window.innerHeight, safeTop, safeBottom };
 }
 
+function getWebViewport() {
+  if (typeof window === "undefined") return { width: 393, height: 852, safeTop: 0, safeBottom: 0 };
+  const root = getComputedStyle(document.documentElement);
+  const safeTop = Number.parseFloat(root.getPropertyValue("--web-safe-area-top")) || 0;
+  const safeBottom = Number.parseFloat(root.getPropertyValue("--web-safe-area-bottom")) || 0;
+  const visual = window.visualViewport;
+  return {
+    width: Math.round(visual?.width ?? window.innerWidth),
+    height: Math.round(visual?.height ?? window.innerHeight),
+    safeTop,
+    safeBottom,
+  };
+}
+
+function shouldUseMobileWebView(forcedWeb: boolean, forcedReview: boolean) {
+  if (typeof window === "undefined" || forcedReview) return false;
+  if (forcedWeb) return true;
+  return window.matchMedia("(max-width: 600px), ((pointer: coarse) and (max-height: 600px))").matches;
+}
+
 export function useMobileDevice() {
   const context = useContext(MobileDeviceContext);
 
@@ -110,9 +155,9 @@ export function useMobileDevice() {
 }
 
 export function DevicePicker() {
-  const { device, deviceId, setDeviceId, native } = useMobileDevice();
+  const { device, deviceId, setDeviceId, native, webMode } = useMobileDevice();
 
-  if (native) return null;
+  if (native || webMode) return null;
 
   return (
     <DropdownMenu.Root>

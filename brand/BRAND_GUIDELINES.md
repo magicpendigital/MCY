@@ -6,9 +6,9 @@
 ## Brand core
 
 - **Vietnam-facing name:** Một chút yoga
-- **English name hypothesis:** A Little Yoga. Validate comprehension and preference with English-speaking users before launch.
-- **Vietnamese slogan:** Một chút yoga, vạn chút an yên.
-- **English adaptation:** A little yoga. A little more peace. This carries the intended meaning; it is not a literal translation.
+- **English-facing name:** A Little Yoga. The user selected this name on 27 September 2026. Validate comprehension and preference with English-speaking users before international launch.
+- **Vietnamese slogan:** Vạn chút an yên. Corrected by the user on 27 September 2026, shortened from “Một chút yoga, vạn chút an yên”; supersedes the mistaken interim wording. Applied to the learner welcome UI and web metadata in the current prototype implementation.
+- **English slogan:** A little more peace. The user selected this concise line on 27 September 2026. The rest of the English interface remains an incomplete internal preview and needs translation and editorial review before release.
 - **Campaign invitation to test:** Make room for a little yoga.
 - **Promise:** Help people find one fitting yoga practice for today and continue at a pace that feels their own.
 - **Personality:** Calm, kind, grounded, quietly optimistic, clear, and never judgmental.
@@ -49,7 +49,7 @@ Default to forest ink on warm ivory or white. Use the ivory artwork on solid dee
 - Use the exact vector master and maintain its opening direction.
 - Preserve one-color use for print, embossing, laser marking, and small UI.
 - Pair the Vietnamese mark with the Vietnamese name as the default market expression.
-- Keep the English name and campaign line clearly labeled as hypotheses during research.
+- Use “A Little Yoga” and “A little more peace” as the selected English name and slogan. The campaign invitation remains a research candidate; broader international positioning still needs user validation.
 - Use the mark as a quiet anchor in the welcome screen, app icon, teacher materials, and social avatars.
 
 ### Do not
