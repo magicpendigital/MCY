@@ -134,7 +134,7 @@ button { cursor: pointer; }
 .mcy-reflection-grid .mcy-choice { min-height: 57px; }
 .mcy-note-label { display: flex; flex-direction: column; gap: 5px; margin: 22px 0; color: var(--mcy-ink); font-size: 13px; font-weight: 760; }
 .mcy-note-label small { color: #929c92; font-size: 10px; font-weight: 450; }
-.mcy-note-label textarea { min-height: 88px; padding: 11px; border: 1px solid #dbe3d8; border-radius: 12px; outline-color: #799678; background: var(--mcy-paper); color: var(--mcy-ink); font-size: 12px; line-height: 1.5; resize: vertical; }
+.mcy-note-label textarea { min-height: 88px; padding: 11px; border: 1px solid #dbe3d8; border-radius: 12px; outline-color: #799678; background: var(--mcy-paper); color: var(--mcy-ink); font-size: 16px; line-height: 1.5; resize: vertical; }
 .mcy-journey-summary { display: flex; gap: 13px; align-items: center; margin: 19px 0 27px; padding: 15px; border-radius: 16px; background: #e8eee3; }
 .mcy-journey-summary > strong { color: #4f7153; font: 48px Georgia,serif; }
 .mcy-journey-summary > span { font-size: 13px; font-weight: 780; }
@@ -376,7 +376,7 @@ button { cursor: pointer; }
 .mcy-editor-options.side .mcy-choice { font-size:11px; }
 .mcy-editor-note { display:block; margin:18px 0 16px; color:#344c3b; font-size:13px; font-weight:650; }
 .mcy-editor-note small { color:#899285; font-size:10px; font-weight:400; }
-.mcy-editor-note textarea { display:block; width:100%; min-height:70px; margin-top:8px; padding:11px; border:1px solid #dfe2d8; border-radius:12px; background:#fffdf8; color:#2a3e31; resize:vertical; font-size:12px; }
+.mcy-editor-note textarea { display:block; width:100%; min-height:70px; margin-top:8px; padding:11px; border:1px solid #dfe2d8; border-radius:12px; background:#fffdf8; color:#2a3e31; resize:vertical; font-size:16px; }
 .mcy-region-editor > .mcy-quiet-link { margin:11px auto 0; }
 .mcy-region-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 15px; }
 .mcy-region-list button { display:grid; grid-template-columns:1fr 14px; align-items:center; min-height:55px; padding:8px 10px; border:1px solid #e6e4da; border-radius:12px; background:#fffcf7; color:#314a3b; text-align:left; }

@@ -479,8 +479,8 @@ function Header({ title, back = false }: { title?: string; back?: boolean }) {
     ? ({ "Check-in hôm nay": "Today's check-in", "Cùng chọn buổi tập": "Choose a practice", "Kế hoạch hôm nay": "Today's plan", "Xem trước buổi tập": "Practice preview", "Phản hồi của bạn": "Your reflection" } as Record<string, string>)[title ?? ""] ?? title
     : title;
   useLayoutEffect(() => {
-    const screen = document.querySelector<HTMLElement>("[data-phone-screen]");
-    if (screen) screen.scrollTop = 0;
+    const scroll = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mobile-scroll");
+    if (scroll) scroll.scrollTop = 0;
   }, [flow.current.key]);
   const brandName = msg(locale, "brand.name");
   return <div className="mcy-header">{back ? <button className="mcy-icon-button" aria-label={locale === "en-US" ? "Back" : "Quay lại"} onClick={() => flow.pop()}><ArrowLeftIcon /></button> : <span />}<span className="mcy-header-title" aria-label={localizedTitle ?? brandName}>{brandName}</span><span /></div>;
@@ -972,6 +972,10 @@ function CheckinScreen() {
   const flow = useFlow();
   const { state, update, setState } = useDemo();
   const locale = state.locale;
+  useLayoutEffect(() => {
+    const scroll = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mobile-scroll");
+    if (scroll) scroll.scrollTop = 0;
+  }, [state.checkinStep]);
   const [editing, setEditing] = useState<BodyRegion | null>(null);
   const [editingSide, setEditingSide] = useState<Observation["side"] | undefined>();
   const [pendingStatus, setPendingStatus] = useState<"none_now" | "uncertain" | "skipped" | null>(null);

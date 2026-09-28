@@ -52,11 +52,17 @@ for (const device of ["iphone", "pixel-10"] as const) {
 
     await page.getByRole("button", { name: "Cổ: Chạm để ghi" }).click();
     await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.locator(".mcy-editor-note textarea")).toHaveCSS("font-size", "16px");
     await page.getByRole("button", { name: "Nhẹ", exact: true }).click();
     await page.getByRole("button", { name: "Lưu vùng này" }).click();
+    const checkinScroll = page.locator("[data-testid=flow-current] .mobile-scroll");
+    await checkinScroll.evaluate((element) => element.scrollTo({ top: element.scrollHeight, behavior: "instant" }));
     await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
+    await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu?" })).toBeVisible();
+    await expect.poll(() => checkinScroll.evaluate(element => element.scrollTop)).toBe(0);
     await page.getByRole("button", { name: "5 phút", exact: true }).click();
     await page.getByRole("button", { name: "Quay lại cảm nhận cơ thể" }).click();
+    await expect.poll(() => checkinScroll.evaluate(element => element.scrollTop)).toBe(0);
     await expect(page.locator(".mcy-region-list button.selected")).toContainText("Cổ");
     await expect(page.locator(".mcy-region-list button.selected")).toContainText("Nhẹ");
 
