@@ -7,6 +7,7 @@
     "check:runtime": "node scripts/check-mobile-runtime.mjs",
     "check:bundle-secrets": "node scripts/check-client-bundle-secrets.mjs",
     "test:teacher-acl": "node --env-file-if-exists=.env.local scripts/test-teacher-acl-postgrest.mjs",
+    "test:checkin-rpc-anon": "node --env-file-if-exists=.env.local scripts/test-checkin-rpc-anon.mjs",
     "assets:android": "node scripts/generate-brand-android-assets.mjs",
     "update:runtime-lock": "node scripts/update-mobile-runtime-lock.mjs",
     "test:runtime": "playwright test",

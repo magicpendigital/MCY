@@ -1,4 +1,34 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import { bodyRegionCodes, decodeBodyRegionCode, removeBodyObservation, replaceBodyObservation } from "../src/bodyRegions";
+import { toCheckinObservationRpcPayload } from "../src/backend/learnerData";
+
+test("body-region contract keeps locale-neutral regions, sides and bilateral edits distinct", () => {
+  expect(bodyRegionCodes("elbow", "left")).toEqual(["elbow_left"]);
+  expect(bodyRegionCodes("knee", "both")).toEqual(["knee_left", "knee_right"]);
+  expect(bodyRegionCodes("foot", "unspecified")).toEqual(["foot_unspecified"]);
+  expect(decodeBodyRegionCode("forearm_wrist_right")).toEqual({ region: "forearm_wrist", side: "right" });
+  expect(decodeBodyRegionCode("shoulder_left")).toEqual({ region: "shoulder", side: "left" });
+
+  const left = { region: "elbow", side: "left", level: "Moderate" } as const;
+  const right = { region: "elbow", side: "right", level: "Mild" } as const;
+  const both = { region: "elbow", side: "both", level: "Mild" } as const;
+  const paired = replaceBodyObservation([left], right, "right");
+  expect(paired).toEqual([left, right]);
+  expect(replaceBodyObservation(paired, both, "left")).toEqual([both]);
+  expect(removeBodyObservation(paired, "elbow", "left")).toEqual([right]);
+  expect(bodyRegionCodes("upper_back", "unspecified")).toEqual(["upper_back"]);
+  expect(toCheckinObservationRpcPayload([{
+    regionCode: "elbow_left",
+    state: "discomfort",
+    level: 2,
+    note: "typing",
+  }])).toEqual([{
+    region_code: "elbow_left",
+    state: "discomfort",
+    level: 2,
+    note: "typing",
+  }]);
+});
 
 async function activate(target: Locator, touch: boolean) {
   if (touch) await target.tap();
@@ -90,6 +120,38 @@ for (const device of ["iphone", "pixel-10"] as const) {
     await expect(page.locator(".mcy-alert")).toContainText("không tự gợi bài");
   });
 }
+
+test("full-body check-in covers office-work areas and preserves distinct sides", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/?mode=web");
+  await openGuestCheckin(page);
+  await expect(page.locator(".mcy-checkin-illustration .mcy-body-art img")).toHaveAttribute("src", "/assets/body-map-feminine-full.png");
+  await expect(page.getByTestId("body-orientation")).toContainText("Toàn thân");
+
+  await page.locator(".mcy-body-groups button").nth(1).click();
+  await expect(page.locator(".mcy-region-list")).toContainText("Khuỷu tay");
+  await page.locator(".mcy-region-list button").filter({ hasText: "Khuỷu tay" }).click();
+  await page.getByRole("button", { name: "Trái", exact: true }).click();
+  await page.getByRole("button", { name: "Vừa", exact: true }).click();
+  await page.getByRole("button", { name: "Lưu vùng này" }).click();
+  await page.locator('.mcy-map-pin[aria-label^="Khuỷu tay phải:"]').click();
+  await page.getByRole("button", { name: "Phải", exact: true }).click();
+  await page.getByRole("button", { name: "Nhẹ", exact: true }).click();
+  await page.getByRole("button", { name: "Lưu vùng này" }).click();
+  await expect(page.locator(".mcy-region-list button").filter({ hasText: "Khuỷu tay" })).toContainText("Trái · Vừa / Phải · Nhẹ");
+
+  await page.locator(".mcy-body-groups button").nth(2).click();
+  await page.locator(".mcy-region-list button").filter({ hasText: "Đầu gối" }).click();
+  await page.getByRole("button", { name: "Hai bên", exact: true }).click();
+  await page.getByRole("button", { name: "Nhẹ", exact: true }).click();
+  await page.getByRole("button", { name: "Lưu vùng này" }).click();
+  await expect(page.locator(".mcy-region-list button").filter({ hasText: "Đầu gối" })).toContainText("Hai bên · Nhẹ");
+
+  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
+  await expect(page.locator(".mcy-checkin-summary")).toContainText("Khuỷu tay · Trái · Vừa");
+  await expect(page.locator(".mcy-checkin-summary")).toContainText("Khuỷu tay · Phải · Nhẹ");
+  await expect(page.locator(".mcy-checkin-summary")).toContainText("Đầu gối · Hai bên · Nhẹ");
+});
 
 test("mobile browser defaults to an unframed app, while review mode retains the simulator", async ({ browser }) => {
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });

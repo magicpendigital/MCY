@@ -15,6 +15,7 @@ import {
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
 import { authRedirectUrl, backendConfigured, clientChannel, supabase } from "./backend/supabase";
+import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, decodeBodyRegionCode, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
 import {
   deleteLearnerCheckin,
   emptyConsentState,
@@ -32,11 +33,10 @@ import {
 } from "./backend/learnerData";
 
 type Energy = "Rất thấp" | "Thấp" | "Bình thường" | "Khá ổn" | "Tràn đầy";
-type BodyRegion = "Cổ" | "Vai" | "Lưng trên" | "Lưng dưới";
 type BodyStyle = "neutral" | "feminine" | "masculine";
 type BodyLevel = "Không khó chịu" | "Nhẹ" | "Vừa" | "Nhiều";
 type BodyStatus = "reported" | "none_now" | "uncertain" | "skipped" | null;
-type Observation = { region: BodyRegion; side: "Không rõ bên" | "Trái" | "Phải" | "Hai bên"; level: BodyLevel | null; status: "reported" | "uncertain"; note: string };
+type Observation = { region: BodyRegion; side: BodySide; level: BodyLevel | null; status: "reported" | "uncertain"; note: string };
 type Intent = "Thả lỏng" | "Bắt nhịp" | "Tập trung";
 type DialogueChoice = "Nhiều hướng dẫn" | "Nhịp chậm" | "Ít lời" | "Không nằm sàn" | null;
 type Outcome = "Dễ chịu hơn" | "Như cũ" | "Khó chịu hơn" | "Chưa rõ" | null;
@@ -124,7 +124,7 @@ type DemoState = {
 
 const initialState: DemoState = {
   locale: "vi-VN", checkinStep: 1,
-  day: 1, minutes: 10, energy: null, regions: [], bodyStyle: "neutral", bodyStatus: null, preObservations: [], postObservations: [], postBodyStatus: null, intent: "Bắt nhịp",
+  day: 1, minutes: 10, energy: null, regions: [], bodyStyle: "feminine", bodyStatus: null, preObservations: [], postObservations: [], postBodyStatus: null, intent: "Bắt nhịp",
   dialogueChoice: null, dialogueText: "", unrecognizedText: "",
   chosenPlanId: null, outcome: null, pace: null, note: "",
   endedEarly: false, rememberPace: true, usePreviousFeedback: false, history: [],
@@ -162,11 +162,11 @@ function planReason(state: DemoState) {
   if (previous?.pace === "Hơi nhanh" && state.minutes >= 9) return "Bạn từng phản hồi nhịp hơi nhanh. Lần này ưu tiên buổi chậm hơn, trong thời gian bạn có.";
   if (state.dialogueChoice === "Nhịp chậm") return "Bạn muốn nhịp chậm hơn và có đủ thời gian cho buổi này.";
   if (state.minutes >= 15 && (state.energy === "Khá ổn" || state.energy === "Tràn đầy")) return "Bạn có thêm thời gian và muốn một buổi có nhịp đều.";
-  return (state.regions.length ? "Bạn đã đánh dấu " + state.regions.join(", ").toLowerCase() + ". " : "") + "Bạn muốn " + state.intent.toLowerCase() + ", có " + state.minutes + " phút" + (state.energy ? " và năng lượng " + state.energy.toLowerCase() : "") + ". Đây là lựa chọn nội dung, không phải đánh giá sức khỏe.";
+  return (state.regions.length ? "Bạn đã đánh dấu " + state.regions.map(region => regionLabel("vi-VN", region).toLowerCase()).join(", ") + ". " : "") + "Bạn muốn " + state.intent.toLowerCase() + ", có " + state.minutes + " phút" + (state.energy ? " và năng lượng " + state.energy.toLowerCase() : "") + ". Đây là lựa chọn nội dung, không phải đánh giá sức khỏe.";
 }
 function unsupportedPlanRequest(state: DemoState) {
   if (state.dialogueChoice === "Không nằm sàn") return "Bộ nội dung mẫu chưa xác nhận buổi nào đáp ứng yêu cầu “không nằm sàn”.";
-  if (state.regions.some(region => region !== "Cổ" && region !== "Vai")) return `Bộ nội dung mẫu chưa có buổi được xác nhận phù hợp với ${state.regions.filter(region => region !== "Cổ" && region !== "Vai").join(", ").toLowerCase()}.`;
+  if (state.regions.some(region => region !== "neck" && region !== "shoulder")) return `Bộ nội dung mẫu chưa có buổi được xác nhận phù hợp với ${state.regions.filter(region => region !== "neck" && region !== "shoulder").map(region => regionLabel(currentAppLocale(), region).toLowerCase()).join(", ")}.`;
   if (state.dialogueChoice === "Nhịp chậm" && state.minutes < 9) return "Trong khoảng 5 phút, bộ nội dung mẫu chưa có buổi được xác nhận có nhịp chậm hơn.";
   return null;
 }
@@ -180,18 +180,27 @@ function BrandMark({ animated = false }: { animated?: boolean }) {
 function Brand({ locale, compact = false }: { locale: AppLocale; compact?: boolean }) {
   return <span className={compact ? "mcy-brand compact" : "mcy-brand mcy-brand-animated"}><BrandMark animated={!compact} /><span className="mcy-brand-wordmark">{msg(locale, "brand.name")}</span></span>;
 }
-const BODY_REGIONS: BodyRegion[] = ["Cổ", "Vai", "Lưng trên", "Lưng dưới"];
 const BODY_LEVELS: BodyLevel[] = ["Không khó chịu", "Nhẹ", "Vừa", "Nhiều"];
 const BODY_STYLES: { id: BodyStyle; label: string; image: string }[] = [
-  { id: "neutral", label: "Trung tính", image: "/assets/body-map-neutral-upper.png" },
-  { id: "feminine", label: "Hình thể nữ", image: "/assets/body-map-feminine-upper.png" },
-  { id: "masculine", label: "Hình thể nam", image: "/assets/body-map-masculine-upper.png" },
+  { id: "feminine", label: "Hình thể nữ", image: "/assets/body-map-feminine-full.png" },
+  { id: "masculine", label: "Hình thể nam", image: "/assets/body-map-masculine-full.png" },
+  { id: "neutral", label: "Trung tính", image: "/assets/body-map-neutral-full.png" },
 ];
 const REGION_POSITION: Record<BodyRegion, { x: number; y: number }> = {
-  "Cổ": { x: 50, y: 27 }, "Vai": { x: 50, y: 35 },
-  "Lưng trên": { x: 50, y: 47 }, "Lưng dưới": { x: 50, y: 68 },
+  neck: { x: 50, y: 18 }, shoulder: { x: 50, y: 24 },
+  upper_back: { x: 50, y: 32 }, lower_back: { x: 50, y: 43 },
+  upper_arm: { x: 50, y: 30 }, elbow: { x: 50, y: 41 },
+  forearm_wrist: { x: 50, y: 52 }, hand: { x: 50, y: 62 },
+  knee: { x: 50, y: 73 }, foot: { x: 50, y: 94 },
 };
-const SHOULDER_POSITION = { Trái: { x: 35, y: 35 }, Phải: { x: 65, y: 35 } } as const;
+const REGION_SIDE_OFFSET: Partial<Record<BodyRegion, number>> = {
+  shoulder: 16, upper_arm: 20, elbow: 25, forearm_wrist: 29, hand: 27, knee: 8, foot: 7,
+};
+function regionSidePosition(region: BodyRegion, side: BodySide) {
+  if (side === "unspecified" || side === "both" || !isPairedBodyRegion(region)) return REGION_POSITION[region];
+  const offset = REGION_SIDE_OFFSET[region] ?? 14;
+  return { x: 50 + (side === "left" ? -offset : offset), y: REGION_POSITION[region].y };
+}
 const demoEpoch = new Date();
 demoEpoch.setHours(0, 0, 0, 0);
 function dateForDay(day: number) {
@@ -203,7 +212,8 @@ function currentAppLocale(): AppLocale { return typeof document !== "undefined" 
 function prettyDate(iso: string) { const [year, month, day] = iso.split("-").map(Number); return new Intl.DateTimeFormat(currentAppLocale(), { day: "2-digit", month: "2-digit", year: "numeric" }).format(new Date(year, month - 1, day)); }
 function snapshotLabel(snapshot: Snapshot) { return `${prettyDate(snapshot.date)} · ${snapshot.time} · ${snapshot.kind}`; }
 function observationLabel(observation: Observation) {
-  return `${observation.region}${observation.side === "Không rõ bên" ? "" : ` · ${observation.side.toLowerCase()}`} · ${observation.status === "uncertain" ? "Chưa rõ" : observation.level ?? "Chưa ghi"}`;
+  const locale = currentAppLocale();
+  return `${regionLabel(locale, observation.region)}${observation.side === "unspecified" ? "" : ` · ${sideLabel(locale, observation.side).toLowerCase()}`} · ${observation.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : observation.level ?? msg(locale, "checkin.notRecorded")}`;
 }
 function makeSnapshot(day: number, kind: Snapshot["kind"], status: BodyStatus, observations: Observation[], extra: Partial<Snapshot> = {}): Snapshot {
   return { id: crypto.randomUUID(), day, date: dateForDay(day), time: new Date().toLocaleTimeString(currentAppLocale(), { hour: "2-digit", minute: "2-digit" }), kind, status, observations: observations.map(item => ({ ...item })), ...extra };
@@ -215,10 +225,28 @@ function todayLocalDate() {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
 }
 function mapDatabaseObservation(row: LearnerObservation): Observation {
-  const region: BodyRegion = row.region_code === "neck" ? "Cổ" : row.region_code === "upper_back" ? "Lưng trên" : row.region_code === "lower_back" ? "Lưng dưới" : "Vai";
-  const side: Observation["side"] = row.region_code === "shoulder_left" ? "Trái" : row.region_code === "shoulder_right" ? "Phải" : "Không rõ bên";
+  const decoded = decodeBodyRegionCode(row.region_code);
+  if (!decoded) throw new Error(`Unsupported body region from database: ${row.region_code}`);
   const level: BodyLevel | null = row.state === "no_discomfort" ? "Không khó chịu" : row.level === 1 ? "Nhẹ" : row.level === 2 ? "Vừa" : row.level !== null && row.level >= 3 ? "Nhiều" : null;
-  return { region, side, level, status: row.state === "uncertain" || row.state === "skipped" ? "uncertain" : "reported", note: row.note ?? "" };
+  return { ...decoded, level, status: row.state === "uncertain" || row.state === "skipped" ? "uncertain" : "reported", note: row.note ?? "" };
+}
+function observationsFromDatabase(rows: LearnerObservation[]) {
+  const values = rows.map(mapDatabaseObservation);
+  const consumed = new Set<number>();
+  const result: Observation[] = [];
+  values.forEach((item, index) => {
+    if (consumed.has(index)) return;
+    const partnerIndex = item.side === "left" ? values.findIndex((candidate, candidateIndex) =>
+      candidateIndex !== index && !consumed.has(candidateIndex) && candidate.region === item.region
+      && candidate.side === "right" && candidate.level === item.level && candidate.status === item.status && candidate.note === item.note,
+    ) : -1;
+    if (partnerIndex >= 0) {
+      consumed.add(partnerIndex);
+      result.push({ ...item, side: "both" });
+    } else result.push(item);
+    consumed.add(index);
+  });
+  return result;
 }
 function snapshotFromDatabase(row: LearnerCheckin, rows: LearnerObservation[]): Snapshot {
   const date = row.local_date;
@@ -230,7 +258,7 @@ function snapshotFromDatabase(row: LearnerCheckin, rows: LearnerObservation[]): 
     time: new Date(row.created_at).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
     kind: row.capture_type === "standalone" ? "Ghi riêng" : "Trước tập",
     status: (row.body_status as BodyStatus) ?? null,
-    observations: rows.filter(item => item.checkin_id === row.id).map(mapDatabaseObservation),
+    observations: observationsFromDatabase(rows.filter(item => item.checkin_id === row.id)),
   };
 }
 function consentStateForDemo(state: DemoState): ConsentState {
@@ -291,16 +319,11 @@ async function persistProfile(state: DemoState, displayName: string, bodyStyle: 
 function toLearnerCheckinPayload(state: DemoState, captureType: CheckinPayload["captureType"], idempotencyKey: string): CheckinPayload {
   const observations: CheckinPayload["observations"] = [];
   for (const item of state.preObservations) {
-    const sides: { code: CheckinPayload["observations"][number]["regionCode"]; side: Observation["side"] }[] = item.region === "Vai"
-      ? item.side === "Hai bên"
-        ? [{ code: "shoulder_left", side: "Trái" }, { code: "shoulder_right", side: "Phải" }]
-        : [{ code: item.side === "Trái" ? "shoulder_left" : item.side === "Phải" ? "shoulder_right" : "shoulder_unspecified", side: item.side }]
-      : [{ code: item.region === "Cổ" ? "neck" : item.region === "Lưng trên" ? "upper_back" : "lower_back", side: "Không rõ bên" }];
-    for (const { code } of sides) {
+    for (const regionCode of bodyRegionCodes(item.region, item.side)) {
       const clear = item.level === "Không khó chịu";
       const state = item.status === "uncertain" || (!clear && !item.level) ? "uncertain" : clear ? "no_discomfort" : "discomfort";
       observations.push({
-        regionCode: code,
+        regionCode,
         state,
         level: state === "discomfort" ? Math.max(1, BODY_LEVELS.indexOf(item.level!)) : null,
         note: item.note.trim() || null,
@@ -399,43 +422,46 @@ function sampleSnapshots(): Snapshot[] {
   return rows.map((row, index) => ({
     id: `sample-${index}`, day: row.day, date: `2026-10-${String(row.day).padStart(2, "0")}`, time: row.time,
     kind: row.kind, status: row.status ?? "reported", sample: true, outcome: row.outcome, endedEarly: row.endedEarly,
-    observations: row.status === "skipped" ? [] : (["Cổ", "Vai"] as BodyRegion[]).map((region, regionIndex) => ({
-      region, side: region === "Vai" ? "Trái" : "Không rõ bên", level: row.body[regionIndex],
+    observations: row.status === "skipped" ? [] : (["neck", "shoulder"] as BodyRegion[]).map((region, regionIndex) => ({
+      region, side: region === "shoulder" ? "left" : "unspecified", level: row.body[regionIndex],
       status: row.body[regionIndex] === null ? "uncertain" : "reported",
-      note: row.day === 1 && region === "Cổ" ? row.kind === "Sau tập" ? "Sau buổi này thấy nhẹ hơn một chút." : "Cảm thấy căng khi bắt đầu ngày." : row.day === 30 && region === "Cổ" ? "Hôm nay thấy thoải mái hơn khi quay đầu." : "",
+      note: row.day === 1 && region === "neck" ? row.kind === "Sau tập" ? "Sau buổi này thấy nhẹ hơn một chút." : "Cảm thấy căng khi bắt đầu ngày." : row.day === 30 && region === "neck" ? "Hôm nay thấy thoải mái hơn khi quay đầu." : "",
     })),
   }));
 }
-function BodyMap({ observations, bodyStyle, compact = false, onSelect, showAll = true, locale = "vi-VN" }: { observations: Observation[]; bodyStyle: BodyStyle; compact?: boolean; onSelect?: (region: BodyRegion, side?: Observation["side"]) => void; showAll?: boolean; locale?: AppLocale }) {
+function BodyMap({ observations, bodyStyle, compact = false, onSelect, showAll = true, locale = "vi-VN", group }: { observations: Observation[]; bodyStyle: BodyStyle; compact?: boolean; onSelect?: (region: BodyRegion, side?: BodySide) => void; showAll?: boolean; locale?: AppLocale; group?: BodyRegionGroup }) {
   const [imageFailed, setImageFailed] = useState(false);
   const image = BODY_STYLES.find(item => item.id === bodyStyle)?.image ?? BODY_STYLES[0].image;
   useEffect(() => setImageFailed(false), [image]);
-  const points: { key: string; region: BodyRegion; item?: Observation; side?: Observation["side"]; x: number; y: number }[] = [];
-  BODY_REGIONS.forEach(region => {
-    const item = observations.find(entry => entry.region === region);
-    if ((!onSelect || !showAll) && !item) return;
-    if (region !== "Vai") { points.push({ key: region, region, item, ...REGION_POSITION[region] }); return; }
-    if (!item) {
-      if (onSelect) (["Trái", "Phải"] as const).forEach(side => points.push({ key: `Vai-${side}`, region, item, side, ...SHOULDER_POSITION[side] }));
+  const regions = group ? BODY_REGION_GROUPS[group] : BODY_REGIONS;
+  const points: { key: string; region: BodyRegion; item?: Observation; side?: BodySide; x: number; y: number }[] = [];
+  regions.forEach(region => {
+    const entries = observations.filter(entry => entry.region === region);
+    if (!isPairedBodyRegion(region)) {
+      const item = entries[0];
+      if (item || (onSelect && showAll)) points.push({ key: region, region, item, ...REGION_POSITION[region] });
       return;
     }
-    if (item.side === "Hai bên") { (["Trái", "Phải"] as const).forEach(side => points.push({ key: `Vai-${side}`, region, item, side, ...SHOULDER_POSITION[side] })); return; }
-    if (item.side === "Trái" || item.side === "Phải") { points.push({ key: `Vai-${item.side}`, region, item, side: item.side, ...SHOULDER_POSITION[item.side] }); return; }
-    points.push({ key: "Vai-khong-ro", region, item, x: REGION_POSITION.Vai.x, y: REGION_POSITION.Vai.y });
+    const left = entries.find(item => item.side === "left" || item.side === "both");
+    const right = entries.find(item => item.side === "right" || item.side === "both");
+    const unspecified = entries.find(item => item.side === "unspecified");
+    if (left || (onSelect && showAll)) points.push({ key: `${region}-left`, region, item: left, side: "left", ...regionSidePosition(region, "left") });
+    if (right || (onSelect && showAll)) points.push({ key: `${region}-right`, region, item: right, side: "right", ...regionSidePosition(region, "right") });
+    if (unspecified) points.push({ key: `${region}-unspecified`, region, item: unspecified, side: "unspecified", ...regionSidePosition(region, "unspecified") });
   });
   return <div className={`mcy-body-map-v2${compact ? " compact" : ""}`}>
     <div className="mcy-body-art">
-      {imageFailed ? <p className="mcy-body-fallback">{locale === "en-US" ? "The illustration did not load. You can still choose an area from the list." : "Hình minh họa chưa tải. Bạn vẫn có thể chọn vùng trong danh sách."}</p> : <img src={image} alt={locale === "en-US" ? "Upper body illustration, viewed from behind" : "Minh họa phần thân trên nhìn từ phía sau"} onError={() => setImageFailed(true)} />}
+      {imageFailed ? <p className="mcy-body-fallback">{locale === "en-US" ? "The illustration did not load. You can still choose an area from the list." : "Hình minh họa chưa tải. Bạn vẫn có thể chọn vùng trong danh sách."}</p> : <img src={image} alt={locale === "en-US" ? "Full body illustration, viewed from behind" : "Minh họa toàn thân nhìn từ phía sau"} onError={() => setImageFailed(true)} />}
       {!imageFailed && points.map(({ key, region, item, side, x, y }) => {
         const className = `mcy-map-pin${item ? ` is-${item.status === "uncertain" ? "uncertain" : item.level === "Không khó chịu" ? "clear" : item.level === "Nhiều" ? "high" : "reported"}` : ""}`;
         const style = { left: `${x}%`, top: `${y}%` };
-        const label = side ? `${regionLabel(locale, region)} ${sideLabel(locale, side).toLowerCase()}` : regionLabel(locale, region);
+        const label = side && side !== "unspecified" ? `${regionLabel(locale, region)} ${sideLabel(locale, side).toLowerCase()}` : regionLabel(locale, region);
         const marker = item?.status === "uncertain" ? "?" : item?.level === "Không khó chịu" ? "✓" : item ? "•" : "+";
         const itemLabel = item ? item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded")) : msg(locale, "checkin.tapToRecord");
         return onSelect ? <button key={key} type="button" className={className} style={style} aria-label={`${label}: ${itemLabel}`} onClick={() => onSelect(region, side)}><span aria-hidden="true">{marker}</span></button> : <span key={key} className={className} style={style} aria-label={`${label}: ${itemLabel}`}><span aria-hidden="true">{marker}</span></span>;
       })}
     </div>
-    {!compact && <small className="mcy-body-orientation">{msg(locale, "checkin.orientation")}</small>}
+    {!compact && <small className="mcy-body-orientation" data-testid="body-orientation">{msg(locale, "checkin.orientation")}</small>}
   </div>;
 }
 function BodyStylePicker({ value, onChange }: { value: BodyStyle; onChange: (style: BodyStyle) => void }) {
@@ -449,21 +475,21 @@ function BodyStylePicker({ value, onChange }: { value: BodyStyle; onChange: (sty
       <p className="mcy-sheet-footnote">{locale === "en-US" ? "This illustration is a display preference. It does not infer gender or select a practice." : "Đây chỉ là hình hiển thị; không dùng để suy ra giới tính hoặc chọn bài tập."}</p>
     </BottomSheet></>;
 }
-function RegionEditor({ region, current, suggestedSide, onSave, onDelete, onClose }: { region: BodyRegion | null; current?: Observation; suggestedSide?: Observation["side"]; onSave: (value: Observation) => void; onDelete?: () => void; onClose: () => void }) {
+function RegionEditor({ region, current, suggestedSide, onSave, onDelete, onClose }: { region: BodyRegion | null; current?: Observation; suggestedSide?: BodySide; onSave: (value: Observation) => void; onDelete?: () => void; onClose: () => void }) {
   const { state } = useDemo();
   const locale = state.locale;
   const keyboard = useKeyboard();
   const [level, setLevel] = useState<BodyLevel | "Chưa rõ" | null>(current?.status === "uncertain" ? "Chưa rõ" : current?.level ?? null);
-  const [side, setSide] = useState<Observation["side"]>(suggestedSide ?? current?.side ?? "Không rõ bên");
+  const [side, setSide] = useState<BodySide>(suggestedSide ?? current?.side ?? "unspecified");
   const [note, setNote] = useState(current?.note ?? "");
-  useEffect(() => { setLevel(current?.status === "uncertain" ? "Chưa rõ" : current?.level ?? null); setSide(suggestedSide ?? current?.side ?? "Không rõ bên"); setNote(current?.note ?? ""); }, [region, current?.level, current?.side, current?.note, current?.status, suggestedSide]);
+  useEffect(() => { setLevel(current?.status === "uncertain" ? "Chưa rõ" : current?.level ?? null); setSide(suggestedSide ?? current?.side ?? "unspecified"); setNote(current?.note ?? ""); }, [region, current?.level, current?.side, current?.note, current?.status, suggestedSide]);
   const close = () => { keyboard.hide(); onClose(); };
-  return <BottomSheet open={Boolean(region)} onOpenChange={open => { if (!open) close(); }} title={region ? locale === "en-US" ? `Check in on your ${regionLabel(locale, region).toLowerCase()}` : `Ghi nhận vùng ${region.toLowerCase()}` : locale === "en-US" ? "Check in on an area" : "Ghi nhận vùng"} description={msg(locale, "regionEditor.prompt")} snap={0.9}>
+  return <BottomSheet open={Boolean(region)} onOpenChange={open => { if (!open) close(); }} title={region ? locale === "en-US" ? `Check in on your ${regionLabel(locale, region).toLowerCase()}` : `Ghi nhận vùng ${regionLabel(locale, region).toLowerCase()}` : locale === "en-US" ? "Check in on an area" : "Ghi nhận vùng"} description={msg(locale, "regionEditor.prompt")} snap={0.9}>
     {region && <div className="mcy-region-editor">
       <div className="mcy-editor-options">{([...BODY_LEVELS, "Chưa rõ"] as const).map(value => <Choice key={value} selected={level === value} onClick={() => setLevel(value)}>{bodyLevelLabel(locale, value)}</Choice>)}</div>
-      {region === "Vai" && <><strong>{msg(locale, "regionEditor.side")}</strong><div className="mcy-editor-options side">{(["Không rõ bên", "Trái", "Phải", "Hai bên"] as Observation["side"][]).map(value => <Choice key={value} selected={side === value} onClick={() => setSide(value)}>{sideLabel(locale, value)}</Choice>)}</div></>}
-      <label className="mcy-editor-note">{msg(locale, "regionEditor.note")} <small>{msg(locale, "regionEditor.optional")}</small><KeyboardTextarea placeholder={locale === "en-US" ? region === "Vai" ? "For example: my left shoulder feels tense after sitting..." : region === "Cổ" ? "For example: my neck feels tired after sitting..." : "For example: this area feels tense after sitting..." : region === "Vai" ? "Ví dụ: vai trái căng khi ngồi lâu..." : region === "Cổ" ? "Ví dụ: cổ mỏi khi ngồi lâu..." : "Ví dụ: vùng này căng khi ngồi lâu..."} value={note} onChange={event => setNote(event.target.value)} onBlur={() => keyboard.hide()} /></label>
-      <button className="mcy-action" disabled={!level} onClick={() => { if (!level) return; keyboard.hide(); onSave({ region, side: region === "Vai" ? side : "Không rõ bên", level: level === "Chưa rõ" ? null : level, status: level === "Chưa rõ" ? "uncertain" : "reported", note: note.trim() }); onClose(); }}>{msg(locale, "regionEditor.save")} <ArrowRightIcon /></button>
+      {isPairedBodyRegion(region) && <><strong>{msg(locale, "regionEditor.side")}</strong><div className="mcy-editor-options side">{(["unspecified", "left", "right", "both"] as BodySide[]).map(value => <Choice key={value} selected={side === value} onClick={() => setSide(value)}>{sideLabel(locale, value)}</Choice>)}</div></>}
+      <label className="mcy-editor-note">{msg(locale, "regionEditor.note")} <small>{msg(locale, "regionEditor.optional")}</small><KeyboardTextarea placeholder={locale === "en-US" ? `For example: my ${regionLabel(locale, region).toLowerCase()} feels tired after sitting...` : `Ví dụ: ${regionLabel(locale, region).toLowerCase()} mỏi khi ngồi lâu...`} value={note} onChange={event => setNote(event.target.value)} onBlur={() => keyboard.hide()} /></label>
+      <button className="mcy-action" disabled={!level} onClick={() => { if (!level) return; keyboard.hide(); onSave({ region, side: isPairedBodyRegion(region) ? side : "unspecified", level: level === "Chưa rõ" ? null : level, status: level === "Chưa rõ" ? "uncertain" : "reported", note: note.trim() }); onClose(); }}>{msg(locale, "regionEditor.save")} <ArrowRightIcon /></button>
       {current && onDelete && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); onDelete(); onClose(); }}>{msg(locale, "regionEditor.delete")}</button>}
     </div>}
   </BottomSheet>;
@@ -623,7 +649,7 @@ export default function Prototype() {
           accountEmail: session.user.email ?? previous.accountEmail,
           displayName: data.profile?.display_name ?? previous.displayName,
           locale: data.profile?.locale === "en-US" ? "en-US" : "vi-VN",
-          bodyStyle: bodyStyle === "feminine" || bodyStyle === "masculine" ? bodyStyle : "neutral",
+          bodyStyle: bodyStyle === "neutral" || bodyStyle === "masculine" || bodyStyle === "feminine" ? bodyStyle : "feminine",
           termsAccepted: data.consents.terms && data.consentPolicyVersions.terms === REQUIRED_CONSENT_POLICY_VERSIONS.terms,
           privacyAccepted: data.consents.privacy && data.consentPolicyVersions.privacy === REQUIRED_CONSENT_POLICY_VERSIONS.privacy,
           aiConsent: data.consents.ai_processing,
@@ -972,20 +998,34 @@ function CheckinScreen() {
   const flow = useFlow();
   const { state, update, setState } = useDemo();
   const locale = state.locale;
+  const [regionGroup, setRegionGroup] = useState<BodyRegionGroup>("trunk");
   useLayoutEffect(() => {
     const scroll = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mobile-scroll");
     if (scroll) scroll.scrollTop = 0;
   }, [state.checkinStep]);
   const [editing, setEditing] = useState<BodyRegion | null>(null);
-  const [editingSide, setEditingSide] = useState<Observation["side"] | undefined>();
+  const [editingStoredSide, setEditingStoredSide] = useState<BodySide | undefined>();
+  const [suggestedSide, setSuggestedSide] = useState<BodySide | undefined>();
   const [pendingStatus, setPendingStatus] = useState<"none_now" | "uncertain" | "skipped" | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
-  const selected = editing ? state.preObservations.find(item => item.region === editing) : undefined;
-  const openRegion = (region: BodyRegion, side?: Observation["side"]) => { setEditingSide(side); setEditing(region); };
-  const closeRegion = () => { setEditing(null); setEditingSide(undefined); };
-  const saveObservation = (observation: Observation) => setState(previous => ({ ...previous, bodyStatus: "reported", preObservations: [...previous.preObservations.filter(item => item.region !== observation.region), observation], regions: [...new Set([...previous.regions, observation.region])] }));
-  const deleteObservation = () => { if (!editing) return; setState(previous => { const next = previous.preObservations.filter(item => item.region !== editing); return { ...previous, preObservations: next, regions: next.map(item => item.region), bodyStatus: next.length ? "reported" : null }; }); };
+  const selected = editing ? state.preObservations.find(item => item.region === editing && item.side === editingStoredSide) ?? state.preObservations.find(item => item.region === editing) : undefined;
+  const openRegion = (region: BodyRegion, preferredSide?: BodySide) => {
+    const entries = state.preObservations.filter(item => item.region === region);
+    const current = preferredSide
+      ? entries.find(item => item.side === preferredSide) ?? entries.find(item => item.side === "both" || item.side === "unspecified")
+      : entries[0];
+    const storedSide = current?.side ?? preferredSide ?? "unspecified";
+    setEditingStoredSide(storedSide);
+    setSuggestedSide(preferredSide ?? current?.side ?? "unspecified");
+    setEditing(region);
+  };
+  const closeRegion = () => { setEditing(null); setEditingStoredSide(undefined); setSuggestedSide(undefined); };
+  const saveObservation = (observation: Observation) => setState(previous => {
+    const preObservations = replaceBodyObservation(previous.preObservations, observation, editingStoredSide ?? observation.side);
+    return { ...previous, bodyStatus: "reported", preObservations, regions: [...new Set(preObservations.map(item => item.region))] };
+  });
+  const deleteObservation = () => { if (!editing || !editingStoredSide) return; setState(previous => { const preObservations = removeBodyObservation(previous.preObservations, editing, editingStoredSide); return { ...previous, preObservations, regions: [...new Set(preObservations.map(item => item.region))], bodyStatus: preObservations.length ? "reported" : null }; }); };
   const chooseStatus = (value: "none_now" | "uncertain" | "skipped") => {
     if (state.preObservations.length) setPendingStatus(value);
     else update({ bodyStatus: value, preObservations: [], regions: [] });
@@ -1011,7 +1051,7 @@ function CheckinScreen() {
     flow.push(ROUTES.journey);
   };
   const statusDescription = state.bodyStatus === "none_now" ? msg(locale, "checkin.selectedNone") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.selectedUnsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.selectedSkipped") : "";
-  const bodySummary = state.bodyStatus === "none_now" ? msg(locale, "checkin.noDiscomfort") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.unsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.skipBody") : state.preObservations.map(item => `${regionLabel(locale, item.region)} · ${item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(", ");
+  const bodySummary = state.bodyStatus === "none_now" ? msg(locale, "checkin.noDiscomfort") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.unsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.skipBody") : state.preObservations.map(item => `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""} · ${item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(", ");
   return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
     <div className="mcy-step-count" aria-live="polite">{formatMessage(locale, "checkin.stepCount", { step: state.checkinStep })}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
     <h1>{msg(locale, state.checkinStep === 1 ? "checkin.step1.title" : "checkin.step2.title")}</h1>
@@ -1019,12 +1059,13 @@ function CheckinScreen() {
     {state.checkinStep === 1 ? <div className="mcy-checkin-content checkin-step-body">
       <div className="mcy-checkin-illustration">
         <div className="mcy-scroll-hint"><ChevronDownIcon />{msg(locale, "checkin.scrollHint")}</div>
-        <BodyMap observations={state.preObservations} bodyStyle={state.bodyStyle} locale={locale} onSelect={openRegion} />
+        <div className="mcy-body-groups" aria-label={locale === "en-US" ? "Body areas" : "Nhóm vùng cơ thể"}>{(["trunk", "arms", "legs"] as BodyRegionGroup[]).map(group => <button key={group} aria-pressed={regionGroup === group} onClick={() => setRegionGroup(group)}>{msg(locale, `checkin.group.${group}` as "checkin.group.trunk" | "checkin.group.arms" | "checkin.group.legs")}<small>{state.preObservations.filter(item => BODY_REGION_GROUPS[group].includes(item.region)).length}</small></button>)}</div>
+        <BodyMap observations={state.preObservations} bodyStyle={state.bodyStyle} locale={locale} group={regionGroup} onSelect={openRegion} />
         <BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} />
       </div>
       <div className="mcy-checkin-fields">
         <h2 className="mcy-inline-section-title">{msg(locale, "checkin.regions")}</h2>
-        <div className="mcy-region-list" aria-label={locale === "en-US" ? "Choose a body area" : "Chọn vùng cơ thể"}>{BODY_REGIONS.map(region => { const item = state.preObservations.find(entry => entry.region === region); const detail = !item ? msg(locale, "checkin.tapToRecord") : item.status === "uncertain" ? msg(locale, "checkin.unsure") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded")); return <button key={region} className={item ? "selected" : ""} onClick={() => openRegion(region)}><span>{regionLabel(locale, region)}</span><small>{detail}</small><ArrowRightIcon /></button>; })}</div>
+        <div className="mcy-region-list" aria-label={locale === "en-US" ? "Choose a body area" : "Chọn vùng cơ thể"}>{BODY_REGION_GROUPS[regionGroup].map(region => { const items = state.preObservations.filter(entry => entry.region === region); const detail = items.length ? items.map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(locale, item.side)} · ` : ""}${item.status === "uncertain" ? msg(locale, "checkin.unsure") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(" / ") : msg(locale, "checkin.tapToRecord"); return <button key={region} className={items.length ? "selected" : ""} onClick={() => openRegion(region)}><span>{regionLabel(locale, region)}</span><small>{detail}</small><ArrowRightIcon /></button>; })}</div>
         <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one of these:" : "Hoặc chọn một trạng thái:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "uncertain"} onClick={() => chooseStatus("uncertain")}>{msg(locale, "checkin.unsure")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
         {statusDescription && <p className="mcy-status-caption">{statusDescription}</p>}
         <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
@@ -1037,7 +1078,7 @@ function CheckinScreen() {
       {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
       <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
     </div>}
-    <RegionEditor region={editing} current={selected} suggestedSide={editingSide} onClose={closeRegion} onSave={saveObservation} onDelete={deleteObservation} />
+    <RegionEditor region={editing} current={selected} suggestedSide={suggestedSide} onClose={closeRegion} onSave={saveObservation} onDelete={deleteObservation} />
     <BottomSheet open={Boolean(pendingStatus)} onOpenChange={open => { if (!open) setPendingStatus(null); }} title="Đổi lựa chọn vùng cơ thể" description="Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau." snap={0.38}><div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { update({ bodyStatus: pendingStatus, preObservations: [], regions: [] }); setPendingStatus(null); }}>Đổi lựa chọn <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setPendingStatus(null)}>Giữ các vùng đã ghi</button></div></BottomSheet>
   </main></MobileScroll>;
 }
@@ -1117,7 +1158,7 @@ function DialogueScreen() {
     <p className="mcy-lead">{msg(locale, "dialogue.lead")}</p>
     <div className="mcy-conversation">
       <div className="mcy-ai-avatar"><MagicWandIcon /> <span>{msg(locale, "dialogue.actor")}</span></div>
-      <div className="mcy-bubble ai">{locale === "en-US" ? <>You have <strong>{localizedNumber(locale, state.minutes)} min</strong>{state.energy ? <> and your energy is <strong>{energyLabel(locale, state.energy).toLowerCase()}</strong></> : null}{state.regions.length ? <>. You mentioned <strong>{state.regions.map(region => regionLabel(locale, region).toLowerCase()).join(", ")}</strong></> : null}. What would you like the session to focus on?</> : <>Mình biết bạn có <strong>{state.minutes} phút</strong>{state.energy ? <>, năng lượng <strong>{state.energy.toLowerCase()}</strong></> : null}{state.regions.length ? <> và muốn chú ý <strong>{state.regions.join(", ").toLowerCase()}</strong></> : null}. Có điều gì nên ưu tiên khi chọn buổi?</>}</div>
+      <div className="mcy-bubble ai">{locale === "en-US" ? <>You have <strong>{localizedNumber(locale, state.minutes)} min</strong>{state.energy ? <> and your energy is <strong>{energyLabel(locale, state.energy).toLowerCase()}</strong></> : null}{state.regions.length ? <>. You mentioned <strong>{state.regions.map(region => regionLabel(locale, region).toLowerCase()).join(", ")}</strong></> : null}. What would you like the session to focus on?</> : <>Mình biết bạn có <strong>{state.minutes} phút</strong>{state.energy ? <>, năng lượng <strong>{state.energy.toLowerCase()}</strong></> : null}{state.regions.length ? <> và muốn chú ý <strong>{state.regions.map(region => regionLabel(locale, region).toLowerCase()).join(", ")}</strong></> : null}. Có điều gì nên ưu tiên khi chọn buổi?</>}</div>
       {prior?.outcome === "Khó chịu hơn" ? <div className="mcy-bubble ai quiet">{locale === "en-US" ? "You previously reported more discomfort. I won't use that to recommend a session. If it continues, you can stop and seek appropriate support." : "Lần trước bạn chọn “khó chịu hơn”. Mình sẽ không tự dùng phản hồi đó để gợi ý buổi tập. Nếu cảm giác còn tiếp diễn, bạn có thể dừng và tìm hỗ trợ phù hợp."}</div> : prior?.pace === "Hơi nhanh" && !prior.endedEarly ? <div className="mcy-bubble ai quiet">{locale === "en-US" ? "You said the last session felt a little fast. Would you like to use that feedback to prioritize a slower session?" : "Lần trước bạn nói nhịp hơi nhanh. Bạn có muốn dùng phản hồi này để ưu tiên buổi chậm hơn?"}</div> : null}
       {prior?.pace === "Hơi nhanh" && prior.outcome !== "Khó chịu hơn" && !prior.endedEarly ? <div className="mcy-prior-actions"><Choice selected={state.usePreviousFeedback} onClick={() => update({ usePreviousFeedback: true })}>{locale === "en-US" ? "Use previous feedback" : "Dùng phản hồi cũ"}</Choice><Choice selected={!state.usePreviousFeedback} onClick={() => update({ usePreviousFeedback: false })}>{locale === "en-US" ? "Don't use it" : "Không dùng lần này"}</Choice></div> : null}
       {state.dialogueChoice ? <><div className="mcy-bubble mine">{guidedChoiceLabel(locale, state.dialogueChoice)}</div><div className="mcy-bubble ai">{locale === "en-US" ? state.dialogueChoice === "Nhịp chậm" ? "I'll prioritize a slower session within the time you have." : state.dialogueChoice === "Không nằm sàn" ? "I've noted that preference. This prototype cannot verify which sessions avoid floor work, so please check the content before starting." : state.dialogueChoice === "Ít lời" ? "I'll show you a concise option that's easy to begin." : "I'll prioritize a session with clearer guidance." : state.dialogueChoice === "Nhịp chậm" ? "Mình sẽ ưu tiên một buổi có nhịp chậm trong thời gian bạn có." : state.dialogueChoice === "Không nằm sàn" ? "Mình đã ghi nhận cho hôm nay. Prototype chưa có đủ metadata để xác nhận mọi buổi không nằm sàn, nên thẻ kế hoạch sẽ nhắc bạn kiểm tra nội dung trước khi bắt đầu." : state.dialogueChoice === "Ít lời" ? "Mình sẽ để bạn xem một lựa chọn gọn và dễ bắt đầu." : "Mình sẽ ưu tiên buổi có thêm hướng dẫn rõ ràng."}</div></> : null}
@@ -1162,7 +1203,7 @@ function PlanScreen() {
   }
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-plan-page">
     <h1>{msg(locale, "plan.title")}</h1><h2 className="mcy-subtitle">{msg(locale, "plan.subtitle")}</h2>
-    <p className="mcy-lead">{locale === "en-US" ? `${state.regions.length ? `You selected ${state.regions.map(region => regionLabel(locale, region)).join(", ")}. ` : ""}${msg(locale, "plan.sampleLead")}` : `${state.regions.length ? `Bạn đã chọn ${state.regions.join(", ")}. ` : ""}${msg(locale, "plan.sampleLead")}`}</p>
+    <p className="mcy-lead">{locale === "en-US" ? `${state.regions.length ? `You selected ${state.regions.map(region => regionLabel(locale, region)).join(", ")}. ` : ""}${msg(locale, "plan.sampleLead")}` : `${state.regions.length ? `Bạn đã chọn ${state.regions.map(region => regionLabel(locale, region)).join(", ")}. ` : ""}${msg(locale, "plan.sampleLead")}`}</p>
     <article className="mcy-plan-hero"><img src={session.image} alt={copy.imageAlt} /><span className="mcy-plan-time"><ClockIcon />{formatMessage(locale, "plan.minutes", { minutes: localizedNumber(locale, session.minutes) })}</span><div><h2>{copy.title}</h2><p>{copy.level} · {copy.detail}</p></div></article>
     <section className="mcy-movements"><h3>{msg(locale, "plan.movements")}</h3><Carousel ariaLabel={locale === "en-US" ? "Parts of the practice" : "Các phần trong buổi tập"} className="mcy-movement-carousel" contentClassName="mcy-movement-track">{[msg(locale, "plan.movement1"), msg(locale, "plan.movement2"), msg(locale, "plan.movement3")].map((label, index) => <article key={index}><img src={["/assets/today-neck-stretch.png", "/assets/practice-shoulder-stretch.png", "/assets/motion-chest-open.png"][index]} alt={formatMessage(locale, "plan.movementAlt", { movement: label.toLowerCase() })} /><span>{label}</span></article>)}</Carousel></section>
     {alternatives.length ? <button className="mcy-gentle-option" onClick={() => update({ chosenPlanId: alternatives[0].id })}><span><BrandMark /></span><span><strong>{msg(locale, "plan.alternative")}</strong><small>{sessionCopy(locale, alternatives[0].id).title} · {formatMessage(locale, "plan.minutes", { minutes: localizedNumber(locale, alternatives[0].minutes) })}</small></span><ArrowRightIcon /></button> : null}
@@ -1225,16 +1266,30 @@ function ReflectionScreen() {
   const { state, update, setState } = useDemo();
   const locale = state.locale;
   const [editing, setEditing] = useState<BodyRegion | null>(null);
+  const [editingStoredSide, setEditingStoredSide] = useState<BodySide | undefined>();
+  const [suggestedSide, setSuggestedSide] = useState<BodySide | undefined>();
   const [chooseNewRegion, setChooseNewRegion] = useState(false);
-  const current = editing ? state.postObservations.find(item => item.region === editing) : undefined;
-  const suggestedSide = editing ? state.preObservations.find(item => item.region === editing)?.side : undefined;
-  const saveRegion = (value: Observation) => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: [...previous.postObservations.filter(item => item.region !== value.region), value] }));
-  const removeRegion = () => { if (!editing) return; setState(previous => { const next = previous.postObservations.filter(item => item.region !== editing); return { ...previous, postObservations: next, postBodyStatus: next.length ? "reported" : null }; }); };
+  const current = editing ? state.postObservations.find(item => item.region === editing && item.side === editingStoredSide) ?? state.postObservations.find(item => item.region === editing) : undefined;
+  const openRegion = (region: BodyRegion, preferredSide?: BodySide) => {
+    const entries = state.postObservations.filter(item => item.region === region);
+    const prior = state.preObservations.filter(item => item.region === region);
+    const currentEntry = preferredSide
+      ? entries.find(item => item.side === preferredSide) ?? entries.find(item => item.side === "both" || item.side === "unspecified")
+      : entries[0];
+    const base = currentEntry ?? (preferredSide ? prior.find(item => item.side === preferredSide) ?? prior.find(item => item.side === "both" || item.side === "unspecified") : prior[0]);
+    const storedSide = currentEntry?.side ?? base?.side ?? preferredSide ?? "unspecified";
+    setEditingStoredSide(storedSide);
+    setSuggestedSide(preferredSide ?? base?.side ?? "unspecified");
+    setEditing(region);
+  };
+  const closeEditor = () => { setEditing(null); setEditingStoredSide(undefined); setSuggestedSide(undefined); };
+  const saveRegion = (value: Observation) => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: replaceBodyObservation(previous.postObservations, value, editingStoredSide ?? value.side) }));
+  const removeRegion = () => { if (!editing || !editingStoredSide) return; setState(previous => { const postObservations = removeBodyObservation(previous.postObservations, editing, editingStoredSide); return { ...previous, postObservations, postBodyStatus: postObservations.length ? "reported" : null }; }); };
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-reflection-page">
     <h1>{msg(locale, "reflection.title")}</h1><p className="mcy-lead">{msg(locale, "reflection.lead")}</p>
     <div className="mcy-before-after"><div><BodyMap observations={state.preObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><span>{msg(locale, "reflection.before")}</span></div><span className="mcy-before-arrow"><ArrowRightIcon /></span><div><BodyMap observations={state.postObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><span>{msg(locale, "reflection.after")}</span></div></div>
     <p className="mcy-reflection-hint">{msg(locale, "reflection.hint")}</p>
-    <section className="mcy-field-section"><h2>{msg(locale, "reflection.preRegions")}</h2>{state.preObservations.length ? <div className="mcy-reflection-regions">{state.preObservations.map(item => { const after = state.postObservations.find(entry => entry.region === item.region); return <div key={item.region} className="mcy-reflection-region-row"><button onClick={() => setEditing(item.region)}><span><strong>{regionLabel(locale, item.region)}</strong><small>{msg(locale, "reflection.before")}: {item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}</small></span><span><small>{msg(locale, "reflection.after")}</small><strong>{after ? after.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, after.level ?? msg(locale, "checkin.notRecorded")) : msg(locale, "reflection.tapToRecord")}</strong></span><ArrowRightIcon /></button><button className="mcy-keep-region" onClick={() => saveRegion({ ...item, note: "" })}>{msg(locale, "reflection.keepSame")}</button></div>; })}</div> : <p className="mcy-inline-note">{msg(locale, "reflection.notCheckedIn")}</p>}</section>
+    <section className="mcy-field-section"><h2>{msg(locale, "reflection.preRegions")}</h2>{state.preObservations.length ? <div className="mcy-reflection-regions">{state.preObservations.map(item => { const after = state.postObservations.find(entry => entry.region === item.region && (entry.side === item.side || (entry.side === "both" && (item.side === "left" || item.side === "right")))); const area = `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""}`; return <div key={`${item.region}-${item.side}`} className="mcy-reflection-region-row"><button onClick={() => openRegion(item.region, item.side)}><span><strong>{area}</strong><small>{msg(locale, "reflection.before")}: {item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}</small></span><span><small>{msg(locale, "reflection.after")}</small><strong>{after ? after.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, after.level ?? msg(locale, "checkin.notRecorded")) : msg(locale, "reflection.tapToRecord")}</strong></span><ArrowRightIcon /></button><button className="mcy-keep-region" onClick={() => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: replaceBodyObservation(previous.postObservations, { ...item, note: "" }, item.side) }))}>{msg(locale, "reflection.keepSame")}</button></div>; })}</div> : <p className="mcy-inline-note">{msg(locale, "reflection.notCheckedIn")}</p>}</section>
     <button className="mcy-standalone-link" onClick={() => setChooseNewRegion(true)}>{msg(locale, "reflection.addRegion")}</button>
     {state.preObservations.length > 0 && <div className="mcy-post-options"><button onClick={() => update({ postObservations: state.preObservations.map(item => ({ ...item, note: "" })), postBodyStatus: "reported" })}>{msg(locale, "reflection.keepAll")}</button><button onClick={() => update({ postObservations: [], postBodyStatus: "uncertain" })}>{msg(locale, "reflection.unsureAfter")}</button></div>}
     <section className="mcy-field-section"><h2>{msg(locale, "reflection.overall")} <small>{msg(locale, "reflection.optional")}</small></h2><div className="mcy-reflection-grid">{(["Dễ chịu hơn", "Như cũ", "Khó chịu hơn", "Chưa rõ"] as Exclude<Outcome, null>[]).map(value => <Choice key={value} selected={state.outcome === value} onClick={() => update({ outcome: value })}>{guidedChoiceLabel(locale, value)}</Choice>)}</div></section>
@@ -1242,8 +1297,8 @@ function ReflectionScreen() {
     {state.outcome === "Khó chịu hơn" ? <div className="mcy-alert">{msg(locale, "reflection.alert")}</div> : null}
     <label className="mcy-note-label">{msg(locale, "reflection.notePrompt")} <small>{msg(locale, "reflection.noteScope")}</small><KeyboardTextarea placeholder={msg(locale, "reflection.notePlaceholder")} value={state.note} onChange={event => update({ note: event.target.value })} onBlur={() => keyboard.hide()} /></label>
     <DemoNote>{msg(locale, "reflection.demo")}</DemoNote>
-    <RegionEditor region={editing} current={current} suggestedSide={suggestedSide} onSave={saveRegion} onClose={() => setEditing(null)} onDelete={removeRegion} />
-    <BottomSheet open={chooseNewRegion} onOpenChange={setChooseNewRegion} title={msg(locale, "reflection.chooseRegion")} description={msg(locale, "reflection.newRegionHelp")} snap={0.48}><div className="mcy-picker-list">{BODY_REGIONS.map(region => <button key={region} onClick={() => { setChooseNewRegion(false); setEditing(region); }}>{regionLabel(locale, region)}</button>)}</div></BottomSheet>
+    <RegionEditor region={editing} current={current} suggestedSide={suggestedSide} onSave={saveRegion} onClose={closeEditor} onDelete={removeRegion} />
+    <BottomSheet open={chooseNewRegion} onOpenChange={setChooseNewRegion} title={msg(locale, "reflection.chooseRegion")} description={msg(locale, "reflection.newRegionHelp")} snap={0.48}><div className="mcy-picker-list">{BODY_REGIONS.map(region => <button key={region} onClick={() => { setChooseNewRegion(false); openRegion(region); }}>{regionLabel(locale, region)}</button>)}</div></BottomSheet>
   </main></MobileScroll>;
 }
 
@@ -1274,12 +1329,15 @@ function JourneyScreen() {
   const [selectedDay, setSelectedDay] = useState(localDateOrdinal(todayLocalDate()));
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [detailRegion, setDetailRegion] = useState<BodyRegion | null>(null);
+  const [detailSide, setDetailSide] = useState<BodySide | undefined>();
   const [editingRegion, setEditingRegion] = useState<BodyRegion | null>(null);
+  const [editingStoredSide, setEditingStoredSide] = useState<BodySide | undefined>();
+  const [editingSuggestedSide, setEditingSuggestedSide] = useState<BodySide | undefined>();
   const [compare, setCompare] = useState(false);
   const [compareA, setCompareA] = useState<string | null>(null);
   const [compareB, setCompareB] = useState<string | null>(null);
   const [comparePicker, setComparePicker] = useState<"A" | "B" | null>(null);
-  const [trendRegion, setTrendRegion] = useState<BodyRegion>("Cổ");
+  const [trendRegion, setTrendRegion] = useState<BodyRegion>("neck");
   const [deletePending, setDeletePending] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState("");
@@ -1291,16 +1349,16 @@ function JourneyScreen() {
   const days = Array.from({ length: range }, (_, index) => maxDay - (range - 1 - index));
   const selected = snapshots.find(item => item.id === selectedId && item.day === selectedDay);
   const daySnapshots = snapshots.filter(item => item.day === selectedDay);
-  const detail = selected?.observations.find(item => item.region === detailRegion);
-  const editCurrent = selected?.observations.find(item => item.region === editingRegion);
+  const detail = selected?.observations.find(item => item.region === detailRegion && item.side === detailSide) ?? selected?.observations.find(item => item.region === detailRegion);
+  const editCurrent = selected?.observations.find(item => item.region === editingRegion && item.side === editingStoredSide) ?? selected?.observations.find(item => item.region === editingRegion);
   const a = snapshots.find(item => item.id === compareA);
   const b = snapshots.find(item => item.id === compareB);
   const compatible = Boolean(a && b && (a.kind === b.kind || (a.kind !== "Sau tập" && b.kind !== "Sau tập") || (a.date === b.date && [a.kind, b.kind].includes("Trước tập") && [a.kind, b.kind].includes("Sau tập"))));
   const trend = snapshots.filter(item => item.kind !== "Sau tập" && item.observations.some(observation => observation.region === trendRegion));
-  const chooseDay = (day: number) => { setSelectedDay(day); setSelectedId(snapshots.filter(item => item.day === day).at(-1)?.id ?? null); setDetailRegion(null); };
+  const chooseDay = (day: number) => { setSelectedDay(day); setSelectedId(snapshots.filter(item => item.day === day).at(-1)?.id ?? null); setDetailRegion(null); setDetailSide(undefined); };
   const toggleSample = () => { const next = !showSample; const values = next ? sampleSnapshots() : [...state.remoteCheckins, ...state.history]; const latest = values.at(-1); const ordinal = latest ? localDateOrdinal(latest.date) : localDateOrdinal(todayLocalDate()); setShowSample(next); setRange(next ? 30 : 7); setSelectedDay(next ? localDateOrdinal("2026-10-30") : ordinal); setSelectedId(next ? "sample-6" : latest?.id ?? null); setCompare(false); };
-  const saveEdited = (value: Observation) => { if (!selected || selected.sample || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => item.id === selected.id ? { ...item, status: "reported", observations: [...item.observations.filter(entry => entry.region !== value.region), value] } : item) })); };
-  const deleteEdited = () => { if (!selected || !editingRegion || selected.sample || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => { if (item.id !== selected.id) return item; const observations = item.observations.filter(entry => entry.region !== editingRegion); return { ...item, observations, status: observations.length ? "reported" : null }; }) })); };
+  const saveEdited = (value: Observation) => { if (!selected || selected.sample || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => item.id === selected.id ? { ...item, status: "reported", observations: replaceBodyObservation(item.observations, value, editingStoredSide ?? value.side) } : item) })); };
+  const deleteEdited = () => { if (!selected || !editingRegion || !editingStoredSide || selected.sample || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => { if (item.id !== selected.id) return item; const observations = removeBodyObservation(item.observations, editingRegion, editingStoredSide); return { ...item, observations, status: observations.length ? "reported" : null }; }) })); };
   const deleteSelected = async () => {
     if (!selected || selected.sample || deleting) return;
     setDeleting(true);
@@ -1333,9 +1391,9 @@ function JourneyScreen() {
       <div className="mcy-snapshot-heading"><span>{showSample ? "BẢN GHI MINH HỌA" : selected?.remoteId ? "ĐÃ LƯU TRÊN TÀI KHOẢN" : "BẢN GHI TRONG PHIÊN"}</span><h2>{selected ? snapshotLabel(selected) : `${prettyDate(dateFromOrdinal(selectedDay))} · Chưa có ghi nhận`}</h2></div>
       {daySnapshots.length > 1 && <Carousel ariaLabel="Các lần ghi trong ngày" className="mcy-record-carousel" contentClassName="mcy-record-track">{daySnapshots.map(item => <button key={item.id} aria-pressed={selectedId === item.id} onClick={() => setSelectedId(item.id)}>{item.time} · {item.kind}</button>)}</Carousel>}
       {selected ? <div className="mcy-snapshot-body">
-        <div className="mcy-snapshot-map"><BodyMap observations={selected.observations} bodyStyle={state.bodyStyle} onSelect={region => setDetailRegion(region)} showAll={false} /><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>
+        <div className="mcy-snapshot-map"><BodyMap observations={selected.observations} bodyStyle={state.bodyStyle} onSelect={(region, side) => { setDetailRegion(region); setDetailSide(side); }} showAll={false} /><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>
         <div className="mcy-snapshot-details">
-          <div className="mcy-snapshot-list">{selected.observations.length ? selected.observations.map(item => <button key={`${item.region}-${item.side}`} onClick={() => setDetailRegion(item.region)}><span className="mcy-snapshot-dot" /><span><strong>{item.region}{item.side === "Không rõ bên" ? "" : ` · ${item.side.toLowerCase()}`}</strong><small>{item.status === "uncertain" ? "Chưa rõ" : item.level}{item.note ? " · Có ghi chú" : ""}</small></span><ArrowRightIcon /></button>) : <p>{selected.status === "none_now" ? "Bạn đã ghi nhận không thấy khó chịu tại thời điểm này." : selected.status === "uncertain" ? "Bạn đã chọn chưa rõ." : selected.status === "skipped" ? "Bạn đã bỏ qua phần ghi nhận cơ thể ở mốc này." : "Chưa có mức cảm nhận cho bản ghi này."}</p>}</div>
+          <div className="mcy-snapshot-list">{selected.observations.length ? selected.observations.map(item => <button key={`${item.region}-${item.side}`} onClick={() => { setDetailRegion(item.region); setDetailSide(item.side); }}><span className="mcy-snapshot-dot" /><span><strong>{regionLabel(state.locale, item.region)}{isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(state.locale, item.side)}` : ""}</strong><small>{item.status === "uncertain" ? "Chưa rõ" : bodyLevelLabel(state.locale, item.level ?? msg(state.locale, "checkin.notRecorded"))}{item.note ? " · Có ghi chú" : ""}</small></span><ArrowRightIcon /></button>) : <p>{selected.status === "none_now" ? "Bạn đã ghi nhận không thấy khó chịu tại thời điểm này." : selected.status === "uncertain" ? "Bạn đã chọn chưa rõ." : selected.status === "skipped" ? "Bạn đã bỏ qua phần ghi nhận cơ thể ở mốc này." : "Chưa có mức cảm nhận cho bản ghi này."}</p>}</div>
           {selected.outcome && <div className="mcy-snapshot-meta">Cảm nhận chung sau buổi: <strong>{selected.outcome}</strong></div>}
           {selected.endedEarly && <div className="mcy-snapshot-meta">Buổi tập đã dừng sớm.</div>}
           {selected.note && <blockquote className="mcy-snapshot-note">“{selected.note}”</blockquote>}
@@ -1344,13 +1402,13 @@ function JourneyScreen() {
       </div> : <div className="mcy-snapshot-empty">Ngày này chưa có ghi nhận. Không thể suy ra tình trạng từ ngày trước.</div>}
     </section>
     <button className="mcy-compare-toggle" onClick={() => { setCompare(!compare); setCompareA(snapshots.find(item => item.kind !== "Sau tập")?.id ?? null); setCompareB(selected?.id ?? snapshots.at(-1)?.id ?? null); }}>{compare ? "Đóng so sánh" : "So với lần khác"}<ArrowRightIcon /></button>
-    {compare && <section className="mcy-compare-card"><h2>So hai lần ghi</h2><p>So các mức do bạn tự ghi, không suy ra phần trăm cải thiện. “Chưa ghi” không phải mức 0.</p><div className="mcy-compare-pickers"><button onClick={() => setComparePicker("A")}><small>MỐC A</small><strong>{a ? snapshotLabel(a) : "Chọn mốc"}</strong></button><button onClick={() => setComparePicker("B")}><small>MỐC B</small><strong>{b ? snapshotLabel(b) : "Chọn mốc"}</strong></button></div>{!compatible ? <p className="mcy-compare-warning">Hãy chọn hai lần check-in, hai phản hồi cùng loại, hoặc trước và sau cùng một ngày.</p> : <div className="mcy-compare-rows">{BODY_REGIONS.map(region => { const av = a?.observations.find(item => item.region === region); const bv = b?.observations.find(item => item.region === region); const differentSides = av && bv && av.side !== bv.side && av.side !== "Không rõ bên" && bv.side !== "Không rõ bên"; return <div key={region}><strong>{region}</strong><span>{av ? `${av.status === "uncertain" ? "Chưa rõ" : av.level}${av.side === "Không rõ bên" ? "" : ` (${av.side.toLowerCase()})`}` : "Chưa ghi"} <ArrowRightIcon /> {bv ? `${bv.status === "uncertain" ? "Chưa rõ" : bv.level}${bv.side === "Không rõ bên" ? "" : ` (${bv.side.toLowerCase()})`}` : "Chưa ghi"}{differentSides && <small>Khác bên</small>}</span></div>; })}</div>}</section>}
-    <section className="mcy-region-trend"><h2>Nhìn theo từng vùng</h2><p>Các mức được ghi ở lần check-in hoặc ghi riêng. Phản hồi sau tập được xem trong snapshot của buổi đó.</p><Carousel ariaLabel="Chọn vùng xem theo thời gian" className="mcy-trend-carousel" contentClassName="mcy-trend-track">{BODY_REGIONS.map(region => <button key={region} aria-pressed={trendRegion === region} onClick={() => setTrendRegion(region)}>{region}</button>)}</Carousel><div className="mcy-trend-observations">{trend.length ? trend.map(item => { const observation = item.observations.find(entry => entry.region === trendRegion)!; return <button key={item.id} onClick={() => { setSelectedDay(item.day); setSelectedId(item.id); }}><span>{prettyDate(item.date)}</span><strong>{observation.status === "uncertain" ? "Chưa rõ" : observation.level}</strong><ArrowRightIcon /></button>; }) : <p>Chưa có mức được ghi cho vùng này.</p>}</div><small>{trend.length <= 1 ? "Chưa đủ lần ghi để nói về xu hướng." : "Các ngày thiếu dữ liệu vẫn là khoảng trống, không được ước tính."}</small></section>
+    {compare && <section className="mcy-compare-card"><h2>So hai lần ghi</h2><p>So các mức do bạn tự ghi, không suy ra phần trăm cải thiện. “Chưa ghi” không phải mức 0.</p><div className="mcy-compare-pickers"><button onClick={() => setComparePicker("A")}><small>MỐC A</small><strong>{a ? snapshotLabel(a) : "Chọn mốc"}</strong></button><button onClick={() => setComparePicker("B")}><small>MỐC B</small><strong>{b ? snapshotLabel(b) : "Chọn mốc"}</strong></button></div>{!compatible ? <p className="mcy-compare-warning">Hãy chọn hai lần check-in, hai phản hồi cùng loại, hoặc trước và sau cùng một ngày.</p> : <div className="mcy-compare-rows">{BODY_REGIONS.map(region => { const describe = (snapshot?: Snapshot) => snapshot?.observations.filter(item => item.region === region).map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(state.locale, item.side)}: ` : ""}${item.status === "uncertain" ? "Chưa rõ" : bodyLevelLabel(state.locale, item.level ?? msg(state.locale, "checkin.notRecorded"))}`).join(" · ") || "Chưa ghi"; const sidesA = (a?.observations.filter(item => item.region === region) ?? []).map(item => item.side).sort().join(","); const sidesB = (b?.observations.filter(item => item.region === region) ?? []).map(item => item.side).sort().join(","); return <div key={region}><strong>{regionLabel(state.locale, region)}</strong><span>{describe(a)} <ArrowRightIcon /> {describe(b)}{sidesA !== sidesB && sidesA && sidesB && <small>Khác bên</small>}</span></div>; })}</div>}</section>}
+    <section className="mcy-region-trend"><h2>Nhìn theo từng vùng</h2><p>Các mức được ghi ở lần check-in hoặc ghi riêng. Phản hồi sau tập được xem trong snapshot của buổi đó.</p><Carousel ariaLabel="Chọn vùng xem theo thời gian" className="mcy-trend-carousel" contentClassName="mcy-trend-track">{BODY_REGIONS.map(region => <button key={region} aria-pressed={trendRegion === region} onClick={() => setTrendRegion(region)}>{regionLabel(state.locale, region)}</button>)}</Carousel><div className="mcy-trend-observations">{trend.length ? trend.map(item => { const observations = item.observations.filter(entry => entry.region === trendRegion); const summary = observations.map(observation => `${isPairedBodyRegion(trendRegion) && observation.side !== "unspecified" ? `${sideLabel(state.locale, observation.side)}: ` : ""}${observation.status === "uncertain" ? "Chưa rõ" : bodyLevelLabel(state.locale, observation.level ?? msg(state.locale, "checkin.notRecorded"))}`).join(" · "); return <button key={item.id} onClick={() => { setSelectedDay(item.day); setSelectedId(item.id); }}><span>{prettyDate(item.date)}</span><strong>{summary}</strong><ArrowRightIcon /></button>; }) : <p>Chưa có mức được ghi cho vùng này.</p>}</div><small>{trend.length <= 1 ? "Chưa đủ lần ghi để nói về xu hướng." : "Các ngày thiếu dữ liệu vẫn là khoảng trống, không được ước tính."}</small></section>
     {snapshots.length === 0 && <div className="mcy-empty large"><ReaderIcon /><strong>Chưa có bản ghi nào</strong><p>Bạn có thể thử check-in hoặc mở hành trình mẫu để xem cách timeline hoạt động.</p></div>}
     {!showSample && <Action onClick={startNext}>Thử lần quay lại tiếp theo</Action>}
     <DemoNote>Check-in được đồng bộ khi bạn đã cho phép lưu. Phản hồi sau bài tập mẫu chỉ còn trong phiên này; không tạo thống kê tiến bộ.</DemoNote>
-    <BottomSheet open={Boolean(detailRegion)} onOpenChange={open => { if (!open) setDetailRegion(null); }} title={detailRegion ?? "Chi tiết vùng"} description={selected ? snapshotLabel(selected) : "Bản ghi đang xem"} snap={0.49}><div className="mcy-detail-sheet">{detail ? <><strong>{observationLabel(detail)}</strong><p>{detail.note || "Không có ghi chú riêng cho vùng này."}</p>{!selected?.sample && !selected?.remoteId && <button className="mcy-quiet-link" onClick={() => { setEditingRegion(detail.region); setDetailRegion(null); }}>Sửa ghi nhận vùng này</button>}</> : <p>Vùng này chưa được ghi tại thời điểm đang xem.</p>}</div></BottomSheet>
-    <RegionEditor region={editingRegion} current={editCurrent} onSave={saveEdited} onDelete={deleteEdited} onClose={() => setEditingRegion(null)} />
+    <BottomSheet open={Boolean(detailRegion)} onOpenChange={open => { if (!open) { setDetailRegion(null); setDetailSide(undefined); } }} title={detailRegion ? `${regionLabel(state.locale, detailRegion)}${isPairedBodyRegion(detailRegion) && detailSide && detailSide !== "unspecified" ? ` · ${sideLabel(state.locale, detailSide)}` : ""}` : "Chi tiết vùng"} description={selected ? snapshotLabel(selected) : "Bản ghi đang xem"} snap={0.49}><div className="mcy-detail-sheet">{detail ? <><strong>{observationLabel(detail)}</strong><p>{detail.note || "Không có ghi chú riêng cho vùng này."}</p>{!selected?.sample && !selected?.remoteId && <button className="mcy-quiet-link" onClick={() => { setEditingRegion(detail.region); setEditingStoredSide(detail.side); setEditingSuggestedSide(detail.side); setDetailRegion(null); setDetailSide(undefined); }}>Sửa ghi nhận vùng này</button>}</> : <p>Vùng này chưa được ghi tại thời điểm đang xem.</p>}</div></BottomSheet>
+    <RegionEditor region={editingRegion} current={editCurrent} suggestedSide={editingSuggestedSide} onSave={saveEdited} onDelete={deleteEdited} onClose={() => { setEditingRegion(null); setEditingStoredSide(undefined); setEditingSuggestedSide(undefined); }} />
     <BottomSheet open={Boolean(comparePicker)} onOpenChange={open => { if (!open) setComparePicker(null); }} title={`Chọn mốc ${comparePicker ?? ""}`} snap={0.63}><div className="mcy-picker-list">{snapshots.map(item => <button key={item.id} onClick={() => { if (comparePicker === "A") setCompareA(item.id); else setCompareB(item.id); setComparePicker(null); }}>{snapshotLabel(item)}</button>)}</div></BottomSheet>
     <BottomSheet open={deletePending} onOpenChange={setDeletePending} title="Xóa bản ghi?" description={selected?.remoteId ? "Xóa check-in khỏi tài khoản và lịch sử trên server." : "Bản ghi sẽ biến mất khỏi hành trình trong phiên này."} snap={0.36}><div className="mcy-sheet-actions">{deleteError && <div className="mcy-form-error" role="alert">{deleteError}</div>}<button className="mcy-action danger-action" disabled={deleting} onClick={() => { void deleteSelected(); }}>{deleting ? "Đang xóa…" : "Xóa bản ghi"} <ArrowRightIcon /></button><button className="mcy-quiet-link" disabled={deleting} onClick={() => setDeletePending(false)}>Giữ bản ghi</button></div></BottomSheet>
   </main></MobileScroll>;

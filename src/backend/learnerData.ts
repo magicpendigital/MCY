@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database, Json } from "./database.types";
+import type { BodyRegionCode } from "../bodyRegions";
 
 export type LearnerClient = SupabaseClient<Database>;
 export type LearnerProfile = Database["public"]["Tables"]["profiles"]["Row"];
@@ -51,13 +52,22 @@ export type CheckinPayload = {
   bodyStatus: "reported" | "none_now" | "uncertain" | "skipped" | null;
   captureType: "practice_preparation" | "standalone";
   observations: {
-    regionCode: "neck" | "shoulder_left" | "shoulder_right" | "shoulder_unspecified" | "upper_back" | "lower_back";
+    regionCode: BodyRegionCode;
     state: "discomfort" | "no_discomfort" | "uncertain" | "skipped";
     level: number | null;
     note: string | null;
   }[];
   idempotencyKey: string;
 };
+
+export function toCheckinObservationRpcPayload(observations: CheckinPayload["observations"]): Json {
+  return observations.map(({ regionCode, state, level, note }) => ({
+    region_code: regionCode,
+    state,
+    level,
+    note,
+  }));
+}
 
 export type LearnerSnapshotData = {
   profile: LearnerProfile | null;
@@ -136,7 +146,7 @@ export async function saveLearnerCheckin(client: LearnerClient, payload: Checkin
       p_body_status: payload.bodyStatus,
       p_capture_type: payload.captureType,
       p_idempotency_key: payload.idempotencyKey,
-      p_observations: payload.observations as unknown as Json,
+      p_observations: toCheckinObservationRpcPayload(payload.observations),
     }),
   ) ?? [];
   const row = rows[0];

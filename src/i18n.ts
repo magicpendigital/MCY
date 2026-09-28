@@ -20,12 +20,15 @@ const vi = {
   "checkin.step2.lead": "Chọn nhịp phù hợp với khoảng thời gian và năng lượng hiện tại.",
   "checkin.step1.label": "Cảm nhận cơ thể",
   "checkin.step2.label": "Năng lượng và thời gian",
-  "checkin.scrollHint": "Chọn điểm trên hình hoặc kéo xuống để xem danh sách vùng",
-  "checkin.orientation": "Nhìn từ phía sau · bên trái/phải theo bạn",
+  "checkin.scrollHint": "Chọn điểm trên hình hoặc nhóm vùng tay/chân bên dưới",
+  "checkin.orientation": "Toàn thân nhìn từ phía sau · trái/phải theo bạn",
   "checkin.chooseStyle": "Đổi hình minh họa",
   "checkin.energy": "Năng lượng của bạn hôm nay?",
   "checkin.optional": "không bắt buộc",
   "checkin.regions": "Hoặc chọn một vùng",
+  "checkin.group.trunk": "Thân mình",
+  "checkin.group.arms": "Tay",
+  "checkin.group.legs": "Chân",
   "checkin.tapToRecord": "Chạm để ghi",
   "checkin.notRecorded": "Chưa ghi",
   "checkin.noDiscomfort": "Không thấy khó chịu",
@@ -179,12 +182,15 @@ const en: Record<keyof typeof vi, string> = {
   "checkin.step2.lead": "Choose a pace that fits the time and energy you have right now.",
   "checkin.step1.label": "Body check-in",
   "checkin.step2.label": "Energy and time",
-  "checkin.scrollHint": "Tap the illustration or scroll down to choose an area",
-  "checkin.orientation": "Back view · left and right are yours",
+  "checkin.scrollHint": "Choose a point or switch between body, arms and legs",
+  "checkin.orientation": "Full body, viewed from behind · left/right are yours",
   "checkin.chooseStyle": "Change illustration",
   "checkin.energy": "How is your energy today?",
   "checkin.optional": "optional",
   "checkin.regions": "Or choose an area",
+  "checkin.group.trunk": "Torso",
+  "checkin.group.arms": "Arms",
+  "checkin.group.legs": "Legs",
   "checkin.tapToRecord": "Tap to add",
   "checkin.notRecorded": "Not recorded",
   "checkin.noDiscomfort": "No discomfort now",
@@ -326,8 +332,16 @@ export function msg(locale: AppLocale, key: MessageKey): string {
 }
 
 const regionLabels: Record<AppLocale, Record<string, string>> = {
-  "vi-VN": { "Cổ": "Cổ", "Vai": "Vai", "Lưng trên": "Lưng trên", "Lưng dưới": "Lưng dưới" },
-  "en-US": { "Cổ": "Neck", "Vai": "Shoulders", "Lưng trên": "Upper back", "Lưng dưới": "Lower back" },
+  "vi-VN": {
+    neck: "Cổ", shoulder: "Vai", upper_back: "Lưng trên", lower_back: "Lưng dưới",
+    upper_arm: "Cánh tay trên", elbow: "Khuỷu tay", forearm_wrist: "Cẳng tay · cổ tay",
+    hand: "Bàn tay", knee: "Đầu gối", foot: "Bàn chân",
+  },
+  "en-US": {
+    neck: "Neck", shoulder: "Shoulders", upper_back: "Upper back", lower_back: "Lower back",
+    upper_arm: "Upper arm", elbow: "Elbow", forearm_wrist: "Forearm · wrist",
+    hand: "Hand", knee: "Knee", foot: "Foot",
+  },
 };
 
 const energyLabels: Record<AppLocale, Record<string, string>> = {
@@ -349,8 +363,8 @@ const levelLabels: Record<AppLocale, Record<string, string>> = {
 };
 
 const sideLabels: Record<AppLocale, Record<string, string>> = {
-  "vi-VN": { "Không rõ bên": "Không rõ bên", "Trái": "Trái", "Phải": "Phải", "Hai bên": "Hai bên" },
-  "en-US": { "Không rõ bên": "Not sure", "Trái": "Left", "Phải": "Right", "Hai bên": "Both sides" },
+  "vi-VN": { unspecified: "Không rõ bên", left: "Trái", right: "Phải", both: "Hai bên" },
+  "en-US": { unspecified: "Not sure", left: "Left", right: "Right", both: "Both sides" },
 };
 
 const guidedChoiceLabels: Record<AppLocale, Record<string, string>> = {

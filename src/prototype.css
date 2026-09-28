@@ -345,7 +345,7 @@ button { cursor: pointer; }
 
 /* Body check-in, honest reflection, and snapshot journey. */
 .mcy-body-map-v2 { display:flex; width:100%; min-width:0; flex-direction:column; align-items:center; margin:2px 0 0; }
-.mcy-body-art { position:relative; width:min(100%, 310px); height:auto; aspect-ratio:1044 / 1507; overflow:visible; }
+.mcy-body-art { position:relative; width:min(100%, 310px); height:auto; aspect-ratio:2 / 3; overflow:visible; }
 .mcy-body-art > img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:contain; user-select:none; -webkit-user-drag:none; }
 .mcy-body-fallback { display:grid; height:100%; place-items:center; margin:0; padding:20px; border:1px solid #e5e7dd; border-radius:16px; background:#f4f1e9; color:#5b6a5b; text-align:center; font-size:12px; }
 .mcy-map-pin { position:absolute; z-index:1; display:grid; width:48px; height:48px; padding:0; place-items:center; transform:translate(-50%,-50%); border:0; border-radius:50%; background:#fbf7ed99; color:#755647; cursor:pointer; }
@@ -357,7 +357,7 @@ button { cursor: pointer; }
 .mcy-map-pin.is-uncertain > span { border-color:#8b928b; background:#e9e9e2; color:#47574a; }
 .mcy-map-pin:focus-visible { outline:2px solid #304c37; outline-offset:2px; }
 .mcy-body-orientation { display:block; margin:-1px 0 3px; color:#7b8679; font-size:10px; letter-spacing:.06em; text-transform:uppercase; }
-.mcy-body-map-v2.compact .mcy-body-art { width:min(100%, 128px); height:auto; aspect-ratio:1044 / 1507; }
+.mcy-body-map-v2.compact .mcy-body-art { width:min(100%, 128px); height:auto; aspect-ratio:2 / 3; }
 .mcy-body-map-v2.compact .mcy-map-pin { width:32px; height:32px; }
 .mcy-body-map-v2.compact .mcy-map-pin > span { width:20px; height:20px; border-width:1.5px; box-shadow:0 0 0 3px #fff9f1a8; font-size:11px; }
 .mcy-style-link { display:flex; align-items:center; gap:4px; margin:0 auto 14px; padding:4px 7px; border:0; background:transparent; color:#4e684f; font-size:12px; text-decoration:underline; text-underline-offset:3px; }
@@ -381,7 +381,7 @@ button { cursor: pointer; }
 .mcy-region-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 15px; }
 .mcy-region-list button { display:grid; grid-template-columns:1fr 14px; align-items:center; min-height:55px; padding:8px 10px; border:1px solid #e6e4da; border-radius:12px; background:#fffcf7; color:#314a3b; text-align:left; }
 .mcy-region-list button.selected { border-color:#a3b49e; background:#f1f5ed; }
-.mcy-region-list button > span { font:17px/1.08 Georgia,"Times New Roman",serif; }
+.mcy-region-list button > span { font:16px/1.08 Georgia,"Times New Roman",serif; }
 .mcy-region-list button small { overflow:hidden; grid-column:1; margin-top:3px; color:#768371; font-size:10px; white-space:nowrap; text-overflow:ellipsis; }
 .mcy-region-list button svg { grid-column:2; grid-row:1 / span 2; width:14px; height:14px; }
 .mcy-body-status-actions { padding:12px; border:1px solid #e8e6de; border-radius:14px; background:#f8f6ef; }
@@ -516,12 +516,18 @@ button { cursor: pointer; }
 .mcy-checkin-page > .mcy-lead { margin-bottom: 10px; font-size: 13px; line-height: 1.45; }
 .mcy-checkin-content.checkin-step-body { display: flex; flex-direction: column; gap: 3px; }
 .mcy-checkin-illustration .mcy-body-art { width: min(100%, 245px); }
+.mcy-checkin-illustration .mcy-body-art { width:min(100%, 280px); }
+.mcy-body-groups { display:grid; width:min(100%, 330px); grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin:0 0 7px; }
+.mcy-body-groups button { display:flex; min-height:40px; align-items:center; justify-content:center; gap:6px; padding:6px 8px; border:1px solid var(--mcy-border); border-radius:12px; background:var(--mcy-paper); color:var(--mcy-sage); font-size:12px; font-weight:700; }
+.mcy-body-groups button[aria-pressed="true"] { border-color:var(--color-forest); background:var(--color-sage-soft); color:var(--mcy-ink); }
+.mcy-body-groups button small { display:grid; min-width:19px; height:19px; place-items:center; border-radius:50%; background:#fffdf9; color:var(--mcy-muted); font-size:10px; }
 .mcy-scroll-hint { display: flex; min-height: 31px; align-items: center; justify-content: center; gap: 5px; margin: 0 0 4px; padding: 4px 8px; border-radius: 99px; background: var(--color-sage-soft); color: var(--color-forest); font-size: 10px; line-height: 1.25; text-align: center; }
 .mcy-scroll-hint svg { width: 14px; height: 14px; flex: none; }
 .mcy-checkin-page .mcy-body-orientation { margin: 13px 0 7px; color: var(--mcy-muted); font-size: 10px; letter-spacing: .015em; text-align: center; text-transform: none; }
 .mcy-checkin-page .mcy-style-link { min-height: 40px; margin-bottom: 8px; }
 .mcy-inline-section-title { width: 100%; margin: 14px 0 8px !important; color: var(--mcy-ink); font: 700 14px/1.3 var(--font-sans) !important; }
 .mcy-checkin-page .mcy-region-list { margin-top: 0; }
+.mcy-checkin-page .mcy-inline-section-title { margin-top:9px !important; }
 .mcy-checkin-page .mcy-body-status-actions { margin-top: 14px; }
 .mcy-checkin-step-two { display: grid; gap: 15px; padding-top: 6px; }
 .mcy-checkin-step-two .mcy-energy-card { margin: 0; padding: 17px 14px 14px; }
@@ -571,9 +577,10 @@ button { cursor: pointer; }
 
 @media (orientation: landscape) and (max-height: 520px) {
   .mcy-checkin-content.checkin-step-body { display: grid; grid-template-columns: minmax(165px, .9fr) minmax(0, 1.1fr); align-items: start; gap: 18px; }
-  .mcy-checkin-illustration .mcy-body-art { width: min(100%, 150px); }
+  .mcy-checkin-illustration .mcy-body-art { width: min(100%, 190px); }
   .mcy-checkin-page .mcy-body-orientation { margin-top: 8px; }
   .mcy-checkin-page .mcy-scroll-hint { font-size: 9px; }
+  .mcy-checkin-illustration .mcy-map-pin { display:none; }
 }
 
 @media (max-width:360px) and (orientation:portrait) {
