@@ -34,6 +34,8 @@ Staging has one confirmed test Auth account with global application roles; it ha
 
 ## Learner app P1 client contract
 
+- Latest Vercel Preview state (2026-09-28): commit `45a1d9d` is Ready/Latest on `codex-mcy-p1-preview` at `https://mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app/` and points to `mcy-staging`. The signed-in project dashboard showed “No Production Deployment”; this change did not deploy Production. Recheck the deployment after each push.
+
 - The client uses only `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`; `.env.local` is ignored by Git. Copy `.env.example` for local builds. The same two build variables must be set in Vercel before deploying a usable hosted login.
 - `capacitor.config.ts` points native packaging at `dist/client`. `npm run android:build` creates a debug APK after the web build and Capacitor sync. `npm run ios:sync` prepares the iOS project; Xcode on macOS is required for a device build/signing/install.
 - Auth callbacks use `/auth/callback` on web and `motchutyoga://auth/callback` on native. A native build must never redirect to the developer computer's `localhost`: Capacitor selects the app URL scheme, which opens the installed app and returns to its existing PKCE session. Add the exact local web callback, deployed Vercel callback, and `motchutyoga://auth/callback` to Supabase Auth's redirect URL allowlist. The learner must open a magic link in the same browser/device session that requested it; on native, open it on the phone with the app installed. The learner confirms email delivery and local magic-link completion have worked. The real installed-app callback still needs a live email test after allowlisting.
