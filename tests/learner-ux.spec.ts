@@ -181,7 +181,7 @@ test("internal English preview follows check-in, sample practice and honest refl
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator(".mcy-brand-wordmark")).toHaveText("A Little Yoga");
     await expect(page.locator(".mcy-welcome-top > p")).toHaveText("A little more peace");
-    await expect(page.getByText("ENGLISH PREVIEW · SOME SCREENS ARE NOT TRANSLATED")).toBeVisible();
+    await expect(page.getByText("ENGLISH PREVIEW · SOME SCREENS REMAIN IN VIETNAMESE")).toBeVisible();
     await openGuestCheckin(page, true, "en-US");
     await page.getByRole("button", { name: "Next: energy and time" }).tap();
     await page.getByRole("button", { name: "10 min" }).tap();
@@ -197,6 +197,19 @@ test("internal English preview follows check-in, sample practice and honest refl
     await page.locator(".flow-fixed-footer .mcy-action").tap();
     await expect(page.getByRole("heading", { name: "Reflection saved for this session." })).toBeVisible();
     await expect(page.locator(".mcy-sync-card")).toContainText("Worse");
+    await page.getByRole("button", { name: "Open Journey" }).tap();
+    await expect(page.getByRole("heading", { name: "Your Journey" })).toBeVisible();
+    const mainNavigation = page.getByRole("navigation", { name: "Main navigation" });
+    await expect(mainNavigation).toContainText("Today");
+    await expect(mainNavigation).toContainText("Journey");
+    await expect(mainNavigation).toContainText("Explore");
+    await expect(mainNavigation).toContainText("Profile");
+    await page.getByRole("button", { name: "View sample journey" }).tap();
+    await expect(page.getByText("Illustrative 30-day sample. It is not a learner's result.")).toBeVisible();
+    await expect(page.getByText("SAMPLE ENTRY")).toBeVisible();
+    await page.getByRole("button", { name: "Compare with another entry" }).tap();
+    await expect(page.getByRole("heading", { name: "Compare two entries" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "By body area" })).toBeVisible();
   } finally {
     await page.close();
   }
