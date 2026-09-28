@@ -34,7 +34,7 @@ Staging has one confirmed test Auth account with global application roles; it ha
 
 ## Learner app P1 client contract
 
-- R2 Vercel Preview verification (2026-09-28): app commit `45a1d9d` was Ready on `codex-mcy-p1-preview` at `https://mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app/` and points to `mcy-staging`; the documentation-only follow-up at `bd58a54` also received a Vercel `success` status. The project has an existing Production deployment from `main` at commit `992ccd8`; R2 did not update Production. Recheck the deployment after each push.
+- R2 Vercel Preview verification (2026-09-28): app commit 45a1d9d was Ready on codex-mcy-p1-preview at https://mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app/ and points to mcy-staging; the documentation-only follow-up at bd58a54 also received a Vercel success status. R3 English Journey commit af4732e on the same Preview branch also received Vercel success, and the current Preview page loaded. The existing Production deployment from main at commit 992ccd8 remains unchanged by these updates. Recheck the deployment after each push.
 
 - The client uses only `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`; `.env.local` is ignored by Git. Copy `.env.example` for local builds. The same two build variables must be set in Vercel before deploying a usable hosted login.
 - `capacitor.config.ts` points native packaging at `dist/client`. `npm run android:build` creates a debug APK after the web build and Capacitor sync. `npm run ios:sync` prepares the iOS project; Xcode on macOS is required for a device build/signing/install.

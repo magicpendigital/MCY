@@ -101,17 +101,14 @@ async function assertNoVisibleTeacher(restUrl, publishableKey, userId, label) {
 async function main() {
   const { publishableKey, restUrl } = stagingConfiguration();
   const probeUserId = randomUUID();
-  const probeName = `acl-test-${probeUserId.slice(0, 8)}`;
-
   await assertNoVisibleTeacher(restUrl, publishableKey, probeUserId, "preflight");
 
   const insertUrl = new URL(restUrl);
   const insert = await request(insertUrl, {
     method: "POST",
     publishableKey,
-    // user_id is intentionally omitted (it is required); even if INSERT is accidentally granted,
-    // this probe cannot create a row or attach a teacher role to a real account.
-    body: { public_name: probeName, bio: null, active: true },
+    // An empty bulk insert checks table-level INSERT permission without a row to create.
+    body: [],
   });
   assertPermissionDenied("anon INSERT active teacher", insert);
 
@@ -121,7 +118,7 @@ async function main() {
   const update = await request(targetUrl, {
     method: "PATCH",
     publishableKey,
-    body: { public_name: probeName, active: true },
+    body: { public_name: "permission-probe", active: true },
   });
   assertPermissionDenied("anon UPDATE teacher", update);
 
