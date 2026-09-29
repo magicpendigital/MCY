@@ -25,6 +25,7 @@ This gate covers the three free-course shells in MCY and the 38 real videos from
 - PASS: Course 3 description, lesson guidance and source attribution were rewritten for learners. The surface no longer uses internal editorial wording or privacy-domain terminology.
 - PASS: Manual local-browser review confirmed the course detail keeps the warm ivory / forest / terracotta system, serif hierarchy and restrained course framing. The daily practice catalog remains the primary entry point; free courses remain a supporting content shelf.
 - PASS: Manual local-browser review confirmed Course 3 renders 7 real YouTube players with 360 × 640 portrait boxes and no placeholder cards.
+- PASS: Vercel Preview deployment `AqPu4F9Xg` is Ready from commit `ba0afbb`; the branch alias `mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app` serves the updated course detail.
 - CHƯA CHẠY: The targeted Playwright rerun is currently unavailable because the configured Chromium headless executable is missing. The previous 21/21 runtime baseline remains recorded above; rerun the updated suite after the browser dependency is restored.
 - BLOCKED: This visual pass does not close rights, caption, poster or instructional-review gates. Production release remains blocked until those gates have evidence and an explicit release decision.
 
