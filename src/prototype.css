@@ -183,7 +183,9 @@ button { cursor: pointer; }
 .mcy-course-lessons-heading h2 { font-size: 24px; }
 .mcy-course-lessons-heading span { color: var(--mcy-muted); font-size: 10px; }
 .mcy-course-lesson { overflow: hidden; border: 1px solid var(--mcy-border); border-radius: 15px; background: var(--mcy-paper); }
-.mcy-course-video { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #25382d; }
+.mcy-course-video { position: relative; overflow: hidden; background: #25382d; }
+.mcy-course-video-landscape { width: 100%; aspect-ratio: 16 / 9; }
+.mcy-course-video-portrait { width: min(100%, 360px); aspect-ratio: 9 / 16; margin-inline: auto; }
 .mcy-course-video iframe { display: block; width: 100%; height: 100%; border: 0; }
 .mcy-course-video-placeholder { display: flex; height: 100%; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 20px; color: #f7f4eb; text-align: center; }
 .mcy-course-video-placeholder span { color: #d8b397; font-size: 9px; font-weight: 850; letter-spacing: .14em; }

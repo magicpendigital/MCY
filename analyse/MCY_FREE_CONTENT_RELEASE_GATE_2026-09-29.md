@@ -19,12 +19,21 @@ This gate covers the three free-course shells in MCY and the 38 real videos from
 | Instructional and safety review | CHƯA CHẠY | Metadata cleanup is not a substitute for watching each clip. A qualified reviewer still needs to verify cues, transitions, contraindication language, camera framing and whether the course order is pedagogically sound. |
 | Production release | BLOCKED | Keep the videos unlisted and use the preview deployment/debug APK until the three content gates above have evidence and an explicit release decision. |
 
+## UI/UX follow-up — 2026-09-30
+
+- PASS: Course detail now renders portrait lesson media in a source-aware 9:16 frame instead of forcing the Shorts footage into a 16:9 mock frame. Landscape media keeps a 16:9 path for future approved content.
+- PASS: Course 3 description, lesson guidance and source attribution were rewritten for learners. The surface no longer uses internal editorial wording or privacy-domain terminology.
+- PASS: Manual local-browser review confirmed the course detail keeps the warm ivory / forest / terracotta system, serif hierarchy and restrained course framing. The daily practice catalog remains the primary entry point; free courses remain a supporting content shelf.
+- PASS: Manual local-browser review confirmed Course 3 renders 7 real YouTube players with 360 × 640 portrait boxes and no placeholder cards.
+- CHƯA CHẠY: The targeted Playwright rerun is currently unavailable because the configured Chromium headless executable is missing. The previous 21/21 runtime baseline remains recorded above; rerun the updated suite after the browser dependency is restored.
+- BLOCKED: This visual pass does not close rights, caption, poster or instructional-review gates. Production release remains blocked until those gates have evidence and an explicit release decision.
+
 ## Checks run for this handoff
 
 - `npm run check:runtime` — PASS
 - `npm run build` — PASS; Vite reports a non-blocking large main chunk warning
-- `MCY_PLAYWRIGHT_CHANNEL=chrome npm run test:runtime -- --reporter=line --workers=1` — PASS, 21/21
-- `npm run test:sites` — PASS, 4/4
+- Previous full runtime baseline before this UI patch — PASS, 21/21; current targeted rerun — CHƯA CHẠY because the configured Chromium headless executable is missing
+- `npm run test:sites` — PASS, 4/4 on the previous handoff
 - `npm run check:bundle-secrets` — PASS
 - `git diff --check` — PASS
 

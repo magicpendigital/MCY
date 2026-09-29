@@ -234,11 +234,11 @@ const vi = {
   "course.unlistedStatus": "YouTube · Không công khai",
   "course.unlistedTitle": "Video đã sẵn sàng trong ứng dụng",
   "course.unlistedBody": "Các bài học được phát từ kênh YouTube Một chút yoga ở chế độ Không công khai. Bạn có thể học trực tiếp trong ứng dụng; video không xuất hiện trong tìm kiếm công khai trên YouTube.",
-  "course.openChannel": "Mở trang kênh",
+  "course.openChannel": "Nguồn kênh YouTube",
   "course.englishNote": "English course copy is still limited; Vietnamese titles remain the canonical source copy for this course.",
   "course.lessonsHeading": "Các bài học",
   "course.lessonCount": "{count} bài",
-  "course.sourceNote": "Video được nhúng từ kênh YouTube Một chút yoga bằng miền bảo mật nâng cao. MCY không tải lại hoặc sao chép video vào ứng dụng.",
+  "course.sourceNote": "Video được phát trong ứng dụng từ kênh YouTube Một chút yoga. MCY không tải lại hay sao chép video.",
 } as const;
 
 const en: Record<keyof typeof vi, string> = {
@@ -475,11 +475,11 @@ const en: Record<keyof typeof vi, string> = {
   "course.unlistedStatus": "YouTube · Unlisted",
   "course.unlistedTitle": "Videos are ready in the app",
   "course.unlistedBody": "These lessons play from the Một chút yoga YouTube channel as unlisted videos. Learn directly in the app; the videos are not discoverable in public YouTube search.",
-  "course.openChannel": "Open channel",
+  "course.openChannel": "YouTube channel source",
   "course.englishNote": "English course copy is still limited; Vietnamese titles remain the canonical source copy for this course.",
   "course.lessonsHeading": "Lessons",
   "course.lessonCount": "{count} lessons",
-  "course.sourceNote": "Videos are embedded from the Một chút yoga YouTube channel using the privacy-enhanced domain. MCY does not re-upload or copy videos into the app.",
+  "course.sourceNote": "Videos play in the app from the Một chút yoga YouTube channel. MCY does not re-upload or copy the videos.",
 };
 
 const messages = { "vi-VN": vi, "en-US": en } as const;

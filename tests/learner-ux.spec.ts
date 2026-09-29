@@ -266,6 +266,10 @@ test("English learner flow follows check-in, practice and honest reflection on m
     await expect(page.locator("iframe")).toHaveCount(18);
     await expect(page.locator('iframe[src*="youtube-nocookie.com/embed/"]')).toHaveCount(18);
     await expect(page.locator(".mcy-course-video-placeholder")).toHaveCount(0);
+    await expect(page.locator(".mcy-course-video-portrait")).toHaveCount(18);
+    const firstVideoBox = await page.locator(".mcy-course-video-portrait").first().boundingBox();
+    expect(firstVideoBox).not.toBeNull();
+    expect(firstVideoBox!.height).toBeGreaterThan(firstVideoBox!.width);
   } finally {
     await page.close();
   }

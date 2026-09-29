@@ -52,6 +52,7 @@ type CourseLesson = {
   duration: string;
   description: string;
   visibility: "private" | "unlisted" | "public";
+  orientation: "portrait" | "landscape";
 };
 
 type FreeCourse = {
@@ -63,14 +64,15 @@ type FreeCourse = {
 
 const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/channel/UCHd1MgfJI7Zx4ij06vkg9rQ";
 
-function youtubeLesson(id: string, youtubeId: string, title: string, duration: string): CourseLesson {
+function youtubeLesson(id: string, youtubeId: string, title: string, duration: string, orientation: CourseLesson["orientation"] = "portrait"): CourseLesson {
   return {
     id,
     youtubeId,
     title,
     duration,
-    description: "Video hướng dẫn ngắn từ kênh Một chút yoga, để bạn theo nhịp riêng.",
+    description: "Theo nhịp riêng của bạn và dừng lại nếu thấy không phù hợp.",
     visibility: "unlisted",
+    orientation,
   };
 }
 
@@ -126,7 +128,7 @@ const FREE_COURSES: FreeCourse[] = [
   {
     id: "sequences",
     title: "Chuỗi tư thế cơ bản",
-    description: "Các clip ngắn được sắp xếp thành một nhóm riêng để biên tập thành chuỗi học rõ ràng.",
+    description: "Một chuỗi ngắn các tư thế cơ bản để bạn theo dõi từng bước và làm quen với nhịp chuyển động.",
     lessons: [
       youtubeLesson("32", "6DwXHdN_ccg", "Chuỗi tư thế cơ bản · bài 32", "0:22"),
       youtubeLesson("33", "f7UfRc4TKdM", "Chuỗi tư thế cơ bản · bài 33", "0:21"),
@@ -1518,7 +1520,7 @@ function CourseDetailScreen() {
     <section className="mcy-course-lessons" aria-labelledby="course-lessons-heading">
       <div className="mcy-course-lessons-heading"><h2 id="course-lessons-heading">{msg(locale, "course.lessonsHeading")}</h2><span>{formatMessage(locale, "course.lessonCount", { count: course.lessons.length })}</span></div>
       {course.lessons.map((lesson, index) => <article className="mcy-course-lesson" key={lesson.id}>
-        <div className="mcy-course-video" data-testid="course-video">
+        <div className={`mcy-course-video mcy-course-video-${lesson.orientation}`} data-testid="course-video">
           {lesson.visibility === "public" || lesson.visibility === "unlisted" ? <iframe title={lesson.title} src={`https://www.youtube-nocookie.com/embed/${lesson.youtubeId}?rel=0&modestbranding=1`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /> : <div className="mcy-course-video-placeholder"><span>YOUTUBE</span><strong>{msg(locale, "course.unlistedTitle")}</strong></div>}
         </div>
         <div className="mcy-course-lesson-copy"><span className="mcy-course-lesson-number">{String(index + 1).padStart(2, "0")} · {lesson.duration}</span><h3>{lesson.title}</h3><p>{lesson.description}</p></div>
