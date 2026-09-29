@@ -99,6 +99,13 @@
 - Keep the primary action and its meaningful alternative available in an inset, opaque safe-area footer for the core dialogue, practice, check-in, plan and reflection steps. Keep longer content scrollable above it, with bottom padding derived from the FlowStack footer height. Do not cover content or protected device chrome.
 - Verify the main learner loop on a short portrait viewport as well as both simulator presets, mobile web and short landscape. A visible control is not enough: check that it remains tappable, keyboard-attached surfaces still move with the runtime, and scroll can reach the final content.
 
+## Free YouTube courses — confirmed 2026-09-29
+
+- The free-course learner surface may embed public or unlisted YouTube videos from the owner's Một chút yoga channel. Use the privacy-enhanced YouTube embed domain, stable video IDs and an explicit source note; do not download, re-upload or mirror the videos into the app.
+- On 2026-09-29, all 38 Shorts were updated in YouTube Studio with normalized learner-facing titles, a safety-oriented description, a not-for-kids audience setting and **Không công khai** visibility. The long-video tab and playlist tab had no content. This is a dated channel state, not a permanent provider guarantee.
+- The current app course catalog groups those 38 real IDs into three free-course shells and renders the real unlisted players in-app. The content is available through the app link but is not discoverable through public YouTube search. Rights evidence, captions, thumbnails, instructional quality and final safety review remain release gates; unlisted is not the same as a production publication decision.
+- Editing or publishing metadata on the YouTube channel is an external representational action. The 38-video metadata and visibility update was completed after the owner's explicit confirmation on 2026-09-29; future channel changes still require confirmation immediately before Save/Publish, then a record of the resulting visibility and playlist IDs.
+
 ## Prototype Instructions
 
 In ChatGPT Work Mode, run `sites-preview start "$PWD"`, open `http://terminal.local:4173/` in the cloud browser, and verify the rendered app and its primary interactions. Keep that preview open and tell the user to inspect it in the cloud browser; do not present the local URL as a user-facing chat link. In Codex Desktop, run the local server yourself, open the preview in the in-app browser, and provide the clickable local URL. Do not deploy to Sites unless the user explicitly asks to share, publish, or deploy. Do not give the user server-start instructions when you can run it.

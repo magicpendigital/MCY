@@ -110,7 +110,7 @@ for (const device of ["iphone", "pixel-10"] as const) {
     await page.getByRole("button", { name: "Bỏ qua ghi nhận cơ thể" }).click();
     await page.getByRole("button", { name: "Bỏ qua và tiếp tục" }).click();
     await expect(page.locator(".mcy-checkin-summary")).toContainText("Bỏ qua phần cơ thể");
-    await page.getByRole("button", { name: "Xem buổi mẫu như khách" }).click();
+    await page.getByRole("button", { name: "Xem kế hoạch hôm nay" }).click();
     await expect(page.getByRole("heading", { name: "Bài tập hôm nay" })).toBeVisible();
     await page.locator(".flow-fixed-footer .mcy-action").click();
     await expect(page.getByRole("heading", { name: "Xoay cổ nhẹ" })).toBeVisible();
@@ -153,6 +153,18 @@ test("full-body check-in covers office-work areas and preserves distinct sides",
   await expect(page.locator(".mcy-checkin-summary")).toContainText("Đầu gối · Hai bên · Nhẹ");
 });
 
+test("learner-facing MVP surfaces do not expose preview or mock copy", async ({ page }) => {
+  const learnerSurface = page.locator("main").first();
+  const forbiddenCopy = /preview|prototype|mock|sample|mô phỏng|bản mẫu|bản review/i;
+  await page.goto("/?mode=web");
+  await expect(learnerSurface).not.toContainText(forbiddenCopy);
+  await page.getByRole("button", { name: "Thử tìm hiểu như khách" }).click();
+  await expect(learnerSurface).not.toContainText(forbiddenCopy);
+  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
+  await page.getByRole("button", { name: "Xem kế hoạch hôm nay" }).click();
+  await expect(learnerSurface).not.toContainText(forbiddenCopy);
+});
+
 test("mobile browser defaults to an unframed app, while review mode retains the simulator", async ({ browser }) => {
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   try {
@@ -173,7 +185,45 @@ test("mobile browser defaults to an unframed app, while review mode retains the 
   }
 });
 
-test("internal English preview follows check-in, sample practice and honest reflection on mobile web", async ({ browser }) => {
+test("desktop web mode keeps the learner app inside a centered canvas", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/?mode=web");
+
+  const canvas = await page.locator("[data-testid=device-screen]").evaluate((screen) => {
+    const rect = screen.getBoundingClientRect();
+    const styles = getComputedStyle(screen);
+    return {
+      leftInset: rect.left,
+      rightInset: window.innerWidth - rect.right,
+      viewportWidth: window.innerWidth,
+      width: rect.width,
+      runtime: screen.getAttribute("data-runtime-mode"),
+      radius: styles.borderRadius,
+      shadow: styles.boxShadow,
+    };
+  });
+  expect(canvas.runtime).toBe("web");
+  expect(canvas.leftInset).toBeGreaterThanOrEqual(24);
+  expect(canvas.rightInset).toBeGreaterThanOrEqual(24);
+  expect(canvas.width).toBeLessThan(canvas.viewportWidth);
+  expect(canvas.radius).toBe("28px");
+  expect(canvas.shadow).not.toBe("none");
+
+  await openGuestCheckin(page);
+  const checkinLayout = await page.locator(".mcy-checkin-content.checkin-step-body").evaluate((content) => {
+    const styles = getComputedStyle(content);
+    return {
+      display: styles.display,
+      columns: styles.gridTemplateColumns.split(" ").filter(Boolean).length,
+      contentWidth: content.getBoundingClientRect().width,
+    };
+  });
+  expect(checkinLayout.display).toBe("grid");
+  expect(checkinLayout.columns).toBe(2);
+  expect(checkinLayout.contentWidth).toBeGreaterThan(600);
+});
+
+test("English learner flow follows check-in, practice and honest reflection on mobile web", async ({ browser }) => {
   const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   try {
     await page.goto("/?mode=web");
@@ -185,7 +235,7 @@ test("internal English preview follows check-in, sample practice and honest refl
     await openGuestCheckin(page, true, "en-US");
     await page.getByRole("button", { name: "Next: energy and time" }).tap();
     await page.getByRole("button", { name: "10 min" }).tap();
-    await page.getByRole("button", { name: "View a sample session as guest" }).tap();
+    await page.getByRole("button", { name: "View today's plan" }).tap();
     await expect(page.getByRole("heading", { name: "Today's practice" })).toBeVisible();
     await expect(page.locator(".mcy-plan-hero h2")).toHaveText("Relax your neck and shoulders");
     await page.locator(".flow-fixed-footer .mcy-action").tap();
@@ -195,7 +245,7 @@ test("internal English preview follows check-in, sample practice and honest refl
     await page.getByRole("button", { name: "Worse" }).tap();
     await expect(page.locator(".mcy-alert")).toContainText("won't recommend a session");
     await page.locator(".flow-fixed-footer .mcy-action").tap();
-    await expect(page.getByRole("heading", { name: "Reflection saved for this session." })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Reflection recorded." })).toBeVisible();
     await expect(page.locator(".mcy-sync-card")).toContainText("Worse");
     await page.getByRole("button", { name: "Open Journey" }).tap();
     await expect(page.getByRole("heading", { name: "Your Journey" })).toBeVisible();
@@ -204,12 +254,18 @@ test("internal English preview follows check-in, sample practice and honest refl
     await expect(mainNavigation).toContainText("Journey");
     await expect(mainNavigation).toContainText("Explore");
     await expect(mainNavigation).toContainText("Profile");
-    await page.getByRole("button", { name: "View sample journey" }).tap();
-    await expect(page.getByText("Illustrative 30-day sample. It is not a learner's result.")).toBeVisible();
-    await expect(page.getByText("SAMPLE ENTRY")).toBeVisible();
-    await page.getByRole("button", { name: "Compare with another entry" }).tap();
-    await expect(page.getByRole("heading", { name: "Compare two entries" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "By body area" })).toBeVisible();
+    await expect(page.getByText("SESSION ENTRY")).toBeVisible();
+    await expect(page.getByRole("button", { name: "View sample journey" })).toHaveCount(0);
+    await mainNavigation.getByRole("button", { name: "Explore" }).tap();
+    await expect(page.getByTestId("free-course-catalog")).toBeVisible();
+    await expect(page.getByRole("button", { name: /Một chút chuyển động nhẹ/ })).toBeVisible();
+    await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).tap();
+    await expect(page.getByRole("heading", { name: "Một chút chuyển động nhẹ" })).toBeVisible();
+    await expect(page.getByText("YouTube · Unlisted")).toBeVisible();
+    await expect(page.getByText("Videos are ready in the app")).toBeVisible();
+    await expect(page.locator("iframe")).toHaveCount(18);
+    await expect(page.locator('iframe[src*="youtube-nocookie.com/embed/"]')).toHaveCount(18);
+    await expect(page.locator(".mcy-course-video-placeholder")).toHaveCount(0);
   } finally {
     await page.close();
   }
@@ -300,7 +356,7 @@ test("short portrait keeps welcome, lesson and reflection actions inside the vie
     await welcomeAction.tap();
 
     await page.locator(".flow-fixed-footer .mcy-action").tap();
-    await page.getByRole("button", { name: "Xem buổi mẫu như khách" }).tap();
+    await page.getByRole("button", { name: "Xem kế hoạch hôm nay" }).tap();
     const planAction = page.locator(".flow-fixed-footer .mcy-action");
     await expect(planAction).toBeInViewport();
     await planAction.tap();

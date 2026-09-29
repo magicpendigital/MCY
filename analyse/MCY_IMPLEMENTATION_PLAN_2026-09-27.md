@@ -20,6 +20,15 @@ Tài liệu này chi tiết hóa [phân tích UI/UX v2](uiux-audit-2026-09-26/PL
 | **6. Kiến thức yoga và thiền** | **ĐỀ XUẤT, CHƯA TRIỂN KHAI** | Chờ duyệt nguồn, nội dung chuyên môn, quyền ảnh/audio và learner publication gate; chưa thêm AI hướng dẫn thiền. |
 | **7. Phát hành** | **R3 Preview Success · Production giữ nguyên** | GitHub báo Vercel check `success` cho commit `af4732e` trên branch `codex-mcy-p1-preview`; trang Preview tải được và hiển thị welcome bằng brand VI hiện tại. Link nhánh: `https://mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app/`; Preview vẫn trỏ tới `mcy-staging`. Project có deployment Production hiện hữu từ `main`, commit `992ccd8`; các cập nhật R3 không thay đổi Production. |
 
+### Cập nhật 29/09/2026 — catalog khóa học miễn phí từ YouTube
+
+- Đã rà soát trực tiếp YouTube Studio của kênh Một chút yoga: có 38 Shorts, mục Video dài và Playlist hiện không có nội dung. Cả 38 video đã được chuẩn hóa tiêu đề, thêm mô tả hướng dẫn an toàn, đặt audience “Không, nội dung này không dành cho trẻ em” và lưu ở chế độ **Không công khai** sau khi người sở hữu xác nhận.
+- App có ba nhóm khóa học miễn phí với 38 YouTube ID thật, route chi tiết từng khóa và player dùng `youtube-nocookie.com/embed`. Các bài học thật hiện phát trực tiếp trong ứng dụng ở chế độ Không công khai; catalog và chi tiết khóa học không còn hiển thị trạng thái preview, mockup hay private-placeholder.
+- Tiêu đề và mô tả learner-facing đã được đồng bộ với metadata YouTube ngày 29/09. Regression coverage kiểm tra đủ 18 iframe thật ở khóa đầu tiên, đúng miền embed và không còn placeholder. Quyền sử dụng, caption, thumbnail, chất lượng hướng dẫn và safety review vẫn là gate trước khi chuyển sang quyết định phát hành rộng hơn.
+- Paid courses chưa triển khai. Hướng đề xuất hiện tại là benchmark private/managed hosting sau pilot media được quyền sử dụng, so sánh playback, caption, revoke access, storage/egress, backup và khả năng chuyển nhà cung cấp; không upload hoặc tạo dịch vụ tính phí ở bước này.
+- Việc sửa metadata và chuyển visibility trên YouTube là external representational action. Bước này đã hoàn tất sau xác nhận ngay trước thao tác; các thay đổi YouTube sau này vẫn phải dừng ở bước chuẩn bị cho đến khi có xác nhận mới.
+- Release gate chi tiết được ghi tại [MCY_FREE_CONTENT_RELEASE_GATE_2026-09-29.md](MCY_FREE_CONTENT_RELEASE_GATE_2026-09-29.md): mapping, metadata, embed và UI PASS; rights evidence, caption, thumbnail, instructional/safety review CHƯA CHẠY. Vì vậy branch preview và debug APK được phép cập nhật để kiểm thử, nhưng chưa promote lên Production.
+
 ### Đánh giá feedback người test ngày 28/09/2026
 
 Feedback đã được triển khai đến R2; commit `563d09e` Ready trên Preview. Authenticated actor tests và thiết bị thật vẫn là các gate chưa qua:
