@@ -7,11 +7,24 @@
     "check:runtime": "node scripts/check-mobile-runtime.mjs",
     "check:bundle-secrets": "node scripts/check-client-bundle-secrets.mjs",
     "test:teacher-acl": "node --env-file-if-exists=.env.local scripts/test-teacher-acl-postgrest.mjs",
+    "test:plan-items-acl": "node --env-file-if-exists=.env.local scripts/test-plan-items-acl-postgrest.mjs",
+    "test:asset-rights-acl": "node --env-file-if-exists=.env.local scripts/test-asset-rights-acl-postgrest.mjs",
+    "test:public-acl-scope": "node --env-file-if-exists=.env.local scripts/test-public-acl-scope-postgrest.mjs",
     "test:teacher-actors": "node --env-file-if-exists=.env.local scripts/test-teacher-actor-matrix.mjs",
+    "setup:teacher-actor-tokens": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-staging-actor-tokens.ps1",
     "test:checkin-rpc-anon": "node --env-file-if-exists=.env.local scripts/test-checkin-rpc-anon.mjs",
+    "test:checkin-migration-contract": "node --test tests/checkin-consent-migration.test.mjs",
+    "test:consent-event-migration-contract": "node --test tests/consent-event-limit-migration.test.mjs",
     "assets:android": "node scripts/generate-brand-android-assets.mjs",
     "update:runtime-lock": "node scripts/update-mobile-runtime-lock.mjs",
+    "pretest:runtime": "npm run check:runtime",
     "test:runtime": "playwright test",
+    "test:playwright-environment": "node --test tests/playwright-test-environment.test.mjs",
+    "test:ai-gateway": "node --test tests/ai-gateway-models.test.mjs tests/ai-safety-boundaries.test.mjs tests/ai-assistant-handler.test.mjs tests/ai-current-turn-contract.test.mjs",
+    "test:dependency-security": "node --test tests/dependency-security.test.mjs",
+    "test:owner-control-plane": "node --test tests/owner-control-plane.test.mjs",
+    "test:teacher-control-plane": "node --test tests/teacher-control-plane.test.mjs",
+    "test:teacher-migration-contract": "node --test tests/teacher-migration-contract.test.mjs",
     "test:sites": "node --test tests/sites-worker.test.mjs",
     "predev": "npm run check:runtime",
     "dev": "vite",
@@ -20,13 +33,15 @@
     "cap:sync": "cap sync",
     "mobile:sync": "npm run build && cap sync",
     "android:build": "npm run build && cap sync android && cap build android",
+    "android:debug:build": "node scripts/build-android-debug.mjs",
     "android:install:debug": "node scripts/install-android-debug.mjs",
+    "android:parallel:build": "node scripts/build-android-debug.mjs parallel",
+    "android:install:parallel": "node scripts/install-android-debug.mjs parallel",
     "ios:sync": "npm run build && cap sync ios"
   },
   "dependencies": {
     "@capacitor/android": "8.5.2",
     "@capacitor/app": "8.1.1",
-    "@capacitor/cli": "8.5.2",
     "@capacitor/core": "8.5.2",
     "@capacitor/ios": "8.5.2",
     "@capacitor/keyboard": "8.0.5",
@@ -42,11 +57,17 @@
     "react-dom": "19.2.7"
   },
   "devDependencies": {
+    "@capacitor/cli": "8.5.2",
     "@playwright/test": "1.61.1",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.3",
     "typescript": "7.0.2",
-    "vite": "8.1.3"
+    "vite": "8.3.1"
+  },
+  "overrides": {
+    "xcode": {
+      "uuid": "11.1.1"
+    }
   }
 }

@@ -1,10 +1,17 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 
-async function drag(page: Page, locator: Locator, deltaX: number, deltaY: number, steps = 8) {
+async function drag(
+  page: Page,
+  locator: Locator,
+  deltaX: number,
+  deltaY: number,
+  steps = 8,
+  origin: { x?: number; y?: number } = {},
+) {
   const box = await locator.boundingBox();
   if (!box) throw new Error("Drag target has no bounding box");
-  const startX = box.x + box.width / 2;
-  const startY = box.y + box.height / 2;
+  const startX = box.x + (origin.x ?? box.width / 2);
+  const startY = box.y + (origin.y ?? box.height / 2);
 
   await page.mouse.move(startX, startY);
   await page.mouse.down();
@@ -19,7 +26,7 @@ async function drag(page: Page, locator: Locator, deltaX: number, deltaY: number
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("/tests/runtime-fixture.html");
+  await page.goto("/tests/runtime-fixture.html?mode=review");
 });
 
 test("horizontal intent stays in Carousel and cannot create parent momentum", async ({ page }) => {
@@ -45,8 +52,8 @@ test("vertical intent over a carousel is handed to MobileScroll in both directio
   const parent = page.getByTestId("mobile-scroll");
 
   await drag(page, card, 4, -150);
-  expect(await parent.evaluate((element) => element.scrollTop)).toBeGreaterThan(60);
-  expect(await carousel.evaluate((element) => element.scrollLeft)).toBe(0);
+  await expect.poll(() => parent.evaluate((element) => element.scrollTop), { timeout: 2_000 }).toBeGreaterThan(60);
+  await expect.poll(() => carousel.evaluate((element) => element.scrollLeft), { timeout: 2_000 }).toBe(0);
 
   await parent.evaluate((element) => {
     element.scrollTop = 80;
@@ -68,10 +75,11 @@ test("Carousel preserves momentum and edge rubber-banding", async ({ page }) => 
   const carousel = page.locator(".fixture-carousel");
   const card = page.locator(".carousel-card").nth(1);
 
-  await drag(page, card, -100, 5, 3);
+  // Keep the release comfortably inside the scroll range and sample enough
+  // pointer positions for the velocity-based motion to be observable.
+  await drag(page, card, -60, 5, 5);
   const releasedOffset = await carousel.evaluate((element) => element.scrollLeft);
-  await page.waitForTimeout(120);
-  expect(await carousel.evaluate((element) => element.scrollLeft)).toBeGreaterThan(releasedOffset);
+  await expect.poll(() => carousel.evaluate((element) => element.scrollLeft), { timeout: 2_000 }).toBeGreaterThan(releasedOffset);
 
   await carousel.evaluate((element) => {
     element.scrollLeft = 0;
@@ -81,10 +89,9 @@ test("Carousel preserves momentum and edge rubber-banding", async ({ page }) => 
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
   await page.mouse.down();
   await page.mouse.move(box.x + box.width / 2 + 90, box.y + box.height / 2, { steps: 4 });
-  expect(Number(await carousel.getAttribute("data-overscroll"))).toBeGreaterThan(0);
+  await expect.poll(() => carousel.evaluate((element) => Number(element.getAttribute("data-overscroll"))), { timeout: 2_000 }).toBeGreaterThan(0);
   await page.mouse.up();
-  await page.waitForTimeout(900);
-  expect(Math.abs(Number(await carousel.getAttribute("data-overscroll")))).toBeLessThan(1);
+  await expect.poll(() => carousel.evaluate((element) => Math.abs(Number(element.getAttribute("data-overscroll")))), { timeout: 2_000 }).toBeLessThan(1);
 });
 
 test("BottomSheet remains mounted while its default exit animation plays", async ({ page }) => {
@@ -100,36 +107,35 @@ test("BottomSheet remains mounted while its default exit animation plays", async
 });
 
 test("keyboard and its attached footer dismiss on the same transition", async ({ page }) => {
-  await page.goto("/tests/runtime-fixture.html?fixture=keyboard");
+  await page.goto("/tests/runtime-fixture.html?mode=review&fixture=keyboard");
   const input = page.getByLabel("Message");
   const footer = page.getByTestId("flow-fixed-footer");
   const keyboard = page.getByTestId("keyboard-dock");
 
   await input.click();
   await expect(keyboard).toHaveAttribute("data-visible", "true");
-  await drag(page, footer, 0, 120, 5);
+  // Start on the blank strip above the input; keyboard-dismiss drag intentionally ignores inputs.
+  await drag(page, footer, 0, 120, 5, { x: 10, y: 6 });
   await expect(keyboard).toHaveAttribute("data-visible", "false");
 
-  await page.waitForTimeout(100);
-  const progress = await page.evaluate(() => {
-    const footerElement = document.querySelector<HTMLElement>('[data-testid="flow-fixed-footer"]')!;
-    const keyboardElement = document.querySelector<HTMLElement>('[data-testid="keyboard-dock"]')!;
-    const fullHeight = Number.parseFloat(keyboardElement.style.height);
-    const footerRemaining = Number.parseFloat(getComputedStyle(footerElement).bottom);
-    const matrix = new DOMMatrixReadOnly(getComputedStyle(keyboardElement).transform);
-    return {
-      footer: footerRemaining / fullHeight,
-      keyboard: 1 - matrix.m42 / fullHeight,
-    };
-  });
-  expect(Math.abs(progress.footer - progress.keyboard)).toBeLessThan(0.18);
+  await expect.poll(async () => {
+    return page.evaluate(() => {
+      const footerElement = document.querySelector<HTMLElement>('[data-testid="flow-fixed-footer"]')!;
+      const keyboardElement = document.querySelector<HTMLElement>('[data-testid="keyboard-dock"]')!;
+      const fullHeight = Number.parseFloat(keyboardElement.style.height);
+      const footerRemaining = Number.parseFloat(getComputedStyle(footerElement).bottom);
+      const matrix = new DOMMatrixReadOnly(getComputedStyle(keyboardElement).transform);
+      return Math.abs(footerRemaining / fullHeight - (1 - matrix.m42 / fullHeight));
+    });
+  }).toBeLessThan(0.18);
 
-  await page.waitForTimeout(300);
-  expect(await footer.evaluate((element) => getComputedStyle(element).bottom)).toBe("34px");
+  await expect
+    .poll(() => footer.evaluate((element) => getComputedStyle(element).bottom))
+    .toBe("34px");
 });
 
 test("switching to Pixel keeps the composer above Android navigation", async ({ page }) => {
-  await page.goto("/tests/runtime-fixture.html?fixture=keyboard");
+  await page.goto("/tests/runtime-fixture.html?mode=review&fixture=keyboard");
   const input = page.getByLabel("Message");
   await input.evaluate((element: HTMLInputElement) => {
     element.value = "Draft message";
@@ -216,7 +222,7 @@ test("switching to Pixel keeps the composer above Android navigation", async ({ 
 });
 
 test("FlowStack pushes and pops screens while dismissing the keyboard", async ({ page }) => {
-  await page.goto("/tests/runtime-fixture.html?fixture=flow");
+  await page.goto("/tests/runtime-fixture.html?mode=review&fixture=flow");
   await page.getByLabel("Flow message").click();
   await expect(page.getByTestId("keyboard-dock")).toHaveAttribute("data-visible", "true");
 

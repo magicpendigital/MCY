@@ -1,8 +1,10 @@
 import { readdir, readFile } from "node:fs/promises";
-import { extname, join } from "node:path";
+import { extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const bundleRoot = fileURLToPath(new URL("../dist/client/", import.meta.url));
+const bundleRoot = process.argv[2]
+  ? resolve(process.argv[2])
+  : fileURLToPath(new URL("../dist/client/", import.meta.url));
 const textExtensions = new Set([".js", ".mjs", ".html", ".json", ".css", ".txt", ".map"]);
 const findings = [];
 let inspected = 0;

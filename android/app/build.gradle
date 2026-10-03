@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     namespace = "com.nilaza.motchutyoga"
+    testBuildType "parallel"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.nilaza.motchutyoga"
@@ -17,6 +18,21 @@ android {
         }
     }
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            resValue "string", "app_name", "Một chút yoga (Debug)"
+            resValue "string", "title_activity_main", "Một chút yoga (Debug)"
+            resValue "string", "custom_url_scheme", "motchutyoga-debug"
+        }
+        parallel {
+            initWith debug
+            applicationIdSuffix ".mcydebug"
+            versionNameSuffix "-mcydebug"
+            matchingFallbacks = ['debug']
+            resValue "string", "app_name", "Một chút yoga (Debug song song)"
+            resValue "string", "title_activity_main", "Một chút yoga (Debug song song)"
+            resValue "string", "custom_url_scheme", "motchutyoga-mcydebug"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

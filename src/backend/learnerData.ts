@@ -25,14 +25,41 @@ export const REQUIRED_CONSENT_POLICY_VERSIONS = {
   privacy: "privacy-review-0.1",
 } as const;
 
+// Versioned separately because model processing is optional and can be revoked
+// without changing the learner's required service/privacy acceptance.
+export const CONSENT_POLICY_VERSIONS: Record<ConsentPurpose, string> = {
+  terms: REQUIRED_CONSENT_POLICY_VERSIONS.terms,
+  privacy: REQUIRED_CONSENT_POLICY_VERSIONS.privacy,
+  wellbeing_data: "wellbeing-data-review-0.1",
+  ai_processing: "ai-processing-review-1.0",
+  teacher_sharing: "teacher-sharing-review-0.1",
+  notifications: "notifications-review-0.1",
+  marketing: "marketing-review-0.1",
+};
+
 export function hasCurrentRequiredConsent(
   consents: ConsentState,
   versions: ConsentPolicyVersions,
 ): boolean {
-  return consents.terms
-    && consents.privacy
-    && versions.terms === REQUIRED_CONSENT_POLICY_VERSIONS.terms
-    && versions.privacy === REQUIRED_CONSENT_POLICY_VERSIONS.privacy;
+  return hasCurrentConsentForPurpose("terms", consents, versions)
+    && hasCurrentConsentForPurpose("privacy", consents, versions);
+}
+
+export function hasCurrentConsentForPurpose(
+  purpose: ConsentPurpose,
+  consents: ConsentState,
+  versions: ConsentPolicyVersions,
+): boolean {
+  return consents[purpose] === true
+    && versions[purpose] === CONSENT_POLICY_VERSIONS[purpose];
+}
+
+export function isCurrentLearnerSession(
+  signedIn: boolean,
+  currentUserId: string | null,
+  expectedUserId: string,
+): boolean {
+  return signedIn && currentUserId === expectedUserId;
 }
 
 export const emptyConsentState: ConsentState = {
@@ -137,9 +164,14 @@ export async function saveConsentEvent(
   );
 }
 
-export async function saveLearnerCheckin(client: LearnerClient, payload: CheckinPayload) {
+export async function saveLearnerCheckin(
+  client: LearnerClient,
+  payload: CheckinPayload,
+  expectedUserId: string,
+) {
   const rows = unwrap(
-    await client.rpc("save_my_checkin_with_current_consent", {
+    await client.rpc("save_my_checkin_for_current_user_with_current_consent", {
+      p_expected_user_id: expectedUserId,
       p_local_date: payload.localDate,
       p_local_timezone: payload.timezone,
       p_energy_level: payload.energyLevel,

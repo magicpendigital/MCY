@@ -88,8 +88,9 @@ export type Database = {
       };
       get_my_consent_state: { Args: Record<string, never>; Returns: Json };
       get_my_consent_policy_versions: { Args: Record<string, never>; Returns: Json };
-      save_my_checkin_with_current_consent: {
+      save_my_checkin_for_current_user_with_current_consent: {
         Args: {
+          p_expected_user_id: string;
           p_local_date: string;
           p_local_timezone: string;
           p_energy_level: number | null;

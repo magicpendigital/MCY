@@ -170,6 +170,38 @@ async function verifyTeacherWriteDenials(actor, publishableKey) {
   assertPrivateRoleWriteDenied(`${actor.label} direct role-assignment DELETE`, privateDelete);
 }
 
+async function verifyPlanItemWriteDenials(actor, publishableKey) {
+  const collectionUrl = `${STAGING_ORIGIN}/rest/v1/plan_items`;
+  const probeId = randomUUID();
+
+  const insert = await request(collectionUrl, {
+    method: "POST",
+    publishableKey,
+    token: actor.token,
+    // Empty bulk insert checks table-level permission without providing a row.
+    body: [],
+  });
+  assertPermissionDenied(`${actor.label} direct plan-item INSERT`, insert);
+
+  const targetUrl = new URL(collectionUrl);
+  targetUrl.searchParams.set("id", `eq.${probeId}`);
+
+  const update = await request(targetUrl, {
+    method: "PATCH",
+    publishableKey,
+    token: actor.token,
+    body: { position: 1 },
+  });
+  assertPermissionDenied(`${actor.label} direct plan-item UPDATE`, update);
+
+  const remove = await request(targetUrl, {
+    method: "DELETE",
+    publishableKey,
+    token: actor.token,
+  });
+  assertPermissionDenied(`${actor.label} direct plan-item DELETE`, remove);
+}
+
 function assertPrivateRoleWriteDenied(label, result) {
   if (
     (result.status === 406 && result.payload?.code === "PGRST106") ||
@@ -207,9 +239,10 @@ async function main() {
 
   for (const actor of identifiedActors) {
     await verifyTeacherWriteDenials(actor, publishableKey);
+    await verifyPlanItemWriteDenials(actor, publishableKey);
   }
 
-  console.log("PASS staging teacher actor matrix: no direct teacher or role-assignment writes succeeded.");
+  console.log("PASS staging actor matrix: no direct teacher, role-assignment, or plan-item writes succeeded.");
 }
 
 main().catch((error) => {

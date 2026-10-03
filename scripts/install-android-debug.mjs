@@ -5,10 +5,23 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const apk = path.join(root, "android", "app", "build", "outputs", "apk", "debug", "app-debug.apk");
+const args = process.argv.slice(2);
+const variant = ["debug", "parallel"].includes(args[0]) ? args.shift() : "debug";
+const variantConfigs = {
+  debug: /debug\s*\{([\s\S]*?)\n\s*\}/,
+  parallel: /parallel\s*\{([\s\S]*?)\n\s*\}/,
+};
+if (args.length > 1) throw new Error("Usage: npm run android:install:debug -- [serial] or npm run android:install:parallel -- [serial].");
+const apkDirectory = path.join(root, "android", "app", "build", "outputs", "apk", variant);
+const apk = path.join(apkDirectory, `app-${variant}.apk`);
+const apkMetadata = path.join(apkDirectory, "output-metadata.json");
 const gradle = readFileSync(path.join(root, "android", "app", "build.gradle"), "utf8");
-const packageName = gradle.match(/applicationId\s+["']([^"']+)["']/)?.[1];
-const remoteApk = "/data/local/tmp/mcy-debug.apk";
+const basePackageName = gradle.match(/applicationId\s+["']([^"']+)["']/)?.[1];
+const namespace = gradle.match(/namespace\s*=\s*["']([^"']+)["']/)?.[1];
+const variantConfig = gradle.match(variantConfigs[variant])?.[1];
+const applicationIdSuffix = variantConfig?.match(/applicationIdSuffix\s+["']([^"']+)["']/)?.[1];
+const packageName = basePackageName && applicationIdSuffix ? `${basePackageName}${applicationIdSuffix}` : null;
+const remoteApk = `/data/local/tmp/mcy-${variant}.apk`;
 
 function runAdb(args, allowFailure = false) {
   const result = spawnSync("adb", args, { encoding: "utf8", timeout: 120_000 });
@@ -100,14 +113,19 @@ async function verifyWebView(deviceArgs) {
   throw new Error(`Installed app did not render: ${lastError}${diagnosticLog ? `\nRecent Android diagnostics:\n${diagnosticLog}` : ""}`);
 }
 
-if (!packageName) throw new Error("Cannot find Android applicationId in android/app/build.gradle.");
+if (!packageName || !namespace) throw new Error("Cannot derive the debug application ID and namespace from android/app/build.gradle.");
 if (!existsSync(apk)) throw new Error(`Debug APK is missing: ${apk}`);
+if (!existsSync(apkMetadata)) throw new Error(`Debug APK metadata is missing: ${apkMetadata}`);
+const metadata = JSON.parse(readFileSync(apkMetadata, "utf8"));
+if (metadata.variantName !== variant || metadata.applicationId !== packageName || packageName === basePackageName) {
+  throw new Error(`Refusing installation: APK metadata does not confirm the isolated debug package ${packageName}.`);
+}
 
 const devices = runAdb(["devices"]).stdout
   .split(/\r?\n/)
   .map(line => line.match(/^(\S+)\s+device$/)?.[1])
   .filter(Boolean);
-const requestedSerial = process.argv[2];
+const requestedSerial = args[0];
 const serial = requestedSerial || (devices.length === 1 ? devices[0] : null);
 
 if (!serial || !devices.includes(serial)) {
@@ -126,7 +144,7 @@ try {
   runAdb([...deviceArgs, "shell", "rm", remoteApk], true);
 }
 
-const launch = runAdb([...deviceArgs, "shell", "am", "start", "-n", `${packageName}/.MainActivity`]);
+const launch = runAdb([...deviceArgs, "shell", "am", "start", "-n", `${packageName}/${namespace}.MainActivity`]);
 process.stdout.write(launch.stdout);
 const state = await verifyWebView(deviceArgs);
 console.log(`Verified ${packageName} on ${serial}: ${state.url}, ${state.rootText.length} rendered characters.`);

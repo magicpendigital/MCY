@@ -1,11 +1,13 @@
-import { createContext, type PropsWithChildren, useContext, useEffect, useMemo, useState } from "react";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { CheckIcon, ChevronDownIcon } from "@radix-ui/react-icons";
+import { createContext, lazy, type PropsWithChildren, useContext, useEffect, useMemo, useState } from "react";
 import { Capacitor } from "@capacitor/core";
 import { mobileAssets } from "./assets";
 import { iphoneGeometry, pixelGeometry, type MobileDeviceGeometry } from "./geometry";
 
+const AUTOMATIC_WEB_SURFACE_QUERY = "(max-width: 600px), ((pointer: coarse) and (max-height: 600px)), (min-width: 900px)";
+
 export type MobileDeviceId = "iphone" | "pixel-10";
+
+export const DevicePicker = lazy(() => import("./DevicePicker").then(module => ({ default: module.DevicePicker })));
 
 type MobileDevicePreset = {
   id: MobileDeviceId;
@@ -60,7 +62,7 @@ export function MobileDeviceProvider({ children }: PropsWithChildren) {
   const params = typeof window === "undefined" ? new URLSearchParams() : new URLSearchParams(window.location.search);
   const forcedReview = params.get("mode") === "review" || params.has("device");
   const forcedWeb = params.get("mode") === "web";
-  const [webMode, setWebMode] = useState(() => !native && shouldUseMobileWebView(forcedWeb, forcedReview));
+  const [webMode, setWebMode] = useState(() => !native && shouldUseWebSurface(forcedWeb, forcedReview));
   const [previewDeviceId, setPreviewDeviceId] = useState<MobileDeviceId>(() => params.get("device") === "pixel-10" ? "pixel-10" : "iphone");
   const [viewport, setViewport] = useState(() => getNativeViewport());
   const [webViewport, setWebViewport] = useState(() => getWebViewport());
@@ -92,11 +94,11 @@ export function MobileDeviceProvider({ children }: PropsWithChildren) {
   useEffect(() => {
     if (native) return;
     const update = () => {
-      setWebMode(forcedWeb || (!forcedReview && shouldUseMobileWebView(false, false)));
+      setWebMode(forcedWeb || (!forcedReview && shouldUseWebSurface(false, false)));
       setViewport(getNativeViewport());
       setWebViewport(getWebViewport());
     };
-    const media = window.matchMedia("(max-width: 600px), ((pointer: coarse) and (max-height: 600px))");
+    const media = window.matchMedia(AUTOMATIC_WEB_SURFACE_QUERY);
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
     window.visualViewport?.addEventListener("resize", update);
@@ -138,10 +140,10 @@ function getWebViewport() {
   };
 }
 
-function shouldUseMobileWebView(forcedWeb: boolean, forcedReview: boolean) {
+function shouldUseWebSurface(forcedWeb: boolean, forcedReview: boolean) {
   if (typeof window === "undefined" || forcedReview) return false;
   if (forcedWeb) return true;
-  return window.matchMedia("(max-width: 600px), ((pointer: coarse) and (max-height: 600px))").matches;
+  return window.matchMedia(AUTOMATIC_WEB_SURFACE_QUERY).matches;
 }
 
 export function useMobileDevice() {
@@ -152,50 +154,4 @@ export function useMobileDevice() {
   }
 
   return context;
-}
-
-export function DevicePicker() {
-  const { device, deviceId, setDeviceId, native, webMode } = useMobileDevice();
-
-  if (native || webMode) return null;
-
-  return (
-    <DropdownMenu.Root>
-      <div className="device-menu-bar" data-testid="device-menu-bar">
-        <DropdownMenu.Trigger asChild>
-          <button
-            className="device-picker-trigger"
-            data-testid="device-picker"
-            aria-label={`Preview device: ${device.label}`}
-            type="button"
-          >
-            <span>{device.label}</span>
-            <ChevronDownIcon aria-hidden="true" />
-          </button>
-        </DropdownMenu.Trigger>
-      </div>
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content className="device-picker-menu" align="end" sideOffset={8} collisionPadding={12}>
-          <DropdownMenu.RadioGroup
-            value={deviceId}
-            onValueChange={(value) => setDeviceId(value as MobileDeviceId)}
-          >
-            {Object.values(mobileDevices).map((option) => (
-              <DropdownMenu.RadioItem
-                key={option.id}
-                className="device-picker-item"
-                value={option.id}
-                data-testid={`device-option-${option.id}`}
-              >
-                <span>{option.label}</span>
-                <DropdownMenu.ItemIndicator className="device-picker-check">
-                  <CheckIcon aria-hidden="true" />
-                </DropdownMenu.ItemIndicator>
-              </DropdownMenu.RadioItem>
-            ))}
-          </DropdownMenu.RadioGroup>
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
-  );
 }

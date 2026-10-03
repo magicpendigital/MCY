@@ -1,0 +1,13 @@
+# User-facing server functions require a valid Supabase JWT at the Edge gateway.
+# Each handler must still verify the actor's role, ownership, consent and feature gates.
+# This is the local Supabase project slug; remote projects are linked explicitly by ref.
+project_id = "mcy"
+
+[functions.owner-control-plane]
+verify_jwt = true
+
+[functions.teacher-control-plane]
+verify_jwt = true
+
+[functions.mcy-ai-assistant]
+verify_jwt = true

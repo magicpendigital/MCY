@@ -1,4 +1,5 @@
 import {
+  Suspense,
   createContext,
   type CSSProperties,
   type DragEvent,
@@ -124,7 +125,7 @@ export function PhoneFrame({ children }: PropsWithChildren) {
   return (
     <ScreenPortalContext.Provider value={contextValue}>
       <div className="phone-stage">
-        <DevicePicker />
+        <Suspense fallback={null}><DevicePicker /></Suspense>
         <div
           className="phone-scale-box"
           style={{
