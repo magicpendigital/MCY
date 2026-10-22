@@ -81,7 +81,7 @@ Default to forest ink on warm ivory or white. Use the ivory artwork on solid dee
 
 ## Typography
 
-- **Editorial headings and the wordmark treatment:** Georgia, then Times New Roman, then serif fallback. Use regular weight and compact line height. Keep Vietnamese marks unobstructed.
+- **Editorial headings and the wordmark treatment:** Source Serif 4 (bundled with its Vietnamese subset), then Georgia, Times New Roman and serif as fallbacks. Use regular weight and compact line height. Keep Vietnamese marks unobstructed: never rely on a system serif for headings, because Georgia and the Android fallback render stacked diacritics (ấ, ế, ầ) detached.
 - **Interface text:** Roboto on Android, native system sans on iOS, with a sans-serif fallback. Use 400–700 weights; reserve heavier weights for labels and active states.
 - **Number / practice timing:** interface sans by default; editorial serif can distinguish a single, prominent duration.
 - Do not set long copy in all caps. Eyebrow labels may use uppercase with generous tracking.

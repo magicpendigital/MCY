@@ -485,13 +485,13 @@ test("guest can browse free lessons without an account and retains check-in choi
   await page.getByRole("button", { name: "Thấp", exact: true }).click();
   await page.getByRole("button", { name: "5 phút", exact: true }).click();
   await expect(page.locator(".mcy-checkin-page > .mcy-lead")).toContainText("Hiện chưa có gợi ý tự động");
-  await expect(page.getByRole("button", { name: "Đăng nhập hoặc tạo tài khoản (tùy chọn)" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Lưu bằng tài khoản" })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("mobile-06-checkin-ai-off.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.screenshot({ path: testInfo.outputPath("desktop-06-checkin-ai-off.png") });
   await page.setViewportSize({ width: 390, height: 844 });
 
-  await page.getByTestId("flow-fixed-footer").getByRole("button", { name: "Đăng nhập hoặc tạo tài khoản (tùy chọn)" }).click();
+  await page.getByTestId("flow-fixed-footer").getByRole("button", { name: "Lưu bằng tài khoản" }).click();
   await expect(page.getByRole("heading", { name: "Dùng email bạn có thể mở ngay." })).toBeVisible();
   await page.getByRole("button", { name: "Quay lại" }).click();
   const returnedCheckin = page.locator("[data-testid='flow-current'] .mcy-checkin-page");

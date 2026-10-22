@@ -5,6 +5,11 @@ import "@fontsource/roboto/latin-700.css";
 import "@fontsource/roboto/vietnamese-400.css";
 import "@fontsource/roboto/vietnamese-500.css";
 import "@fontsource/roboto/vietnamese-700.css";
+import "@fontsource/source-serif-4/latin-400.css";
+import "@fontsource/source-serif-4/latin-400-italic.css";
+import "@fontsource/source-serif-4/latin-700.css";
+import "@fontsource/source-serif-4/vietnamese-400.css";
+import "@fontsource/source-serif-4/vietnamese-400-italic.css";
 import { App as CapacitorApp } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
 import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, energyLabel, sideLabel, type AppLocale } from "./i18n";
@@ -647,7 +652,7 @@ const HELP_ARTICLE_ROUTES: Record<HelpArticleId, FlowScreen> = withFlowScreenAcc
 const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   welcome: { id: "welcome", footer: () => <WelcomeFooter />, footerHeight: 156, render: () => <WelcomeScreen /> },
   home: { id: "home", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <HomeScreen /> },
-  checkin: { id: "checkin", header: () => <Header title="Check-in hôm nay" back />, headerHeight: 55, footer: () => <CheckinFooter />, footerHeight: 176, render: () => <CheckinScreen /> },
+  checkin: { id: "checkin", header: () => <Header title="Check-in hôm nay" back />, headerHeight: 55, footer: () => <CheckinFooter />, footerHeight: 124, render: () => <CheckinScreen /> },
   dialogue: { id: "dialogue", header: () => <Header title="Trợ lý hôm nay" back />, headerHeight: 55, footer: () => <DialogueFooter />, footerHeight: 104, render: () => <DialogueScreen /> },
   reflection: { id: "reflection", header: () => <Header title="Phản hồi của bạn" back />, headerHeight: 55, footer: () => <ReflectionFooter />, footerHeight: 104, render: () => <ReflectionScreen /> },
   journey: { id: "journey", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <JourneyRoute /> },
@@ -1360,9 +1365,8 @@ function CheckinFooter() {
     update({ checkinStep: 2, bodyStatus: "skipped", preObservations: [], regions: [] });
   };
   return <div className="mcy-flow-footer single mcy-checkin-footer">
-    <div className="mcy-checkin-progress" aria-label={formatMessage(locale, "checkin.stepCount", { step: state.checkinStep })}>
-      <span><strong>{formatMessage(locale, "checkin.stepCount", { step: state.checkinStep })}</strong><small>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</small></span>
-      <span className="mcy-progress-track" aria-hidden="true"><i className={state.checkinStep === 1 ? "active" : "done"} /><i className={state.checkinStep === 2 ? "active" : ""} /></span>
+    <div className="mcy-checkin-progress" aria-hidden="true">
+      <span className="mcy-progress-track"><i className={state.checkinStep === 1 ? "active" : "done"} /><i className={state.checkinStep === 2 ? "active" : ""} /></span>
     </div>
     {state.checkinStep === 1 ? <>
       <Action onClick={advanceStep}>{msg(locale, "checkin.step1.next")}</Action>

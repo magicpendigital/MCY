@@ -4,6 +4,8 @@
 @import "@fontsource/roboto/vietnamese-400.css";
 @import "@fontsource/roboto/vietnamese-500.css";
 @import "@fontsource/roboto/vietnamese-700.css";
+@import "@fontsource/source-serif-4/latin-400.css";
+@import "@fontsource/source-serif-4/vietnamese-400.css";
 @import "../../design-system/tokens.css";
 
 .owner-shell {
@@ -51,7 +53,7 @@
 .owner-env-badge i, .owner-status-dot { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: #bf7745; }
 .owner-panel, .owner-state-card { padding: 26px; border: 1px solid var(--owner-border); border-radius: 18px; background: var(--owner-paper); box-shadow: 0 12px 38px #3447380a; }
 .owner-state-card { max-width: 760px; margin: 0 auto; }
-.owner-state-card h1, .owner-state-card h2 { margin: 8px 0; color: var(--owner-ink); font: 27px/1.15 Georgia,serif; }
+.owner-state-card h1, .owner-state-card h2 { margin: 8px 0; color: var(--owner-ink); font: 27px/1.15 var(--font-editorial); }
 .owner-state-card p { color: var(--owner-muted); line-height: 1.55; }
 .owner-status-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 11px; margin: 0 0 16px; }
 .owner-status-card { display: flex; min-width: 0; align-items: flex-start; gap: 10px; padding: 15px; border: 1px solid var(--owner-border); border-radius: 14px; background: #fffefa; }
@@ -60,7 +62,7 @@
 .owner-status-card strong { color: var(--owner-ink); font-size: 12px; }
 .owner-status-card small { color: var(--owner-muted); font-size: 11px; line-height: 1.4; }
 .owner-panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 22px; border-bottom: 1px solid #e9e8e0; }
-.owner-panel-heading h2, .owner-teacher-gate h2 { margin: 7px 0 5px; color: var(--owner-ink); font: 28px/1.1 Georgia,serif; }
+.owner-panel-heading h2, .owner-teacher-gate h2 { margin: 7px 0 5px; color: var(--owner-ink); font: 28px/1.1 var(--font-editorial); }
 .owner-panel-heading p, .owner-teacher-gate p { max-width: 680px; margin: 0; color: var(--owner-muted); font-size: 12px; line-height: 1.5; }
 .owner-switch { display: flex; flex: 0 0 auto; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid var(--owner-border); border-radius: 999px; color: var(--owner-ink); font-size: 11px; cursor: pointer; }
 .owner-switch input { position: absolute; width: 1px; height: 1px; opacity: 0; }
@@ -92,7 +94,7 @@
 .owner-teacher-gate { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 17px; }
 .owner-locked { flex: 0 0 auto; padding: 7px 10px; border: 1px solid #dfc6b6; border-radius: 999px; color: #925b41; font-size: 9px; font-weight: 850; letter-spacing: .1em; }
 .owner-auth-main { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(300px,.8fr); align-items: center; gap: 48px; min-height: min(650px,calc(100vh - 180px)); }
-.owner-auth-card h2 { margin: 0; font: 25px Georgia,serif; }
+.owner-auth-card h2 { margin: 0; font: 25px var(--font-editorial); }
 .owner-auth-card p { color: var(--owner-muted); font-size: 12px; line-height: 1.5; }
 .owner-auth-card label { display: grid; gap: 7px; margin: 19px 0 14px; font-size: 11px; font-weight: 750; }
 .owner-auth-card .owner-primary { width: 100%; }
