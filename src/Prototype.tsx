@@ -45,7 +45,7 @@ import type { FreeCourseId } from "./courses/freeCourses";
 type Energy = "Rất thấp" | "Thấp" | "Bình thường" | "Khá ổn" | "Tràn đầy";
 export type BodyStyle = "neutral" | "feminine" | "masculine";
 type BodyLevel = "Không khó chịu" | "Nhẹ" | "Vừa" | "Nhiều";
-type BodyStatus = "reported" | "none_now" | "uncertain" | "skipped" | null;
+type BodyStatus = "reported" | "none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable" | null;
 export type Observation = { region: BodyRegion; side: BodySide; level: BodyLevel | null; status: "reported" | "uncertain"; note: string };
 type Intent = "Thả lỏng" | "Bắt nhịp" | "Tập trung";
 type DialogueChoice = "Nhiều hướng dẫn" | "Nhịp chậm" | "Ít lời" | "Không nằm sàn" | null;
@@ -1268,7 +1268,7 @@ function CheckinScreen() {
   const [editing, setEditing] = useState<BodyRegion | null>(null);
   const [editingStoredSide, setEditingStoredSide] = useState<BodySide | undefined>();
   const [suggestedSide, setSuggestedSide] = useState<BodySide | undefined>();
-  const [pendingStatus, setPendingStatus] = useState<"none_now" | "uncertain" | "skipped" | null>(null);
+  const [pendingStatus, setPendingStatus] = useState<"none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable" | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
   const selected = editing ? state.preObservations.find(item => item.region === editing && item.side === editingStoredSide) ?? state.preObservations.find(item => item.region === editing) : undefined;
@@ -1288,7 +1288,7 @@ function CheckinScreen() {
     return { ...previous, bodyStatus: "reported", preObservations, regions: [...new Set(preObservations.map(item => item.region))] };
   });
   const deleteObservation = () => { if (!editing || !editingStoredSide) return; setState(previous => { const preObservations = removeBodyObservation(previous.preObservations, editing, editingStoredSide); return { ...previous, preObservations, regions: [...new Set(preObservations.map(item => item.region))], bodyStatus: preObservations.length ? "reported" : null }; }); };
-  const chooseStatus = (value: "none_now" | "uncertain" | "skipped") => {
+  const chooseStatus = (value: "none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable") => {
     if (state.preObservations.length) setPendingStatus(value);
     else update({ bodyStatus: value, preObservations: [], regions: [] });
   };
@@ -1312,8 +1312,8 @@ function CheckinScreen() {
     setSaving(false);
     flow.push(ROUTES.journey);
   };
-  const statusDescription = state.bodyStatus === "none_now" ? msg(locale, "checkin.selectedNone") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.selectedUnsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.selectedSkipped") : "";
-  const bodySummary = state.bodyStatus === "none_now" ? msg(locale, "checkin.noDiscomfort") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.unsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.skipBody") : state.preObservations.map(item => `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""} · ${item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(", ");
+  const statusDescription = state.bodyStatus === "none_now" ? msg(locale, "checkin.selectedNone") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.selectedUnsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.selectedSkipped") : state.bodyStatus === "tired" ? msg(locale, "checkin.selectedTired") : state.bodyStatus === "uncomfortable" ? msg(locale, "checkin.selectedUncomfortable") : "";
+  const bodySummary = state.bodyStatus === "none_now" ? msg(locale, "checkin.noDiscomfort") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.unsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.skipBody") : state.bodyStatus === "tired" ? msg(locale, "checkin.tired") : state.bodyStatus === "uncomfortable" ? msg(locale, "checkin.uncomfortable") : state.preObservations.map(item => `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""} · ${item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(", ");
   return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
     <div className="mcy-step-count" aria-live="polite">{formatMessage(locale, "checkin.stepCount", { step: state.checkinStep })}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
     <h1>{msg(locale, state.checkinStep === 1 ? "checkin.step1.title" : "checkin.step2.title")}</h1>
@@ -1328,7 +1328,7 @@ function CheckinScreen() {
       <div className="mcy-checkin-fields">
         <h2 className="mcy-inline-section-title">{msg(locale, "checkin.regions")}</h2>
         <div className="mcy-region-list" aria-label={locale === "en-US" ? "Choose a body area" : "Chọn vùng cơ thể"}>{BODY_REGION_GROUPS[regionGroup].map(region => { const items = state.preObservations.filter(entry => entry.region === region); const detail = items.length ? items.map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(locale, item.side)} · ` : ""}${item.status === "uncertain" ? msg(locale, "checkin.unsure") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(" / ") : msg(locale, "checkin.tapToRecord"); return <button key={region} className={items.length ? "selected" : ""} onClick={() => openRegion(region)}><span>{regionLabel(locale, region)}</span><small>{detail}</small><ArrowRightIcon /></button>; })}</div>
-        <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one of these:" : "Hoặc chọn một trạng thái:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "uncertain"} onClick={() => chooseStatus("uncertain")}>{msg(locale, "checkin.unsure")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
+        <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one of these:" : "Hoặc chọn một trạng thái:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "tired"} onClick={() => chooseStatus("tired")}>{msg(locale, "checkin.tired")}</Choice><Choice selected={state.bodyStatus === "uncomfortable"} onClick={() => chooseStatus("uncomfortable")}>{msg(locale, "checkin.uncomfortable")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
         {statusDescription && <p className="mcy-status-caption">{statusDescription}</p>}
         <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
       </div>
@@ -1710,7 +1710,7 @@ function SyncScreen() {
     : latest?.kind === "Sau tập"
       ? latest.endedEarly
         ? msg(locale, "sync.endedEarlyTitle")
-        : latest.outcome || latest.observations.length || latest.status === "uncertain" || latest.status === "none_now"
+        : latest.outcome || latest.observations.length || latest.status === "uncertain" || latest.status === "none_now" || latest.status === "tired" || latest.status === "uncomfortable"
           ? msg(locale, "sync.reflectionTitle")
           : msg(locale, "sync.noFeelingTitle")
       : msg(locale, "sync.noReflectionTitle");

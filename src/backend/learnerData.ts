@@ -76,7 +76,7 @@ export type CheckinPayload = {
   localDate: string;
   timezone: string;
   energyLevel: number | null;
-  bodyStatus: "reported" | "none_now" | "uncertain" | "skipped" | null;
+  bodyStatus: "reported" | "none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable" | null;
   captureType: "practice_preparation" | "standalone";
   observations: {
     regionCode: BodyRegionCode;

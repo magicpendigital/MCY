@@ -60,7 +60,7 @@ function observationLabel(observation: Observation, locale: AppLocale) {
   return `${regionLabel(locale, observation.region)}${observation.side === "unspecified" ? "" : ` · ${sideLabel(locale, observation.side).toLowerCase()}`} · ${observation.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : observation.level ?? msg(locale, "checkin.notRecorded")}`;
 }
 function journeyBodyStatus(locale: AppLocale, status: Snapshot["status"]) {
-  return msg(locale, status === "none_now" ? "journey.noneNow" : status === "uncertain" ? "journey.unsure" : status === "skipped" ? "journey.skipped" : "journey.noLevel");
+  return msg(locale, status === "none_now" ? "journey.noneNow" : status === "uncertain" ? "journey.unsure" : status === "skipped" ? "journey.skipped" : status === "tired" ? "journey.tired" : status === "uncomfortable" ? "journey.uncomfortable" : "journey.noLevel");
 }
 
 export default function JourneyScreen({
