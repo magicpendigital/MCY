@@ -4,7 +4,7 @@ Bản nháp để Owner xem và tự điền vào Play Console; chưa gửi gì 
 
 ## 1. Việc Owner cần làm trước khi nộp
 
-1. Điền `[[TÊN_PHÁP_NHÂN]]` và `[[LIÊN_HỆ_EMAIL]]` trong `public/privacy.html`, `public/terms.html`, `public/delete-account.html` (lệnh `npm run check:legal` phải đạt; `android:release:bundle` cũng chặn nếu còn chỗ trống).
+1. ~~Điền thông tin pháp nhân và email liên hệ~~ — **đã điền 23/10/2026**: Magicpen Digital, magicpendigital@gmail.com (hiển thị công khai trên 3 trang). `npm run check:legal` đạt và vẫn chặn `android:release:bundle` nếu sau này còn ký hiệu `[[…]]`.
 2. Xác nhận các giả định tôi đã viết vào chính sách (sửa nếu khác): độ tuổi tối thiểu **16**; yêu cầu xóa qua email xử lý **trong 30 ngày**; không chia sẻ dữ liệu với giáo viên/bên thứ ba ở bản này; chỉ có Supabase (Singapore), Resend, Vercel, YouTube là bên xử lý; chu kỳ sao lưu của nhà cung cấp (chưa nêu số ngày).
 3. Triển khai bản web có ba trang `/privacy.html`, `/terms.html`, `/delete-account.html` trên `motchutyoga.magicpendigital.com`; Play cần URL công khai hoạt động.
 4. Áp dụng migration `20261023121000_delete_my_account.sql` (xóa tài khoản) và `20261023120000_add_tired_uncomfortable_body_status.sql` lên staging/production theo duyệt riêng **trước** khi phát hành bản app mới.
