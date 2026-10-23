@@ -200,6 +200,8 @@ export function FlowStack({ initial, children }: { initial: FlowScreen; children
                   key={entry.key}
                   className="flow-screen"
                   data-flow-current={isTop ? "true" : "false"}
+                  aria-hidden={isTop ? undefined : true}
+                  inert={!isTop}
                   data-testid={isTop ? "flow-current" : undefined}
                   custom={direction}
                   variants={screenVariants}

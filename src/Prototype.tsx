@@ -617,7 +617,7 @@ function FlowRouteFocusManager() {
     let cancelled = false;
     const focusCurrentRoute = () => {
       if (cancelled) return;
-      const activeRoute = document.querySelector<HTMLElement>(".mcy-flow-route-accessibility[data-flow-active='true']");
+      const activeRoute = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mcy-flow-route-accessibility[data-flow-active='true']");
       const heading = activeRoute?.querySelector<HTMLElement>("h1");
       const activeElement = document.activeElement as HTMLElement | null;
       const activeElementRoute = activeElement?.closest<HTMLElement>(".mcy-flow-route-accessibility");
