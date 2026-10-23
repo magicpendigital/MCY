@@ -1066,3 +1066,11 @@ button { cursor: pointer; }
   .mcy-course-featured-copy p { margin:6px 0; font-size:14px; line-height:1.45; }
   .mcy-course-featured-copy small { margin-top:7px; font-size:14px; }
 }
+
+/* Account deletion (Play account-deletion requirement) */
+.mcy-danger-zone { border-color: #e1c4b8; background: #fdf7f3; }
+.mcy-toggle.danger { border-color: #c98f79; color: #8e4b35; }
+.mcy-action.danger { background: #9a4a33; }
+.mcy-action.danger:disabled { opacity: .45; }
+.mcy-policy-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 4px 0 8px; }
+.mcy-policy-links a { color: var(--color-terracotta-action, #8e4b35); font-size: var(--text-small); font-weight: 700; text-underline-offset: 3px; }

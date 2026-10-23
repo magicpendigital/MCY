@@ -108,6 +108,7 @@ function runGradle() {
 
 let temporaryWebDir;
 try {
+  if (variant === "release") runNode(path.join(root, "scripts", "check-legal-placeholders.mjs"), []);
   if (variant === "parallel") {
     temporaryWebDir = mkdtempSync(path.join(os.tmpdir(), "mcy-android-parallel-"));
     runNode(npmCli, ["run", "check:runtime"]);

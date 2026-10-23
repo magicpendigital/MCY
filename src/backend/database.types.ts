@@ -86,6 +86,7 @@ export type Database = {
         };
         Returns: string | null;
       };
+      delete_my_account: { Args: { p_confirmation: string }; Returns: undefined };
       get_my_consent_state: { Args: Record<string, never>; Returns: Json };
       get_my_consent_policy_versions: { Args: Record<string, never>; Returns: Json };
       save_my_checkin_for_current_user_with_current_consent: {

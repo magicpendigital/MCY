@@ -143,6 +143,19 @@ export async function loadLearnerSnapshot(client: LearnerClient): Promise<Learne
   };
 }
 
+export const ACCOUNT_DELETION_CONFIRMATION = "DELETE_MY_ACCOUNT";
+
+export type AccountDeletionOutcome = "deleted" | "already_deleted" | "staff_account";
+
+/** Deletes the signed-in learner's own account and every row it owns; see delete_my_account in the migrations. */
+export async function deleteMyAccount(client: LearnerClient): Promise<AccountDeletionOutcome> {
+  const { error } = await client.rpc("delete_my_account", { p_confirmation: ACCOUNT_DELETION_CONFIRMATION });
+  if (!error) return "deleted";
+  if (error.code === "P0002") return "already_deleted";
+  if (error.code === "42501") return "staff_account";
+  throw new Error(error.message);
+}
+
 export async function saveConsentEvent(
   client: LearnerClient,
   purpose: ConsentPurpose,

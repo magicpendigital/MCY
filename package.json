@@ -6,6 +6,7 @@
   "scripts": {
     "check:runtime": "node scripts/check-mobile-runtime.mjs",
     "check:bundle-secrets": "node scripts/check-client-bundle-secrets.mjs",
+    "check:legal": "node scripts/check-legal-placeholders.mjs",
     "test:teacher-acl": "node --env-file-if-exists=.env.local scripts/test-teacher-acl-postgrest.mjs",
     "test:plan-items-acl": "node --env-file-if-exists=.env.local scripts/test-plan-items-acl-postgrest.mjs",
     "test:asset-rights-acl": "node --env-file-if-exists=.env.local scripts/test-asset-rights-acl-postgrest.mjs",
