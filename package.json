@@ -36,6 +36,7 @@
     "android:debug:build": "node scripts/build-android-debug.mjs",
     "android:install:debug": "node scripts/install-android-debug.mjs",
     "android:parallel:build": "node scripts/build-android-debug.mjs parallel",
+    "android:release:bundle": "node scripts/build-android-debug.mjs release",
     "android:install:parallel": "node scripts/install-android-debug.mjs parallel",
     "ios:sync": "npm run build && cap sync ios"
   },

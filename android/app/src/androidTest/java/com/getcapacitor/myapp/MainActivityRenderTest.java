@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import android.webkit.WebView;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.core.app.ActivityScenario;
-import com.nilaza.motchutyoga.MainActivity;
+import com.magicpendigital.motchutyoga.MainActivity;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;

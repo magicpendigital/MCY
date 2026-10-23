@@ -234,6 +234,8 @@ function Brand({ locale, compact = false, heading = false }: { locale: AppLocale
   return <BrandTag className={compact ? "mcy-brand compact" : "mcy-brand mcy-brand-animated"}><BrandMark animated={!compact} /><span className="mcy-brand-wordmark">{msg(locale, "brand.name")}</span></BrandTag>;
 }
 const BODY_LEVELS: BodyLevel[] = ["Không khó chịu", "Nhẹ", "Vừa", "Nhiều"];
+// The editor offers three levels (Bình thường · Hơi mỏi · Đau nhức); "Vừa" (stored level 2) stays readable for records saved earlier.
+const EDITOR_LEVELS: BodyLevel[] = ["Không khó chịu", "Nhẹ", "Nhiều"];
 const BODY_STYLES: { id: BodyStyle; label: string; image: string }[] = [
   { id: "feminine", label: "Hình thể nữ", image: "/assets/body-map-feminine-full-1024.webp" },
   { id: "masculine", label: "Hình thể nam", image: "/assets/body-map-masculine-full-1024.webp" },
@@ -501,7 +503,7 @@ function RegionEditor({ region, current, suggestedSide, onSave, onDelete, onClos
   const close = () => { keyboard.hide(); onClose(); };
   return <BottomSheet open={Boolean(region)} onOpenChange={open => { if (!open) close(); }} title={region ? locale === "en-US" ? `Check in on your ${regionLabel(locale, region).toLowerCase()}` : `Ghi nhận vùng ${regionLabel(locale, region).toLowerCase()}` : locale === "en-US" ? "Check in on an area" : "Ghi nhận vùng"} description={msg(locale, "regionEditor.prompt")} snap={0.9}>
     {region && <div className="mcy-region-editor">
-      <div className="mcy-editor-options">{([...BODY_LEVELS, "Chưa rõ"] as const).map(value => <Choice key={value} selected={level === value} onClick={() => setLevel(value)}>{bodyLevelLabel(locale, value)}</Choice>)}</div>
+      <div className="mcy-editor-options">{([...EDITOR_LEVELS, ...(level === "Vừa" ? ["Vừa" as const] : []), "Chưa rõ" as const]).map(value => <Choice key={value} selected={level === value} onClick={() => setLevel(value)}>{bodyLevelLabel(locale, value)}</Choice>)}</div>
       {isPairedBodyRegion(region) && <><strong>{msg(locale, "regionEditor.side")}</strong><div className="mcy-editor-options side">{(["unspecified", "left", "right", "both"] as BodySide[]).map(value => <Choice key={value} selected={side === value} onClick={() => setSide(value)}>{sideLabel(locale, value)}</Choice>)}</div></>}
       <label className="mcy-editor-note">{msg(locale, "regionEditor.note")} <small>{msg(locale, "regionEditor.optional")}</small><KeyboardTextarea placeholder={locale === "en-US" ? `For example: my ${regionLabel(locale, region).toLowerCase()} feels tired after sitting...` : `Ví dụ: ${regionLabel(locale, region).toLowerCase()} mỏi khi ngồi lâu...`} value={note} onChange={event => setNote(event.target.value)} onBlur={() => keyboard.hide()} /></label>
       <button className="mcy-action" disabled={!level} onClick={() => { if (!level) return; keyboard.hide(); onSave({ region, side: isPairedBodyRegion(region) ? side : "unspecified", level: level === "Chưa rõ" ? null : level, status: level === "Chưa rõ" ? "uncertain" : "reported", note: note.trim() }); onClose(); }}>{msg(locale, "regionEditor.save")} <ArrowRightIcon /></button>
@@ -555,7 +557,7 @@ const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; l
     lead: "Check-in ghi lại điều bạn tự cảm nhận ở thời điểm hiện tại.",
     paragraphs: [
       "Chạm vào vùng trên hình hoặc chọn tên vùng trong danh sách để mở phần ghi nhận. Với vùng có hai bên, bạn có thể chọn trái, phải hoặc cả hai; mỗi bên được lưu riêng nếu cảm nhận khác nhau.",
-      "Chọn mức phù hợp và thêm ghi chú nếu muốn. “Không khó chịu”, “Chưa rõ” và “Bỏ qua” là các lựa chọn riêng; vùng chưa chọn không được hiểu thành một phản hồi.",
+      "Chọn mức phù hợp và thêm ghi chú nếu muốn. “Bình thường”, “Chưa rõ” và “Bỏ qua” là các lựa chọn riêng; vùng chưa chọn không được hiểu thành một phản hồi.",
     ],
   },
   {
@@ -1003,16 +1005,14 @@ function AuthEmailScreen() {
   };
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
     <Eyebrow>{state.authMode === "create" ? "TẠO TÀI KHOẢN" : "ĐĂNG NHẬP"}</Eyebrow>
-    <h1>Dùng email bạn có thể mở ngay.</h1>
-    <p className="mcy-lead">Gửi email xác minh tới địa chỉ này. Nếu email có mã 6 chữ số, bạn có thể nhập ở bước tiếp theo; nếu có liên kết đăng nhập, hãy mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
+    <h1>{state.authMode === "create" ? "Tạo tài khoản nhanh bằng email" : "Đăng nhập nhanh qua email"}</h1>
+    {state.authMode === "create" && <p className="mcy-lead">Một Chút Yoga sẽ gửi email xác minh tới địa chỉ bạn cung cấp.</p>}
     <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
-    {state.authMode === "create" && <div className="mcy-inline-note" role="note"><InfoCircledIcon />Giáo viên cũng đăng ký bằng email xác minh. Quyền giáo viên chỉ được cấp qua lời mời đã kiểm tra; pilot hiện chưa mở đăng ký công khai.</div>}
     {error && <div className="mcy-form-error" role="alert">{error}</div>}
-    <div className="mcy-inline-note"><InfoCircledIcon />Chỉ dùng để đăng nhập và gửi biên nhận yêu cầu. Không cần nhập số điện thoại, ngày sinh hay tên thật.</div>
     {!backendConfigured && <div className="mcy-alert">Backend chưa kết nối ở môi trường hiện tại. Bạn vẫn có thể xem và thử luồng khách.</div>}
-    <Action disabled={sending || !backendConfigured} onClick={submit}>{sending ? "Đang gửi…" : "Gửi email xác minh"}</Action>
-    {isCheckinAuthReturn(state.authReturnTo) && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); flow.replace(ROUTES.discover); }}>Xem bài học video miễn phí</button>}
-    <DemoNote>Email xác minh chỉ dùng qua Supabase Auth. Hãy hoàn tất trên cùng thiết bị để tiếp tục đúng phiên.</DemoNote>
+    <Action disabled={sending || !backendConfigured} onClick={submit}>{sending ? "Đang gửi…" : state.authMode === "create" ? "Gửi email xác minh" : "Gửi mã"}</Action>
+    {state.authMode === "create" && isCheckinAuthReturn(state.authReturnTo) && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); flow.replace(ROUTES.discover); }}>Xem bài học video miễn phí</button>}
+    {state.authMode === "create" && <DemoNote>Email xác minh chỉ dùng qua Supabase Auth. Hãy hoàn tất trên cùng thiết bị để tiếp tục đúng phiên.</DemoNote>}
   </main></MobileScroll>;
 }
 

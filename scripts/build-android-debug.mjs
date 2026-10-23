@@ -10,8 +10,9 @@ const variant = process.argv[2] ?? "debug";
 const nativeSchemes = {
   debug: "motchutyoga-debug",
   parallel: "motchutyoga-mcydebug",
+  release: "motchutyoga",
 };
-if (!(variant in nativeSchemes)) throw new Error("Choose the debug or parallel Android build variant.");
+if (!(variant in nativeSchemes)) throw new Error("Choose the debug, parallel or release Android build variant.");
 const env = {
   ...process.env,
   VITE_NATIVE_AUTH_SCHEME: nativeSchemes[variant],
@@ -82,7 +83,8 @@ function runNode(script, args) {
 }
 
 function runGradle() {
-  const task = `assemble${variant[0].toUpperCase()}${variant.slice(1)}`;
+  // Release produces the Play upload bundle (AAB); debug variants produce APKs.
+  const task = `${variant === "release" ? "bundle" : "assemble"}${variant[0].toUpperCase()}${variant.slice(1)}`;
   const result = windows
     ? spawnSync(process.env.ComSpec || "cmd.exe", ["/d", "/s", "/c", `android\\gradlew.bat -p android ${task}`], {
         cwd: root,

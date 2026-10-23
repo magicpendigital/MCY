@@ -154,6 +154,8 @@ Phase 0 (1 tuần) → Phase 3 song song Phase 1/2 (3 tuần) → closed test 14
 ---
 
 ## 5. Quyết định cần Owner (ngắn)
+
+> Cập nhật 23/10: Owner đã trả lời 7 mục (phạm vi 1.0 có tài khoản cloud; tài khoản Play cá nhân đã xác minh; ID `com.magicpendigital.motchutyoga`; miền `motchutyoga.magicpendigital.com`; Owner chịu trách nhiệm pháp lý/hỗ trợ). Chi tiết trong AGENTS.md. Các mục dưới đây giữ làm lịch sử câu hỏi.
 1. Phạm vi 1.0: khách + tài khoản tùy chọn, không AI/không bài thực hành mới? (khuyến nghị: có)
 2. Có tài khoản cloud ngay ở 1.0 hay 1.1 (khách trước)?
 3. Tài khoản Google Play: cá nhân hay tổ chức; đã xác minh chưa; có ≥12 tester sẵn?

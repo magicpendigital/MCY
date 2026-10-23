@@ -298,18 +298,18 @@ for (const device of ["iphone", "pixel-10"] as const) {
     await page.getByRole("button", { name: "Cổ: Chạm để ghi" }).click();
     await expect(page.getByRole("dialog")).toBeVisible();
     await expect(page.locator(".mcy-editor-note textarea")).toHaveCSS("font-size", "16px");
-    await page.getByRole("button", { name: "Nhẹ", exact: true }).click();
+    await page.getByRole("button", { name: "Hơi mỏi", exact: true }).click();
     await page.getByRole("button", { name: "Lưu vùng này" }).click();
     const checkinScroll = page.locator("[data-testid=flow-current] .mobile-scroll");
     await checkinScroll.evaluate((element) => element.scrollTo({ top: element.scrollHeight, behavior: "instant" }));
     await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
-    await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu?" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu để chăm sóc cơ thể?" })).toBeVisible();
     await expect.poll(() => checkinScroll.evaluate(element => element.scrollTop)).toBe(0);
     await page.getByRole("button", { name: "5 phút", exact: true }).click();
     await page.getByRole("button", { name: "Quay lại cảm nhận cơ thể" }).click();
     await expect.poll(() => checkinScroll.evaluate(element => element.scrollTop)).toBe(0);
     await expect(page.locator(".mcy-region-list button.selected")).toContainText("Cổ");
-    await expect(page.locator(".mcy-region-list button.selected")).toContainText("Nhẹ");
+    await expect(page.locator(".mcy-region-list button.selected")).toContainText("Hơi mỏi");
 
     const scroll = page.locator("[data-testid=flow-current] .mobile-scroll");
     await scroll.evaluate((element) => element.scrollTo({ top: element.scrollHeight, behavior: "instant" }));
@@ -324,7 +324,7 @@ for (const device of ["iphone", "pixel-10"] as const) {
     await expect(page.locator(".mcy-region-list button.selected")).toContainText("Cổ");
     await page.getByRole("button", { name: "Bỏ qua ghi nhận cơ thể" }).click();
     await page.getByRole("button", { name: "Bỏ qua và tiếp tục" }).click();
-    await expect(page.locator(".mcy-checkin-summary")).toContainText("Bỏ qua phần cơ thể");
+    await expect(page.locator(".mcy-checkin-summary")).toContainText("Bỏ qua phần cảm nhận");
     await page.getByRole("button", { name: "Tự chọn bài học video miễn phí" }).click();
     await expect(page.getByTestId("free-course-catalog")).toBeVisible();
     await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).click();
@@ -359,25 +359,25 @@ test("full-body check-in covers office-work areas and preserves distinct sides",
   await expect(page.locator(".mcy-region-list")).toContainText("Khuỷu tay");
   await page.locator(".mcy-region-list button").filter({ hasText: "Khuỷu tay" }).click();
   await page.getByRole("button", { name: "Trái", exact: true }).click();
-  await page.getByRole("button", { name: "Vừa", exact: true }).click();
+  await page.getByRole("button", { name: "Đau nhức", exact: true }).click();
   await page.getByRole("button", { name: "Lưu vùng này" }).click();
   await page.locator('.mcy-map-pin[aria-label^="Khuỷu tay phải:"]').click();
   await page.getByRole("button", { name: "Phải", exact: true }).click();
-  await page.getByRole("button", { name: "Nhẹ", exact: true }).click();
+  await page.getByRole("button", { name: "Hơi mỏi", exact: true }).click();
   await page.getByRole("button", { name: "Lưu vùng này" }).click();
-  await expect(page.locator(".mcy-region-list button").filter({ hasText: "Khuỷu tay" })).toContainText("Trái · Vừa / Phải · Nhẹ");
+  await expect(page.locator(".mcy-region-list button").filter({ hasText: "Khuỷu tay" })).toContainText("Trái · Đau nhức / Phải · Hơi mỏi");
 
   await page.locator(".mcy-body-groups button").nth(2).click();
   await page.locator(".mcy-region-list button").filter({ hasText: "Đầu gối" }).click();
   await page.getByRole("button", { name: "Hai bên", exact: true }).click();
-  await page.getByRole("button", { name: "Nhẹ", exact: true }).click();
+  await page.getByRole("button", { name: "Hơi mỏi", exact: true }).click();
   await page.getByRole("button", { name: "Lưu vùng này" }).click();
-  await expect(page.locator(".mcy-region-list button").filter({ hasText: "Đầu gối" })).toContainText("Hai bên · Nhẹ");
+  await expect(page.locator(".mcy-region-list button").filter({ hasText: "Đầu gối" })).toContainText("Hai bên · Hơi mỏi");
 
   await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
-  await expect(page.locator(".mcy-checkin-summary")).toContainText("Khuỷu tay · Trái · Vừa");
-  await expect(page.locator(".mcy-checkin-summary")).toContainText("Khuỷu tay · Phải · Nhẹ");
-  await expect(page.locator(".mcy-checkin-summary")).toContainText("Đầu gối · Hai bên · Nhẹ");
+  await expect(page.locator(".mcy-checkin-summary")).toContainText("Khuỷu tay · Trái · Đau nhức");
+  await expect(page.locator(".mcy-checkin-summary")).toContainText("Khuỷu tay · Phải · Hơi mỏi");
+  await expect(page.locator(".mcy-checkin-summary")).toContainText("Đầu gối · Hai bên · Hơi mỏi");
 });
 
 test("learner-facing MVP surfaces do not expose preview or mock copy", async ({ page }) => {
@@ -385,7 +385,7 @@ test("learner-facing MVP surfaces do not expose preview or mock copy", async ({ 
   const forbiddenCopy = /preview|prototype|mock|sample|mô phỏng|bản mẫu|bản review/i;
   await page.goto("/?mode=web");
   await expect(learnerSurface).not.toContainText(forbiddenCopy);
-  await page.getByRole("button", { name: "Thử tìm hiểu như khách" }).click();
+  await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
   await expect(learnerSurface).not.toContainText(forbiddenCopy);
   await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
   await page.getByRole("button", { name: "Tự chọn bài học video miễn phí" }).click();
@@ -400,7 +400,7 @@ test("desktop welcome exposes the visible wordmark as its page heading without h
   const heading = page.getByRole("heading", { level: 1, name: "Một chút yoga" });
   await expect(heading).toBeVisible();
   await expect(page.locator(".mcy-brand-wordmark")).toHaveText("Một chút yoga");
-  await expect(page.getByRole("button", { name: "Thử tìm hiểu như khách" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Trải nghiệm thử" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
 });
 
@@ -492,7 +492,7 @@ test("guest can browse free lessons without an account and retains check-in choi
   await page.setViewportSize({ width: 390, height: 844 });
 
   await page.getByTestId("flow-fixed-footer").getByRole("button", { name: "Lưu bằng tài khoản" }).click();
-  await expect(page.getByRole("heading", { name: "Dùng email bạn có thể mở ngay." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Tạo tài khoản nhanh bằng email" })).toBeVisible();
   await page.getByRole("button", { name: "Quay lại" }).click();
   const returnedCheckin = page.locator("[data-testid='flow-current'] .mcy-checkin-page");
   await expect(returnedCheckin.getByRole("button", { name: "5 phút", exact: true })).toHaveAttribute("aria-pressed", "true");
@@ -547,7 +547,7 @@ test("learner app defers course and Journey route chunks until navigation", asyn
 
   await page.goto("/?mode=web");
   await expect(page.locator(".mcy-welcome")).toBeVisible();
-  await expect(page.getByRole("button", { name: "Thử tìm hiểu như khách" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Trải nghiệm thử" })).toBeVisible();
   await expect(page.locator(".vite-error-overlay, [data-nextjs-dialog]")).toHaveCount(0);
   expect(discoverRequests).toHaveLength(0);
   expect(detailRequests).toHaveLength(0);
@@ -1360,7 +1360,7 @@ test("short portrait and landscape mobile viewports keep the check-in actions re
       expect(footer.bottom).toBeLessThanOrEqual(viewport.height);
       if (viewport.height < 520) expect(footer.height).toBeLessThanOrEqual(162);
       await primary.tap();
-      await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu?" })).toBeVisible();
+      await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu để chăm sóc cơ thể?" })).toBeVisible();
     } finally {
       await page.close();
     }
@@ -1372,7 +1372,7 @@ test("short second check-in step signals when more choices are available by scro
   await page.goto("/?mode=web");
   await openGuestCheckin(page);
   await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
-  await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu?" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu để chăm sóc cơ thể?" })).toBeVisible();
 
   const scroll = page.locator('.mcy-flow-route-accessibility[data-flow-route="checkin"][data-flow-active="true"] .mobile-scroll');
   const hint = page.locator(".mcy-checkin-step-two-scroll-hint");
@@ -1539,7 +1539,7 @@ test("consent continue action stays fixed and tappable while the policy cards sc
 test("bottom navigation has an opaque surface and readable muted labels", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/?mode=web");
-  await page.getByRole("button", { name: "Thử tìm hiểu như khách" }).click();
+  await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
   await page.getByRole("button", { name: "Tự chọn bài học miễn phí" }).click();
 
   const inactiveItems = page.locator(".mcy-bottom-nav button:not([aria-current='page'])");

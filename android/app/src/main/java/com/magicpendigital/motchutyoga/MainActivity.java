@@ -1,4 +1,4 @@
-package com.nilaza.motchutyoga;
+package com.magicpendigital.motchutyoga;
 
 import com.getcapacitor.BridgeActivity;
 
