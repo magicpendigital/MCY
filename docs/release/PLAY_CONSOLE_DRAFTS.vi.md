@@ -7,7 +7,7 @@ Bản nháp để Owner xem và tự điền vào Play Console; chưa gửi gì 
 1. ~~Điền thông tin pháp nhân và email liên hệ~~ — **đã điền 23/10/2026**: Magicpen Digital, magicpendigital@gmail.com (hiển thị công khai trên 3 trang). `npm run check:legal` đạt và vẫn chặn `android:release:bundle` nếu sau này còn ký hiệu `[[…]]`.
 2. Xác nhận các giả định tôi đã viết vào chính sách (sửa nếu khác): độ tuổi tối thiểu **16**; yêu cầu xóa qua email xử lý **trong 30 ngày**; không chia sẻ dữ liệu với giáo viên/bên thứ ba ở bản này; chỉ có Supabase (Singapore), Resend, Vercel, YouTube là bên xử lý; chu kỳ sao lưu của nhà cung cấp (chưa nêu số ngày).
 3. Triển khai bản web có ba trang `/privacy.html`, `/terms.html`, `/delete-account.html` trên `motchutyoga.magicpendigital.com`; Play cần URL công khai hoạt động.
-4. Áp dụng migration `20261023121000_delete_my_account.sql` (xóa tài khoản) và `20261023120000_add_tired_uncomfortable_body_status.sql` lên staging/production theo duyệt riêng **trước** khi phát hành bản app mới.
+4. ~~Áp dụng migration xóa tài khoản và Mệt/Khó chịu~~ — **đã áp lên staging `mcy-staging` ngày 24/10/2026** (phiên bản remote 20261023171158 và 20261023171210). Khi lên production cần lặp lại theo review riêng trước khi phát hành bản app.
 
 ## 2. Data safety (gợi ý trả lời)
 

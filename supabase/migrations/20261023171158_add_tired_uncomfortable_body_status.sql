@@ -1,8 +1,8 @@
 -- Owner feedback 2026-10-23: the overall check-in answer offers "Mệt" and "Khó chịu"
 -- next to the existing "Bình thường" (none_now) and "Bỏ qua" (skipped).
 -- Expand-only: two new accepted body_status values, existing rows and meanings untouched.
--- Local candidate: do not apply to staging without the exact-target review in
--- docs/release/RELEASE_RUNBOOK.md, and apply it before any client that can send the new values.
+-- Applied to mcy-staging (mhumbczqrzutdnraafhs) on 2026-10-23 through the Supabase connector as version 20261023171158;
+-- the file name matches the remote version.
 
 alter table public.checkins
   drop constraint if exists checkins_body_status_check,

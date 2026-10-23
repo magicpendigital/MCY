@@ -2,7 +2,8 @@
 -- A signed-in learner deletes their own Auth user; every learner-owned row cascades
 -- (profiles, check-ins, observations, consent evidence, AI usage, notification settings, devices, ...).
 -- Rows that only keep a nullable actor reference (audit events, invitations) lose the reference.
--- Local candidate: apply only after the exact-target review in docs/release/RELEASE_RUNBOOK.md.
+-- Applied to mcy-staging (mhumbczqrzutdnraafhs) on 2026-10-23 through the Supabase connector as version 20261023171210;
+-- the file name matches the remote version.
 
 create or replace function public.delete_my_account(p_confirmation text)
 returns void
