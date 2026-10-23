@@ -16,6 +16,15 @@ const authStorageKey = (() => {
 
 export const backendConfigured = Boolean(url && publishableKey);
 
+/** True when the browser/WebView still holds a persisted Auth session for this project. */
+export function hasStoredAuthSession(): boolean {
+  try {
+    return Boolean(authStorageKey && window.localStorage.getItem(authStorageKey));
+  } catch {
+    return false;
+  }
+}
+
 export function shouldInitializeAuthForCurrentLaunch(): boolean {
   let storageKeys: string[] | null;
   try {

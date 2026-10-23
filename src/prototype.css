@@ -1074,3 +1074,8 @@ button { cursor: pointer; }
 .mcy-action.danger:disabled { opacity: .45; }
 .mcy-policy-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 4px 0 8px; }
 .mcy-policy-links a { color: var(--color-terracotta-action, #8e4b35); font-size: var(--text-small); font-weight: 700; text-underline-offset: 3px; }
+
+/* Session restoration (a stored session must not look like a sign-out) */
+.mcy-restore-note { position: relative; z-index: 2; max-width: 300px; margin: 14px 0 0 5px; padding: 9px 12px; border: 1px solid var(--mcy-border, #e1e5dc); border-radius: 12px; background: rgb(255 252 247 / 92%); color: #455d4a; font-size: var(--text-small); line-height: 1.4; }
+.mcy-restore-note p { margin: 0 0 8px; }
+.mcy-restore-note button { min-height: 36px; padding: 6px 14px; border: 1px solid var(--mcy-border, #d7ded1); border-radius: 9px; background: var(--color-canvas, #fffcf7); color: var(--mcy-sage, #425d48); font-weight: 700; }

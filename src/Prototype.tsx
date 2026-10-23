@@ -19,7 +19,7 @@ import {
   PersonIcon, PlayIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
-import { authRedirectUrl, backendConfigured, clientChannel, getSupabaseClient, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
+import { authRedirectUrl, backendConfigured, clientChannel, getSupabaseClient, hasStoredAuthSession, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
 import { NATIVE_AUTH_PENDING_KEY, nativeAuthCodeFromCallback, rememberNativeAuthUrl } from "./backend/nativeAuth";
 import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, decodeBodyRegionCode, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
 import {
@@ -830,6 +830,47 @@ function LearnerPrototype() {
         if (active) setState(previous => ({ ...previous, backendStatus: "error", backendError: "Liên kết xác minh không hợp lệ hoặc đã hết hạn. Hãy yêu cầu email mới." }));
       }
     };
+    // A cold start or Recent/icon reopen can run before the radio is usable. A stored session must
+    // not look like a sign-out because one request failed: retry a few times, then offer a retry.
+    const RESTORE_RETRY_DELAYS_MS = [1500, 4000, 10000];
+    let retryTimer = 0;
+    let retryAttempt = 0;
+    let restoreFailed = false;
+    const isTransientAuthError = (error: { name?: string }) => error.name === "AuthRetryableFetchError";
+    const scheduleRestoreRetry = () => {
+      if (!active || retryAttempt >= RESTORE_RETRY_DELAYS_MS.length) return false;
+      window.clearTimeout(retryTimer);
+      retryTimer = window.setTimeout(() => { retryAttempt += 1; void restore(); }, RESTORE_RETRY_DELAYS_MS[retryAttempt]);
+      return true;
+    };
+    const restore = async () => {
+      if (!active || !client) return;
+      restoreFailed = false;
+      const { data, error } = await client.auth.getSession();
+      if (!active) return;
+      if (error) {
+        const transient = isTransientAuthError(error);
+        if (transient && scheduleRestoreRetry()) {
+          setState(previous => ({ ...previous, backendStatus: "loading", backendError: "" }));
+          return;
+        }
+        restoreFailed = transient;
+        setState(previous => ({ ...previous, backendStatus: "error", backendError: error.message }));
+        return;
+      }
+      void hydrate(data.session);
+    };
+    const retryNow = () => {
+      if (!active || !client) return;
+      retryAttempt = 0;
+      window.clearTimeout(retryTimer);
+      setState(previous => ({ ...previous, backendStatus: "loading", backendError: "" }));
+      void restore();
+    };
+    const retryWhenBackOnline = () => { if (restoreFailed && document.visibilityState === "visible") retryNow(); };
+    window.addEventListener(SESSION_RESTORE_RETRY_EVENT, retryNow);
+    window.addEventListener("online", retryWhenBackOnline);
+    document.addEventListener("visibilitychange", retryWhenBackOnline);
     const hydrate = async (session: import("@supabase/supabase-js").Session | null) => {
       if (!active) return;
       const generation = ++hydrationGeneration;
@@ -870,8 +911,15 @@ function LearnerPrototype() {
           backendStatus: "ready",
           backendError: "",
         }));
+        retryAttempt = 0;
+        restoreFailed = false;
       } catch (error) {
         if (!active || generation !== hydrationGeneration) return;
+        if (scheduleRestoreRetry()) {
+          setState(previous => ({ ...(switchedAccount ? clearAccountScopedState(previous) : previous), backendStatus: "loading", backendError: "" }));
+          return;
+        }
+        restoreFailed = true;
         setState(previous => ({
           ...(switchedAccount ? clearAccountScopedState(previous) : previous),
           signedIn: true,
@@ -895,10 +943,7 @@ function LearnerPrototype() {
           window.setTimeout(() => { void hydrate(session); }, 0);
         });
         subscription = authSubscription.data.subscription;
-        const { data, error } = await authClient.auth.getSession();
-        if (!active) return;
-        if (error) setState(previous => ({ ...previous, backendStatus: "error", backendError: error.message }));
-        else void hydrate(data.session);
+        await restore();
         if (Capacitor.isNativePlatform()) {
           void CapacitorApp.addListener("appUrlOpen", ({ url }) => { void receiveNativeAuthUrl(url); }).then(listener => {
             if (active) appUrlListener = listener;
@@ -920,6 +965,10 @@ function LearnerPrototype() {
     })();
     return () => {
       active = false;
+      window.clearTimeout(retryTimer);
+      window.removeEventListener(SESSION_RESTORE_RETRY_EVENT, retryNow);
+      window.removeEventListener("online", retryWhenBackOnline);
+      document.removeEventListener("visibilitychange", retryWhenBackOnline);
       subscription?.unsubscribe();
       void appUrlListener?.remove();
     };
@@ -943,10 +992,17 @@ function AuthSessionRouter() {
 function WelcomeScreen() {
   const { state } = useDemo();
   const locale = state.locale;
+  const storedSession = hasStoredAuthSession();
+  const restoreNote = storedSession && state.backendStatus === "loading"
+    ? <p className="mcy-restore-note" role="status">{msg(locale, "session.restoring")}</p>
+    : storedSession && state.backendStatus === "error"
+      ? <div className="mcy-restore-note failed" role="alert"><p>{msg(locale, "session.restoreFailed")}</p><button onClick={() => window.dispatchEvent(new Event(SESSION_RESTORE_RETRY_EVENT))}>{msg(locale, "session.retry")}</button></div>
+      : null;
   return <MobileScroll className="mcy-scroll welcome"><main className="mcy-welcome">
     <img className="mcy-welcome-photo" src="/assets/welcome-portrait-1024.webp" srcSet="/assets/welcome-portrait-512.webp 512w, /assets/welcome-portrait-1024.webp 1024w" sizes="(min-width: 700px) 450px, 100vw" alt={locale === "en-US" ? "A woman resting on a yoga mat" : "Người ngồi thư giãn trên thảm yoga"} loading="eager" fetchPriority="high" decoding="async" />
     <div className="mcy-welcome-top"><Brand locale={locale} heading />{import.meta.env.DEV && <LocaleToggle />}<p>{msg(locale, "brand.slogan")}</p>{locale === "en-US" && <small className="mcy-slogan-note">{msg(locale, "brand.sloganNote")}</small>}</div>
     <div className="mcy-welcome-benefits"><div><span><PersonIcon /></span>{msg(locale, "welcome.benefit1")}</div><div><span><HeartIcon /></span>{msg(locale, "welcome.benefit2")}</div><div><span><MagicWandIcon /></span>{msg(locale, "welcome.benefit3")}</div></div>
+    {restoreNote}
     <p className="mcy-welcome-quote">{msg(locale, "welcome.quote")}</p>
   </main></MobileScroll>;
 }
@@ -1622,6 +1678,7 @@ function AccountRow({ title, detail, onClick, danger = false }: { title: string;
 }
 
 type AccountPanel = "edit" | "privacy" | "memory" | "sharing" | "security" | "notifications" | "access" | "help";
+export const SESSION_RESTORE_RETRY_EVENT = "mcy:retry-session-restore";
 const LEGAL_WEB_ORIGIN = "https://motchutyoga.magicpendigital.com";
 const ACCOUNT_DELETION_WEB_URL = `${LEGAL_WEB_ORIGIN}/delete-account.html`;
 const PRIVACY_POLICY_WEB_URL = `${LEGAL_WEB_ORIGIN}/privacy.html`;
