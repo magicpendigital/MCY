@@ -14,7 +14,7 @@ import { App as CapacitorApp } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
 import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, energyLabel, sideLabel, type AppLocale } from "./i18n";
 import {
-  ArrowLeftIcon, ArrowRightIcon, BarChartIcon, CheckIcon, ChevronDownIcon,
+  ArrowLeftIcon, ArrowRightIcon, ExclamationTriangleIcon, ReloadIcon, BarChartIcon, CheckIcon, ChevronDownIcon,
   HeartIcon, HomeIcon, InfoCircledIcon, MagicWandIcon,
   PersonIcon, PlayIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
@@ -994,9 +994,9 @@ function WelcomeScreen() {
   const locale = state.locale;
   const storedSession = hasStoredAuthSession();
   const restoreNote = storedSession && state.backendStatus === "loading"
-    ? <p className="mcy-restore-note" role="status">{msg(locale, "session.restoring")}</p>
+    ? <section className="mcy-restore-card" role="status"><span className="mcy-restore-icon spinning" aria-hidden="true"><ReloadIcon /></span><div><strong>{msg(locale, "session.restoring")}</strong><p>{msg(locale, "session.restoringHint")}</p></div></section>
     : storedSession && state.backendStatus === "error"
-      ? <div className="mcy-restore-note failed" role="alert"><p>{msg(locale, "session.restoreFailed")}</p><button onClick={() => window.dispatchEvent(new Event(SESSION_RESTORE_RETRY_EVENT))}>{msg(locale, "session.retry")}</button></div>
+      ? <section className="mcy-restore-card failed" role="alert"><span className="mcy-restore-icon" aria-hidden="true"><ExclamationTriangleIcon /></span><div><strong>{msg(locale, "session.restoreFailedTitle")}</strong><p>{msg(locale, "session.restoreFailed")}</p></div><button className="mcy-restore-retry" onClick={() => window.dispatchEvent(new Event(SESSION_RESTORE_RETRY_EVENT))}>{msg(locale, "session.retry")}</button></section>
       : null;
   return <MobileScroll className="mcy-scroll welcome"><main className="mcy-welcome">
     <img className="mcy-welcome-photo" src="/assets/welcome-portrait-1024.webp" srcSet="/assets/welcome-portrait-512.webp 512w, /assets/welcome-portrait-1024.webp 1024w" sizes="(min-width: 700px) 450px, 100vw" alt={locale === "en-US" ? "A woman resting on a yoga mat" : "Người ngồi thư giãn trên thảm yoga"} loading="eager" fetchPriority="high" decoding="async" />
@@ -1017,10 +1017,11 @@ function WelcomeFooter() {
   const flow = useFlow();
   const { state, update } = useDemo();
   const locale = state.locale;
+  const restoringStoredSession = hasStoredAuthSession() && state.backendStatus !== "ready";
   return <div className="mcy-flow-footer mcy-welcome-footer mcy-welcome-bottom">
     <Action onClick={() => { update({ checkinStep: 1 }); flow.push(ROUTES.checkin); }}>{msg(locale, "welcome.tryGuest")}</Action>
-    <div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.login")}</button></div>
-    <small>{msg(locale, "welcome.note")}</small>
+    {!restoringStoredSession && <div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.login")}</button></div>}
+    {!restoringStoredSession && <small>{msg(locale, "welcome.note")}</small>}
   </div>;
 }
 

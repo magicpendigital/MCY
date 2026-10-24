@@ -43,6 +43,10 @@ test("a stored session survives early request failures and the app opens after a
   await page.goto("/?mode=web");
   await expect(page.getByRole("status").filter({ hasText: "Đang khôi phục phiên đăng nhập" })).toBeVisible();
   await expect(page.getByRole("alert")).toHaveCount(0);
+  await expect(page.locator(".mcy-restore-card")).toContainText("Bạn không cần đăng nhập lại.");
+  // Signing in again is the wrong action while a stored session is being restored.
+  await expect(page.getByRole("button", { name: "Đăng nhập", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Tạo tài khoản", exact: true })).toHaveCount(0);
   expect(await stored(page)).toBe(true);
   await leftWelcome(page);
   expect(fixture.calls()).toBeGreaterThanOrEqual(3);
@@ -55,6 +59,9 @@ test("when retries are exhausted the user sees the session is kept and can retry
   await page.goto("/?mode=web");
   const alert = page.getByRole("alert").filter({ hasText: "Phiên đăng nhập của bạn vẫn được giữ trên máy" });
   await expect(alert).toBeVisible({ timeout: 75_000 });
+  await expect(alert.locator("strong")).toHaveText("Chưa kết nối được tài khoản");
+  await expect(alert.getByRole("button", { name: "Thử lại" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Đăng nhập", exact: true })).toHaveCount(0);
   expect(await stored(page)).toBe(true);
   fixture.recover();
   await alert.getByRole("button", { name: "Thử lại" }).click();
@@ -66,5 +73,7 @@ test("a first-time guest never sees restoration messages", async ({ page }) => {
   await page.route("https://*.supabase.co/**", route => route.abort("blockedbyclient"));
   await page.goto("/?mode=web");
   await expect(page.getByRole("button", { name: "Trải nghiệm thử" })).toBeVisible();
-  await expect(page.locator(".mcy-restore-note")).toHaveCount(0);
+  await expect(page.locator(".mcy-restore-card")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Đăng nhập", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Tạo tài khoản", exact: true })).toBeVisible();
 });
