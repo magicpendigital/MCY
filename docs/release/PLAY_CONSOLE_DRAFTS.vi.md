@@ -2,6 +2,10 @@
 
 Bản nháp để Owner xem và tự điền vào Play Console; chưa gửi gì lên Google. Biểu mẫu Play thay đổi theo thời gian — đối chiếu lại câu hỏi hiện hành khi điền. Phạm vi: bản 1.0 = khách dùng ngay, tài khoản email tùy chọn, **không AI**, không buổi thực hành mới.
 
+## 0. Trạng thái trên Play Console (25/10/2026)
+
+Tài khoản nhà phát triển cá nhân **Tuyên Trịnh** (app ID Console 4975610131404090547). Đã làm: tạo app (Một chút yoga, miễn phí, vi); phát hành 1 (1.0.0) lên Thử nghiệm nội bộ; Chính sách quyền riêng tư (`/privacy.html`); Quyền truy cập ứng dụng = **không hạn chế** (khách dùng được toàn bộ; tài khoản chỉ để lưu/đồng bộ — Owner cần xác nhận phần Hành trình khi chưa đăng nhập); Quảng cáo = không; Đối tượng mục tiêu = **16–17 và 18+**. Cũng đã khai: An toàn dữ liệu (thu thập tên, email, ID người dùng, thông tin sức khỏe tự báo; mục đích chức năng + quản lý tài khoản; không chia sẻ; mã hóa khi truyền; URL xóa tài khoản), Ứng dụng của chính phủ = không, Tính năng tài chính = không có, Sức khỏe = hoạt động/thể dục + giảm căng thẳng, Danh mục = Sức khỏe và thể dục, Liên hệ công khai = magicpendigital@gmail.com + website, trang cửa hàng (mô tả ngắn/đầy đủ vi, icon, feature graphic, 4 ảnh chụp). Mục “khai báo thành phần do AI tạo” chưa chọn (Owner cần xác nhận ảnh minh họa có do AI tạo hay không). Chưa làm: Mức phân loại nội dung (cần Owner chấp nhận điều khoản IARC và chọn email nhận) — nút “Gửi ứng dụng đi xem xét” bị khóa cho đến khi xong; chưa gửi duyệt gì. Tài nguyên đã tạo cục bộ (không commit): `.vercel/play-assets/` — icon 512, feature graphic 1024×500, 4 ảnh chụp 1080×1920.
+
 ## 1. Việc Owner cần làm trước khi nộp
 
 1. ~~Điền thông tin pháp nhân và email liên hệ~~ — **đã điền 23/10/2026**: Magicpen Digital, magicpendigital@gmail.com (hiển thị công khai trên 3 trang). `npm run check:legal` đạt và vẫn chặn `android:release:bundle` nếu sau này còn ký hiệu `[[…]]`.
