@@ -12,3 +12,9 @@ ios/App/Pods/
 ios/App/DerivedData/
 
 .vercel/
+
+# Play upload bundles and signing material
+*.aab
+*.p12
+*.jks
+*.keystore

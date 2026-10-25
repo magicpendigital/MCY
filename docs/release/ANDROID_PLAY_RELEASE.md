@@ -28,15 +28,19 @@ Environment variables read by `android/app/build.gradle` (nothing is stored in t
 | `MCY_UPLOAD_STORE_FILE` | absolute path to the upload keystore (outside the repo) |
 | `MCY_UPLOAD_STORE_PASSWORD`, `MCY_UPLOAD_KEY_ALIAS`, `MCY_UPLOAD_KEY_PASSWORD` | keystore secrets |
 
-## Create the upload key (Owner, once)
+## Create the upload key and build the signed bundle (Owner)
 
-Run on your own machine, keep the file and passwords in a password manager, never in chat or the repository:
+Use the helper; it never writes a password to disk or the repository:
 
 ```powershell
-keytool -genkeypair -v -storetype PKCS12 -keystore "D:\secure\mcy-upload.jks" -alias mcy-upload -keyalg RSA -keysize 2048 -validity 10000
+powershell -File scripts/play-release.ps1 -CreateKey
+powershell -File scripts/play-release.ps1 -Build -VersionCode 1 -VersionName 1.0.0
 ```
 
-Enroll in Play App Signing when creating the app so Google holds the app-signing key; this key is only the upload key and can be reset through Play support if lost. Then set the four `MCY_UPLOAD_*` variables in your shell and rebuild.
+- `-CreateKey` (once) runs `keytool` and stores `%USERPROFILE%\mcy-signing\mcy-upload.p12`. Save the file and password in a password manager and keep a second copy.
+- `-Build` asks for the password, exports the **committed HEAD** (uncommitted work never ships), builds, signs, verifies, and writes `mcy-<commit>-v<code>.aab` in the repository root (git-ignored) plus its SHA-256 and the upload-certificate fingerprint. Raise `-VersionCode` for every Play upload.
+
+Enroll in Play App Signing when creating the app so Google holds the app-signing key; this key is only the upload key and can be reset through Play support if lost.
 
 ## Play Console checklist (Owner-controlled, personal account)
 
@@ -44,8 +48,11 @@ Enroll in Play App Signing when creating the app so Google holds the app-signing
 2. Closed testing: Play requires at least 12 testers opted in continuously for 14 days before production access for personal accounts created after 13 Nov 2023. Start this track as soon as a signed bundle exists; use real testers.
 3. Store listing: icon 512×512, feature graphic 1024×500, phone screenshots from a real build, honest short/long description (no treatment or cure claims).
 4. App content: privacy policy URL (public, stable), Data safety form, ads declaration (none), target audience (not for children), content rating, health-app declarations if the form applies, account-deletion URL.
-5. Account deletion: in-app path plus a public web request page are required for apps that let users create accounts. **Not implemented yet**; see the report's Phase 2.
+5. Account deletion: implemented (Cá nhân → Bảo mật tài khoản → Xóa tài khoản) with the public page `/delete-account.html`; use `https://motchutyoga.magicpendigital.com/delete-account.html` and `/privacy.html` in the Console.
 
 ## Still open before a production upload
 
-Native session restore on Air1 Ultra (HALTED), FlowStack accessibility P2, public privacy policy/terms and deletion page, signed bundle, tester roster, Auth allowlist check, physical-device acceptance of the new application ID.
+- Signed bundle (Owner creates the upload key), tester roster (≥12 for 14 days), store assets, Data safety answers (drafts in `PLAY_CONSOLE_DRAFTS.vi.md`).
+- Supabase Dashboard → Authentication → URL Configuration → Redirect URLs must contain `motchutyoga://auth/callback` (release scheme). Not verifiable from the agent connector; confirm before the first internal test, otherwise the email link cannot return to the release app.
+- The restore mitigation and restore card were accepted on the Air1 Ultra by the Owner's report (2026-10-25); the signed release build still needs its own first-run check from Play internal testing.
+- Production web: the domain currently points at a Preview branch deployment; decide whether to move it to Production before public launch.
