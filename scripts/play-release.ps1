@@ -31,7 +31,9 @@ if ($CreateKey) {
 
 if ($Build) {
   if (-not (Test-Path $store)) { throw "No upload key at $store. Run with -CreateKey first." }
-  $secure = Read-Host "Upload key password" -AsSecureString
+  # A password already present in MCY_UPLOAD_STORE_PASSWORD (set by the caller for this process only) skips the prompt.
+  if ($env:MCY_UPLOAD_STORE_PASSWORD) { $secure = ConvertTo-SecureString $env:MCY_UPLOAD_STORE_PASSWORD -AsPlainText -Force }
+  else { $secure = Read-Host "Upload key password" -AsSecureString }
   $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
   try {
     $plain = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr)
