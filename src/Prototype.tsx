@@ -21,6 +21,7 @@ import {
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
 import { authRedirectUrl, backendConfigured, clientChannel, getSupabaseClient, hasStoredAuthSession, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
 import { NATIVE_AUTH_PENDING_KEY, nativeAuthCodeFromCallback, rememberNativeAuthUrl } from "./backend/nativeAuth";
+import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage, passwordSignInMessage } from "./backend/passwordAuth";
 import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, decodeBodyRegionCode, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
 import {
   deleteLearnerCheckin,
@@ -790,6 +791,13 @@ function LearnerPrototype() {
     consentBaseline: { ...emptyConsentState, terms: true, privacy: true },
     consentPolicyVersions: REQUIRED_CONSENT_POLICY_VERSIONS,
   } : initialState);
+  const [authInitNonce, setAuthInitNonce] = useState(0);
+  const authStarted = useRef(false);
+  useEffect(() => {
+    const start = () => { if (!authStarted.current) setAuthInitNonce(value => value + 1); };
+    window.addEventListener(AUTH_SIGN_IN_EVENT, start);
+    return () => window.removeEventListener(AUTH_SIGN_IN_EVENT, start);
+  }, []);
   useLayoutEffect(() => {
     document.title = state.locale === "en-US" ? "A Little Yoga" : "Một chút yoga";
     document.documentElement.lang = state.locale === "en-US" ? "en" : "vi";
@@ -811,10 +819,11 @@ function LearnerPrototype() {
       setState(previous => ({ ...previous, backendStatus: "ready" }));
       return;
     }
-    if (!shouldInitializeAuthForCurrentLaunch()) {
+    if (authInitNonce === 0 && !shouldInitializeAuthForCurrentLaunch()) {
       setState(previous => ({ ...previous, backendStatus: "ready", backendError: "" }));
       return;
     }
+    authStarted.current = true;
     let active = true;
     let hydrationGeneration = 0;
     let lastHydratedUserId: string | null = null;
@@ -972,7 +981,7 @@ function LearnerPrototype() {
       subscription?.unsubscribe();
       void appUrlListener?.remove();
     };
-  }, [reviewConsentScreen]);
+  }, [reviewConsentScreen, authInitNonce]);
   return <DemoContext.Provider value={{ state, setState }}><FlowStack initial={reviewConsentScreen ? ROUTES.consent : ROUTES.welcome}><AuthSessionRouter /><FlowRouteFocusManager /></FlowStack></DemoContext.Provider>;
 }
 
@@ -1032,6 +1041,30 @@ function AuthEmailScreen() {
   const [email, setEmail] = useState(state.accountEmail);
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
+  const [method, setMethod] = useState<"code" | "password">("code");
+  const [password, setPassword] = useState("");
+  const usePassword = state.authMode === "login" && method === "password";
+  const submitPassword = async () => {
+    keyboard.hide();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError("Kiểm tra lại địa chỉ email bạn vừa nhập."); return; }
+    if (!password) { setError("Nhập mật khẩu để tiếp tục."); return; }
+    if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
+    setSending(true);
+    setError("");
+    try {
+      const client = await getSupabaseClient();
+      if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
+      const { data, error: authError } = await client.auth.signInWithPassword({ email: email.trim(), password });
+      if (authError || !data.user) { setError(passwordSignInMessage(authError)); return; }
+      setPassword("");
+      update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? email.trim(), backendStatus: "loading", backendError: "" });
+      window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
+    } catch (cause) {
+      setError(passwordSignInMessage(cause));
+    } finally {
+      setSending(false);
+    }
+  };
   const submit = async () => {
     keyboard.hide();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError("Kiểm tra lại địa chỉ email bạn vừa nhập."); return; }
@@ -1063,12 +1096,17 @@ function AuthEmailScreen() {
   };
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
     <Eyebrow>{state.authMode === "create" ? "TẠO TÀI KHOẢN" : "ĐĂNG NHẬP"}</Eyebrow>
-    <h1>{state.authMode === "create" ? "Tạo tài khoản nhanh bằng email" : "Đăng nhập nhanh qua email"}</h1>
+    <h1>{state.authMode === "create" ? "Tạo tài khoản nhanh bằng email" : usePassword ? "Đăng nhập bằng mật khẩu" : "Đăng nhập nhanh qua email"}</h1>
     {state.authMode === "create" && <p className="mcy-lead">Một Chút Yoga sẽ gửi email xác minh tới địa chỉ bạn cung cấp.</p>}
+    {state.authMode === "login" && <div className="mcy-chip-grid mcy-auth-method" role="group" aria-label="Cách đăng nhập"><Choice selected={!usePassword} disabled={sending} onClick={() => { setMethod("code"); setError(""); }}>Mã hoặc liên kết qua email</Choice><Choice selected={usePassword} disabled={sending} onClick={() => { setMethod("password"); setError(""); }}>Mật khẩu</Choice></div>}
     <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
+    {usePassword && <label className="mcy-form-field">Mật khẩu<KeyboardInput type="password" autoComplete="current-password" aria-label="Mật khẩu" value={password} onChange={event => { setPassword(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>}
     {error && <div className="mcy-form-error" role="alert">{error}</div>}
     {!backendConfigured && <div className="mcy-alert">Backend chưa kết nối ở môi trường hiện tại. Bạn vẫn có thể xem và thử luồng khách.</div>}
-    <Action disabled={sending || !backendConfigured} onClick={submit}>{sending ? "Đang gửi…" : state.authMode === "create" ? "Gửi email xác minh" : "Gửi mã"}</Action>
+    <Action disabled={sending || !backendConfigured} onClick={usePassword ? submitPassword : submit}>{usePassword ? (sending ? "Đang đăng nhập…" : "Đăng nhập") : sending ? "Đang gửi…" : state.authMode === "create" ? "Gửi email xác minh" : "Gửi mã"}</Action>
+    {state.authMode === "login" && (usePassword
+      ? <DemoNote>Chưa đặt mật khẩu? Chọn “Mã hoặc liên kết qua email” để đăng nhập, rồi đặt mật khẩu trong Cá nhân → Bảo mật tài khoản.</DemoNote>
+      : <DemoNote>Email gửi tới bạn có cả mã và liên kết một lần: nhập mã trong ứng dụng hoặc mở liên kết, dùng cách nào thuận tiện hơn.</DemoNote>)}
     {state.authMode === "create" && isCheckinAuthReturn(state.authReturnTo) && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); flow.replace(ROUTES.discover); }}>Xem bài học video miễn phí</button>}
     {state.authMode === "create" && <DemoNote>Email xác minh chỉ dùng qua Supabase Auth. Hãy hoàn tất trên cùng thiết bị để tiếp tục đúng phiên.</DemoNote>}
   </main></MobileScroll>;
@@ -1095,6 +1133,7 @@ function AuthCodeScreen() {
       if (authError || !data.user) { setError("Mã không hợp lệ hoặc đã hết hạn. Hãy kiểm tra hộp thư và thử lại."); return; }
       if (Capacitor.isNativePlatform()) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
       update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? state.accountEmail, backendStatus: "loading", backendError: "" });
+      window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Chưa xác minh được mã. Hãy thử lại.");
     } finally {
@@ -1680,6 +1719,8 @@ function AccountRow({ title, detail, onClick, danger = false }: { title: string;
 
 type AccountPanel = "edit" | "privacy" | "memory" | "sharing" | "security" | "notifications" | "access" | "help";
 export const SESSION_RESTORE_RETRY_EVENT = "mcy:retry-session-restore";
+// A guest launch skips auth start-up; signing in on the same page announces itself so hydration starts.
+export const AUTH_SIGN_IN_EVENT = "mcy:auth-signed-in";
 const LEGAL_WEB_ORIGIN = "https://motchutyoga.magicpendigital.com";
 const ACCOUNT_DELETION_WEB_URL = `${LEGAL_WEB_ORIGIN}/delete-account.html`;
 const PRIVACY_POLICY_WEB_URL = `${LEGAL_WEB_ORIGIN}/privacy.html`;
@@ -1697,6 +1738,33 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
   const [deleteWord, setDeleteWord] = useState("");
   const [deleting, setDeleting] = useState(false);
   const [deleteNotice, setDeleteNotice] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordSaving, setPasswordSaving] = useState(false);
+  const [passwordMessage, setPasswordMessage] = useState<{ tone: "ok" | "error"; text: string } | null>(null);
+  const savePassword = async () => {
+    keyboard.hide();
+    const check = checkNewPassword(newPassword, confirmPassword);
+    if (check !== "ok") { setPasswordMessage({ tone: "error", text: PASSWORD_CHECK_MESSAGES[check] }); return; }
+    if (!state.userId || passwordSaving) return;
+    const expectedUserId = state.userId;
+    setPasswordSaving(true);
+    setPasswordMessage(null);
+    try {
+      const client = await getSupabaseClient();
+      const { data: current } = (await client?.auth.getSession()) ?? { data: { session: null } };
+      if (!client || current.session?.user.id !== expectedUserId) throw new Error("account_changed");
+      const { error: updateError } = await client.auth.updateUser({ password: newPassword });
+      if (updateError) { setPasswordMessage({ tone: "error", text: passwordChangeMessage(updateError) }); return; }
+      setNewPassword("");
+      setConfirmPassword("");
+      setPasswordMessage({ tone: "ok", text: "Đã lưu mật khẩu. Bạn có thể đăng nhập bằng email và mật khẩu này." });
+    } catch (cause) {
+      setPasswordMessage({ tone: "error", text: passwordChangeMessage(cause) });
+    } finally {
+      setPasswordSaving(false);
+    }
+  };
   const deviceTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "Không xác định";
   const filteredHelpArticles = HELP_ARTICLES.filter(article => {
     const searchableText = [article.title, article.detail, article.lead, ...article.paragraphs].join(" ").toLocaleLowerCase("vi");
@@ -1785,7 +1853,7 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
     </>,
   );
   if (panel === "sharing") return screen("CHIA SẺ DỮ LIỆU", "Bạn luôn chọn người nhận và phạm vi.", "Chia sẻ với giáo viên hiện chưa được kết nối trong tài khoản này. Mặc định chia sẻ đang tắt.", <><div className="mcy-empty large"><PersonIcon /><strong>Chưa có lớp được kết nối</strong><p>Khi có lớp được cấp quyền, bạn sẽ thấy rõ tên người nhận, dữ liệu được chia sẻ và thời hạn trước khi bật.</p></div><div className="mcy-consent-card"><strong>Nguyên tắc chia sẻ</strong><p>Không chia sẻ mặc định. Check-in, ghi chú và phản hồi chỉ được gửi khi bạn chọn đúng người nhận và phạm vi.</p></div><AccountRow title="Quyền riêng tư" detail="Rút đồng ý và xem các mục đích khác" onClick={() => flow.push(ROUTES.privacy)} /></>);
-  if (panel === "security") return screen("BẢO MẬT", "Kiểm soát email và phiên đang mở.", "Xác minh lại email khi cần. Việc quản lý thiết bị và khôi phục danh tính luôn cần kiểm tra ở máy chủ.", <><div className="mcy-account-panel"><strong>Email đăng nhập</strong><p>{state.accountEmail || "Chưa đăng nhập"} · {state.signedIn ? "đã xác minh" : "chưa đăng nhập"}</p><button className="mcy-toggle" onClick={() => { update({ authMode: "login", authReturnTo: "security" }); flow.push(ROUTES.authEmail); }}>Đổi email có xác minh</button></div><div className="mcy-account-row static"><span><strong>Thiết bị này</strong><small>{state.signedIn ? "Phiên hiện tại" : "Chưa có phiên đăng nhập"}</small></span><span className="mcy-state-pill">{state.signedIn ? "HIỆN TẠI" : "KHÁCH"}</span></div><p className="mcy-inline-note">Nếu mất quyền truy cập email hoặc nghi có người dùng tài khoản, hãy liên hệ kênh hỗ trợ của MCY. Không tự gộp hai tài khoản.</p>{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}{deleteNotice && <div className="mcy-inline-note" role="status">{deleteNotice}</div>}{state.signedIn && <div className="mcy-account-panel mcy-danger-zone"><strong>Xóa tài khoản</strong><p>Xóa tài khoản này cùng hồ sơ, check-in, lựa chọn quyền riêng tư và dữ liệu liên quan trên máy chủ. Việc này không thể hoàn tác.</p><button className="mcy-toggle danger" onClick={() => { setError(""); setDeleteOpen(true); }}>Xóa tài khoản và dữ liệu</button></div>}<a className="mcy-quiet-link" href={ACCOUNT_DELETION_WEB_URL} target="_blank" rel="noopener noreferrer">Trang yêu cầu xóa tài khoản trên web</a><BottomSheet open={deleteOpen} onOpenChange={open => { if (!deleting) { setDeleteOpen(open); if (!open) setDeleteWord(""); } }} title="Xóa tài khoản?" description="Hồ sơ, check-in và lựa chọn quyền riêng tư của bạn sẽ bị xóa vĩnh viễn. Gõ XÓA để xác nhận." snap={0.6}><div className="mcy-sheet-actions"><label className="mcy-form-field">Gõ XÓA để xác nhận<KeyboardInput aria-label="Gõ XÓA để xác nhận" autoComplete="off" autoCapitalize="characters" value={deleteWord} onChange={event => setDeleteWord(event.target.value)} onBlur={() => keyboard.hide()} /></label>{error && <div className="mcy-form-error" role="alert">{error}</div>}<button className="mcy-action danger" disabled={!deleteConfirmed || deleting} onClick={() => { void deleteAccount(); }}>{deleting ? "Đang xóa…" : "Xóa vĩnh viễn"}</button><button className="mcy-quiet-link" disabled={deleting} onClick={() => { keyboard.hide(); setDeleteOpen(false); setDeleteWord(""); }}>Giữ tài khoản</button></div></BottomSheet></>);
+  if (panel === "security") return screen("BẢO MẬT", "Kiểm soát email và phiên đang mở.", "Xác minh lại email khi cần. Việc quản lý thiết bị và khôi phục danh tính luôn cần kiểm tra ở máy chủ.", <><div className="mcy-account-panel"><strong>Email đăng nhập</strong><p>{state.accountEmail || "Chưa đăng nhập"} · {state.signedIn ? "đã xác minh" : "chưa đăng nhập"}</p><button className="mcy-toggle" onClick={() => { update({ authMode: "login", authReturnTo: "security" }); flow.push(ROUTES.authEmail); }}>Đổi email có xác minh</button></div>{state.signedIn && <div className="mcy-account-panel mcy-password-panel"><strong>Mật khẩu đăng nhập</strong><p>Tùy chọn. Đặt mật khẩu để đăng nhập bằng email và mật khẩu; bạn vẫn đăng nhập được bằng mã hoặc liên kết gửi qua email.</p><label className="mcy-form-field">Mật khẩu mới<KeyboardInput type="password" autoComplete="new-password" aria-label="Mật khẩu mới" value={newPassword} onChange={event => { setNewPassword(event.target.value); setPasswordMessage(null); }} onBlur={() => keyboard.hide()} /></label><label className="mcy-form-field">Nhập lại mật khẩu mới<KeyboardInput type="password" autoComplete="new-password" aria-label="Nhập lại mật khẩu mới" value={confirmPassword} onChange={event => { setConfirmPassword(event.target.value); setPasswordMessage(null); }} onBlur={() => keyboard.hide()} /></label>{passwordMessage && <div className={passwordMessage.tone === "ok" ? "mcy-inline-note" : "mcy-form-error"} role={passwordMessage.tone === "ok" ? "status" : "alert"}>{passwordMessage.text}</div>}<button className="mcy-toggle" disabled={passwordSaving} onClick={() => { void savePassword(); }}>{passwordSaving ? "Đang lưu…" : "Lưu mật khẩu"}</button></div>}<div className="mcy-account-row static"><span><strong>Thiết bị này</strong><small>{state.signedIn ? "Phiên hiện tại" : "Chưa có phiên đăng nhập"}</small></span><span className="mcy-state-pill">{state.signedIn ? "HIỆN TẠI" : "KHÁCH"}</span></div><p className="mcy-inline-note">Nếu mất quyền truy cập email hoặc nghi có người dùng tài khoản, hãy liên hệ kênh hỗ trợ của MCY. Không tự gộp hai tài khoản.</p>{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}{deleteNotice && <div className="mcy-inline-note" role="status">{deleteNotice}</div>}{state.signedIn && <div className="mcy-account-panel mcy-danger-zone"><strong>Xóa tài khoản</strong><p>Xóa tài khoản này cùng hồ sơ, check-in, lựa chọn quyền riêng tư và dữ liệu liên quan trên máy chủ. Việc này không thể hoàn tác.</p><button className="mcy-toggle danger" onClick={() => { setError(""); setDeleteOpen(true); }}>Xóa tài khoản và dữ liệu</button></div>}<a className="mcy-quiet-link" href={ACCOUNT_DELETION_WEB_URL} target="_blank" rel="noopener noreferrer">Trang yêu cầu xóa tài khoản trên web</a><BottomSheet open={deleteOpen} onOpenChange={open => { if (!deleting) { setDeleteOpen(open); if (!open) setDeleteWord(""); } }} title="Xóa tài khoản?" description="Hồ sơ, check-in và lựa chọn quyền riêng tư của bạn sẽ bị xóa vĩnh viễn. Gõ XÓA để xác nhận." snap={0.6}><div className="mcy-sheet-actions"><label className="mcy-form-field">Gõ XÓA để xác nhận<KeyboardInput aria-label="Gõ XÓA để xác nhận" autoComplete="off" autoCapitalize="characters" value={deleteWord} onChange={event => setDeleteWord(event.target.value)} onBlur={() => keyboard.hide()} /></label>{error && <div className="mcy-form-error" role="alert">{error}</div>}<button className="mcy-action danger" disabled={!deleteConfirmed || deleting} onClick={() => { void deleteAccount(); }}>{deleting ? "Đang xóa…" : "Xóa vĩnh viễn"}</button><button className="mcy-quiet-link" disabled={deleting} onClick={() => { keyboard.hide(); setDeleteOpen(false); setDeleteWord(""); }}>Giữ tài khoản</button></div></BottomSheet></>);
   if (panel === "notifications") return screen("THÔNG BÁO", "Nhắc tập theo lịch của bạn.", "Backend chưa gửi push hoặc email nhắc. Lựa chọn thông báo của tài khoản được lưu để dùng khi dịch vụ được triển khai.", <><PrivacyToggle title="Nhắc tập trong ứng dụng" detail="Múi giờ lấy từ thiết bị · lịch gửi chưa được cấu hình." value={state.notificationEnabled} onToggle={value => { void changeConsent("notifications", value, { notificationEnabled: value }); }} /><PrivacyToggle title="Email cập nhật nội dung" detail="Tùy chọn marketing; không ảnh hưởng email đăng nhập." value={state.emailUpdates} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value, emailUpdates: value }); }} />{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}<div className="mcy-account-panel"><strong>Giờ yên lặng</strong><p>Chưa có lịch nhắc nào được gửi hoặc lên lịch.</p></div></>);
   if (panel === "access") return screen("QUYỀN NỘI DUNG", "Những gì đang mở cho bạn.", "Khóa học miễn phí có thể học không cần giao dịch. Mục này cho biết nội dung trả phí hiện có trong ứng dụng.", <><div className="mcy-access-card"><span className="mcy-tag">HỌC MIỄN PHÍ</span><strong>Khóa học trong Khám phá</strong><p>Bạn có thể xem các bài học video ngay trong ứng dụng mà không cần mua quyền truy cập.</p></div><div className="mcy-empty large"><ReaderIcon /><strong>Chưa có khóa học trả phí</strong><p>Giao dịch, thời hạn học và quyền lợi đi kèm hiện chưa được cung cấp trong ứng dụng.</p></div><button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.discover)}>Mở Khám phá</button></>);
   if (panel === "help") return screen("HỖ TRỢ", "Tìm hướng dẫn rõ ràng.", "Chọn một chủ đề để xem hướng dẫn. Hiện chưa thể gửi yêu cầu tài khoản từ ứng dụng.", <><label className="mcy-form-field">Tìm hướng dẫn<KeyboardInput aria-label="Tìm hướng dẫn" value={query} onChange={event => setQuery(event.target.value)} onBlur={() => keyboard.hide()} placeholder="Ví dụ: phản hồi sau tập" /></label><div className="mcy-help-results">{filteredHelpArticles.length ? filteredHelpArticles.map(article => <AccountRow key={article.id} title={article.title} detail={article.detail} onClick={() => flow.push(HELP_ARTICLE_ROUTES[article.id])} />) : <p className="mcy-help-empty" role="status">Chưa tìm thấy hướng dẫn phù hợp. Thử một từ khác.</p>}</div><div className="mcy-account-panel"><strong>Chưa thể gửi yêu cầu trong ứng dụng</strong><p>Các mục bên dưới là hướng dẫn tham khảo; hiện chưa có nội dung nào được gửi tới đội ngũ hỗ trợ của MCY.</p></div>{error && <div className="mcy-form-error">{error}</div>}</>);
