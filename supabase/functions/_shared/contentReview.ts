@@ -3,7 +3,11 @@ import { readingUnitCandidates } from "./readingUnitCandidates.ts";
 import type { OwnerControlPlaneDependencies } from "./ownerControlPlane.ts";
 import { reviewChecks } from "./contentReviewContract.ts";
 
-const actions = ["read_content_review", "save_content_review", "assign_content_reviewer"];
+const actions = ["read_content_review", "read_reading_preview", "save_content_review", "assign_content_reviewer"];
+// Private bucket holding the reviewed-draft reading images, addressed by the exact SHA-256 of each file.
+const PREVIEW_BUCKET = "reading-preview";
+const PREVIEW_URL_SECONDS = 900;
+const sha = /^[a-f0-9]{64}$/;
 const id = /^[a-z0-9_-]{1,80}$/;
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const plain = (v: unknown): v is Record<string, unknown> => Boolean(v && typeof v === "object" && !Array.isArray(v));
@@ -15,7 +19,7 @@ type Result = { status: number; body: Record<string, unknown> };
 export async function handleContentReview(payload: Record<string, unknown>, actor: string, server: ReturnType<OwnerControlPlaneDependencies["clients"]>["server"]): Promise<Result | null> {
   if (typeof payload.action !== "string" || !actions.includes(payload.action)) return null;
   const action = payload.action;
-  const allowed = action === "read_content_review" ? ["action"] : action === "save_content_review"
+  const allowed = action === "read_content_review" ? ["action"] : action === "read_reading_preview" ? ["action", "candidateId"] : action === "save_content_review"
     ? ["action", "candidateId", "contentVersion", "expectedRevision", "decision", "qualification", "reviewBasis", "rightsBasis", "checklist"]
     : ["action", "candidateId", "contentVersion", "expectedRevision", "reviewerId", "active", "expiresInDays"];
   if (Object.keys(payload).some(k => !allowed.includes(k))) return { status: 400, body: { error: "invalid_request" } };
@@ -24,6 +28,7 @@ export async function handleContentReview(payload: Record<string, unknown>, acto
   if (action === "read_content_review") {
     return { status: 200, body: { ...queue, candidates: allCandidates.filter(c => (queue.items as Record<string, unknown>[]).some(item => item.candidate_id === c.id && item.content_version === c.version)) } };
   }
+  if (action === "read_reading_preview") return readingPreview(payload, queue.items as Record<string, unknown>[], server);
   const candidate = allCandidates.find(c => c.id === payload.candidateId && c.version === payload.contentVersion);
   if (!candidate || !id.test(candidate.id) || !Number.isInteger(payload.expectedRevision) || Number(payload.expectedRevision) < 0) return { status: 400, body: { error: "invalid_request" } };
   if (!(queue.items as Record<string, unknown>[]).some(item => item.candidate_id === candidate.id && item.content_version === candidate.version)) return { status: 403, body: { error: "content_review_access_required" } };
@@ -45,4 +50,39 @@ export async function handleContentReview(payload: Record<string, unknown>, acto
     return { status: code === "PT409" ? 409 : code === "42501" ? 403 : code === "PT429" ? 429 : code === "22023" ? 400 : 503, body: { error: code === "PT409" ? "content_review_conflict" : code === "42501" ? "content_review_access_required" : code === "PT429" ? "content_review_limit_reached" : code === "22023" ? "invalid_review" : "content_review_result_uncertain" } };
   }
   return { status: 200, body: { receipt: data, published: false, aiEnabled: false } };
+}
+
+type Admitted = { decision: string; revision: number };
+const admitted = (items: Record<string, unknown>[], c: { id: string; version: string }): Admitted | null => {
+  const found = items.find(i => i.candidate_id === c.id && i.content_version === c.version);
+  const state = found && plain(found.state) ? found.state : null;
+  return state ? { decision: typeof state.decision === "string" ? state.decision : "pending", revision: Number.isInteger(state.revision) ? Number(state.revision) : 0 } : null;
+};
+// Owner/assigned reviewer read model for the in-app Preview. Without candidateId it returns a light list (also the
+// access probe); with candidateId it returns one unit plus short-lived signed image URLs. Nothing here publishes content.
+async function readingPreview(payload: Record<string, unknown>, items: Record<string, unknown>[], server: ReturnType<OwnerControlPlaneDependencies["clients"]>["server"]): Promise<Result> {
+  if (payload.candidateId === undefined) {
+    const units = readingUnitCandidates.flatMap(c => {
+      const state = admitted(items, c);
+      return state ? [{ id: c.id, version: c.version, title: c.title, decision: state.decision, revision: state.revision, steps: c.unit.steps.length, images: { present: c.unit.media.filter(m => m.status === "draft_present").length, total: c.unit.media.length } }] : [];
+    });
+    return { status: 200, body: { units, published: false } };
+  }
+  const candidate = typeof payload.candidateId === "string" && id.test(payload.candidateId) ? readingUnitCandidates.find(c => c.id === payload.candidateId) : undefined;
+  if (!candidate) return { status: 400, body: { error: "invalid_request" } };
+  const state = admitted(items, candidate);
+  if (!state) return { status: 403, body: { error: "content_review_access_required" } };
+  const paths = new Map<string, string>();
+  for (const m of candidate.unit.media) if (m.status === "draft_present" && typeof m.sha256 === "string" && sha.test(m.sha256)) paths.set(m.id, `${m.sha256}.png`);
+  const mediaUrls: Record<string, string> = {};
+  if (paths.size && server.storage) {
+    try {
+      const { data, error } = await server.storage.from(PREVIEW_BUCKET).createSignedUrls([...new Set(paths.values())], PREVIEW_URL_SECONDS);
+      if (!error && Array.isArray(data)) {
+        const byPath = new Map(data.filter(d => d.path && !d.error && typeof d.signedUrl === "string").map(d => [d.path as string, d.signedUrl]));
+        for (const [mediaId, path] of paths) { const url = byPath.get(path); if (url) mediaUrls[mediaId] = url; }
+      }
+    } catch { /* images are optional; the reader shows an honest "not uploaded" state */ }
+  }
+  return { status: 200, body: { unit: { id: candidate.id, version: candidate.version, title: candidate.title, decision: state.decision, revision: state.revision, content: candidate.unit }, mediaUrls, published: false } };
 }

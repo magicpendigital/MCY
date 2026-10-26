@@ -145,6 +145,7 @@ const DemoContext = createContext<{ state: DemoState; setState: Dispatch<SetStat
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
 const CourseDetailScreen = lazy(() => import("./courses/CourseDetailScreen"));
+const ReadingPreviewScreen = lazy(() => import("./library/ReadingPreviewScreen"));
 const DiscoverScreen = lazy(() => import("./courses/DiscoverScreen"));
 const LazyJourneyScreen = lazy(() => import("./JourneyScreen"));
 
@@ -677,8 +678,18 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   sync: { id: "sync", header: () => <Header title="Phản hồi sau tập" back />, headerHeight: 55, render: () => <SyncScreen /> },
   discoverDetail: { id: "discover-detail", header: () => <Header title="Chi tiết nội dung" back />, headerHeight: 55, render: () => <DiscoverDetailScreen /> },
   courseDetail: { id: "course-detail", header: () => <Header title="Khóa học miễn phí" back />, headerHeight: 55, render: () => <CourseDetailRoute /> },
+  readingPreview: { id: "reading-preview", header: () => <Header title="Xem trước nội dung" back />, headerHeight: 55, render: () => <ReadingPreviewRoute /> },
   readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
 });
+
+function ReadingPreviewRoute() {
+  const flow = useFlow();
+  const { state } = useDemo();
+  if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để xem trước nội dung được giao cho bạn.</div></main></MobileScroll>;
+  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở xem trước…</div></main></MobileScroll>}>
+    <ReadingPreviewScreen key={state.userId} userId={state.userId} active={flow.current.id === ROUTES.readingPreview.id} />
+  </Suspense>;
+}
 
 function CourseDetailRoute() {
   const flow = useFlow();
@@ -1676,6 +1687,18 @@ function ProfileScreen() {
   const [signingOut, setSigningOut] = useState(false);
   const [error, setError] = useState("");
   const feedback = state.saveFeedbackConsent ? [...state.history].reverse().find(item => item.pace === "Hơi nhanh") : undefined;
+  // Owner/reviewer accounts get an extra entry when the server reports unpublished reading units for them.
+  const [previewUnits, setPreviewUnits] = useState(0);
+  const previewUserId = state.signedIn ? state.userId : null;
+  useEffect(() => {
+    setPreviewUnits(0);
+    if (!backendConfigured || !previewUserId) return;
+    let current = true;
+    void import("./library/readingPreviewApi").then(({ readPreviewList }) => readPreviewList(previewUserId)).then(result => {
+      if (current) setPreviewUnits(result.status === "allowed" ? result.units.length : 0);
+    }).catch(() => undefined);
+    return () => { current = false; };
+  }, [previewUserId]);
   const signOut = async () => {
     if (!backendConfigured) return;
     setSigningOut(true);
@@ -1705,6 +1728,9 @@ function ProfileScreen() {
       <AccountRow title="Nội dung và quyền đang có" detail="Khóa học miễn phí · quyền trả phí" onClick={() => flow.push(ROUTES.access)} />
       <AccountRow title="Chia sẻ với giáo viên" detail="Chưa có lớp được kết nối · mặc định tắt" onClick={() => flow.push(ROUTES.sharing)} />
     </div>
+    {previewUnits > 0 && <div className="mcy-account-group"><span className="mcy-section-label">DÀNH CHO BIÊN TẬP</span>
+      <AccountRow title="Xem trước nội dung" detail={`${previewUnits} bài đọc có hình · chỉ Owner hoặc người được giao thấy`} onClick={() => flow.push(ROUTES.readingPreview)} />
+    </div>}
     <div className="mcy-account-group"><span className="mcy-section-label">TRỢ GIÚP VÀ YÊU CẦU</span>
       <AccountRow title="Hướng dẫn và liên hệ" detail="Đọc hướng dẫn; chưa gửi được yêu cầu trong ứng dụng" onClick={() => flow.push(ROUTES.help)} />
       <AccountRow title="Xuất hoặc xóa dữ liệu" detail="Ứng dụng chưa tiếp nhận yêu cầu xuất hoặc xóa" onClick={() => flow.push(ROUTES.help)} />

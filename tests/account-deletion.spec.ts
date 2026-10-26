@@ -25,6 +25,7 @@ async function backend(page: Page, deleteResponse: { status: number; json?: unkn
     if (pathname.endsWith("/checkins") || pathname.endsWith("/checkin_observations")) return route.fulfill({ json: [] });
     if (pathname.endsWith("/user")) return route.fulfill({ json: session.user });
     if (pathname.endsWith("/logout")) return route.fulfill({ status: 204, body: "" });
+    if (pathname.endsWith("/owner-control-plane")) return route.fulfill({ status: 403, json: { error: "content_review_access_required" } });
     if (pathname.endsWith("/mcy-ai-assistant")) return route.fulfill({ json: { available: false, contractVersion: "reviewed-practice-1" } });
     if (pathname.endsWith("/delete_my_account")) {
       deletes.push(request.postDataJSON());

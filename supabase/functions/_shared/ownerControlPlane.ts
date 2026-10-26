@@ -15,6 +15,15 @@ export type OwnerControlPlaneClients = {
       data: unknown;
       error: { code?: string; message?: string } | null;
     }>;
+    // Private bucket access for the reading-unit preview images; optional so older adapters keep working.
+    storage?: {
+      from(bucket: string): {
+        createSignedUrls(paths: string[], expiresIn: number): PromiseLike<{
+          data: Array<{ path: string | null; signedUrl: string; error: string | null }> | null;
+          error: unknown | null;
+        }>;
+      };
+    };
   };
 };
 

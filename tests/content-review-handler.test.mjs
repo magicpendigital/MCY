@@ -12,7 +12,7 @@ function harness(options={}) {
   const calls=[];
   const handler=createOwnerControlPlaneHandler({
     env:key=>key==='SUPABASE_URL'?'https://mhumbczqrzutdnraafhs.supabase.co':undefined,
-    clients:()=>({user:{auth:{getUser:async()=>({data:{user:options.identity===false?null:{id:actor,email_confirmed_at:'2026-10-01'}},error:null})}},server:{rpc:async(name,args)=>{calls.push({name,args});if(name==='mcy_content_review_read')return options.read??{data:queue,error:null};if(options.throwWrite)throw new Error('private failure must not leak');return options.write??{data:{candidate_id:candidate.id,content_version:candidate.version,revision:1,published:false},error:null};}}}),
+    clients:()=>({user:{auth:{getUser:async()=>({data:{user:options.identity===false?null:{id:actor,email_confirmed_at:'2026-10-01'}},error:null})}},server:{storage:options.storage,rpc:async(name,args)=>{calls.push({name,args});if(name==='mcy_content_review_read')return options.read??{data:queue,error:null};if(options.throwWrite)throw new Error('private failure must not leak');return options.write??{data:{candidate_id:candidate.id,content_version:candidate.version,revision:1,published:false},error:null};}}}),
     readModels:async()=>{throw new Error('Review must not call provider');},readJson:(r)=>r.json(),isBodyTooLarge:()=>false,isBodyTimeout:()=>false
   });
   return {calls,run:async(body,token=true)=>{const r=await handler(new Request('https://edge.invalid',{method:'POST',headers:{'content-type':'application/json',...(token?{authorization:'Bearer fictional-only'}:{})},body:JSON.stringify(body)}));return {status:r.status,body:await r.json()};}};
@@ -70,4 +70,46 @@ test('a reading unit approval needs no audio/duration checks and sends only fixe
   assert.equal(call.args.p_decision,'approved');assert.equal(call.args.p_expected_revision,0);
   const forged=harness({read:{data:{...queue,items:[readingItem]},error:null}});assert.equal((await forged.run(readingSave({contentVersion:'e'.repeat(64)}))).status,400);
   assert.equal(forged.calls.some(c=>c.name==='mcy_content_review_save'),false);
+});
+
+const withImage=readingUnitCandidates.find(c=>c.unit.media.some(m=>m.status==='draft_present'));
+const imageSha=withImage.unit.media.find(m=>m.status==='draft_present').sha256;
+const signer=(calls,missing=[])=>({from:bucket=>({createSignedUrls:async(paths,seconds)=>{calls.push({bucket,paths,seconds});return {data:paths.map(path=>missing.includes(path)?{path,signedUrl:'',error:'Object not found'}:{path,signedUrl:'https://signed.invalid/'+path+'?token=fictional',error:null}),error:null};}})});
+test('reading preview list is a light access probe: admitted units only, no unit text, no image URLs',async()=>{
+  const storageCalls=[];
+  const h=harness({read:{data:{...queue,items:[readingItem]},error:null},storage:signer(storageCalls)});const r=await h.run({action:'read_reading_preview'});
+  assert.equal(r.status,200);assert.equal(r.body.published,false);assert.deepEqual(r.body.units.map(u=>u.id),[reading.id]);
+  assert.deepEqual(Object.keys(r.body.units[0]).sort(),['decision','id','images','revision','steps','title','version']);
+  assert.equal(JSON.stringify(r.body).includes(reading.unit.steps[0].body),false);assert.equal(storageCalls.length,0);
+  const none=await harness().run({action:'read_reading_preview'});assert.deepEqual(none.body.units,[]);
+  const denied=await harness({read:{data:null,error:{code:'42501',message:'Private detail'}}}).run({action:'read_reading_preview'});
+  assert.deepEqual(denied,{status:403,body:{error:'content_review_access_required'}});
+});
+test('reading preview unit returns content and 15-minute signed URLs for uploaded images only',async()=>{
+  const entry={candidate_id:withImage.id,content_version:withImage.version,state:{revision:2,decision:'approved'},assignments:[]};
+  const storageCalls=[];const missing=[];
+  const h=harness({read:{data:{...queue,items:[entry]},error:null},storage:signer(storageCalls,missing)});
+  const r=await h.run({action:'read_reading_preview',candidateId:withImage.id});
+  assert.equal(r.status,200);assert.equal(r.body.unit.decision,'approved');assert.equal(r.body.unit.revision,2);assert.equal(r.body.unit.content.unitId,withImage.unit.unitId);
+  assert.equal(storageCalls.length,1);assert.equal(storageCalls[0].bucket,'reading-preview');assert.equal(storageCalls[0].seconds,900);
+  assert.ok(storageCalls[0].paths.every(p=>/^[a-f0-9]{64}.png$/.test(p)));
+  const present=withImage.unit.media.filter(m=>m.status==='draft_present');
+  assert.deepEqual(Object.keys(r.body.mediaUrls).sort(),present.map(m=>m.id).sort());
+  const absent=withImage.unit.media.filter(m=>m.status!=='draft_present');for(const m of absent)assert.equal(m.id in r.body.mediaUrls,false);
+  // Objects not uploaded yet are simply omitted, and missing storage never fails the read.
+  const gone=harness({read:{data:{...queue,items:[entry]},error:null},storage:signer([], [imageSha+'.png'])});
+  const g=await gone.run({action:'read_reading_preview',candidateId:withImage.id});assert.equal(g.status,200);
+  const noStorage=await harness({read:{data:{...queue,items:[entry]},error:null}}).run({action:'read_reading_preview',candidateId:withImage.id});
+  assert.equal(noStorage.status,200);assert.deepEqual(noStorage.body.mediaUrls,{});
+  const throwing=await harness({read:{data:{...queue,items:[entry]},error:null},storage:{from:()=>({createSignedUrls:async()=>{throw new Error('private storage failure');}})}}).run({action:'read_reading_preview',candidateId:withImage.id});
+  assert.equal(throwing.status,200);assert.equal(JSON.stringify(throwing).includes('private storage failure'),false);
+});
+test('reading preview refuses unknown, unadmitted or forged requests before any storage call',async()=>{
+  const storageCalls=[];
+  for(const body of [{action:'read_reading_preview',candidateId:'../x'},{action:'read_reading_preview',candidateId:'reading-unknown'},{action:'read_reading_preview',extra:true},{action:'read_reading_preview',candidateId:reading.id,contentVersion:reading.version}]){
+    const h=harness({read:{data:{...queue,items:[readingItem]},error:null},storage:signer(storageCalls)});assert.equal((await h.run(body)).status,400);
+  }
+  const hidden=await harness({storage:signer(storageCalls)}).run({action:'read_reading_preview',candidateId:reading.id});
+  assert.equal(hidden.status,403);assert.equal(storageCalls.length,0);
+  const intro=await harness({storage:signer(storageCalls)}).run({action:'read_reading_preview',candidateId:candidate.id});assert.equal(intro.status,400);
 });
