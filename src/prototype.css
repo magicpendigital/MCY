@@ -1008,6 +1008,11 @@ button { cursor: pointer; }
     padding: 18px;
   }
 
+  /* Notes follow the video in the DOM; on wide screens the copy sits beside the video and the notes take row two. */
+  .mobile-web-stage[data-runtime-mode="web"] .mcy-course-video { grid-column: 1; grid-row: 1; }
+  .mobile-web-stage[data-runtime-mode="web"] .mcy-course-featured-copy { grid-column: 2; grid-row: 1; }
+  .mobile-web-stage[data-runtime-mode="web"] .mcy-course-caption-note, .mobile-web-stage[data-runtime-mode="web"] .mcy-course-source-note { grid-row: auto; margin: 0; }
+
   @media (min-width:1200px) {
     .mobile-web-stage[data-runtime-mode="web"] .mcy-course-catalog {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1091,3 +1096,35 @@ button { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) { .mcy-restore-icon.spinning svg { animation: none; } }
 .mcy-restore-card.failed { border-color: #b9704f; background: #fff4ec; }
 .mcy-restore-retry { grid-column: 1 / -1; min-height: 48px; padding: 10px 18px; border: 0; border-radius: 14px; background: var(--mcy-clay, #8e4b35); color: #fffcf7; font-size: 16px; font-weight: 700; }
+
+/* Quick lesson finder (Khám phá): chips by area and length, results as compact rows. */
+.mcy-finder { margin: 4px 0 26px; padding: 18px 16px; border: 1px solid var(--color-border-strong); border-radius: 20px; background: var(--mcy-paper); }
+.mcy-finder h2 { font: 22px/1.2 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-finder-lead { margin: 6px 0 14px; color: var(--mcy-muted); font-size: 14px; line-height: 1.5; }
+.mcy-finder-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+.mcy-finder-chips button { min-height: 44px; padding: 8px 15px; border: 1px solid var(--color-border-strong); border-radius: 999px; background: transparent; color: var(--color-forest); font: 700 14px/1.2 var(--font-sans); }
+.mcy-finder-chips button[aria-pressed="true"] { border-color: var(--color-forest); background: #e8eee4; box-shadow: inset 0 0 0 1px var(--color-forest); }
+.mcy-finder-results { margin-top: 12px; border-top: 1px solid #e3e6dc; }
+.mcy-finder-count { margin: 12px 0 4px; color: var(--mcy-muted); font-size: 14px; }
+.mcy-finder-row { display: flex; width: 100%; min-height: 60px; align-items: center; gap: 12px; padding: 9px 2px; border: 0; border-bottom: 1px solid #ecefe6; background: transparent; color: var(--mcy-ink); text-align: left; }
+.mcy-finder-row > span:nth-child(2) { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 2px; }
+.mcy-finder-row strong { font: 16px/1.25 var(--font-editorial); }
+.mcy-finder-row small { color: var(--mcy-muted); font-size: 13px; }
+.mcy-finder-row svg { flex: none; color: var(--mcy-clay); }
+.mcy-finder-time { flex: none; min-width: 64px; padding: 5px 9px; border-radius: 999px; background: #f0ece3; color: #6b4a3a; font: 700 12.5px/1.1 var(--font-sans); text-align: center; }
+
+.mcy-quickpicks { margin: 26px 0 8px; }
+.mcy-quickpicks h2 { font: 22px/1.2 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-quickpicks > p { margin: 6px 0 8px; color: var(--mcy-muted); font-size: 14px; line-height: 1.5; }
+
+/* Course detail: the video comes first, so the heading block stays compact. */
+.mcy-course-detail-page h1 { font-size: 28px; margin-bottom: 8px; }
+.mcy-course-about { margin: 18px 0 8px; }
+
+.mcy-journey-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin: 8px 0 20px; padding: 22px 20px; border: 1px solid var(--color-border-strong); border-radius: 22px; background: linear-gradient(160deg, #f4efe4 0%, var(--mcy-paper) 70%); }
+.mcy-journey-empty > svg { width: 30px; height: 30px; color: var(--mcy-clay); }
+.mcy-journey-empty h2 { font: 24px/1.2 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-journey-empty p { margin: 0 0 6px; color: #45554b; font-size: 15px; line-height: 1.55; }
+.mcy-journey-empty small { color: var(--mcy-muted); font-size: 13.5px; line-height: 1.5; }
+.mcy-journey-empty .mcy-action { width: 100%; }
+.mcy-field-hint { margin: 10px 0 0; color: var(--mcy-muted); font-size: 14px; line-height: 1.5; }

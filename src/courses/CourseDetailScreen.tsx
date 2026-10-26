@@ -96,13 +96,9 @@ export default function CourseDetailScreen({
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-course-detail-page">
     <div className="mcy-eyebrow">{msg(locale, "course.eyebrow")}</div>
     <h1>{course.title}</h1>
-    <p className="mcy-lead">{course.description}</p>
     <div className="mcy-course-detail-meta"><span>{formatMessage(locale, "discover.courseLessons", { count: course.lessons.length })}</span><span>{msg(locale, "discover.youtubeLabel")}</span><span>{locale === "en-US" ? "Channel · Một chút yoga" : "Kênh · Một chút yoga"}</span></div>
-    <p className="mcy-course-scroll-hint"><ArrowDownIcon aria-hidden="true" focusable="false" />{msg(locale, "course.scrollHint")}</p>
     {locale === "en-US" && <p className="mcy-locale-note">{msg(locale, "course.englishNote")}</p>}
     <section className="mcy-course-featured" aria-label={locale === "en-US" ? "Selected lesson" : "Bài học đang chọn"}>
-      {captionNotice && <p className="mcy-course-caption-note" role="note"><InfoCircledIcon aria-hidden="true" focusable="false" />{msg(locale, captionNotice)}</p>}
-      <p className="mcy-course-source-note" role="note"><InfoCircledIcon aria-hidden="true" focusable="false" /><span>{msg(locale, "course.sourceNote")} <a href={`https://policies.google.com/privacy?hl=${locale === "en-US" ? "en" : "vi"}`} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">{msg(locale, "course.privacyLink")}</a></span></p>
       <div className={`mcy-course-video mcy-course-video-${lesson.orientation}`} data-testid="course-video">
         {isLessonPlayerOpen && (lesson.visibility === "public" || lesson.visibility === "unlisted")
           ? <iframe key={`${lesson.id}-${playerReloadCount}`} data-load-attempt={playerReloadCount} title={lesson.title} src={`https://www.youtube-nocookie.com/embed/${lesson.youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1`} loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" onLoad={() => { setPlayerStatus("frame-loaded"); setPlayerHelpOpen(false); }} allowFullScreen />
@@ -111,6 +107,8 @@ export default function CourseDetailScreen({
             <span><PlayIcon />{locale === "en-US" ? "Play in app" : "Học ngay trong ứng dụng"}</span>
           </button>}
       </div>
+      {captionNotice && <p className="mcy-course-caption-note" role="note"><InfoCircledIcon aria-hidden="true" focusable="false" />{msg(locale, captionNotice)}</p>}
+      <p className="mcy-course-source-note" role="note"><InfoCircledIcon aria-hidden="true" focusable="false" /><span>{msg(locale, "course.sourceNote")} <a href={`https://policies.google.com/privacy?hl=${locale === "en-US" ? "en" : "vi"}`} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">{msg(locale, "course.privacyLink")}</a></span></p>
       <div className="mcy-course-featured-copy"><span className="mcy-course-lesson-number">{locale === "en-US" ? "LESSON" : "BÀI HỌC"} {lesson.id} · {lesson.duration}</span><h2>{lesson.title}</h2><p>{lesson.description}</p>
         {isLessonPlayerOpen && playerStatus !== "idle" && <p className="mcy-course-player-status" data-testid="course-player-status" data-state={playerStatus} role={playerStatus === "timeout" ? "alert" : "status"}>{msg(locale, playerStatus === "loading" ? "course.playerLoading" : playerStatus === "frame-loaded" ? "course.playerFrameLoaded" : "course.playerLoadFailed")}</p>}
         {isLessonPlayerOpen && <div className="mcy-course-player-recovery">
@@ -136,6 +134,7 @@ export default function CourseDetailScreen({
         </nav>
       </div>
     </section>
+    <p className="mcy-lead mcy-course-about">{course.description}</p>
     {isLessonPlayerOpen && <div className="mcy-course-reflection-prompt"><p>{locale === "en-US" ? "MCY cannot verify video completion. After you have practised, you can record your own reflection." : "MCY không nhận được trạng thái xem hết video. Sau khi tự thực hành, bạn có thể chủ động ghi lại cảm nhận."}</p><Action onClick={() => onRecordReflection(course.title, lesson.title)}>{locale === "en-US" ? "I practised · record reflection" : "Tôi đã thực hành · ghi cảm nhận"}</Action></div>}
     <section className="mcy-course-lessons" aria-labelledby="course-lessons-heading">
       <div className="mcy-course-lessons-heading"><h2 id="course-lessons-heading">{msg(locale, "course.lessonsHeading")}</h2><span>{formatMessage(locale, "course.lessonCount", { count: course.lessons.length })}</span></div>

@@ -967,7 +967,7 @@ test("English learner flow follows check-in, practice and honest reflection on m
     await expect(mainNavigation).toContainText("Journey");
     await expect(mainNavigation).toContainText("Explore");
     await expect(mainNavigation).toContainText("Profile");
-    await expect(page.getByText("IN THIS SESSION", { exact: true })).toBeVisible();
+    await expect(page.locator(".mcy-journey-empty")).toContainText("No entries yet");
     await expect(page.getByRole("button", { name: "View sample journey" })).toHaveCount(0);
     await mainNavigation.getByRole("button", { name: "Explore" }).tap();
     await expect(activeScreen.getByTestId("free-course-catalog")).toBeVisible();
@@ -1145,10 +1145,11 @@ test("free course detail stacks media and lesson copy on mobile, then uses colum
     const caption = featured.querySelector(".mcy-course-caption-note")!.getBoundingClientRect();
     const source = featured.querySelector(".mcy-course-source-note")!.getBoundingClientRect();
     const video = featured.querySelector(".mcy-course-video")!.getBoundingClientRect();
-    return { captionBottom: caption.bottom, sourceTop: source.top, sourceBottom: source.bottom, videoTop: video.top };
+    return { captionTop: caption.top, captionBottom: caption.bottom, sourceTop: source.top, sourceBottom: source.bottom, videoTop: video.top, videoBottom: video.bottom };
   });
+  // The video leads; the caption and source notes follow it, still before the lesson copy.
+  expect(noteAndVideo.videoBottom).toBeLessThanOrEqual(noteAndVideo.captionTop);
   expect(noteAndVideo.captionBottom).toBeLessThanOrEqual(noteAndVideo.sourceTop);
-  expect(noteAndVideo.sourceBottom).toBeLessThanOrEqual(noteAndVideo.videoTop);
 
   const mobileLayout = await page.locator(".mcy-course-featured").evaluate(card => {
     const video = card.querySelector(".mcy-course-video")!.getBoundingClientRect();
@@ -1158,8 +1159,9 @@ test("free course detail stacks media and lesson copy on mobile, then uses colum
   expect(mobileLayout.scrollWidth).toBeLessThanOrEqual(390);
   expect(mobileLayout.copyLeft).toBeCloseTo(mobileLayout.videoLeft, 0);
   expect(mobileLayout.copyTop).toBeGreaterThanOrEqual(mobileLayout.videoBottom - 1);
-  await expect(page.locator(".mcy-course-scroll-hint")).toBeVisible();
-  await expect(page.locator(".mcy-course-scroll-hint")).toBeInViewport({ ratio: 1 });
+  // The poster and its play action now lead the page, so the old "scroll down to the video" cue is gone.
+  await expect(page.locator(".mcy-course-scroll-hint")).toHaveCount(0);
+  await expect(page.locator(".mcy-course-video")).toBeInViewport();
   const mobilePosterRatio = await page.locator(".mcy-course-video").evaluate(video => {
     const { width, height } = video.getBoundingClientRect();
     return width / height;
@@ -1472,16 +1474,13 @@ test("short portrait keeps welcome, lesson and reflection actions inside the vie
     const captionLayout = await activeCourseDetail.locator(".mcy-course-featured").evaluate(featured => {
       const note = featured.querySelector(".mcy-course-caption-note")!.getBoundingClientRect();
       const video = featured.querySelector(".mcy-course-video")!.getBoundingClientRect();
-      return { noteLeft: note.left, noteRight: note.right, noteBottom: note.bottom, videoTop: video.top, documentWidth: document.documentElement.scrollWidth };
+      return { noteLeft: note.left, noteRight: note.right, noteTop: note.top, videoBottom: video.bottom, documentWidth: document.documentElement.scrollWidth };
     });
     expect(captionLayout.noteLeft).toBeGreaterThanOrEqual(0);
     expect(captionLayout.noteRight).toBeLessThanOrEqual(320);
-    expect(captionLayout.noteBottom).toBeLessThanOrEqual(captionLayout.videoTop);
+    expect(captionLayout.videoBottom).toBeLessThanOrEqual(captionLayout.noteTop);
     expect(captionLayout.documentWidth).toBeLessThanOrEqual(320);
-    const scrollHint = activeCourseDetail.locator(".mcy-course-scroll-hint");
-    await expect(scrollHint).toBeVisible();
-    await expect(scrollHint).toBeInViewport({ ratio: 1 });
-    await page.screenshot({ path: testInfo.outputPath("course-detail-320x568-visible-scroll-cue.png") });
+    await page.screenshot({ path: testInfo.outputPath("course-detail-320x568.png") });
     const playAction = page.getByRole("button", { name: /Phát bài học/ });
     await playAction.scrollIntoViewIfNeeded();
     await expect(playAction.locator(":scope > span")).toBeInViewport({ ratio: 1 });

@@ -1323,6 +1323,27 @@ function ReadinessScreen() {
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-readiness-page"><Eyebrow>A06 · TRƯỚC KHI THỰC HÀNH</Eyebrow><h1>Hôm nay bạn có muốn tiếp tục thật nhẹ nhàng không?</h1><p className="mcy-lead">Chọn theo cảm nhận của bạn. Đây không phải chẩn đoán hay đánh giá an toàn y tế.</p><div className="mcy-account-panel"><strong>Nếu bạn chưa chắc, bạn có thể dừng lại.</strong><p>MCY hiện chưa tạo gợi ý tự động. Bạn luôn tự chọn bài học và có thể dừng bất cứ lúc nào.</p></div><div className="mcy-readiness-options"><button aria-pressed={result === "within_scope"} onClick={() => choose("within_scope")}><strong>Tôi muốn tiếp tục nhẹ nhàng</strong><small>Đi tới thư viện bài học miễn phí.</small></button><button aria-pressed={result === "unknown"} onClick={() => choose("unknown")}><strong>Tôi chưa chắc</strong><small>Xem thư viện mà không dùng phản hồi để cá nhân hóa.</small></button><button aria-pressed={result === "needs_review"} onClick={() => choose("needs_review")}><strong>Tôi cần người xem cùng</strong><small>Mở hướng dẫn và hỗ trợ.</small></button><button aria-pressed={result === "stop_guidance"} onClick={() => choose("stop_guidance")}><strong>Tôi muốn dừng hôm nay</strong><small>Không chọn bài lúc này.</small></button></div>{result === "stop_guidance" && <div className="mcy-alert">Mình sẽ không đề xuất bài lúc này. Nếu bạn cần hỗ trợ khẩn cấp, hãy liên hệ dịch vụ phù hợp tại nơi bạn đang ở.</div>}{result === "needs_review" && <div className="mcy-alert">Hiện chưa có phiên tư vấn trực tiếp trong ứng dụng. Bạn có thể xem hướng dẫn chung.</div>}<Action disabled={!result} onClick={advance}>{result === "within_scope" || result === "unknown" ? "Xem bài học miễn phí" : result === "needs_review" ? "Mở hướng dẫn" : "Kết thúc ở đây"}</Action><button className="mcy-quiet-link" onClick={() => flow.replace(ROUTES.discover)}>Bỏ qua câu hỏi · xem bài học miễn phí</button><DemoNote>Chỉ những điều bạn chủ động ghi nhận mới xuất hiện trong check-in và Hành trình.</DemoNote></main></MobileScroll>;
 }
 
+// Three shortest clips, ordered by length only. This is a gentle first look, not a pick based on the check-in.
+function HomeQuickPicks() {
+  const flow = useFlow();
+  const { update } = useDemo();
+  const [picks, setPicks] = useState<{ courseId: FreeCourseId; lessonId: string; title: string; courseTitle: string; time: string }[] | null>(null);
+  useEffect(() => {
+    let active = true;
+    void Promise.all([import("./courses/freeCourses"), import("./courses/lessonFinder")]).then(([{ FREE_COURSES }, finder]) => {
+      if (active) setPicks(finder.shortestLessons(FREE_COURSES, 3).map(item => ({ courseId: item.courseId, lessonId: item.lesson.id, title: item.lesson.title, courseTitle: item.courseTitle, time: finder.formatLessonDuration(item.seconds) })));
+    }).catch(() => { if (active) setPicks([]); });
+    return () => { active = false; };
+  }, []);
+  if (!picks?.length) return null;
+  return <section className="mcy-quickpicks" aria-labelledby="quickpicks-heading" data-testid="home-quick-picks">
+    <h2 id="quickpicks-heading">Bắt đầu nhẹ nhàng</h2>
+    <p>Ba bài ngắn nhất trong thư viện, để làm quen trước khi chọn thêm.</p>
+    {picks.map(item => <button key={item.lessonId} type="button" className="mcy-finder-row" onClick={() => { update({ selectedCourseId: item.courseId, selectedLessonId: item.lessonId }); flow.push(ROUTES.courseDetail); }}><span className="mcy-finder-time">{item.time}</span><span><strong>{item.title}</strong><small>{item.courseTitle}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
+    <button type="button" className="mcy-quiet-link" onClick={() => flow.push(ROUTES.discover)}>Xem tất cả 38 bài</button>
+  </section>;
+}
+
 function HomeScreen() {
   const flow = useFlow();
   const { state } = useDemo();
@@ -1334,6 +1355,7 @@ function HomeScreen() {
     {previous && state.saveFeedbackConsent && state.rememberPace && previous.pace === "Hơi nhanh" && previous.outcome !== "Khó chịu hơn" && !previous.endedEarly ? <div className="mcy-memory-hint"><MagicWandIcon /><span>Lần trước bạn nói nhịp hơi nhanh. Lần này bạn có thể chọn chậm hơn.</span></div> : null}
     <div className="mcy-home-photo"><img src="/assets/today-neck-stretch-1200.webp" srcSet="/assets/today-neck-stretch-600.webp 600w, /assets/today-neck-stretch-1200.webp 1200w" sizes="(min-width: 700px) 450px, 100vw" alt="Hình minh họa buổi tập yoga tại nhà" loading="lazy" decoding="async" /><span>Một bài học miễn phí, do bạn tự chọn</span></div>
     <div className="mcy-home-cta"><Action onClick={() => flow.push(ROUTES.checkin)}>{previous ? "Ghi nhận hôm nay" : "Bắt đầu check-in"}</Action><span>Không cần check-in để duyệt bài học</span></div>
+    <HomeQuickPicks />
     <div className="mcy-section-label">BẠN SẼ ĐI QUA</div>
     <div className="mcy-steps-list"><div><b>01</b><span>Check-in ngắn<small>Ghi nhận cảm nhận, năng lượng hoặc bỏ qua.</small></span></div><div><b>02</b><span>Tự chọn bài học<small>Duyệt từng video miễn phí ngay trong ứng dụng.</small></span></div><div><b>03</b><span>Phản hồi của bạn<small>Ghi lại cảm nhận sau buổi nếu bạn muốn.</small></span></div></div>
     <DemoNote>Khi đăng nhập, hồ sơ, lựa chọn quyền và check-in đã đồng ý lưu sẽ được kết nối với tài khoản của bạn.</DemoNote>
@@ -1443,7 +1465,7 @@ function CheckinScreen() {
     </div> : <div className="mcy-checkin-step-two">
       {showStepTwoScrollHint && <div className="mcy-scroll-hint mcy-checkin-step-two-scroll-hint"><ChevronDownIcon aria-hidden="true" />{msg(locale, "checkin.step2.scrollHint")}</div>}
       <section className="mcy-energy-card"><h2>{msg(locale, "checkin.energy")} <small>({msg(locale, "checkin.optional")})</small></h2><div className="mcy-energy-options">{(["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"] as Energy[]).map((value, index) => <button key={value} aria-pressed={state.energy === value} onClick={() => update({ energy: value })}><EnergyFace level={index} /><span>{energyLabel(locale, value)}</span></button>)}</div></section>
-      <section className="mcy-field-section compact"><h2>{msg(locale, "checkin.duration")}</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}>{formatMessage(locale, "checkin.minutes", { minutes: localizedNumber(locale, time) })}</Choice>)}</div></section>
+      <section className="mcy-field-section compact"><h2>{msg(locale, "checkin.duration")}</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}>{formatMessage(locale, "checkin.minutes", { minutes: localizedNumber(locale, time) })}</Choice>)}</div>{locale !== "en-US" && <p className="mcy-field-hint">Mỗi bài trong thư viện dài từ vài chục giây đến khoảng 1 phút; bạn có thể xem nhiều bài liên tiếp trong khoảng thời gian này.</p>}</section>
       <div className="mcy-checkin-summary"><span><strong>{locale === "en-US" ? "Body check-in" : "Cảm nhận cơ thể"}</strong><small>{bodySummary || (locale === "en-US" ? "Not added" : "Chưa ghi nhận")}</small></span><button onClick={() => update({ checkinStep: 1 })}>{locale === "en-US" ? "Edit" : "Sửa"}</button></div>
       <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : msg(locale, "checkin.standalone")}</button>
       {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
