@@ -1,0 +1,437 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.pose.kneeling-backbend",
+  "revision": "r1",
+  "legacyAliases": [
+    "poses:19"
+  ],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": null,
+  "productionStatus": "editorial_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Quỳ gối ngả sau · nhận biết nền đỡ bất đối xứng",
+  "shortTitle": "Quỳ gối ngả sau",
+  "intro": "Một hình ngả sau khi quỳ có thể dùng hai tay ở gót, một tay trên sàn hoặc một cách đỡ khác. Bài đọc này giúp nhận ra hình đang quan sát trước khi học đường chuyển với giáo viên.",
+  "scope": "Chỉ đọc và nhận biết biến thể quỳ ngả sau với một lòng bàn tay trên sàn, tay kia qua đầu đã thấy trong hai khung MOV local. Không đồng nhất với Camel hai tay nắm gót. Không hướng dẫn tự vào/ra, chuyển tải trọng hoặc ngả cổ; các phần thực hành đó đang bị chặn chờ chuyên gia.",
+  "learningObjectives": [
+    "Nhận ra đầu gối/cẳng chân và một tay tạo nền khác với tư thế đứng ngả sau.",
+    "Phân biệt tay chống với tay đang vươn qua đầu.",
+    "Biết những thông tin còn thiếu trước khi học đường vào và trở về."
+  ],
+  "audience": "Người lớn đọc để tìm hiểu và chuẩn bị câu hỏi. Bài này không yêu cầu thử tư thế hoặc xác nhận phù hợp cho người mới; không phải hướng dẫn tự xử lý triệu chứng.",
+  "prerequisites": [
+    "Hiện chỉ có phần đọc; mọi đường vào/ra và lựa chọn thực hành của exact variant cần chuyên gia xác lập trước."
+  ],
+  "preparation": [
+    "Đọc khi đang nghỉ trong tư thế quen thuộc; không chuyển sang nền của ảnh để đọc.",
+    "Xem cả phạm vi và phần kết trước; có thể chỉ đọc hoặc dừng bất cứ lúc nào.",
+    "Chưa có ảnh AI: năm khung là brief có điều kiện, không phải hình hướng dẫn sẵn có."
+  ],
+  "stopGuidance": "Có thể dừng phần đọc bất cứ lúc nào. Bài không yêu cầu vận động; nếu đang tự thử và thấy đau hoặc không khỏe, dừng lại và tìm hỗ trợ phù hợp.",
+  "alternatives": [
+    "Chỉ đọc phần nhận biết; không thử tư thế.",
+    "Ghi câu hỏi để trao đổi với giáo viên trước khi chọn nội dung thực hành."
+  ],
+  "readTimeSecondsEstimate": 240,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [
+    {
+      "courseId": "poses",
+      "lessonId": "19",
+      "youtubeId": "McOZ1FW5jBM",
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceObservations": [
+    {
+      "id": "local-kneeling-backbend-stills",
+      "fileName": "Quỳ gối ngả sau.mov",
+      "sourceSha256": "3b1d486099c06e5b21ad81e7c9b29fa7177af75acec2eaa4b08ab3e2ca1ff988",
+      "timestampsSeconds": [
+        7.269,
+        16.961
+      ],
+      "visualOnly": true,
+      "audioObserved": false,
+      "notes": "Chỉ initial capture cột1 tại7.269s và cột2 tại16.961s có hình. Cột1: hai gối/cẳng chân trên thảm, một tay chống sàn, thân ngả sau và tay kia qua đầu; cột2: ngồi gần gót, thân dựng, hai tay mở. Supplement của file này đen cả4cột. Không xem toàn clip/audio, không xác định bên hay tải lên cổ. Các mốc là vị trí browser báo; chỉ những cột có pixels mới được tính quan sát. MOV chưa bind bytes với YouTubeID.",
+      "evidenceRef": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS.json"
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Gọi đúng hình đang xem",
+      "body": "Hình được quan sát có hai đầu gối trên thảm và một tay chống sàn. Đó là nền khác với một người đứng ngả sau, dù cả hai hình đều mở phần trước thân.",
+      "detail": "Tên Quỳ gối ngả sau ở đây là tên chủ đề. Chưa chốt tên Sanskrit hoặc gọi hình này là Camel tiêu chuẩn.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ],
+      "mediaIds": [
+        "kneeling-backbend-photo-1"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Nhìn nền quỳ trước",
+      "body": "Dõi theo hai đầu gối và phần cẳng chân tiếp xúc thảm. Những điểm này giúp người đọc phân biệt nền quỳ với nền hai bàn chân.",
+      "detail": "Ảnh không cho biết cảm giác ở đầu gối hoặc cách đặt đệm của một người cụ thể. Không cần quỳ xuống để kiểm xem mình có giống hình không.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ],
+      "mediaIds": [
+        "kneeling-backbend-photo-2"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Tách hai vai trò của tay",
+      "body": "Một bàn tay đang ở sàn, còn cánh tay kia đi qua phía trên đầu. Hai tay không làm cùng một việc trong hình này.",
+      "detail": "Góc chụp chưa cho biết lực dồn vào tay chống bao nhiêu. Không suy ra rằng cứ đặt một tay phía sau là có thể ngả người tới hình.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ],
+      "mediaIds": [
+        "kneeling-backbend-photo-3"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Đọc đường cong cùng nền đỡ",
+      "body": "Nhìn thân ngả sau trong quan hệ với nền quỳ và bàn tay, thay vì chỉ nhìn cằm hay độ cao của ngực. Một khung tĩnh không kể lại lúc chuyển tải trọng.",
+      "detail": "Mẫu còn thiếu đường vào, cách trở về và lựa chọn khi không thoải mái. Những khoảng trống ấy cần giáo viên giải thích, không được lấp bằng một cú ngả sâu hơn.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ],
+      "mediaIds": [
+        "kneeling-backbend-photo-4"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Dừng ở câu hỏi cần được hướng dẫn",
+      "body": "Trước khi muốn học động tác, hãy có câu trả lời rõ: bắt đầu từ đâu, tay nào làm nền, trở về bằng cách nào và có thể chọn cách khác nào. Bài đọc này chưa cung cấp những chỉ dẫn thực hành đó.",
+      "detail": "Bạn đã hoàn thành việc nhận biết một biến thể. Có thể khép bài ngay tại đây; đọc xong không phải là đã thực hiện tư thế.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Kết thúc phần đọc; không đánh dấu đã thực hành.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ],
+      "mediaIds": [
+        "kneeling-backbend-photo-5"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "kneeling-backbend-photo-1",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "kneeling-backbend-photo-2",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "kneeling-backbend-photo-3",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "kneeling-backbend-photo-4",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "kneeling-backbend-photo-5",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    }
+  ],
+  "assetBriefs": [
+    {
+      "id": "kneeling-backbend-brief-1",
+      "stepId": "step-1",
+      "mediaId": "kneeling-backbend-photo-1",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc nghiêng toàn thân của đúng biến thể quỳ một tay chống sàn và tay kia qua đầu; chỉ lập hình sau khi chuyên gia chốt bàn tay, hai gối, cẳng chân và đầu rõ ràng. Không thay bằng Camel nắm gót. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ]
+    },
+    {
+      "id": "kneeling-backbend-brief-2",
+      "stepId": "step-2",
+      "mediaId": "kneeling-backbend-photo-2",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc thấp nghiêng ba phần tư tập trung từ hông tới hai gối/cẳng chân của biến thể đã chốt, giữ đủ tay chống trong khung để nền đỡ không bị hiểu nhầm; không thêm gối/đệm chưa được reviewer chọn. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ]
+    },
+    {
+      "id": "kneeling-backbend-brief-3",
+      "stepId": "step-3",
+      "mediaId": "kneeling-backbend-photo-3",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc sau ba phần tư của vai và hai cánh tay trong exact variant; thấy rõ một lòng bàn tay với sàn và tay tự do qua đầu, cổ/đầu không bị cắt. Không xoắn thêm thân để làm ảnh đẹp. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ]
+    },
+    {
+      "id": "kneeling-backbend-brief-4",
+      "stepId": "step-4",
+      "mediaId": "kneeling-backbend-photo-4",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc nghiêng rộng cho thấy trọn đầu, thân, tay chống và nền quỳ, độ ngả do chuyên gia quyết định; không cận mặt ngửa cổ, không cắt điểm tựa. Không minh họa thêm bước vào/ra chưa review. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ]
+    },
+    {
+      "id": "kneeling-backbend-brief-5",
+      "stepId": "step-5",
+      "mediaId": "kneeling-backbend-photo-5",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Cùng nhân vật ở tư thế nghỉ ngồi quen thuộc đã được chốt, tay thả tự nhiên, đang xem lại nội dung trên thiết bị; bối cảnh thảm và ánh sáng nhất quán. Đây là kết thúc phần đọc, không phải minh họa cách thoát khỏi backbend. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-kneeling-backbend-stills"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "pose-source",
+      "title": "YogaEasy — Camel Pose",
+      "url": "https://www.yogaeasy.com/artikel/camel-pose",
+      "use": "Chỉ đối chiếu họ kneeling backbend và yêu cầu chuẩn bị/đường trở về trong tài liệu giảng dạy. Nguồn mô tả Camel; không dùng nó để gán tên hoặc cung cấp entry cho biến thể một tay chống sàn của MOV local.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "safety",
+      "title": "NCCIH — Yoga: Effectiveness and Safety",
+      "url": "https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety",
+      "use": "Chỉ dùng căn cứ cần hướng dẫn có chuyên môn; không xác nhận phù hợp cá nhân hoặc kỹ thuật từng hình MCY.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "stop-source",
+      "title": "NHS — Strength and Flex exercise plan: How-to videos / safety information",
+      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flex-exercise-plan-how-to-videos/",
+      "use": "Chỉ đối chiếu nguyên tắc dừng khi đau hoặc không khỏe; không dùng bài Strength/Flex làm kỹ thuật tư thế yoga.",
+      "accessedAt": "2026-10-18"
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa xác lập đường chuyển giữa ngồi/quỳ và ngả sau một tay, bên thực hiện, vị trí tay chống và tải trên vai/cổ. Không mở thực hành từ hai ảnh tĩnh.",
+    "Chưa có chuyên gia yoga thật duyệt đối tượng, exact variant, copy, mọi phần thực hành và từng ảnh.",
+    "Năm ảnh mới chưa được tạo: path/hash/mime/dimensions null, alt/caption trống; chưa có media để thẩm định pixels.",
+    "Chưa xem trọn clip hoặc audio, chưa xác nhận trái/phải và quan hệ MOV-byte/YouTubeID; đây không phải transcript.",
+    "Quyền text/media/likeness, biên tập, accessibility và adapter/CMS/phát hành vẫn chờ xử lý."
+  ],
+  "changeLog": [
+    "r1 — nguyên tác đọc/quan sát có AI hỗ trợ dựa trên nguồn primary và các still local thực sự nhìn thấy; không có phần thực hành được duyệt hoặc ảnh mới."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "ai_assisted_original",
+    "sourceFiles": [
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS.json",
+        "sha256": "158ec08c1fff49b140b7ca357ffaca174641276c6fef01e7d0e30749a484a01c"
+      },
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS-supplement.json",
+        "sha256": "362407dbb9c5902e253324372a79386a954776a0f1361c117c2fa5b88f227854"
+      }
+    ],
+    "notes": "Original educational reading only. Still images were inspected; no full original video or audio review. Public-source facts are limited paraphrases; questions, reading flow and image briefs are editorial proposals. Private instructor captures are evidence only, not likeness inputs or learner assets. The emitted JSON is canonical; this helper must not overwrite later edits."
+  },
+  "readTimeNote": "Ước lượng thời gian đọc; không phải thời lượng giữ tư thế hoặc buổi tập.",
+  "ending": "Bạn đã đến cuối phần đọc. Không tự ghi nhận đã thực hành hoặc suy ra cảm giác tốt hơn từ việc đọc xong."
+}

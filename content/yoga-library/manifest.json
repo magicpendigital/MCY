@@ -1,0 +1,1198 @@
+{
+  "schemaVersion": "mcy-yoga-package-manifest-1",
+  "createdAt": "2026-10-20T07:15:38.649Z",
+  "status": "local_draft_only",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "humanReviews": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending"
+  },
+  "approvalRecords": [],
+  "validation": {
+    "status": "PASS",
+    "scope": "Local draft schema/inventory/bytes/reference consistency only; no human yoga or rights approval.",
+    "inventoryRecords": 38,
+    "units": [
+      {
+        "id": "mcy.pose.cobra-gentle",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 5,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.pose.cobra",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 5,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.pose.cow-face",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 5,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.pose.downward-dog",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 5,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.foundation.cat-cow",
+        "revision": "r3",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 10,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.foundation.standing",
+        "revision": "r3",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 10,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.pose.high-lunge",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 5,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.pose.kneeling-backbend",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "editorial_draft",
+        "steps": 5,
+        "presentMedia": 0,
+        "missingMedia": 5
+      },
+      {
+        "id": "mcy.pose.low-crow",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "editorial_draft",
+        "steps": 5,
+        "presentMedia": 0,
+        "missingMedia": 5
+      },
+      {
+        "id": "mcy.pose.low-wheel",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "editorial_draft",
+        "steps": 5,
+        "presentMedia": 0,
+        "missingMedia": 5
+      },
+      {
+        "id": "mcy.transition.stand-up",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "editorial_draft",
+        "steps": 5,
+        "presentMedia": 0,
+        "missingMedia": 5
+      },
+      {
+        "id": "mcy.pose.three-legged-dog",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 5,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.pose.warrior-ii",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "media_draft",
+        "steps": 5,
+        "presentMedia": 5,
+        "missingMedia": 0
+      },
+      {
+        "id": "mcy.pose.wild-thing-high",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "status": "editorial_draft",
+        "steps": 5,
+        "presentMedia": 0,
+        "missingMedia": 5
+      }
+    ],
+    "totalPresentMedia": 55,
+    "totalMissingMedia": 25
+  },
+  "expansionValidation": {
+    "status": "PASS",
+    "scope": "Local metadata-only structure, provenance-reference and current-crosswalk checks; not source truth, expertise, rights, practice or release approval.",
+    "schemaVersion": "mcy-yoga-expansion-1",
+    "taxonomyVersion": "mcy-yoga-taxonomy-1",
+    "entities": 114,
+    "sources": 20,
+    "taxonomies": 24,
+    "counts": {
+      "byKind": {
+        "knowledge_topic": 10,
+        "local_unresolved_topic": 5,
+        "pose_family": 68,
+        "pose_variant": 3,
+        "skill": 28
+      },
+      "bySourceKind": {
+        "local_draft_inventory": 1,
+        "web_teaching": 19
+      },
+      "byTaxonomyDomain": {
+        "knowledge": 3,
+        "local_topic": 1,
+        "posture": 14,
+        "skill": 6
+      },
+      "relations": 11,
+      "existingContentLinks": 17
+    },
+    "unitCountContribution": 0,
+    "mediaCountContribution": 0
+  },
+  "inputs": [
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+      "bytes": 21931,
+      "sha256": "4a85ba119459de2703c126f0bee06eb9127a4a235f2f04629b4991bcb7796c71",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/STANDING-IMAGES.vi.md",
+      "bytes": 11789,
+      "sha256": "6ee2eb20f01c64dcad58c81290db43b275e174fc085ac5ede9c8aa02b2e2b902",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/TABLETOP-IMAGES.vi.md",
+      "bytes": 14174,
+      "sha256": "0e43a4eb99ddf5e60bab6768edaa3eb31db8e0fbdd368be9e10a4b449147d095",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/photo-media.json",
+      "bytes": 3569,
+      "sha256": "f04f9d3420242e8b7e01af4e1c8dbcd0a6d0794b18081fccc95eb83773cc95f3",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-photo-01.png",
+      "bytes": 1901732,
+      "sha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-photo-02.png",
+      "bytes": 2264740,
+      "sha256": "c3223681f3b2545a63b9315ecc6fbf3a57a8403e90ff5eba9e5c296e8e44ddba",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-photo-03.png",
+      "bytes": 1790440,
+      "sha256": "9702379d9ef6fecb5d0b03bd251864db5e74bfa7c78c8a08dcfdc5dbb8bb6bd5",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-photo-04.png",
+      "bytes": 1724506,
+      "sha256": "1db229e0cebb9255304470f05253ab2aff9dde6e3248763c022982f3041139d2",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-photo-05.png",
+      "bytes": 1735900,
+      "sha256": "4a8ed0d7d336610a0a6913140ecdddd77c79c2754f437316977a8fa6ce2c8e54",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-step-01.png",
+      "bytes": 2174660,
+      "sha256": "e511c3c576ccba27f13fd4e5b1e774ed5f39fba262ef2af479987e1decf6487e",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-step-02.png",
+      "bytes": 2497100,
+      "sha256": "cd26db67c3b01fb265d50d7397da0199754eaafe11602ed9d11ddb412f57ec49",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-step-03.png",
+      "bytes": 1994833,
+      "sha256": "30156e2c4eba3f332c583b873ea7d6fe83623ebe0b7e2e00d53baeb395e7652f",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-step-04.png",
+      "bytes": 2089809,
+      "sha256": "340646362a6a66f21f01d8cca9e199532c66ddf9c29925402b0770285d9b1430",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/standing-step-05.png",
+      "bytes": 1938396,
+      "sha256": "ad76e37022c77c082a26d12879ba7b69c851cd488531a63ba9145ce790fb6137",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-01.png",
+      "bytes": 1863364,
+      "sha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-02.png",
+      "bytes": 1909518,
+      "sha256": "83671dd1ff6f1e1c5fd8d8e106993ec460472880bce042e475a3ddcd83b32099",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-03.png",
+      "bytes": 1949476,
+      "sha256": "8b3e4cdb2d2db1263024b7d427b18b00ca4afc9fcc314eda139e8c1cbc7ac149",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-04.png",
+      "bytes": 1890923,
+      "sha256": "e4b1f8a87c7bb8d0247551703d54c532fca5ff7f2915544391560de4465af019",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-05.png",
+      "bytes": 1784957,
+      "sha256": "058480e418ddd023bade704de90a349f3fc907a8d7a64b7559a9f13f2705b8b1",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-step-01.png",
+      "bytes": 2159152,
+      "sha256": "a850217766ea3860820e3c7bfe9dc76de194e248a3413492870fe60c4410107c",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-step-02.png",
+      "bytes": 2343081,
+      "sha256": "2c0c2d7ed5f880da917eda40796e2c8db2149a886a38c3d0ca5cf09fcfdedef7",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-step-03.png",
+      "bytes": 2385125,
+      "sha256": "47a4d630ead5b4616084625f1a1952f9f919949e4d155b9fdbcab7aa02545106",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-step-04.png",
+      "bytes": 2159976,
+      "sha256": "24850fe94bc61e1190f8c0c506c8d45df7d25a6721ec63f53bf62d95efb1e9b3",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/assets/tabletop-step-05.png",
+      "bytes": 2372281,
+      "sha256": "2f7d7d7d6d2b709ebd0586bc704e5be64c7e8718014088d1055acf07f1c04130",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/standing-lesson.json",
+      "bytes": 10037,
+      "sha256": "a94a1349cdfef36620de99b3d13873446c59799ae44b9d9c6e0e7a8f8141f797",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/foundation-series-2026-10-16/tabletop-lesson.json",
+      "bytes": 11060,
+      "sha256": "8f38d21d55345fe0dffca0f6ad69a8a0762f16dc178be5f4da11724967b32733",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/CONTROL-CAPTURE-FORMAT-PREINVOCATION-REVIEW.vi.md",
+      "bytes": 3482,
+      "sha256": "7501466a62081cb9eb00179390caccb9f61430024389440724a305d348fa24a2",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/CONTROL-CAPTURE-PREINVOCATION-REVIEW.vi.md",
+      "bytes": 5180,
+      "sha256": "b840ae9ae02150e267e73996bbd6eca31e90a43c836b97e7c93a556efd662765",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/CONTROL-COVERAGE-PREINVOCATION-REVIEW.vi.md",
+      "bytes": 1937,
+      "sha256": "1ae059fda5be04e577cc33480553798796abe5b31344fd58145c9b4b081741ee",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/CONTROL-EXPANSION-PREINVOCATION-REVIEW.vi.md",
+      "bytes": 5303,
+      "sha256": "61e44310cfc1ec28bb745020f09d80e206ef063b7a0befc8b87773b3232504ca",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/CONTROL-PREINVOCATION-REVIEW.vi.md",
+      "bytes": 5988,
+      "sha256": "829193dc03916c7535124f27290b6a2a9ad7390be9cf79b2d9c38dcd799dacd3",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EDITORIAL-INTAKE.vi.md",
+      "bytes": 19786,
+      "sha256": "92f7644dff3a759c792b80765ce6c59ac1bb9bd35fdce412c84132e53b7c5394",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-CONTROL-EVIDENCE-QC.vi.md",
+      "bytes": 2535,
+      "sha256": "125edc05677d371f3a50a4b571438cac3d9dc1486ec67fae5b842195fd147f03",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-CONTROL-RESULTS.json",
+      "bytes": 6451,
+      "sha256": "0ba1f72ec14ec3b6276f79cd955effddba763796f223d613f947c3a8e6e54582",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-INTAKE-QC.vi.md",
+      "bytes": 5698,
+      "sha256": "68f4bffc4e0925ab8afcc15918ae468e6fd189d6dc13f484fb3d247532c8bb4d",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-INTAKE.vi.md",
+      "bytes": 37544,
+      "sha256": "0b1b084d1c25a006d70144887a6380160e50bb44531d248c8047e549fd0efe83",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-README-INDEX-FAIL.json",
+      "bytes": 682,
+      "sha256": "a7b67a6fb3d414d7783dda72d87e2e4983db5ffd274e7cf08aeb0b1b39f3830e",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-REPAIR-READ-QC.json",
+      "bytes": 1854,
+      "sha256": "3fb387d519e9acf0f01977fb0b7507e47c86e817c8264a42adeb0d8074c8bed0",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-RESEARCH-SOURCES.json",
+      "bytes": 27820,
+      "sha256": "14a0f305a7baca2483cf9fe872cd4377b750eba328277ff6a3380e7e9a736584",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-SEMANTIC-QC.vi.md",
+      "bytes": 6621,
+      "sha256": "fff1574a0dadb0525b7859a4826b6db4fade8346a72217feef62f9e484c2d8b2",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/INTAKE-QC.vi.md",
+      "bytes": 6337,
+      "sha256": "30ed3c3aa4c06055e1305dc0bdfb8e6f95f6263d85e6451dfc580bb9fd4a9d48",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/PHOTO-PRODUCTION.json",
+      "bytes": 25636,
+      "sha256": "cad355b68f0d10877f53bced920413868bb657724ef3495023ad4b247cfbb72d",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/PHOTO-PRODUCTION.ledger-write-failure.txt",
+      "bytes": 368572,
+      "sha256": "1408cd0c89fe839e28263f4b5c1c8b36b2d9800f2b2c95e3c719fd37b9735612",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/PHOTO-PRODUCTION.vi.md",
+      "bytes": 1923,
+      "sha256": "485f5ebf7296f38e17200e6bb03ed841e71e079cb9935b081737abcff9db6610",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/ROOT-EXIT-WORDING-FIX.vi.md",
+      "bytes": 1154,
+      "sha256": "58d0f0b902b560a86e6067fb6afd7821ec1d8b50ff328e4fb1d591763756a22b",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/ROOT-LEDGER-PARSE-FAIL.vi.md",
+      "bytes": 961,
+      "sha256": "94f852e79d9195b60fc610f4044ea539eb00a4c19a63feca0e22247ca8b0253e",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/SCOPE-ADDENDUM.vi.md",
+      "bytes": 2916,
+      "sha256": "8260578b06bdbcf8fe854101cedde5fa9c594172d6106cdcef9f1b7d59116e77",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS-supplement.json",
+      "bytes": 27438,
+      "sha256": "362407dbb9c5902e253324372a79386a954776a0f1361c117c2fa5b88f227854",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS.json",
+      "bytes": 34120,
+      "sha256": "158ec08c1fff49b140b7ca357ffaca174641276c6fef01e7d0e30749a484a01c",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/TASK-INTAKE.vi.md",
+      "bytes": 6702,
+      "sha256": "f7c32a7fadfb2020ba1cea1e38d290c5c982161bd6a2627e24f0a540bd6082e4",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/UNIT-TEMPLATE.json",
+      "bytes": 1227,
+      "sha256": "a87d3693f830e96ca5eae1f49cf1f87ab5772798bd1f06302c723c7068833add",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/build-library.mjs",
+      "bytes": 7561,
+      "sha256": "71be3b20a5350de321053e226f6ff7073f6039a2741dfe749cd5eb89c1e2ab64",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/create-manifest.mjs",
+      "bytes": 5146,
+      "sha256": "0a8d7c37d91623d8775916012218608c6d64eeabd21b858a9bf2ad1bdcfc4b00",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/expansion-contract.mjs",
+      "bytes": 12529,
+      "sha256": "c24f6f5bf07fe697b5c211a6d8df0eedeadcb2115bedb870662797d0d51f09af",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/expansion-control-canonical-1.log",
+      "bytes": 681,
+      "sha256": "2504dd5521bbe35408732c4b5e14130fbf1cae8fad94593f7595344f14b93da9",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/expansion-control-canonical-2.log",
+      "bytes": 821,
+      "sha256": "b58f42bee3f7a09903a0528a3dadfe8b01fc022f088e5942816b8fd36e9667bb",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/expansion-control-fixtures-1.log",
+      "bytes": 4460,
+      "sha256": "1279aed25d329cf0f10ce6cd37ed899089fc00f7eb095ac0d0805d3614438bce",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/library-contract.mjs",
+      "bytes": 5741,
+      "sha256": "c2ef86779d84024ae7267def4893b09a23c07daea232d504b3420be0c814562d",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/private-evidence/browser-contacts/pose-0.png",
+      "bytes": 121197,
+      "sha256": "72d5935bcc78b035564f236bfeb41e71fb5794c6f39a10058de3864179a68869",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/private-evidence/browser-contacts/pose-8.png",
+      "bytes": 131630,
+      "sha256": "ce9d6666c616731ba91787ef98e2df79cbef2cefb45e8fa3dfc66f1a299b3393",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/private-evidence/browser-contacts/supplement/pose-0.png",
+      "bytes": 102581,
+      "sha256": "67ce543a546deb73118ffbcfc9095c5f74f21839b08e413fcc733a4ca948a548",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/private-evidence/browser-contacts/supplement/pose-5.png",
+      "bytes": 105750,
+      "sha256": "7e55913988f20358cd6d9c375fb529039e1acd250538a2fb5fb6f904dff3f34f",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/private-evidence/browser-contacts/supplement/pose-6.png",
+      "bytes": 83843,
+      "sha256": "6190191a572a1ebaa3b58f72f89d9bda5f69c8f5a972e217c5e352d4e402c910",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/private-evidence/browser-contacts/supplement/pose-7.png",
+      "bytes": 104526,
+      "sha256": "fcfa55b87a7a7456366c60d29d88ff95a40863d20aff5fa26d71d48fb14986cd",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/render-library.mjs",
+      "bytes": 4383,
+      "sha256": "71d4fd3cae116e66dd734e7698de1ee55f3c35a9023f6aa426f0f55a77da32c9",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/run-library-checks.mjs",
+      "bytes": 1749,
+      "sha256": "b6955a82bcdbbbfc438c0f3d596b0d8cad3d40eab4a86887f663f0f307179644",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/sync-inventory-backlinks.mjs",
+      "bytes": 1551,
+      "sha256": "fdd8eed642bd4a48cc58ead2c1a5735cb97c59a061bda7342c6472d16ca791a3",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs",
+      "bytes": 17901,
+      "sha256": "a77f42072b8cba7388e6441d314adae1e95a873721be148baf9c92547d578f49",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.test.mjs",
+      "bytes": 18919,
+      "sha256": "71e2723eaf3d5d0408977d789c45aa655f64519dffd294d700defa8ad4b0cb01",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-library.mjs",
+      "bytes": 21067,
+      "sha256": "cbe8ee17dfcf57e1800f265aa7d0cec0ab63c91cefeec46b87c423482f731541",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-library.test.mjs",
+      "bytes": 20630,
+      "sha256": "53c8d39953a81eec2f652b236e18bc70deb08f33cab0847fe3204283172625a2",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/verify-manifest.mjs",
+      "bytes": 2398,
+      "sha256": "c3aaba9adec6836c63d860e7cdfc69d076a874cd7762a0300e33dc592988a3b4",
+      "role": "tool_or_evidence"
+    },
+    {
+      "path": "content/yoga-library/COVERAGE.vi.md",
+      "bytes": 2676,
+      "sha256": "d2dce42d9551c8cad559efa77f15352f99f0bf553c01df14cd01418b02513fcb",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/INTEGRATION-HANDOFF.vi.md",
+      "bytes": 7248,
+      "sha256": "4a9aff3a6d4d82af45615f01449ce04d77c34302dae791601bacb60d06812e76",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/README.vi.md",
+      "bytes": 4922,
+      "sha256": "a0cbabd69033ee795317d4ed71f983b6951056da7ed43eebe3c6669a874d9f4f",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/contract.jsonschema",
+      "bytes": 14431,
+      "sha256": "d7ec1f7b33050ff5c03dfdffe06439f70fea0eaaabbafb000cd1f2db8e42ea07",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/expansion/README.vi.md",
+      "bytes": 21762,
+      "sha256": "03380421b36842e5c33b30ecab1d479ec4da53587d00b7b638b03b67e856e444",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/expansion/catalog.json",
+      "bytes": 272795,
+      "sha256": "055317c193a4b66a8f52f5eed4faf7a390b76c0e5c79f4cd243d3e5ff4c60830",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/expansion/catalog.schema.json",
+      "bytes": 12395,
+      "sha256": "8a19e8ae10498faade1294db0b1e51015483451197b2d1740aca3d195eb55d23",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/inventory.json",
+      "bytes": 24947,
+      "sha256": "85b1242a4f9fd06fa8eb53f3a12adb4e1bc401ab277813ff149b0c9a65ebe3ed",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-01.png",
+      "bytes": 1863364,
+      "sha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-02.png",
+      "bytes": 1909518,
+      "sha256": "83671dd1ff6f1e1c5fd8d8e106993ec460472880bce042e475a3ddcd83b32099",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-03.png",
+      "bytes": 1949476,
+      "sha256": "8b3e4cdb2d2db1263024b7d427b18b00ca4afc9fcc314eda139e8c1cbc7ac149",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-04.png",
+      "bytes": 1890923,
+      "sha256": "e4b1f8a87c7bb8d0247551703d54c532fca5ff7f2915544391560de4465af019",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-05.png",
+      "bytes": 1784957,
+      "sha256": "058480e418ddd023bade704de90a349f3fc907a8d7a64b7559a9f13f2705b8b1",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-01.png",
+      "bytes": 2159152,
+      "sha256": "a850217766ea3860820e3c7bfe9dc76de194e248a3413492870fe60c4410107c",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-02.png",
+      "bytes": 2343081,
+      "sha256": "2c0c2d7ed5f880da917eda40796e2c8db2149a886a38c3d0ca5cf09fcfdedef7",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-03.png",
+      "bytes": 2385125,
+      "sha256": "47a4d630ead5b4616084625f1a1952f9f919949e4d155b9fdbcab7aa02545106",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-04.png",
+      "bytes": 2159976,
+      "sha256": "24850fe94bc61e1190f8c0c506c8d45df7d25a6721ec63f53bf62d95efb1e9b3",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-05.png",
+      "bytes": 2372281,
+      "sha256": "2f7d7d7d6d2b709ebd0586bc704e5be64c7e8718014088d1055acf07f1c04130",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-01.png",
+      "bytes": 1901732,
+      "sha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-02.png",
+      "bytes": 2264740,
+      "sha256": "c3223681f3b2545a63b9315ecc6fbf3a57a8403e90ff5eba9e5c296e8e44ddba",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-03.png",
+      "bytes": 1790440,
+      "sha256": "9702379d9ef6fecb5d0b03bd251864db5e74bfa7c78c8a08dcfdc5dbb8bb6bd5",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-04.png",
+      "bytes": 1724506,
+      "sha256": "1db229e0cebb9255304470f05253ab2aff9dde6e3248763c022982f3041139d2",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-05.png",
+      "bytes": 1735900,
+      "sha256": "4a8ed0d7d336610a0a6913140ecdddd77c79c2754f437316977a8fa6ce2c8e54",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-01.png",
+      "bytes": 2174660,
+      "sha256": "e511c3c576ccba27f13fd4e5b1e774ed5f39fba262ef2af479987e1decf6487e",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-02.png",
+      "bytes": 2497100,
+      "sha256": "cd26db67c3b01fb265d50d7397da0199754eaafe11602ed9d11ddb412f57ec49",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-03.png",
+      "bytes": 1994833,
+      "sha256": "30156e2c4eba3f332c583b873ea7d6fe83623ebe0b7e2e00d53baeb395e7652f",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-04.png",
+      "bytes": 2089809,
+      "sha256": "340646362a6a66f21f01d8cca9e199532c66ddf9c29925402b0770285d9b1430",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-05.png",
+      "bytes": 1938396,
+      "sha256": "ad76e37022c77c082a26d12879ba7b69c851cd488531a63ba9145ce790fb6137",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+      "bytes": 199889,
+      "sha256": "da6aec401c8732fa89c41369b98e337442b0e989628dcf2cb9ffc2d28f9354b2",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-1.png",
+      "bytes": 1758455,
+      "sha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-2.png",
+      "bytes": 1741187,
+      "sha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-3.png",
+      "bytes": 1730099,
+      "sha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-4.png",
+      "bytes": 1970907,
+      "sha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-5.png",
+      "bytes": 1736317,
+      "sha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-1.png",
+      "bytes": 1771011,
+      "sha256": "457007a58c66e278bebc8e8d2a65e95b839a0e064e072fc0dd6c1a89085ad7cf",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-2.png",
+      "bytes": 1790538,
+      "sha256": "00d6700f8d060947612d9ec06484f8b7bb8b828760c57eab8c2e9d330af4086f",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-3.png",
+      "bytes": 1771498,
+      "sha256": "48e7d22e350f161f61174686700cf929f2126106becabc8566a5578e63e309a3",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-4.png",
+      "bytes": 1825658,
+      "sha256": "8f8289598b2238344aa9ba757f9add69eaf01a80312b94be7ebbddc4f0e1febe",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-5.png",
+      "bytes": 1747997,
+      "sha256": "b5a9d2ba50800d59f1dd105c10185903176fd3556c10dca0ba31b143f6e68af3",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-1.png",
+      "bytes": 1862363,
+      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-2.png",
+      "bytes": 1817244,
+      "sha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-3.png",
+      "bytes": 1820114,
+      "sha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-4.png",
+      "bytes": 1867541,
+      "sha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-5.png",
+      "bytes": 1832690,
+      "sha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-1.png",
+      "bytes": 1812300,
+      "sha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-2.png",
+      "bytes": 1848438,
+      "sha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-3.png",
+      "bytes": 1852535,
+      "sha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-4.png",
+      "bytes": 1901426,
+      "sha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-5.png",
+      "bytes": 1814976,
+      "sha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-1.png",
+      "bytes": 1802841,
+      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-2.png",
+      "bytes": 1755447,
+      "sha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-3.png",
+      "bytes": 1909823,
+      "sha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-4.png",
+      "bytes": 1789814,
+      "sha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-5.png",
+      "bytes": 1757696,
+      "sha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-1.png",
+      "bytes": 1807481,
+      "sha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-2.png",
+      "bytes": 1808495,
+      "sha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-3.png",
+      "bytes": 1834690,
+      "sha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-4.png",
+      "bytes": 1817553,
+      "sha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-5.png",
+      "bytes": 1839967,
+      "sha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-1.png",
+      "bytes": 1831659,
+      "sha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-2.png",
+      "bytes": 1828870,
+      "sha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-3.png",
+      "bytes": 2091941,
+      "sha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-4.png",
+      "bytes": 1859874,
+      "sha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-5.png",
+      "bytes": 1790732,
+      "sha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/cobra-gentle/r1.vi.md",
+      "bytes": 10791,
+      "sha256": "3576949fe0b0fdedd7d2adca40172b58eb92a304feef9a9ead71358d267461bf",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/cobra/r1.vi.md",
+      "bytes": 10585,
+      "sha256": "0073da6c766dc856bf78cb2b017db3c1e25aecb7cd769fcbd0cfd215c9a82c6b",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/cow-face/r1.vi.md",
+      "bytes": 10734,
+      "sha256": "ae741a72f2950610395aab4818b66cd9dc02f04bde8b84fbbb2a39f7bb6a78fd",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/downward-dog/r1.vi.md",
+      "bytes": 10912,
+      "sha256": "40aace3289d509be67d0e9aea6e3b89b58f8c45963a731b1208d99178d2b0d89",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/foundation-cat-cow/r3.vi.md",
+      "bytes": 15604,
+      "sha256": "16708819eb67bb7dce2d2b3bbf4430f2102d2302d729020244a86ac0619d2a3b",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/foundation-standing/r3.vi.md",
+      "bytes": 14516,
+      "sha256": "2b4ceedf559f15747105ee6d85d1d9671030e47642d34f0e01d922ba57537d9b",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/high-lunge/r1.vi.md",
+      "bytes": 10798,
+      "sha256": "ae25dbb9faf9c8703cdcc638c5e73dba0d5f306a3c5ac8fdf8def2321f9b318a",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/kneeling-backbend/r1.vi.md",
+      "bytes": 10383,
+      "sha256": "3a598d12e78aa5ddc41aa47647333b14c0973b204d0c651d7ac9d63d0ead9611",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/low-crow/r1.vi.md",
+      "bytes": 10369,
+      "sha256": "b40d309e25d2b0b08933d8d153b8b26b7520ccb69f8f0060b1bdb288f53046ab",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/low-wheel/r1.vi.md",
+      "bytes": 10955,
+      "sha256": "73ddcea2f4b4cb590450716fda6b43b7b2e0fe134dd1d35d42dfbe3bfced9eb9",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/stand-up/r1.vi.md",
+      "bytes": 10637,
+      "sha256": "119e7381cdbe93aeb8c2eb69000999b138fc50c21eb31d139c14aa9a790a2d20",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/three-legged-dog/r1.vi.md",
+      "bytes": 10823,
+      "sha256": "eb94445aeab2a5f1e375e65264ca6990d62ea74d4980f04cda097af8dd3b86a2",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/warrior-ii/r1.vi.md",
+      "bytes": 10450,
+      "sha256": "b1e6f817e48fcb79182d71b3f67bed15873d18e4564267c0d12df8849d365787",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/readable/wild-thing-high/r1.vi.md",
+      "bytes": 10335,
+      "sha256": "b1a49fcb3020a5307c14d96e3a1dcda8563376bbaa3dd073abab60e76fffd0d4",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/cobra-gentle/r1.json",
+      "bytes": 23773,
+      "sha256": "56e07e4df2823ca5ab87ea3de0895c0ec82312c54f16f924a911f2b89a05072e",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/cobra/r1.json",
+      "bytes": 23323,
+      "sha256": "a90652ee53aa4c44f5ee53a9d2f87d1cbfd6318b04f72ef069f5bb6005bccb54",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/cow-face/r1.json",
+      "bytes": 23223,
+      "sha256": "22c2a7651bb301d0ba6f881438c8fa4405d8a986d2da941afd508f1c8649e923",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/downward-dog/r1.json",
+      "bytes": 24285,
+      "sha256": "64c83c00d8f31ec78f97f747c897694ac467a1f2fbcbc9ef266d4ed8f0ccb649",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/foundation-cat-cow/r3.json",
+      "bytes": 39903,
+      "sha256": "aaa9cec5ac78e4fafc43657ec89dc77cc9ec0cb149a120484897b2f6abcb1854",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/foundation-standing/r3.json",
+      "bytes": 37445,
+      "sha256": "f208ff64d776b0be4a01e81b89cd49d36144c47ca105d7acc44466b5486a7f89",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/high-lunge/r1.json",
+      "bytes": 23495,
+      "sha256": "74bce3a00792b94c9b7580370825486a9b604fef5e38f063d498f6ef01b5939a",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/kneeling-backbend/r1.json",
+      "bytes": 24260,
+      "sha256": "461ee017f41acd05c775de9760249adb0ca420a22ad384166193b9c9952ba05c",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/low-crow/r1.json",
+      "bytes": 24030,
+      "sha256": "0536caa4f45ac08fedf43e32c1c2c25415c7e7408f2790421c8d3694af6594af",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/low-wheel/r1.json",
+      "bytes": 25803,
+      "sha256": "29d87457775ddac019dbcb02d79f7185fdb7df117da7e747910da9101b34072a",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/stand-up/r1.json",
+      "bytes": 24339,
+      "sha256": "1a1c68e89af79469ecea8f111bb7a2df2de8f8b96e9e6dc09512761d1fed504a",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/three-legged-dog/r1.json",
+      "bytes": 23996,
+      "sha256": "54712f1f219d65fdff53d215bc3bebed605b06cf5f0700419c708aa6b6f51844",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/warrior-ii/r1.json",
+      "bytes": 23084,
+      "sha256": "1a6eb2004fa48b3f9051bcf6bf16fdf2cbbf8c10f8b4a4ccbb1e9c3f2252b902",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "content/yoga-library/units/wild-thing-high/r1.json",
+      "bytes": 23994,
+      "sha256": "1f3780456235b38f877f4bf392b72d3006a28651ea37e9c464f385af3c3446ae",
+      "role": "draft_artifact"
+    },
+    {
+      "path": "src/courses/freeCourses.ts",
+      "bytes": 5186,
+      "sha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "supabase/functions/_shared/contentReviewCandidates.ts",
+      "bytes": 2315,
+      "sha256": "97b1cf85050861da17f21282a57f773f854e1d53a185cf7d5fdcbed93e680ffe",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "supabase/functions/_shared/practiceContract.ts",
+      "bytes": 6833,
+      "sha256": "e52debcc8dd088e249a3b90f049ddc59d786582dadc1f88f96e54caf24eb0e17",
+      "role": "unchanged_dependency"
+    },
+    {
+      "path": "supabase/functions/_shared/reviewedPracticeCatalog.ts",
+      "bytes": 399,
+      "sha256": "119d31e0aca5854d47c8bb0992b0aed68a9a24224fa76646053350c34d911f1e",
+      "role": "unchanged_dependency"
+    }
+  ],
+  "excluded": [
+    "content/yoga-library/manifest.json (no self-hash)"
+  ],
+  "limitations": [
+    "Consistency/byte freeze only; does not establish yoga expertise, media rights, backend authorization or release readiness."
+  ]
+}

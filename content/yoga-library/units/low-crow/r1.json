@@ -1,0 +1,437 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.pose.low-crow",
+  "revision": "r1",
+  "legacyAliases": [
+    "poses:22"
+  ],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": null,
+  "productionStatus": "editorial_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Quạ thấp · phân biệt tay chống và cẳng tay",
+  "shortTitle": "Quạ thấp",
+  "intro": "Tên Quạ thấp chưa cho biết người tập đang chống trên bàn tay hay cẳng tay. Bài đọc đặt hai hình cạnh nhau bằng lời để giúp nhận ra sự khác biệt về nền đỡ, không biến chúng thành một progression để tự thử.",
+  "scope": "Chỉ quan sát Crow-like arm balance và một biến thể hạ khuỷu/cẳng tay xuất hiện trong hai frame local. Chưa xác định tải trên đầu hoặc đường chuyển giữa hai hình. Không dạy nhấc chân, hạ đầu, đổ người hoặc vào/ra arm balance; mọi thực hành đó chờ chuyên gia.",
+  "learningObjectives": [
+    "Nhận ra hai cách chống tay khác nhau trong nguồn local.",
+    "Phân biệt đầu gần sàn với khẳng định đầu đang chịu lực.",
+    "Không dùng việc nhấc cả hai chân làm điều kiện hoàn tất bài đọc."
+  ],
+  "audience": "Người lớn đọc để tìm hiểu và chuẩn bị câu hỏi. Bài này không yêu cầu thử tư thế hoặc xác nhận phù hợp cho người mới; không phải hướng dẫn tự xử lý triệu chứng.",
+  "prerequisites": [
+    "Hiện chỉ có phần đọc; mọi đường vào/ra và lựa chọn thực hành của exact variant cần chuyên gia xác lập trước."
+  ],
+  "preparation": [
+    "Đọc khi đang nghỉ trong tư thế quen thuộc; không chuyển sang nền của ảnh để đọc.",
+    "Xem cả phạm vi và phần kết trước; có thể chỉ đọc hoặc dừng bất cứ lúc nào.",
+    "Chưa có ảnh AI: năm khung là brief có điều kiện, không phải hình hướng dẫn sẵn có."
+  ],
+  "stopGuidance": "Có thể dừng phần đọc bất cứ lúc nào. Bài không yêu cầu vận động; nếu đang tự thử và thấy đau hoặc không khỏe, dừng lại và tìm hỗ trợ phù hợp.",
+  "alternatives": [
+    "Chỉ đọc phần nhận biết; không thử tư thế.",
+    "Ghi câu hỏi để trao đổi với giáo viên trước khi chọn nội dung thực hành."
+  ],
+  "readTimeSecondsEstimate": 240,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [
+    {
+      "courseId": "poses",
+      "lessonId": "22",
+      "youtubeId": "0fs1LCnK3-U",
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceObservations": [
+    {
+      "id": "local-low-crow-stills",
+      "fileName": "Quạ thấp.mov",
+      "sourceSha256": "d3b170c90fa34f2bcdf2954b85705982023b41921936b36914ce927eb6164c82",
+      "timestampsSeconds": [
+        13.401,
+        21.059
+      ],
+      "visualOnly": true,
+      "audioObserved": false,
+      "notes": "Supplement cột2 tại13.401s thấy knees-near-upper-arms, khuỷu gập, chân nhấc; cột3 tại21.059s thấy thân/đầu hạ thấp, khuỷu/cẳng tay tới sàn và chân vẫn nhấc. Hai cột còn lại đen. Initial screenshot7 lỗi layout, không có frame sử dụng được. Không xác định bên, head contact/load, nhịp hay full transition. Các mốc là vị trí browser báo; chỉ những cột có pixels mới được tính quan sát. MOV chưa bind bytes với YouTubeID.",
+      "evidenceRef": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS-supplement.json"
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Nhận ra hai hình khác nhau",
+      "body": "Một khung local có thân được giữ trên bàn tay với khuỷu gập; khung khác hạ phần tay và đầu xuống rất thấp. Không đọc hai hình như cùng một nền đỡ.",
+      "detail": "Từ Quạ thấp chưa đủ để chốt tên chuyên môn của từng biến thể. Trong bài này, tên ngắn không thay cho mô tả điểm tiếp xúc.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ],
+      "mediaIds": [
+        "low-crow-photo-1"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Theo dõi phần tay gần sàn",
+      "body": "Ở hình Crow-like, bàn tay là điểm cần nhìn rõ. Ở khung thấp hơn, khuỷu/cẳng tay tiến tới sàn nên cách đọc nền phải thay đổi.",
+      "detail": "Ảnh mới chỉ được dựng sau khi người duyệt xác nhận từng đoạn tay nào chạm thảm. Không ghép bàn tay của hình này với thân của hình kia.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ],
+      "mediaIds": [
+        "low-crow-photo-2"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Không đoán tải trên đầu",
+      "body": "Đầu gần sàn không tự chứng minh đầu được phép làm điểm chịu lực. Một ảnh bên ngoài không cho biết cách người tập phân bố lực hoặc kiểm soát cân bằng.",
+      "detail": "Bài đọc không hướng dẫn hạ đầu hay thử tì đầu để tìm hình. Đây là khoảng thông tin phải được giải thích trực tiếp trước bất kỳ phần thực hành nào.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ],
+      "mediaIds": [
+        "low-crow-photo-3"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Bỏ mục tiêu phải nhấc chân",
+      "body": "Trong hai mẫu đã thấy có chân rời sàn. Điều đó mô tả hình của người trong nguồn, không phải một nhiệm vụ hay thước đo tiến bộ dành cho bạn.",
+      "detail": "Nhìn đồng thời gối, khuỷu và thân để hiểu hình là đủ cho bước đọc này. Không chuyển trọng lượng về trước hoặc nhấc chân theo một ảnh đơn.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ],
+      "mediaIds": [
+        "low-crow-photo-4"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Chốt điều chưa có trong bài",
+      "body": "Cách vào, cách trở về và cách được hỗ trợ khi mất vững đều chưa có hướng dẫn thực hành được duyệt. Nếu muốn học kỹ năng này, hãy bắt đầu bằng trao đổi với giáo viên thay vì thử nối hai ảnh.",
+      "detail": "Bạn có thể kết thúc phần đọc ngay khi nhận ra sự khác biệt giữa hai nền đỡ. Không cần chứng minh bằng việc giữ một hình trên tay.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Kết thúc phần đọc; không đánh dấu đã thực hành.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ],
+      "mediaIds": [
+        "low-crow-photo-5"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "low-crow-photo-1",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "low-crow-photo-2",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "low-crow-photo-3",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "low-crow-photo-4",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "low-crow-photo-5",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    }
+  ],
+  "assetBriefs": [
+    {
+      "id": "low-crow-brief-1",
+      "stepId": "step-1",
+      "mediaId": "low-crow-photo-1",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Ảnh riêng của Crow-like shape đã được chuyên gia chốt, góc nghiêng thấy đủ hai lòng bàn tay, khuỷu, gối và hai chân; không đầu chạm sàn. Không dùng ảnh này đại diện cho forearm-low variant. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ]
+    },
+    {
+      "id": "low-crow-brief-2",
+      "stepId": "step-2",
+      "mediaId": "low-crow-photo-2",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Ảnh riêng của đúng low variant sau khi reviewer xác minh cẳng tay/bàn tay; góc thấp rộng đủ thấy toàn bộ upper-body và nền đỡ. Không tạo một cấu trúc lai tay/cẳng tay chưa được chốt. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ]
+    },
+    {
+      "id": "low-crow-brief-3",
+      "stepId": "step-3",
+      "mediaId": "low-crow-photo-3",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc nghiêng upper-body của exact low variant, đầu/cổ và tay đều đủ trong khung để chuyên gia kiểm contact. Identity blocked: tuyệt đối không sinh head-bearing pose khi tải trên đầu/cổ chưa xác minh; không diễn tả động tác hạ đầu. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ]
+    },
+    {
+      "id": "low-crow-brief-4",
+      "stepId": "step-4",
+      "mediaId": "low-crow-photo-4",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc ba phần tư toàn thân của một biến thể đã chốt, làm rõ quan hệ gối với tay và chân, không crop chân để giả đang bay. Không tạo cặp trước/sau hoặc mũi tên gợi người xem nhấc chân. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ]
+    },
+    {
+      "id": "low-crow-brief-5",
+      "stepId": "step-5",
+      "mediaId": "low-crow-photo-5",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Cùng nhân vật ngồi nghỉ cạnh thảm, tay không chống tải, đang đọc hoặc trao đổi ngoài khung; không có người hỗ trợ kéo/nâng cơ thể. Khung kết thúc là nghỉ đọc, không phải exit arm balance. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-low-crow-stills"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "pose-source",
+      "title": "YogaEasy — Crow Pose",
+      "url": "https://www.yogaeasy.com/artikel/crow-pose",
+      "use": "Đối chiếu Crow family, bàn tay/khuỷu/gối và việc dịch trọng lượng là một kỹ năng cần hướng dẫn. Nguồn không được dùng làm recipe cho biến thể forearm/head-low của MOV local; không gán Bakasana/Kakasana cho cả hai hình.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "safety",
+      "title": "NCCIH — Yoga: Effectiveness and Safety",
+      "url": "https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety",
+      "use": "Chỉ dùng căn cứ cần hướng dẫn có chuyên môn; không xác nhận phù hợp cá nhân hoặc kỹ thuật từng hình MCY.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "stop-source",
+      "title": "NHS — Strength and Flex exercise plan: How-to videos / safety information",
+      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flex-exercise-plan-how-to-videos/",
+      "use": "Chỉ đối chiếu nguyên tắc dừng khi đau hoặc không khỏe; không dùng bài Strength/Flex làm kỹ thuật tư thế yoga.",
+      "accessedAt": "2026-10-18"
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa có review điểm chịu lực trên bàn tay/cẳng tay/đầu và đường vào, đường trở về hoặc hỗ trợ khi mất vững. Không dạy forearm/head-low arm balance từ stills.",
+    "Chưa có chuyên gia yoga thật duyệt đối tượng, exact variant, copy, mọi phần thực hành và từng ảnh.",
+    "Năm ảnh mới chưa được tạo: path/hash/mime/dimensions null, alt/caption trống; chưa có media để thẩm định pixels.",
+    "Chưa xem trọn clip hoặc audio, chưa xác nhận trái/phải và quan hệ MOV-byte/YouTubeID; đây không phải transcript.",
+    "Quyền text/media/likeness, biên tập, accessibility và adapter/CMS/phát hành vẫn chờ xử lý."
+  ],
+  "changeLog": [
+    "r1 — nguyên tác đọc/quan sát có AI hỗ trợ dựa trên nguồn primary và các still local thực sự nhìn thấy; không có phần thực hành được duyệt hoặc ảnh mới."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "ai_assisted_original",
+    "sourceFiles": [
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS.json",
+        "sha256": "158ec08c1fff49b140b7ca357ffaca174641276c6fef01e7d0e30749a484a01c"
+      },
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS-supplement.json",
+        "sha256": "362407dbb9c5902e253324372a79386a954776a0f1361c117c2fa5b88f227854"
+      }
+    ],
+    "notes": "Original educational reading only. Still images were inspected; no full original video or audio review. Public-source facts are limited paraphrases; questions, reading flow and image briefs are editorial proposals. Private instructor captures are evidence only, not likeness inputs or learner assets. The emitted JSON is canonical; this helper must not overwrite later edits."
+  },
+  "readTimeNote": "Ước lượng thời gian đọc; không phải thời lượng giữ tư thế hoặc buổi tập.",
+  "ending": "Bạn đã đến cuối phần đọc. Không tự ghi nhận đã thực hành hoặc suy ra cảm giác tốt hơn từ việc đọc xong."
+}

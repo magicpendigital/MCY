@@ -1,0 +1,435 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.pose.wild-thing-high",
+  "revision": "r1",
+  "legacyAliases": [
+    "poses:23"
+  ],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": null,
+  "productionStatus": "editorial_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Hoang dã cao · nhìn rõ ba điểm tựa",
+  "shortTitle": "Hoang dã cao",
+  "intro": "Một hình mở ngực lớn có thể khiến ta chỉ chú ý tới cánh tay đang vươn. Bài đọc kéo sự chú ý trở về bàn tay và hai bàn chân đang tạo nền, rồi phân biệt hình đích với đường chuyển chưa được thấy.",
+  "scope": "Chỉ đọc Wild-Thing/flipped-dog family được quan sát trong một frame local: một tay và hai bàn chân ở sàn, thân ngả mở. Không hướng dẫn flip từ Chó ba chân, Side Plank, nhấc hông hoặc chuyển sang Wheel; entry/exit và exact variant chờ chuyên gia.",
+  "learningObjectives": [
+    "Nhận ra tay chống khác tay tự do.",
+    "Đọc hai bàn chân và phần thân trong cùng một hình.",
+    "Hiểu một ảnh đích không cung cấp đường vào hoặc cách quay lại."
+  ],
+  "audience": "Người lớn đọc để tìm hiểu và chuẩn bị câu hỏi. Bài này không yêu cầu thử tư thế hoặc xác nhận phù hợp cho người mới; không phải hướng dẫn tự xử lý triệu chứng.",
+  "prerequisites": [
+    "Hiện chỉ có phần đọc; mọi đường vào/ra và lựa chọn thực hành của exact variant cần chuyên gia xác lập trước."
+  ],
+  "preparation": [
+    "Đọc khi đang nghỉ trong tư thế quen thuộc; không chuyển sang nền của ảnh để đọc.",
+    "Xem cả phạm vi và phần kết trước; có thể chỉ đọc hoặc dừng bất cứ lúc nào.",
+    "Chưa có ảnh AI: năm khung là brief có điều kiện, không phải hình hướng dẫn sẵn có."
+  ],
+  "stopGuidance": "Có thể dừng phần đọc bất cứ lúc nào. Bài không yêu cầu vận động; nếu đang tự thử và thấy đau hoặc không khỏe, dừng lại và tìm hỗ trợ phù hợp.",
+  "alternatives": [
+    "Chỉ đọc phần nhận biết; không thử tư thế.",
+    "Ghi câu hỏi để trao đổi với giáo viên trước khi chọn nội dung thực hành."
+  ],
+  "readTimeSecondsEstimate": 240,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [
+    {
+      "courseId": "poses",
+      "lessonId": "23",
+      "youtubeId": "p3sKiK8szF8",
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceObservations": [
+    {
+      "id": "local-wild-thing-high-stills",
+      "fileName": "Hoang dã cao.mov",
+      "sourceSha256": "de09638cf31ab79b1bf345f509f9845004b4dfb872a741188a8a7484e6521e71",
+      "timestampsSeconds": [
+        28.824
+      ],
+      "visualOnly": true,
+      "audioObserved": false,
+      "notes": "Chỉ supplement cột3 tại28.824s có pose pixels, loading spinner phủ một phần. Thấy một lòng bàn tay và hai bàn chân ở sàn, cả hai gối có vẻ gập, thân/chest mở lên và tay tự do vươn về sau/qua đầu. Các cột khác đen. Không thấy entry/exit, bên hay lực trên từng chân/tay. Các mốc là vị trí browser báo; chỉ những cột có pixels mới được tính quan sát. MOV chưa bind bytes với YouTubeID.",
+      "evidenceRef": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS-supplement.json"
+    }
+  ],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Tìm nền trước cánh tay vươn",
+      "body": "Trong mẫu được quan sát, một bàn tay và hai bàn chân ở sàn. Cánh tay còn lại vươn ra xa không phải là toàn bộ câu chuyện của tư thế.",
+      "detail": "Hãy đọc hình từ các điểm tiếp xúc rồi mới tới phần thân. Tên Hoang dã cao chưa nói cách người tập đã chuyển tới đây.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ],
+      "mediaIds": [
+        "wild-thing-high-photo-1"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Phân biệt tay chống với tay tự do",
+      "body": "Bàn tay ở sàn có quan hệ trực tiếp với vai phía trên nó. Tay tự do đang mở ra ngoài có vai trò khác trong hình bất đối xứng này.",
+      "detail": "Góc chụp không đo được lực trên cổ tay hoặc vai. Không cần chống một tay xuống để tự kiểm xem vai mình có làm được như ảnh hay không.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ],
+      "mediaIds": [
+        "wild-thing-high-photo-2"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Giữ hai bàn chân trong cách đọc",
+      "body": "Hai bàn chân trong frame local không được xem là một chi tiết trang trí. Quan sát cả hai chân giúp thấy nền của hình mở ngực này khác với tư thế quỳ ngả sau.",
+      "detail": "Mẫu một góc chưa cho biết chân nào nhận nhiều lực hơn hoặc các bước chân trước đó. Bài đọc không yêu cầu bạn xếp chân theo ảnh.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ],
+      "mediaIds": [
+        "wild-thing-high-photo-3"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Tách hình đích khỏi đường chuyển",
+      "body": "Hình mở ngực chỉ cho thấy một thời điểm. Nó chưa kể cách thân xoay, khi nào tay/chân đổi nhiệm vụ hoặc làm sao trở về có kiểm soát.",
+      "detail": "Không nối hình này với Chó ba chân hoặc Side Plank để tự tạo một cú lật. Tài liệu giảng dạy tham khảo cũng xem đường chuyển và chuẩn bị là phần riêng cần được hướng dẫn.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không thực hiện chuyển động theo các ảnh.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ],
+      "mediaIds": [
+        "wild-thing-high-photo-4"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Chọn bước tiếp là hỏi rõ",
+      "body": "Nếu muốn học tư thế, những câu hỏi tiếp theo là về nền tay/chân, chuẩn bị, đường vào, đường trở về và lựa chọn khác. Tất cả phần thực hành đó còn chờ hướng dẫn chuyên môn.",
+      "detail": "Bạn có thể chỉ dừng ở việc nhận ra một nền bất đối xứng. Đọc xong không yêu cầu ngả sâu hơn hoặc hoàn thành một cú lật.",
+      "entry": "Bắt đầu hoặc tiếp tục phần đọc khi đang nghỉ; không phải đường vào tư thế.",
+      "exit": "Kết thúc phần đọc; không đánh dấu đã thực hành.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc khép bài.",
+      "stopCue": "Không cần thử tư thế. Dừng đọc hoặc dừng tự thử khi muốn; hướng dẫn dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ],
+      "mediaIds": [
+        "wild-thing-high-photo-5"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "wild-thing-high-photo-1",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "wild-thing-high-photo-2",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "wild-thing-high-photo-3",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "wild-thing-high-photo-4",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    },
+    {
+      "id": "wild-thing-high-photo-5",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "mime": null,
+      "width": null,
+      "height": null,
+      "alt": "",
+      "caption": "",
+      "synthetic": true,
+      "disclosure": "Chưa có ảnh. Brief dự kiến ảnh AI, còn chờ chốt biến thể/điểm chịu lực và thẩm định chuyên môn; alt chỉ viết sau khi có pixels thật.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": null,
+        "createdAt": null,
+        "sourcePath": null,
+        "sourceSha256": null,
+        "promptRef": null,
+        "notes": "Not produced. No source-video instructor likeness or footage will be reused as a generation reference."
+      }
+    }
+  ],
+  "assetBriefs": [
+    {
+      "id": "wild-thing-high-brief-1",
+      "stepId": "step-1",
+      "mediaId": "wild-thing-high-photo-1",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Ảnh toàn thân ba phần tư của đúng variant một tay/hai chân được chuyên gia chốt, nhìn rõ cả ba điểm tiếp xúc. Không thay bằng Full Wheel hai tay hoặc biến thể một chân trên không. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ]
+    },
+    {
+      "id": "wild-thing-high-brief-2",
+      "stepId": "step-2",
+      "mediaId": "wild-thing-high-photo-2",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc nghiêng gần phần tay chống/vai nhưng giữ cả thân và chân trong khung để không mất nền đỡ; tay tự do hiện rõ, không cắt bàn tay. Không thêm xoay sâu hoặc collapse vai vì hiệu ứng ảnh. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ]
+    },
+    {
+      "id": "wild-thing-high-brief-3",
+      "stepId": "step-3",
+      "mediaId": "wild-thing-high-photo-3",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc thấp ba phần tư tập trung hai bàn chân/gối của exact variant, còn thấy bàn tay chống và thân để đúng ngữ cảnh. Bên và vị trí gót/mũi chân chờ chuyên gia chốt; không suy từ ảnh mirrored. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ]
+    },
+    {
+      "id": "wild-thing-high-brief-4",
+      "stepId": "step-4",
+      "mediaId": "wild-thing-high-photo-4",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Góc nghiêng toàn thân khác khung1, mô tả hình đã đứng yên theo variant được duyệt; không sequence montage, không xoay/lật đang diễn ra, không chữ chỉ đường chuyển sang Chó ba chân hoặc Wheel. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ]
+    },
+    {
+      "id": "wild-thing-high-brief-5",
+      "stepId": "step-5",
+      "mediaId": "wild-thing-high-photo-5",
+      "status": "identity_blocked",
+      "path": null,
+      "sha256": null,
+      "brief": "Ảnh AI dự kiến, một ảnh riêng 3:2 ngang, phong cách foundation: nhân vật hư cấu trưởng thành áo olive, quần kem, thảm sage, phòng nền kem và ánh sáng tự nhiên. Không dùng hình hoặc gương mặt giáo viên trong video gốc làm reference; không chữ, mũi tên hay montage. Cùng nhân vật ngồi nghỉ cạnh thảm, tay nghỉ trên đùi, đang xem lại nội dung trên thiết bị; không dựng exit từ Wild Thing. Khung yên, ánh sáng và trang phục nhất quán. Chưa sinh ảnh. Chuyên gia phải chốt exact variant, bên, điểm chịu lực và framing trước khi tạo; kiểm giải phẫu và alt/caption theo pixels ảnh cuối. Đây là hình để đọc/quan sát, không phải một bước chuyển để người xem tự thực hiện.",
+      "sourceIds": [
+        "pose-source",
+        "safety"
+      ],
+      "evidenceRefs": [
+        "local-wild-thing-high-stills"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "pose-source",
+      "title": "YogaEasy / Jennilee Toner — 9 steps into Wild Thing",
+      "url": "https://www.yogaeasy.com/artikel/9-steps-into-wild-thing",
+      "use": "Đối chiếu Wild Thing family, nền một tay và yêu cầu chuẩn bị/kiểm soát đường chuyển. Không sao chép chuỗi9bước, bài warm-up, lật người hoặc lời hứa injury-free; không mặc định đúng exact variant của nguồn local.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "safety",
+      "title": "NCCIH — Yoga: Effectiveness and Safety",
+      "url": "https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety",
+      "use": "Chỉ dùng căn cứ cần hướng dẫn có chuyên môn; không xác nhận phù hợp cá nhân hoặc kỹ thuật từng hình MCY.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "stop-source",
+      "title": "NHS — Strength and Flex exercise plan: How-to videos / safety information",
+      "url": "https://www.nhs.uk/live-well/exercise/strength-and-flex-exercise-plan-how-to-videos/",
+      "use": "Chỉ đối chiếu nguyên tắc dừng khi đau hoặc không khỏe; không dùng bài Strength/Flex làm kỹ thuật tư thế yoga.",
+      "accessedAt": "2026-10-18"
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Một frame đích không xác minh chuẩn bị vai/cổ tay, bên, chuyển vào/ra hoặc cách phân phối lực. Không có hướng dẫn thực hành lật người hoặc chuyển sang Wheel.",
+    "Chưa có chuyên gia yoga thật duyệt đối tượng, exact variant, copy, mọi phần thực hành và từng ảnh.",
+    "Năm ảnh mới chưa được tạo: path/hash/mime/dimensions null, alt/caption trống; chưa có media để thẩm định pixels.",
+    "Chưa xem trọn clip hoặc audio, chưa xác nhận trái/phải và quan hệ MOV-byte/YouTubeID; đây không phải transcript.",
+    "Quyền text/media/likeness, biên tập, accessibility và adapter/CMS/phát hành vẫn chờ xử lý."
+  ],
+  "changeLog": [
+    "r1 — nguyên tác đọc/quan sát có AI hỗ trợ dựa trên nguồn primary và các still local thực sự nhìn thấy; không có phần thực hành được duyệt hoặc ảnh mới."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "ai_assisted_original",
+    "sourceFiles": [
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS.json",
+        "sha256": "158ec08c1fff49b140b7ca357ffaca174641276c6fef01e7d0e30749a484a01c"
+      },
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS-supplement.json",
+        "sha256": "362407dbb9c5902e253324372a79386a954776a0f1361c117c2fa5b88f227854"
+      }
+    ],
+    "notes": "Original educational reading only. Still images were inspected; no full original video or audio review. Public-source facts are limited paraphrases; questions, reading flow and image briefs are editorial proposals. Private instructor captures are evidence only, not likeness inputs or learner assets. The emitted JSON is canonical; this helper must not overwrite later edits."
+  },
+  "readTimeNote": "Ước lượng thời gian đọc; không phải thời lượng giữ tư thế hoặc buổi tập.",
+  "ending": "Bạn đã đến cuối phần đọc. Không tự ghi nhận đã thực hành hoặc suy ra cảm giác tốt hơn từ việc đọc xong."
+}

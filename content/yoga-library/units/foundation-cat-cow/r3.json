@@ -1,0 +1,600 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.foundation.cat-cow",
+  "revision": "r3",
+  "legacyAliases": [
+    "tabletop",
+    "2026-10-16-owner-preview-v2"
+  ],
+  "locale": "vi-VN",
+  "kind": "movement_education",
+  "seriesId": "mcy.series.foundation",
+  "productionStatus": "media_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Làm quen chuyển động Bò–Mèo",
+  "shortTitle": "Chuyển động Bò–Mèo",
+  "intro": "Làm quen hai hướng chuyển động của lưng và phần ở giữa: bắt đầu từ bốn điểm tựa, mở nhẹ, trở qua vị trí giữa rồi cuộn nhẹ. Bạn có thể xem toàn bộ trước và mở lại phần mình cần.",
+  "scope": "Bò–Mèo được trình bày như hai hướng chuyển động nhỏ qua nền bốn điểm tựa. Không có yêu cầu giữ tư thế, số lần lặp hoặc độ cong phải đạt. Năm hình tĩnh đánh dấu các thời điểm, không thể hiện tốc độ hay mọi thời điểm của chuyển động.",
+  "learningObjectives": [
+    "Nhận ra nền bốn điểm tựa, hình Bò, hình Mèo và vị trí giữa.",
+    "Hiểu cách chuyển nhỏ, trở về và chủ động dừng."
+  ],
+  "audience": "Bài làm quen dành cho người lớn đã có thể tự xuống, rời sàn và chống tay–gối thoải mái trong sinh hoạt. Nếu việc này đang làm bạn đau, tê hoặc khó thực hiện, hãy chỉ xem bài và hỏi người có chuyên môn trước khi thử.",
+  "prerequisites": [],
+  "preparation": [
+    "Chọn khoảng sàn phẳng, không trơn; dùng thảm không xê dịch. Có thể thêm lớp lót mỏng, ổn định dưới gối nếu thấy dễ chịu.",
+    "Bài bắt đầu khi bạn đã ở tư thế bốn điểm tựa. Dùng cách xuống và rời sàn quen thuộc; bài này không hướng dẫn một kỹ thuật chuyển từ đứng xuống sàn.",
+    "Đọc trước khi thử; đặt thiết bị ở chỗ dễ xem khi nghỉ, tránh xoay hoặc ngẩng cổ để nhìn màn hình lúc đang chuyển động.",
+    "Thở tự nhiên, không nín thở. Bạn có thể chuyển rất ít hoặc dừng ở vị trí giữa."
+  ],
+  "stopGuidance": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+  "alternatives": [
+    "Bạn có thể chỉ đọc, chuyển trong khoảng nhỏ hơn hoặc dừng ở nền bốn điểm tựa nếu vẫn thoải mái. Nếu chống tay hoặc quỳ gây khó chịu, không cố đổi sang nắm tay, chống cẳng tay hay một biến thể khác chỉ để theo bài; hỏi người có chuyên môn về lựa chọn phù hợp."
+  ],
+  "readTimeSecondsEstimate": 240,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [
+    {
+      "courseId": "poses",
+      "lessonId": "27",
+      "youtubeId": "rWl5ySBsrG0",
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceObservations": [],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Chuẩn bị bốn điểm tựa",
+      "body": "Ở tư thế chống hai tay và hai gối, đặt bàn tay dưới vai và gối dưới hông, cách nhau thoải mái. Để lưng ở đường cong tự nhiên, cổ tiếp nối thân và mắt hướng về thảm.",
+      "detail": "Trải các ngón tay thoải mái, không khóa cứng khuỷu tay. Mu bàn chân có thể đặt trên thảm như hình nếu dễ chịu. Nền bắt đầu không đòi hỏi lưng phẳng như một đường kẻ; đừng ép cơ thể để giống hình.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Nếu tay hoặc gối đang khó chịu, dừng thử và chỉ xem bài. Một lớp lót mỏng dưới gối là lựa chọn chuẩn bị, không phải cách bỏ qua đau hoặc tê.",
+      "stopCue": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/tabletop-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-cat-cow-step-1-photo_ai",
+        "foundation-cat-cow-step-1-illustration"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Mở nhẹ phía trước · Bò",
+      "body": "Từ nền bắt đầu, để vùng chậu nghiêng nhẹ, bụng hạ một chút và ngực mở về phía trước trong khoảng dễ chịu. Giữ cổ đi cùng đường lưng; không hất đầu hoặc cố nhìn lên trần.",
+      "detail": "Giữ hai bàn tay và hai gối trên thảm. Chọn một chuyển động nhỏ, không thả sụp xuống vai hoặc cố võng lưng sâu. Nếu dễ phối hợp, có thể hít vào nhẹ khi mở; nếu không, cứ thở tự nhiên và không nín thở.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Bạn có thể mở ít hơn hình, hoặc ở lại nền bốn điểm tựa. Độ cong trong hình là một minh họa, không phải mục tiêu của mọi cơ thể.",
+      "stopCue": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/tabletop-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-cat-cow-step-2-photo_ai",
+        "foundation-cat-cow-step-2-illustration"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Đi qua vị trí giữa",
+      "body": "Từ từ giảm độ võng và đưa lưng trở về đường cong tự nhiên như lúc bắt đầu. Để đầu đi cùng thân, vẫn giữ hai tay và hai gối trên thảm; bạn có thể dừng ở đây.",
+      "detail": "Đây là phần nối từ Bò sang Mèo, không phải một động tác giật hoặc đổi nhanh giữa hai hình. Tiếp tục thở tự nhiên. Chỉ chuyển sang bước tiếp khi muốn; không cần tạo một nhịp cố định.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Nếu đã đủ cho hôm nay, bỏ qua bước Mèo và chuyển đến phần kết thúc. Việc dừng ở giữa không phải là làm thiếu bài.",
+      "stopCue": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/tabletop-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-cat-cow-step-3-photo_ai",
+        "foundation-cat-cow-step-3-illustration"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Cuộn nhẹ lưng · Mèo",
+      "body": "Từ vị trí giữa, để vùng chậu cuộn nhẹ và lưng tròn dần lên trong khoảng dễ chịu. Đầu đi theo chuyển động của thân; không ép cằm sát ngực hoặc cố đẩy lưng cao nhất.",
+      "detail": "Giữ tay và gối ở nền đỡ, tránh chuyển nhanh hoặc gồng để tạo đường cong lớn. Nếu dễ phối hợp, có thể thở ra nhẹ khi cuộn; nếu không, giữ nhịp thở tự nhiên. Bạn không cần giữ ở hình Mèo.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Có thể cuộn ít hơn, trở về vị trí giữa hoặc kết thúc ngay. Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài.",
+      "stopCue": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/tabletop-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-cat-cow-step-4-photo_ai",
+        "foundation-cat-cow-step-4-illustration"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Trở về và kết thúc",
+      "body": "Giảm độ cuộn, trở về nền bốn điểm tựa với lưng ở đường cong tự nhiên rồi ngừng chuyển động. Khi đã dừng và thấy vững, nghỉ hoặc rời sàn theo cách bạn vẫn dùng thoải mái trong sinh hoạt.",
+      "detail": "Không cần chuyển thẳng sang một tư thế khác hoặc lặp lại để đủ số lần. Bài kết thúc chuyển động ở nền bốn điểm tựa; cách rời sàn không được minh họa ở đây. Nếu xuống hoặc rời sàn cần hỗ trợ, chỉ xem bài và trao đổi với người có chuyên môn trước khi thử.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Bạn có thể xem lại một khung, chọn bài khác hoặc kết thúc phần đọc. Việc chuyển hết năm hình không tự ghi nhận một buổi tập.",
+      "stopCue": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/tabletop-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-cat-cow-step-5-photo_ai",
+        "foundation-cat-cow-step-5-illustration"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "foundation-cat-cow-step-1-photo_ai",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-01.png",
+      "sha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI nhìn nghiêng: người phụ nữ áo không tay xanh olive, quần màu ngà, ở bốn điểm tựa, hai bàn tay dưới vai và hai đầu gối dưới hông; đầu hướng trái, lưng gần trung tính.",
+      "caption": "Chuẩn bị bốn điểm tựa và quan sát đường lưng gần trung tính.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-01.png",
+        "sourceSha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-1-illustration",
+      "stepId": "step-1",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-step-01.png",
+      "sha256": "a850217766ea3860820e3c7bfe9dc76de194e248a3413492870fe60c4410107c",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Người nhìn nghiêng ở tư thế bốn điểm tựa: hai tay đặt trên thảm dưới vùng vai, gối dưới vùng hông, lưng có đường cong tự nhiên và đầu hướng xuống. Mu bàn chân nằm trên thảm; không có ghế hoặc dụng cụ khác.",
+      "caption": "Nền bốn điểm tựa. Lưng giữ đường cong tự nhiên, không cần ép phẳng.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-step-01.png",
+        "sourceSha256": "a850217766ea3860820e3c7bfe9dc76de194e248a3413492870fe60c4410107c",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/TABLETOP-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-2-photo_ai",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-02.png",
+      "sha256": "83671dd1ff6f1e1c5fd8d8e106993ec460472880bce042e475a3ddcd83b32099",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI nhìn nghiêng người phụ nữ ở bốn điểm tựa; ngực dịch nhẹ về trước, lưng hơi võng, cổ giữ dài, hai bàn tay và đầu gối vẫn chạm thảm.",
+      "caption": "Bò: một chuyển động mở nhẹ phía trước, trong biên độ nhỏ.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-02.png",
+        "sourceSha256": "83671dd1ff6f1e1c5fd8d8e106993ec460472880bce042e475a3ddcd83b32099",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-2-illustration",
+      "stepId": "step-2",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-step-02.png",
+      "sha256": "2c0c2d7ed5f880da917eda40796e2c8db2149a886a38c3d0ca5cf09fcfdedef7",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Cùng người nhìn nghiêng, hai tay và hai gối vẫn trên thảm. Lưng có độ võng nhẹ, ngực hướng về trước, vùng chậu nâng nhẹ; đầu không ngửa ra sau.",
+      "caption": "Bò là một hướng mở nhẹ; chọn khoảng chuyển động phù hợp với bạn.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-step-02.png",
+        "sourceSha256": "2c0c2d7ed5f880da917eda40796e2c8db2149a886a38c3d0ca5cf09fcfdedef7",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/TABLETOP-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-3-photo_ai",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-03.png",
+      "sha256": "8b3e4cdb2d2db1263024b7d427b18b00ca4afc9fcc314eda139e8c1cbc7ac149",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI nhìn nghiêng gần hơn: người phụ nữ vẫn ở bốn điểm tựa với đường lưng trở về gần ngang, đầu hướng trái và ánh nhìn về phía thảm.",
+      "caption": "Đi qua vị trí giữa trước khi đổi chiều chuyển động.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-03.png",
+        "sourceSha256": "8b3e4cdb2d2db1263024b7d427b18b00ca4afc9fcc314eda139e8c1cbc7ac149",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-3-illustration",
+      "stepId": "step-3",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-step-03.png",
+      "sha256": "47a4d630ead5b4616084625f1a1952f9f919949e4d155b9fdbcab7aa02545106",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Hình nhìn nghiêng của cùng người ở nền bốn điểm tựa; lưng trở về gần đường cong tự nhiên, đầu hướng xuống thảm. Hai tay, hai gối và hai bàn chân vẫn nhìn thấy, không có mũi tên hoặc đường căn chỉnh.",
+      "caption": "Vị trí giữa nối hai hướng chuyển động và cũng là nơi có thể dừng.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-step-03.png",
+        "sourceSha256": "47a4d630ead5b4616084625f1a1952f9f919949e4d155b9fdbcab7aa02545106",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/TABLETOP-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-4-photo_ai",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-04.png",
+      "sha256": "e4b1f8a87c7bb8d0247551703d54c532fca5ff7f2915544391560de4465af019",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI nhìn nghiêng người phụ nữ ở bốn điểm tựa; phần lưng tròn nhẹ, đầu đi theo đường cong xuống tự nhiên; hai bàn tay và đầu gối vẫn đặt trên thảm.",
+      "caption": "Mèo: cuộn nhẹ lưng, giữ chuyển động nhỏ và cổ tự nhiên.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-04.png",
+        "sourceSha256": "e4b1f8a87c7bb8d0247551703d54c532fca5ff7f2915544391560de4465af019",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-4-illustration",
+      "stepId": "step-4",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-step-04.png",
+      "sha256": "24850fe94bc61e1190f8c0c506c8d45df7d25a6721ec63f53bf62d95efb1e9b3",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Cùng người nhìn nghiêng với hai bàn tay và hai gối trên thảm; phần lưng tròn lên, vùng chậu cuộn nhẹ, đầu theo thân và hướng xuống. Không có mũi tên ép biên độ hoặc động tác nhấc tay, chân.",
+      "caption": "Mèo là hướng cuộn nhẹ, không phải độ cong cao nhất cần đạt.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-step-04.png",
+        "sourceSha256": "24850fe94bc61e1190f8c0c506c8d45df7d25a6721ec63f53bf62d95efb1e9b3",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/TABLETOP-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-5-photo_ai",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-05.png",
+      "sha256": "058480e418ddd023bade704de90a349f3fc907a8d7a64b7559a9f13f2705b8b1",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI góc ba phần tư: người phụ nữ trở về bốn điểm tựa, hai tay và hai đầu gối thấy riêng, lưng gần trung tính và ánh nhìn hướng xuống thảm.",
+      "caption": "Trở về vị trí gần trung tính và tạm dừng trước khi kết thúc.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-photo-05.png",
+        "sourceSha256": "058480e418ddd023bade704de90a349f3fc907a8d7a64b7559a9f13f2705b8b1",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-cat-cow-step-5-illustration",
+      "stepId": "step-5",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-cat-cow/r3/tabletop-step-05.png",
+      "sha256": "2f7d7d7d6d2b709ebd0586bc704e5be64c7e8718014088d1055acf07f1c04130",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Cùng người ở nền bốn điểm tựa được nhìn từ góc ba phần tư: lưng trở về đường cong tự nhiên, đầu hướng xuống, hai bàn tay và hai gối vẫn trên thảm. Hình không thể hiện đứng lên hoặc chuyển sang tư thế nghỉ khác.",
+      "caption": "Trở về và dừng. Góc nhìn minh họa thay đổi; bạn không cần xoay người theo hình.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/tabletop-step-05.png",
+        "sourceSha256": "2f7d7d7d6d2b709ebd0586bc704e5be64c7e8718014088d1055acf07f1c04130",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/TABLETOP-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    }
+  ],
+  "assetBriefs": [],
+  "sources": [
+    {
+      "id": "source-1",
+      "title": "ACE — Cat-Cow",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/15/cat-cow/",
+      "use": "Đối chiếu nền tay–gối, hai hướng chuyển động và trở về. Bản MCY không dùng liều giữ 10–15 giây hoặc bắt buộc co ngón chân của nguồn.",
+      "accessedAt": null
+    },
+    {
+      "id": "source-2",
+      "title": "Mayo Clinic — Cat-cow pose",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/stress-management/multimedia/cat-cow-pose/vid-20453581",
+      "use": "Đối chiếu vị trí tay–gối và hướng vùng chậu, lưng, đầu; có thể phối hợp hơi thở. Không lấy số lần hoặc yêu cầu hít sâu làm liều tập.",
+      "accessedAt": null
+    },
+    {
+      "id": "source-3",
+      "title": "Cleveland Clinic — Cat-Cow Stretch",
+      "url": "https://health.clevelandclinic.org/cat-cow-stretch",
+      "use": "Đối chiếu cổ tiếp nối cột sống, mu bàn chân trên sàn và chuyển động chậm trong khoảng phù hợp. Không sử dụng lời hứa tác dụng sức khỏe hoặc tự áp biến thể cho người có triệu chứng.",
+      "accessedAt": null
+    },
+    {
+      "id": "source-4",
+      "title": "NHS — Chair-based pilates video workout",
+      "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+      "use": "Đối chiếu lời nhắc dừng khi đau hoặc thấy không khỏe và tìm trợ giúp nếu cảm giác không hết. Đây không phải phê duyệt kỹ thuật Bò–Mèo.",
+      "accessedAt": null
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa có người thật thẩm định chuyên môn yoga.",
+    "Chưa có thẩm định quyền text/media và khả năng tiếp cận trước phát hành.",
+    "Chưa có adapter reader/CMS; không import vào app hoặc reviewed catalog."
+  ],
+  "changeLog": [
+    "r3: nhập nguyên nội dung bản16/10/2026 và thêm hai biến thể ảnhAI/minh họa có hash; không mang approval cũ."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "imported_ai_assisted_draft",
+    "sourceFiles": [
+      {
+        "path": "analyse/foundation-series-2026-10-16/tabletop-lesson.json",
+        "sha256": "8f38d21d55345fe0dffca0f6ad69a8a0762f16dc178be5f4da11724967b32733"
+      },
+      {
+        "path": "analyse/foundation-series-2026-10-16/assets/photo-media.json",
+        "sha256": "f04f9d3420242e8b7e01af4e1c8dbcd0a6d0794b18081fccc95eb83773cc95f3"
+      }
+    ],
+    "notes": "Imported copy preserved; source URLs inherited without claiming a new web verification. Topic relation is not a transcript of the instructor video."
+  },
+  "subtitle": "Nhìn cả đoạn chuyển, theo nhịp của bạn.",
+  "readTimeNote": "Thời gian đọc ước lượng; không phải thời gian giữ tư thế hoặc thời lượng tập.",
+  "ending": "Bạn đã đến cuối phần đọc. Điều đáng nhớ là nhìn được cả đoạn chuyển và đường trở về. Bạn không cần đạt độ cong giống hình, giữ đủ lâu hay cảm thấy khác đi.",
+  "reviewQuestion": "Phần nào bạn muốn nhìn kỹ hơn?",
+  "reviewOptions": [
+    "Điểm bắt đầu",
+    "Bò",
+    "Vị trí giữa",
+    "Mèo",
+    "Kết thúc"
+  ],
+  "preferredMediaVariant": "photo_ai",
+  "legacyPayload": {
+    "id": "tabletop",
+    "version": "2026-10-16-owner-preview-v2",
+    "status": "Bản biên tập để đánh giá · chưa thẩm định chuyên môn",
+    "title": "Làm quen chuyển động Bò–Mèo",
+    "short": "Chuyển động Bò–Mèo",
+    "subtitle": "Nhìn cả đoạn chuyển, theo nhịp của bạn.",
+    "minutes": 4,
+    "readTimeNote": "Thời gian đọc ước lượng; không phải thời gian giữ tư thế hoặc thời lượng tập.",
+    "image": "assets/tabletop-step-01.png",
+    "alt": "Minh họa nhìn nghiêng một người mặc áo xanh nhạt, quần xanh đậm ở tư thế bốn điểm tựa trên thảm màu đất nung; hai bàn tay, hai gối và bàn chân đều nhìn thấy.",
+    "intro": "Làm quen hai hướng chuyển động của lưng và phần ở giữa: bắt đầu từ bốn điểm tựa, mở nhẹ, trở qua vị trí giữa rồi cuộn nhẹ. Bạn có thể xem toàn bộ trước và mở lại phần mình cần.",
+    "goal": [
+      "Nhận ra nền bốn điểm tựa, hình Bò, hình Mèo và vị trí giữa.",
+      "Hiểu cách chuyển nhỏ, trở về và chủ động dừng."
+    ],
+    "audience": "Bài làm quen dành cho người lớn đã có thể tự xuống, rời sàn và chống tay–gối thoải mái trong sinh hoạt. Nếu việc này đang làm bạn đau, tê hoặc khó thực hiện, hãy chỉ xem bài và hỏi người có chuyên môn trước khi thử.",
+    "preparation": [
+      "Chọn khoảng sàn phẳng, không trơn; dùng thảm không xê dịch. Có thể thêm lớp lót mỏng, ổn định dưới gối nếu thấy dễ chịu.",
+      "Bài bắt đầu khi bạn đã ở tư thế bốn điểm tựa. Dùng cách xuống và rời sàn quen thuộc; bài này không hướng dẫn một kỹ thuật chuyển từ đứng xuống sàn.",
+      "Đọc trước khi thử; đặt thiết bị ở chỗ dễ xem khi nghỉ, tránh xoay hoặc ngẩng cổ để nhìn màn hình lúc đang chuyển động.",
+      "Thở tự nhiên, không nín thở. Bạn có thể chuyển rất ít hoặc dừng ở vị trí giữa."
+    ],
+    "stopCue": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+    "material": "Bò–Mèo được trình bày như hai hướng chuyển động nhỏ qua nền bốn điểm tựa. Không có yêu cầu giữ tư thế, số lần lặp hoặc độ cong phải đạt. Năm hình tĩnh đánh dấu các thời điểm, không thể hiện tốc độ hay mọi thời điểm của chuyển động.",
+    "alternative": "Bạn có thể chỉ đọc, chuyển trong khoảng nhỏ hơn hoặc dừng ở nền bốn điểm tựa nếu vẫn thoải mái. Nếu chống tay hoặc quỳ gây khó chịu, không cố đổi sang nắm tay, chống cẳng tay hay một biến thể khác chỉ để theo bài; hỏi người có chuyên môn về lựa chọn phù hợp.",
+    "reviewQuestion": "Phần nào bạn muốn nhìn kỹ hơn?",
+    "reviewOptions": [
+      "Điểm bắt đầu",
+      "Bò",
+      "Vị trí giữa",
+      "Mèo",
+      "Kết thúc"
+    ],
+    "ending": "Bạn đã đến cuối phần đọc. Điều đáng nhớ là nhìn được cả đoạn chuyển và đường trở về. Bạn không cần đạt độ cong giống hình, giữ đủ lâu hay cảm thấy khác đi.",
+    "steps": [
+      {
+        "title": "Chuẩn bị bốn điểm tựa",
+        "body": "Ở tư thế chống hai tay và hai gối, đặt bàn tay dưới vai và gối dưới hông, cách nhau thoải mái. Để lưng ở đường cong tự nhiên, cổ tiếp nối thân và mắt hướng về thảm.",
+        "detail": "Trải các ngón tay thoải mái, không khóa cứng khuỷu tay. Mu bàn chân có thể đặt trên thảm như hình nếu dễ chịu. Nền bắt đầu không đòi hỏi lưng phẳng như một đường kẻ; đừng ép cơ thể để giống hình.",
+        "alternative": "Nếu tay hoặc gối đang khó chịu, dừng thử và chỉ xem bài. Một lớp lót mỏng dưới gối là lựa chọn chuẩn bị, không phải cách bỏ qua đau hoặc tê.",
+        "image": "assets/tabletop-step-01.png",
+        "alt": "Người nhìn nghiêng ở tư thế bốn điểm tựa: hai tay đặt trên thảm dưới vùng vai, gối dưới vùng hông, lưng có đường cong tự nhiên và đầu hướng xuống. Mu bàn chân nằm trên thảm; không có ghế hoặc dụng cụ khác.",
+        "caption": "Nền bốn điểm tựa. Lưng giữ đường cong tự nhiên, không cần ép phẳng."
+      },
+      {
+        "title": "Mở nhẹ phía trước · Bò",
+        "body": "Từ nền bắt đầu, để vùng chậu nghiêng nhẹ, bụng hạ một chút và ngực mở về phía trước trong khoảng dễ chịu. Giữ cổ đi cùng đường lưng; không hất đầu hoặc cố nhìn lên trần.",
+        "detail": "Giữ hai bàn tay và hai gối trên thảm. Chọn một chuyển động nhỏ, không thả sụp xuống vai hoặc cố võng lưng sâu. Nếu dễ phối hợp, có thể hít vào nhẹ khi mở; nếu không, cứ thở tự nhiên và không nín thở.",
+        "alternative": "Bạn có thể mở ít hơn hình, hoặc ở lại nền bốn điểm tựa. Độ cong trong hình là một minh họa, không phải mục tiêu của mọi cơ thể.",
+        "image": "assets/tabletop-step-02.png",
+        "alt": "Cùng người nhìn nghiêng, hai tay và hai gối vẫn trên thảm. Lưng có độ võng nhẹ, ngực hướng về trước, vùng chậu nâng nhẹ; đầu không ngửa ra sau.",
+        "caption": "Bò là một hướng mở nhẹ; chọn khoảng chuyển động phù hợp với bạn."
+      },
+      {
+        "title": "Đi qua vị trí giữa",
+        "body": "Từ từ giảm độ võng và đưa lưng trở về đường cong tự nhiên như lúc bắt đầu. Để đầu đi cùng thân, vẫn giữ hai tay và hai gối trên thảm; bạn có thể dừng ở đây.",
+        "detail": "Đây là phần nối từ Bò sang Mèo, không phải một động tác giật hoặc đổi nhanh giữa hai hình. Tiếp tục thở tự nhiên. Chỉ chuyển sang bước tiếp khi muốn; không cần tạo một nhịp cố định.",
+        "alternative": "Nếu đã đủ cho hôm nay, bỏ qua bước Mèo và chuyển đến phần kết thúc. Việc dừng ở giữa không phải là làm thiếu bài.",
+        "image": "assets/tabletop-step-03.png",
+        "alt": "Hình nhìn nghiêng của cùng người ở nền bốn điểm tựa; lưng trở về gần đường cong tự nhiên, đầu hướng xuống thảm. Hai tay, hai gối và hai bàn chân vẫn nhìn thấy, không có mũi tên hoặc đường căn chỉnh.",
+        "caption": "Vị trí giữa nối hai hướng chuyển động và cũng là nơi có thể dừng."
+      },
+      {
+        "title": "Cuộn nhẹ lưng · Mèo",
+        "body": "Từ vị trí giữa, để vùng chậu cuộn nhẹ và lưng tròn dần lên trong khoảng dễ chịu. Đầu đi theo chuyển động của thân; không ép cằm sát ngực hoặc cố đẩy lưng cao nhất.",
+        "detail": "Giữ tay và gối ở nền đỡ, tránh chuyển nhanh hoặc gồng để tạo đường cong lớn. Nếu dễ phối hợp, có thể thở ra nhẹ khi cuộn; nếu không, giữ nhịp thở tự nhiên. Bạn không cần giữ ở hình Mèo.",
+        "alternative": "Có thể cuộn ít hơn, trở về vị trí giữa hoặc kết thúc ngay. Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài.",
+        "image": "assets/tabletop-step-04.png",
+        "alt": "Cùng người nhìn nghiêng với hai bàn tay và hai gối trên thảm; phần lưng tròn lên, vùng chậu cuộn nhẹ, đầu theo thân và hướng xuống. Không có mũi tên ép biên độ hoặc động tác nhấc tay, chân.",
+        "caption": "Mèo là hướng cuộn nhẹ, không phải độ cong cao nhất cần đạt."
+      },
+      {
+        "title": "Trở về và kết thúc",
+        "body": "Giảm độ cuộn, trở về nền bốn điểm tựa với lưng ở đường cong tự nhiên rồi ngừng chuyển động. Khi đã dừng và thấy vững, nghỉ hoặc rời sàn theo cách bạn vẫn dùng thoải mái trong sinh hoạt.",
+        "detail": "Không cần chuyển thẳng sang một tư thế khác hoặc lặp lại để đủ số lần. Bài kết thúc chuyển động ở nền bốn điểm tựa; cách rời sàn không được minh họa ở đây. Nếu xuống hoặc rời sàn cần hỗ trợ, chỉ xem bài và trao đổi với người có chuyên môn trước khi thử.",
+        "alternative": "Bạn có thể xem lại một khung, chọn bài khác hoặc kết thúc phần đọc. Việc chuyển hết năm hình không tự ghi nhận một buổi tập.",
+        "image": "assets/tabletop-step-05.png",
+        "alt": "Cùng người ở nền bốn điểm tựa được nhìn từ góc ba phần tư: lưng trở về đường cong tự nhiên, đầu hướng xuống, hai bàn tay và hai gối vẫn trên thảm. Hình không thể hiện đứng lên hoặc chuyển sang tư thế nghỉ khác.",
+        "caption": "Trở về và dừng. Góc nhìn minh họa thay đổi; bạn không cần xoay người theo hình."
+      }
+    ],
+    "sources": [
+      {
+        "title": "ACE — Cat-Cow",
+        "url": "https://www.acefitness.org/resources/everyone/exercise-library/15/cat-cow/",
+        "use": "Đối chiếu nền tay–gối, hai hướng chuyển động và trở về. Bản MCY không dùng liều giữ 10–15 giây hoặc bắt buộc co ngón chân của nguồn."
+      },
+      {
+        "title": "Mayo Clinic — Cat-cow pose",
+        "url": "https://www.mayoclinic.org/healthy-lifestyle/stress-management/multimedia/cat-cow-pose/vid-20453581",
+        "use": "Đối chiếu vị trí tay–gối và hướng vùng chậu, lưng, đầu; có thể phối hợp hơi thở. Không lấy số lần hoặc yêu cầu hít sâu làm liều tập."
+      },
+      {
+        "title": "Cleveland Clinic — Cat-Cow Stretch",
+        "url": "https://health.clevelandclinic.org/cat-cow-stretch",
+        "use": "Đối chiếu cổ tiếp nối cột sống, mu bàn chân trên sàn và chuyển động chậm trong khoảng phù hợp. Không sử dụng lời hứa tác dụng sức khỏe hoặc tự áp biến thể cho người có triệu chứng."
+      },
+      {
+        "title": "NHS — Chair-based pilates video workout",
+        "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+        "use": "Đối chiếu lời nhắc dừng khi đau hoặc thấy không khỏe và tìm trợ giúp nếu cảm giác không hết. Đây không phải phê duyệt kỹ thuật Bò–Mèo."
+      }
+    ]
+  }
+}

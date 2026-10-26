@@ -1,0 +1,415 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.pose.downward-dog",
+  "revision": "r1",
+  "legacyAliases": [
+    "poses:25"
+  ],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": null,
+  "productionStatus": "media_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Chó úp mặt · nhìn nền V ngược",
+  "shortTitle": "Chó úp mặt",
+  "intro": "Nhìn nền đỡ, đường thân và cách trở về của Chó úp mặt. Bài đọc tách việc nhận biết một hình khỏi yêu cầu phải làm giống hình.",
+  "scope": "Bản đọc nguyên tác về Downward Dog có hai tay, hai chân làm nền; gối có thể gập. Không tái hiện clip25, không là buổi tập có nhịp, liều hoặc hướng dẫn tự học khi chưa quen chống tay.",
+  "learningObjectives": [
+    "Nhận biết bốn điểm tựa và hướng thân của hình V ngược.",
+    "Phân biệt hình dáng tham khảo với khoảng chuyển động cá nhân.",
+    "Biết cần xem cả phần trở về trước khi thử cùng giáo viên."
+  ],
+  "audience": "Dành cho người lớn đọc tìm hiểu. Thử tư thế cần đã quen chống tay và có hướng dẫn phù hợp; nhãn thư viện không chứng minh bài an toàn cho mọi người.",
+  "prerequisites": [
+    "Chỉ đọc nếu chưa quen chịu lực trên tay hoặc việc xuống sàn cần trợ giúp."
+  ],
+  "preparation": [
+    "Xem cả năm khung trước khi cân nhắc thực hành.",
+    "Nếu thử cùng giáo viên, cần sàn không trơn, thảm không xê dịch và đủ khoảng trống.",
+    "Bản đọc bắt đầu từ nền tay–gối đã được chuẩn bị; không dạy kỹ thuật xuống hoặc rời sàn."
+  ],
+  "stopGuidance": "Đau, tê, choáng hoặc mất vững: ngừng thử; nghỉ an toàn. Nếu triệu chứng kéo dài hoặc đáng lo, tìm hỗ trợ y tế.",
+  "alternatives": [
+    "Chỉ xem nội dung và phóng to hình sau khi có ảnh được duyệt; không cần thử tư thế.",
+    "Trao đổi với người có chuyên môn trước khi chọn phiên bản hoặc cách thực hành."
+  ],
+  "readTimeSecondsEstimate": 240,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [
+    {
+      "courseId": "poses",
+      "lessonId": "25",
+      "youtubeId": "CwhLdstN0dc",
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceObservations": [],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Nhìn bốn điểm tựa",
+      "body": "Bắt đầu bằng việc tìm hai bàn tay và hai bàn chân trong hình. Chúng tạo nền cho một hình V ngược; hông là vùng cao của hình, đầu nằm giữa hai cánh tay.",
+      "detail": "Hình tĩnh không cho biết người trong hình đã chuẩn bị thế nào hoặc đang chịu lực ra sao. Đừng dùng một góc chụp để chấm cơ thể mình đúng hay sai.",
+      "entry": "Bắt đầu phần đọc; tư thế và đường chuyển chưa được người xem thực hiện.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "downward-dog-photo-1"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Đọc vị trí bắt đầu",
+      "body": "Ở bản minh họa dự kiến, phần vào được nhìn từ nền hai tay và hai gối trên thảm. Đây là điểm nối để hiểu đường chuyển, không phải yêu cầu mọi người phải tự xuống sàn.",
+      "detail": "Bạn có thể xem riêng khung bắt đầu rồi quay lại toàn bài. Người cần hỗ trợ xuống sàn nên chỉ đọc và nhờ người có chuyên môn chọn cách phù hợp.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "downward-dog-photo-2"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Nhận ra hướng nâng hông",
+      "body": "Quan sát hông đi lên và ra sau khi hai tay vẫn làm nền. Đường thân dài hơn có thể đi cùng gối gập; gót không cần ép xuống thảm.",
+      "detail": "Điểm cần đọc là hướng chuyển và các chỗ đang đỡ cơ thể. Độ cao của hông hoặc độ thẳng chân trong ảnh không phải thước đo hoàn thành.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "downward-dog-photo-3"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Nhìn đầu và thân cùng nhau",
+      "body": "Đọc đường từ hai tay qua thân; đầu tiếp nối thân thay vì bị ngửa để nhìn màn hình. Một khung tham khảo có thể giữ gối gập và cổ tự nhiên.",
+      "detail": "Khi muốn nhìn lại thiết bị, hãy nghỉ trước. Bạn có thể quan sát cả hai bên thân và quay lại khung toàn thân để hiểu mối liên hệ giữa tay, hông và chân.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "downward-dog-photo-4"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Xem đường trở về",
+      "body": "Khung cuối nhìn việc hạ hai gối trở lại thảm và ngừng chuyển động. Bản đọc kết thúc ở nền tay–gối, không tự nối sang một tư thế khác.",
+      "detail": "Bạn đã xem đủ nội dung khi hiểu phần bắt đầu và phần trở về. Không cần thử tư thế, giữ đủ lâu hoặc gửi phản hồi tích cực để kết thúc bài đọc.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Kết thúc phần đọc; không tự đánh dấu đã thực hành.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "downward-dog-photo-5"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "downward-dog-photo-1",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-1.png",
+      "sha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhân vật hư cấu mặc áo olive, quần kem tạo hình V ngược nhìn nghiêng trên thảm sage; hai tay đặt xuống, gối hơi gập và hai gót nhấc.",
+      "caption": "Ảnh AI nháp — Nhìn nền V ngược. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T06:37:15.903Z",
+        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-1.png",
+        "sourceSha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+      }
+    },
+    {
+      "id": "downward-dog-photo-2",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-2.png",
+      "sha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Cùng nhân vật ở nền hai tay–hai gối, nhìn từ phía trước chếch bên; bàn tay, gối và bàn chân đều nằm trong khung.",
+      "caption": "Ảnh AI nháp — Nền tay–gối trước đoạn nâng. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T06:33:42.077Z",
+        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-2.png",
+        "sourceSha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+      }
+    },
+    {
+      "id": "downward-dog-photo-3",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-3.png",
+      "sha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhân vật nâng hông lên trong khi hai bàn tay vẫn trên thảm; hai gối gập rõ và gót chân nhấc, nhìn nghiêng.",
+      "caption": "Ảnh AI nháp — Khung trung gian với gối gập. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T06:32:11.596Z",
+        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-3.png",
+        "sourceSha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+      }
+    },
+    {
+      "id": "downward-dog-photo-4",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-4.png",
+      "sha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhân vật ở hình V ngược nhìn từ phía trước chếch bên; hai bàn tay, đầu, hai chân và hai bàn chân đều trong khung.",
+      "caption": "Ảnh AI nháp — Đọc đầu, thân và các điểm tựa. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T06:35:35.575Z",
+        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-4.png",
+        "sourceSha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+      }
+    },
+    {
+      "id": "downward-dog-photo-5",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-5.png",
+      "sha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Cùng nhân vật ở nền tay–gối nhìn nghiêng; bàn tay và bàn chân thấy rõ, gối phía xa bị chân gần che một phần.",
+      "caption": "Ảnh AI nháp — Nền tay–gối sau đoạn trở về. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T06:39:15.611Z",
+        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-5.png",
+        "sourceSha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+      }
+    }
+  ],
+  "assetBriefs": [
+    {
+      "id": "downward-dog-brief-1",
+      "stepId": "step-1",
+      "mediaId": "downward-dog-photo-1",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-1.png",
+      "sha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân nhìn nghiêng, V ngược với đủ hai tay và hai chân; giữ đầu, ngón tay và bàn chân trong khung. Không crop làm mất nền đỡ. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "downward-dog-brief-2",
+      "stepId": "step-2",
+      "mediaId": "downward-dog-photo-2",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-2.png",
+      "sha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người ở nền bốn điểm tựa, nhìn nghiêng ba phần tư để tách rõ tay và gối; không thêm động tác chuyển từ đứng. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "downward-dog-brief-3",
+      "stepId": "step-3",
+      "mediaId": "downward-dog-photo-3",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-3.png",
+      "sha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Khung trung gian nâng hông thành V ngược, gối còn gập vừa phải, gót nhấc tự nhiên; không mũi tên, không ép chân thẳng. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "downward-dog-brief-4",
+      "stepId": "step-4",
+      "mediaId": "downward-dog-photo-4",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-4.png",
+      "sha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. V ngược ở góc ba phần tư, cổ tự nhiên, đủ mặt tay/đầu/gối/gót; không gót bị ấn xuống hoặc đầu chạm sàn. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "downward-dog-brief-5",
+      "stepId": "step-5",
+      "mediaId": "downward-dog-photo-5",
+      "status": "draft_present",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-5.png",
+      "sha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người trở về nền tay–gối trung tính, đủ cả bốn chi trong khung; không chuyển sang tư thế em bé hoặc đứng dậy. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source",
+        "shape-source"
+      ],
+      "evidenceRefs": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "pose-source",
+      "title": "YogaEasy — Downward Dog Pose",
+      "url": "https://www.yogaeasy.com/artikel/downward-dog-pose",
+      "use": "Đối chiếu nền tay–gối, gối gập và gót không bắt buộc chạm sàn, đường trở về tay–gối. Không lấy số nhịp, wall drill hay lợi ích.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "shape-source",
+      "title": "ACE — Downward-facing Dog",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/18/downward-facing-dog/",
+      "use": "Đối chiếu hình V ngược và quan hệ đầu–thân; không nhập chuỗi push-up hay yêu cầu giữ cứng của ACE.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "safety",
+      "title": "NCCIH — Yoga: Effectiveness and Safety",
+      "url": "https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety",
+      "use": "Căn cứ cần hướng dẫn có chuyên môn; không xác nhận tính phù hợp hay kỹ thuật từng tư thế MCY.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "stop-source",
+      "title": "NHS — Exercise video safety information",
+      "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+      "use": "Chỉ dùng nguyên tắc dừng khi đau/không khỏe và tìm hỗ trợ khi triệu chứng kéo dài; không dùng bài Pilates như kỹ thuật tư thế yoga.",
+      "accessedAt": "2026-10-18"
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa có chuyên gia yoga thật duyệt copy, đối tượng, entry/exit và toàn bộ phiên bản.",
+    "Chưa xác minh quan hệ fileMOV/YouTubeID, bên hoặc exact variant video; đây không phải transcript.",
+    "Quyền text/media, editorial, accessibility và adapter/CMS/publish chưa được nghiệm thu."
+  ],
+  "changeLog": [
+    "r1 — bản đọc nguyên tác có AI hỗ trợ; nguồn primary được mở ngày18/10/2026; không lấy ảnh hoặc chép hướng dẫn dài.",
+    "18/10/2026 — sinh 5 ảnh AI nháp nguyên tác theo brief; ghi alt theo pixels, chưa duyệt chuyên môn/quyền và chưa xuất bản."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "ai_assisted_original",
+    "sourceFiles": [
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/EDITORIAL-INTAKE.vi.md",
+        "sha256": "92f7644dff3a759c792b80765ce6c59ac1bb9bd35fdce412c84132e53b7c5394"
+      }
+    ],
+    "notes": "Authored educational reading draft, not the instructor transcript or recreation of clip. Source positions are concise paraphrases; frame choices, reading flow and review questions are original editorial proposals. No original video/audio was viewed by this author. Five original photoAI draft frames produced; exact prompts, synthetic anchors and tool output paths are recorded in the generation ledger. Human expert/rights review remains pending."
+  },
+  "readTimeNote": "Thời gian đọc ước lượng, không phải thời gian giữ tư thế hoặc buổi tập.",
+  "ending": "Bạn đã đến cuối phần đọc. Không cần thử tư thế hoặc báo cảm giác tốt hơn để kết thúc."
+}

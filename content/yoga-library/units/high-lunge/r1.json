@@ -1,0 +1,398 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.pose.high-lunge",
+  "revision": "r1",
+  "legacyAliases": [
+    "poses:26"
+  ],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": null,
+  "productionStatus": "media_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Trường tấn cao · đọc nền trước và sau",
+  "shortTitle": "Trường tấn cao",
+  "intro": "Nhìn cách hai chân tạo hai nền khác nhau trong Trường tấn cao. Bài này ưu tiên hiểu hình và những phần cần giáo viên xác nhận trước khi thực hành.",
+  "scope": "Bản đọc nguyên tác về High Lunge, chọn hình tham khảo chân phải ở trước, gót chân trái nhấc. Đây là lựa chọn biên tập, chưa xác nhận bên hay đường vào của clip26. Không dạy đổi từ Chó úp mặt sang lunge hoặc chuyển ra khi chưa có hướng dẫn trực tiếp.",
+  "learningObjectives": [
+    "Phân biệt Trường tấn cao với hình quỳ gối sau.",
+    "Nhìn quan hệ chân trước, chân sau và thân.",
+    "Nhận ra đường vào/ra là nội dung cần học riêng."
+  ],
+  "audience": "Người lớn muốn tìm hiểu tư thế đứng có hai chân trước–sau. Nếu thăng bằng hoặc chuyển bước chưa quen, chỉ xem nội dung; chưa coi năm hình là đủ để tự thử.",
+  "prerequisites": [
+    "Phần thực hành chỉ được bổ sung sau khi người có chuyên môn chốt cách vào/ra, hỗ trợ và đối tượng."
+  ],
+  "preparation": [
+    "Đọc trong tư thế nghỉ và xem toàn bộ hình trước.",
+    "Nếu học thực hành với giáo viên, chọn mặt sàn không trơn, khoảng trống quanh chân và điểm hỗ trợ do giáo viên xác nhận.",
+    "Không dùng khoảng cách hoặc góc chụp để quyết định độ dài bước của mình."
+  ],
+  "stopGuidance": "Đau, tê, choáng hoặc mất vững: ngừng thử; nghỉ an toàn. Nếu triệu chứng kéo dài hoặc đáng lo, tìm hỗ trợ y tế.",
+  "alternatives": [
+    "Chỉ xem nội dung và phóng to hình sau khi có ảnh được duyệt; không cần thử tư thế.",
+    "Trao đổi với người có chuyên môn trước khi chọn phiên bản hoặc cách thực hành."
+  ],
+  "readTimeSecondsEstimate": 240,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [
+    {
+      "courseId": "poses",
+      "lessonId": "26",
+      "youtubeId": "oFWjSKxXvKY",
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceObservations": [],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Phân biệt hai nền chân",
+      "body": "Trong hình tham khảo, chân trước đặt bàn chân trên sàn; chân sau ở phía sau với gót nhấc. Gối sau không quỳ trên thảm.",
+      "detail": "Cùng họ tư thế có phiên bản gối sau đặt trên sàn. Bài này chọn nhìn phiên bản gối sau rời thảm; từ “cao” chỉ giúp phân biệt hình, không là điểm số.",
+      "entry": "Bắt đầu phần đọc; tư thế và đường chuyển chưa được người xem thực hiện.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "high-lunge-photo-1"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Xem cách vào trước khi xem dáng",
+      "body": "Một tư thế có thể có nhiều đường vào. Bài nháp chưa chọn đường bước chân từ Chó úp mặt hoặc bước dài từ đứng để người đọc tự làm theo.",
+      "detail": "Trước thực hành, giáo viên cần chỉ cách đặt chân, giữ thăng bằng và quay lại. Nếu phần này còn chưa rõ, dừng ở phần đọc thay vì đoán một bước chuyển.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "high-lunge-photo-2"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Đọc chân trước và thân",
+      "body": "Khi nhìn hình, tìm vị trí gối trước so với vùng cổ chân và xem thân có ở trên nền chân không. Gối gập trong hình không là một góc buộc mọi cơ thể đạt.",
+      "detail": "Hãy nhìn cả bàn chân phía trước, gối và thân thay vì chỉ chọn một góc chụp. Quan hệ giữa các phần giúp hiểu hình hơn việc tìm một độ gập cố định.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "high-lunge-photo-3"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Tách hình tay khỏi độ vững",
+      "body": "Tay đưa lên là một lựa chọn thường thấy của hình Trường tấn cao. Khi đọc, xem cả thân và nền chân thay vì chỉ nhìn vị trí hai bàn tay.",
+      "detail": "Một bức ảnh không chứng minh tư thế phù hợp với vai hay khả năng thăng bằng của bạn. Không tự thêm động tác ngửa hoặc giữ lâu để làm giống hình.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "high-lunge-photo-4"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Đọc cả cách rời tư thế",
+      "body": "Bản này kết thúc ở việc nhận biết. Khung cuối dự kiến là tư thế đứng nghỉ sau khi đã trở về, không thể hiện một bước nhảy hay một chuyển tiếp nhanh.",
+      "detail": "Nếu chưa biết cách trở về tư thế nghỉ, bạn chưa cần thử theo ảnh. Bạn vẫn có thể nhận biết hình và chọn phần muốn hỏi giáo viên thêm.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Kết thúc phần đọc; không tự đánh dấu đã thực hành.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "high-lunge-photo-5"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "high-lunge-photo-1",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-1.png",
+      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhân vật hư cấu ở hình lunge nhìn nghiêng, chân trước đặt phẳng, chân sau duỗi với gót nhấc; thân thẳng và hai tay nghỉ.",
+      "caption": "Ảnh AI nháp — Hình lunge để quan sát nền chân. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T07:11:21.208Z",
+        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-1.png",
+        "sourceSha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "high-lunge-photo-2",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-2.png",
+      "sha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Cùng nhân vật đứng tự nhiên trên thảm với hai chân cách nhau vừa phải, hai tay nghỉ bên thân, nhìn từ phía trước.",
+      "caption": "Ảnh AI nháp — Khung đứng nghỉ; không mô tả bước vào. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T07:14:16.813Z",
+        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-2.png",
+        "sourceSha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "high-lunge-photo-3",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-3.png",
+      "sha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Khung cận từ ngực xuống chân của hình lunge; thấy bàn chân trước, gối gập và bàn chân sau với gót nhấc, một bàn tay gần máy rõ hơn tay xa.",
+      "caption": "Ảnh AI nháp — Đọc quan hệ gối, chân và thân. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T08:35:25.363Z",
+        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-3.png",
+        "sourceSha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "high-lunge-photo-4",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-4.png",
+      "sha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhân vật ở cùng hướng lunge, hai tay đưa lên qua đầu, thân gần thẳng đứng; cả hai bàn chân và hai bàn tay nằm trong khung.",
+      "caption": "Ảnh AI nháp — Tay nâng là một trạng thái tham khảo. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T07:44:59.237Z",
+        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-4.png",
+        "sourceSha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "high-lunge-photo-5",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-5.png",
+      "sha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhân vật đứng nghỉ nhìn từ góc nghiêng ba phần tư; hai chân làm nền, hai tay thả bên thân.",
+      "caption": "Ảnh AI nháp — Khung đứng nghỉ sau đoạn kết. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T07:17:20.047Z",
+        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-5.png",
+        "sourceSha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    }
+  ],
+  "assetBriefs": [
+    {
+      "id": "high-lunge-brief-1",
+      "stepId": "step-1",
+      "mediaId": "high-lunge-photo-1",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-1.png",
+      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân đứng chân phải trước, chân trái sau, gót sau nhấc; tay nghỉ bên thân; góc đủ thấy cả hai chân. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "high-lunge-brief-2",
+      "stepId": "step-2",
+      "mediaId": "high-lunge-photo-2",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-2.png",
+      "sha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Khung quan sát tư thế đứng tự nhiên ở cạnh vị trí lunge dự kiến, không chụp chân đang lao hoặc bước giữa không trung. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "high-lunge-brief-3",
+      "stepId": "step-3",
+      "mediaId": "high-lunge-photo-3",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-3.png",
+      "sha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Hình lunge phải trước ở góc nghiêng, gối trước trên vùng cổ chân, gót trái nhấc; thân không ngửa; không vẽ đường căn chỉnh hoặc góc 90 độ. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "high-lunge-brief-4",
+      "stepId": "step-4",
+      "mediaId": "high-lunge-photo-4",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-4.png",
+      "sha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Phiên bản tham khảo hai tay đưa lên vừa phải, thân gần thẳng đứng, góc ba phần tư đủ đọc gối trước và gót sau; không backbend. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "high-lunge-brief-5",
+      "stepId": "step-5",
+      "mediaId": "high-lunge-photo-5",
+      "status": "draft_present",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-5.png",
+      "sha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người đứng nghỉ tự nhiên, hai chân làm nền; không diễn tả động tác rút chân đang mất thăng bằng. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "pose-source",
+      "title": "YogaEasy — Crescent Pose / High Lunge",
+      "url": "https://www.yogaeasy.com/artikel/crescent-pose-high-lunge",
+      "use": "Đối chiếu hình chân trước/sau, gối trước trên vùng cổ chân và các đường vào khác nhau. Không lấy liều, xoắn, dips, chuyển WarriorIII hoặc các quy tắc góc như chuẩn cho mọi người.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "safety",
+      "title": "NCCIH — Yoga: Effectiveness and Safety",
+      "url": "https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety",
+      "use": "Căn cứ cần hướng dẫn có chuyên môn; không xác nhận tính phù hợp hay kỹ thuật từng tư thế MCY.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "stop-source",
+      "title": "NHS — Exercise video safety information",
+      "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+      "use": "Chỉ dùng nguyên tắc dừng khi đau/không khỏe và tìm hỗ trợ khi triệu chứng kéo dài; không dùng bài Pilates như kỹ thuật tư thế yoga.",
+      "accessedAt": "2026-10-18"
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa có chuyên gia yoga thật duyệt copy, đối tượng, entry/exit và toàn bộ phiên bản.",
+    "Chưa xác minh quan hệ fileMOV/YouTubeID, bên hoặc exact variant video; đây không phải transcript.",
+    "Quyền text/media, editorial, accessibility và adapter/CMS/publish chưa được nghiệm thu."
+  ],
+  "changeLog": [
+    "r1 — bản đọc nguyên tác có AI hỗ trợ; nguồn primary được mở ngày18/10/2026; không lấy ảnh hoặc chép hướng dẫn dài.",
+    "18/10/2026 — sinh 5 ảnh AI nháp nguyên tác theo brief; ghi alt theo pixels, chưa duyệt chuyên môn/quyền và chưa xuất bản."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "ai_assisted_original",
+    "sourceFiles": [
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/EDITORIAL-INTAKE.vi.md",
+        "sha256": "92f7644dff3a759c792b80765ce6c59ac1bb9bd35fdce412c84132e53b7c5394"
+      }
+    ],
+    "notes": "Authored educational reading draft, not the instructor transcript or recreation of clip. Source positions are concise paraphrases; frame choices, reading flow and review questions are original editorial proposals. No original video/audio was viewed by this author. Five original photoAI draft frames produced; exact prompts, synthetic anchors and tool output paths recorded in generation ledger. Human expert/rights review remains pending."
+  },
+  "readTimeNote": "Thời gian đọc ước lượng, không phải thời gian giữ tư thế hoặc buổi tập.",
+  "ending": "Bạn đã đến cuối phần đọc. Không cần thử tư thế hoặc báo cảm giác tốt hơn để kết thúc."
+}

@@ -1,0 +1,590 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.foundation.standing",
+  "revision": "r3",
+  "legacyAliases": [
+    "standing",
+    "2026-10-16-owner-preview-v2"
+  ],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": "mcy.series.foundation",
+  "productionStatus": "media_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Đứng và nhận biết điểm tựa",
+  "shortTitle": "Đứng và điểm tựa",
+  "intro": "Một khoảng dừng để nhận biết cách mình đang đứng: bàn chân chạm sàn, cơ thể có điểm tựa và hơi thở vẫn tự nhiên. Bạn có thể đọc toàn bộ trước, rồi chọn xem lại phần cần thiết.",
+  "scope": "Bài làm quen với nền đứng của Tadasana / tư thế đứng núi, tập trung vào điểm tựa và quyền điều chỉnh. Không có yêu cầu giữ trong một khoảng thời gian hay tạo hình giống hệt minh họa.",
+  "learningObjectives": [
+    "Nhận biết những vùng bàn chân đang tiếp xúc với sàn.",
+    "Biết lựa chọn thêm điểm tựa và kết thúc theo ý mình."
+  ],
+  "audience": "Bài làm quen dành cho người lớn có thể đứng thoải mái trong sinh hoạt. Nếu việc đứng đang làm bạn đau, choáng hoặc khó giữ thăng bằng, hãy chỉ xem bài và hỏi người có chuyên môn trước khi thử.",
+  "prerequisites": [],
+  "preparation": [
+    "Chọn mặt sàn phẳng, khô, không trơn và khoảng trống quanh mình.",
+    "Đặt một chiếc ghế chắc, không có bánh xe, không xê dịch trên sàn ở gần; kê ghế vững sát tường nếu dùng làm điểm tựa.",
+    "Đặt thiết bị ở nơi có thể đọc mà không phải cúi hoặc xoay người khi đang đứng."
+  ],
+  "stopGuidance": "Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+  "alternatives": [
+    "Bạn có thể giữ một tay trên lưng ghế vững suốt bài, hoặc chỉ ngồi xem nội dung. Giữ điểm tựa cần thiết là một lựa chọn của bài; không có yêu cầu phải bỏ tay để hoàn thành."
+  ],
+  "readTimeSecondsEstimate": 180,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [],
+  "sourceObservations": [],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Chọn chỗ đứng",
+      "body": "Đứng trên mặt sàn phẳng, không trơn. Đặt hai bàn chân cách nhau khoảng bề rộng hông, hoặc ở khoảng cách khiến bạn thấy vững và thoải mái; mở mắt, chọn một điểm nhìn thoải mái trước mặt.",
+      "detail": "Để hai tay bên người. Không cần ép hai bàn chân sát nhau hay cố xoay chúng vào một góc nhất định. Nếu muốn dùng ghế, đặt tay lên điểm tựa trước khi tiếp tục.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Bạn có thể chỉ quan sát hình khi ngồi. Nếu không thấy vững ngay từ đầu, giữ điểm tựa quen thuộc hoặc dừng ở phần xem bài.",
+      "stopCue": "Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/standing-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-standing-step-1-photo_ai",
+        "foundation-standing-step-1-illustration"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Nhận biết bàn chân",
+      "body": "Giữ hai bàn chân trên sàn. Chú ý vùng gót và vùng phía trước bàn chân đang chạm sàn ra sao, rồi để các ngón chân thả tự nhiên.",
+      "detail": "Bạn có thể nhận thấy hai bên khác nhau, hoặc chưa nhận ra rõ. Chỉ ghi nhận điều đang có; không cố ép lực hai bên bằng nhau, bấu ngón chân, nhấc gót hay lắc người để tìm một cảm giác cụ thể.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Giữ tay trên ghế nếu bạn đang dùng. Chú ý vào bàn chân không đòi hỏi phải bỏ điểm tựa hoặc cúi đầu xuống nhìn.",
+      "stopCue": "Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/standing-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-standing-step-2-photo_ai",
+        "foundation-standing-step-2-illustration"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Thêm điểm tựa khi cần",
+      "body": "Nếu muốn thêm điểm tựa, đặt một tay lên lưng chiếc ghế đã kê vững sát tường. Giữ cả hai bàn chân trên sàn và chọn vị trí gần ghế để không phải với tay hoặc nghiêng người.",
+      "detail": "Ghế cần chắc, không có bánh xe và không trượt trên sàn. Bạn có thể giữ tay ở đó trong các bước còn lại. Nếu một tay chưa đủ để thấy vững, hãy dừng bài; đừng cố đứng tiếp chỉ để theo hình.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Nếu việc đứng cần mức hỗ trợ khác, chọn ngồi xem và trao đổi với người có chuyên môn về lựa chọn phù hợp với bạn.",
+      "stopCue": "Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/standing-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-standing-step-3-photo_ai",
+        "foundation-standing-step-3-illustration"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Đứng nhẹ và thở tự nhiên",
+      "body": "Để đầu ở vị trí thoải mái, mắt nhìn phía trước; thả bớt sức ở vai và bàn tay. Tiếp tục thở theo nhịp tự nhiên, không nín thở hoặc cố hít sâu. Nếu đang dùng ghế, tiếp tục giữ tay ở đó.",
+      "detail": "Giữ tư thế vừa đủ để đứng thoải mái, không cố ưỡn ngực, rút bụng hay đẩy gối ra sau. Bạn không cần giữ đủ số nhịp thở hoặc chờ một cảm giác thư giãn xuất hiện.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Có thể kết thúc ngay khi bạn muốn. Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn.",
+      "stopCue": "Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/standing-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-standing-step-4-photo_ai",
+        "foundation-standing-step-4-illustration"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Kết thúc theo ý bạn",
+      "body": "Khi muốn kết thúc, thả việc giữ dáng và trở về cách đứng tự nhiên của bạn. Nếu đang dùng ghế, cứ giữ tay trên ghế cho đến khi sẵn sàng chuyển sang việc khác.",
+      "detail": "Không cần bước chân vào một vị trí đặc biệt hay đứng thêm để đủ thời gian. Dừng một chút trước khi di chuyển; nếu muốn ngồi nghỉ, chỉ chuyển khi bạn thấy vững và có cách ngồi an toàn quen thuộc.",
+      "entry": "",
+      "exit": "",
+      "alternative": "Bạn có thể xem lại một bước, đọc bài khác hoặc kết thúc ở đây. Việc chuyển hết năm khung không tự ghi nhận một buổi tập.",
+      "stopCue": "Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+      "sourceIds": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4"
+      ],
+      "evidenceRefs": [
+        "analyse/foundation-series-2026-10-16/standing-lesson.json"
+      ],
+      "mediaIds": [
+        "foundation-standing-step-5-photo_ai",
+        "foundation-standing-step-5-illustration"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "foundation-standing-step-1-photo_ai",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-photo-01.png",
+      "sha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI: người phụ nữ trưởng thành tóc búi thấp, áo không tay xanh olive và quần màu ngà, đứng tự nhiên trên thảm xanh sage; ghế gỗ ở bên cạnh.",
+      "caption": "Nhìn toàn bộ cách đứng tự nhiên và khoảng trống xung quanh.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-photo-01.png",
+        "sourceSha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-1-illustration",
+      "stepId": "step-1",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-step-01.png",
+      "sha256": "e511c3c576ccba27f13fd4e5b1e774ed5f39fba262ef2af479987e1decf6487e",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Toàn thân một người mặc áo xanh nhạt và quần xanh đậm đứng trên sàn phẳng, hai bàn chân cách nhau vừa phải, hai tay bên người và mắt mở. Ghế vững đặt gần tường trong tầm với.",
+      "caption": "Một khoảng đứng thoải mái, có sẵn điểm tựa trong tầm với.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-step-01.png",
+        "sourceSha256": "e511c3c576ccba27f13fd4e5b1e774ed5f39fba262ef2af479987e1decf6487e",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/STANDING-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-2-photo_ai",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-photo-02.png",
+      "sha256": "c3223681f3b2545a63b9315ecc6fbf3a57a8403e90ff5eba9e5c296e8e44ddba",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI cận hai bàn chân trần và gấu quần màu ngà; hai chân cách nhau thoải mái, gót và ngón chân cùng chạm thảm xanh sage.",
+      "caption": "Quan sát những phần của bàn chân đang chạm thảm.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-photo-02.png",
+        "sourceSha256": "c3223681f3b2545a63b9315ecc6fbf3a57a8403e90ff5eba9e5c296e8e44ddba",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-2-illustration",
+      "stepId": "step-2",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-step-02.png",
+      "sha256": "cd26db67c3b01fb265d50d7397da0199754eaafe11602ed9d11ddb412f57ec49",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Hình cận từ cẳng chân xuống: hai bàn chân đặt trên mặt sàn, gót và vùng phía trước bàn chân đều thấy rõ, các ngón chân thả tự nhiên. Không có biểu đồ lực hoặc bên được đánh dấu đúng sai.",
+      "caption": "Nhìn vùng tiếp xúc; không có một phân bố lực bắt buộc phải đạt.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-step-02.png",
+        "sourceSha256": "cd26db67c3b01fb265d50d7397da0199754eaafe11602ed9d11ddb412f57ec49",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/STANDING-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-3-photo_ai",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-photo-03.png",
+      "sha256": "9702379d9ef6fecb5d0b03bd251864db5e74bfa7c78c8a08dcfdc5dbb8bb6bd5",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI: người phụ nữ áo không tay xanh olive, quần màu ngà, đặt một tay lên lưng ghế gỗ; hai bàn chân vẫn đặt trên thảm xanh sage.",
+      "caption": "Một lựa chọn dùng ghế ở bên cạnh làm điểm hỗ trợ.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-photo-03.png",
+        "sourceSha256": "9702379d9ef6fecb5d0b03bd251864db5e74bfa7c78c8a08dcfdc5dbb8bb6bd5",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-3-illustration",
+      "stepId": "step-3",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-step-03.png",
+      "sha256": "30156e2c4eba3f332c583b873ea7d6fe83623ebe0b7e2e00d53baeb395e7652f",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Người đứng cạnh một chiếc ghế gỗ, một tay đặt lên lưng ghế và hai bàn chân đặt trên thảm. Thân người ở vị trí tự nhiên; ghế gần người và có tường ở phía sau.",
+      "caption": "Đặt ghế vững sát tường trước khi dùng; bạn được giữ tay ở đó suốt bài.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-step-03.png",
+        "sourceSha256": "30156e2c4eba3f332c583b873ea7d6fe83623ebe0b7e2e00d53baeb395e7652f",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/STANDING-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-4-photo_ai",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-photo-04.png",
+      "sha256": "1db229e0cebb9255304470f05253ab2aff9dde6e3248763c022982f3041139d2",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI cận từ đầu đến đùi người phụ nữ; vai để tự nhiên, cằm ngang, hai tay buông cạnh thân; áo không tay xanh olive và quần màu ngà.",
+      "caption": "Quan sát vai, cổ và cánh tay khi đang đứng.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-photo-04.png",
+        "sourceSha256": "1db229e0cebb9255304470f05253ab2aff9dde6e3248763c022982f3041139d2",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-4-illustration",
+      "stepId": "step-4",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-step-04.png",
+      "sha256": "340646362a6a66f21f01d8cca9e199532c66ddf9c29925402b0770285d9b1430",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Hình cận từ đầu đến đùi của cùng người ở góc nghiêng ba phần tư, mắt mở, vai thả và hai tay buông bên người. Bàn chân và ghế không xuất hiện trong khung.",
+      "caption": "Hình là lựa chọn không dùng ghế. Nếu đang dùng điểm tựa, hãy tiếp tục giữ; hơi thở theo nhịp của bạn.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-step-04.png",
+        "sourceSha256": "340646362a6a66f21f01d8cca9e199532c66ddf9c29925402b0770285d9b1430",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/STANDING-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-5-photo_ai",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-photo-05.png",
+      "sha256": "4a8ed0d7d336610a0a6913140ecdddd77c79c2754f437316977a8fa6ce2c8e54",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Ảnh AI toàn thân nhìn nghiêng: người phụ nữ quay sang trái, đứng tự nhiên, hai tay buông, hai bàn chân đặt trên thảm xanh sage.",
+      "caption": "Dừng lại ở một cách đứng tự nhiên trước khi chọn điều tiếp theo.",
+      "synthetic": true,
+      "disclosure": "Ảnh AI minh họa; không phải ảnh giáo viên thật hoặc bằng chứng kỹ thuật đã được duyệt.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-photo-05.png",
+        "sourceSha256": "4a8ed0d7d336610a0a6913140ecdddd77c79c2754f437316977a8fa6ce2c8e54",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/PHOTO-MEDIA.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    },
+    {
+      "id": "foundation-standing-step-5-illustration",
+      "stepId": "step-5",
+      "variant": "illustration",
+      "status": "draft_present",
+      "path": "media/foundation-standing/r3/standing-step-05.png",
+      "sha256": "ad76e37022c77c082a26d12879ba7b69c851cd488531a63ba9145ce790fb6137",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Toàn thân cùng người ở góc nghiêng, đứng tự nhiên với hai bàn chân trên thảm, hai tay buông bên người. Không có ghế trong hình; người chưa bước đi hoặc ngồi xuống.",
+      "caption": "Hình là lựa chọn không dùng ghế. Nếu đang dùng điểm tựa, hãy tiếp tục giữ và chọn điều tiếp theo khi sẵn sàng.",
+      "synthetic": true,
+      "disclosure": "Minh họa tạo bằng AI; chưa được thẩm định kỹ thuật tư thế.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "image_gen",
+        "createdAt": "2026-10-16",
+        "sourcePath": "analyse/foundation-series-2026-10-16/assets/standing-step-05.png",
+        "sourceSha256": "ad76e37022c77c082a26d12879ba7b69c851cd488531a63ba9145ce790fb6137",
+        "promptRef": "analyse/foundation-series-2026-10-16/assets/STANDING-IMAGES.vi.md",
+        "notes": "Imported unchanged from standalone Owner preview. Synthetic media; human expertise/rights review pending."
+      }
+    }
+  ],
+  "assetBriefs": [],
+  "sources": [
+    {
+      "id": "source-1",
+      "title": "ACE — Yes, You CAN do Yoga",
+      "url": "https://www.acefitness.org/resources/everyone/blog/7377/yes-you-can-do-yoga/",
+      "use": "Cơ sở cho khoảng đứng có thể thay đổi và quyền sử dụng dụng cụ hỗ trợ; không lấy các tuyên bố tác dụng sức khỏe.",
+      "accessedAt": null
+    },
+    {
+      "id": "source-2",
+      "title": "California Department of Public Health — Shape of Yoga, Mountain Pose",
+      "url": "https://publichealth.calaverasgov.us/Portals/PublicHealth/Documents/CDPH_Shape_of_Yoga_Booklet.pdf",
+      "use": "Đối chiếu nền đứng và bàn chân cách nhau; tham khảo nhắc không ép tư thế, không nín thở, dừng khi đau. Không sao chép bộ đếm nhịp hay chương trình tập.",
+      "accessedAt": null
+    },
+    {
+      "id": "source-3",
+      "title": "NHS — Strength exercises",
+      "url": "https://www.nhs.uk/live-well/exercise/strength-exercises/",
+      "use": "Tiêu chí chọn ghế chắc, ổn định, không bánh xe và không trượt. Không xem chương trình sức mạnh là hướng dẫn Tadasana.",
+      "accessedAt": null
+    },
+    {
+      "id": "source-4",
+      "title": "NHS — Chair-based pilates video workout",
+      "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+      "use": "Căn cứ nhắc dừng khi đau hoặc thấy không khỏe và tìm hỗ trợ nếu triệu chứng không hết; không lấy liều tập hay lời hứa tác dụng.",
+      "accessedAt": null
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa có người thật thẩm định chuyên môn yoga.",
+    "Chưa có thẩm định quyền text/media và khả năng tiếp cận trước phát hành.",
+    "Chưa có adapter reader/CMS; không import vào app hoặc reviewed catalog."
+  ],
+  "changeLog": [
+    "r3: nhập nguyên nội dung bản16/10/2026 và thêm hai biến thể ảnhAI/minh họa có hash; không mang approval cũ."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "imported_ai_assisted_draft",
+    "sourceFiles": [
+      {
+        "path": "analyse/foundation-series-2026-10-16/standing-lesson.json",
+        "sha256": "a94a1349cdfef36620de99b3d13873446c59799ae44b9d9c6e0e7a8f8141f797"
+      },
+      {
+        "path": "analyse/foundation-series-2026-10-16/assets/photo-media.json",
+        "sha256": "f04f9d3420242e8b7e01af4e1c8dbcd0a6d0794b18081fccc95eb83773cc95f3"
+      }
+    ],
+    "notes": "Imported copy preserved; source URLs inherited without claiming a new web verification. Topic relation is not a transcript of the instructor video."
+  },
+  "subtitle": "Bắt đầu từ nơi bàn chân chạm sàn.",
+  "readTimeNote": "Thời gian đọc ước lượng; không phải thời gian giữ tư thế.",
+  "ending": "Bạn đã đến cuối phần đọc. Điều đáng nhớ là nhận biết điểm tựa và giữ quyền điều chỉnh, không phải đứng giống hình hay cảm thấy khác đi.",
+  "reviewQuestion": "Phần nào bạn muốn nhìn kỹ hơn?",
+  "reviewOptions": [
+    "Chỗ đứng",
+    "Bàn chân",
+    "Dùng ghế",
+    "Hơi thở",
+    "Cách kết thúc"
+  ],
+  "preferredMediaVariant": "photo_ai",
+  "legacyPayload": {
+    "id": "standing",
+    "version": "2026-10-16-owner-preview-v2",
+    "status": "Bản biên tập để đánh giá · chưa thẩm định chuyên môn",
+    "title": "Đứng và nhận biết điểm tựa",
+    "short": "Đứng và điểm tựa",
+    "subtitle": "Bắt đầu từ nơi bàn chân chạm sàn.",
+    "minutes": 3,
+    "readTimeNote": "Thời gian đọc ước lượng; không phải thời gian giữ tư thế.",
+    "image": "assets/standing-step-01.png",
+    "alt": "Minh họa toàn thân một người đứng trên sàn phẳng, hai bàn chân cách nhau vừa phải, hai tay buông bên người; một chiếc ghế vững ở gần tường.",
+    "intro": "Một khoảng dừng để nhận biết cách mình đang đứng: bàn chân chạm sàn, cơ thể có điểm tựa và hơi thở vẫn tự nhiên. Bạn có thể đọc toàn bộ trước, rồi chọn xem lại phần cần thiết.",
+    "goal": [
+      "Nhận biết những vùng bàn chân đang tiếp xúc với sàn.",
+      "Biết lựa chọn thêm điểm tựa và kết thúc theo ý mình."
+    ],
+    "audience": "Bài làm quen dành cho người lớn có thể đứng thoải mái trong sinh hoạt. Nếu việc đứng đang làm bạn đau, choáng hoặc khó giữ thăng bằng, hãy chỉ xem bài và hỏi người có chuyên môn trước khi thử.",
+    "preparation": [
+      "Chọn mặt sàn phẳng, khô, không trơn và khoảng trống quanh mình.",
+      "Đặt một chiếc ghế chắc, không có bánh xe, không xê dịch trên sàn ở gần; kê ghế vững sát tường nếu dùng làm điểm tựa.",
+      "Đặt thiết bị ở nơi có thể đọc mà không phải cúi hoặc xoay người khi đang đứng."
+    ],
+    "stopCue": "Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+    "material": "Bài làm quen với nền đứng của Tadasana / tư thế đứng núi, tập trung vào điểm tựa và quyền điều chỉnh. Không có yêu cầu giữ trong một khoảng thời gian hay tạo hình giống hệt minh họa.",
+    "alternative": "Bạn có thể giữ một tay trên lưng ghế vững suốt bài, hoặc chỉ ngồi xem nội dung. Giữ điểm tựa cần thiết là một lựa chọn của bài; không có yêu cầu phải bỏ tay để hoàn thành.",
+    "reviewQuestion": "Phần nào bạn muốn nhìn kỹ hơn?",
+    "reviewOptions": [
+      "Chỗ đứng",
+      "Bàn chân",
+      "Dùng ghế",
+      "Hơi thở",
+      "Cách kết thúc"
+    ],
+    "ending": "Bạn đã đến cuối phần đọc. Điều đáng nhớ là nhận biết điểm tựa và giữ quyền điều chỉnh, không phải đứng giống hình hay cảm thấy khác đi.",
+    "steps": [
+      {
+        "title": "Chọn chỗ đứng",
+        "body": "Đứng trên mặt sàn phẳng, không trơn. Đặt hai bàn chân cách nhau khoảng bề rộng hông, hoặc ở khoảng cách khiến bạn thấy vững và thoải mái; mở mắt, chọn một điểm nhìn thoải mái trước mặt.",
+        "detail": "Để hai tay bên người. Không cần ép hai bàn chân sát nhau hay cố xoay chúng vào một góc nhất định. Nếu muốn dùng ghế, đặt tay lên điểm tựa trước khi tiếp tục.",
+        "alternative": "Bạn có thể chỉ quan sát hình khi ngồi. Nếu không thấy vững ngay từ đầu, giữ điểm tựa quen thuộc hoặc dừng ở phần xem bài.",
+        "image": "assets/standing-step-01.png",
+        "alt": "Toàn thân một người mặc áo xanh nhạt và quần xanh đậm đứng trên sàn phẳng, hai bàn chân cách nhau vừa phải, hai tay bên người và mắt mở. Ghế vững đặt gần tường trong tầm với.",
+        "caption": "Một khoảng đứng thoải mái, có sẵn điểm tựa trong tầm với."
+      },
+      {
+        "title": "Nhận biết bàn chân",
+        "body": "Giữ hai bàn chân trên sàn. Chú ý vùng gót và vùng phía trước bàn chân đang chạm sàn ra sao, rồi để các ngón chân thả tự nhiên.",
+        "detail": "Bạn có thể nhận thấy hai bên khác nhau, hoặc chưa nhận ra rõ. Chỉ ghi nhận điều đang có; không cố ép lực hai bên bằng nhau, bấu ngón chân, nhấc gót hay lắc người để tìm một cảm giác cụ thể.",
+        "alternative": "Giữ tay trên ghế nếu bạn đang dùng. Chú ý vào bàn chân không đòi hỏi phải bỏ điểm tựa hoặc cúi đầu xuống nhìn.",
+        "image": "assets/standing-step-02.png",
+        "alt": "Hình cận từ cẳng chân xuống: hai bàn chân đặt trên mặt sàn, gót và vùng phía trước bàn chân đều thấy rõ, các ngón chân thả tự nhiên. Không có biểu đồ lực hoặc bên được đánh dấu đúng sai.",
+        "caption": "Nhìn vùng tiếp xúc; không có một phân bố lực bắt buộc phải đạt."
+      },
+      {
+        "title": "Thêm điểm tựa khi cần",
+        "body": "Nếu muốn thêm điểm tựa, đặt một tay lên lưng chiếc ghế đã kê vững sát tường. Giữ cả hai bàn chân trên sàn và chọn vị trí gần ghế để không phải với tay hoặc nghiêng người.",
+        "detail": "Ghế cần chắc, không có bánh xe và không trượt trên sàn. Bạn có thể giữ tay ở đó trong các bước còn lại. Nếu một tay chưa đủ để thấy vững, hãy dừng bài; đừng cố đứng tiếp chỉ để theo hình.",
+        "alternative": "Nếu việc đứng cần mức hỗ trợ khác, chọn ngồi xem và trao đổi với người có chuyên môn về lựa chọn phù hợp với bạn.",
+        "image": "assets/standing-step-03.png",
+        "alt": "Người đứng cạnh một chiếc ghế gỗ, một tay đặt lên lưng ghế và hai bàn chân đặt trên thảm. Thân người ở vị trí tự nhiên; ghế gần người và có tường ở phía sau.",
+        "caption": "Đặt ghế vững sát tường trước khi dùng; bạn được giữ tay ở đó suốt bài."
+      },
+      {
+        "title": "Đứng nhẹ và thở tự nhiên",
+        "body": "Để đầu ở vị trí thoải mái, mắt nhìn phía trước; thả bớt sức ở vai và bàn tay. Tiếp tục thở theo nhịp tự nhiên, không nín thở hoặc cố hít sâu. Nếu đang dùng ghế, tiếp tục giữ tay ở đó.",
+        "detail": "Giữ tư thế vừa đủ để đứng thoải mái, không cố ưỡn ngực, rút bụng hay đẩy gối ra sau. Bạn không cần giữ đủ số nhịp thở hoặc chờ một cảm giác thư giãn xuất hiện.",
+        "alternative": "Có thể kết thúc ngay khi bạn muốn. Nếu thấy đau, chóng mặt hoặc không vững, dừng lại; dùng điểm tựa và ngồi nghỉ khi có thể làm an toàn.",
+        "image": "assets/standing-step-04.png",
+        "alt": "Hình cận từ đầu đến đùi của cùng người ở góc nghiêng ba phần tư, mắt mở, vai thả và hai tay buông bên người. Bàn chân và ghế không xuất hiện trong khung.",
+        "caption": "Hình là lựa chọn không dùng ghế. Nếu đang dùng điểm tựa, hãy tiếp tục giữ; hơi thở theo nhịp của bạn."
+      },
+      {
+        "title": "Kết thúc theo ý bạn",
+        "body": "Khi muốn kết thúc, thả việc giữ dáng và trở về cách đứng tự nhiên của bạn. Nếu đang dùng ghế, cứ giữ tay trên ghế cho đến khi sẵn sàng chuyển sang việc khác.",
+        "detail": "Không cần bước chân vào một vị trí đặc biệt hay đứng thêm để đủ thời gian. Dừng một chút trước khi di chuyển; nếu muốn ngồi nghỉ, chỉ chuyển khi bạn thấy vững và có cách ngồi an toàn quen thuộc.",
+        "alternative": "Bạn có thể xem lại một bước, đọc bài khác hoặc kết thúc ở đây. Việc chuyển hết năm khung không tự ghi nhận một buổi tập.",
+        "image": "assets/standing-step-05.png",
+        "alt": "Toàn thân cùng người ở góc nghiêng, đứng tự nhiên với hai bàn chân trên thảm, hai tay buông bên người. Không có ghế trong hình; người chưa bước đi hoặc ngồi xuống.",
+        "caption": "Hình là lựa chọn không dùng ghế. Nếu đang dùng điểm tựa, hãy tiếp tục giữ và chọn điều tiếp theo khi sẵn sàng."
+      }
+    ],
+    "sources": [
+      {
+        "title": "ACE — Yes, You CAN do Yoga",
+        "url": "https://www.acefitness.org/resources/everyone/blog/7377/yes-you-can-do-yoga/",
+        "use": "Cơ sở cho khoảng đứng có thể thay đổi và quyền sử dụng dụng cụ hỗ trợ; không lấy các tuyên bố tác dụng sức khỏe."
+      },
+      {
+        "title": "California Department of Public Health — Shape of Yoga, Mountain Pose",
+        "url": "https://publichealth.calaverasgov.us/Portals/PublicHealth/Documents/CDPH_Shape_of_Yoga_Booklet.pdf",
+        "use": "Đối chiếu nền đứng và bàn chân cách nhau; tham khảo nhắc không ép tư thế, không nín thở, dừng khi đau. Không sao chép bộ đếm nhịp hay chương trình tập."
+      },
+      {
+        "title": "NHS — Strength exercises",
+        "url": "https://www.nhs.uk/live-well/exercise/strength-exercises/",
+        "use": "Tiêu chí chọn ghế chắc, ổn định, không bánh xe và không trượt. Không xem chương trình sức mạnh là hướng dẫn Tadasana."
+      },
+      {
+        "title": "NHS — Chair-based pilates video workout",
+        "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+        "use": "Căn cứ nhắc dừng khi đau hoặc thấy không khỏe và tìm hỗ trợ nếu triệu chứng không hết; không lấy liều tập hay lời hứa tác dụng."
+      }
+    ]
+  }
+}

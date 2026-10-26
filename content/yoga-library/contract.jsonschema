@@ -1,0 +1,735 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://motchutyoga.local/contracts/yoga-draft-1",
+  "title": "MCY local yoga content draft — no learner publication",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "mcy-yoga-draft-1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^mcy\\.[a-z0-9.-]+$"
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^r[1-9][0-9]*$"
+    },
+    "legacyAliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "locale": {
+      "const": "vi-VN"
+    },
+    "kind": {
+      "enum": [
+        "pose_education",
+        "movement_education",
+        "transition_education",
+        "sequence_education",
+        "source_record"
+      ]
+    },
+    "seriesId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "productionStatus": {
+      "enum": [
+        "editorial_draft",
+        "media_draft",
+        "metadata_only",
+        "brief_blocked"
+      ]
+    },
+    "learnerVisible": {
+      "const": false
+    },
+    "recommendationEligible": {
+      "const": false
+    },
+    "publishStatus": {
+      "const": "unpublished"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "shortTitle": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intro": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "learningObjectives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "audience": {
+      "type": "string"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "preparation": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "stopGuidance": {
+      "type": "string"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "readTimeSecondsEstimate": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "practiceDurationSeconds": {
+      "const": null
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      }
+    },
+    "sourceObservations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/step"
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/media"
+      }
+    },
+    "assetBriefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/assetBrief"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expert": {
+          "const": "pending"
+        },
+        "rights": {
+          "const": "pending"
+        },
+        "editorial": {
+          "const": "pending"
+        },
+        "accessibility": {
+          "const": "pending"
+        },
+        "approvalRecords": {
+          "type": "array",
+          "maxItems": 0
+        }
+      },
+      "required": [
+        "expert",
+        "rights",
+        "editorial",
+        "accessibility",
+        "approvalRecords"
+      ]
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "changeLog": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "readTimeNote": {
+      "type": "string"
+    },
+    "ending": {
+      "type": "string"
+    },
+    "reviewQuestion": {
+      "type": "string"
+    },
+    "reviewOptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "preferredMediaVariant": {
+      "enum": [
+        "photo_ai",
+        "illustration"
+      ]
+    },
+    "legacyPayload": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "legacyAliases",
+    "locale",
+    "kind",
+    "seriesId",
+    "productionStatus",
+    "learnerVisible",
+    "recommendationEligible",
+    "publishStatus",
+    "title",
+    "shortTitle",
+    "intro",
+    "scope",
+    "learningObjectives",
+    "audience",
+    "prerequisites",
+    "preparation",
+    "stopGuidance",
+    "alternatives",
+    "readTimeSecondsEstimate",
+    "practiceDurationSeconds",
+    "sourceRefs",
+    "sourceObservations",
+    "steps",
+    "media",
+    "assetBriefs",
+    "sources",
+    "review",
+    "blockers",
+    "changeLog",
+    "provenance"
+  ],
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "courseId": {
+          "enum": [
+            "gentle",
+            "poses",
+            "sequences"
+          ]
+        },
+        "lessonId": {
+          "type": "string",
+          "pattern": "^(?:0[1-9]|[12][0-9]|3[0-8])$"
+        },
+        "youtubeId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{11}$"
+        },
+        "relation": {
+          "enum": [
+            "topic_reference",
+            "unverified"
+          ]
+        },
+        "contentObserved": {
+          "const": false
+        }
+      },
+      "required": [
+        "courseId",
+        "lessonId",
+        "youtubeId",
+        "relation",
+        "contentObserved"
+      ]
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fileName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "timestampsSeconds": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "visualOnly": {
+          "const": true
+        },
+        "audioObserved": {
+          "const": false
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRef": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "fileName",
+        "sourceSha256",
+        "timestampsSeconds",
+        "visualOnly",
+        "audioObserved",
+        "notes",
+        "evidenceRef"
+      ]
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "entry": {
+          "type": "string"
+        },
+        "exit": {
+          "type": "string"
+        },
+        "alternative": {
+          "type": "string"
+        },
+        "stopCue": {
+          "type": "string"
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "mediaIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "order",
+        "title",
+        "body",
+        "detail",
+        "entry",
+        "exit",
+        "alternative",
+        "stopCue",
+        "sourceIds",
+        "evidenceRefs",
+        "mediaIds"
+      ]
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stepId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variant": {
+          "enum": [
+            "photo_ai",
+            "illustration"
+          ]
+        },
+        "status": {
+          "enum": [
+            "draft_present",
+            "not_produced",
+            "identity_blocked"
+          ]
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mime": {
+          "enum": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            null
+          ]
+        },
+        "width": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "height": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "alt": {
+          "type": "string"
+        },
+        "caption": {
+          "type": "string"
+        },
+        "synthetic": {
+          "const": true
+        },
+        "disclosure": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rightsStatus": {
+          "const": "pending"
+        },
+        "expertStatus": {
+          "const": "pending"
+        },
+        "provenance": {
+          "$ref": "#/$defs/mediaProvenance"
+        }
+      },
+      "required": [
+        "id",
+        "stepId",
+        "variant",
+        "status",
+        "path",
+        "sha256",
+        "mime",
+        "width",
+        "height",
+        "alt",
+        "caption",
+        "synthetic",
+        "disclosure",
+        "rightsStatus",
+        "expertStatus",
+        "provenance"
+      ]
+    },
+    "mediaProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tool": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourcePath": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sourceSha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "promptRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "tool",
+        "createdAt",
+        "sourcePath",
+        "sourceSha256",
+        "promptRef",
+        "notes"
+      ]
+    },
+    "assetBrief": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stepId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mediaId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "draft_present",
+            "not_produced",
+            "identity_blocked"
+          ]
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "brief": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "stepId",
+        "mediaId",
+        "status",
+        "path",
+        "sha256",
+        "brief",
+        "sourceIds",
+        "evidenceRefs"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "use": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accessedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "use",
+        "accessedAt"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authoring": {
+          "enum": [
+            "ai_assisted_original",
+            "imported_ai_assisted_draft"
+          ]
+        },
+        "sourceFiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          }
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "createdAt",
+        "authoring",
+        "sourceFiles",
+        "notes"
+      ]
+    }
+  }
+}

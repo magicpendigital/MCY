@@ -1,0 +1,398 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.pose.cow-face",
+  "revision": "r1",
+  "legacyAliases": [
+    "poses:29"
+  ],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": null,
+  "productionStatus": "media_draft",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Đầu bò · đọc riêng phần tay và phần chân",
+  "shortTitle": "Đầu bò",
+  "intro": "Tên Đầu bò có thể chỉ cách phối hợp cả tay và chân, hoặc phần tay trong một nền ngồi khác. Bài đọc giúp nhìn hai phần riêng trước khi quyết định cần học gì.",
+  "scope": "Bản đọc chọn biến thể quan sát phần tay trong tư thế ngồi thoải mái; không hướng dẫn ép/chồng gối hoặc tự học toàn bộ Gomukhasana. Không xác nhận clip29 chỉ tay hay cả chân; variant hình cuối phải được người có chuyên môn chốt.",
+  "learningObjectives": [
+    "Phân biệt phần tay và phần chân của họ Đầu bò.",
+    "Nhận biết hai hướng tay mà không đặt việc nắm tay làm mục tiêu.",
+    "Biết cần xem đường tháo tay và trở về trước khi thử."
+  ],
+  "audience": "Người lớn đọc để nhận biết. Nếu vị trí tay hoặc ngồi gây khó chịu, chỉ quan sát; đây không phải bài tự điều chỉnh vấn đề ở vai hoặc gối.",
+  "prerequisites": [
+    "Phiên bản thực hành và phần chân chưa được chọn; hiện chỉ là bản đọc quan sát."
+  ],
+  "preparation": [
+    "Chọn cách ngồi quen thuộc để đọc; không bắt chéo chân theo ảnh.",
+    "Trước khi có phần thực hành, giáo viên cần chốt nền ngồi, khả năng đưa tay và có dùng đai hay không.",
+    "Đọc cả cách kết thúc trước; không tự nhờ người khác kéo tay hoặc gối vào hình."
+  ],
+  "stopGuidance": "Đau, tê, choáng hoặc mất vững: ngừng thử; nghỉ an toàn. Nếu triệu chứng kéo dài hoặc đáng lo, tìm hỗ trợ y tế.",
+  "alternatives": [
+    "Chỉ xem nội dung và phóng to hình sau khi có ảnh được duyệt; không cần thử tư thế.",
+    "Trao đổi với người có chuyên môn trước khi chọn phiên bản hoặc cách thực hành."
+  ],
+  "readTimeSecondsEstimate": 240,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [
+    {
+      "courseId": "poses",
+      "lessonId": "29",
+      "youtubeId": "wnenFwBE5oY",
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceObservations": [],
+  "steps": [
+    {
+      "id": "step-1",
+      "order": 1,
+      "title": "Tách hai phần của tên gọi",
+      "body": "Quan sát phần chân và phần tay như hai thành phần khác nhau. Bản đọc này chọn nhìn phần tay trên một nền ngồi thoải mái, chưa dùng hình chân chồng.",
+      "detail": "Bạn có thể học cách nhận ra phần tay mà chưa thực hiện phần chân. Hai phần không cần được thử cùng lúc để việc tìm hiểu có ý nghĩa.",
+      "entry": "Bắt đầu phần đọc; tư thế và đường chuyển chưa được người xem thực hiện.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "cow-face-photo-1"
+      ]
+    },
+    {
+      "id": "step-2",
+      "order": 2,
+      "title": "Nhìn hướng tay đi từ trên",
+      "body": "Một cánh tay trong hình tham khảo đi lên rồi gập khuỷu, bàn tay ở phía sau vùng vai. Quan sát cánh tay và đầu riêng để thấy có đang dùng đầu làm điểm tì hay không.",
+      "detail": "Đây là hướng đọc hình, không phải yêu cầu tự đưa tay tới một độ cao. Một ảnh không thể nói vị trí ấy phù hợp với vai của người xem.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "cow-face-photo-2"
+      ]
+    },
+    {
+      "id": "step-3",
+      "order": 3,
+      "title": "Nhìn hướng tay còn lại",
+      "body": "Tay còn lại của họ tư thế có thể đi từ dưới về phía sau lưng. Người đọc cần thấy vai và khuỷu, thay vì chỉ nhìn hai đầu ngón tay có gặp nhau không.",
+      "detail": "Tay ở sau lưng khó quan sát bằng cách xoay cổ hoặc nhìn gương liên tục. Bạn có thể nhìn hình trước và hỏi giáo viên về hướng tay thay vì tự với sâu hơn.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "cow-face-photo-3"
+      ]
+    },
+    {
+      "id": "step-4",
+      "order": 4,
+      "title": "Bỏ mục tiêu phải nắm tay",
+      "body": "Hai bàn tay không cần chạm nhau để bài đọc có ý nghĩa. Khoảng cách giữa chúng là thông tin để trao đổi với giáo viên, không là điểm số linh hoạt.",
+      "detail": "Dùng đai là một phiên bản cần hướng dẫn riêng; chưa có đai trong bộ khung dự kiến này. Không dùng tay còn lại hoặc người hỗ trợ để kéo tới đích.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Chuyển sang khung đọc kế tiếp; không suy đường vào/ra từ một hình.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "cow-face-photo-4"
+      ]
+    },
+    {
+      "id": "step-5",
+      "order": 5,
+      "title": "Xem cách tháo trước khi đổi bên",
+      "body": "Khung cuối đưa sự chú ý về việc thả hai tay và trở lại cách ngồi nghỉ. Đổi bên là lựa chọn cần hướng dẫn, không là thao tác lật ảnh để làm theo ngay.",
+      "detail": "Bạn có thể dừng ở việc nhận biết phần tay. Nếu muốn tìm hiểu cả chân, hãy xem phần đó như một nội dung riêng, có lựa chọn nền ngồi và cách tháo riêng.",
+      "entry": "Đã đọc khung trước; xem tiếp khi đang nghỉ.",
+      "exit": "Kết thúc phần đọc; không tự đánh dấu đã thực hành.",
+      "alternative": "Có thể chỉ đọc, xem lại hoặc dừng ở đây.",
+      "stopCue": "Dừng phần đọc hoặc phần thử bất cứ lúc nào; dấu hiệu dừng chung ở đầu bài vẫn áp dụng.",
+      "sourceIds": [
+        "pose-source",
+        "safety",
+        "stop-source"
+      ],
+      "evidenceRefs": [],
+      "mediaIds": [
+        "cow-face-photo-5"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "cow-face-photo-1",
+      "stepId": "step-1",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-1.png",
+      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhân vật hư cấu ngồi khoanh chân đơn giản, hai tay nghỉ trên đùi; hai gối mở sang bên, không chồng gối và không đặt chân lên đùi đối diện.",
+      "caption": "Ảnh AI nháp — Nền ngồi để quan sát phần tay. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T08:37:52.375Z",
+        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-1.png",
+        "sourceSha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "cow-face-photo-2",
+      "stepId": "step-2",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-2.png",
+      "sha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhìn sau chếch bên, tay phải gập từ trên với bàn tay ở lưng trên; tay trái nghỉ trên đùi, đầu quay nhẹ sang bên.",
+      "caption": "Ảnh AI nháp — Một hướng tay từ trên. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T09:30:29.232Z",
+        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-2.png",
+        "sourceSha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "cow-face-photo-3",
+      "stepId": "step-3",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-3.png",
+      "sha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhìn sau từ góc khác, tay trái gập sau lưng dưới, tay phải nghỉ trên đùi; hai vai và khuỷu còn trong khung.",
+      "caption": "Ảnh AI nháp — Quan sát riêng hướng tay từ dưới. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T09:34:32.297Z",
+        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-3.png",
+        "sourceSha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "cow-face-photo-4",
+      "stepId": "step-4",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-4.png",
+      "sha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Nhìn từ phía sau, tay phải đi từ trên và tay trái đi từ dưới; hai bàn tay ở sau lưng cách nhau rõ, không nắm hoặc dùng đai.",
+      "caption": "Ảnh AI nháp — Hai bàn tay cách nhau. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T09:32:29.946Z",
+        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-4.png",
+        "sourceSha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    },
+    {
+      "id": "cow-face-photo-5",
+      "stepId": "step-5",
+      "variant": "photo_ai",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-5.png",
+      "sha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+      "mime": "image/png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Cùng nhân vật ở nền ngồi khoanh chân đơn giản, hai tay lại nghỉ trên đùi, nhìn từ góc trước chếch bên.",
+      "caption": "Ảnh AI nháp — Khung ngồi nghỉ sau phần quan sát. Chưa duyệt chuyên môn/quyền.",
+      "synthetic": true,
+      "disclosure": "Ảnh do AI tạo với nhân vật hư cấu; không phải ảnh giáo viên hoặc bằng chứng tư thế đúng. Chưa duyệt chuyên môn và quyền.",
+      "rightsStatus": "pending",
+      "expertStatus": "pending",
+      "provenance": {
+        "tool": "builtin:image_gen.imagegen",
+        "createdAt": "2026-10-18T09:40:08.443Z",
+        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-5.png",
+        "sourceSha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+        "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+      }
+    }
+  ],
+  "assetBriefs": [
+    {
+      "id": "cow-face-brief-1",
+      "stepId": "step-1",
+      "mediaId": "cow-face-photo-1",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-1.png",
+      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng nhân vật ngồi thoải mái, hai tay nghỉ; không chân chồng gối, không tư thế bông sen. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "cow-face-brief-2",
+      "stepId": "step-2",
+      "mediaId": "cow-face-photo-2",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-2.png",
+      "sha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Góc sau ba phần tư, một tay gập từ trên ở khoảng thoải mái, tay kia vẫn nghỉ; không ai kéo khuỷu hoặc đẩy đầu. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "cow-face-brief-3",
+      "stepId": "step-3",
+      "mediaId": "cow-face-photo-3",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-3.png",
+      "sha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Góc sau khác biệt, tay dưới hướng ra sau ở biên độ nhỏ; không nối hai tay, không biến dạng khớp vai; giữ nền ngồi như khung 1. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "cow-face-brief-4",
+      "stepId": "step-4",
+      "mediaId": "cow-face-photo-4",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-4.png",
+      "sha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Hai tay ở hai hướng nhưng cách nhau rõ phía sau lưng; không nắm hoặc kéo, không đai. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    },
+    {
+      "id": "cow-face-brief-5",
+      "stepId": "step-5",
+      "mediaId": "cow-face-photo-5",
+      "status": "draft_present",
+      "path": "media/new-poses/cow-face/cow-face-photo-5.png",
+      "sha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+      "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người trở lại ngồi thoải mái, hai tay nghỉ trên đùi; không tư thế chân khác khung đầu. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
+      "sourceIds": [
+        "pose-source"
+      ],
+      "evidenceRefs": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "pose-source",
+      "title": "YogaEasy — Cow Face Pose",
+      "url": "https://www.yogaeasy.com/artikel/cow-face-pose",
+      "use": "Đối chiếu phần tay đối hướng, lựa chọn tay không chạm/đai và tách phần tay khỏi phần chân. Không dùng hướng dẫn chồng gối hay gập người của nguồn làm chỉ dẫn tự tập.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "safety",
+      "title": "NCCIH — Yoga: Effectiveness and Safety",
+      "url": "https://www.nccih.nih.gov/health/yoga-effectiveness-and-safety",
+      "use": "Căn cứ cần hướng dẫn có chuyên môn; không xác nhận tính phù hợp hay kỹ thuật từng tư thế MCY.",
+      "accessedAt": "2026-10-18"
+    },
+    {
+      "id": "stop-source",
+      "title": "NHS — Exercise video safety information",
+      "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+      "use": "Chỉ dùng nguyên tắc dừng khi đau/không khỏe và tìm hỗ trợ khi triệu chứng kéo dài; không dùng bài Pilates như kỹ thuật tư thế yoga.",
+      "accessedAt": "2026-10-18"
+    }
+  ],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa có chuyên gia yoga thật duyệt copy, đối tượng, entry/exit và toàn bộ phiên bản.",
+    "Chưa xác minh quan hệ fileMOV/YouTubeID, bên hoặc exact variant video; đây không phải transcript.",
+    "Quyền text/media, editorial, accessibility và adapter/CMS/publish chưa được nghiệm thu."
+  ],
+  "changeLog": [
+    "r1 — bản đọc nguyên tác có AI hỗ trợ; nguồn primary được mở ngày18/10/2026; không lấy ảnh hoặc chép hướng dẫn dài.",
+    "18/10/2026 — sinh 5 ảnh AI nháp nguyên tác theo brief; ghi alt theo pixels, chưa duyệt chuyên môn/quyền và chưa xuất bản."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "ai_assisted_original",
+    "sourceFiles": [
+      {
+        "path": "analyse/yoga-content-production-2026-10-18/EDITORIAL-INTAKE.vi.md",
+        "sha256": "92f7644dff3a759c792b80765ce6c59ac1bb9bd35fdce412c84132e53b7c5394"
+      }
+    ],
+    "notes": "Authored educational reading draft, not the instructor transcript or recreation of clip. Source positions are concise paraphrases; frame choices, reading flow and review questions are original editorial proposals. No original video/audio was viewed by this author. Five original photoAI draft frames produced; exact prompts, synthetic anchors and tool output paths recorded in generation ledger. Human expert/rights review remains pending."
+  },
+  "readTimeNote": "Thời gian đọc ước lượng, không phải thời gian giữ tư thế hoặc buổi tập.",
+  "ending": "Bạn đã đến cuối phần đọc. Không cần thử tư thế hoặc báo cảm giác tốt hơn để kết thúc."
+}
