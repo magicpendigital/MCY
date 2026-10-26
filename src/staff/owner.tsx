@@ -1,7 +1,9 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { lazy, Suspense, useEffect, useState, type FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { authRedirectUrl, backendConfigured, getSupabaseClient } from "../backend/supabase";
 import "./owner.css";
+
+const ContentReviewPanel = lazy(() => import("./ContentReviewPanel"));
 
 type ModelOption = {
   id: string;
@@ -74,6 +76,8 @@ export function OwnerWorkspace() {
   const [models, setModels] = useState<ModelOption[] | null>(null);
   const [gatewayKeyConfigured, setGatewayKeyConfigured] = useState(false);
   const [spendControlApproved, setSpendControlApproved] = useState(false);
+  const [contentReviewOpen, setContentReviewOpen] = useState(false);
+  const sessionUserId = session?.user.id ?? null;
   const [enableGateOpen, setEnableGateOpen] = useState(false);
   const [notice, setNotice] = useState("");
   const [error, setError] = useState("");
@@ -227,6 +231,8 @@ export function OwnerWorkspace() {
       {loadingConfig && <section className="owner-state-card"><h2>Đang tải cấu hình Owner…</h2></section>}
       {!loadingConfig && error && !config && <section className="owner-state-card"><span className="owner-kicker">KHÔNG CÓ QUYỀN HOẶC DỊCH VỤ</span><h2>Không thể mở cấu hình.</h2><p>{error}</p><p>Không hiển thị vai trò, cấu hình hay dữ liệu nếu server chưa xác nhận quyền Owner.</p></section>}
       {!loadingConfig && config && <>
+        <nav className="owner-workspace-tabs" aria-label="Các phần quản trị"><button type="button" aria-pressed={!contentReviewOpen} onClick={() => setContentReviewOpen(false)}>Cấu hình AI</button><button type="button" aria-pressed={contentReviewOpen} onClick={() => setContentReviewOpen(true)}>Duyệt nội dung</button></nav>
+        {contentReviewOpen ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={sessionUserId} userId={sessionUserId!} /></Suspense> : <>
         <section className="owner-status-grid" aria-label="Trạng thái AI staging">
           <article className={gatewayKeyConfigured ? "owner-status-card is-ready" : "owner-status-card"}><span className="owner-status-dot"/><div><strong>Khóa AI Gateway</strong><small>{gatewayKeyConfigured ? "Đã cấu hình phía server" : "Chưa cấu hình · không thể gọi model"}</small></div></article>
           <article className={spendControlApproved ? "owner-status-card is-ready" : "owner-status-card"}><span className="owner-status-dot"/><div><strong>Phê duyệt chi phí</strong><small>{spendControlApproved ? "Đã xác nhận phía server" : "Chưa xác nhận · AI và truy vấn model vẫn khóa"}</small></div></article>
@@ -267,6 +273,7 @@ export function OwnerWorkspace() {
         </form>
 
         <section className="owner-panel owner-teacher-gate"><div><span className="owner-kicker">PILOT GIÁO VIÊN</span><h2>Chưa mở quyền mời hoặc tải media.</h2><p>Cần hoàn tất API lời mời, kiểm thử theo vai trò, reviewer độc lập, quyền và thời hạn lưu nội dung, cùng hạn mức lưu trữ. Hiện chưa thể gửi lời mời, tạo hồ sơ giáo viên hoặc lưu bản nháp tại đây.</p></div><span className="owner-locked">ĐANG KHÓA</span></section>
+        </>}
       </>}
     </main>}
     <footer className="owner-footer"><span>Quyền thật ở server · không đọc dữ liệu học viên · không có thao tác publish</span><a href="/">Mở ứng dụng học viên</a></footer>

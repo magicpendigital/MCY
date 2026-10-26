@@ -1,4 +1,5 @@
 import { aiSpendGateOpen } from "./aiGates.ts";
+import { handleContentReview } from "./contentReview.ts";
 
 export type OwnerControlPlaneClients = {
   user: {
@@ -12,7 +13,7 @@ export type OwnerControlPlaneClients = {
   server: {
     rpc(name: string, args: Record<string, unknown>): PromiseLike<{
       data: unknown;
-      error: { message?: string } | null;
+      error: { code?: string; message?: string } | null;
     }>;
   };
 };
@@ -69,6 +70,9 @@ export function createOwnerControlPlaneHandler(dependencies: OwnerControlPlaneDe
         return json(400, { error: "invalid_request" });
       }
       const payload = parsedPayload as Record<string, unknown>;
+
+      const review = await handleContentReview(payload, identity.user.id, server);
+      if (review) return json(review.status, review.body);
 
       if (payload.action === "read_ai") {
         const { data: config, error } = await server.rpc("mcy_ai_get_owner_config", { p_actor_id: identity.user.id });

@@ -69,6 +69,21 @@ export function getSupabaseClient(): Promise<SupabaseClient<Database> | null> {
   return clientPromise;
 }
 
+/** One operation keeps the initiating account's token, never a later shared session. */
+export async function getAccountBoundSupabaseClient(expectedUserId: string): Promise<SupabaseClient<Database>> {
+  const shared = await getSupabaseClient();
+  if (!shared) throw new Error("backend_unavailable");
+  const { data, error } = await shared.auth.getSession();
+  const session = data.session;
+  if (error || session?.user.id !== expectedUserId || !session.user.email_confirmed_at || !session.access_token || !session.expires_at || session.expires_at <= Date.now() / 1000) throw new Error("account_changed");
+  const token = session.access_token;
+  const { createClient } = await import("@supabase/supabase-js");
+  return createClient<Database>(url!, publishableKey!, {
+    accessToken: async () => token,
+    global: { headers: { "X-Client-Info": `mcy-learner/${Capacitor.getPlatform()}` } },
+  });
+}
+
 export function clientChannel(): "web" | "ios" | "android" {
   const platform = Capacitor.getPlatform();
   if (platform === "ios" || platform === "android") return platform;
