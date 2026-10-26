@@ -8,6 +8,8 @@ Tài khoản nhà phát triển cá nhân **Tuyên Trịnh** (app ID Console 497
 
 **Cập nhật 26/10/2026 — đăng nhập bằng mật khẩu:** ứng dụng có thêm lựa chọn “Mật khẩu” ở màn Đăng nhập (và mục đặt mật khẩu trong Cá nhân → Bảo mật tài khoản) để người xét duyệt vào được phần cần đăng nhập; hướng dẫn tạo tài khoản thử và khai báo “Quyền truy cập ứng dụng” ở [REVIEWER_ACCOUNT.vi.md](REVIEWER_ACCOUNT.vi.md). Sau khi phát hành bản mới (versionCode ≥ 2), cập nhật Data safety (thêm “tên người dùng và mật khẩu” vào cách tạo/đăng nhập tài khoản).
 
+**Cập nhật 27/10/2026:** Owner đã nhập tài khoản thử (email + mật khẩu) và hướng dẫn tiếng Anh vào “Quyền truy cập ứng dụng” = Có (Console ghi nhận “Người dùng bị hạn chế sử dụng tất cả hoặc một số chức năng”); Data safety đã thêm cách đăng nhập “Tên người dùng và mật khẩu”; các mục Nội dung ứng dụng đều ở trạng thái “chưa gửi”. Nút “Gửi ứng dụng đi xem xét” vẫn bị khóa (“hoàn tất các bước bắt buộc trên trang tổng quan”) dù trang tổng quan báo sẵn sàng và không hiện bước thiếu; nhiều khả năng Console chỉ mở nút này khi có bản phát hành closed/production đầu tiên. Chưa gửi duyệt.
+
 ## 1. Việc Owner cần làm trước khi nộp
 
 1. ~~Điền thông tin pháp nhân và email liên hệ~~ — **đã điền 23/10/2026**: Magicpen Digital, magicpendigital@gmail.com (hiển thị công khai trên 3 trang). `npm run check:legal` đạt và vẫn chặn `android:release:bundle` nếu sau này còn ký hiệu `[[…]]`.
