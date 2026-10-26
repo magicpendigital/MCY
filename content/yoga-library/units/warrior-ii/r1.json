@@ -155,11 +155,11 @@
       "stepId": "step-1",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-1.png",
-      "sha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-1.webp",
+      "sha256": "ac9a5c98b7607460ce5c1ea5e63a615d6724380de1c33f08d8d30c213eaaa817",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật hư cấu đứng mở với gối phía trái ảnh gập, hai tay dang sang hai phía; cả hai bàn tay và hai bàn chân nằm trong khung.",
       "caption": "Ảnh AI nháp — Nhìn hình đứng mở. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -169,10 +169,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T07:42:35.725Z",
-        "sourcePath": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-1.png",
+        "sourcePath": "archive:media/new-poses/warrior-ii/warrior-ii-photo-1.png",
         "sourceSha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -180,11 +180,11 @@
       "stepId": "step-2",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-2.png",
-      "sha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-2.webp",
+      "sha256": "3922cfc9c27b221f20c81793ffccf882eabba4fe5e98faa94d18f75bc56d6709",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Cùng hình đứng mở, hai tay hạ nghỉ; thấy bàn chân trước hướng sang trái ảnh và bàn chân sau hướng ra phía máy.",
       "caption": "Ảnh AI nháp — Nền chân với tay nghỉ. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -194,10 +194,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T07:39:30.010Z",
-        "sourcePath": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-2.png",
+        "sourcePath": "archive:media/new-poses/warrior-ii/warrior-ii-photo-2.png",
         "sourceSha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -205,11 +205,11 @@
       "stepId": "step-3",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-3.png",
-      "sha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-3.webp",
+      "sha256": "1575e9ef0b83820ae5667c7e78e9f530f54b2595532acee71b8bc56552a7f188",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Khung cận từ eo xuống hai bàn chân trong hình đứng mở; gối trước gập, chân sau duỗi và hai bàn chân cùng trên thảm.",
       "caption": "Ảnh AI nháp — Khung cận gối và bàn chân. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -219,10 +219,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T08:24:38.086Z",
-        "sourcePath": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-3.png",
+        "sourcePath": "archive:media/new-poses/warrior-ii/warrior-ii-photo-3.png",
         "sourceSha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -230,11 +230,11 @@
       "stepId": "step-4",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-4.png",
-      "sha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-4.webp",
+      "sha256": "0c5bf27a17d963911977407669bd836a9444987ed19f2547f885e28128b7362a",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật ở hình đứng mở nhìn từ góc ba phần tư, hai tay dang gần ngang vai và đầu hướng theo tay phía trước.",
       "caption": "Ảnh AI nháp — Hai hướng tay ở góc nhìn khác. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -244,10 +244,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T08:28:56.876Z",
-        "sourcePath": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-4.png",
+        "sourcePath": "archive:media/new-poses/warrior-ii/warrior-ii-photo-4.png",
         "sourceSha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -255,11 +255,11 @@
       "stepId": "step-5",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-5.png",
-      "sha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-5.webp",
+      "sha256": "71ab53923449a386e3768123c9548f70dbde795e6a2e6f111e5b55bddcfe6bf4",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Cùng nhân vật đứng rộng với chân trước giảm gập, hai tay hạ nghỉ bên đùi; hai bàn chân vẫn đặt trên thảm.",
       "caption": "Ảnh AI nháp — Khung cuối giảm gập gối, tay hạ. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -269,10 +269,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T08:32:12.888Z",
-        "sourcePath": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-5.png",
+        "sourcePath": "archive:media/new-poses/warrior-ii/warrior-ii-photo-5.png",
         "sourceSha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     }
   ],
@@ -282,8 +282,8 @@
       "stepId": "step-1",
       "mediaId": "warrior-ii-photo-1",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-1.png",
-      "sha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-1.webp",
+      "sha256": "ac9a5c98b7607460ce5c1ea5e63a615d6724380de1c33f08d8d30c213eaaa817",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân Warrior II chân phải trước nhìn từ cạnh dài thảm; đủ đầu ngón tay và hai bàn chân, không crop tay xa. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -295,8 +295,8 @@
       "stepId": "step-2",
       "mediaId": "warrior-ii-photo-2",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-2.png",
-      "sha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483",
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-2.webp",
+      "sha256": "3922cfc9c27b221f20c81793ffccf882eabba4fe5e98faa94d18f75bc56d6709",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng hình đứng rộng nhưng hai tay nghỉ; góc ba phần tư thấy hai bàn chân và hướng gối, không đặc tả một góc xoay bắt buộc. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -308,8 +308,8 @@
       "stepId": "step-3",
       "mediaId": "warrior-ii-photo-3",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-3.png",
-      "sha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8",
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-3.webp",
+      "sha256": "1575e9ef0b83820ae5667c7e78e9f530f54b2595532acee71b8bc56552a7f188",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Hình nghiêng đủ thấy gối phải và bàn chân phải, chân sau làm nền, không chìm sâu hoặc ép đùi ngang. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -321,8 +321,8 @@
       "stepId": "step-4",
       "mediaId": "warrior-ii-photo-4",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-4.png",
-      "sha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555",
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-4.webp",
+      "sha256": "0c5bf27a17d963911977407669bd836a9444987ed19f2547f885e28128b7362a",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân cùng bên, hai tay ngang vừa phải, cổ tự nhiên nhìn về trước; không ngực ưỡn hoặc gối bị che bởi tay. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -334,8 +334,8 @@
       "stepId": "step-5",
       "mediaId": "warrior-ii-photo-5",
       "status": "draft_present",
-      "path": "media/new-poses/warrior-ii/warrior-ii-photo-5.png",
-      "sha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af",
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-5.webp",
+      "sha256": "71ab53923449a386e3768123c9548f70dbde795e6a2e6f111e5b55bddcfe6bf4",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng vị trí đứng rộng, chân trước đã giảm gập và hai tay hạ; không chụp chuyển tiếp xoay chân dưới tải. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"

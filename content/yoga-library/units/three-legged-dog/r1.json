@@ -160,11 +160,11 @@
       "stepId": "step-1",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-1.png",
-      "sha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-1.webp",
+      "sha256": "b85279037d240facf81829cd6e39beb6d3008ab790d6fb0d837acd84a8f3719a",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật hư cấu ở hình V ngược với hai bàn tay và hai bàn chân trên thảm, nhìn nghiêng.",
       "caption": "Ảnh AI nháp — Hình bốn điểm tựa để so sánh. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -174,10 +174,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T10:20:06.040Z",
-        "sourcePath": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-1.png",
+        "sourcePath": "archive:media/new-poses/three-legged-dog/three-legged-dog-photo-1.png",
         "sourceSha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -185,11 +185,11 @@
       "stepId": "step-2",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-2.png",
-      "sha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-2.webp",
+      "sha256": "3371baaf83072417e0ffb497cc210c87d70bdbe6350d12187a7a2426614c47aa",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật ở hình V ngược, một chân rời thảm và duỗi ra sau trong khi hai tay và bàn chân còn lại làm nền.",
       "caption": "Ảnh AI nháp — Một chân rời nền. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -199,10 +199,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T10:48:30.090Z",
-        "sourcePath": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-2.png",
+        "sourcePath": "archive:media/new-poses/three-legged-dog/three-legged-dog-photo-2.png",
         "sourceSha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -210,11 +210,11 @@
       "stepId": "step-3",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-3.png",
-      "sha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-3.webp",
+      "sha256": "a25ce95c3d4964b5769ca53a72ec828453f9be07f62c73c3503f83b574c6c430",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhìn sau chếch bên, nhân vật giữ hông cao trong hình V ngược với một chân nâng; hai bàn tay và bàn chân trụ vẫn trên thảm, hai gối rời thảm.",
       "caption": "Ảnh AI nháp — Góc sau của bản chân nâng thấp. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -224,10 +224,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T12:13:30.892Z",
-        "sourcePath": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-3.png",
+        "sourcePath": "archive:media/new-poses/three-legged-dog/three-legged-dog-photo-3.png",
         "sourceSha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -235,11 +235,11 @@
       "stepId": "step-4",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-4.png",
-      "sha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-4.webp",
+      "sha256": "98ea5447820c6a458ee63983b5625ea6166ebd64118648d42b20a258b48a5d08",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhìn nghiêng, thân đi từ hai tay lên hông cao, một chân duỗi ra sau, bàn chân trụ ở thảm và gót nhấc.",
       "caption": "Ảnh AI nháp — Đọc tay, vai và thân cùng chân nâng. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -249,10 +249,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T12:11:32.302Z",
-        "sourcePath": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-4.png",
+        "sourcePath": "archive:media/new-poses/three-legged-dog/three-legged-dog-photo-4.png",
         "sourceSha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -260,11 +260,11 @@
       "stepId": "step-5",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-5.png",
-      "sha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-5.webp",
+      "sha256": "daa5a8ed7d05705c9c7f4da0a1342713248674f0bee78ac8f9882864be0aa292",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật trở lại hình V ngược với cả hai bàn chân trên thảm, nhìn từ phía trước chếch bên.",
       "caption": "Ảnh AI nháp — Cả hai chân trở lại nền. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -274,10 +274,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T10:53:21.794Z",
-        "sourcePath": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-5.png",
+        "sourcePath": "archive:media/new-poses/three-legged-dog/three-legged-dog-photo-5.png",
         "sourceSha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     }
   ],
@@ -287,8 +287,8 @@
       "stepId": "step-1",
       "mediaId": "three-legged-dog-photo-1",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-1.png",
-      "sha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-1.webp",
+      "sha256": "b85279037d240facf81829cd6e39beb6d3008ab790d6fb0d837acd84a8f3719a",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân Chó úp mặt hai chân trên sàn làm khung tham chiếu ban đầu, đủ hai tay và chân; không bắt đầu ngay bằng chân nâng. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -301,8 +301,8 @@
       "stepId": "step-2",
       "mediaId": "three-legged-dog-photo-2",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-2.png",
-      "sha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-2.webp",
+      "sha256": "3371baaf83072417e0ffb497cc210c87d70bdbe6350d12187a7a2426614c47aa",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Khung trung gian một chân bắt đầu rời sàn rất thấp; đủ hai lòng bàn tay và chân trụ trong khung, không nhảy. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -315,8 +315,8 @@
       "stepId": "step-3",
       "mediaId": "three-legged-dog-photo-3",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-3.png",
-      "sha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901",
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-3.webp",
+      "sha256": "a25ce95c3d4964b5769ca53a72ec828453f9be07f62c73c3503f83b574c6c430",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân nhìn sau ba phần tư, một chân nâng thấp và tương đối thẳng, hông không xoay mở; không gối gập hoặc lật người. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -329,8 +329,8 @@
       "stepId": "step-4",
       "mediaId": "three-legged-dog-photo-4",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-4.png",
-      "sha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f",
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-4.webp",
+      "sha256": "98ea5447820c6a458ee63983b5625ea6166ebd64118648d42b20a258b48a5d08",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Góc nghiêng vừa phải đọc được tay–vai–thân, chân nâng ở mức nhỏ; không phối cảnh góc rộng làm chân to hoặc cao bất thường. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -343,8 +343,8 @@
       "stepId": "step-5",
       "mediaId": "three-legged-dog-photo-5",
       "status": "draft_present",
-      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-5.png",
-      "sha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be",
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-5.webp",
+      "sha256": "daa5a8ed7d05705c9c7f4da0a1342713248674f0bee78ac8f9882864be0aa292",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Chân nâng đã đặt lại trên thảm, nền bốn điểm của Chó úp mặt; không mô tả đứng lên hoặc chuyển lunge. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",

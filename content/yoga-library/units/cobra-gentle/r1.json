@@ -160,11 +160,11 @@
       "stepId": "step-1",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-1.png",
-      "sha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-1.webp",
+      "sha256": "79c3b96f54c3e44a6e57587ac0cb62a6b7e4dcb01f39026fc0d3794cc1cd6110",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật hư cấu nằm sấp với tay gần vai, khuỷu gập ra sau, đầu thấp hướng xuống; khung chậu và hai chân trên thảm.",
       "caption": "Ảnh AI nháp — Nền chuẩn bị cho bản nâng thấp. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -174,10 +174,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T10:46:44.996Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-1.png",
+        "sourcePath": "archive:media/new-poses/cobra-gentle/cobra-gentle-photo-1.png",
         "sourceSha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -185,11 +185,11 @@
       "stepId": "step-2",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-2.png",
-      "sha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-2.webp",
+      "sha256": "4df2166db48169f1687475421553feb7218082bb9efaaeb3632392fc04f5108e",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Cùng nền nằm sấp ở góc nghiêng thấp; chân, khung chậu và bàn tay gần máy thấy rõ, tay xa lộ một phần.",
       "caption": "Ảnh AI nháp — Góc nhìn nền nằm và tay. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -199,10 +199,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T12:14:18.288Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-2.png",
+        "sourcePath": "archive:media/new-poses/cobra-gentle/cobra-gentle-photo-2.png",
         "sourceSha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -210,11 +210,11 @@
       "stepId": "step-3",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-3.png",
-      "sha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-3.webp",
+      "sha256": "004720d6193d654b3adf2501242a591bac5e42f4bfee7acec91641b81ec2456f",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật nâng ngực thấp, hai khuỷu vẫn gập nhiều và hai bàn tay ở thảm; khung chậu cùng hai chân tiếp xúc thảm.",
       "caption": "Ảnh AI nháp — Một độ nâng ngực nhỏ. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -224,10 +224,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T12:15:43.370Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-3.png",
+        "sourcePath": "archive:media/new-poses/cobra-gentle/cobra-gentle-photo-3.png",
         "sourceSha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -235,11 +235,11 @@
       "stepId": "step-4",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-4.png",
-      "sha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-4.webp",
+      "sha256": "ee7b2890396b79fe723a982ffd7668648fcbee16005553b3a8a89d3d9eb5a4b6",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Khung cận đầu đến vùng hông của bản nâng thấp; đầu hướng xuống theo thân, khuỷu gập, bàn tay gần máy rõ và tay xa lộ một phần.",
       "caption": "Ảnh AI nháp — Khung cận đầu, thân và tay. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -249,10 +249,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T12:17:35.263Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-4.png",
+        "sourcePath": "archive:media/new-poses/cobra-gentle/cobra-gentle-photo-4.png",
         "sourceSha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -260,11 +260,11 @@
       "stepId": "step-5",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-5.png",
-      "sha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-5.webp",
+      "sha256": "2eae9b04052a3e09822fed2dccaad81557c2485666f0af8b03ef46fab62fd08b",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật trở lại nằm sấp với đầu hạ thấp sát thảm, tay gần vai và khuỷu gập, hai chân nằm dài.",
       "caption": "Ảnh AI nháp — Khung nằm sấp sau khi hạ ngực. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -274,10 +274,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T12:31:58.588Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-5.png",
+        "sourcePath": "archive:media/new-poses/cobra-gentle/cobra-gentle-photo-5.png",
         "sourceSha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     }
   ],
@@ -287,8 +287,8 @@
       "stepId": "step-1",
       "mediaId": "cobra-gentle-photo-1",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-1.png",
-      "sha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-1.webp",
+      "sha256": "79c3b96f54c3e44a6e57587ac0cb62a6b7e4dcb01f39026fc0d3794cc1cd6110",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Nằm sấp chuẩn bị, tay gần vai, khuỷu gập; không Sphinx chống cẳng tay hoặc động tác nâng cao ngay. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -301,8 +301,8 @@
       "stepId": "step-2",
       "mediaId": "cobra-gentle-photo-2",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-2.png",
-      "sha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356",
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-2.webp",
+      "sha256": "4df2166db48169f1687475421553feb7218082bb9efaaeb3632392fc04f5108e",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Góc nghiêng thấp nhưng đủ thấy toàn thân, nền chân/khung chậu, hai bàn tay; không cắt mất chân phía xa. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -315,8 +315,8 @@
       "stepId": "step-3",
       "mediaId": "cobra-gentle-photo-3",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-3.png",
-      "sha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0",
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-3.webp",
+      "sha256": "004720d6193d654b3adf2501242a591bac5e42f4bfee7acec91641b81ec2456f",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Ngực nâng thấp hơn bản Cobra 21 dự kiến, khuỷu gập, khung chậu và chân trên thảm; không đưa hai bàn tay khỏi sàn. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -329,8 +329,8 @@
       "stepId": "step-4",
       "mediaId": "cobra-gentle-photo-4",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-4.png",
-      "sha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d",
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-4.webp",
+      "sha256": "ee7b2890396b79fe723a982ffd7668648fcbee16005553b3a8a89d3d9eb5a4b6",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cận từ đầu đến hông, đầu/cổ tiếp nối thân, đủ hai khuỷu gập và vị trí tay; không ngửa đầu hoặc quay nhìn máy. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -343,8 +343,8 @@
       "stepId": "step-5",
       "mediaId": "cobra-gentle-photo-5",
       "status": "draft_present",
-      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-5.png",
-      "sha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c",
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-5.webp",
+      "sha256": "2eae9b04052a3e09822fed2dccaad81557c2485666f0af8b03ef46fab62fd08b",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người nằm sấp nghỉ sau khi hạ ngực; tư thế đầu được chuyên gia chốt, không chuyển ngay sang chống tay. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",

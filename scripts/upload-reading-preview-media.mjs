@@ -1,7 +1,7 @@
 // Uploads the draft reading-unit images to the private `reading-preview` bucket (staging only).
 // Dry run by default: reads units, verifies each file's SHA-256 against its unit JSON and lists what would be uploaded.
 // `--apply` writes to the cloud and needs the Owner's explicit go-ahead plus SUPABASE_URL and a server key in the
-// environment (never read from the repository). Objects are named <sha256>.png and are never overwritten.
+// environment (never read from the repository). Objects are named <sha256>.webp and are never overwritten.
 import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
@@ -24,7 +24,7 @@ for (const dir of await readdir(path.join(root, "units"))) {
       const bytes = await readFile(file);
       const actual = createHash("sha256").update(bytes).digest("hex");
       if (actual !== media.sha256) throw new Error(`hash mismatch for ${media.path}`);
-      if (media.mime !== "image/png") throw new Error(`unexpected mime ${media.mime} for ${media.path}`);
+      if (media.mime !== "image/webp") throw new Error(`unexpected mime ${media.mime} for ${media.path}`);
       const entry = files.get(actual) ?? { file, bytes, units: new Set() };
       entry.units.add(unit.id);
       files.set(actual, entry);
@@ -41,9 +41,9 @@ if (url !== STAGING_URL) throw new Error("SUPABASE_URL must be the mcy-staging p
 if (!key) throw new Error("A server key is required in the environment");
 let uploaded = 0, existing = 0;
 for (const [hash, entry] of files) {
-  const response = await fetch(`${url}/storage/v1/object/${BUCKET}/${hash}.png`, {
+  const response = await fetch(`${url}/storage/v1/object/${BUCKET}/${hash}.webp`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${key}`, apikey: key, "Content-Type": "image/png", "x-upsert": "false", "Cache-Control": "private, max-age=3600" },
+    headers: { Authorization: `Bearer ${key}`, apikey: key, "Content-Type": "image/webp", "x-upsert": "false", "Cache-Control": "private, max-age=3600" },
     body: entry.bytes,
   });
   if (response.ok) uploaded += 1;

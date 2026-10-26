@@ -155,11 +155,11 @@
       "stepId": "step-1",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-1.png",
-      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/high-lunge/high-lunge-photo-1.webp",
+      "sha256": "318c0f81cfc9d496881d887fe225cee2c75bf9c087bca153790a4717e6405e07",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật hư cấu ở hình lunge nhìn nghiêng, chân trước đặt phẳng, chân sau duỗi với gót nhấc; thân thẳng và hai tay nghỉ.",
       "caption": "Ảnh AI nháp — Hình lunge để quan sát nền chân. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -169,10 +169,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T07:11:21.208Z",
-        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-1.png",
+        "sourcePath": "archive:media/new-poses/high-lunge/high-lunge-photo-1.png",
         "sourceSha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -180,11 +180,11 @@
       "stepId": "step-2",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-2.png",
-      "sha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/high-lunge/high-lunge-photo-2.webp",
+      "sha256": "4d13e131874d44533f79c4bfe28f44a52cd2c5f57c8e8ad73ba6e9b00825def0",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Cùng nhân vật đứng tự nhiên trên thảm với hai chân cách nhau vừa phải, hai tay nghỉ bên thân, nhìn từ phía trước.",
       "caption": "Ảnh AI nháp — Khung đứng nghỉ; không mô tả bước vào. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -194,10 +194,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T07:14:16.813Z",
-        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-2.png",
+        "sourcePath": "archive:media/new-poses/high-lunge/high-lunge-photo-2.png",
         "sourceSha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -205,11 +205,11 @@
       "stepId": "step-3",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-3.png",
-      "sha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/high-lunge/high-lunge-photo-3.webp",
+      "sha256": "b0d016e20b3e50201d3cf21b5c70fcce8f63f4004330749a77198b275e2e5b66",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Khung cận từ ngực xuống chân của hình lunge; thấy bàn chân trước, gối gập và bàn chân sau với gót nhấc, một bàn tay gần máy rõ hơn tay xa.",
       "caption": "Ảnh AI nháp — Đọc quan hệ gối, chân và thân. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -219,10 +219,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T08:35:25.363Z",
-        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-3.png",
+        "sourcePath": "archive:media/new-poses/high-lunge/high-lunge-photo-3.png",
         "sourceSha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -230,11 +230,11 @@
       "stepId": "step-4",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-4.png",
-      "sha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/high-lunge/high-lunge-photo-4.webp",
+      "sha256": "a3271f268be50c7587a7422e91671cf634b0ad46e00f112c3f3fa4e99ca0fa74",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật ở cùng hướng lunge, hai tay đưa lên qua đầu, thân gần thẳng đứng; cả hai bàn chân và hai bàn tay nằm trong khung.",
       "caption": "Ảnh AI nháp — Tay nâng là một trạng thái tham khảo. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -244,10 +244,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T07:44:59.237Z",
-        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-4.png",
+        "sourcePath": "archive:media/new-poses/high-lunge/high-lunge-photo-4.png",
         "sourceSha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -255,11 +255,11 @@
       "stepId": "step-5",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-5.png",
-      "sha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/high-lunge/high-lunge-photo-5.webp",
+      "sha256": "9da044b652d33e072129f18b693f3f8b28b4e6efe39eb54b55452c7bdffb4482",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật đứng nghỉ nhìn từ góc nghiêng ba phần tư; hai chân làm nền, hai tay thả bên thân.",
       "caption": "Ảnh AI nháp — Khung đứng nghỉ sau đoạn kết. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -269,10 +269,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T07:17:20.047Z",
-        "sourcePath": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-5.png",
+        "sourcePath": "archive:media/new-poses/high-lunge/high-lunge-photo-5.png",
         "sourceSha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     }
   ],
@@ -282,8 +282,8 @@
       "stepId": "step-1",
       "mediaId": "high-lunge-photo-1",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-1.png",
-      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-1.webp",
+      "sha256": "318c0f81cfc9d496881d887fe225cee2c75bf9c087bca153790a4717e6405e07",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân đứng chân phải trước, chân trái sau, gót sau nhấc; tay nghỉ bên thân; góc đủ thấy cả hai chân. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -295,8 +295,8 @@
       "stepId": "step-2",
       "mediaId": "high-lunge-photo-2",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-2.png",
-      "sha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-2.webp",
+      "sha256": "4d13e131874d44533f79c4bfe28f44a52cd2c5f57c8e8ad73ba6e9b00825def0",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Khung quan sát tư thế đứng tự nhiên ở cạnh vị trí lunge dự kiến, không chụp chân đang lao hoặc bước giữa không trung. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -308,8 +308,8 @@
       "stepId": "step-3",
       "mediaId": "high-lunge-photo-3",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-3.png",
-      "sha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-3.webp",
+      "sha256": "b0d016e20b3e50201d3cf21b5c70fcce8f63f4004330749a77198b275e2e5b66",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Hình lunge phải trước ở góc nghiêng, gối trước trên vùng cổ chân, gót trái nhấc; thân không ngửa; không vẽ đường căn chỉnh hoặc góc 90 độ. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -321,8 +321,8 @@
       "stepId": "step-4",
       "mediaId": "high-lunge-photo-4",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-4.png",
-      "sha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-4.webp",
+      "sha256": "a3271f268be50c7587a7422e91671cf634b0ad46e00f112c3f3fa4e99ca0fa74",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Phiên bản tham khảo hai tay đưa lên vừa phải, thân gần thẳng đứng, góc ba phần tư đủ đọc gối trước và gót sau; không backbend. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -334,8 +334,8 @@
       "stepId": "step-5",
       "mediaId": "high-lunge-photo-5",
       "status": "draft_present",
-      "path": "media/new-poses/high-lunge/high-lunge-photo-5.png",
-      "sha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+      "path": "media/new-poses/high-lunge/high-lunge-photo-5.webp",
+      "sha256": "9da044b652d33e072129f18b693f3f8b28b4e6efe39eb54b55452c7bdffb4482",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người đứng nghỉ tự nhiên, hai chân làm nền; không diễn tả động tác rút chân đang mất thăng bằng. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"

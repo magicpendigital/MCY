@@ -73,7 +73,7 @@ async function readingPreview(payload: Record<string, unknown>, items: Record<st
   const state = admitted(items, candidate);
   if (!state) return { status: 403, body: { error: "content_review_access_required" } };
   const paths = new Map<string, string>();
-  for (const m of candidate.unit.media) if (m.status === "draft_present" && typeof m.sha256 === "string" && sha.test(m.sha256)) paths.set(m.id, `${m.sha256}.png`);
+  for (const m of candidate.unit.media) if (m.status === "draft_present" && typeof m.sha256 === "string" && sha.test(m.sha256)) paths.set(m.id, `${m.sha256}.webp`);
   const mediaUrls: Record<string, string> = {};
   if (paths.size && server.storage) {
     try {

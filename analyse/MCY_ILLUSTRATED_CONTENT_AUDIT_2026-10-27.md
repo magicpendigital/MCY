@@ -47,3 +47,7 @@ Mục tiêu: để Owner (và người được giao) **đọc bài có hình ng
 ## 6. Giới hạn
 
 Ảnh trong thử nghiệm là PNG 1×1 giả; chưa kiểm hiệu năng tải ảnh ~2 MB trên điện thoại. Không có bằng chứng thiết bị thật/TalkBack. Nội dung vẫn là bản nháp AI chưa duyệt chuyên môn/quyền; các kiểm thử kỹ thuật không thay thế việc duyệt đó.
+
+## 7. Cập nhật: ảnh đã tối ưu (27/10)
+
+55 ảnh PNG (99,9 MiB) → WebP 1280 px q80 (**1,9 MiB**, −98%); `room.png` của bài giới thiệu 2,4 MB → 93 kB. PNG gốc lưu ở `D:ProjectsMCY-archive` (có `ARCHIVE-MANIFEST.json`) và bị gỡ khỏi cây repo; vẫn còn trong lịch sử Git. Bucket/upload/ký URL dùng `<sha256>.webp`. Phiên bản (hash) của 14 bài đọc và của bài giới thiệu thay đổi vì nội dung ảnh đổi — chưa có bản ghi duyệt nào nên không mất kết quả duyệt.

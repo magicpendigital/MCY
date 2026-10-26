@@ -160,11 +160,11 @@
       "stepId": "step-1",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-1.png",
-      "sha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/downward-dog/downward-dog-photo-1.webp",
+      "sha256": "ee0814b7e87f8d9aa4473c578114028286b52876c07a1e3e3a4071e4d2672d0c",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật hư cấu mặc áo olive, quần kem tạo hình V ngược nhìn nghiêng trên thảm sage; hai tay đặt xuống, gối hơi gập và hai gót nhấc.",
       "caption": "Ảnh AI nháp — Nhìn nền V ngược. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -174,10 +174,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T06:37:15.903Z",
-        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-1.png",
+        "sourcePath": "archive:media/new-poses/downward-dog/downward-dog-photo-1.png",
         "sourceSha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -185,11 +185,11 @@
       "stepId": "step-2",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-2.png",
-      "sha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/downward-dog/downward-dog-photo-2.webp",
+      "sha256": "0eea9456e3859a6d5d290b9c51a796802c2c43ec9efdac30187f0c88f0a96871",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Cùng nhân vật ở nền hai tay–hai gối, nhìn từ phía trước chếch bên; bàn tay, gối và bàn chân đều nằm trong khung.",
       "caption": "Ảnh AI nháp — Nền tay–gối trước đoạn nâng. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -199,10 +199,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T06:33:42.077Z",
-        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-2.png",
+        "sourcePath": "archive:media/new-poses/downward-dog/downward-dog-photo-2.png",
         "sourceSha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -210,11 +210,11 @@
       "stepId": "step-3",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-3.png",
-      "sha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/downward-dog/downward-dog-photo-3.webp",
+      "sha256": "39ce94d85d63cd6c4f6d8aaa59f609b92f2db59c0c7d178d4aa1e4bb9c7d12e2",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật nâng hông lên trong khi hai bàn tay vẫn trên thảm; hai gối gập rõ và gót chân nhấc, nhìn nghiêng.",
       "caption": "Ảnh AI nháp — Khung trung gian với gối gập. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -224,10 +224,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T06:32:11.596Z",
-        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-3.png",
+        "sourcePath": "archive:media/new-poses/downward-dog/downward-dog-photo-3.png",
         "sourceSha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -235,11 +235,11 @@
       "stepId": "step-4",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-4.png",
-      "sha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/downward-dog/downward-dog-photo-4.webp",
+      "sha256": "6e4f075709c67227862b9817726b069888f61cc1e911dacfbdda968b6ea635ec",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật ở hình V ngược nhìn từ phía trước chếch bên; hai bàn tay, đầu, hai chân và hai bàn chân đều trong khung.",
       "caption": "Ảnh AI nháp — Đọc đầu, thân và các điểm tựa. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -249,10 +249,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T06:35:35.575Z",
-        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-4.png",
+        "sourcePath": "archive:media/new-poses/downward-dog/downward-dog-photo-4.png",
         "sourceSha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -260,11 +260,11 @@
       "stepId": "step-5",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-5.png",
-      "sha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/downward-dog/downward-dog-photo-5.webp",
+      "sha256": "abadb21c01e4f241bb034b7a4f97195f181460e96ca6568fd014f37e65d6504a",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Cùng nhân vật ở nền tay–gối nhìn nghiêng; bàn tay và bàn chân thấy rõ, gối phía xa bị chân gần che một phần.",
       "caption": "Ảnh AI nháp — Nền tay–gối sau đoạn trở về. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -274,10 +274,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T06:39:15.611Z",
-        "sourcePath": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-5.png",
+        "sourcePath": "archive:media/new-poses/downward-dog/downward-dog-photo-5.png",
         "sourceSha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference."
+        "notes": "Copied unchanged from built-in tool output. Original tool path, exact prompt and fictional reference anchors are recorded in the generation ledger. No private instructor frame was used as a generation reference. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     }
   ],
@@ -287,8 +287,8 @@
       "stepId": "step-1",
       "mediaId": "downward-dog-photo-1",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-1.png",
-      "sha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-1.webp",
+      "sha256": "ee0814b7e87f8d9aa4473c578114028286b52876c07a1e3e3a4071e4d2672d0c",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Toàn thân nhìn nghiêng, V ngược với đủ hai tay và hai chân; giữ đầu, ngón tay và bàn chân trong khung. Không crop làm mất nền đỡ. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -301,8 +301,8 @@
       "stepId": "step-2",
       "mediaId": "downward-dog-photo-2",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-2.png",
-      "sha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-2.webp",
+      "sha256": "0eea9456e3859a6d5d290b9c51a796802c2c43ec9efdac30187f0c88f0a96871",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người ở nền bốn điểm tựa, nhìn nghiêng ba phần tư để tách rõ tay và gối; không thêm động tác chuyển từ đứng. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -315,8 +315,8 @@
       "stepId": "step-3",
       "mediaId": "downward-dog-photo-3",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-3.png",
-      "sha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-3.webp",
+      "sha256": "39ce94d85d63cd6c4f6d8aaa59f609b92f2db59c0c7d178d4aa1e4bb9c7d12e2",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Khung trung gian nâng hông thành V ngược, gối còn gập vừa phải, gót nhấc tự nhiên; không mũi tên, không ép chân thẳng. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -329,8 +329,8 @@
       "stepId": "step-4",
       "mediaId": "downward-dog-photo-4",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-4.png",
-      "sha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-4.webp",
+      "sha256": "6e4f075709c67227862b9817726b069888f61cc1e911dacfbdda968b6ea635ec",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. V ngược ở góc ba phần tư, cổ tự nhiên, đủ mặt tay/đầu/gối/gót; không gót bị ấn xuống hoặc đầu chạm sàn. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",
@@ -343,8 +343,8 @@
       "stepId": "step-5",
       "mediaId": "downward-dog-photo-5",
       "status": "draft_present",
-      "path": "media/new-poses/downward-dog/downward-dog-photo-5.png",
-      "sha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+      "path": "media/new-poses/downward-dog/downward-dog-photo-5.webp",
+      "sha256": "abadb21c01e4f241bb034b7a4f97195f181460e96ca6568fd014f37e65d6504a",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người trở về nền tay–gối trung tính, đủ cả bốn chi trong khung; không chuyển sang tư thế em bé hoặc đứng dậy. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source",

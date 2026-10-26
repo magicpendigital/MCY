@@ -29,7 +29,7 @@ Cache bài, bước và ảnh phải gắn đủ `unit.id + revision + locale + 
 
 `sourceRefs.relation` hiện là `topic_reference`/`unverified`, `contentObserved:false`. File MOV cục bộ có một số still quan sát riêng không làm quan hệ này thành exact transcript. Không lấy số phút clip hoặc thời gian đọc để suy liều/thời lượng thực hành.
 
-`media.path` là **relative với canonical package**, ví dụ `media/new-poses/downward-dog/downward-dog-photo-1.png`. `provenance.sourcePath` và `promptRef` là repo-relative để kiểm nội bộ. Không đưa absolute tool paths/provenance nội bộ vào UI người học. Khi chuyển sang media store sau này, adapter phải ánh xạ assetID+SHA sang object key được duyệt; không thay JSON bằng public URL trước review.
+`media.path` là **relative với canonical package**, ví dụ `media/new-poses/downward-dog/downward-dog-photo-1.webp`. `provenance.sourcePath` và `promptRef` là repo-relative để kiểm nội bộ. Không đưa absolute tool paths/provenance nội bộ vào UI người học. Khi chuyển sang media store sau này, adapter phải ánh xạ assetID+SHA sang object key được duyệt; không thay JSON bằng public URL trước review.
 
 ## Reader cần đọc đúng trạng thái
 
@@ -58,6 +58,6 @@ Cache bài, bước và ảnh phải gắn đủ `unit.id + revision + locale + 
 
 Manifest được cung cấp kèm bàn giao cuối; task app phải đối chiếu file/hash/size trước khi dùng. Nếu contract/catalog app thay đổi, lập mapping version mới; giữ các snapshot cũ. Không âm thầm ghi đè nội dung đã duyệt hoặc cập nhật approval từ bản khác. Bản đọc Markdown là generated view, không là nguồn để ingest.
 
-Các `inputs` ở ngoài `content/yoga-library/` là dependencies để audit, **không phải danh sách cần đưa vào app**. Đặc biệt, ảnh chụp frame video trong `analyse/.../private-evidence/` chỉ phục vụ đối chiếu nội bộ; không copy vào bundle/media store của người học. Chỉ media được duyệt và derivative có lineage/hash rõ mới được adapter phát hành tiếp nhận. PNG hiện có là master nháp, chưa tối ưu WebP/AVIF hoặc chốt byte budget cho mobile.
+Các `inputs` ở ngoài `content/yoga-library/` là dependencies để audit, **không phải danh sách cần đưa vào app**. Đặc biệt, ảnh chụp frame video trong `analyse/.../private-evidence/` chỉ phục vụ đối chiếu nội bộ; không copy vào bundle/media store của người học. Chỉ media được duyệt và derivative có lineage/hash rõ mới được adapter phát hành tiếp nhận. Ảnh giao cho app là **WebP** (rộng tối đa 1280 px, chất lượng 80; 55 ảnh ≈ 1,9 MiB). PNG master đã lưu ngoài repo (xem `archive-manifest.json`; hash master nằm ở `provenance.sourceSha256`, đường dẫn dạng `archive:…`); chưa chốt byte budget riêng cho mobile.
 
 Hiện kho chỉ ở filesystem chung, không đồng bộ database/cloud và không có quyền phát hành được cấp. Owner đã yêu cầu phối hợp hai task; thông tin path/schema/manifest được gửi qua task message. Việc message gửi thành công không chứng minh task nhận đã import hoặc nghiệm thu dữ liệu.

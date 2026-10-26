@@ -1,0 +1,447 @@
+{
+  "schemaVersion": "mcy-archive-manifest-1",
+  "createdAt": "2026-10-26T18:10:24.715Z",
+  "note": "Master PNGs archived outside the repository; hashes are of the original bytes. Delivery files are WebP derivatives.",
+  "files": [
+    {
+      "path": "media/new-poses/cobra/cobra-photo-1.png",
+      "sha256": "457007a58c66e278bebc8e8d2a65e95b839a0e064e072fc0dd6c1a89085ad7cf",
+      "bytes": 1771011,
+      "deliveryPath": "media/new-poses/cobra/cobra-photo-1.webp",
+      "deliverySha256": "fce23d6ee451ada5a59b72213f707a482c28903d4225f5c5101503a12ae19e78",
+      "deliveryBytes": 33376
+    },
+    {
+      "path": "media/new-poses/cobra/cobra-photo-2.png",
+      "sha256": "00d6700f8d060947612d9ec06484f8b7bb8b828760c57eab8c2e9d330af4086f",
+      "bytes": 1790538,
+      "deliveryPath": "media/new-poses/cobra/cobra-photo-2.webp",
+      "deliverySha256": "74d43b2c34cc5937ea3e560e68d462ebe53e3b6dd591bbc4af7f8c00d3244dd1",
+      "deliveryBytes": 38594
+    },
+    {
+      "path": "media/new-poses/cobra/cobra-photo-3.png",
+      "sha256": "48e7d22e350f161f61174686700cf929f2126106becabc8566a5578e63e309a3",
+      "bytes": 1771498,
+      "deliveryPath": "media/new-poses/cobra/cobra-photo-3.webp",
+      "deliverySha256": "5314b187fb7ca5e2ce9aca1468580ef702ac43d26e95a7a7ddfdd0acb0e1542e",
+      "deliveryBytes": 34892
+    },
+    {
+      "path": "media/new-poses/cobra/cobra-photo-4.png",
+      "sha256": "8f8289598b2238344aa9ba757f9add69eaf01a80312b94be7ebbddc4f0e1febe",
+      "bytes": 1825658,
+      "deliveryPath": "media/new-poses/cobra/cobra-photo-4.webp",
+      "deliverySha256": "e7cc56db2c4b89117a57e661e92b522e35d2db4eabb077eafc86738a08723309",
+      "deliveryBytes": 40222
+    },
+    {
+      "path": "media/new-poses/cobra/cobra-photo-5.png",
+      "sha256": "b5a9d2ba50800d59f1dd105c10185903176fd3556c10dca0ba31b143f6e68af3",
+      "bytes": 1747997,
+      "deliveryPath": "media/new-poses/cobra/cobra-photo-5.webp",
+      "deliverySha256": "d6657a18f82871a6a40dc20bc68e86d320f63d552f5b66a22bce64dc567aceaf",
+      "deliveryBytes": 33220
+    },
+    {
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-1.png",
+      "sha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
+      "bytes": 1758455,
+      "deliveryPath": "media/new-poses/cobra-gentle/cobra-gentle-photo-1.webp",
+      "deliverySha256": "79c3b96f54c3e44a6e57587ac0cb62a6b7e4dcb01f39026fc0d3794cc1cd6110",
+      "deliveryBytes": 29524
+    },
+    {
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-2.png",
+      "sha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356",
+      "bytes": 1741187,
+      "deliveryPath": "media/new-poses/cobra-gentle/cobra-gentle-photo-2.webp",
+      "deliverySha256": "4df2166db48169f1687475421553feb7218082bb9efaaeb3632392fc04f5108e",
+      "deliveryBytes": 29448
+    },
+    {
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-3.png",
+      "sha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0",
+      "bytes": 1730099,
+      "deliveryPath": "media/new-poses/cobra-gentle/cobra-gentle-photo-3.webp",
+      "deliverySha256": "004720d6193d654b3adf2501242a591bac5e42f4bfee7acec91641b81ec2456f",
+      "deliveryBytes": 30604
+    },
+    {
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-4.png",
+      "sha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d",
+      "bytes": 1970907,
+      "deliveryPath": "media/new-poses/cobra-gentle/cobra-gentle-photo-4.webp",
+      "deliverySha256": "ee7b2890396b79fe723a982ffd7668648fcbee16005553b3a8a89d3d9eb5a4b6",
+      "deliveryBytes": 43496
+    },
+    {
+      "path": "media/new-poses/cobra-gentle/cobra-gentle-photo-5.png",
+      "sha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c",
+      "bytes": 1736317,
+      "deliveryPath": "media/new-poses/cobra-gentle/cobra-gentle-photo-5.webp",
+      "deliverySha256": "2eae9b04052a3e09822fed2dccaad81557c2485666f0af8b03ef46fab62fd08b",
+      "deliveryBytes": 30570
+    },
+    {
+      "path": "media/new-poses/cow-face/cow-face-photo-1.png",
+      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "bytes": 1862363,
+      "deliveryPath": "media/new-poses/cow-face/cow-face-photo-1.webp",
+      "deliverySha256": "3ba33fce90db8818592f8c28ae107b50c3687a98bc72828aec8d293f2c186e76",
+      "deliveryBytes": 37820
+    },
+    {
+      "path": "media/new-poses/cow-face/cow-face-photo-2.png",
+      "sha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+      "bytes": 1817244,
+      "deliveryPath": "media/new-poses/cow-face/cow-face-photo-2.webp",
+      "deliverySha256": "469c728ce09af4ffb352d0edd939df92ad550ef8e0eda5952c88c5002f4a6226",
+      "deliveryBytes": 34482
+    },
+    {
+      "path": "media/new-poses/cow-face/cow-face-photo-3.png",
+      "sha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+      "bytes": 1820114,
+      "deliveryPath": "media/new-poses/cow-face/cow-face-photo-3.webp",
+      "deliverySha256": "21a6bd045af74825b3b38cb79de19a7c476fca98d23c7e5c18109cfdba7b94b7",
+      "deliveryBytes": 33976
+    },
+    {
+      "path": "media/new-poses/cow-face/cow-face-photo-4.png",
+      "sha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+      "bytes": 1867541,
+      "deliveryPath": "media/new-poses/cow-face/cow-face-photo-4.webp",
+      "deliverySha256": "cefadbac623af06070bb571117d64451d258f91b0c5bf4199647e6692b6482bc",
+      "deliveryBytes": 39830
+    },
+    {
+      "path": "media/new-poses/cow-face/cow-face-photo-5.png",
+      "sha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+      "bytes": 1832690,
+      "deliveryPath": "media/new-poses/cow-face/cow-face-photo-5.webp",
+      "deliverySha256": "8d2df826666f26c5696db69112161257a1952ec22a2943055a15835982c067aa",
+      "deliveryBytes": 37038
+    },
+    {
+      "path": "media/new-poses/downward-dog/downward-dog-photo-1.png",
+      "sha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+      "bytes": 1812300,
+      "deliveryPath": "media/new-poses/downward-dog/downward-dog-photo-1.webp",
+      "deliverySha256": "ee0814b7e87f8d9aa4473c578114028286b52876c07a1e3e3a4071e4d2672d0c",
+      "deliveryBytes": 32528
+    },
+    {
+      "path": "media/new-poses/downward-dog/downward-dog-photo-2.png",
+      "sha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+      "bytes": 1848438,
+      "deliveryPath": "media/new-poses/downward-dog/downward-dog-photo-2.webp",
+      "deliverySha256": "0eea9456e3859a6d5d290b9c51a796802c2c43ec9efdac30187f0c88f0a96871",
+      "deliveryBytes": 38992
+    },
+    {
+      "path": "media/new-poses/downward-dog/downward-dog-photo-3.png",
+      "sha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+      "bytes": 1852535,
+      "deliveryPath": "media/new-poses/downward-dog/downward-dog-photo-3.webp",
+      "deliverySha256": "39ce94d85d63cd6c4f6d8aaa59f609b92f2db59c0c7d178d4aa1e4bb9c7d12e2",
+      "deliveryBytes": 33872
+    },
+    {
+      "path": "media/new-poses/downward-dog/downward-dog-photo-4.png",
+      "sha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+      "bytes": 1901426,
+      "deliveryPath": "media/new-poses/downward-dog/downward-dog-photo-4.webp",
+      "deliverySha256": "6e4f075709c67227862b9817726b069888f61cc1e911dacfbdda968b6ea635ec",
+      "deliveryBytes": 41346
+    },
+    {
+      "path": "media/new-poses/downward-dog/downward-dog-photo-5.png",
+      "sha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+      "bytes": 1814976,
+      "deliveryPath": "media/new-poses/downward-dog/downward-dog-photo-5.webp",
+      "deliverySha256": "abadb21c01e4f241bb034b7a4f97195f181460e96ca6568fd014f37e65d6504a",
+      "deliveryBytes": 33482
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-01.png",
+      "sha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2",
+      "bytes": 1863364,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-photo-01.webp",
+      "deliverySha256": "8619d27bad9baa7bc824c4dc91c22e9ad142ba90794d280c4c1c63192739ae8d",
+      "deliveryBytes": 36136
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-step-01.png",
+      "sha256": "a850217766ea3860820e3c7bfe9dc76de194e248a3413492870fe60c4410107c",
+      "bytes": 2159152,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-step-01.webp",
+      "deliverySha256": "0d7329f49ed33ad8a45526f0792071e56c207c4b932d3456de87debe4873128f",
+      "deliveryBytes": 42218
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-02.png",
+      "sha256": "83671dd1ff6f1e1c5fd8d8e106993ec460472880bce042e475a3ddcd83b32099",
+      "bytes": 1909518,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-photo-02.webp",
+      "deliverySha256": "cae412e607bde7eadca38bc9501124a49804f94eb02948b99fa4699a690973bb",
+      "deliveryBytes": 33796
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-step-02.png",
+      "sha256": "2c0c2d7ed5f880da917eda40796e2c8db2149a886a38c3d0ca5cf09fcfdedef7",
+      "bytes": 2343081,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-step-02.webp",
+      "deliverySha256": "115d11274a2c5b0d8af3a62681e7f8bc7fc35624a9f97d1b00c8bce34272a331",
+      "deliveryBytes": 46184
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-03.png",
+      "sha256": "8b3e4cdb2d2db1263024b7d427b18b00ca4afc9fcc314eda139e8c1cbc7ac149",
+      "bytes": 1949476,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-photo-03.webp",
+      "deliverySha256": "6e50392405b561e252e4beb2c154a9ec0e5ff902e141eeac2d84fed1135fef8f",
+      "deliveryBytes": 38484
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-step-03.png",
+      "sha256": "47a4d630ead5b4616084625f1a1952f9f919949e4d155b9fdbcab7aa02545106",
+      "bytes": 2385125,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-step-03.webp",
+      "deliverySha256": "266e1e9a2c87fe190734fbc3ba54faee8cc58ca7cbb3269e08bda7989ead35d4",
+      "deliveryBytes": 50196
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-04.png",
+      "sha256": "e4b1f8a87c7bb8d0247551703d54c532fca5ff7f2915544391560de4465af019",
+      "bytes": 1890923,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-photo-04.webp",
+      "deliverySha256": "8b3f955091dc43a70d7124850506da49a6f36ec0a52e52d3c8da37c7ad43b398",
+      "deliveryBytes": 32210
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-step-04.png",
+      "sha256": "24850fe94bc61e1190f8c0c506c8d45df7d25a6721ec63f53bf62d95efb1e9b3",
+      "bytes": 2159976,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-step-04.webp",
+      "deliverySha256": "edcbbc96a6776b63ed70132d5ba67d8824008c2fad1e6fff318d7108939573ec",
+      "deliveryBytes": 42194
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-photo-05.png",
+      "sha256": "058480e418ddd023bade704de90a349f3fc907a8d7a64b7559a9f13f2705b8b1",
+      "bytes": 1784957,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-photo-05.webp",
+      "deliverySha256": "82cd1a5045a0afbbbaf754c8646b5a0764d7dfda7651ff7235960e1f5861502a",
+      "deliveryBytes": 34976
+    },
+    {
+      "path": "media/foundation-cat-cow/r3/tabletop-step-05.png",
+      "sha256": "2f7d7d7d6d2b709ebd0586bc704e5be64c7e8718014088d1055acf07f1c04130",
+      "bytes": 2372281,
+      "deliveryPath": "media/foundation-cat-cow/r3/tabletop-step-05.webp",
+      "deliverySha256": "d4b18dea283acdd457aa799da249711ce1867d74328469ded26d0f5361191cb2",
+      "deliveryBytes": 49324
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-photo-01.png",
+      "sha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6",
+      "bytes": 1901732,
+      "deliveryPath": "media/foundation-standing/r3/standing-photo-01.webp",
+      "deliverySha256": "cba75bf6351520da1c132acd7ee92d0861332af60fff61e4885c7991b66c3838",
+      "deliveryBytes": 32028
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-step-01.png",
+      "sha256": "e511c3c576ccba27f13fd4e5b1e774ed5f39fba262ef2af479987e1decf6487e",
+      "bytes": 2174660,
+      "deliveryPath": "media/foundation-standing/r3/standing-step-01.webp",
+      "deliverySha256": "4b8c1050632e1eb482f8b72153d029fbeb67e8b6641c9d63022680df98de5fcc",
+      "deliveryBytes": 39232
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-photo-02.png",
+      "sha256": "c3223681f3b2545a63b9315ecc6fbf3a57a8403e90ff5eba9e5c296e8e44ddba",
+      "bytes": 2264740,
+      "deliveryPath": "media/foundation-standing/r3/standing-photo-02.webp",
+      "deliverySha256": "62c32603172ce37c00c6609147541aabdd96fe3fe277dee19d546aa80ce72365",
+      "deliveryBytes": 64620
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-step-02.png",
+      "sha256": "cd26db67c3b01fb265d50d7397da0199754eaafe11602ed9d11ddb412f57ec49",
+      "bytes": 2497100,
+      "deliveryPath": "media/foundation-standing/r3/standing-step-02.webp",
+      "deliverySha256": "4ee28d76acbcc9161d5a48faa67d0c336a47cc6cc4e8121d467fd1f09a1d9706",
+      "deliveryBytes": 61810
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-photo-03.png",
+      "sha256": "9702379d9ef6fecb5d0b03bd251864db5e74bfa7c78c8a08dcfdc5dbb8bb6bd5",
+      "bytes": 1790440,
+      "deliveryPath": "media/foundation-standing/r3/standing-photo-03.webp",
+      "deliverySha256": "fd79b326f26e02c2f54398cebf2a30e52931c001eed5e1be4a225d1cafda34b8",
+      "deliveryBytes": 29994
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-step-03.png",
+      "sha256": "30156e2c4eba3f332c583b873ea7d6fe83623ebe0b7e2e00d53baeb395e7652f",
+      "bytes": 1994833,
+      "deliveryPath": "media/foundation-standing/r3/standing-step-03.webp",
+      "deliverySha256": "3900b1b7b85714232ddac1e1695065ef12e1f8a54b884722095b72535061f278",
+      "deliveryBytes": 37120
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-photo-04.png",
+      "sha256": "1db229e0cebb9255304470f05253ab2aff9dde6e3248763c022982f3041139d2",
+      "bytes": 1724506,
+      "deliveryPath": "media/foundation-standing/r3/standing-photo-04.webp",
+      "deliverySha256": "b257198e0771e8539188e0d24fd7d16c84dd24b6ff7b21d513326aef37731678",
+      "deliveryBytes": 27750
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-step-04.png",
+      "sha256": "340646362a6a66f21f01d8cca9e199532c66ddf9c29925402b0770285d9b1430",
+      "bytes": 2089809,
+      "deliveryPath": "media/foundation-standing/r3/standing-step-04.webp",
+      "deliverySha256": "0282920e3a5499ac1f5b8cdf4321ad7fcbc4a136c6272fe77d154688dc4f35dd",
+      "deliveryBytes": 33958
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-photo-05.png",
+      "sha256": "4a8ed0d7d336610a0a6913140ecdddd77c79c2754f437316977a8fa6ce2c8e54",
+      "bytes": 1735900,
+      "deliveryPath": "media/foundation-standing/r3/standing-photo-05.webp",
+      "deliverySha256": "ed4188767f5f84d7a872f7c7d7292a725c28d95bc43c90d3d68cc63340683da4",
+      "deliveryBytes": 23818
+    },
+    {
+      "path": "media/foundation-standing/r3/standing-step-05.png",
+      "sha256": "ad76e37022c77c082a26d12879ba7b69c851cd488531a63ba9145ce790fb6137",
+      "bytes": 1938396,
+      "deliveryPath": "media/foundation-standing/r3/standing-step-05.webp",
+      "deliverySha256": "6ee53a1e870dbc9835c565f104b4b1fbdf582c5babd1643366657a4b24088785",
+      "deliveryBytes": 24144
+    },
+    {
+      "path": "media/new-poses/high-lunge/high-lunge-photo-1.png",
+      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "bytes": 1802841,
+      "deliveryPath": "media/new-poses/high-lunge/high-lunge-photo-1.webp",
+      "deliverySha256": "318c0f81cfc9d496881d887fe225cee2c75bf9c087bca153790a4717e6405e07",
+      "deliveryBytes": 29048
+    },
+    {
+      "path": "media/new-poses/high-lunge/high-lunge-photo-2.png",
+      "sha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+      "bytes": 1755447,
+      "deliveryPath": "media/new-poses/high-lunge/high-lunge-photo-2.webp",
+      "deliverySha256": "4d13e131874d44533f79c4bfe28f44a52cd2c5f57c8e8ad73ba6e9b00825def0",
+      "deliveryBytes": 25252
+    },
+    {
+      "path": "media/new-poses/high-lunge/high-lunge-photo-3.png",
+      "sha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+      "bytes": 1909823,
+      "deliveryPath": "media/new-poses/high-lunge/high-lunge-photo-3.webp",
+      "deliverySha256": "b0d016e20b3e50201d3cf21b5c70fcce8f63f4004330749a77198b275e2e5b66",
+      "deliveryBytes": 37130
+    },
+    {
+      "path": "media/new-poses/high-lunge/high-lunge-photo-4.png",
+      "sha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+      "bytes": 1789814,
+      "deliveryPath": "media/new-poses/high-lunge/high-lunge-photo-4.webp",
+      "deliverySha256": "a3271f268be50c7587a7422e91671cf634b0ad46e00f112c3f3fa4e99ca0fa74",
+      "deliveryBytes": 28774
+    },
+    {
+      "path": "media/new-poses/high-lunge/high-lunge-photo-5.png",
+      "sha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+      "bytes": 1757696,
+      "deliveryPath": "media/new-poses/high-lunge/high-lunge-photo-5.webp",
+      "deliverySha256": "9da044b652d33e072129f18b693f3f8b28b4e6efe39eb54b55452c7bdffb4482",
+      "deliveryBytes": 25194
+    },
+    {
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-1.png",
+      "sha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
+      "bytes": 1807481,
+      "deliveryPath": "media/new-poses/three-legged-dog/three-legged-dog-photo-1.webp",
+      "deliverySha256": "b85279037d240facf81829cd6e39beb6d3008ab790d6fb0d837acd84a8f3719a",
+      "deliveryBytes": 31578
+    },
+    {
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-2.png",
+      "sha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
+      "bytes": 1808495,
+      "deliveryPath": "media/new-poses/three-legged-dog/three-legged-dog-photo-2.webp",
+      "deliverySha256": "3371baaf83072417e0ffb497cc210c87d70bdbe6350d12187a7a2426614c47aa",
+      "deliveryBytes": 32546
+    },
+    {
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-3.png",
+      "sha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901",
+      "bytes": 1834690,
+      "deliveryPath": "media/new-poses/three-legged-dog/three-legged-dog-photo-3.webp",
+      "deliverySha256": "a25ce95c3d4964b5769ca53a72ec828453f9be07f62c73c3503f83b574c6c430",
+      "deliveryBytes": 38550
+    },
+    {
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-4.png",
+      "sha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f",
+      "bytes": 1817553,
+      "deliveryPath": "media/new-poses/three-legged-dog/three-legged-dog-photo-4.webp",
+      "deliverySha256": "98ea5447820c6a458ee63983b5625ea6166ebd64118648d42b20a258b48a5d08",
+      "deliveryBytes": 33250
+    },
+    {
+      "path": "media/new-poses/three-legged-dog/three-legged-dog-photo-5.png",
+      "sha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be",
+      "bytes": 1839967,
+      "deliveryPath": "media/new-poses/three-legged-dog/three-legged-dog-photo-5.webp",
+      "deliverySha256": "daa5a8ed7d05705c9c7f4da0a1342713248674f0bee78ac8f9882864be0aa292",
+      "deliveryBytes": 38140
+    },
+    {
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-1.png",
+      "sha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
+      "bytes": 1831659,
+      "deliveryPath": "media/new-poses/warrior-ii/warrior-ii-photo-1.webp",
+      "deliverySha256": "ac9a5c98b7607460ce5c1ea5e63a615d6724380de1c33f08d8d30c213eaaa817",
+      "deliveryBytes": 35602
+    },
+    {
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-2.png",
+      "sha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483",
+      "bytes": 1828870,
+      "deliveryPath": "media/new-poses/warrior-ii/warrior-ii-photo-2.webp",
+      "deliverySha256": "3922cfc9c27b221f20c81793ffccf882eabba4fe5e98faa94d18f75bc56d6709",
+      "deliveryBytes": 30818
+    },
+    {
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-3.png",
+      "sha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8",
+      "bytes": 2091941,
+      "deliveryPath": "media/new-poses/warrior-ii/warrior-ii-photo-3.webp",
+      "deliverySha256": "1575e9ef0b83820ae5667c7e78e9f530f54b2595532acee71b8bc56552a7f188",
+      "deliveryBytes": 56430
+    },
+    {
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-4.png",
+      "sha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555",
+      "bytes": 1859874,
+      "deliveryPath": "media/new-poses/warrior-ii/warrior-ii-photo-4.webp",
+      "deliverySha256": "0c5bf27a17d963911977407669bd836a9444987ed19f2547f885e28128b7362a",
+      "deliveryBytes": 38594
+    },
+    {
+      "path": "media/new-poses/warrior-ii/warrior-ii-photo-5.png",
+      "sha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af",
+      "bytes": 1790732,
+      "deliveryPath": "media/new-poses/warrior-ii/warrior-ii-photo-5.webp",
+      "deliverySha256": "71ab53923449a386e3768123c9548f70dbde795e6a2e6f111e5b55bddcfe6bf4",
+      "deliveryBytes": 28632
+    }
+  ]
+}

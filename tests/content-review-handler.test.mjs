@@ -92,12 +92,12 @@ test('reading preview unit returns content and 15-minute signed URLs for uploade
   const r=await h.run({action:'read_reading_preview',candidateId:withImage.id});
   assert.equal(r.status,200);assert.equal(r.body.unit.decision,'approved');assert.equal(r.body.unit.revision,2);assert.equal(r.body.unit.content.unitId,withImage.unit.unitId);
   assert.equal(storageCalls.length,1);assert.equal(storageCalls[0].bucket,'reading-preview');assert.equal(storageCalls[0].seconds,900);
-  assert.ok(storageCalls[0].paths.every(p=>/^[a-f0-9]{64}.png$/.test(p)));
+  assert.ok(storageCalls[0].paths.every(p=>/^[a-f0-9]{64}.webp$/.test(p)));
   const present=withImage.unit.media.filter(m=>m.status==='draft_present');
   assert.deepEqual(Object.keys(r.body.mediaUrls).sort(),present.map(m=>m.id).sort());
   const absent=withImage.unit.media.filter(m=>m.status!=='draft_present');for(const m of absent)assert.equal(m.id in r.body.mediaUrls,false);
   // Objects not uploaded yet are simply omitted, and missing storage never fails the read.
-  const gone=harness({read:{data:{...queue,items:[entry]},error:null},storage:signer([], [imageSha+'.png'])});
+  const gone=harness({read:{data:{...queue,items:[entry]},error:null},storage:signer([], [imageSha+'.webp'])});
   const g=await gone.run({action:'read_reading_preview',candidateId:withImage.id});assert.equal(g.status,200);
   const noStorage=await harness({read:{data:{...queue,items:[entry]},error:null}}).run({action:'read_reading_preview',candidateId:withImage.id});
   assert.equal(noStorage.status,200);assert.deepEqual(noStorage.body.mediaUrls,{});

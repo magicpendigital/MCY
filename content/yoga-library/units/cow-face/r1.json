@@ -155,11 +155,11 @@
       "stepId": "step-1",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-1.png",
-      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cow-face/cow-face-photo-1.webp",
+      "sha256": "3ba33fce90db8818592f8c28ae107b50c3687a98bc72828aec8d293f2c186e76",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhân vật hư cấu ngồi khoanh chân đơn giản, hai tay nghỉ trên đùi; hai gối mở sang bên, không chồng gối và không đặt chân lên đùi đối diện.",
       "caption": "Ảnh AI nháp — Nền ngồi để quan sát phần tay. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -169,10 +169,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T08:37:52.375Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-1.png",
+        "sourcePath": "archive:media/new-poses/cow-face/cow-face-photo-1.png",
         "sourceSha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -180,11 +180,11 @@
       "stepId": "step-2",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-2.png",
-      "sha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cow-face/cow-face-photo-2.webp",
+      "sha256": "469c728ce09af4ffb352d0edd939df92ad550ef8e0eda5952c88c5002f4a6226",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhìn sau chếch bên, tay phải gập từ trên với bàn tay ở lưng trên; tay trái nghỉ trên đùi, đầu quay nhẹ sang bên.",
       "caption": "Ảnh AI nháp — Một hướng tay từ trên. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -194,10 +194,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T09:30:29.232Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-2.png",
+        "sourcePath": "archive:media/new-poses/cow-face/cow-face-photo-2.png",
         "sourceSha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -205,11 +205,11 @@
       "stepId": "step-3",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-3.png",
-      "sha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cow-face/cow-face-photo-3.webp",
+      "sha256": "21a6bd045af74825b3b38cb79de19a7c476fca98d23c7e5c18109cfdba7b94b7",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhìn sau từ góc khác, tay trái gập sau lưng dưới, tay phải nghỉ trên đùi; hai vai và khuỷu còn trong khung.",
       "caption": "Ảnh AI nháp — Quan sát riêng hướng tay từ dưới. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -219,10 +219,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T09:34:32.297Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-3.png",
+        "sourcePath": "archive:media/new-poses/cow-face/cow-face-photo-3.png",
         "sourceSha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -230,11 +230,11 @@
       "stepId": "step-4",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-4.png",
-      "sha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cow-face/cow-face-photo-4.webp",
+      "sha256": "cefadbac623af06070bb571117d64451d258f91b0c5bf4199647e6692b6482bc",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Nhìn từ phía sau, tay phải đi từ trên và tay trái đi từ dưới; hai bàn tay ở sau lưng cách nhau rõ, không nắm hoặc dùng đai.",
       "caption": "Ảnh AI nháp — Hai bàn tay cách nhau. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -244,10 +244,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T09:32:29.946Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-4.png",
+        "sourcePath": "archive:media/new-poses/cow-face/cow-face-photo-4.png",
         "sourceSha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     },
     {
@@ -255,11 +255,11 @@
       "stepId": "step-5",
       "variant": "photo_ai",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-5.png",
-      "sha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
-      "mime": "image/png",
-      "width": 1536,
-      "height": 1024,
+      "path": "media/new-poses/cow-face/cow-face-photo-5.webp",
+      "sha256": "8d2df826666f26c5696db69112161257a1952ec22a2943055a15835982c067aa",
+      "mime": "image/webp",
+      "width": 1280,
+      "height": 853,
       "alt": "Cùng nhân vật ở nền ngồi khoanh chân đơn giản, hai tay lại nghỉ trên đùi, nhìn từ góc trước chếch bên.",
       "caption": "Ảnh AI nháp — Khung ngồi nghỉ sau phần quan sát. Chưa duyệt chuyên môn/quyền.",
       "synthetic": true,
@@ -269,10 +269,10 @@
       "provenance": {
         "tool": "builtin:image_gen.imagegen",
         "createdAt": "2026-10-18T09:40:08.443Z",
-        "sourcePath": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-5.png",
+        "sourcePath": "archive:media/new-poses/cow-face/cow-face-photo-5.png",
         "sourceSha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
         "promptRef": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
-        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used."
+        "notes": "Copied unchanged from built-in tool output; exact prompt, tool path and fictional anchors in generation ledger. No private instructor pixels used. Delivery file is a WebP derivative (sharp, quality 80, max 1280px wide) of the master PNG named in sourceSha256; the master is archived outside the repository (archive-manifest.json)."
       }
     }
   ],
@@ -282,8 +282,8 @@
       "stepId": "step-1",
       "mediaId": "cow-face-photo-1",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-1.png",
-      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "path": "media/new-poses/cow-face/cow-face-photo-1.webp",
+      "sha256": "3ba33fce90db8818592f8c28ae107b50c3687a98bc72828aec8d293f2c186e76",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng nhân vật ngồi thoải mái, hai tay nghỉ; không chân chồng gối, không tư thế bông sen. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -295,8 +295,8 @@
       "stepId": "step-2",
       "mediaId": "cow-face-photo-2",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-2.png",
-      "sha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+      "path": "media/new-poses/cow-face/cow-face-photo-2.webp",
+      "sha256": "469c728ce09af4ffb352d0edd939df92ad550ef8e0eda5952c88c5002f4a6226",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Góc sau ba phần tư, một tay gập từ trên ở khoảng thoải mái, tay kia vẫn nghỉ; không ai kéo khuỷu hoặc đẩy đầu. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -308,8 +308,8 @@
       "stepId": "step-3",
       "mediaId": "cow-face-photo-3",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-3.png",
-      "sha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+      "path": "media/new-poses/cow-face/cow-face-photo-3.webp",
+      "sha256": "21a6bd045af74825b3b38cb79de19a7c476fca98d23c7e5c18109cfdba7b94b7",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Góc sau khác biệt, tay dưới hướng ra sau ở biên độ nhỏ; không nối hai tay, không biến dạng khớp vai; giữ nền ngồi như khung 1. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -321,8 +321,8 @@
       "stepId": "step-4",
       "mediaId": "cow-face-photo-4",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-4.png",
-      "sha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+      "path": "media/new-poses/cow-face/cow-face-photo-4.webp",
+      "sha256": "cefadbac623af06070bb571117d64451d258f91b0c5bf4199647e6692b6482bc",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Hai tay ở hai hướng nhưng cách nhau rõ phía sau lưng; không nắm hoặc kéo, không đai. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"
@@ -334,8 +334,8 @@
       "stepId": "step-5",
       "mediaId": "cow-face-photo-5",
       "status": "draft_present",
-      "path": "media/new-poses/cow-face/cow-face-photo-5.png",
-      "sha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+      "path": "media/new-poses/cow-face/cow-face-photo-5.webp",
+      "sha256": "8d2df826666f26c5696db69112161257a1952ec22a2943055a15835982c067aa",
       "brief": "Ảnh AI dự kiến, một khung riêng 3:2 ngang. Giữ phong cách foundation: nhân vật hư cấu trưởng thành áo olive/quần kem, thảm sage, nền kem, ánh sáng tự nhiên; không nhãn/chữ/mũi tên. Cùng người trở lại ngồi thoải mái, hai tay nghỉ trên đùi; không tư thế chân khác khung đầu. Đã sinh nháp theo lựa chọn biên tập nguyên tác; chưa duyệt chuyên môn/quyền. Giải phẫu, nền đỡ và alt/caption còn chờ reviewer độc lập/chuyên gia.",
       "sourceIds": [
         "pose-source"

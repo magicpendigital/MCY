@@ -13,14 +13,14 @@ const session = {
   expires_at: Math.floor(Date.now() / 1000) + 3600, expires_in: 3600,
   user: { id: A, email: "preview-a@example.test", aud: "authenticated", role: "authenticated", email_confirmed_at: "2026-01-01T00:00:00Z", app_metadata: {}, user_metadata: {}, identities: [], created_at: "2026-01-01T00:00:00Z" },
 };
-const png = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==", "base64");
+const png = Buffer.from("UklGRiQAAABXRUJQVlA4IBgAAABQAQCdASoBAAEAAUAmJaQABYwAAP6igAA=", "base64");
 const blocked = readingUnitCandidates.find(c => c.unit.media.every(m => m.status === "identity_blocked"))!;
 const drawn = readingUnitCandidates.find(c => c.unit.media.every(m => m.status === "draft_present"))!;
 
 const listItem = (c: typeof drawn, decision = "pending") => ({ id: c.id, version: c.version, title: c.title, decision, revision: 0, steps: c.unit.steps.length, images: { present: c.unit.media.filter(m => m.status === "draft_present").length, total: c.unit.media.length } });
 const unitBody = (c: typeof drawn, decision = "pending", withUrls = true) => ({
   unit: { id: c.id, version: c.version, title: c.title, decision, revision: 0, content: c.unit },
-  mediaUrls: withUrls ? Object.fromEntries(c.unit.media.filter(m => m.status === "draft_present").map(m => [m.id, `https://signed.invalid/${m.sha256}.png?token=fictional`])) : {},
+  mediaUrls: withUrls ? Object.fromEntries(c.unit.media.filter(m => m.status === "draft_present").map(m => [m.id, `https://signed.invalid/${m.sha256}.webp?token=fictional`])) : {},
   published: false,
 });
 
@@ -30,7 +30,7 @@ async function backend(page: Page, review: Review) {
   const unexpected: string[] = [];
   await page.addInitScript(({ key, value }) => { if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify(value)); }, { key, value: session });
   await page.route("https://*.supabase.co/**", route => { unexpected.push("forbidden-staging-host"); return route.abort("blockedbyclient"); });
-  await page.route("https://signed.invalid/**", route => route.fulfill({ status: 200, contentType: "image/png", body: png }));
+  await page.route("https://signed.invalid/**", route => route.fulfill({ status: 200, contentType: "image/webp", body: png }));
   await page.route(origin + "/**", async route => {
     const request = route.request(), pathname = new URL(request.url()).pathname;
     if (pathname.endsWith("/profiles")) return route.fulfill({ json: { user_id: A, display_name: "Preview A", locale: "vi-VN", body_display_preference: "neutral" } });
