@@ -25,3 +25,5 @@ For learner data changes, trace the serialized client payload all the way throug
 For learner UI changes, inspect the current E2E coverage in `tests/learner-ux.spec.ts` and the Playwright test match/config before deciding which path is covered. The English locale is still an internal partial preview; its main-loop test now also exercises Journey sample and comparison states, but does not establish full English support: consent, account, support and knowledge screens remain Vietnamese. A simulator/browser pass does not establish physical Android/iOS behavior.
 
 Read [review-matrix.md](references/review-matrix.md) when selecting or auditing gates. For visual/copy/interaction work, also use [mcy-brand-ux](../mcy-brand-ux/SKILL.md). Use specialized provider/SDK skills only when the task actually involves them and they are available; avoid skills for other repositories.
+
+For shipping to web, the test phone and Google Play, follow [mcy-release-sync](../mcy-release-sync/SKILL.md) and `docs/release/CROSS_PLATFORM_RELEASE.md`: one committed HEAD for every platform, strictly increasing `versionCode`, a ledger row per batch.
