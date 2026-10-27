@@ -127,6 +127,9 @@ try {
   }
 
   runNode(path.join(root, "node_modules", "@capacitor", "cli", "bin", "capacitor"), ["sync", "android"]);
+  // Draft review media (intro image and sample audio, ~2.8 MB) is only used by the web Owner/reviewer workspaces,
+  // which cannot be opened in the native app. Keep it out of the APK/AAB; the web build still serves it.
+  rmSync(path.join(root, "android", "app", "src", "main", "assets", "public", "assets", "practice"), { recursive: true, force: true });
   runGradle();
 } finally {
   if (temporaryWebDir) {
