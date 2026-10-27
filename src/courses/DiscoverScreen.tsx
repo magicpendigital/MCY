@@ -3,12 +3,14 @@ import { ArrowRightIcon, ChevronDownIcon, InfoCircledIcon } from "@radix-ui/reac
 import { formatMessage, msg, type AppLocale } from "../i18n";
 import { MobileScroll } from "../mobile";
 import type { FreeCourse, FreeCourseId } from "./freeCourses";
-import { findLessons, formatLessonDuration, LESSON_AREAS, LESSON_LENGTHS, type LessonArea, type LessonLength } from "./lessonFinder";
+import { areasForRegions, findLessons, formatLessonDuration, LESSON_AREAS, LESSON_LENGTHS, type LessonArea, type LessonLength } from "./lessonFinder";
 
 type DiscoverScreenProps = {
   locale: AppLocale;
   onOpenCourse: (courseId: FreeCourseId, firstLessonId: string | null) => void;
   onOpenGuide: () => void;
+  /** Regions from the learner's current check-in; only used to offer a one-tap shortcut into the finder. */
+  checkinRegions?: readonly string[];
 };
 
 function useFreeCourseCatalog() {
@@ -36,14 +38,17 @@ function InfoNote({ children }: { children: React.ReactNode }) {
   return <p className="mcy-info-note"><InfoCircledIcon />{children}</p>;
 }
 
-function LessonFinder({ courses, onOpenCourse }: { courses: FreeCourse[]; onOpenCourse: DiscoverScreenProps["onOpenCourse"] }) {
+function LessonFinder({ courses, onOpenCourse, checkinRegions = [] }: { courses: FreeCourse[]; onOpenCourse: DiscoverScreenProps["onOpenCourse"]; checkinRegions?: readonly string[] }) {
   const [area, setArea] = useState<LessonArea | null>(null);
   const [length, setLength] = useState<LessonLength | null>(null);
   const results = area || length ? findLessons(courses, { area, length }) : [];
   const active = Boolean(area || length);
+  const suggested = areasForRegions(checkinRegions);
+  const suggestedAreas = LESSON_AREAS.filter(item => suggested.includes(item.id));
   return <section className="mcy-finder" aria-labelledby="mcy-finder-heading" data-testid="lesson-finder">
     <h2 id="mcy-finder-heading">Tìm nhanh một bài</h2>
     <p className="mcy-finder-lead">Chọn vùng bạn muốn xem và độ dài. Bài được xếp theo tên bài, không dựa trên check-in.</p>
+    {!area && suggestedAreas.length > 0 && <div className="mcy-finder-suggest" data-testid="finder-checkin-suggestion"><p>Bạn vừa ghi nhận vùng liên quan. Bạn muốn xem bài theo nhãn nào?</p><div className="mcy-finder-chips">{suggestedAreas.map(item => <button key={item.id} type="button" onClick={() => setArea(item.id)}>{`Xem bài: ${item.label}`}</button>)}</div></div>}
     <div className="mcy-finder-chips" role="group" aria-label="Vùng cơ thể hoặc loại bài">{LESSON_AREAS.map(item => <button key={item.id} type="button" aria-pressed={area === item.id} onClick={() => setArea(area === item.id ? null : item.id)}>{item.label}</button>)}</div>
     <div className="mcy-finder-chips" role="group" aria-label="Độ dài bài">{LESSON_LENGTHS.map(item => <button key={item.id} type="button" aria-pressed={length === item.id} onClick={() => setLength(length === item.id ? null : item.id)}>{item.label}</button>)}</div>
     {active && <div className="mcy-finder-results" role="region" aria-live="polite" aria-label="Kết quả tìm nhanh">
@@ -54,7 +59,7 @@ function LessonFinder({ courses, onOpenCourse }: { courses: FreeCourse[]; onOpen
   </section>;
 }
 
-export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide }: DiscoverScreenProps) {
+export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, checkinRegions }: DiscoverScreenProps) {
   const { courses, failed, retry } = useFreeCourseCatalog();
   const catalogMainRef = useRef<HTMLElement | null>(null);
   const [showCatalogScrollCue, setShowCatalogScrollCue] = useState(false);
@@ -85,7 +90,7 @@ export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide }: Di
 
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-page" ref={catalogMainRef}>
     <Eyebrow>KHÁM PHÁ</Eyebrow><h1>Bài học yoga miễn phí</h1><p className="mcy-lead">Chọn một nhóm video từ kênh Một chút yoga. Mỗi bài được phát trong ứng dụng; bạn tự chọn thứ tự và nhịp tập phù hợp với mình.</p>
-    {courses && <LessonFinder courses={courses} onOpenCourse={onOpenCourse} />}
+    {courses && <LessonFinder courses={courses} onOpenCourse={onOpenCourse} checkinRegions={checkinRegions} />}
     <section className="mcy-course-section" aria-labelledby="free-course-heading">
       <div className="mcy-course-heading"><div><Eyebrow>{msg(locale, "discover.freeCourses")}</Eyebrow><h2 id="free-course-heading">Chọn một nhóm để bắt đầu</h2></div><span className="mcy-state-pill">{locale === "en-US" ? `${lessonCount} VIDEOS` : `${lessonCount} BÀI HỌC`}</span></div>
       <p className="mcy-course-lead">{msg(locale, "discover.freeCoursesLead")}</p>

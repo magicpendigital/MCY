@@ -1128,3 +1128,6 @@ button { cursor: pointer; }
 .mcy-journey-empty small { color: var(--mcy-muted); font-size: 13.5px; line-height: 1.5; }
 .mcy-journey-empty .mcy-action { width: 100%; }
 .mcy-field-hint { margin: 10px 0 0; color: var(--mcy-muted); font-size: 14px; line-height: 1.5; }
+.mcy-finder-suggest { margin: 0 0 12px; padding: 10px 12px; border-radius: 14px; background: #f3efe5; }
+.mcy-finder-suggest p { margin: 0 0 8px; color: #5a4636; font-size: 14px; line-height: 1.45; }
+.mcy-finder-suggest .mcy-finder-chips { margin: 0; }

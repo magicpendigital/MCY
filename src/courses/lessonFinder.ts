@@ -24,6 +24,19 @@ const areaRules: readonly [LessonArea, RegExp][] = [
   ["whole-body", /(toàn thân|thư giãn|giãn cơ)/i],
 ];
 
+/** Maps a check-in region to a browse area. Used only to offer the learner a shortcut they can accept or ignore. */
+export function areaForRegion(region: string): LessonArea | null {
+  switch (region) {
+    case "neck": case "shoulder": return "neck-shoulders";
+    case "upper_back": case "lower_back": return "back";
+    case "knee": case "foot": return "hips-legs";
+    default: return null;
+  }
+}
+export function areasForRegions(regions: readonly string[]): LessonArea[] {
+  return [...new Set(regions.flatMap(region => { const area = areaForRegion(region); return area ? [area] : []; }))];
+}
+
 export function lessonSeconds(duration: string): number {
   const parts = duration.split(":").map(Number);
   if (parts.some(part => !Number.isFinite(part))) return Number.NaN;

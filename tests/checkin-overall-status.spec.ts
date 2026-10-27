@@ -15,8 +15,8 @@ test("overall body states Mệt and Khó chịu can be chosen, summarised and le
   await expect(status.getByRole("button", { name: "Mệt", exact: true })).toHaveAttribute("aria-pressed", "false");
   await expect(page.locator(".mcy-status-caption")).toContainText("Đã chọn: Khó chịu");
 
-  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
-  await expect(page.locator(".mcy-checkin-summary")).toContainText("Khó chịu");
+  // Guests record from the first screen; there is no second step.
+  await expect(page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" })).toHaveCount(0);
   await page.getByRole("button", { name: "Chỉ ghi lại cảm nhận hôm nay, không chọn bài" }).click();
 
   await expect(page.getByRole("heading", { name: "Hành trình của bạn" })).toBeVisible();

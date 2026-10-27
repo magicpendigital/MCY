@@ -15,7 +15,7 @@ import { Capacitor } from "@capacitor/core";
 import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, energyLabel, sideLabel, type AppLocale } from "./i18n";
 import {
   ArrowLeftIcon, ArrowRightIcon, ExclamationTriangleIcon, ReloadIcon, BarChartIcon, CheckIcon, ChevronDownIcon,
-  HeartIcon, HomeIcon, InfoCircledIcon, MagicWandIcon,
+  HeartIcon, HomeIcon, InfoCircledIcon, LockClosedIcon, MagicWandIcon,
   PersonIcon, PlayIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
@@ -720,6 +720,7 @@ function DiscoverRoute() {
         flow.push(ROUTES.courseDetail);
       }}
       onOpenGuide={() => flow.push(ROUTES.discoverDetail)}
+      checkinRegions={state.preObservations.map(item => item.region)}
     />
   </Suspense>;
 }
@@ -1021,7 +1022,7 @@ function WelcomeScreen() {
   return <MobileScroll className="mcy-scroll welcome"><main className="mcy-welcome">
     <img className="mcy-welcome-photo" src="/assets/welcome-portrait-1024.webp" srcSet="/assets/welcome-portrait-512.webp 512w, /assets/welcome-portrait-1024.webp 1024w" sizes="(min-width: 700px) 450px, 100vw" alt={locale === "en-US" ? "A woman resting on a yoga mat" : "Người ngồi thư giãn trên thảm yoga"} loading="eager" fetchPriority="high" decoding="async" />
     <div className="mcy-welcome-top"><Brand locale={locale} heading />{import.meta.env.DEV && <LocaleToggle />}<p>{msg(locale, "brand.slogan")}</p>{locale === "en-US" && <small className="mcy-slogan-note">{msg(locale, "brand.sloganNote")}</small>}</div>
-    <div className="mcy-welcome-benefits"><div><span><PersonIcon /></span>{msg(locale, "welcome.benefit1")}</div><div><span><HeartIcon /></span>{msg(locale, "welcome.benefit2")}</div><div><span><MagicWandIcon /></span>{msg(locale, "welcome.benefit3")}</div></div>
+    <div className="mcy-welcome-benefits"><div><span><PlayIcon /></span>{msg(locale, "welcome.benefit1")}</div><div><span><HeartIcon /></span>{msg(locale, "welcome.benefit2")}</div><div><span><LockClosedIcon /></span>{msg(locale, "welcome.benefit3")}</div></div>
     {restoreNote}
     <p className="mcy-welcome-quote">{msg(locale, "welcome.quote")}</p>
   </main></MobileScroll>;
@@ -1367,6 +1368,8 @@ function CheckinScreen() {
   const { state, update, setState } = useDemo();
   const locale = state.locale;
   const [regionGroup, setRegionGroup] = useState<BodyRegionGroup>("trunk");
+  // Energy and time are for account check-ins; a guest goes from the body map straight to the lesson finder.
+  useEffect(() => { if (!state.signedIn && state.checkinStep === 2) update({ checkinStep: 1 }); }, [state.signedIn, state.checkinStep]);
   const [showStepTwoScrollHint, setShowStepTwoScrollHint] = useState(false);
   useLayoutEffect(() => {
     const scroll = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mobile-scroll");
@@ -1445,7 +1448,7 @@ function CheckinScreen() {
   const statusDescription = state.bodyStatus === "none_now" ? msg(locale, "checkin.selectedNone") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.selectedUnsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.selectedSkipped") : state.bodyStatus === "tired" ? msg(locale, "checkin.selectedTired") : state.bodyStatus === "uncomfortable" ? msg(locale, "checkin.selectedUncomfortable") : "";
   const bodySummary = state.bodyStatus === "none_now" ? msg(locale, "checkin.noDiscomfort") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.unsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.skipBody") : state.bodyStatus === "tired" ? msg(locale, "checkin.tired") : state.bodyStatus === "uncomfortable" ? msg(locale, "checkin.uncomfortable") : state.preObservations.map(item => `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""} · ${item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(", ");
   return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
-    <div className="mcy-step-count" aria-live="polite">{formatMessage(locale, "checkin.stepCount", { step: state.checkinStep })}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
+    <div className="mcy-step-count" aria-live="polite">{state.signedIn ? formatMessage(locale, "checkin.stepCount", { step: state.checkinStep }) : null}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
     <h1>{msg(locale, state.checkinStep === 1 ? "checkin.step1.title" : "checkin.step2.title")}</h1>
     <p className="mcy-lead">{msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
     {state.checkinStep === 1 ? <div className="mcy-checkin-content checkin-step-body">
@@ -1460,6 +1463,11 @@ function CheckinScreen() {
         <div className="mcy-region-list" aria-label={locale === "en-US" ? "Choose a body area" : "Chọn vùng cơ thể"}>{BODY_REGION_GROUPS[regionGroup].map(region => { const items = state.preObservations.filter(entry => entry.region === region); const detail = items.length ? items.map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(locale, item.side)} · ` : ""}${item.status === "uncertain" ? msg(locale, "checkin.unsure") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(" / ") : msg(locale, "checkin.tapToRecord"); return <button key={region} className={items.length ? "selected" : ""} onClick={() => openRegion(region)}><span>{regionLabel(locale, region)}</span><small>{detail}</small><ArrowRightIcon /></button>; })}</div>
         <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one of these:" : "Hoặc chọn một trạng thái:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "tired"} onClick={() => chooseStatus("tired")}>{msg(locale, "checkin.tired")}</Choice><Choice selected={state.bodyStatus === "uncomfortable"} onClick={() => chooseStatus("uncomfortable")}>{msg(locale, "checkin.uncomfortable")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
         {statusDescription && <p className="mcy-status-caption">{statusDescription}</p>}
+        {!state.signedIn && (state.preObservations.length > 0 || (state.bodyStatus && state.bodyStatus !== "skipped")) && <>
+          <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : msg(locale, "checkin.standalone")}</button>
+          {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
+        </>}
+        <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
         <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
       </div>
     </div> : <div className="mcy-checkin-step-two">
@@ -1490,15 +1498,24 @@ function CheckinFooter() {
     flow.push(ROUTES.authEmail);
   };
   const advanceStep = () => update({ checkinStep: 2 });
+  // Guests have no energy/time step: skipping goes straight to the lesson finder.
+  const applySkip = () => {
+    if (state.signedIn) { update({ checkinStep: 2, bodyStatus: "skipped", preObservations: [], regions: [] }); return; }
+    update({ checkinStep: 1, bodyStatus: "skipped", preObservations: [], regions: [], checkinBaselineReady: false });
+    flow.push(ROUTES.discover);
+  };
   const skipBody = () => {
     if (state.preObservations.length) { setConfirmSkip(true); return; }
-    update({ checkinStep: 2, bodyStatus: "skipped", preObservations: [], regions: [] });
+    applySkip();
   };
   return <div className="mcy-flow-footer single mcy-checkin-footer">
-    <div className="mcy-checkin-progress" aria-hidden="true">
+    {state.signedIn && <div className="mcy-checkin-progress" aria-hidden="true">
       <span className="mcy-progress-track"><i className={state.checkinStep === 1 ? "active" : "done"} /><i className={state.checkinStep === 2 ? "active" : ""} /></span>
-    </div>
-    {state.checkinStep === 1 ? <>
+    </div>}
+    {!state.signedIn ? <>
+      <Action onClick={browseFreeLessons}>{msg(locale, "checkin.guest.find")}</Action>
+      <div className="mcy-checkin-footer-options"><button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button></div>
+    </> : state.checkinStep === 1 ? <>
       <Action onClick={advanceStep}>{msg(locale, "checkin.step1.next")}</Action>
       <div className="mcy-checkin-footer-options"><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button><button onClick={browseFreeLessons}>{msg(locale, "checkin.directPlan")}</button></div>
     </> : <>
@@ -1506,7 +1523,7 @@ function CheckinFooter() {
       <div className="mcy-checkin-footer-options">{!state.signedIn && <button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button>}<button onClick={() => update({ checkinStep: 1 })}>{msg(locale, "checkin.backToBody")}</button></div>
     </>}
     <BottomSheet open={confirmSkip} onOpenChange={setConfirmSkip} title={locale === "en-US" ? "Skip the body check-in?" : "Bỏ ghi nhận vùng cơ thể?"} description={locale === "en-US" ? "The areas you entered will be cleared from this check-in. You can add them again later." : "Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau."} snap={0.38}>
-      <div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { update({ checkinStep: 2, bodyStatus: "skipped", preObservations: [], regions: [] }); setConfirmSkip(false); }}>{locale === "en-US" ? "Skip and continue" : "Bỏ qua và tiếp tục"} <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setConfirmSkip(false)}>{locale === "en-US" ? "Keep my entries" : "Giữ các vùng đã ghi"}</button></div>
+      <div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { applySkip(); setConfirmSkip(false); }}>{locale === "en-US" ? "Skip and continue" : "Bỏ qua và tiếp tục"} <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setConfirmSkip(false)}>{locale === "en-US" ? "Keep my entries" : "Giữ các vùng đã ghi"}</button></div>
     </BottomSheet>
   </div>;
 }
