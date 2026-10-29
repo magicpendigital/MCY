@@ -171,13 +171,16 @@ button { cursor: pointer; }
 .mcy-course-detail-page > .mcy-eyebrow { font-size: var(--text-caption); }
 .mcy-course-detail-meta { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0; }
 .mcy-course-detail-meta span { padding: 6px 9px; border-radius: 20px; background: #eef2e9; color: #526c56; font-size: var(--text-body); font-weight: 700; }
-.mcy-course-featured { display: grid; grid-template-columns: minmax(0,1fr); gap: 19px; align-items: center; margin: 18px 0 27px; padding: 14px; border: 1px solid var(--mcy-border); border-radius: 18px; background: #fffdf9; }
+.mcy-course-featured { display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; align-items: center; margin: 18px 0 27px; padding: 14px; border: 1px solid var(--mcy-border); border-radius: 18px; background: #fffdf9; }
 .mcy-course-play { position: absolute; inset: 0; display: grid; width: 100%; height: 100%; place-items: center; padding: 0; overflow: hidden; border: 0; background: #25382d; color: #fff; }
 .mcy-course-play::after { position: absolute; inset: 35% 0 0; content: ""; background: linear-gradient(transparent, #18271fd9); }
 .mcy-course-play > .mcy-course-video-poster { position: absolute; inset: 0; z-index: 0; }
 .mcy-course-play > span { position: absolute; z-index: 1; bottom: 18px; left: 50%; display: flex; align-items: center; gap: 8px; width: max-content; max-width: calc(100% - 24px); transform: translateX(-50%); padding: 10px 14px; border: 1px solid #ffffff70; border-radius: 999px; background: #20382be8; color: #fff; font-size: var(--text-body); font-weight: 800; }
 .mcy-course-play > span svg { width: 16px; height: 16px; }
-.mcy-course-featured-copy { min-width: 0; padding: 10px 5px; }
+.mcy-course-featured-copy { min-width: 0; padding: 4px 5px; }
+/* Playback state, help and Previous/Next sit directly under the player so they are never out of sight when the video is on screen. */
+.mcy-course-player-feedback { display: grid; grid-column: 1 / -1; min-width: 0; gap: 8px; }
+.mcy-course-player-feedback .mcy-course-player-status, .mcy-course-player-feedback .mcy-course-player-recovery, .mcy-course-player-feedback .mcy-course-lesson-navigation { margin-top: 0; }
 .mcy-course-featured-copy h2 { margin: 7px 0 8px; color: var(--mcy-ink); font: 26px/1.15 var(--font-editorial); }
 .mcy-course-featured-copy p { color: var(--mcy-muted); font-size: var(--text-body); line-height: var(--leading-body); }
 .mcy-course-featured-copy small { display: block; margin-top: 14px; color: var(--mcy-clay); font-size: var(--text-body); line-height: 1.5; }
@@ -217,14 +220,14 @@ button { cursor: pointer; }
 .mcy-course-video-poster small { color: #cbd8c9; font-size: var(--text-body); }
 .mcy-course-player-status { margin: 10px 0 0; padding: 10px 12px; border: 1px solid var(--mcy-border); border-radius: 12px; background: var(--color-sage-soft); color: var(--mcy-ink); font-size: var(--text-body); line-height: var(--leading-body); }
 .mcy-course-player-status[data-state="timeout"] { border-color: var(--color-terracotta); background: var(--color-terracotta-soft); }
-.mcy-course-caption-note { display: flex; grid-column: 1 / -1; align-items: flex-start; gap: 8px; margin: 0 0 -7px; padding: 10px 12px; border: 1px solid var(--mcy-border); border-radius: 11px; background: var(--color-sage-soft); color: var(--mcy-muted); font-size: var(--text-body); line-height: var(--leading-body); }
+.mcy-course-caption-note { display: flex; grid-column: 1 / -1; align-items: flex-start; gap: 8px; margin: 0; padding: 8px 10px; border: 1px solid var(--mcy-border); border-radius: 11px; background: var(--color-sage-soft); color: var(--mcy-muted); font-size: var(--text-body); line-height: var(--leading-body); }
 .mcy-course-caption-note svg { flex: 0 0 16px; width: 16px; height: 16px; margin-top: 1px; color: var(--mcy-forest); }
 .mcy-course-lesson-copy { display: flex; min-width: 0; flex-direction: column; gap: 4px; padding: 0; }
 .mcy-course-lesson-number { color: var(--mcy-clay); font-size: var(--text-body); font-weight: 700; letter-spacing: .04em; }
 .mcy-course-lesson-copy strong { color: var(--mcy-ink); font: 15px/1.2 var(--font-editorial); }
 .mcy-course-lesson-select { display: grid; width: 18px; height: 18px; place-items: center; color: var(--mcy-clay); }
 .mcy-course-lesson-select svg { width: 16px; height: 16px; }
-.mcy-course-source-note { display: flex; grid-column: 1 / -1; align-items: flex-start; gap: 8px; margin: 0 0 -7px; padding: 10px 12px; border: 1px solid var(--mcy-border); border-radius: 11px; background: var(--color-sage-soft); color: var(--mcy-muted); font-size: var(--text-body); line-height: var(--leading-body); }
+.mcy-course-source-note { display: flex; grid-column: 1 / -1; align-items: flex-start; gap: 8px; margin: 0; padding: 8px 10px; border: 1px solid var(--mcy-border); border-radius: 11px; background: var(--color-sage-soft); color: var(--mcy-muted); font-size: var(--text-body); line-height: var(--leading-body); }
 .mcy-course-source-note svg { flex: 0 0 16px; width: 16px; height: 16px; margin-top: 1px; color: var(--mcy-forest); }
 .mcy-course-source-note a { color: var(--mcy-forest); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
 .mcy-course-source-note a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }

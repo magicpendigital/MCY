@@ -100,3 +100,35 @@ test("a guest can skip the body check-in and land on the finder, or save a note 
   await page.getByRole("button", { name: "Chỉ ghi lại cảm nhận hôm nay, không chọn bài" }).click();
   await expect(page.getByRole("heading", { name: "Hành trình của bạn" })).toBeVisible();
 });
+
+test("choosing another lesson, or Next, brings its poster back into view and playback state stays beside the player", async ({ page }) => {
+  await openDiscover(page);
+  await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).click();
+  const detail = page.locator('[data-testid="flow-current"]').last();
+  await expect(detail.getByRole("heading", { name: "Một chút chuyển động nhẹ" })).toBeVisible();
+  // Previous/Next sit under the player, not under the lesson copy.
+  const placement = await detail.locator(".mcy-course-featured").evaluate(card => ({ video: card.querySelector(".mcy-course-video")!.getBoundingClientRect().bottom, nav: card.querySelector(".mcy-course-lesson-navigation")!.getBoundingClientRect().top, copy: card.querySelector(".mcy-course-featured-copy")!.getBoundingClientRect().top }));
+  expect(placement.nav).toBeGreaterThanOrEqual(placement.video - 1);
+  expect(placement.nav).toBeLessThan(placement.copy);
+
+  // Play: the loading status appears right under the player, in the same view.
+  await detail.locator(".mcy-course-play").click();
+  const status = detail.getByTestId("course-player-status");
+  await expect(status).toBeVisible();
+  const state = await detail.locator(".mcy-course-featured").evaluate(card => ({ video: card.querySelector(".mcy-course-video")!.getBoundingClientRect().bottom, status: card.querySelector("[data-testid=course-player-status]")!.getBoundingClientRect().top }));
+  expect(state.status - state.video).toBeLessThan(40);
+
+  // A lesson far down the list: after choosing it the new poster is on screen again.
+  const row = detail.locator(".mcy-course-lesson").nth(9);
+  await row.scrollIntoViewIfNeeded();
+  await row.click();
+  await expect(detail.locator(".mcy-course-featured-copy h2")).toContainText("10 ·");
+  await expect(detail.locator(".mcy-course-play")).toBeInViewport({ ratio: 0.6 });
+  await expect.poll(async () => (await detail.locator(".mcy-course-video").boundingBox())!.y, { timeout: 5_000 }).toBeGreaterThan(0);
+
+  // Next works from where the player is and keeps the new poster and the buttons in view together.
+  await detail.getByTestId("course-lesson-navigation").getByRole("button", { name: /Video tiếp theo|Next video/ }).click();
+  await expect(detail.locator(".mcy-course-featured-copy h2")).toContainText("11 ·");
+  await expect(detail.locator(".mcy-course-play")).toBeInViewport({ ratio: 0.6 });
+  await expect(detail.getByTestId("course-lesson-navigation")).toBeInViewport();
+});

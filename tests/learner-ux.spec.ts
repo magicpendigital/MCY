@@ -1135,9 +1135,9 @@ test("free course detail stacks media and lesson copy on mobile, then uses colum
     const video = featured.querySelector(".mcy-course-video")!.getBoundingClientRect();
     return { captionTop: caption.top, captionBottom: caption.bottom, sourceTop: source.top, sourceBottom: source.bottom, videoTop: video.top, videoBottom: video.bottom };
   });
-  // The video leads; the caption and source notes follow it, still before the lesson copy.
-  expect(noteAndVideo.videoBottom).toBeLessThanOrEqual(noteAndVideo.captionTop);
-  expect(noteAndVideo.captionBottom).toBeLessThanOrEqual(noteAndVideo.sourceTop);
+  // The video leads; the privacy source note sits directly under the player controls, and the caption note follows the lesson copy.
+  expect(noteAndVideo.videoBottom).toBeLessThanOrEqual(noteAndVideo.sourceTop);
+  expect(noteAndVideo.sourceBottom).toBeLessThanOrEqual(noteAndVideo.captionTop);
 
   const mobileLayout = await page.locator(".mcy-course-featured").evaluate(card => {
     const video = card.querySelector(".mcy-course-video")!.getBoundingClientRect();
