@@ -33,11 +33,29 @@ function StepFigure({ media, url, onFailed, failed }: { media: ReadingUnitMedia;
   </figure>;
 }
 
+function StopBar({ items }: { items: string[] }) {
+  if (!items.length) return null;
+  return <p className="mcy-rp-stopbar" role="note"><strong>Dừng khi: </strong>{items[0]}</p>;
+}
+
+// One step per screen. The stop sign stays on every step as a single bar, so a step only repeats it when it adds
+// something the bar does not say. Review-only detail (entry/exit, blockers) stays out of the step flow.
 function UnitReader({ unit, mediaUrls }: { unit: PreviewUnit; mediaUrls: Record<string, string> }) {
   const [failed, setFailed] = useState<Set<string>>(new Set());
+  const [position, setPosition] = useState<number | null>(null);
+  const heading = useRef<HTMLHeadingElement | null>(null);
+  const root = useRef<HTMLElement | null>(null);
   const content = unit.content;
   const media = new Map(content.media.map(item => [item.id, item]));
-  return <article className="mcy-rp-article" aria-label={unit.title}>
+  const stop = asList(content.stopGuidance);
+  const total = content.steps.length;
+  const go = (next: number | null) => {
+    setPosition(next);
+    root.current?.closest(".mobile-page")?.querySelector<HTMLElement>(".mobile-scroll")?.scrollTo({ top: 0 });
+  };
+  useEffect(() => { if (position !== null) heading.current?.focus({ preventScroll: true }); }, [position]);
+
+  if (position === null) return <article className="mcy-rp-article" aria-label={unit.title} ref={root}>
     <span className="mcy-tag mcy-rp-badge">{badge(unit.decision)}</span>
     <p className="mcy-rp-notice">Chỉ Owner hoặc người được giao duyệt thấy bài này; học viên chưa thấy. Hình do AI tạo từ nhân vật hư cấu, chưa duyệt chuyên môn và quyền.</p>
     {content.intro && <p className="mcy-lead">{content.intro}</p>}
@@ -46,22 +64,38 @@ function UnitReader({ unit, mediaUrls }: { unit: PreviewUnit; mediaUrls: Record<
     <Facts title="Bạn sẽ xem được gì" value={content.learningObjectives} />
     <Facts title="Điều kiện trước khi đọc" value={content.prerequisites} />
     <Facts title="Chuẩn bị" value={content.preparation} />
-    <ol className="mcy-rp-steps">{content.steps.map(step => <li key={step.id} aria-labelledby={`rp-step-${step.id}`}>
-      <span className="mcy-tag">BƯỚC {step.order} / {content.steps.length}</span>
-      <h2 id={`rp-step-${step.id}`}>{step.title}</h2>
+    <Facts title="Điểm còn chặn theo bản biên tập" value={content.blockers} tone="blocker" />
+    {content.readTimeNote && <p className="mcy-rp-small">{content.readTimeNote}</p>}
+    {total > 0 && <button type="button" className="mcy-action mcy-rp-start" onClick={() => go(0)}>Bắt đầu · bước 1/{total}<ArrowRightIcon /></button>}
+  </article>;
+
+  const step = content.steps[position];
+  const onlyHere = step.stopCue && !stop.includes(step.stopCue) ? step.stopCue : null;
+  return <article className="mcy-rp-article" aria-label={unit.title} ref={root}>
+    <span className="mcy-tag mcy-rp-badge">{badge(unit.decision)}</span>
+    <div className="mcy-rp-progress" role="progressbar" aria-label="Tiến độ bài đọc" aria-valuemin={1} aria-valuemax={total} aria-valuenow={position + 1} aria-valuetext={`Bước ${position + 1} trên ${total}`}>
+      {content.steps.map((item, index) => <i key={item.id} className={index < position ? "done" : index === position ? "current" : ""} />)}
+    </div>
+    <ol className="mcy-rp-steps"><li key={step.id} aria-labelledby={`rp-step-${step.id}`}>
+      <span className="mcy-tag">BƯỚC {step.order} / {total}</span>
+      <h2 id={`rp-step-${step.id}`} tabIndex={-1} ref={heading}>{step.title}</h2>
       {(step.mediaIds ?? []).map(id => media.get(id)).filter((item): item is ReadingUnitMedia => Boolean(item)).map(item =>
         <StepFigure key={item.id} media={item} url={mediaUrls[item.id]} failed={failed.has(item.id)} onFailed={() => setFailed(previous => new Set(previous).add(item.id))} />)}
       <p>{step.body}</p>
       {step.detail && <p>{step.detail}</p>}
-      <dl>
-        {step.entry && <><dt>Vào</dt><dd>{step.entry}</dd></>}
-        {step.exit && <><dt>Ra</dt><dd>{step.exit}</dd></>}
-        {step.alternative && <><dt>Lựa chọn nhẹ hơn</dt><dd>{step.alternative}</dd></>}
-        {step.stopCue && <><dt>Dừng khi</dt><dd>{step.stopCue}</dd></>}
-      </dl>
-    </li>)}</ol>
-    <Facts title="Điểm còn chặn theo bản biên tập" value={content.blockers} tone="blocker" />
-    {content.readTimeNote && <p className="mcy-rp-small">{content.readTimeNote}</p>}
+      {step.alternative && <details className="mcy-rp-easier"><summary>Lựa chọn nhẹ hơn</summary><p>{step.alternative}</p></details>}
+      {onlyHere && <p className="mcy-rp-extra-stop"><strong>Riêng bước này, dừng khi: </strong>{onlyHere}</p>}
+      {(step.entry || step.exit) && <details className="mcy-rp-review"><summary>Cho người duyệt: vào và ra khỏi bước</summary>
+        <dl>{step.entry && <><dt>Vào</dt><dd>{step.entry}</dd></>}{step.exit && <><dt>Ra</dt><dd>{step.exit}</dd></>}</dl>
+      </details>}
+    </li></ol>
+    <StopBar items={stop} />
+    <nav className="mcy-rp-stepnav" aria-label="Chuyển bước">
+      <button type="button" onClick={() => go(position === 0 ? null : position - 1)}>{position === 0 ? "Tổng quan" : "Bước trước"}</button>
+      {position < total - 1
+        ? <button type="button" className="primary" onClick={() => go(position + 1)}>Bước {position + 2}<ArrowRightIcon /></button>
+        : <button type="button" className="primary" onClick={() => go(null)}>Xong phần đọc</button>}
+    </nav>
   </article>;
 }
 

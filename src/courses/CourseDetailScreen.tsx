@@ -9,6 +9,7 @@ import {
 import { formatMessage, msg, type AppLocale } from "../i18n";
 import { MobileScroll } from "../mobile";
 import type { FreeCourse, FreeCourseId } from "./freeCourses";
+import { LESSON_AREAS, LESSON_LENGTHS, lessonAreas, lessonLength } from "./lessonFinder";
 
 type CourseDetailScreenProps = {
   locale: AppLocale;
@@ -78,6 +79,11 @@ export default function CourseDetailScreen({
     : !lesson.channelCaptionLanguages.includes("vi")
       ? "course.captionUnavailable"
       : null;
+  // Tags come from the lesson title and length only (same rules as the finder); they help scanning and are not a recommendation.
+  const lessonTags = locale === "en-US" ? [] : [
+    ...LESSON_AREAS.filter(area => lessonAreas(lesson, course.id).includes(area.id)).map(area => area.label),
+    ...LESSON_LENGTHS.filter(length => lessonLength(lesson) === length.id).map(length => length.label),
+  ];
   const isLessonPlayerOpen = playerOpen && playingLessonId === lesson.id;
   const reloadLessonPlayer = () => {
     setPlayerHelpOpen(false);
@@ -142,14 +148,16 @@ export default function CourseDetailScreen({
             {msg(locale, "course.nextLesson")}<ArrowRightIcon aria-hidden="true" />
           </button>
         </nav>
+        {isLessonPlayerOpen && <div className="mcy-course-reflection-prompt"><p>{locale === "en-US" ? "MCY cannot verify video completion. After you have practised, you can record your own reflection." : "MCY không nhận được trạng thái xem hết video. Sau khi tự thực hành, bạn có thể chủ động ghi lại cảm nhận."}</p><Action onClick={() => onRecordReflection(course.title, lesson.title)}>{locale === "en-US" ? "I practised · record reflection" : "Tôi đã thực hành · ghi cảm nhận"}</Action></div>}
+      </div>
+      <div className="mcy-course-featured-copy"><span className="mcy-course-lesson-number">{locale === "en-US" ? `LESSON ${lessonIndex + 1} OF ${course.lessons.length}` : `BÀI ${lessonIndex + 1} / ${course.lessons.length}`} · {lesson.duration}</span><h2>{lesson.title}</h2>
+        {lessonTags.length > 0 && <ul className="mcy-course-lesson-tags" aria-label="Nhãn theo tên bài">{lessonTags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
+        <p>{lesson.description}</p>
       </div>
       <p className="mcy-course-source-note" role="note"><InfoCircledIcon aria-hidden="true" focusable="false" /><span>{msg(locale, "course.sourceNote")} <a href={`https://policies.google.com/privacy?hl=${locale === "en-US" ? "en" : "vi"}`} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">{msg(locale, "course.privacyLink")}</a></span></p>
-      <div className="mcy-course-featured-copy"><span className="mcy-course-lesson-number">{locale === "en-US" ? "LESSON" : "BÀI HỌC"} {lesson.id} · {lesson.duration}</span><h2>{lesson.title}</h2><p>{lesson.description}</p>
-      </div>
       {captionNotice && <p className="mcy-course-caption-note" role="note"><InfoCircledIcon aria-hidden="true" focusable="false" />{msg(locale, captionNotice)}</p>}
     </section>
     <p className="mcy-lead mcy-course-about">{course.description}</p>
-    {isLessonPlayerOpen && <div className="mcy-course-reflection-prompt"><p>{locale === "en-US" ? "MCY cannot verify video completion. After you have practised, you can record your own reflection." : "MCY không nhận được trạng thái xem hết video. Sau khi tự thực hành, bạn có thể chủ động ghi lại cảm nhận."}</p><Action onClick={() => onRecordReflection(course.title, lesson.title)}>{locale === "en-US" ? "I practised · record reflection" : "Tôi đã thực hành · ghi cảm nhận"}</Action></div>}
     <section className="mcy-course-lessons" aria-labelledby="course-lessons-heading">
       <div className="mcy-course-lessons-heading"><h2 id="course-lessons-heading">{msg(locale, "course.lessonsHeading")}</h2><span>{formatMessage(locale, "course.lessonCount", { count: course.lessons.length })}</span></div>
       <div className="mcy-course-lesson-list">{course.lessons.map((item, index) => <button className={`mcy-course-lesson${item.id === lesson.id ? " active" : ""}`} key={item.id} type="button" aria-pressed={item.id === lesson.id} onClick={() => { setPlayingLessonId(null); setPlayerHelpOpen(false); setPlayerStatus("idle"); setPlayerReloadCount(0); onSelectLesson(item.id); scrollToVideo(); }}>

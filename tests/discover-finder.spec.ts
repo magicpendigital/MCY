@@ -28,6 +28,10 @@ test("the finder lists matching lessons by area and length and opens the chosen 
   await rows.filter({ hasText: "06 · Chuyển động cổ và lưng trên" }).click();
   await expect(page.getByRole("heading", { name: "Một chút chuyển động nhẹ" })).toBeVisible();
   await expect(page.locator(".mcy-course-featured-copy h2")).toHaveText("06 · Chuyển động cổ và lưng trên");
+  // Position is counted inside this group, and the tags repeat the finder's title-based labels and the clip length.
+  await expect(page.locator(".mcy-course-featured-copy .mcy-course-lesson-number")).toHaveText("BÀI 6 / 18 · 0:17");
+  const tags = page.locator(".mcy-course-lesson-tags li");
+  await expect(tags).toHaveText(["Cổ và vai", "Lưng", "Dưới 30 giây"]);
   // The video leads the page: the poster sits above the privacy and caption notes.
   const order = await page.locator(".mcy-course-featured").evaluate(card => ({ video: card.querySelector(".mcy-course-video")!.getBoundingClientRect().top, note: card.querySelector(".mcy-course-source-note")!.getBoundingClientRect().top }));
   expect(order.video).toBeLessThan(order.note);

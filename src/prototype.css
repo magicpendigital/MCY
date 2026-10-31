@@ -233,6 +233,9 @@ button { cursor: pointer; }
 .mcy-course-source-note a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
 .mcy-course-reflection-prompt { display: grid; gap: 12px; max-width: 620px; margin: 0 auto 24px; padding: 18px; border: 1px solid var(--mcy-border); border-radius: 16px; background: var(--color-sage-soft); }
 .mcy-course-reflection-prompt p { margin: 0; color: var(--mcy-ink); font-size: 14px; line-height: 1.55; }
+.mcy-course-player-feedback .mcy-course-reflection-prompt { max-width: none; margin: 4px 0 0; padding: 14px; }
+.mcy-course-lesson-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; padding: 0; list-style: none; }
+.mcy-course-lesson-tags li { padding: 5px 10px; border-radius: 999px; background: var(--color-sage-soft); color: var(--mcy-forest); font-size: 14px; font-weight: 700; line-height: 1.3; }
 @media (max-width: 600px) and (orientation: portrait) {
   .mcy-course-scroll-hint { display:flex; align-items:center; gap:6px; margin:-1px 0 9px; color:var(--mcy-muted); font-size:13px; line-height:1.35; }
   .mcy-course-scroll-hint svg { width:15px; height:15px; flex:none; color:var(--mcy-forest); }

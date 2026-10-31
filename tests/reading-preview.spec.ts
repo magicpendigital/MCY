@@ -71,8 +71,14 @@ test("a reviewer opens the illustrated reading units as Preview, with real image
   await expect(page.getByRole("heading", { level: 1, name: drawn.title })).toBeVisible();
   await expect(page.locator(".mcy-rp-badge")).toHaveText("PREVIEW · CHƯA DUYỆT");
   await expect(page.locator(".mcy-rp-notice")).toContainText("học viên chưa thấy");
-  await expect(page.locator(".mcy-rp-steps > li")).toHaveCount(drawn.unit.steps.length);
   await expect(page.getByRole("heading", { name: "Dấu hiệu dừng" })).toBeVisible();
+  // The overview shows no step; each step then opens on its own screen with one stop bar and a progress bar.
+  await expect(page.locator(".mcy-rp-steps > li")).toHaveCount(0);
+  await page.getByRole("button", { name: new RegExp(`Bắt đầu · bước 1/${drawn.unit.steps.length}`) }).click();
+  await expect(page.locator(".mcy-rp-steps > li")).toHaveCount(1);
+  await expect(page.locator(".mcy-rp-steps .mcy-tag")).toHaveText(`BƯỚC 1 / ${drawn.unit.steps.length}`);
+  await expect(page.getByRole("progressbar", { name: "Tiến độ bài đọc" })).toHaveAttribute("aria-valuenow", "1");
+  await expect(page.locator(".mcy-rp-stopbar")).toHaveCount(1);
   const first = page.locator(".mcy-rp-figure img").first();
   await expect(first).toBeVisible();
   await expect.poll(() => first.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
@@ -80,11 +86,20 @@ test("a reviewer opens the illustrated reading units as Preview, with real image
   await expect(page.locator(".mcy-rp-figure figcaption").first()).toContainText("Ảnh AI");
   await expect(page.getByRole("button", { name: /xuất bản/i })).toHaveCount(0);
 
+  // Next moves one step at a time and back returns to the overview from the first step.
+  await page.getByRole("button", { name: "Bước 2" }).click();
+  await expect(page.locator(".mcy-rp-steps .mcy-tag")).toHaveText(`BƯỚC 2 / ${drawn.unit.steps.length}`);
+  await expect(page.getByRole("progressbar", { name: "Tiến độ bài đọc" })).toHaveAttribute("aria-valuenow", "2");
+  await page.getByRole("button", { name: "Bước trước" }).click();
+  await page.getByRole("button", { name: "Tổng quan" }).click();
+  await expect(page.getByRole("heading", { name: "Dấu hiệu dừng" })).toBeVisible();
+
   await page.getByRole("button", { name: "← Tất cả bài đọc" }).click();
   await page.locator(".mcy-rp-row", { hasText: blocked.title }).click();
+  await expect(page.getByRole("heading", { name: "Điểm còn chặn theo bản biên tập" })).toBeVisible();
+  await page.getByRole("button", { name: /Bắt đầu · bước 1/ }).click();
   await expect(page.locator(".mcy-rp-figure img")).toHaveCount(0);
   await expect(page.locator(".mcy-rp-figure-empty").first()).toContainText("chưa xác định đúng biến thể");
-  await expect(page.getByRole("heading", { name: "Điểm còn chặn theo bản biên tập" })).toBeVisible();
 
   expect(fixture.calls.map(c => c.action)).toEqual(["read_reading_preview", "read_reading_preview", "read_reading_preview"]);
   expect(fixture.calls[0]).toEqual({ action: "read_reading_preview" });
@@ -102,6 +117,7 @@ test("an approved unit is labelled approved but not published, and a missing upl
   await expect(page.locator(".mcy-rp-row .mcy-tag")).toHaveText("ĐÃ DUYỆT · CHƯA XUẤT BẢN");
   await page.locator(".mcy-rp-row").click();
   await expect(page.locator(".mcy-rp-badge")).toHaveText("ĐÃ DUYỆT · CHƯA XUẤT BẢN");
+  await page.getByRole("button", { name: /Bắt đầu · bước 1/ }).click();
   await expect(page.locator(".mcy-rp-figure img")).toHaveCount(0);
   await expect(page.locator(".mcy-rp-figure-empty").first()).toContainText("Ảnh nháp chưa được tải lên kho riêng");
 
@@ -109,6 +125,7 @@ test("an approved unit is labelled approved but not published, and a missing upl
   await page.route("https://signed.invalid/**", route => route.abort("failed"));
   await page.getByRole("button", { name: "← Tất cả bài đọc" }).click();
   await page.locator(".mcy-rp-row").click();
+  await page.getByRole("button", { name: /Bắt đầu · bước 1/ }).click();
   await expect(page.locator(".mcy-rp-figure-empty").first()).toContainText("Chưa tải được ảnh");
 });
 
