@@ -1,0 +1,13 @@
+/* Learner view of classes and the feedback a teacher has sent. Body text stays at 15px+. */
+.mcy-mc-list { display: flex; flex-direction: column; gap: 12px; }
+.mcy-mc-row { min-height: 72px; padding: 12px 4px; }
+.mcy-mc-row strong { font: 18px/1.2 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-mc-row small { font-size: 14px; color: var(--mcy-muted); }
+.mcy-mc-feedback { padding: 16px; border: 1px solid var(--mcy-border); border-radius: 18px; background: #fffdf9; }
+.mcy-mc-feedback[data-source="ai_assisted_teacher_confirmed"] { background: var(--color-sage-soft); }
+.mcy-mc-feedback-head { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.mcy-mc-source { color: var(--mcy-forest); font: 700 14px/1.3 var(--font-sans); }
+.mcy-mc-body { margin: 12px 0; color: var(--mcy-ink); font-size: 15px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mcy-mc-feedback small { color: var(--mcy-muted); font-size: 14px; }
+.mcy-mc-footnote { margin: 18px 0 0; color: var(--mcy-muted); font-size: 14px; line-height: 1.5; }
+.mcy-mc-back { display: inline-flex; min-height: 44px; align-items: center; padding: 6px 0; border: 0; background: transparent; color: var(--mcy-sage); font: 700 14px/1.2 var(--font-sans); }

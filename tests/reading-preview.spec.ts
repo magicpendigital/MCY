@@ -39,6 +39,7 @@ async function backend(page: Page, review: Review) {
     if (pathname.endsWith("/checkins") || pathname.endsWith("/checkin_observations")) return route.fulfill({ json: [] });
     if (pathname.endsWith("/user")) return route.fulfill({ json: session.user });
     if (pathname.endsWith("/mcy-ai-assistant")) return route.fulfill({ json: { available: false, contractVersion: "reviewed-practice-1" } });
+    if (pathname.endsWith("/teacher-collaboration")) return route.fulfill({ status: 404, json: { error: "collaboration_unavailable" } });
     if (request.url() === endpoint) {
       expect(request.headers().authorization).toBe("Bearer fictional-preview-a");
       const body = request.postDataJSON();

@@ -136,3 +136,31 @@ test("choosing another lesson, or Next, brings its poster back into view and pla
   await expect(detail.locator(".mcy-course-play")).toBeInViewport({ ratio: 0.6 });
   await expect(detail.getByTestId("course-lesson-navigation")).toBeInViewport();
 });
+
+test("saved and opened lessons are remembered on this device only, and can be cleared", async ({ page }) => {
+  await openDiscover(page);
+  await expect(page.getByTestId("my-lessons")).toHaveCount(0);
+  await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).click();
+  const detail = page.locator('[data-testid="flow-current"]').last();
+  await detail.getByRole("button", { name: "Lưu bài này" }).click();
+  await expect(detail.getByRole("button", { name: "Đã lưu trên máy này" })).toHaveAttribute("aria-pressed", "true");
+  // Pressing Play counts as "opened", never as "watched".
+  await detail.locator(".mcy-course-play").click();
+  const firstRow = detail.locator(".mcy-course-lesson").first();
+  await expect(firstRow).toContainText("đã lưu");
+  await expect(firstRow).toContainText("đã mở");
+  const stored = await page.evaluate(() => window.localStorage.getItem("mcy.lessonMemory.v1"));
+  expect(JSON.parse(stored!)).toMatchObject({ saved: [{ courseId: "gentle", lessonId: "01" }], opened: [{ courseId: "gentle", lessonId: "01" }], last: { courseId: "gentle", lessonId: "01" } });
+
+  await page.getByRole("button", { name: "Quay lại" }).click();
+  const mine = page.getByTestId("my-lessons");
+  await expect(mine).toContainText("Gần đây");
+  await expect(mine).toContainText("Đã lưu");
+  await expect(mine).toContainText("không gửi đi");
+  await mine.getByRole("button", { name: /01 · Thư giãn nhẹ/ }).first().click();
+  await expect(page.locator(".mcy-course-featured-copy h2")).toHaveText("01 · Thư giãn nhẹ");
+  await page.getByRole("button", { name: "Quay lại" }).click();
+  await page.getByTestId("my-lessons").getByRole("button", { name: "Xóa danh sách này khỏi máy" }).click();
+  await expect(page.getByTestId("my-lessons")).toHaveCount(0);
+  expect(JSON.parse((await page.evaluate(() => window.localStorage.getItem("mcy.lessonMemory.v1")))!)).toEqual({ saved: [], opened: [], last: null, progress: {} });
+});

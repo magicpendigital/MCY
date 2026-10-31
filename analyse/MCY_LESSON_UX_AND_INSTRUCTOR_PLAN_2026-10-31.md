@@ -173,3 +173,27 @@ Tỷ lệ khách bấm xem video sau check-in; tỷ lệ ghi cảm nhận sau vi
 - Trang video đã xem trên web cục bộ (Vite), không phải bản Vercel/Play hay thiết bị thật; chưa thử phát video YouTube thật, chưa đo TalkBack/iOS.
 - Bài đọc và ảnh AI là bản nháp chưa duyệt chuyên môn/quyền; canvas thiết kế dùng placeholder cho tên, giá, chứng chỉ và ảnh.
 - Trạng thái áp migration collaboration lấy từ ghi nhận trong AGENTS.md, chưa đọc lại từ staging.
+
+## 10. Triển khai theo kế hoạch (31/10/2026, Owner: "Triển khai theo kế hoạch đề xuất")
+
+Owner chọn: mã Giai đoạn 1+2, cờ tắt, không cloud; hồ sơ giảng viên lấy từ hồ sơ đã kích hoạt (chưa có thì ẩn); lớp bao bọc video YouTube hiện có. **Mọi thay đổi ở working tree, chưa commit, chưa push, chưa deploy, không ghi cloud/thiết bị.**
+
+### Đã làm
+| Hạng mục | Nội dung | Tệp chính |
+|---|---|---|
+| Lưu bài / đã mở / gần đây (Giai đoạn 1) | Nút "Lưu bài này" ở trang bài; nhãn "đã lưu · đã mở" ở danh sách; mục "Của bạn trên máy này" trong Khám phá (bài mở gần nhất + tối đa 5 bài đã lưu); nút xóa. **Chỉ lưu trên thiết bị** (localStorage, không theo tài khoản, không gửi đi). "Đã mở" nghĩa là đã nhấn Phát, không phải đã xem hết (MCY không nhận tiến độ phát). | `src/courses/lessonMemory.ts`, `CourseDetailScreen.tsx`, `DiscoverScreen.tsx` |
+| Lớp của tôi (Giai đoạn 2, phía học viên, chỉ đọc) | Cá nhân → "Lớp của tôi" chỉ hiện khi máy chủ xác nhận tài khoản có ghi danh (`workspace` vai `learner` và có lớp); danh sách lớp; nhận xét **đã gửi** (`read_feedback`), bản mới nhất, nhãn nguồn "Giảng viên viết" hoặc "AI hỗ trợ · giảng viên đã kiểm tra và xác nhận", ghi chú không thay lời khuyên y tế. Không có nút tạo/gửi/đăng ký. Khách và học viên thường không thấy gì; chức năng backend đang tắt nên hiện tại ẩn hoàn toàn. | `src/classes/*`, `Prototype.tsx` (route + dòng ở Cá nhân) |
+
+### Cố ý chưa làm, và lý do
+Các mục sau **cần hành động backend chưa tồn tại** và tôi không thể kiểm thử SQL ở môi trường này (không có PGlite/Docker). Viết giao diện cho hành động chưa có sẽ là mã chết không kiểm chứng được:
+1. **Trang giảng viên công khai (C1–C2).** Backend chỉ trả hồ sơ của chính người gọi (`workspace.profile`). Cần: cột đồng ý công khai trên hồ sơ giảng viên, và hành động chỉ đọc `public_teacher_profiles` trả `{display_name, bio, ...}` chỉ của hồ sơ đã kích hoạt, đã đồng ý công khai, có quyền ảnh/tên.
+2. **Lời mời vào lớp (C4) và học viên tự chọn cách học (C3).** Hiện ghi danh chỉ do admin tạo (`admin_enrollment`). Cần: bảng lời mời (mã/liên kết, hạn, số lần dùng), hành động `redeem_class_invite` (xác thực email đã xác minh, tạo ghi danh `active`, ghi nhận đồng ý chia sẻ có phạm vi/thời hạn), và hành động thu hồi.
+3. **Gửi cảm nhận cho giảng viên (B2) và nhận xét gắn với cảm nhận học viên (D1).** Điểm danh (`attendance`) hiện do admin tạo. Cần hành động học viên gửi cảm nhận có đồng ý từng lần, lưu bản chụp cảm nhận (chỉ vùng/mức học viên chọn gửi), và quy tắc xóa khi thu hồi hoặc xóa tài khoản (`delete_my_account` đang từ chối vai trò nhân viên, cần thêm ghi danh/nhận xét vào phạm vi xóa).
+4. **Nhận xét AI trực tiếp** vẫn sau các cổng AI hiện có. Nhận xét `ai_assisted_teacher_confirmed` đã được nhãn đúng ở màn học viên.
+5. **Tên lớp.** `workspace` không trả tiêu đề khóa cho học viên (chỉ `course_version_id`), nên danh sách tạm hiện "Lớp 1, Lớp 2". Cần trả tiêu đề phiên bản khóa đã duyệt cho đúng người học.
+6. **Danh sách phát tự chuyển bài** vẫn không làm. Sau khi Owner cho phép theo dõi tiến độ phát (cùng ngày), khi bài xem hết app chỉ đề xuất nút "Chọn bài tiếp theo", không tự phát.
+
+Cổng bắt buộc trước khi mở các hành động trên: migration collaboration phải được kiểm lại trạng thái thật trên staging, áp bằng quy trình có xác nhận, kiểm thử actor theo vai trò, cập nhật chính sách/Data safety (dữ liệu sức khỏe chia sẻ cho giảng viên), xử lý xóa tài khoản, quyền nội dung/hình ảnh giảng viên.
+
+### 10.1 Theo dõi tiến độ phát YouTube (Owner cho phép 31/10/2026)
+Ghi nhận bằng YouTube IFrame API chính thức, chỉ sau khi học viên bấm Phát; chỉ đếm thời gian phát tiến (tua tới cuối không tính là đã xem); hoàn thành khi xem ≥85% thời lượng, hoặc kết thúc với ≥60% đã phát. **Dữ liệu chỉ lưu trên thiết bị**, không gửi MCY hay giảng viên. Nếu API không dùng được, bài vẫn phát và không có lời nào khẳng định đã xem. Cần làm tiếp trước khi phát hành: cập nhật trang chính sách quyền riêng tư công khai, chữ trong app và khai báo Data safety của Google Play (ứng dụng nay tải `youtube.com/iframe_api` sau khi Phát); kiểm tra trên Android WebView/iOS thật (origin, Referer, lỗi 153); quyết định có đồng bộ tiến độ lên tài khoản hoặc chia sẻ cho giảng viên không (cần đồng ý và hành động backend ở trên). Kiểm thử: `video-progress` 4/4 với YT API giả, `learner-ux` 39/39, `discover-finder` 7/7, `my-classes` 4/4.

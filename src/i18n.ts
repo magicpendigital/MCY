@@ -214,7 +214,7 @@ const vi = {
   "course.sourceNote": "Nhấn Phát sẽ tải trình phát YouTube trong ứng dụng; việc xử lý dữ liệu tuân theo chính sách quyền riêng tư của Google.",
   "course.privacyLink": "Chính sách quyền riêng tư của Google",
   "course.playerLoading": "Đang tải khung video từ YouTube…",
-  "course.playerFrameLoaded": "Trình phát YouTube đã mở trong ứng dụng. MCY không theo dõi tiến độ xem; nếu video không phát, hãy mở trợ giúp.",
+  "course.playerFrameLoaded": "Trình phát YouTube đã mở trong ứng dụng. MCY ghi nhớ tiến độ phát trên thiết bị này, không gửi đi; nếu video không phát, hãy mở trợ giúp.",
   "course.playerLoadFailed": "Chưa nhận được phản hồi từ trình phát. Hãy thử tải lại trong ứng dụng hoặc mở video gốc trên YouTube.",
   "course.reflectionLesson": "Bài bạn đã thực hành:",
 } as const;
@@ -433,7 +433,7 @@ const en: Record<keyof typeof vi, string> = {
   "course.sourceNote": "Choosing Play loads YouTube's player in the app; data handling is covered by Google's Privacy Policy.",
   "course.privacyLink": "Google Privacy Policy",
   "course.playerLoading": "Loading the YouTube video frame…",
-  "course.playerFrameLoaded": "The YouTube player is open in the app. MCY does not track playback progress. If the video does not play, open playback help.",
+  "course.playerFrameLoaded": "The YouTube player is open in the app. MCY remembers playback progress on this device only. If the video does not play, open playback help.",
   "course.playerLoadFailed": "The player has not responded yet. Try reloading it in the app or open the original video on YouTube.",
   "course.reflectionLesson": "Lesson you practised:",
 };

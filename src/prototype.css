@@ -234,6 +234,10 @@ button { cursor: pointer; }
 .mcy-course-reflection-prompt { display: grid; gap: 12px; max-width: 620px; margin: 0 auto 24px; padding: 18px; border: 1px solid var(--mcy-border); border-radius: 16px; background: var(--color-sage-soft); }
 .mcy-course-reflection-prompt p { margin: 0; color: var(--mcy-ink); font-size: 14px; line-height: 1.55; }
 .mcy-course-player-feedback .mcy-course-reflection-prompt { max-width: none; margin: 4px 0 0; padding: 14px; }
+.mcy-course-save { display: inline-flex; min-height: 44px; align-items: center; margin: 0 0 6px; padding: 8px 16px; border: 1.5px solid var(--color-border-strong); border-radius: 999px; background: transparent; color: var(--mcy-ink); font: 700 14px/1.2 var(--font-sans); }
+.mcy-course-save[aria-pressed="true"] { border-color: var(--mcy-forest); background: var(--color-sage-soft); }
+.mcy-course-save:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.mcy-my-lessons { margin-bottom: 16px; }
 .mcy-course-lesson-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; padding: 0; list-style: none; }
 .mcy-course-lesson-tags li { padding: 5px 10px; border-radius: 999px; background: var(--color-sage-soft); color: var(--mcy-forest); font-size: 14px; font-weight: 700; line-height: 1.3; }
 @media (max-width: 600px) and (orientation: portrait) {
@@ -1137,3 +1141,6 @@ button { cursor: pointer; }
 .mcy-finder-suggest { margin: 0 0 12px; padding: 10px 12px; border-radius: 14px; background: #f3efe5; }
 .mcy-finder-suggest p { margin: 0 0 8px; color: #5a4636; font-size: 14px; line-height: 1.45; }
 .mcy-finder-suggest .mcy-finder-chips { margin: 0; }
+.mcy-course-tracking-note { margin: 0; color: var(--mcy-muted); font-size: 14px; line-height: 1.45; }
+.mcy-course-complete { font-weight: 700; }
+.mcy-course-reflection-prompt[data-completed="true"] { border-color: var(--mcy-forest); }

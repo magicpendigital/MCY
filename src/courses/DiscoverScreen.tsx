@@ -4,6 +4,7 @@ import { formatMessage, msg, type AppLocale } from "../i18n";
 import { MobileScroll } from "../mobile";
 import type { FreeCourse, FreeCourseId } from "./freeCourses";
 import { areasForRegions, findLessons, formatLessonDuration, LESSON_AREAS, LESSON_LENGTHS, type LessonArea, type LessonLength } from "./lessonFinder";
+import { clearLessonMemory, useLessonMemory, type LessonRef } from "./lessonMemory";
 
 type DiscoverScreenProps = {
   locale: AppLocale;
@@ -59,6 +60,28 @@ function LessonFinder({ courses, onOpenCourse, checkinRegions = [] }: { courses:
   </section>;
 }
 
+// The most recently opened lesson and the learner's saved lessons. Device-local only; "opened" is not "watched".
+function MyLessons({ courses, onOpenCourse }: { courses: FreeCourse[]; onOpenCourse: DiscoverScreenProps["onOpenCourse"] }) {
+  const memory = useLessonMemory();
+  const find = (ref: LessonRef) => {
+    const course = courses.find(item => item.id === ref.courseId);
+    const lesson = course?.lessons.find(item => item.id === ref.lessonId);
+    return course && lesson ? { course, lesson } : null;
+  };
+  const last = memory.last ? find(memory.last) : null;
+  const saved = memory.saved.map(find).filter((item): item is NonNullable<ReturnType<typeof find>> => item !== null).slice(0, 5);
+  if (!last && saved.length === 0) return null;
+  return <section className="mcy-finder mcy-my-lessons" aria-labelledby="mcy-my-lessons-heading" data-testid="my-lessons">
+    <h2 id="mcy-my-lessons-heading">Của bạn trên máy này</h2>
+    <div className="mcy-finder-results">
+      {last && <button type="button" className="mcy-finder-row" onClick={() => onOpenCourse(last.course.id as FreeCourseId, last.lesson.id)}><span className="mcy-finder-time">Gần đây</span><span><strong>{last.lesson.title}</strong><small>Bài bạn mở gần nhất · {last.course.title}</small></span><ArrowRightIcon aria-hidden="true" /></button>}
+      {saved.map(({ course, lesson }) => <button key={`${course.id}:${lesson.id}`} type="button" className="mcy-finder-row" onClick={() => onOpenCourse(course.id as FreeCourseId, lesson.id)}><span className="mcy-finder-time">Đã lưu</span><span><strong>{lesson.title}</strong><small>{course.title}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
+    </div>
+    <p className="mcy-finder-lead">Chỉ lưu trên thiết bị này, không gửi đi. “Mở” nghĩa là bạn đã nhấn Phát; MCY không biết bạn có xem hết hay không.</p>
+    <button type="button" className="mcy-quiet-link" onClick={clearLessonMemory}>Xóa danh sách này khỏi máy</button>
+  </section>;
+}
+
 export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, checkinRegions }: DiscoverScreenProps) {
   const { courses, failed, retry } = useFreeCourseCatalog();
   const catalogMainRef = useRef<HTMLElement | null>(null);
@@ -90,6 +113,7 @@ export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, chec
 
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-page" ref={catalogMainRef}>
     <Eyebrow>KHÁM PHÁ</Eyebrow><h1>Bài học yoga miễn phí</h1><p className="mcy-lead">Chọn một nhóm video từ kênh Một chút yoga. Mỗi bài được phát trong ứng dụng; bạn tự chọn thứ tự và nhịp tập phù hợp với mình.</p>
+    {courses && <MyLessons courses={courses} onOpenCourse={onOpenCourse} />}
     {courses && <LessonFinder courses={courses} onOpenCourse={onOpenCourse} checkinRegions={checkinRegions} />}
     <section className="mcy-course-section" aria-labelledby="free-course-heading">
       <div className="mcy-course-heading"><div><Eyebrow>{msg(locale, "discover.freeCourses")}</Eyebrow><h2 id="free-course-heading">Chọn một nhóm để bắt đầu</h2></div><span className="mcy-state-pill">{locale === "en-US" ? `${lessonCount} VIDEOS` : `${lessonCount} BÀI HỌC`}</span></div>

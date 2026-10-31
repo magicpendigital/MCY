@@ -10,6 +10,8 @@ import { formatMessage, msg, type AppLocale } from "../i18n";
 import { MobileScroll } from "../mobile";
 import type { FreeCourse, FreeCourseId } from "./freeCourses";
 import { LESSON_AREAS, LESSON_LENGTHS, lessonAreas, lessonLength } from "./lessonFinder";
+import { isLessonCompleted, isLessonOpened, isLessonSaved, recordLessonOpened, recordLessonProgress, toggleSavedLesson, useLessonMemory } from "./lessonMemory";
+import { trackPlayback } from "./youtubeProgress";
 
 type CourseDetailScreenProps = {
   locale: AppLocale;
@@ -40,6 +42,10 @@ export default function CourseDetailScreen({
   const [playerHelpOpen, setPlayerHelpOpen] = useState(false);
   const [playerStatus, setPlayerStatus] = useState<"idle" | "loading" | "frame-loaded" | "timeout">("idle");
   const featuredRef = useRef<HTMLElement | null>(null);
+  const memory = useLessonMemory();
+  // Playback progress comes from the YouTube player and stays on this device. "waiting" until the player first reports,
+  // "unavailable" when the player API cannot be used; neither state blocks playback or the reflection button.
+  const [trackingState, setTrackingState] = useState<"idle" | "waiting" | "active" | "unavailable">("idle");
 
   useEffect(() => {
     let mounted = true;
@@ -69,6 +75,21 @@ export default function CourseDetailScreen({
     return () => window.clearTimeout(timeout);
   }, [playerOpen, playerReloadCount, playerStatus]);
 
+  useEffect(() => {
+    if (!courses || !playerOpen || playerStatus !== "frame-loaded" || playingLessonId === null) return;
+    const course = courses.find(item => item.id === selectedCourseId) ?? courses[0];
+    const frame = featuredRef.current?.querySelector<HTMLIFrameElement>("iframe");
+    if (!course || !frame) return;
+    const ref = { courseId: course.id, lessonId: playingLessonId };
+    setTrackingState("waiting");
+    const stop = trackPlayback(
+      frame,
+      progress => { recordLessonProgress(ref, progress); setTrackingState(current => current === "unavailable" ? current : "active"); },
+      () => setTrackingState("unavailable"),
+    );
+    return () => { stop(); setTrackingState("idle"); };
+  }, [courses, playerOpen, playerStatus, playingLessonId, playerReloadCount, selectedCourseId]);
+
   if (!courses) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role={failed ? "alert" : "status"}>{failed ? (locale === "en-US" ? "The lesson could not be loaded." : "Chưa mở được bài học.") : (locale === "en-US" ? "Opening the lesson…" : "Đang mở bài học…")}</div>{failed && <button className="mcy-quiet-link" onClick={() => setAttempt(value => value + 1)}>{locale === "en-US" ? "Try again" : "Thử tải lại"}</button>}</main></MobileScroll>;
 
   const course = courses.find(item => item.id === selectedCourseId) ?? courses[0];
@@ -85,6 +106,10 @@ export default function CourseDetailScreen({
     ...LESSON_LENGTHS.filter(length => lessonLength(lesson) === length.id).map(length => length.label),
   ];
   const isLessonPlayerOpen = playerOpen && playingLessonId === lesson.id;
+  const lessonRef = { courseId: course.id, lessonId: lesson.id };
+  const lessonSaved = isLessonSaved(memory, lessonRef);
+  const lessonCompleted = isLessonCompleted(memory, lessonRef);
+  const hasNextLesson = lessonIndex < course.lessons.length - 1;
   const reloadLessonPlayer = () => {
     setPlayerHelpOpen(false);
     setPlayerStatus("loading");
@@ -119,8 +144,8 @@ export default function CourseDetailScreen({
     <section className="mcy-course-featured" ref={featuredRef} aria-label={locale === "en-US" ? "Selected lesson" : "Bài học đang chọn"}>
       <div className={`mcy-course-video mcy-course-video-${lesson.orientation}`} data-testid="course-video">
         {isLessonPlayerOpen && (lesson.visibility === "public" || lesson.visibility === "unlisted")
-          ? <iframe key={`${lesson.id}-${playerReloadCount}`} data-load-attempt={playerReloadCount} title={lesson.title} src={`https://www.youtube-nocookie.com/embed/${lesson.youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1`} loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" onLoad={() => { setPlayerStatus("frame-loaded"); setPlayerHelpOpen(false); }} allowFullScreen />
-          : <button className="mcy-course-play" type="button" onClick={() => { setPlayerHelpOpen(false); setPlayerReloadCount(0); setPlayerStatus("loading"); setPlayingLessonId(lesson.id); }} aria-label={`${locale === "en-US" ? "Play lesson" : "Phát bài học"}: ${lesson.title}`}>
+          ? <iframe key={`${lesson.id}-${playerReloadCount}`} data-load-attempt={playerReloadCount} title={lesson.title} src={`https://www.youtube-nocookie.com/embed/${lesson.youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`} loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" onLoad={() => { setPlayerStatus("frame-loaded"); setPlayerHelpOpen(false); }} allowFullScreen />
+          : <button className="mcy-course-play" type="button" onClick={() => { setPlayerHelpOpen(false); setPlayerReloadCount(0); setPlayerStatus("loading"); setPlayingLessonId(lesson.id); recordLessonOpened(lessonRef); }} aria-label={`${locale === "en-US" ? "Play lesson" : "Phát bài học"}: ${lesson.title}`}>
             <div className="mcy-course-video-poster" aria-hidden="true"><span>{course.title}</span><strong>{lesson.title}</strong><small>{lesson.duration}</small></div>
             <span><PlayIcon />{locale === "en-US" ? "Play in app" : "Học ngay trong ứng dụng"}</span>
           </button>}
@@ -148,9 +173,18 @@ export default function CourseDetailScreen({
             {msg(locale, "course.nextLesson")}<ArrowRightIcon aria-hidden="true" />
           </button>
         </nav>
-        {isLessonPlayerOpen && <div className="mcy-course-reflection-prompt"><p>{locale === "en-US" ? "MCY cannot verify video completion. After you have practised, you can record your own reflection." : "MCY không nhận được trạng thái xem hết video. Sau khi tự thực hành, bạn có thể chủ động ghi lại cảm nhận."}</p><Action onClick={() => onRecordReflection(course.title, lesson.title)}>{locale === "en-US" ? "I practised · record reflection" : "Tôi đã thực hành · ghi cảm nhận"}</Action></div>}
+        {isLessonPlayerOpen && trackingState === "active" && <p className="mcy-course-tracking-note" data-testid="course-tracking-note">{locale === "en-US" ? "Playback progress is remembered on this device only." : "Tiến độ phát được ghi nhớ trên thiết bị này, không gửi đi."}</p>}
+        {isLessonPlayerOpen && <div className="mcy-course-reflection-prompt" data-completed={lessonCompleted}>
+          {lessonCompleted && <p className="mcy-course-complete" role="status" data-testid="course-complete">{locale === "en-US" ? "You have watched this lesson to the end." : "Bạn đã xem hết bài này."}</p>}
+          <p>{lessonCompleted
+            ? (locale === "en-US" ? "After you have practised, you can record your own reflection." : "Sau khi tự thực hành, hãy ghi lại cảm nhận của bạn.")
+            : (locale === "en-US" ? "MCY has not recorded that you watched this video to the end: you may have watched part of it, or the player did not report progress. After you have practised, you can still record your own reflection." : "MCY chưa ghi nhận bạn xem hết video này: bạn có thể mới xem dở, hoặc trình phát không báo tiến độ về. Sau khi tự thực hành, bạn vẫn có thể ghi lại cảm nhận.")}</p>
+          <Action onClick={() => onRecordReflection(course.title, lesson.title)}>{locale === "en-US" ? "I practised · record reflection" : "Tôi đã thực hành · ghi cảm nhận"}</Action>
+          {lessonCompleted && hasNextLesson && <button type="button" className="mcy-quiet-link" onClick={() => selectRelativeLesson(1)}>{locale === "en-US" ? "Next lesson" : "Chọn bài tiếp theo"}</button>}
+        </div>}
       </div>
       <div className="mcy-course-featured-copy"><span className="mcy-course-lesson-number">{locale === "en-US" ? `LESSON ${lessonIndex + 1} OF ${course.lessons.length}` : `BÀI ${lessonIndex + 1} / ${course.lessons.length}`} · {lesson.duration}</span><h2>{lesson.title}</h2>
+        <button type="button" className="mcy-course-save" aria-pressed={lessonSaved} onClick={() => toggleSavedLesson(lessonRef)}>{lessonSaved ? (locale === "en-US" ? "Saved on this device" : "Đã lưu trên máy này") : (locale === "en-US" ? "Save this lesson" : "Lưu bài này")}</button>
         {lessonTags.length > 0 && <ul className="mcy-course-lesson-tags" aria-label="Nhãn theo tên bài">{lessonTags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
         <p>{lesson.description}</p>
       </div>
@@ -162,7 +196,7 @@ export default function CourseDetailScreen({
       <div className="mcy-course-lessons-heading"><h2 id="course-lessons-heading">{msg(locale, "course.lessonsHeading")}</h2><span>{formatMessage(locale, "course.lessonCount", { count: course.lessons.length })}</span></div>
       <div className="mcy-course-lesson-list">{course.lessons.map((item, index) => <button className={`mcy-course-lesson${item.id === lesson.id ? " active" : ""}`} key={item.id} type="button" aria-pressed={item.id === lesson.id} onClick={() => { setPlayingLessonId(null); setPlayerHelpOpen(false); setPlayerStatus("idle"); setPlayerReloadCount(0); onSelectLesson(item.id); scrollToVideo(); }}>
         <span className="mcy-course-lesson-icon" aria-hidden="true"><PlayIcon /></span>
-        <span className="mcy-course-lesson-copy"><span className="mcy-course-lesson-number">{String(index + 1).padStart(2, "0")} · {item.duration}</span><strong>{item.title}</strong></span><span className="mcy-course-lesson-select">{item.id === lesson.id ? <PlayIcon /> : <ArrowRightIcon />}</span>
+        <span className="mcy-course-lesson-copy"><span className="mcy-course-lesson-number">{String(index + 1).padStart(2, "0")} · {item.duration}{isLessonSaved(memory, { courseId: course.id, lessonId: item.id }) ? (locale === "en-US" ? " · saved" : " · đã lưu") : ""}{isLessonCompleted(memory, { courseId: course.id, lessonId: item.id }) ? (locale === "en-US" ? " · watched" : " · đã xem hết") : isLessonOpened(memory, { courseId: course.id, lessonId: item.id }) ? (locale === "en-US" ? " · opened" : " · đã mở") : ""}</span><strong>{item.title}</strong></span><span className="mcy-course-lesson-select">{item.id === lesson.id ? <PlayIcon /> : <ArrowRightIcon />}</span>
       </button>)}</div>
     </section>
   </main></MobileScroll>;

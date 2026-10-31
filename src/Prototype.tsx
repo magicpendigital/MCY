@@ -148,6 +148,7 @@ const CourseDetailScreen = lazy(() => import("./courses/CourseDetailScreen"));
 const ReadingPreviewScreen = lazy(() => import("./library/ReadingPreviewScreen"));
 const DiscoverScreen = lazy(() => import("./courses/DiscoverScreen"));
 const LazyJourneyScreen = lazy(() => import("./JourneyScreen"));
+const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 
 function useDemo() {
   const context = useContext(DemoContext);
@@ -680,7 +681,17 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   courseDetail: { id: "course-detail", header: () => <Header title="Khóa học miễn phí" back />, headerHeight: 55, render: () => <CourseDetailRoute /> },
   readingPreview: { id: "reading-preview", header: () => <Header title="Xem trước nội dung" back />, headerHeight: 55, render: () => <ReadingPreviewRoute /> },
   readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
+  myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
+
+function MyClassesRoute() {
+  const flow = useFlow();
+  const { state } = useDemo();
+  if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để xem lớp và nhận xét của bạn.</div></main></MobileScroll>;
+  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở lớp…</div></main></MobileScroll>}>
+    <MyClassesScreen key={state.userId} userId={state.userId} active={flow.current.id === ROUTES.myClasses.id} />
+  </Suspense>;
+}
 
 function ReadingPreviewRoute() {
   const flow = useFlow();
@@ -1738,6 +1749,17 @@ function ProfileScreen() {
     }).catch(() => undefined);
     return () => { current = false; };
   }, [previewUserId]);
+  // A learner enrolled in a teacher's class gets "Lớp của tôi" when the server confirms it; everyone else sees nothing new.
+  const [classCount, setClassCount] = useState(0);
+  useEffect(() => {
+    setClassCount(0);
+    if (!backendConfigured || !previewUserId) return;
+    let current = true;
+    void import("./classes/classApi").then(({ readClassList }) => readClassList(previewUserId)).then(result => {
+      if (current) setClassCount(result.status === "allowed" ? result.enrollments.length : 0);
+    }).catch(() => undefined);
+    return () => { current = false; };
+  }, [previewUserId]);
   const signOut = async () => {
     if (!backendConfigured) return;
     setSigningOut(true);
@@ -1767,6 +1789,9 @@ function ProfileScreen() {
       <AccountRow title="Nội dung và quyền đang có" detail="Khóa học miễn phí · quyền trả phí" onClick={() => flow.push(ROUTES.access)} />
       <AccountRow title="Chia sẻ với giáo viên" detail="Chưa có lớp được kết nối · mặc định tắt" onClick={() => flow.push(ROUTES.sharing)} />
     </div>
+    {classCount > 0 && <div className="mcy-account-group"><span className="mcy-section-label">LỚP VÀ NHẬN XÉT</span>
+      <AccountRow title="Lớp của tôi" detail={`${classCount} lớp · nhận xét giảng viên đã gửi cho bạn`} onClick={() => flow.push(ROUTES.myClasses)} />
+    </div>}
     {previewUnits > 0 && <div className="mcy-account-group"><span className="mcy-section-label">DÀNH CHO BIÊN TẬP</span>
       <AccountRow title="Xem trước nội dung" detail={`${previewUnits} bài đọc có hình · chỉ Owner hoặc người được giao thấy`} onClick={() => flow.push(ROUTES.readingPreview)} />
     </div>}
