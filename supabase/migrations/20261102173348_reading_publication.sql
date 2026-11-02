@@ -79,7 +79,8 @@ begin
   if p_visible and v.decision<>'approved' then raise exception using errcode='22023',message='unit_not_approved'; end if;
   select * into cur from private.mcy_reading_publication where candidate_id=v.candidate_id and content_version=v.content_version for update;
   had:=found;
-  if had and cur.visible=p_visible and cur.text_only_allowed is not distinct from mode_value then
+  -- Switching a unit on again after a newer review is a real change even when the stored values match: it re-dates the switch.
+  if had and cur.visible=p_visible and cur.text_only_allowed is not distinct from mode_value and (not p_visible or cur.updated_at>=v.updated_at) then
     return jsonb_build_object('candidate_id',v.candidate_id,'content_version',v.content_version,'visible',cur.visible,'text_only_allowed',cur.text_only_allowed,'unchanged',true);
   end if;
   insert into private.mcy_reading_publication(candidate_id,content_version,visible,text_only_allowed,updated_by,updated_at)

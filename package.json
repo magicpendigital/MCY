@@ -37,6 +37,7 @@
     "test:content-review": "node --test tests/content-review-handler.test.mjs",
     "test:reading-publication": "node --test tests/reading-publication.test.mjs",
     "test:browser-compat": "node --test tests/browser-compat.test.mjs",
+    "test:reading-publication-rehearsal": "node --test tests/reading-publication-rehearsal.cjs tests/glute-region-rehearsal.cjs",
     "test:content-review-rehearsal": "node --test tests/content-review-rehearsal.cjs",
     "test:owner-conflict-migration-contract": "node --test tests/owner-conflict-migration-contract.test.mjs",
     "test:owner-conflict-sql-rehearsal": "node --test tests/owner-conflict-migration-rehearsal.cjs tests/owner-conflict-full-schema-rehearsal.cjs",

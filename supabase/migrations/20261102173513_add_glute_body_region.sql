@@ -1,6 +1,6 @@
 -- Owner feedback 2026-11-02: the check-in body map gets a "Mông" (glute) area in the trunk group, with left, right and
 -- unspecified sides like the other paired regions. Expand-only: three new accepted region codes, existing rows untouched.
--- LOCAL ONLY: not applied to staging. The in-place patch below refuses to run if the deployed writer has drifted.
+-- Applied to mcy-staging on 2026-11-02 through the Supabase connector as version 20261102173513; the file name matches. The in-place patch below refuses to run if the deployed writer has drifted.
 
 alter table public.checkin_observations
   drop constraint if exists checkin_observations_region_code_check,
@@ -52,6 +52,11 @@ begin
     raise exception 'private.save_my_checkin_expanded is missing; refusing to continue';
   end if;
   v_definition := pg_catalog.pg_get_functiondef(v_oid);
+  -- Already patched (for example this file ran before): nothing to do, and the allow-list must not gain a second copy.
+  if pg_catalog.strpos(v_definition, $$'glute_left'$$) > 0 then
+    raise notice 'private.save_my_checkin_expanded already allows the glute regions; skipping the writer patch';
+    return;
+  end if;
   v_occurrences := (pg_catalog.length(v_definition) - pg_catalog.length(pg_catalog.replace(v_definition, v_old, ''))) / pg_catalog.length(v_old);
   if v_occurrences <> 1 then
     raise exception 'private.save_my_checkin_expanded changed (% allow-list copies found, expected 1); refusing to continue', v_occurrences;
