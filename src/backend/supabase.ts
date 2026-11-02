@@ -20,6 +20,17 @@ const authStorageKey = (() => {
 
 export const backendConfigured = Boolean(url && publishableKey);
 
+/** Base URL for objects of a public Storage bucket of this project (readable without sign-in), or null without a backend. */
+export function publicStorageBase(bucket: string): string | null {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "https:" ? `${parsed.origin}/storage/v1/object/public/${bucket}` : null;
+  } catch {
+    return null;
+  }
+}
+
 /** True when the browser/WebView still holds a persisted Auth session for this project. */
 export function hasStoredAuthSession(): boolean {
   try {

@@ -38,6 +38,7 @@ jobs:
       - run: npm run test:practice-assistant
       - run: npm run test:practice-catalog
       - run: npm run test:content-review
+      - run: npm run test:reading-publication
       - run: npm run test:owner-conflict-migration-contract
       - run: npm run test:teacher-control-plane
       - run: npm run test:teacher-migration-contract

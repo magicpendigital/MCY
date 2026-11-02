@@ -159,6 +159,10 @@ const DiscoverScreen = lazy(() => import("./courses/DiscoverScreen"));
 const LazyJourneyScreen = lazy(() => import("./JourneyScreen"));
 const PracticeFlowScreen = lazy(() => import("./practice/PracticeFlowScreen"));
 const ReadingPreviewScreen = lazy(() => import("./library/ReadingPreviewScreen"));
+const ReadingLibraryScreen = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLibraryScreen })));
+const ReadingLessonScreen = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLessonScreen })));
+const ReadingLessonFooter = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLessonFooter })));
+const ReadingPublishScreen = lazy(() => import("./library/ReadingPublishScreen"));
 const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
@@ -704,9 +708,27 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   discoverDetail: { id: "discover-detail", header: () => <Header title="Chi tiết nội dung" back />, headerHeight: 55, render: () => <DiscoverDetailScreen /> },
   courseDetail: { id: "course-detail", header: () => <Header title="Khóa học miễn phí" back />, headerHeight: 55, render: () => <CourseDetailRoute /> },
   readingPreview: { id: "reading-preview", header: () => <Header title="Xem trước nội dung" back />, headerHeight: 55, render: () => <ReadingPreviewRoute /> },
+  readingLibrary: { id: "reading-library", header: () => <Header title="Bài đọc có hình" back />, headerHeight: 55, render: () => <ReadingLibraryRoute /> },
+  readingLesson: { id: "reading-lesson", header: () => <Header title="Bài đọc" back />, headerHeight: 55, footer: flow => <Suspense fallback={null}><ReadingLessonFooter onBack={() => flow.pop()} /></Suspense>, footerHeight: 88, render: () => <ReadingLessonRoute /> },
+  readingPublish: { id: "reading-publish", header: () => <Header title="Hiển thị cho học viên" back />, headerHeight: 55, render: () => <ReadingPublishRoute /> },
   readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
   myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
+
+const readingFallback = <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở bài đọc…</div></main></MobileScroll>;
+function ReadingLibraryRoute() {
+  const flow = useFlow();
+  return <Suspense fallback={readingFallback}><ReadingLibraryScreen onOpened={() => flow.push(ROUTES.readingLesson)} /></Suspense>;
+}
+function ReadingLessonRoute() {
+  const flow = useFlow();
+  return <Suspense fallback={readingFallback}><ReadingLessonScreen onCheckin={() => flow.push(ROUTES.checkin)} onOpened={() => undefined} /></Suspense>;
+}
+function ReadingPublishRoute() {
+  const { state } = useDemo();
+  if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để cấu hình hiển thị cho học viên.</div></main></MobileScroll>;
+  return <Suspense fallback={readingFallback}><ReadingPublishScreen key={state.userId} userId={state.userId} /></Suspense>;
+}
 
 function MyClassesRoute() {
   const flow = useFlow();
@@ -797,6 +819,11 @@ function DiscoverRoute() {
         flow.push(ROUTES.courseDetail);
       }}
       onOpenGuide={() => flow.push(ROUTES.discoverDetail)}
+      onOpenReading={entry => {
+        if (!entry) { flow.push(ROUTES.readingLibrary); return; }
+        void import("./library/ReadingLearnerScreens").then(module => module.openReadingEntry(entry));
+        flow.push(ROUTES.readingLesson);
+      }}
       checkinRegions={state.preObservations.map(item => item.region)}
     />
   </Suspense>;
@@ -1788,6 +1815,7 @@ function ProfileScreen() {
     </div>}
     {previewUnits > 0 && <div className="mcy-account-group"><span className="mcy-section-label">DÀNH CHO BIÊN TẬP</span>
       <AccountRow title="Xem trước nội dung" detail={`${previewUnits} bài đọc có hình · chỉ Owner hoặc người được giao thấy`} onClick={() => flow.push(ROUTES.readingPreview)} />
+      <AccountRow title="Hiển thị cho học viên" detail="Bật hoặc tắt từng bài đã duyệt · mặc định tắt" onClick={() => flow.push(ROUTES.readingPublish)} />
     </div>}
     <div className="mcy-account-group"><span className="mcy-section-label">TRỢ GIÚP VÀ YÊU CẦU</span>
       <AccountRow title="Hướng dẫn và liên hệ" detail="Đọc hướng dẫn; chưa gửi được yêu cầu trong ứng dụng" onClick={() => flow.push(ROUTES.help)} />

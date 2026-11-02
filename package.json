@@ -35,6 +35,7 @@
     "test:practice-catalog": "node --test tests/reviewed-practice-catalog.test.mjs",
     "test:practice-admission-rehearsal": "node --test tests/practice-admission-rehearsal.cjs",
     "test:content-review": "node --test tests/content-review-handler.test.mjs",
+    "test:reading-publication": "node --test tests/reading-publication.test.mjs",
     "test:content-review-rehearsal": "node --test tests/content-review-rehearsal.cjs",
     "test:owner-conflict-migration-contract": "node --test tests/owner-conflict-migration-contract.test.mjs",
     "test:owner-conflict-sql-rehearsal": "node --test tests/owner-conflict-migration-rehearsal.cjs tests/owner-conflict-full-schema-rehearsal.cjs",

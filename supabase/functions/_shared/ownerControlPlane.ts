@@ -15,13 +15,18 @@ export type OwnerControlPlaneClients = {
       data: unknown;
       error: { code?: string; message?: string } | null;
     }>;
-    // Private bucket access for the reading-unit preview images; optional so older adapters keep working.
+    // Storage access for the reading units: signed Preview URLs, and copy/upload/download/remove for the public
+    // snapshot of units a reviewer switched on. Optional so older adapters keep working.
     storage?: {
       from(bucket: string): {
         createSignedUrls(paths: string[], expiresIn: number): PromiseLike<{
           data: Array<{ path: string | null; signedUrl: string; error: string | null }> | null;
           error: unknown | null;
         }>;
+        copy?(from: string, to: string, options?: { destinationBucket?: string }): PromiseLike<{ data: unknown; error: { message?: string; statusCode?: string | number } | null }>;
+        upload?(path: string, body: string, options: { contentType: string; cacheControl: string; upsert: boolean }): PromiseLike<{ data: unknown; error: { message?: string; statusCode?: string | number } | null }>;
+        download?(path: string): PromiseLike<{ data: { text(): Promise<string> } | null; error: { message?: string; statusCode?: string | number } | null }>;
+        remove?(paths: string[]): PromiseLike<{ data: unknown; error: { message?: string; statusCode?: string | number } | null }>;
       };
     };
   };
