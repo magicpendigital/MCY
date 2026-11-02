@@ -12,10 +12,14 @@ export type CourseLesson = {
   channelCaptionLanguages: string[];
 };
 
+/** Benefits and cautions shown under a course. `reviewed: false` means a draft that a qualified person has not approved yet; the screen says so. */
+export type CourseGuidance = { reviewed: boolean; benefits: string[]; cautions: string[] };
+
 export type FreeCourse = {
   id: FreeCourseId;
   title: string;
   description: string;
+  guidance?: CourseGuidance;
   lessons: CourseLesson[];
 };
 
@@ -41,6 +45,7 @@ export const FREE_COURSES: FreeCourse[] = [
     id: "gentle",
     title: "Một chút chuyển động nhẹ",
     description: "Các bài thực hành ngắn để làm quen với nhịp tập của riêng bạn.",
+    guidance: { reviewed: false, benefits: ["Dành vài phút chú ý tới hơi thở và cảm giác của cơ thể.","Làm quen với chuyển động nhẹ ở cổ, vai, lưng và chân sau thời gian ngồi lâu.","Mỗi bài rất ngắn: bạn tự chọn bài và dừng khi muốn.","Nhiều người thấy cơ thể nhẹ nhõm hơn sau khi vận động nhẹ; kết quả khác nhau theo từng người."], cautions: ["Không tập khi đang đau cấp tính, chấn thương mới, sốt, chóng mặt hoặc thấy không khỏe.","Hãy hỏi ý kiến bác sĩ hoặc người có chuyên môn trước khi tập nếu bạn có bệnh tim mạch, huyết áp bất thường, loãng xương, bệnh cột sống hoặc khớp, đang mang thai hoặc mới phẫu thuật.","Dừng ngay nếu đau tăng, tê, choáng hoặc khó thở; không cố vượt qua cơn đau.","Video không thay thế khám bệnh hay hướng dẫn trực tiếp của người có chuyên môn."] },
     lessons: [
       youtubeLesson("01", "yKm7aOAWn-k", "01 · Thư giãn nhẹ", "0:43"),
       youtubeLesson("02", "mjxV5BTR5jA", "02 · Kéo giãn gân kheo nhẹ", "1:04"),
@@ -66,6 +71,7 @@ export const FREE_COURSES: FreeCourse[] = [
     id: "poses",
     title: "Làm quen với các tư thế yoga",
     description: "Một thư viện nhỏ các tư thế đơn để bạn học từng bước, không cần vội.",
+    guidance: { reviewed: false, benefits: ["Làm quen tên gọi và hình dáng của từng tư thế đơn qua video ngắn.","Quan sát cách đặt tay, chân và thân mà không cần theo cả một buổi tập.","Tập chọn biên độ phù hợp với mình: bạn có thể dừng ở mức thấp hơn video minh hoạ."], cautions: ["Các tư thế ngả sau, chống tay, quỳ gối hoặc đầu thấp hơn tim có thể không phù hợp khi đau cổ, cổ tay, lưng, gối, hoặc khi huyết áp, mắt hay tai trong có vấn đề; hãy hỏi người có chuyên môn.","Không tập khi đang đau cấp tính, chấn thương mới, sốt, chóng mặt hoặc thấy không khỏe.","Hãy hỏi ý kiến bác sĩ hoặc người có chuyên môn trước khi tập nếu bạn có bệnh tim mạch, huyết áp bất thường, loãng xương, bệnh cột sống hoặc khớp, đang mang thai hoặc mới phẫu thuật.","Dừng ngay nếu đau tăng, tê, choáng hoặc khó thở; không cố vượt qua cơn đau.","Video không thay thế khám bệnh hay hướng dẫn trực tiếp của người có chuyên môn."] },
     lessons: [
       youtubeLesson("19", "McOZ1FW5jBM", "Quỳ gối ngả sau", "0:24"),
       youtubeLesson("20", "54IPJkU7f_o", "Rắn hổ mang · phiên bản nhẹ", "0:35"),
@@ -86,6 +92,7 @@ export const FREE_COURSES: FreeCourse[] = [
     id: "sequences",
     title: "Chuỗi tư thế cơ bản",
     description: "Một chuỗi ngắn các tư thế cơ bản để bạn theo dõi từng bước và làm quen với nhịp chuyển động.",
+    guidance: { reviewed: false, benefits: ["Thấy cách nối vài tư thế cơ bản thành một chuỗi ngắn.","Luyện nhịp chuyển tiếp chậm và đều giữa các tư thế.","Có thể xem từng bước rồi tập theo nhịp của bạn, không cần theo kịp video."], cautions: ["Chuỗi cần giữ thăng bằng và đổi tư thế liên tục; không nên tập khi mệt, thiếu ngủ, choáng hoặc chưa quen các tư thế đơn.","Không tập khi đang đau cấp tính, chấn thương mới, sốt, chóng mặt hoặc thấy không khỏe.","Hãy hỏi ý kiến bác sĩ hoặc người có chuyên môn trước khi tập nếu bạn có bệnh tim mạch, huyết áp bất thường, loãng xương, bệnh cột sống hoặc khớp, đang mang thai hoặc mới phẫu thuật.","Dừng ngay nếu đau tăng, tê, choáng hoặc khó thở; không cố vượt qua cơn đau.","Video không thay thế khám bệnh hay hướng dẫn trực tiếp của người có chuyên môn."] },
     lessons: [
       youtubeLesson("32", "6DwXHdN_ccg", "Chuỗi tư thế cơ bản · bài 32", "0:22"),
       youtubeLesson("33", "f7UfRc4TKdM", "Chuỗi tư thế cơ bản · bài 33", "0:21"),

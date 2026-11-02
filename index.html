@@ -11,6 +11,18 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      // Plain ES5 on purpose: runs on any browser. If the app has not drawn anything after 10 s (for example the browser is too old
+      // to parse it), show a readable message instead of a blank page. See docs/quality/KNOWN_INCIDENTS.md, INC-001.
+      (function () {
+        setTimeout(function () {
+          var root = document.getElementById("root");
+          if (root && !root.firstChild) {
+            root.innerHTML = "<div style=\"font:16px/1.5 -apple-system,Roboto,sans-serif;color:#283d31;background:#fffcf7;padding:28px 20px;min-height:100vh;box-sizing:border-box\"><strong style=\"font-size:19px\">Ứng dụng chưa mở được trên trình duyệt này.</strong><p>Hãy kiểm tra kết nối, tải lại trang, hoặc cập nhật iOS / trình duyệt lên bản mới hơn. Nếu vẫn lỗi, xin liên hệ qua trang hướng dẫn của Một chút yoga.</p></div>";
+          }
+        }, 10000);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

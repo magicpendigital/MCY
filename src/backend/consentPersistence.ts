@@ -1,3 +1,4 @@
+import { newId } from '../compat';
 import { CONSENT_POLICY_VERSIONS, emptyConsentState, saveConsentEvent, type LearnerClient, type ConsentState, type ConsentPurpose, type ConsentPolicyVersions } from './learnerData';
 
 export async function persistConsentChoices(
@@ -33,7 +34,7 @@ export async function persistConsentChoices(
   });
   const entries = events.map(purpose => {
     const signature = JSON.stringify([userId, purpose, next[purpose], CONSENT_POLICY_VERSIONS[purpose], source, channelValue]);
-    if (!retryKeys.has(signature)) retryKeys.set(signature, crypto.randomUUID());
+    if (!retryKeys.has(signature)) retryKeys.set(signature, newId());
     return [signature, retryKeys.get(signature)!] as [string,string];
   });
   const outcomes = await settle(entries);

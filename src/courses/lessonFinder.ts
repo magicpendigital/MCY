@@ -18,7 +18,8 @@ export const LESSON_LENGTHS: readonly { id: LessonLength; label: string }[] = [
 ];
 
 const areaRules: readonly [LessonArea, RegExp][] = [
-  ["neck-shoulders", /(?<!\p{L})(cổ|vai)(?!\p{L})/iu],
+  // No lookbehind here: it needs Safari 16.4, and one such regex makes the whole chunk fail to parse on iOS 15 (INC-001).
+  ["neck-shoulders", /(?:^|[^\p{L}])(?:cổ|vai)(?!\p{L})/iu],
   ["back", /(lưng|cột sống|bò mèo|rắn hổ mang|quỳ gối ngả sau|bánh xe)/i],
   ["hips-legs", /(hông|chân|gân kheo|nhón gót|đầu bò|trường tấn|chiến binh|quạ|chó)/i],
   ["whole-body", /(toàn thân|thư giãn|giãn cơ)/i],
@@ -29,7 +30,7 @@ export function areaForRegion(region: string): LessonArea | null {
   switch (region) {
     case "neck": case "shoulder": return "neck-shoulders";
     case "upper_back": case "lower_back": return "back";
-    case "knee": case "foot": return "hips-legs";
+    case "glute": case "knee": case "foot": return "hips-legs";
     default: return null;
   }
 }

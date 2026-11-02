@@ -1,3 +1,4 @@
+import { newId } from "../compat";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MobileScroll } from "../mobile";
 import { getAccountBoundSupabaseClient } from "../backend/supabase";
@@ -25,7 +26,7 @@ export default function PracticeFlowScreen(p: Props) {
   const [practising, setPractising] = useState(false);
   const [stopped, setStopped] = useState(false);
   const base = JSON.stringify(p.context);
-  const context = useMemo((): PracticeContext => ({ ...JSON.parse(base), revision: crypto.randomUUID(), pace, guidance, floor }), [base, pace, guidance, floor]);
+  const context = useMemo((): PracticeContext => ({ ...JSON.parse(base), revision: newId(), pace, guidance, floor }), [base, pace, guidance, floor]);
   const signature = `${p.userId}:${p.consentCurrent}:${p.active}:${context.revision}`;
   const current = useRef(signature); current.current = signature;
   const generation = useRef(0);
@@ -46,7 +47,7 @@ export default function PracticeFlowScreen(p: Props) {
       if (!valid()) return;
       const { data, error: failure } = await client.functions.invoke("mcy-ai-assistant", {
         signal: controller.signal,
-        body: action === "select_plan" ? { action, requestId: crypto.randomUUID(), context } : { action, sessionId: plan?.id, contentVersion: plan?.version, context },
+        body: action === "select_plan" ? { action, requestId: newId(), context } : { action, sessionId: plan?.id, contentVersion: plan?.version, context },
       });
       if (!valid()) return;
       if (failure) {

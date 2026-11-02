@@ -215,6 +215,9 @@ test("body-region contract keeps locale-neutral regions, sides and bilateral edi
   expect(bodyRegionCodes("foot", "unspecified")).toEqual(["foot_unspecified"]);
   expect(decodeBodyRegionCode("forearm_wrist_right")).toEqual({ region: "forearm_wrist", side: "right" });
   expect(decodeBodyRegionCode("shoulder_left")).toEqual({ region: "shoulder", side: "left" });
+  // Owner request 2026-11-02: Mông (glute) is a paired trunk region with its own stable codes.
+  expect(bodyRegionCodes("glute", "both")).toEqual(["glute_left", "glute_right"]);
+  expect(decodeBodyRegionCode("glute_unspecified")).toEqual({ region: "glute", side: "unspecified" });
 
   const left = { region: "elbow", side: "left", level: "Moderate" } as const;
   const right = { region: "elbow", side: "right", level: "Mild" } as const;
@@ -1003,8 +1006,8 @@ test("English learner flow follows check-in, practice and honest reflection on m
     await tapVisible(page.getByRole("button", { name: "Back" }));
     await tapVisible(activeScreen.getByTestId("free-course-catalog").getByRole("button", { name: /Làm quen với các tư thế yoga/ }));
     const poseLessons = activeScreen.locator('.mcy-course-lesson');
-    await expect(activeScreen.locator('.mcy-course-caption-note')).toContainText("Captions for this video haven't been verified.");
-    await expect(activeScreen.locator('.mcy-course-caption-note')).toContainText("auto-captions, if available, may be inaccurate.");
+    // Owner decision 2026-11-02: lessons no longer show caption (subtitle) information.
+    await expect(activeScreen.locator('.mcy-course-caption-note')).toHaveCount(0);
     await expect(poseLessons.nth(0)).toContainText("Quỳ gối ngả sau");
     await expect(poseLessons.nth(2)).toContainText("Rắn hổ mang");
     await tapVisible(poseLessons.nth(12));
@@ -1020,7 +1023,7 @@ test("English learner flow follows check-in, practice and honest reflection on m
     await tapVisible(activeScreen.getByTestId("free-course-catalog").getByRole("button", { name: /Làm quen với các tư thế yoga/ }));
     const reloadedPoseLessons = activeScreen.locator('.mcy-course-lesson');
     await tapVisible(reloadedPoseLessons.nth(2));
-    await expect(activeScreen.locator('.mcy-course-caption-note')).toBeVisible();
+    await expect(activeScreen.locator('.mcy-course-caption-note')).toHaveCount(0);
     await tapVisible(activeScreen.locator('.mcy-course-play'));
     await expect(page.locator('iframe[src*="youtube-nocookie.com/embed/KtMlgK2cjsU"]')).toHaveCount(1);
   } finally {
@@ -1078,10 +1081,10 @@ test("free course detail stacks media and lesson copy on mobile, then uses colum
   expect(Math.min(...catalogReadability.contrasts)).toBeGreaterThanOrEqual(4.5);
   await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).click();
   await expect(page.getByRole("heading", { name: "Một chút chuyển động nhẹ" })).toBeVisible();
-  const captionNote = page.locator(".mcy-course-caption-note");
-  await expect(captionNote).toBeVisible();
+  await expect(page.locator(".mcy-course-caption-note")).toHaveCount(0);
   await expect(page.locator(".mcy-course-video-poster")).toBeVisible();
-  await expect(page.locator(".mcy-course-video-placeholder, .mcy-course-lesson-thumb")).toHaveCount(0);
+  // Preview images are now YouTube thumbnails (Owner decision 2026-11-02); see lesson-thumbnails.spec.ts. No placeholder block remains.
+  await expect(page.locator(".mcy-course-video-placeholder")).toHaveCount(0);
   const sourceNote = page.locator(".mcy-course-source-note");
   const googlePrivacyLink = sourceNote.getByRole("link", { name: "Chính sách quyền riêng tư của Google" });
   await expect(sourceNote).toContainText("Nhấn Phát sẽ tải trình phát YouTube trong ứng dụng");
@@ -1122,7 +1125,6 @@ test("free course detail stacks media and lesson copy on mobile, then uses colum
       description: measure(".mcy-course-featured-copy p"),
       source: measure(".mcy-course-source-note"),
       sourceLink: measure(".mcy-course-source-note a"),
-      caption: measure(".mcy-course-caption-note"),
       lessonNumber: measure(".mcy-course-lesson-number"),
     };
   });
@@ -1132,14 +1134,12 @@ test("free course detail stacks media and lesson copy on mobile, then uses colum
     expect(text.contrast).toBeGreaterThanOrEqual(4.5);
   }
   const noteAndVideo = await page.locator(".mcy-course-featured").evaluate(featured => {
-    const caption = featured.querySelector(".mcy-course-caption-note")!.getBoundingClientRect();
     const source = featured.querySelector(".mcy-course-source-note")!.getBoundingClientRect();
     const video = featured.querySelector(".mcy-course-video")!.getBoundingClientRect();
-    return { captionTop: caption.top, captionBottom: caption.bottom, sourceTop: source.top, sourceBottom: source.bottom, videoTop: video.top, videoBottom: video.bottom };
+    return { sourceTop: source.top, sourceBottom: source.bottom, videoTop: video.top, videoBottom: video.bottom };
   });
-  // The video leads; the privacy source note sits under the lesson copy, and the caption note follows the source note.
+  // The video leads; the privacy source note sits under the lesson copy.
   expect(noteAndVideo.videoBottom).toBeLessThanOrEqual(noteAndVideo.sourceTop);
-  expect(noteAndVideo.sourceBottom).toBeLessThanOrEqual(noteAndVideo.captionTop);
 
   const mobileLayout = await page.locator(".mcy-course-featured").evaluate(card => {
     const video = card.querySelector(".mcy-course-video")!.getBoundingClientRect();
@@ -1162,14 +1162,12 @@ test("free course detail stacks media and lesson copy on mobile, then uses colum
   await expect(page.getByRole("button", { name: /Phát bài học/ }).locator(":scope > span")).toBeInViewport({ ratio: 1 });
   await page.locator(".mcy-course-featured").screenshot({ path: testInfo.outputPath("course-detail-mobile-navigation.png") });
   await page.setViewportSize({ width: 320, height: 568 });
-  await expect(captionNote).toBeVisible();
+  await expect(page.locator(".mcy-course-source-note")).toBeVisible();
   const narrowLayout = await page.evaluate(() => ({
     width: document.documentElement.scrollWidth,
-    captionFontSize: Number.parseFloat(getComputedStyle(document.querySelector(".mcy-course-caption-note")!).fontSize),
     sourceFontSize: Number.parseFloat(getComputedStyle(document.querySelector(".mcy-course-source-note")!).fontSize),
   }));
   expect(narrowLayout.width).toBeLessThanOrEqual(320);
-  expect(narrowLayout.captionFontSize).toBeGreaterThanOrEqual(14);
   expect(narrowLayout.sourceFontSize).toBeGreaterThanOrEqual(14);
   const narrowPosterRatio = await page.locator(".mcy-course-video").evaluate(video => {
     const { width, height } = video.getBoundingClientRect();
@@ -1472,10 +1470,9 @@ test("short portrait keeps welcome, lesson and reflection actions inside the vie
     await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).tap();
     await expect.poll(() => page.locator('.flow-screen[data-flow-current="true"]').evaluate(screen => Math.round(screen.getBoundingClientRect().left - screen.parentElement!.getBoundingClientRect().left))).toBe(0);
     const activeCourseDetail = page.locator('.mcy-flow-route-accessibility[data-flow-route="course-detail"][data-flow-active="true"]');
-    const captionNote = activeCourseDetail.locator(".mcy-course-caption-note");
-    await expect(captionNote).toBeVisible();
+    await expect(activeCourseDetail.locator(".mcy-course-source-note")).toBeVisible();
     const captionLayout = await activeCourseDetail.locator(".mcy-course-featured").evaluate(featured => {
-      const note = featured.querySelector(".mcy-course-caption-note")!.getBoundingClientRect();
+      const note = featured.querySelector(".mcy-course-source-note")!.getBoundingClientRect();
       const video = featured.querySelector(".mcy-course-video")!.getBoundingClientRect();
       return { noteLeft: note.left, noteRight: note.right, noteTop: note.top, videoBottom: video.bottom, documentWidth: document.documentElement.scrollWidth };
     });

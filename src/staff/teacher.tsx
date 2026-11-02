@@ -1,3 +1,4 @@
+import { lastOf } from "../compat";
 import { lazy, Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { authRedirectUrl, backendConfigured, getSupabaseClient } from "../backend/supabase";
@@ -465,7 +466,7 @@ export function TeacherWorkspace() {
 
   const addSegment = () => setForm(current => {
     if (!current || current.segments.length >= 40) return current;
-    const startSeconds = current.segments.at(-1)?.endSeconds ?? 0;
+    const startSeconds = lastOf(current.segments)?.endSeconds ?? 0;
     return { ...current, segments: [...current.segments, { startSeconds, endSeconds: Math.min(startSeconds + 30, current.durationMinutes * 60), movementName: "", cueText: "", stopCue: "", breathCue: "", variantRef: "" }] };
   });
 

@@ -29,6 +29,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run check:runtime
       - run: npm run build
+      - run: npm run test:browser-compat
       - run: npm run check:bundle-secrets
       - run: npm run test:dependency-security
       - run: npm run test:checkin-migration-contract

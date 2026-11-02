@@ -1,3 +1,5 @@
+import { RouteBoundary } from "./compat/RouteBoundary";
+import { newId, lastOf } from "./compat";
 import { createContext, lazy, Suspense, useContext, useEffect, useLayoutEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { createPortal } from "react-dom";
 import "@fontsource/roboto/latin-400.css";
@@ -280,13 +282,13 @@ const BODY_STYLES: { id: BodyStyle; label: string; image: string }[] = [
 ];
 const REGION_POSITION: Record<BodyRegion, { x: number; y: number }> = {
   neck: { x: 50, y: 18 }, shoulder: { x: 50, y: 24 },
-  upper_back: { x: 50, y: 32 }, lower_back: { x: 50, y: 43 },
+  upper_back: { x: 50, y: 32 }, lower_back: { x: 50, y: 43 }, glute: { x: 50, y: 51 },
   upper_arm: { x: 50, y: 30 }, elbow: { x: 50, y: 41 },
   forearm_wrist: { x: 50, y: 52 }, hand: { x: 50, y: 62 },
   knee: { x: 50, y: 73 }, foot: { x: 50, y: 94 },
 };
 const REGION_SIDE_OFFSET: Partial<Record<BodyRegion, number>> = {
-  shoulder: 16, upper_arm: 20, elbow: 25, forearm_wrist: 29, hand: 27, knee: 8, foot: 7,
+  shoulder: 16, glute: 7, upper_arm: 20, elbow: 25, forearm_wrist: 29, hand: 27, knee: 8, foot: 7,
 };
 function regionSidePosition(region: BodyRegion, side: BodySide) {
   if (side === "unspecified" || side === "both" || !isPairedBodyRegion(region)) return REGION_POSITION[region];
@@ -296,7 +298,7 @@ function regionSidePosition(region: BodyRegion, side: BodySide) {
 function currentAppLocale(): AppLocale { return typeof document !== "undefined" && document.documentElement.lang === "en" ? "en-US" : "vi-VN"; }
 function makeSnapshot(kind: Snapshot["kind"], status: BodyStatus, observations: Observation[], extra: Partial<Snapshot> = {}, recordedAt = new Date()): Snapshot {
   const date = `${recordedAt.getFullYear()}-${String(recordedAt.getMonth() + 1).padStart(2, "0")}-${String(recordedAt.getDate()).padStart(2, "0")}`;
-  return { id: crypto.randomUUID(), day: localDateOrdinal(date), date, time: recordedAt.toLocaleTimeString(currentAppLocale(), { hour: "2-digit", minute: "2-digit" }), kind, status, observations: observations.map(item => ({ ...item })), ...extra };
+  return { id: newId(), day: localDateOrdinal(date), date, time: recordedAt.toLocaleTimeString(currentAppLocale(), { hour: "2-digit", minute: "2-digit" }), kind, status, observations: observations.map(item => ({ ...item })), ...extra };
 }
 function localDateOrdinal(isoDate: string) { return Math.floor(Date.parse(`${isoDate}T00:00:00Z`) / 86_400_000); }
 function todayLocalDate() {
@@ -422,7 +424,7 @@ async function persistCurrentCheckin(
   const generation = learnerSessionGeneration();
   const client = await getAccountBoundSupabaseClient(expectedUserId);
   if (generation !== learnerSessionGeneration() || !canDispatch()) return null;
-  const payload = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, captureType, state.pendingCheckinIdempotencyKey ?? crypto.randomUUID());
+  const payload = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, captureType, state.pendingCheckinIdempotencyKey ?? newId());
   const idempotencyKey = payload.idempotencyKey;
   const current = (previous: DemoState) => generation === learnerSessionGeneration() && isCurrentLearnerSession(previous.signedIn, previous.userId, expectedUserId);
   setState(previous => current(previous)
@@ -715,43 +717,47 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
 
+// A route that loads a lazy chunk: a failed chunk or render error shows a message instead of a blank screen (INC-001).
+function RouteSuspense({ fallback, children }: { fallback: React.ReactNode; children: React.ReactNode }) {
+  return <RouteBoundary><Suspense fallback={fallback}>{children}</Suspense></RouteBoundary>;
+}
 const readingFallback = <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở bài đọc…</div></main></MobileScroll>;
 function ReadingLibraryRoute() {
   const flow = useFlow();
-  return <Suspense fallback={readingFallback}><ReadingLibraryScreen onOpened={() => flow.push(ROUTES.readingLesson)} /></Suspense>;
+  return <RouteSuspense fallback={readingFallback}><ReadingLibraryScreen onOpened={() => flow.push(ROUTES.readingLesson)} /></RouteSuspense>;
 }
 function ReadingLessonRoute() {
   const flow = useFlow();
-  return <Suspense fallback={readingFallback}><ReadingLessonScreen onCheckin={() => flow.push(ROUTES.checkin)} onOpened={() => undefined} /></Suspense>;
+  return <RouteSuspense fallback={readingFallback}><ReadingLessonScreen onCheckin={() => flow.push(ROUTES.checkin)} onOpened={() => undefined} /></RouteSuspense>;
 }
 function ReadingPublishRoute() {
   const { state } = useDemo();
   if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để cấu hình hiển thị cho học viên.</div></main></MobileScroll>;
-  return <Suspense fallback={readingFallback}><ReadingPublishScreen key={state.userId} userId={state.userId} /></Suspense>;
+  return <RouteSuspense fallback={readingFallback}><ReadingPublishScreen key={state.userId} userId={state.userId} /></RouteSuspense>;
 }
 
 function MyClassesRoute() {
   const flow = useFlow();
   const { state } = useDemo();
   if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để xem lớp và nhận xét của bạn.</div></main></MobileScroll>;
-  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở lớp…</div></main></MobileScroll>}>
+  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở lớp…</div></main></MobileScroll>}>
     <MyClassesScreen key={state.userId} userId={state.userId} active={flow.current.id === ROUTES.myClasses.id} />
-  </Suspense>;
+  </RouteSuspense>;
 }
 
 function ReadingPreviewRoute() {
   const flow = useFlow();
   const { state } = useDemo();
   if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để xem trước nội dung được giao cho bạn.</div></main></MobileScroll>;
-  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở xem trước…</div></main></MobileScroll>}>
+  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở xem trước…</div></main></MobileScroll>}>
     <ReadingPreviewScreen key={state.userId} userId={state.userId} active={flow.current.id === ROUTES.readingPreview.id} />
-  </Suspense>;
+  </RouteSuspense>;
 }
 
 function CourseDetailRoute() {
   const flow = useFlow();
   const { state, update } = useDemo();
-  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening the lesson…" : "Đang mở bài học…"}</div></main></MobileScroll>}>
+  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening the lesson…" : "Đang mở bài học…"}</div></main></MobileScroll>}>
     <CourseDetailScreen
       locale={state.locale}
       selectedCourseId={state.selectedCourseId}
@@ -763,7 +769,7 @@ function CourseDetailRoute() {
         flow.push(ROUTES.reflection);
       }}
     />
-  </Suspense>;
+  </RouteSuspense>;
 }
 
 function PracticeRoute() {
@@ -773,7 +779,7 @@ function PracticeRoute() {
     locale: state.locale, minutes: state.minutes, energy: state.energy, intent: state.intent, bodyStatus: state.bodyStatus,
     regions: [...new Set(state.preObservations.flatMap(item => bodyRegionCodes(item.region, item.side)))],
   };
-  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><p role="status">Đang mở buổi học…</p></main></MobileScroll>}><PracticeFlowScreen
+  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><p role="status">Đang mở buổi học…</p></main></MobileScroll>}><PracticeFlowScreen
     context={context} userId={state.userId} consentCurrent={hasCurrentAiConsent(state)} active={flow.current.id === ROUTES.dailyPractice.id}
     previousWasTooFast={Boolean(rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace))}
     onBrowse={() => flow.push(ROUTES.discover)} onConsent={() => flow.push(ROUTES.privacy)} onAdjust={() => flow.pop()}
@@ -781,7 +787,7 @@ function PracticeRoute() {
       update({ checkinBaselineReady: false, reflectionHasCheckinBaseline: state.checkinBaselineReady, reflectionBeforeStatus: state.checkinBaselineReady ? state.bodyStatus : null, reflectionBeforeObservations: state.checkinBaselineReady ? [...state.preObservations] : [], reflectionLessonTitle: title, postObservations: [], postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly });
       flow.push(ROUTES.reflection);
     }}
-  /></Suspense>;
+  /></RouteSuspense>;
 }
 
 function PracticeCapabilityObserver() {
@@ -811,7 +817,7 @@ function PracticeCapabilityObserver() {
 function DiscoverRoute() {
   const flow = useFlow();
   const { state, update } = useDemo();
-  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening free lessons…" : "Đang mở bài học miễn phí…"}</div></main></MobileScroll>}>
+  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening free lessons…" : "Đang mở bài học miễn phí…"}</div></main></MobileScroll>}>
     <DiscoverScreen
       locale={state.locale}
       onOpenCourse={(courseId, firstLessonId) => {
@@ -826,13 +832,13 @@ function DiscoverRoute() {
       }}
       checkinRegions={state.preObservations.map(item => item.region)}
     />
-  </Suspense>;
+  </RouteSuspense>;
 }
 
 function JourneyRoute() {
   const flow = useFlow();
   const { state, setState, update } = useDemo();
-  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening your journey…" : "Đang mở Hành trình…"}</div></main></MobileScroll>}>
+  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening your journey…" : "Đang mở Hành trình…"}</div></main></MobileScroll>}>
     <LazyJourneyScreen
       state={state}
       setState={setState}
@@ -847,7 +853,7 @@ function JourneyRoute() {
         flow.push(ROUTES.checkin);
       }}
     />
-  </Suspense>;
+  </RouteSuspense>;
 }
 
 function finishAtAuthDestination(flow: ReturnType<typeof useFlow>, destination: string) {
@@ -1037,7 +1043,7 @@ function LearnerPrototype() {
           consentPolicyVersions: data.consentPolicyVersions,
           onboardingComplete: Boolean(data.profile),
           remoteCheckins,
-          currentRemoteCheckinId: previous.currentRemoteCheckinId ?? remoteCheckins.at(-1)?.remoteId ?? null,
+          currentRemoteCheckinId: previous.currentRemoteCheckinId ?? lastOf(remoteCheckins)?.remoteId ?? null,
           backendStatus: "ready",
           backendError: "",
         }));
@@ -1222,8 +1228,8 @@ function AuthEmailScreen() {
     <Eyebrow>{state.authMode === "create" ? "TẠO TÀI KHOẢN" : "ĐĂNG NHẬP"}</Eyebrow>
     <h1>{state.authMode === "create" ? "Tạo tài khoản nhanh bằng email" : usePassword ? "Đăng nhập bằng mật khẩu" : "Đăng nhập nhanh qua email"}</h1>
     {state.authMode === "create" && <p className="mcy-lead">Một Chút Yoga sẽ gửi email xác minh tới địa chỉ bạn cung cấp.</p>}
-    {state.authMode === "login" && <div className="mcy-chip-grid mcy-auth-method" role="group" aria-label="Cách đăng nhập"><Choice selected={!usePassword} disabled={sending} onClick={() => { setMethod("code"); setError(""); }}>Mã hoặc liên kết qua email</Choice><Choice selected={usePassword} disabled={sending} onClick={() => { setMethod("password"); setError(""); }}>Mật khẩu</Choice></div>}
     <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
+    {state.authMode === "login" && <div className="mcy-chip-grid mcy-auth-method" role="group" aria-label="Cách đăng nhập"><Choice selected={!usePassword} disabled={sending} onClick={() => { setMethod("code"); setError(""); }}>Mã hoặc liên kết qua email</Choice><Choice selected={usePassword} disabled={sending} onClick={() => { setMethod("password"); setError(""); }}>Mật khẩu</Choice></div>}
     {usePassword && <label className="mcy-form-field">Mật khẩu<KeyboardInput type="password" autoComplete="current-password" aria-label="Mật khẩu" value={password} onChange={event => { setPassword(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>}
     {!usePassword && <EmailLanguageSelect value={emailLocale} disabled={sending} onChange={locale => { setEmailLocale(locale); rememberEmailLocale(locale); }} />}
     {error && <div className="mcy-form-error" role="alert">{error}</div>}
@@ -1612,7 +1618,7 @@ function CheckinScreen() {
     <p className="mcy-lead">{state.checkinStep === 2 && state.aiCapability === "ready" ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
     {state.checkinStep === 1 ? <div className="mcy-checkin-content checkin-step-body">
       <div className="mcy-checkin-illustration">
-        <div className="mcy-scroll-hint"><ChevronDownIcon />{msg(locale, "checkin.scrollHint")}</div>
+        <div className="mcy-scroll-hint mcy-star-hint"><span className="mcy-star" aria-hidden="true">*</span><em>{msg(locale, "checkin.scrollHint")}</em></div>
         <div className="mcy-body-groups" aria-label={locale === "en-US" ? "Body areas" : "Nhóm vùng cơ thể"}>{(["trunk", "arms", "legs"] as BodyRegionGroup[]).map(group => <button key={group} aria-pressed={regionGroup === group} onClick={() => setRegionGroup(group)}>{msg(locale, `checkin.group.${group}` as "checkin.group.trunk" | "checkin.group.arms" | "checkin.group.legs")}<small>{state.preObservations.filter(item => BODY_REGION_GROUPS[group].includes(item.region)).length}</small></button>)}</div>
         <BodyMap observations={state.preObservations} bodyStyle={state.bodyStyle} locale={locale} group={regionGroup} onSelect={openRegion} />
         <BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} />
@@ -1620,7 +1626,7 @@ function CheckinScreen() {
       <div className="mcy-checkin-fields">
         <h2 className="mcy-inline-section-title">{msg(locale, "checkin.regions")}</h2>
         <div className="mcy-region-list" aria-label={locale === "en-US" ? "Choose a body area" : "Chọn vùng cơ thể"}>{BODY_REGION_GROUPS[regionGroup].map(region => { const items = state.preObservations.filter(entry => entry.region === region); const detail = items.length ? items.map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(locale, item.side)} · ` : ""}${item.status === "uncertain" ? msg(locale, "checkin.unsure") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(" / ") : msg(locale, "checkin.tapToRecord"); return <button key={region} className={items.length ? "selected" : ""} onClick={() => openRegion(region)}><span>{regionLabel(locale, region)}</span><small>{detail}</small><ArrowRightIcon /></button>; })}</div>
-        <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one of these:" : "Hoặc chọn một trạng thái:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "tired"} onClick={() => chooseStatus("tired")}>{msg(locale, "checkin.tired")}</Choice><Choice selected={state.bodyStatus === "uncomfortable"} onClick={() => chooseStatus("uncomfortable")}>{msg(locale, "checkin.uncomfortable")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
+        <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one overall state describing the whole body:" : "Hoặc chọn trạng thái chung mô tả cả cơ thể:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "tired"} onClick={() => chooseStatus("tired")}>{msg(locale, "checkin.tired")}</Choice><Choice selected={state.bodyStatus === "uncomfortable"} onClick={() => chooseStatus("uncomfortable")}>{msg(locale, "checkin.uncomfortable")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
         {statusDescription && <p className="mcy-status-caption">{statusDescription}</p>}
         {!state.signedIn && (state.preObservations.length > 0 || (state.bodyStatus && state.bodyStatus !== "skipped")) && <>
           <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : msg(locale, "checkin.standalone")}</button>
@@ -1903,7 +1909,7 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
       if (state.userId && (state.consentBaseline[purpose] !== granted || needsReacceptance)) {
         const client = await getAccountBoundSupabaseClient(expectedUserId!);
         if (!current() || consentAccount.current !== expectedAccount) return;
-        await saveConsentEvent(client, purpose, granted, policyVersion, "settings", crypto.randomUUID(), clientChannel());
+        await saveConsentEvent(client, purpose, granted, policyVersion, "settings", newId(), clientChannel());
       }
       if (!current() || consentAccount.current !== expectedAccount) return;
       setState(previous => current(previous) && previous.userId === expectedUserId && previous.signedIn === expectedSignedIn ? { ...previous, ...patch, consentBaseline: { ...previous.consentBaseline, [purpose]: granted }, consentPolicyVersions: { ...previous.consentPolicyVersions, [purpose]: policyVersion } } : previous);
@@ -1996,7 +2002,7 @@ function SyncScreen() {
   const flow = useFlow();
   const { state } = useDemo();
   const locale = state.locale;
-  const latest = state.lastReflection ?? state.history.at(-1);
+  const latest = state.lastReflection ?? lastOf(state.history);
   const reflectionTitle = latest?.feedbackSkipped
     ? msg(locale, "sync.skippedTitle")
     : latest?.kind === "Sau tập"

@@ -1,3 +1,4 @@
+import { newId } from '../compat';
 import { useEffect, useRef, useState } from 'react';
 import { getSupabaseClient } from '../backend/supabase';
 import './teacher-collaboration.css';
@@ -108,7 +109,7 @@ export function TeacherCollaborationPanel({userId,onReadyChange}:{userId:string;
  const sendKey=useRef<{id:string;revision:number;key:string}|null>(null);
  const sendFeedback=async()=>{
   if(!selected || !matching)return;const mutation=beginMutation();if(!mutation)return;const {current,finish}=mutation;
-  if(sendKey.current?.id!==matching.id || sendKey.current.revision!==matching.revision)sendKey.current={id:matching.id,revision:matching.revision,key:crypto.randomUUID()};
+  if(sendKey.current?.id!==matching.id || sendKey.current.revision!==matching.revision)sendKey.current={id:matching.id,revision:matching.revision,key:newId()};
   try{await invoke('send_feedback',{enrollment_id:selected.id,feedback_id:matching.id,expected_revision:matching.revision,idempotency_key:sendKey.current.key});
    const next=await invoke<Feedback[]>('read_feedback',{enrollment_id:selected.id});if(!current())return;setFeedback(next);setNotice('Đã gửi nhận xét cho đúng học viên được phân công.');
   }catch(cause){if(current())fail(cause);}finally{finish();if(current())setBusy(false);}

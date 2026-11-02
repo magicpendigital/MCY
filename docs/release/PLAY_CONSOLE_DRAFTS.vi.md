@@ -31,7 +31,7 @@ Tài khoản nhà phát triển cá nhân **Tuyên Trịnh** (app ID Console 497
 | Chia sẻ với bên thứ ba | Không (nhà cung cấp hạ tầng xử lý thay mặt, không phải “chia sẻ”) — đối chiếu định nghĩa hiện hành | Supabase, Resend, Vercel |
 | Mã hóa khi truyền | Có | HTTPS |
 | Cho phép yêu cầu xóa dữ liệu | Có — trong ứng dụng (Cá nhân → Bảo mật tài khoản) và URL web `https://motchutyoga.magicpendigital.com/delete-account.html` | Phải khai cả hai |
-| Dữ liệu YouTube khi nhấn Phát | Ghi chú: trình phát YouTube nhúng do Google xử lý theo chính sách của Google | Chỉ kết nối khi nhấn Phát |
+| Dữ liệu YouTube khi nhấn Phát | Ghi chú: ảnh xem trước (i.ytimg.com) tải khi danh sách hiện ra và trình phát YouTube nhúng do Google xử lý theo chính sách của Google (2026-11-02: thêm ảnh xem trước) | Chỉ kết nối khi nhấn Phát |
 
 ## 3. Nội dung và đối tượng
 

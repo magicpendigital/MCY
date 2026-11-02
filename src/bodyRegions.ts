@@ -7,6 +7,7 @@ export type BodyRegion =
   | "hand"
   | "upper_back"
   | "lower_back"
+  | "glute"
   | "knee"
   | "foot";
 
@@ -22,22 +23,23 @@ export type BodyRegionCode =
   | "elbow_left" | "elbow_right" | "elbow_unspecified"
   | "forearm_wrist_left" | "forearm_wrist_right" | "forearm_wrist_unspecified"
   | "hand_left" | "hand_right" | "hand_unspecified"
+  | "glute_left" | "glute_right" | "glute_unspecified"
   | "knee_left" | "knee_right" | "knee_unspecified"
   | "foot_left" | "foot_right" | "foot_unspecified";
 
 export const BODY_REGIONS: readonly BodyRegion[] = [
-  "neck", "shoulder", "upper_back", "lower_back",
+  "neck", "shoulder", "upper_back", "lower_back", "glute",
   "upper_arm", "elbow", "forearm_wrist", "hand", "knee", "foot",
 ];
 
 export const BODY_REGION_GROUPS: Readonly<Record<BodyRegionGroup, readonly BodyRegion[]>> = {
-  trunk: ["neck", "shoulder", "upper_back", "lower_back"],
+  trunk: ["neck", "shoulder", "upper_back", "lower_back", "glute"],
   arms: ["upper_arm", "elbow", "forearm_wrist", "hand"],
   legs: ["knee", "foot"],
 };
 
 const pairedRegions = new Set<BodyRegion>([
-  "shoulder", "upper_arm", "elbow", "forearm_wrist", "hand", "knee", "foot",
+  "shoulder", "glute", "upper_arm", "elbow", "forearm_wrist", "hand", "knee", "foot",
 ]);
 
 export function isPairedBodyRegion(region: BodyRegion): boolean {
