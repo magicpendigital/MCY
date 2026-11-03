@@ -1,0 +1,1244 @@
+[
+  {
+    "name": "guest320-normal",
+    "status": "PASS",
+    "result": {
+      "geometry": [
+        {
+          "top": 280.875,
+          "bottom": 383.0625,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 350.0625,
+          "bottom": 452.25,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 371.25,
+          "bottom": 452.4375,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 253.4375,
+          "bottom": 301.4375,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 349.4375,
+          "bottom": 451.625,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 349.625,
+          "bottom": 451.8125,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 226.3125,
+          "bottom": 328.5,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 328.5,
+          "bottom": 430.6875,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 349.6875,
+          "bottom": 451.875,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 349.875,
+          "bottom": 452.0625,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        }
+      ],
+      "overflow": {
+        "client": 320,
+        "scroll": 320,
+        "offenders": []
+      }
+    },
+    "mutations": [],
+    "requests": []
+  },
+  {
+    "name": "guest320-28",
+    "status": "PASS",
+    "result": {
+      "geometry": [
+        {
+          "top": 204.5,
+          "bottom": 451.5,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 204.5,
+          "bottom": 451.5,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 246.5,
+          "bottom": 451.5,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 223.5,
+          "bottom": 331.5,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 246.5,
+          "bottom": 451.5,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 204.5,
+          "bottom": 451.5,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 153.5,
+          "bottom": 400.5,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 204.5,
+          "bottom": 451.5,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 204.5,
+          "bottom": 451.5,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 162.5,
+          "bottom": 451.5,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        }
+      ],
+      "overflow": {
+        "client": 320,
+        "scroll": 320,
+        "offenders": []
+      }
+    },
+    "mutations": [],
+    "requests": []
+  },
+  {
+    "name": "long-account28",
+    "status": "PASS",
+    "result": {
+      "geometry": [
+        {
+          "top": 154,
+          "bottom": 401,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 205,
+          "bottom": 452,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 247,
+          "bottom": 452,
+          "left": 34,
+          "right": 286,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 175,
+          "bottom": 380,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 205,
+          "bottom": 452,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 222,
+          "bottom": 332,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 154,
+          "bottom": 401,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 205,
+          "bottom": 452,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 205,
+          "bottom": 452,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 163,
+          "bottom": 452,
+          "left": 17,
+          "right": 303,
+          "header": 55,
+          "footer": 500,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        }
+      ],
+      "overflow": {
+        "client": 320,
+        "scroll": 320,
+        "offenders": []
+      }
+    },
+    "mutations": [],
+    "requests": [
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      }
+    ]
+  },
+  {
+    "name": "preset-iphone",
+    "status": "PASS",
+    "result": {
+      "geometry": [
+        {
+          "top": 468.0625,
+          "bottom": 549.25,
+          "left": 394.5,
+          "right": 705.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 549.25,
+          "bottom": 651.4375,
+          "left": 394.5,
+          "right": 705.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 651.4375,
+          "bottom": 732.625,
+          "left": 394.5,
+          "right": 705.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 811.625,
+          "bottom": 859.625,
+          "left": 394.5,
+          "right": 705.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 529.625,
+          "bottom": 610.8125,
+          "left": 377.5,
+          "right": 722.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 610.8125,
+          "bottom": 713,
+          "left": 377.5,
+          "right": 722.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 778.5,
+          "bottom": 859.6875,
+          "left": 377.5,
+          "right": 722.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 757.6875,
+          "bottom": 859.875,
+          "left": 377.5,
+          "right": 722.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 757.875,
+          "bottom": 860.0625,
+          "left": 377.5,
+          "right": 722.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 758.0625,
+          "bottom": 860.25,
+          "left": 377.5,
+          "right": 722.5,
+          "header": 233,
+          "footer": 874,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        }
+      ],
+      "safe": {
+        "footerBottom": 942,
+        "viewportBottom": 976,
+        "safe": 34
+      },
+      "overflow": {
+        "client": 393,
+        "scroll": 393,
+        "offenders": []
+      }
+    },
+    "mutations": [],
+    "requests": []
+  },
+  {
+    "name": "preset-pixel-10",
+    "status": "PASS",
+    "result": {
+      "geometry": [
+        {
+          "top": 428.0625,
+          "bottom": 509.25,
+          "left": 378,
+          "right": 723,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 509.25,
+          "bottom": 590.4375,
+          "left": 378,
+          "right": 723,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 590.4375,
+          "bottom": 671.625,
+          "left": 378,
+          "right": 723,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 774.625,
+          "bottom": 822.625,
+          "left": 378,
+          "right": 723,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 510.625,
+          "bottom": 591.8125,
+          "left": 361,
+          "right": 740,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 591.8125,
+          "bottom": 673,
+          "left": 361,
+          "right": 740,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 780.5,
+          "bottom": 861.6875,
+          "left": 361,
+          "right": 740,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 780.6875,
+          "bottom": 861.875,
+          "left": 361,
+          "right": 740,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 780.875,
+          "bottom": 862.0625,
+          "left": 361,
+          "right": 740,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        },
+        {
+          "top": 760.0625,
+          "bottom": 862.25,
+          "left": 361,
+          "right": 740,
+          "header": 193,
+          "footer": 910,
+          "ring": 6,
+          "visible": true,
+          "paddingTop": "24px",
+          "paddingBottom": "92px"
+        }
+      ],
+      "safe": {
+        "footerBottom": 978,
+        "viewportBottom": 978,
+        "safe": 0
+      },
+      "overflow": {
+        "client": 427,
+        "scroll": 427,
+        "offenders": []
+      }
+    },
+    "mutations": [],
+    "requests": []
+  },
+  {
+    "name": "all-nine-and-auth-create",
+    "status": "PASS",
+    "result": {
+      "destinations": [
+        "edit-profile",
+        "privacy",
+        "memory",
+        "security",
+        "help",
+        "notifications",
+        "access",
+        "sharing",
+        "help"
+      ],
+      "createFormWithoutEmailRequest": true
+    },
+    "mutations": [],
+    "requests": []
+  },
+  {
+    "name": "notification-false-security",
+    "status": "FAIL",
+    "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('flow-current').locator('.mcy-eyebrow')\nExpected: \"ĐĂNG NHẬP\"\nReceived: \"BẢO MẬT\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.text\" with timeout 5000ms\n  - waiting for getByTestId('flow-current').locator('.mcy-eyebrow')\n    13 × locator resolved to <div class=\"mcy-eyebrow\">BẢO MẬT</div>\n       - unexpected value \"BẢO MẬT\"\n\n    at captureRawStack (D:\\Projects\\MCY\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveText (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\independent-profile-probe-v2-settled28.mjs:36:1020\n    at async run (D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\independent-profile-probe-v2-settled28.mjs:29:262)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-6-2026-10-18/independent-profile-probe-v2-settled28.mjs:36:42",
+    "mutations": [],
+    "requests": [
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      }
+    ]
+  },
+  {
+    "name": "notification-true-security",
+    "status": "FAIL",
+    "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('flow-current').locator('.mcy-eyebrow')\nExpected: \"ĐĂNG NHẬP\"\nReceived: \"BẢO MẬT\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.text\" with timeout 5000ms\n  - waiting for getByTestId('flow-current').locator('.mcy-eyebrow')\n    13 × locator resolved to <div class=\"mcy-eyebrow\">BẢO MẬT</div>\n       - unexpected value \"BẢO MẬT\"\n\n    at captureRawStack (D:\\Projects\\MCY\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveText (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\independent-profile-probe-v2-settled28.mjs:36:1020\n    at async run (D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\independent-profile-probe-v2-settled28.mjs:29:262)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-6-2026-10-18/independent-profile-probe-v2-settled28.mjs:36:42",
+    "mutations": [],
+    "requests": [
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      }
+    ]
+  },
+  {
+    "name": "logout-success",
+    "status": "PASS",
+    "result": {
+      "localSessionCleared": true,
+      "remoteRevocationAccepted": false,
+      "errorAlert": null
+    },
+    "mutations": [
+      {
+        "path": "/auth/v1/logout",
+        "query": "?scope=local",
+        "method": "POST",
+        "body": null
+      }
+    ],
+    "requests": [
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      },
+      {
+        "path": "/auth/v1/logout",
+        "method": "POST"
+      }
+    ]
+  },
+  {
+    "name": "logout-500",
+    "status": "PASS",
+    "result": {
+      "localSessionCleared": true,
+      "remoteRevocationAccepted": false,
+      "errorAlert": {
+        "x": 17,
+        "y": 218.8125,
+        "width": 286,
+        "height": 43
+      }
+    },
+    "mutations": [
+      {
+        "path": "/auth/v1/logout",
+        "query": "?scope=local",
+        "method": "POST",
+        "body": null
+      }
+    ],
+    "requests": [
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      },
+      {
+        "path": "/auth/v1/logout",
+        "method": "POST"
+      }
+    ]
+  },
+  {
+    "name": "hydration-pending-account-replacement",
+    "status": "PASS",
+    "result": {
+      "noDerivedStatus": true,
+      "actorReplacement": true
+    },
+    "mutations": [],
+    "requests": [
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      }
+    ]
+  },
+  {
+    "name": "hydration-error",
+    "status": "PASS",
+    "result": {
+      "controlsAvailable": true,
+      "noVerifiedOrConsentBadge": true
+    },
+    "mutations": [],
+    "requests": [
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      }
+    ]
+  },
+  {
+    "name": "sharing-existing-revoke-and-retained-css",
+    "status": "PASS",
+    "result": {
+      "existingSharingRevokeReachable": true,
+      "retainedRouteNoProfileWrapper": true
+    },
+    "mutations": [],
+    "requests": [
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/rpc/get_my_consent_state",
+        "method": "POST"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/profiles",
+        "method": "GET"
+      },
+      {
+        "path": "/rest/v1/checkins",
+        "method": "GET"
+      },
+      {
+        "path": "/functions/v1/mcy-ai-assistant",
+        "method": "POST"
+      }
+    ]
+  }
+]

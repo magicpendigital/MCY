@@ -1,0 +1,380 @@
+{
+  "recordedAt": "2026-10-17T18:54:36.672Z",
+  "status": "FROZEN_CONDITIONAL_INDEPENDENT_QC_AWAITING_ROOT_FINAL",
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "files": [
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/COURSE-MOCK-ESCALATED-v2-FREEZE.json",
+      "sha256": "824e00e96f65fb7aeffaeaec3fd56e745d2628379647063b8e5f072a084ae4fe"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/COURSE-MOCK-SUPPLEMENT-FREEZE.json",
+      "sha256": "ef06ba78d7420bc69c74dd67665e35eb9ab7b0c0cc2576c93b20dcc84ba35237"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-APP-QC.vi.md",
+      "sha256": "a83e43b3ffbfe0d0d9befe8a4c1a4c0c2db93f63d6f43c512ee97a23eccd1eef"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-EDGE-DIAGNOSTIC-FREEZE.json",
+      "sha256": "b23eb25ccf9914e559e044653319ea32c1316d4f30fd3b835a930013805c06ed"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-EDGE-DIAGNOSTIC-PLAN.vi.md",
+      "sha256": "cd8f7afda0b17c46424fe8da9e0eb2328e792b88c750df0bc5eec0db33d20218"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-EVIDENCE-CHECK.json",
+      "sha256": "1f5f208468e67aee4e1dc3f4961c3e7424816a4c3d53a243ba37014d038a34a4"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-FINAL-CHECK.json",
+      "sha256": "3baabdaea521679b32451d5314ed821593c47fe114ec8dbb97c9927d952810e7"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-INTAKE-CHECKS.json",
+      "sha256": "485f1cead4f7f83a7d56b3e65f4977ca6b672eba82af6f239c7b07381ad5757b"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-INTAKE-QC.vi.md",
+      "sha256": "6fab041a1dd1f6f9f42ca276fdf501fa7d8bfc4a934c36bed42587c41993eaab"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-PROBE-FREEZE.json",
+      "sha256": "2e996c9994b3fcaf06ed9379936091b45ee8ce8667b8fd0f0a8ae2e40ccd0d37"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-PROBE-v2-FINAL-FREEZE.json",
+      "sha256": "4cf7a0b8ae5cb4d4f2ff8459ce872d8ae22ce4a523d65511267625abeb15b547"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-PROBE-v2-FREEZE.json",
+      "sha256": "c7915c21cde25d3b85c14c70f3869df4e5d952aee7c2dab1c3ffe52e131856ee"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-PROBE-v2-PLAN.vi.md",
+      "sha256": "beed43571e7d584a9968b12ad546b084a36b7e499c8de5ad818c473767764e22"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-SOURCE-CHECK.json",
+      "sha256": "7062b5e089e60a76d323b15358f1be085a970513a7d0f2347ededf7557f112c2"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-SUPPLEMENT-CONTROL.json",
+      "sha256": "2df96266bb81b9c0e4f6da08cebdd5ca779c7d80ebe9d6ee18c00f059dbe6439"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-SUPPLEMENT-PREINVOCATION.vi.md",
+      "sha256": "7b2f95d907800f12dc436f7f4d4b4f9a494a877066bca3a202b11424f91922a5"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/INDEPENDENT-SUPPLEMENT-v2-CONTROL.json",
+      "sha256": "9d63b3a21741a25788a3c440ea64277d18c00f27157848d32c002c297a4300ed"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/SOURCE-FREEZE-v1.json",
+      "sha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/adjacent-final-v1-command.json",
+      "sha256": "3be5fad561315632b0b8d200e73946dd0bc71ac79eeca4955a35d5259d110d32"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/adjacent-final-v1-results.json",
+      "sha256": "7361bf3c6362db2c6ccc4301ed89944a70cfebc10d3aa281336d30e026c4e745"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/app-baseline.json",
+      "sha256": "28329128540fb9208b6314cd9863a73ab3ee40f2700f15def8f8a27e026409fb"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/checks.json",
+      "sha256": "e24510708cae6797c2990512cbd82fe567e2f2d38707a6ea591eff458e721b18"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-escalated-v2-command.json",
+      "sha256": "33e20561c2873e5fffc054a44b2bb7b469f4d7b6c7d411bc3750aeeaf774e57c"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-escalated-v2-results.json",
+      "sha256": "c4374a60b96091e4ba05fdfa0e8e21253b142ac513b06d8774ae37496a8f454f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-final-command.json",
+      "sha256": "092af70c7a0630823cb375117e65fa373931b66b5ea6755961c7a42d28d59bb2"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-final-results.json",
+      "sha256": "d37aba49a3abc938c25ca89988e5f2e06ad1dd8c6f7a6b1c66294f0adeb914f7"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/focused-final-v1-command.json",
+      "sha256": "7bbadafd5deb701c83fd8049017df5c9e3a635b34fdde4fa3a26501ced66529f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/focused-final-v1-results.json",
+      "sha256": "2ec8eca62d78cfbcd28fd32993664641b56016225412f571a94b438f7ba8b416"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-baseline-diagnostic.mjs",
+      "sha256": "35fb17737264af470c8f51bfed9a3c13e0598c3a0a939ce3d8d7153151aeb09b"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-baseline-diagnostic/approved45-guest-first-row28.png",
+      "sha256": "460e11bd8e86b1c359b5e7308a37c958cc216fb128e89dce0fffac0fb0a6d7d3"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-baseline-diagnostic/approved45-signed-security-login.png",
+      "sha256": "2c282af8d31631cd027aead41939180bca3e6b9a695544785f80f028b46f6225"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-baseline-diagnostic/candidate46-guest-first-row28.png",
+      "sha256": "58318fe26313b15f7cd63b37b6291eb2cdaaf4ef8a1fff3379d470b23816ac75"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-baseline-diagnostic/candidate46-signed-security-login.png",
+      "sha256": "2c282af8d31631cd027aead41939180bca3e6b9a695544785f80f028b46f6225"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-baseline-diagnostic/results.json",
+      "sha256": "22a942dc7ee712f9371145f5797932843817ee68c8ec4a68a68f22214d80305a"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-v1-command.json",
+      "sha256": "7c7e489ff33e8dd46bdd388b7aeca312057dd3a38fb391adf2b85cd3bcaf828b"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-v1-console.err.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-edge-v1-console.log",
+      "sha256": "8bfa5d6e1c09fecdbf35583e1d8f6a022a87d439d0ee1a899d5128bf8024d604"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-evidence-check.mjs",
+      "sha256": "3ea09399356d205f5a35c38d86f246b70b5fe110b4badf0b79b01273cb539c9c"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-final-check-freeze.mjs",
+      "sha256": "54de91738000a6b058ac6f05ac3bd52fffcc2aa735fc354f289f4f47acd3ea98"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-intake-checks.cjs",
+      "sha256": "4840a69cbd7b1a731ce8cc3839eaf528e28bcd5c4b537e4b1ab3e13eeb688b81"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-baseline-control.mjs",
+      "sha256": "b07c7f5d407e3bcf9c2191867dbf7b45c3ff1155cbf9f0f510fe3a5b2e916c6b"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-control/approved45-28.png",
+      "sha256": "8f2fb4b6c2697daf3ba94e5320e9d224106a859460bb5fccbbd53cdc5e7c4cfe"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-control/approved45-normal.png",
+      "sha256": "21593c6b03db68a28fc93fc2e0d77655659c10ba8752dfecb63e4437fea37425"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-control/candidate46-28.png",
+      "sha256": "f4992609cd3a4deafe63d1d1fe6fe0489e301abdfab672d841fa82dfa7d1644a"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-control/candidate46-normal.png",
+      "sha256": "4edd7a5937c557749b932d8e9ae0f97c023e5f1af3696eb382aaf674fb4515c5"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-control/results.json",
+      "sha256": "5234cb02ed4cd9b2d5c63bc5de95fd2b3a84352f66db2a481576c3f0e0fb861c"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-v1-command.json",
+      "sha256": "444fd6e344791d97dfb7d93c21aa9b8643efb4a22f8c03440e04a36fc4ee4db1"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-v1-console.err.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-nav-v1-console.log",
+      "sha256": "c1b6c37cdc0df6fa3bcdb9f60f21235c8ba8b77ffc78fb11f15cb8164adbf8f0"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-probe-v2-metadata-preimage.mjs",
+      "sha256": "9e6a854d30f82bcb1aed419b997b7f428cd8369d607fb30a1142b5eef4f5fdeb"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-probe-v2-settled28.mjs",
+      "sha256": "8698abb33a431297a496c2118483d752a5f8b976ffbaaa43e131ab0dcaede302"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-probe.mjs",
+      "sha256": "b50cbed4d0dc605df0378c95e98591d3c20fceb3c59f00231fc7fd1ce9da8581"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-v1-command.json",
+      "sha256": "f2ad36849a6ecd56e2ff5124c14a6612783e9b7e4858a3595303fac1f5b3c9cc"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-v1-console.err.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-v1-console.log",
+      "sha256": "41bd1409eb3d49d9ebb4c7debf3e6f6460a6654c29d35cb4ca853db1676913b8"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-v2-command.json",
+      "sha256": "75b81c23dacc61aa700f51dfb6ca33d8ca5a047b81d159bc2d055ea9ddf2652d"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-v2-console.err.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-profile-v2-console.log",
+      "sha256": "8dba1fe1f6ee86947250c3f1a4bafb17b50de04e9ba893ac5656028677bc639f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/all-nine-and-auth-create.png",
+      "sha256": "e1aa9b3be3bf4d60af539949654f131c16b98b689ebea385e6ce31072fc4daa3"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/guest320-28-failure.png",
+      "sha256": "9d816afc5de842a2e43146222c22516105fa90aaf177f2c1ff6f961accee0631"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/guest320-normal.png",
+      "sha256": "983aaba887c16c76dbd6b9be4b475fdf71e124a70cf2dabf6253d7712989b1b8"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/hydration-error.png",
+      "sha256": "89536b9652aef495d5c79eb324c67f5720286a25bba84699d9c6f2eccdc09a03"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/hydration-pending-account-replacement.png",
+      "sha256": "570aae621845752a398666c8f5e1d3fb60f60b17ed298bc82308f7a39dca0601"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/logout-500.png",
+      "sha256": "af13957fe5262d73d16b07f310e83a2ca231971155b2495ef5f8be184f59988f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/logout-success.png",
+      "sha256": "98ab5966355005f2139e9a44ccf10b5b9220aa4c46930695463bcd6989bbc1a7"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/long-account28.png",
+      "sha256": "84591030846eee34d5dda21c98a71c33b55985bb258eea278b4d3ae97d5e7fcd"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/notification-false-security-failure.png",
+      "sha256": "2c282af8d31631cd027aead41939180bca3e6b9a695544785f80f028b46f6225"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/notification-true-security-failure.png",
+      "sha256": "2c282af8d31631cd027aead41939180bca3e6b9a695544785f80f028b46f6225"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/preset-iphone.png",
+      "sha256": "197d90f74bd2e71e5c0041917c0e4056e50312207954257434d4d90b4c7ef3bb"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/preset-pixel-10.png",
+      "sha256": "e4a79c85f03026ba2560328a42db847c57dee3baa6092def7f298c562e75e082"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/progress.json",
+      "sha256": "920ef84ec1d9cd99df1ff67283ca15e8a9b04d8af633fafeb652020c600e2cca"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/results.json",
+      "sha256": "053afd5f17f6d79f813f5f081a0b2c92c0df0fefd8aa4393a75c19a71be6a709"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v1/sharing-existing-revoke-and-retained-css.png",
+      "sha256": "8eb6df459099412643c415b3df2fbbed510610beb99bb2fb3eb47cdda74504a4"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/all-nine-and-auth-create.png",
+      "sha256": "e1aa9b3be3bf4d60af539949654f131c16b98b689ebea385e6ce31072fc4daa3"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/guest320-28.png",
+      "sha256": "d86d89923c53b768977aaf2c331f678feb10b7890793361ca166bb9275fc424d"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/guest320-normal.png",
+      "sha256": "983aaba887c16c76dbd6b9be4b475fdf71e124a70cf2dabf6253d7712989b1b8"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/hydration-error.png",
+      "sha256": "e2ff6b42eb673efee706847bf166a4e87bda4ac537bbf163be98cbdf3c054b94"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/hydration-pending-account-replacement.png",
+      "sha256": "570aae621845752a398666c8f5e1d3fb60f60b17ed298bc82308f7a39dca0601"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/logout-500.png",
+      "sha256": "f6ebbc7363d04db630027c780fdc659fdf579ce333948f03fe169a8ecb8a4e81"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/logout-success.png",
+      "sha256": "a6c78a7d9910e3fa62ca5382387fd11d09f5ff7bc66007f955186a61bc3e3c4a"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/long-account28.png",
+      "sha256": "84591030846eee34d5dda21c98a71c33b55985bb258eea278b4d3ae97d5e7fcd"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/notification-false-security-failure.png",
+      "sha256": "2c282af8d31631cd027aead41939180bca3e6b9a695544785f80f028b46f6225"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/notification-true-security-failure.png",
+      "sha256": "2c282af8d31631cd027aead41939180bca3e6b9a695544785f80f028b46f6225"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/preset-iphone.png",
+      "sha256": "f6c47266dbd94b592c353f9d984ef160b41c49c30bbdfcd175170f3540bdb659"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/preset-pixel-10.png",
+      "sha256": "c0eb4675e859eefde03c74ad492ca80a445aaffc20b898b9a5988c44cb4f3c14"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/progress.json",
+      "sha256": "05c482c7371ab24d0e4b5f65bca8374e4791537da65cde82f88f1e6250dfde34"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/results.json",
+      "sha256": "909d57be47ead3cc212ef2656abc37e6e364407d3232db86f9b12445d0c01ddb"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-qc-v2-settled28/sharing-existing-revoke-and-retained-css.png",
+      "sha256": "8eb6df459099412643c415b3df2fbbed510610beb99bb2fb3eb47cdda74504a4"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-source-check.mjs",
+      "sha256": "7cd005ac4accef62e30b8d00bce189618c9530579242c7b6e1e73d63bb6cb9b3"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-supplement-control.mjs",
+      "sha256": "ffeeb8d7be10adc24d8ca55db0c97e1542e3984023542a3c03569ff414e1ac79"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/independent-supplement-v2-control.mjs",
+      "sha256": "2d5d6184bbd4d751a727293362585319f13b41501fd0bf8574e7268f024cad2a"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/mapped-final-v1-command.json",
+      "sha256": "333cab1843e73b47beaaf6bc36f0e860ce709f4d82ae1d5c4dd3441b11ec4512"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/mapped-final-v1-results.json",
+      "sha256": "792355e8c8b1949606637c892c7e6c101845eb1ecfdea8281190d639e4369923"
+    }
+  ],
+  "verdict": "Conditional local4.6 presentation review; no confirmed new P1/P2 in diff; actual final13 remains11PASS/2existingAuthFAIL/process1, shared28navpreexistingP2 and unsettledstylefocusunaccepted; root/user/native/live/release separate"
+}

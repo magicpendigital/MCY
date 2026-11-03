@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-10-17T18:40:25.2641103Z",
+  "status": "PASS_LOCAL_PREVIEW_HTTP_CSP",
+  "url": "http://127.0.0.1:4194/?mode=web",
+  "httpStatus": 200,
+  "contentSecurityPolicy": "connect-src 'self' ws://127.0.0.1:*; frame-src 'none'; img-src 'self' data:; media-src 'none'",
+  "viteClientPresent": true,
+  "previewScript": "analyse/ux-step4-6-2026-10-18/preview.mjs",
+  "backend": "invalid fixture",
+  "note": "Loopback read only; no browser or external media assertion"
+}

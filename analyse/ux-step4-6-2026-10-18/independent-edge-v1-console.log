@@ -1,0 +1,57 @@
+1:45:01 AM [vite] (client) [optimizer] scanning dependencies...
+1:45:03 AM [vite] (client) [optimizer] bundling dependencies...
+1:45:16 AM [vite] (client) [optimizer] scanning dependencies...
+1:45:20 AM [vite] (client) [optimizer] bundling dependencies...
+{
+  "status": "PASS_DIAGNOSTIC_CAPTURE_NOT_APP_ACCEPTANCE",
+  "observations": [
+    {
+      "source": "approved45",
+      "kind": "guest-first-row28",
+      "fullRing": false,
+      "current": [
+        {
+          "route": "profile",
+          "text": "CÁ NHÂN · KHÁCH"
+        }
+      ],
+      "loginForm": false
+    },
+    {
+      "source": "approved45",
+      "kind": "signed-security-login",
+      "fullRing": false,
+      "current": [
+        {
+          "route": "security",
+          "text": "BẢO MẬT"
+        }
+      ],
+      "loginForm": false
+    },
+    {
+      "source": "candidate46",
+      "kind": "guest-first-row28",
+      "fullRing": true,
+      "current": [
+        {
+          "route": "profile",
+          "text": "CÁ NHÂN · KHÁCH"
+        }
+      ],
+      "loginForm": false
+    },
+    {
+      "source": "candidate46",
+      "kind": "signed-security-login",
+      "fullRing": false,
+      "current": [
+        {
+          "route": "security",
+          "text": "BẢO MẬT"
+        }
+      ],
+      "loginForm": false
+    }
+  ]
+}

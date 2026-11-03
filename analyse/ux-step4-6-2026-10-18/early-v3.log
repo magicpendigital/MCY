@@ -1,0 +1,11 @@
+
+Running 4 tests using 1 worker
+
+(node:15384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:338 › Profile hierarchy 320 guest (5.3s)
+  ok 2 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:338 › Profile hierarchy 320 account (5.5s)
+  ok 3 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:338 › Profile hierarchy 390 guest (2.9s)
+  ok 4 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:338 › Profile hierarchy 390 account (3.3s)
+
+  4 passed (23.7s)

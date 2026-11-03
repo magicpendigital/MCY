@@ -1,0 +1,11 @@
+{
+  "start": "2026-10-17T18:49:34.0239699Z",
+  "end": "2026-10-17T18:52:39.7381263Z",
+  "command": "node analyse/ux-step4-6-2026-10-18/independent-profile-probe-v2-settled28.mjs",
+  "exitCode": 1,
+  "budgetExceeded": false,
+  "runnerBudgetMs": 720000,
+  "probeFreezeSha256": "4cf7a0b8ae5cb4d4f2ff8459ce872d8ae22ce4a523d65511267625abeb15b547",
+  "helperPinsBeforeAfterMatch": true,
+  "executionMode": "scoped require_escalated; same proxy/CSP/flags; style readiness only"
+}

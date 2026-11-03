@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-10-17T18:31:24.138Z",
+  "status": "PASS",
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "appPins": 236,
+  "harnessPins": 16,
+  "approved45Pins": 235,
+  "rootExistingInputsUnchanged": 228,
+  "oldTestsUnchanged": 52,
+  "changed": [
+    "src/Prototype.tsx",
+    "src/prototype.css"
+  ],
+  "profileHandlersAndSurroundingSourceBytewise": true,
+  "oldCssPrefixBytewise": true,
+  "checkerSha256": "7cd005ac4accef62e30b8d00bce189618c9530579242c7b6e1e73d63bb6cb9b3"
+}

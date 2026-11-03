@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-17T18:32:03.5461028Z",
+  "status": "FROZEN_AWAITING_ROOT_RELEASE_NO_BROWSER_RUN",
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "approved45FreezeSha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8",
+  "files": [
+    {
+      "path": "analyse\\ux-step4-6-2026-10-18\\independent-profile-probe.mjs",
+      "sha256": "b50cbed4d0dc605df0378c95e98591d3c20fceb3c59f00231fc7fd1ce9da8581"
+    },
+    {
+      "path": "analyse\\ux-step4-6-2026-10-18\\independent-nav-baseline-control.mjs",
+      "sha256": "b07c7f5d407e3bcf9c2191867dbf7b45c3ff1155cbf9f0f510fe3a5b2e916c6b"
+    }
+  ],
+  "scope": "13 synthetic Edge local Profile probes plus same Profile guest path 4.5-vs-4.6 normal/28 footer geometry and pixels; strict4213/server invalid backend, proxy deny outbound, no actual Auth/native/live/deploy",
+  "budget": "12min maximum process each;15s Playwright operations; selected bounded cases only"
+}

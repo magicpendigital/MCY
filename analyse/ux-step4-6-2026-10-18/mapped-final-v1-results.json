@@ -1,0 +1,591 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+      "learner-ux.spec.ts",
+      "learner-write-review.spec.ts",
+      "consent-policy.spec.ts",
+      "--grep",
+      "account access distinguishes|profile shows the actual|help center opens|inactive FlowStack routes|delayed profile save|delayed consent success|session epoch invalidates|account change during baseline|pending consent for another actor|old session replay acknowledgement|required consent is reusable|optional wellbeing consent|account-scoped async",
+      "--reporter=list,json"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-6-2026-10-18/mapped-final-v1-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-profile.spec.ts",
+          "consent-policy.spec.ts",
+          "learner-ux.spec.ts",
+          "learner-write-review.spec.ts",
+          "ux-home.spec.ts",
+          "ux-checkin-layout.spec.ts",
+          "ux-energy-time.spec.ts",
+          "ux-course-detail.spec.ts",
+          "ux-reflection.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "ux-journey-selection.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "consent-policy.spec.ts",
+      "file": "consent-policy.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "required consent is reusable until a required policy version changes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:07.993Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f235a4ba915202045d-55002da6d49b4d4f243c",
+          "file": "consent-policy.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "optional wellbeing consent is usable only for its current policy version",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 507,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:08.073Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f235a4ba915202045d-14dc82b9bdda0aa193c9",
+          "file": "consent-policy.spec.ts",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "account-scoped async results are accepted only by their initiating signed-in session",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:08.847Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "55f235a4ba915202045d-38e005e57bcf54aa2cdd",
+          "file": "consent-policy.spec.ts",
+          "line": 25,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "learner-ux.spec.ts",
+      "file": "learner-ux.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "account access distinguishes free courses from paid purchases",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 13103,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:07.997Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-1f50389f510f9c0315da",
+          "file": "learner-ux.spec.ts",
+          "line": 576,
+          "column": 1
+        },
+        {
+          "title": "profile shows the actual time zone and clearly labels the development-only English preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6077,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:22.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-708ac5adf0c78d2f29f4",
+          "file": "learner-ux.spec.ts",
+          "line": 597,
+          "column": 1
+        },
+        {
+          "title": "help center opens topic-specific answers and states that AI inference is off",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11149,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:28.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-b58723a85841a186d15e",
+          "file": "learner-ux.spec.ts",
+          "line": 622,
+          "column": 1
+        },
+        {
+          "title": "inactive FlowStack routes are inert and keyboard focus follows the active screen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4531,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:39.700Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-21635e0df5f32a51c515",
+          "file": "learner-ux.spec.ts",
+          "line": 1226,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "learner-write-review.spec.ts",
+      "file": "learner-write-review.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "account change during baseline read prevents new consent writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:08.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "338357a373f3da975bd4-6236b4bef3163273ae54",
+          "file": "learner-write-review.spec.ts",
+          "line": 124,
+          "column": 1
+        },
+        {
+          "title": "pending consent for another actor is neither replayed nor discarded",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:08.975Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "338357a373f3da975bd4-8523dda04a2ce15f3996",
+          "file": "learner-write-review.spec.ts",
+          "line": 135,
+          "column": 1
+        },
+        {
+          "title": "old session replay acknowledgement cannot delete a newer pending event with the same consent signature",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:09.004Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "338357a373f3da975bd4-9ac1421b8268f61be2af",
+          "file": "learner-write-review.spec.ts",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "session epoch invalidates A to B to A while preserving same-actor refresh",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:09.341Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "338357a373f3da975bd4-302720d051bc824e05ed",
+          "file": "learner-write-review.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "delayed profile save cannot update a different B account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:09.467Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "338357a373f3da975bd4-36fd746093f90f8d0404",
+          "file": "learner-write-review.spec.ts",
+          "line": 213,
+          "column": 40
+        },
+        {
+          "title": "delayed profile save cannot update a new A session after A to B to A",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6525,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:23.758Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "338357a373f3da975bd4-3e2587414de9b8ff3444",
+          "file": "learner-write-review.spec.ts",
+          "line": 213,
+          "column": 40
+        },
+        {
+          "title": "delayed consent success cannot mutate a new same-account session after A to B to A",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5743,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:11:30.557Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "338357a373f3da975bd4-bac15d6fb8e5fd2f62a2",
+          "file": "learner-write-review.spec.ts",
+          "line": 236,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T18:11:05.561Z",
+    "duration": 39540.861,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "start": "2026-10-17T18:32:21.564Z",
+  "end": "2026-10-17T18:34:33.021Z",
+  "command": "node D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\course-mock.playwright.config.mjs --reporter=list,json",
+  "cwd": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\course-mock-final-run",
+  "exitCode": 1,
+  "signal": null,
+  "budgetExceeded": false,
+  "caseTimeoutMs": 45000,
+  "runnerBudgetMs": 720000,
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "supplementFreezeSha256": "ef06ba78d7420bc69c74dd67665e35eb9ab7b0c0cc2576c93b20dcc84ba35237",
+  "runnerSha256": "095ae9f5bec8981af75133254d418a7521e375442462276848f6cb5ce0a39f31"
+}

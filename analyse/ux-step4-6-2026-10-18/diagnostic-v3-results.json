@@ -1,0 +1,259 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+      "ux-profile.spec.ts",
+      "--grep",
+      "Long identity|Profile actual keyboard",
+      "--reporter=list,json"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-6-2026-10-18/diagnostic-v3-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-profile.spec.ts",
+          "consent-policy.spec.ts",
+          "learner-ux.spec.ts",
+          "learner-write-review.spec.ts",
+          "ux-home.spec.ts",
+          "ux-checkin-layout.spec.ts",
+          "ux-energy-time.spec.ts",
+          "ux-course-detail.spec.ts",
+          "ux-reflection.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "ux-journey-selection.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ux-profile.spec.ts",
+      "file": "ux-profile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Long identity and true 28px text reflow; actual Tab reaches every row clear of footer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:06:19.443Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-1cb38e115b35d8ebbec7",
+          "file": "ux-profile.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "Profile actual keyboard and footer safe area iphone",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9150,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\u001b[22m\n\u001b[2m    14 × locator resolved to <button class=\"mcy-account-row\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\u001b[22m\n\u001b[2m    14 × locator resolved to <button class=\"mcy-account-row\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:39:306",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 306,
+                      "line": 39
+                    },
+                    "snippet": "  37 | for(const result of ['error','success'] as const)test('Existing local logout pending '+result,async({page})=>{const delay=latch(),f=await enter(page,{signed:true,logout:result,logoutDelay:delay});await view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true}).click();await expect(view(page).getByRole('button',{name:'Đang đăng xuất…',exact:true})).toBeDisabled();await expect.poll(()=>f.mutations.length).toBe(1);expect(f.mutations[0]).toMatchObject({path:'/auth/v1/logout',query:'?scope=local',method:'POST'});delay.release();if(result==='error'){await expect(view(page).getByRole('alert')).toContainText('Fictional logout unavailable');await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeEnabled();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}else{await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeVisible();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}expect(f.mutations).toHaveLength(1);});\n  38 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n> 39 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n     |                                                                                                                                                                                                                                                                                                                  ^\n  40 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('English is in progress.');await expect(active(page)).toContainText('account, consent, support and knowledge screens remain in Vietnamese.');expect(f.mutations).toEqual([]);});\n  41 | test('Hydration failure preserves Profile controls without invented consent status',async({page})=>{const f=await fixture(page,{signed:true,profileError:true});await page.goto('/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Cá nhân',exact:true}).click();await expect(view(page)).toBeVisible();await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|đã đọc quyền/i);expect(f.mutations).toEqual([]);});\n  42 | test('Leaving Profile retains Home layout and no Profile styles in later routes',async({page})=>{const f=await enter(page);await page.locator('.flow-fixed-footer').getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);await page.getByRole('button',{name:'Khám phá',exact:true}).click();await page.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);expect(f.mutations).toEqual([]);});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 306,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\u001b[22m\n\u001b[2m    14 × locator resolved to <button class=\"mcy-account-row\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  37 | for(const result of ['error','success'] as const)test('Existing local logout pending '+result,async({page})=>{const delay=latch(),f=await enter(page,{signed:true,logout:result,logoutDelay:delay});await view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true}).click();await expect(view(page).getByRole('button',{name:'Đang đăng xuất…',exact:true})).toBeDisabled();await expect.poll(()=>f.mutations.length).toBe(1);expect(f.mutations[0]).toMatchObject({path:'/auth/v1/logout',query:'?scope=local',method:'POST'});delay.release();if(result==='error'){await expect(view(page).getByRole('alert')).toContainText('Fictional logout unavailable');await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeEnabled();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}else{await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeVisible();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}expect(f.mutations).toHaveLength(1);});\n  38 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n> 39 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n     |                                                                                                                                                                                                                                                                                                                  ^\n  40 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('English is in progress.');await expect(active(page)).toContainText('account, consent, support and knowledge screens remain in Vietnamese.');expect(f.mutations).toEqual([]);});\n  41 | test('Hydration failure preserves Profile controls without invented consent status',async({page})=>{const f=await fixture(page,{signed:true,profileError:true});await page.goto('/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Cá nhân',exact:true}).click();await expect(view(page)).toBeVisible();await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|đã đọc quyền/i);expect(f.mutations).toEqual([]);});\n  42 | test('Leaving Profile retains Home layout and no Profile styles in later routes',async({page})=>{const f=await enter(page);await page.locator('.flow-fixed-footer').getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);await page.getByRole('button',{name:'Khám phá',exact:true}).click();await page.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);expect(f.mutations).toEqual([]);});\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:39:306"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:06:25.736Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\diagnostic-v3-results\\ux-profile-Profile-actual--f3815-and-footer-safe-area-iphone\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 306,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-24d41ccb53776ffe24a7",
+          "file": "ux-profile.spec.ts",
+          "line": 39,
+          "column": 43
+        },
+        {
+          "title": "Profile actual keyboard and footer safe area pixel-10",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9289,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\u001b[22m\n\u001b[2m    12 × locator resolved to <button class=\"mcy-account-row\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\u001b[22m\n\u001b[2m    12 × locator resolved to <button class=\"mcy-account-row\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:39:306",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 306,
+                      "line": 39
+                    },
+                    "snippet": "  37 | for(const result of ['error','success'] as const)test('Existing local logout pending '+result,async({page})=>{const delay=latch(),f=await enter(page,{signed:true,logout:result,logoutDelay:delay});await view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true}).click();await expect(view(page).getByRole('button',{name:'Đang đăng xuất…',exact:true})).toBeDisabled();await expect.poll(()=>f.mutations.length).toBe(1);expect(f.mutations[0]).toMatchObject({path:'/auth/v1/logout',query:'?scope=local',method:'POST'});delay.release();if(result==='error'){await expect(view(page).getByRole('alert')).toContainText('Fictional logout unavailable');await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeEnabled();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}else{await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeVisible();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}expect(f.mutations).toHaveLength(1);});\n  38 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n> 39 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n     |                                                                                                                                                                                                                                                                                                                  ^\n  40 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('English is in progress.');await expect(active(page)).toContainText('account, consent, support and knowledge screens remain in Vietnamese.');expect(f.mutations).toEqual([]);});\n  41 | test('Hydration failure preserves Profile controls without invented consent status',async({page})=>{const f=await fixture(page,{signed:true,profileError:true});await page.goto('/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Cá nhân',exact:true}).click();await expect(view(page)).toBeVisible();await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|đã đọc quyền/i);expect(f.mutations).toEqual([]);});\n  42 | test('Leaving Profile retains Home layout and no Profile styles in later routes',async({page})=>{const f=await enter(page);await page.locator('.flow-fixed-footer').getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);await page.getByRole('button',{name:'Khám phá',exact:true}).click();await page.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);expect(f.mutations).toEqual([]);});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 306,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\nExpected: focused\nReceived: inactive\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').locator('.mcy-account-row').nth(3)\u001b[22m\n\u001b[2m    12 × locator resolved to <button class=\"mcy-account-row\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  37 | for(const result of ['error','success'] as const)test('Existing local logout pending '+result,async({page})=>{const delay=latch(),f=await enter(page,{signed:true,logout:result,logoutDelay:delay});await view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true}).click();await expect(view(page).getByRole('button',{name:'Đang đăng xuất…',exact:true})).toBeDisabled();await expect.poll(()=>f.mutations.length).toBe(1);expect(f.mutations[0]).toMatchObject({path:'/auth/v1/logout',query:'?scope=local',method:'POST'});delay.release();if(result==='error'){await expect(view(page).getByRole('alert')).toContainText('Fictional logout unavailable');await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeEnabled();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}else{await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeVisible();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}expect(f.mutations).toHaveLength(1);});\n  38 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n> 39 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n     |                                                                                                                                                                                                                                                                                                                  ^\n  40 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('English is in progress.');await expect(active(page)).toContainText('account, consent, support and knowledge screens remain in Vietnamese.');expect(f.mutations).toEqual([]);});\n  41 | test('Hydration failure preserves Profile controls without invented consent status',async({page})=>{const f=await fixture(page,{signed:true,profileError:true});await page.goto('/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Cá nhân',exact:true}).click();await expect(view(page)).toBeVisible();await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|đã đọc quyền/i);expect(f.mutations).toEqual([]);});\n  42 | test('Leaving Profile retains Home layout and no Profile styles in later routes',async({page})=>{const f=await enter(page);await page.locator('.flow-fixed-footer').getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);await page.getByRole('button',{name:'Khám phá',exact:true}).click();await page.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);expect(f.mutations).toEqual([]);});\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:39:306"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:06:36.427Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\diagnostic-v3-results\\ux-profile-Profile-actual--aa933-d-footer-safe-area-pixel-10\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 306,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-6c24e005286b95e591d5",
+          "file": "ux-profile.spec.ts",
+          "line": 39,
+          "column": 43
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T18:06:17.930Z",
+    "duration": 35733.714,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

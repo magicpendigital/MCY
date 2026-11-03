@@ -1,0 +1,7 @@
+1:49:37 AM [vite] (client) [optimizer] bundling dependencies...
+{
+  "status": "FAIL",
+  "pass": 11,
+  "fail": 2,
+  "pins": true
+}

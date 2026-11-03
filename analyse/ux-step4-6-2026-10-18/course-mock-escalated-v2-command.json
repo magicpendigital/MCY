@@ -1,0 +1,16 @@
+{
+  "start": "2026-10-17T18:36:18.393Z",
+  "end": "2026-10-17T18:37:41.424Z",
+  "command": "node D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\course-mock-escalated-v2.playwright.config.mjs --reporter=list,json",
+  "cwd": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\course-mock-escalated-v2-run",
+  "exitCode": 0,
+  "signal": null,
+  "budgetExceeded": false,
+  "caseTimeoutMs": 45000,
+  "runnerBudgetMs": 720000,
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "originalSupplementFreezeSha256": "ef06ba78d7420bc69c74dd67665e35eb9ab7b0c0cc2576c93b20dcc84ba35237",
+  "v2FreezeSha256": "824e00e96f65fb7aeffaeaec3fd56e745d2628379647063b8e5f072a084ae4fe",
+  "runnerSha256": "d5c493c05558bede14140bdbf22c25c0d4da0783c673f8e5fb996e652d88f251",
+  "executionMode": "scoped require_escalated, no altered browser/proxy/CSP flags"
+}

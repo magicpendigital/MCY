@@ -1,0 +1,180 @@
+
+Running 3 tests using 1 worker
+
+(node:16192) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+actual focus {
+  top: 17,
+  bottom: 558,
+  left: 34,
+  right: 286,
+  header: 31,
+  footer: 476,
+  ring: 6,
+  visible: true,
+  outline: 'rgb(142, 75, 53) solid 3px',
+  offset: '3px',
+  tag: 'BUTTON',
+  cls: 'mcy-account-row',
+  scrollY: 0
+}
+  x  1 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer (6.4s)
+(node:15424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+actual focus {
+  top: 468.0625,
+  bottom: 549.25,
+  left: 394.5,
+  right: 705.5,
+  header: 233,
+  footer: 874,
+  ring: 6,
+  visible: true,
+  outline: 'rgb(142, 75, 53) solid 3px',
+  offset: '3px',
+  tag: 'BUTTON',
+  cls: 'mcy-account-row',
+  scrollY: 0
+}
+actual focus {
+  top: 549.25,
+  bottom: 651.4375,
+  left: 394.5,
+  right: 705.5,
+  header: 233,
+  footer: 874,
+  ring: 6,
+  visible: true,
+  outline: 'rgb(142, 75, 53) solid 3px',
+  offset: '3px',
+  tag: 'BUTTON',
+  cls: 'mcy-account-row',
+  scrollY: 0
+}
+actual focus {
+  top: 651.4375,
+  bottom: 732.625,
+  left: 394.5,
+  right: 705.5,
+  header: 233,
+  footer: 874,
+  ring: 3,
+  visible: true,
+  outline: 'rgb(40, 61, 49) solid 3px',
+  offset: '0px',
+  tag: 'BUTTON',
+  cls: 'mcy-account-row',
+  scrollY: 0
+}
+  x  2 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area iphone (4.1s)
+(node:10620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+actual focus {
+  top: 428.0625,
+  bottom: 509.25,
+  left: 378,
+  right: 723,
+  header: 193,
+  footer: 910,
+  ring: 6,
+  visible: true,
+  outline: 'rgb(142, 75, 53) solid 3px',
+  offset: '3px',
+  tag: 'BUTTON',
+  cls: 'mcy-account-row',
+  scrollY: 0
+}
+actual focus {
+  top: 509.25,
+  bottom: 590.4375,
+  left: 378,
+  right: 723,
+  header: 193,
+  footer: 910,
+  ring: 6,
+  visible: true,
+  outline: 'rgb(142, 75, 53) solid 3px',
+  offset: '3px',
+  tag: 'BUTTON',
+  cls: 'mcy-account-row',
+  scrollY: 0
+}
+actual focus {
+  top: 590.4375,
+  bottom: 671.625,
+  left: 378,
+  right: 723,
+  header: 193,
+  footer: 910,
+  ring: 3,
+  visible: true,
+  outline: 'rgb(40, 61, 49) solid 3px',
+  offset: '0px',
+  tag: 'BUTTON',
+  cls: 'mcy-account-row',
+  scrollY: 0
+}
+  x  3 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area pixel-10 (3.5s)
+
+
+  1) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 30.5
+    Received:    11
+
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+    > 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+      30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{
+      31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);
+      32 | });
+        at focusedBounds (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:29:697)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:841
+
+    Error Context: ..\diagnostic-v2-results\ux-profile-Long-identity-a-6263a-s-every-row-clear-of-footer\error-context.md
+
+  2) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area iphone 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 6
+    Received:    3
+
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+    > 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+      30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{
+      31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);
+      32 | });
+        at focusedBounds (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:29:650)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:320
+
+    Error Context: ..\diagnostic-v2-results\ux-profile-Profile-actual--f3815-and-footer-safe-area-iphone\error-context.md
+
+  3) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area pixel-10 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 6
+    Received:    3
+
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+    > 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+      30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{
+      31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);
+      32 | });
+        at focusedBounds (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:29:650)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:320
+
+    Error Context: ..\diagnostic-v2-results\ux-profile-Profile-actual--aa933-d-footer-safe-area-pixel-10\error-context.md
+
+  3 failed
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area iphone 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area pixel-10 

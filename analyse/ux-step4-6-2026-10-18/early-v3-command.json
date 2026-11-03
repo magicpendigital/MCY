@@ -1,0 +1,12 @@
+{
+  "command": "node D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs ux-profile.spec.ts --grep Profile hierarchy (320|390) --reporter=list,json",
+  "cwd": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\early-v3-run",
+  "start": "2026-10-17T18:07:35.208Z",
+  "end": "2026-10-17T18:07:59.952Z",
+  "exitCode": 0,
+  "signal": null,
+  "budgetExceeded": false,
+  "caseTimeoutMs": 45000,
+  "runnerBudgetMs": 720000,
+  "runnerSha256": "4b2bce1c01ea355dbddbdda1a712e3ac9c917e3daa1d0ecf2b4a1aba258be8dc"
+}

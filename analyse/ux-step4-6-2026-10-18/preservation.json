@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-17T18:14:46.287Z",
+  "status": "PASS",
+  "old45InputsUnchanged": 235,
+  "rootExistingInputsUnchanged": 228,
+  "candidateChangedExisting": [
+    "src/Prototype.tsx",
+    "src/prototype.css"
+  ],
+  "oldTestsUnchanged": 52,
+  "preservation": {
+    "allSourceBeforeProfileReturn": true,
+    "profileHandlers": true,
+    "allSourceAfterProfileReturn": true,
+    "oldCssPrefix": true
+  },
+  "scope": "local source only; no independent QC/root/native/live/release acceptance"
+}

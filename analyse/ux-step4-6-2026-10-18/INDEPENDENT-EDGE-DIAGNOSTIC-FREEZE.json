@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-10-17T18:43:47.0874784Z",
+  "status": "FROZEN_AWAITING_ROOT_GO_NO_BROWSER_RUN",
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "approved45FreezeSha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8",
+  "originalProbeFreezeSha256": "2e996c9994b3fcaf06ed9379936091b45ee8ce8667b8fd0f0a8ae2e40ccd0d37",
+  "files": [
+    {
+      "path": "analyse\\ux-step4-6-2026-10-18\\independent-edge-baseline-diagnostic.mjs",
+      "sha256": "35fb17737264af470c8f51bfed9a3c13e0598c3a0a939ce3d8d7153151aeb09b"
+    },
+    {
+      "path": "analyse\\ux-step4-6-2026-10-18\\INDEPENDENT-EDGE-DIAGNOSTIC-PLAN.vi.md",
+      "sha256": "cd8f7afda0b17c46424fe8da9e0eb2328e792b88c750df0bc5eec0db33d20218"
+    }
+  ],
+  "budgetMs": 720000,
+  "scope": "Four same-fixture baseline/current captures only; ring uses actual outline width plus offset; actual Tab and settled security route plus1s dwell; no programmatic scroll/focus or app writes"
+}

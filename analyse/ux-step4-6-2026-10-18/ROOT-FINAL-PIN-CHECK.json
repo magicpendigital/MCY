@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-10-17T18:57:17.9021732Z",
+  "status": "PASS_READONLY_INTEGRITY_CHECK_NOT_WHOLE_APP_ACCEPTANCE",
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "counts": {
+    "candidate": 236,
+    "originalHarness": 16,
+    "approved45": 235,
+    "rootPreimages": 228,
+    "supplementAndQCInputs": 17,
+    "implementerEvidence": 21,
+    "independentEvidence": 93
+  },
+  "sourceAndInputPinRecords": 732,
+  "evidencePinRecords": 114,
+  "rootManualObservations": 9,
+  "rootObservationsSha256": "81dc8ba418a9e624f49cb395175f7c39d03561f7c7e30447d84db86b388f8200",
+  "limits": "Pin-record counts include evidence references and are not unique file counts. Existing Auth bounce and shared28px footer P2 remain; unsettled style-change focus not accepted; conditional local presentation review only."
+}

@@ -1,0 +1,1095 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+      "ux-profile.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-6-2026-10-18/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-profile.spec.ts",
+          "consent-policy.spec.ts",
+          "learner-ux.spec.ts",
+          "learner-write-review.spec.ts",
+          "ux-home.spec.ts",
+          "ux-checkin-layout.spec.ts",
+          "ux-energy-time.spec.ts",
+          "ux-course-detail.spec.ts",
+          "ux-reflection.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "ux-journey-selection.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ux-profile.spec.ts",
+      "file": "ux-profile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Profile hierarchy 320 guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5620,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:19.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-d16994aad5124e4a9b10",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy 320 account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3338,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:26.216Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-09921146f8ec105e4609",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy 360 guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4477,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:29.601Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-df2218586cdea4be1b06",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy 360 account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3897,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:34.667Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-aa1dda887aed55dae3fe",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy 390 guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2790,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:38.663Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-44850875588584929bdb",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy 390 account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4382,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:41.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-a75bf3dabc95749f1071",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy landscape guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3111,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:46.011Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-ee0801df608aa2a7efca",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy landscape account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2585,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:49.191Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-3cb63947044d93d08f49",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy desktop guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2965,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:51.810Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-785699d05cc2fc0f49bc",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy desktop account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2836,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:54.811Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-e7bd74bdf73837e393bd",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy iphone guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2875,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:01:57.706Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-5b718aee685b06f4d959",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy iphone account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2699,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:00.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-5faab51c05feaed6c57f",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy pixel guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2753,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:03.355Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-e72c797c0614fa6ad080",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy pixel account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3898,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:06.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-5857aebaded0e2dd4cf4",
+          "file": "ux-profile.spec.ts",
+          "line": 30,
+          "column": 338
+        },
+        {
+          "title": "All nine original row destinations and back are reachable without mutations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13135,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:10.113Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-ba66fffb9fbe020c1922",
+          "file": "ux-profile.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "Guest account CTA opens create email form without sending email",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4075,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:23.327Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-a0a4c97ef45d7c26c553",
+          "file": "ux-profile.spec.ts",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "Notification and security parity: real preferences, no scheduling and other account login",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4085,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:27.448Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-f912c6367e662e2bcdf3",
+          "file": "ux-profile.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "Existing local logout pending error",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7538,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:36:744",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 744,
+                      "line": 36
+                    },
+                    "snippet": "  34 | test('Guest account CTA opens create email form without sending email',async({page})=>{const f=await enter(page);await view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true}).click();await expect(active(page).locator('.mcy-eyebrow')).toHaveText('TẠO TÀI KHOẢN');await expect(page.getByLabel('Địa chỉ email')).toBeVisible();expect(f.mutations).toEqual([]);await page.getByRole('button',{name:'Quay lại',exact:true}).click();await expect(view(page)).toBeVisible();});\n  35 | test('Notification and security parity: real preferences, no scheduling and other account login',async({page})=>{const f=await enter(page,{signed:true});await view(page).getByRole('button',{name:/Tùy chọn thông báo/}).click();await expect(active(page)).toContainText('Nhắc tập chưa mở');await expect(active(page)).toContainText('Chỉ lưu lựa chọn nhận tin; chưa đặt giờ hay gửi nhắc tập.');await expect(active(page).getByRole('button',{name:'Cho phép nhận thông báo nhắc tập · Bật',exact:true})).toHaveAttribute('aria-pressed','true');await page.getByRole('button',{name:'Quay lại',exact:true}).click();await view(page).getByRole('button',{name:/Bảo mật tài khoản/}).click();await expect(active(page)).toContainText('Hồ sơ và Hành trình được giữ riêng theo từng tài khoản.');await active(page).getByRole('button',{name:'Đăng nhập bằng tài khoản khác',exact:true}).click();await expect(active(page).locator('.mcy-eyebrow')).toHaveText('ĐĂNG NHẬP');await expect(page.getByLabel('Địa chỉ email')).toBeVisible();expect(f.mutations).toEqual([]);});\n> 36 | for(const result of ['error','success'] as const)test('Existing local logout pending '+result,async({page})=>{const delay=latch(),f=await enter(page,{signed:true,logout:result,logoutDelay:delay});await view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true}).click();await expect(view(page).getByRole('button',{name:'Đang đăng xuất…',exact:true})).toBeDisabled();await expect.poll(()=>f.mutations.length).toBe(1);expect(f.mutations[0]).toMatchObject({path:'/auth/v1/logout',query:'?scope=local',method:'POST'});delay.release();if(result==='error'){await expect(view(page).getByRole('alert')).toContainText('Fictional logout unavailable');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeEnabled();await expect(view(page).locator('h1')).toHaveText('Chào, Fixture A.');}else{await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeVisible();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}expect(f.mutations).toHaveLength(1);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^\n  37 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n  38 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n  39 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('Tiếng Anh hiện đang được hoàn thiện');await expect(active(page)).toContainText('tài khoản, đồng ý, hỗ trợ và nội dung kiến thức vẫn dùng tiếng Việt');expect(f.mutations).toEqual([]);});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 744,
+                        "line": 36
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })\u001b[22m\n\n\n  34 | test('Guest account CTA opens create email form without sending email',async({page})=>{const f=await enter(page);await view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true}).click();await expect(active(page).locator('.mcy-eyebrow')).toHaveText('TẠO TÀI KHOẢN');await expect(page.getByLabel('Địa chỉ email')).toBeVisible();expect(f.mutations).toEqual([]);await page.getByRole('button',{name:'Quay lại',exact:true}).click();await expect(view(page)).toBeVisible();});\n  35 | test('Notification and security parity: real preferences, no scheduling and other account login',async({page})=>{const f=await enter(page,{signed:true});await view(page).getByRole('button',{name:/Tùy chọn thông báo/}).click();await expect(active(page)).toContainText('Nhắc tập chưa mở');await expect(active(page)).toContainText('Chỉ lưu lựa chọn nhận tin; chưa đặt giờ hay gửi nhắc tập.');await expect(active(page).getByRole('button',{name:'Cho phép nhận thông báo nhắc tập · Bật',exact:true})).toHaveAttribute('aria-pressed','true');await page.getByRole('button',{name:'Quay lại',exact:true}).click();await view(page).getByRole('button',{name:/Bảo mật tài khoản/}).click();await expect(active(page)).toContainText('Hồ sơ và Hành trình được giữ riêng theo từng tài khoản.');await active(page).getByRole('button',{name:'Đăng nhập bằng tài khoản khác',exact:true}).click();await expect(active(page).locator('.mcy-eyebrow')).toHaveText('ĐĂNG NHẬP');await expect(page.getByLabel('Địa chỉ email')).toBeVisible();expect(f.mutations).toEqual([]);});\n> 36 | for(const result of ['error','success'] as const)test('Existing local logout pending '+result,async({page})=>{const delay=latch(),f=await enter(page,{signed:true,logout:result,logoutDelay:delay});await view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true}).click();await expect(view(page).getByRole('button',{name:'Đang đăng xuất…',exact:true})).toBeDisabled();await expect.poll(()=>f.mutations.length).toBe(1);expect(f.mutations[0]).toMatchObject({path:'/auth/v1/logout',query:'?scope=local',method:'POST'});delay.release();if(result==='error'){await expect(view(page).getByRole('alert')).toContainText('Fictional logout unavailable');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeEnabled();await expect(view(page).locator('h1')).toHaveText('Chào, Fixture A.');}else{await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeVisible();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}expect(f.mutations).toHaveLength(1);});\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^\n  37 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n  38 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n  39 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('Tiếng Anh hiện đang được hoàn thiện');await expect(active(page)).toContainText('tài khoản, đồng ý, hỗ trợ và nội dung kiến thức vẫn dùng tiếng Việt');expect(f.mutations).toEqual([]);});\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:36:744"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:31.570Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\test-results\\ux-profile-Existing-local-logout-pending-error\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 744,
+                    "line": 36
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-1a03c7497e644539a67b",
+          "file": "ux-profile.spec.ts",
+          "line": 36,
+          "column": 50
+        },
+        {
+          "title": "Existing local logout pending success",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2731,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:40.431Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-91d3c215f5cc16696a0a",
+          "file": "ux-profile.spec.ts",
+          "line": 36,
+          "column": 50
+        },
+        {
+          "title": "Long identity and true 28px text reflow; actual Tab reaches every row clear of footer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3366,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m30.5\u001b[39m\nReceived:    \u001b[31m11\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m30.5\u001b[39m\nReceived:    \u001b[31m11\u001b[39m\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:573)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:37:841",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 573,
+                      "line": 29
+                    },
+                    "snippet": "  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 573,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m30.5\u001b[39m\nReceived:    \u001b[31m11\u001b[39m\n\n  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:573)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:37:841"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:43.572Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\test-results\\ux-profile-Long-identity-a-6263a-s-every-row-clear-of-footer\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 573,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-1cb38e115b35d8ebbec7",
+          "file": "ux-profile.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "Profile actual keyboard and footer safe area iphone",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2848,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:526)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 526,
+                      "line": 29
+                    },
+                    "snippet": "  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 526,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n\n  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:526)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:48.238Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\test-results\\ux-profile-Profile-actual--f3815-and-footer-safe-area-iphone\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 526,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-24d41ccb53776ffe24a7",
+          "file": "ux-profile.spec.ts",
+          "line": 38,
+          "column": 43
+        },
+        {
+          "title": "Profile actual keyboard and footer safe area pixel-10",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2737,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:526)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 526,
+                      "line": 29
+                    },
+                    "snippet": "  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 526,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n\n  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:526)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:52.613Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\test-results\\ux-profile-Profile-actual--aa933-d-footer-safe-area-pixel-10\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 526,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-6c24e005286b95e591d5",
+          "file": "ux-profile.spec.ts",
+          "line": 38,
+          "column": 43
+        },
+        {
+          "title": "Partial English stays disclosed; account routes remain Vietnamese",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8441,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('flow-current').last()\nExpected substring: \u001b[32m\"Tiếng Anh hiện đang được hoàn thiện\"\u001b[39m\nReceived string:    \u001b[31m\"HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last()\u001b[22m\n\u001b[2m    13 × locator resolved to <div class=\"flow-screen\" data-flow-current=\"true\" data-testid=\"flow-current\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('flow-current').last()\nExpected substring: \u001b[32m\"Tiếng Anh hiện đang được hoàn thiện\"\u001b[39m\nReceived string:    \u001b[31m\"HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last()\u001b[22m\n\u001b[2m    13 × locator resolved to <div class=\"flow-screen\" data-flow-current=\"true\" data-testid=\"flow-current\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.\"\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:39:313",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 313,
+                      "line": 39
+                    },
+                    "snippet": "  37 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n  38 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n> 39 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('Tiếng Anh hiện đang được hoàn thiện');await expect(active(page)).toContainText('tài khoản, đồng ý, hỗ trợ và nội dung kiến thức vẫn dùng tiếng Việt');expect(f.mutations).toEqual([]);});\n     |                                                                                                                                                                                                                                                                                                                         ^\n  40 | test('Hydration failure preserves Profile controls without invented consent status',async({page})=>{const f=await fixture(page,{signed:true,profileError:true});await page.goto('/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Cá nhân',exact:true}).click();await expect(view(page)).toBeVisible();await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|đã đọc quyền/i);expect(f.mutations).toEqual([]);});\n  41 | test('Leaving Profile retains Home layout and no Profile styles in later routes',async({page})=>{const f=await enter(page);await page.locator('.flow-fixed-footer').getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);await page.getByRole('button',{name:'Khám phá',exact:true}).click();await page.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);expect(f.mutations).toEqual([]);});\n  42 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 313,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('flow-current').last()\nExpected substring: \u001b[32m\"Tiếng Anh hiện đang được hoàn thiện\"\u001b[39m\nReceived string:    \u001b[31m\"HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('flow-current').last()\u001b[22m\n\u001b[2m    13 × locator resolved to <div class=\"flow-screen\" data-flow-current=\"true\" data-testid=\"flow-current\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.\"\u001b[22m\n\n\n  37 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});\n  38 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});\n> 39 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('Tiếng Anh hiện đang được hoàn thiện');await expect(active(page)).toContainText('tài khoản, đồng ý, hỗ trợ và nội dung kiến thức vẫn dùng tiếng Việt');expect(f.mutations).toEqual([]);});\n     |                                                                                                                                                                                                                                                                                                                         ^\n  40 | test('Hydration failure preserves Profile controls without invented consent status',async({page})=>{const f=await fixture(page,{signed:true,profileError:true});await page.goto('/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Cá nhân',exact:true}).click();await expect(view(page)).toBeVisible();await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|đã đọc quyền/i);expect(f.mutations).toEqual([]);});\n  41 | test('Leaving Profile retains Home layout and no Profile styles in later routes',async({page})=>{const f=await enter(page);await page.locator('.flow-fixed-footer').getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);await page.getByRole('button',{name:'Khám phá',exact:true}).click();await page.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);expect(f.mutations).toEqual([]);});\n  42 |\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:39:313"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:02:56.709Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\test-results\\ux-profile-Partial-English-89b59-nt-routes-remain-Vietnamese\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 313,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-82d8878b536ff400d734",
+          "file": "ux-profile.spec.ts",
+          "line": 39,
+          "column": 1
+        },
+        {
+          "title": "Hydration failure preserves Profile controls without invented consent status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4213,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:03:13.393Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-c750cde6e53a0611edf2",
+          "file": "ux-profile.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "Leaving Profile retains Home layout and no Profile styles in later routes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5371,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:03:18.530Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-4b51171476c9bf51e408",
+          "file": "ux-profile.spec.ts",
+          "line": 41,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T18:01:17.966Z",
+    "duration": 130968.80999999998,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,15 @@
+node:internal/fs/promises:1598
+  const result = await PromisePrototypeThen(
+                 ^
+
+Error: ENOENT: no such file or directory, scandir 'D:\Projects\MCY\.vercel\ux-step4-6-20261018\dist\client\'
+    at async readdir (node:internal/fs/promises:1598:18)
+    at async scan (file:///D:/Projects/MCY/.vercel/ux-step4-6-20261018/scripts/check-client-bundle-secrets.mjs:13:23)
+    at async file:///D:/Projects/MCY/.vercel/ux-step4-6-20261018/scripts/check-client-bundle-secrets.mjs:47:1 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\dist\\client\\'
+}
+
+Node.js v25.9.0

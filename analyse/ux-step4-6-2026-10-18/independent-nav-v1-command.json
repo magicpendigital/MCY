@@ -1,0 +1,11 @@
+{
+  "start": "2026-10-17T18:41:08.7851681Z",
+  "end": "2026-10-17T18:41:24.5952914Z",
+  "command": "node analyse/ux-step4-6-2026-10-18/independent-nav-baseline-control.mjs",
+  "exitCode": 0,
+  "budgetExceeded": false,
+  "runnerBudgetMs": 720000,
+  "probeFreezeSha256": "2e996c9994b3fcaf06ed9379936091b45ee8ce8667b8fd0f0a8ae2e40ccd0d37",
+  "helperPinsBeforeAfterMatch": true,
+  "executionMode": "scoped require_escalated; same proxy/CSP/flags"
+}

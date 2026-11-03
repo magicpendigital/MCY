@@ -1,0 +1,11 @@
+# Bounded baseline classification — awaiting root GO
+
+Reviewer /root/profile46_qc. Preserve original independent13 as **10PASS/3FAIL/process1** with both helper/source pins matching. Guest32028 actualTab first personal row fails full-ring/footer bound; both saved notification states/copy work, but settled signed-in other-account action returns to security instead of retaining login form. Do not replace this failure by worker transient assertions.
+
+New independent-edge-baseline-diagnostic.mjs copies unchanged fixture/session/isolation/strict4213/proxy/CSP/service-worker controls from frozen2e99 helper. No candidate/app/runtime/test source changes. Four contexts only: approved4.5 guest-first-row28; approved4.5 signed-security-login; candidate4.6 same two paths. Frozen4.5f57 and4.6source01d/all app inputs checked before/after.
+
+Guest: same320x568 actual guest path, identical28px injection, actualTab to first personal row; capture prefocus/immediate/after1second paint dwell, actual focused element and outlineWidth+offset, rect vs scrollport/header/footer, scrollTop/padding and pixels. No programmaticfocus/scroll. Criterion uses each actual ring, not forced6px on baseline. Earlier unused helper rect() is copied but never called in these captures.
+
+Security: same synthetic signed fixture with current required consents/profile, enter Profile→security, explicit settled check, click unchanged other-account action, immediate and settled+1second route/activeDOM/form/pixels. No Auth event/session change, logout, email submission, write or handler change. Read-through: unchanged AuthSessionRouter1021–1025 redirects signedIn ready authEmail route to authReturnTo security; unchanged AccountDetail1782 pushes authEmail with login/security payload. Source preservation already checked bytewise. Capture will distinguish observed stable behavior from transient rendering.
+
+Process status will mean capture completed, never app acceptance or desired-behavior PASS. Record observed bounds/routes honestly. Separate output independent-edge-baseline-diagnostic/,12min process cap/15s operations. No broad rerun, no sharedAuth/runtime fix, no native/live/deploy/media/provider action. Root review and GO required before invocation. Local4.6 handoff remains BLOCKED pending classification/scoped fix decision; stop before4.7.

@@ -1,0 +1,95 @@
+{
+  "recordedAt": "2026-10-17T18:40:57.742Z",
+  "status": "IMPLEMENTER_EVIDENCE_FROZEN_PENDING_INDEPENDENT_APP_QC_AND_ROOT_FINAL",
+  "candidate": ".vercel/ux-step4-6-20261018",
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "originalSupplementFreezeSha256": "ef06ba78d7420bc69c74dd67665e35eb9ab7b0c0cc2576c93b20dcc84ba35237",
+  "environmentV2FreezeSha256": "824e00e96f65fb7aeffaeaec3fd56e745d2628379647063b8e5f072a084ae4fe",
+  "files": [
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/SOURCE-FREEZE-v1.json",
+      "sha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/COURSE-MOCK-SUPPLEMENT-FREEZE.json",
+      "sha256": "ef06ba78d7420bc69c74dd67665e35eb9ab7b0c0cc2576c93b20dcc84ba35237"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/COURSE-MOCK-ESCALATED-v2-FREEZE.json",
+      "sha256": "824e00e96f65fb7aeffaeaec3fd56e745d2628379647063b8e5f072a084ae4fe"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/IMPLEMENTER-HANDOFF.vi.md",
+      "sha256": "63b11594b7be446d9f4243b6cd6952e9447b880b3d9af5b9e65555a52068fa9f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/EXECUTION.vi.md",
+      "sha256": "03e5abfcafc8ba95eab06ea8293a75f713856738fca1d447d6fd6bb38e305c73"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/DIAGNOSTICS.vi.md",
+      "sha256": "2bfe921ce08688e31b87cff14688fb31d540fddf7bcff4481fdefc611a91e50f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/checks.json",
+      "sha256": "e24510708cae6797c2990512cbd82fe567e2f2d38707a6ea591eff458e721b18"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/preservation.json",
+      "sha256": "fb2ec53b68b0428060a6b0840fb36614bd811d9c8cc156b4eabc71d92b8a5f7f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/focused-final-v1-command.json",
+      "sha256": "7bbadafd5deb701c83fd8049017df5c9e3a635b34fdde4fa3a26501ced66529f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/focused-final-v1-results.json",
+      "sha256": "2ec8eca62d78cfbcd28fd32993664641b56016225412f571a94b438f7ba8b416"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/mapped-final-v1-command.json",
+      "sha256": "333cab1843e73b47beaaf6bc36f0e860ce709f4d82ae1d5c4dd3441b11ec4512"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/mapped-final-v1-results.json",
+      "sha256": "792355e8c8b1949606637c892c7e6c101845eb1ecfdea8281190d639e4369923"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/adjacent-final-v1-command.json",
+      "sha256": "3be5fad561315632b0b8d200e73946dd0bc71ac79eeca4955a35d5259d110d32"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/adjacent-final-v1-results.json",
+      "sha256": "7361bf3c6362db2c6ccc4301ed89944a70cfebc10d3aa281336d30e026c4e745"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-final-command.json",
+      "sha256": "092af70c7a0630823cb375117e65fa373931b66b5ea6755961c7a42d28d59bb2"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-final-results.json",
+      "sha256": "d37aba49a3abc938c25ca89988e5f2e06ad1dd8c6f7a6b1c66294f0adeb914f7"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-escalated-v2-command.json",
+      "sha256": "33e20561c2873e5fffc054a44b2bb7b469f4d7b6c7d411bc3750aeeaf774e57c"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/course-mock-escalated-v2-results.json",
+      "sha256": "c4374a60b96091e4ba05fdfa0e8e21253b142ac513b06d8774ae37496a8f454f"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/COURSE-MOCK-POST-RUN-PINS.json",
+      "sha256": "5ba60e7463474ec71b0af76b66111267afe9c61c3a8645a6b40b522b21db82ea"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/PREVIEW4194-CHECK.json",
+      "sha256": "d91c20edc41d8600152b41b58dec8bd17481711924e99311d3bd658f122ef35a"
+    },
+    {
+      "path": "analyse/ux-step4-6-2026-10-18/freeze-implementer-evidence.mjs",
+      "sha256": "a2253e44d138c014a30b51a75146dfb5198c58e6c634eb929f1a570824d6f5d0"
+    }
+  ],
+  "limits": "Original adjacent13/2 FAIL and first supplemental sandbox15 pre-body FAIL preserved; successful selected28+14+15 distinct runs; footer28 and independent/root acceptance pending; stop before4.7."
+}

@@ -1,0 +1,313 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+      "ux-profile.spec.ts",
+      "--grep",
+      "Long identity|Profile actual keyboard",
+      "--reporter=list,json"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-6-2026-10-18/diagnostic-v2-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-6-20261018/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-profile.spec.ts",
+          "consent-policy.spec.ts",
+          "learner-ux.spec.ts",
+          "learner-write-review.spec.ts",
+          "ux-home.spec.ts",
+          "ux-checkin-layout.spec.ts",
+          "ux-energy-time.spec.ts",
+          "ux-course-detail.spec.ts",
+          "ux-reflection.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "ux-journey-selection.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ux-profile.spec.ts",
+      "file": "ux-profile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Long identity and true 28px text reflow; actual Tab reaches every row clear of footer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6362,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m30.5\u001b[39m\nReceived:    \u001b[31m11\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m30.5\u001b[39m\nReceived:    \u001b[31m11\u001b[39m\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:697)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:37:841",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 697,
+                      "line": 29
+                    },
+                    "snippet": "  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 697,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m30.5\u001b[39m\nReceived:    \u001b[31m11\u001b[39m\n\n  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:697)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:37:841"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "actual focus {\n  top: \u001b[33m17\u001b[39m,\n  bottom: \u001b[33m558\u001b[39m,\n  left: \u001b[33m34\u001b[39m,\n  right: \u001b[33m286\u001b[39m,\n  header: \u001b[33m31\u001b[39m,\n  footer: \u001b[33m476\u001b[39m,\n  ring: \u001b[33m6\u001b[39m,\n  visible: \u001b[33mtrue\u001b[39m,\n  outline: \u001b[32m'rgb(142, 75, 53) solid 3px'\u001b[39m,\n  offset: \u001b[32m'3px'\u001b[39m,\n  tag: \u001b[32m'BUTTON'\u001b[39m,\n  cls: \u001b[32m'mcy-account-row'\u001b[39m,\n  scrollY: \u001b[33m0\u001b[39m\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:04:23.789Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\diagnostic-v2-results\\ux-profile-Long-identity-a-6263a-s-every-row-clear-of-footer\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 697,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-1cb38e115b35d8ebbec7",
+          "file": "ux-profile.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "Profile actual keyboard and footer safe area iphone",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4051,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:650)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 650,
+                      "line": 29
+                    },
+                    "snippet": "  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 650,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n\n  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:650)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "actual focus {\n  top: \u001b[33m468.0625\u001b[39m,\n  bottom: \u001b[33m549.25\u001b[39m,\n  left: \u001b[33m394.5\u001b[39m,\n  right: \u001b[33m705.5\u001b[39m,\n  header: \u001b[33m233\u001b[39m,\n  footer: \u001b[33m874\u001b[39m,\n  ring: \u001b[33m6\u001b[39m,\n  visible: \u001b[33mtrue\u001b[39m,\n  outline: \u001b[32m'rgb(142, 75, 53) solid 3px'\u001b[39m,\n  offset: \u001b[32m'3px'\u001b[39m,\n  tag: \u001b[32m'BUTTON'\u001b[39m,\n  cls: \u001b[32m'mcy-account-row'\u001b[39m,\n  scrollY: \u001b[33m0\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "actual focus {\n  top: \u001b[33m549.25\u001b[39m,\n  bottom: \u001b[33m651.4375\u001b[39m,\n  left: \u001b[33m394.5\u001b[39m,\n  right: \u001b[33m705.5\u001b[39m,\n  header: \u001b[33m233\u001b[39m,\n  footer: \u001b[33m874\u001b[39m,\n  ring: \u001b[33m6\u001b[39m,\n  visible: \u001b[33mtrue\u001b[39m,\n  outline: \u001b[32m'rgb(142, 75, 53) solid 3px'\u001b[39m,\n  offset: \u001b[32m'3px'\u001b[39m,\n  tag: \u001b[32m'BUTTON'\u001b[39m,\n  cls: \u001b[32m'mcy-account-row'\u001b[39m,\n  scrollY: \u001b[33m0\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "actual focus {\n  top: \u001b[33m651.4375\u001b[39m,\n  bottom: \u001b[33m732.625\u001b[39m,\n  left: \u001b[33m394.5\u001b[39m,\n  right: \u001b[33m705.5\u001b[39m,\n  header: \u001b[33m233\u001b[39m,\n  footer: \u001b[33m874\u001b[39m,\n  ring: \u001b[33m3\u001b[39m,\n  visible: \u001b[33mtrue\u001b[39m,\n  outline: \u001b[32m'rgb(40, 61, 49) solid 3px'\u001b[39m,\n  offset: \u001b[32m'0px'\u001b[39m,\n  tag: \u001b[32m'BUTTON'\u001b[39m,\n  cls: \u001b[32m'mcy-account-row'\u001b[39m,\n  scrollY: \u001b[33m0\u001b[39m\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:04:35.404Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\diagnostic-v2-results\\ux-profile-Profile-actual--f3815-and-footer-safe-area-iphone\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 650,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-24d41ccb53776ffe24a7",
+          "file": "ux-profile.spec.ts",
+          "line": 38,
+          "column": 43
+        },
+        {
+          "title": "Profile actual keyboard and footer safe area pixel-10",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3456,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:650)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                      "column": 650,
+                      "line": 29
+                    },
+                    "snippet": "  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                        "column": 650,
+                        "line": 29
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m6\u001b[39m\nReceived:    \u001b[31m3\u001b[39m\n\n  27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}\n  28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}\n> 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible'),outline:s.outline,offset:s.outlineOffset,tag:e.tagName,cls:e.className,scrollY:window.scrollY};});console.log('actual focus',g);expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{\n  31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);\n  32 | });\n    at focusedBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:29:650)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts:38:320"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "actual focus {\n  top: \u001b[33m428.0625\u001b[39m,\n  bottom: \u001b[33m509.25\u001b[39m,\n  left: \u001b[33m378\u001b[39m,\n  right: \u001b[33m723\u001b[39m,\n  header: \u001b[33m193\u001b[39m,\n  footer: \u001b[33m910\u001b[39m,\n  ring: \u001b[33m6\u001b[39m,\n  visible: \u001b[33mtrue\u001b[39m,\n  outline: \u001b[32m'rgb(142, 75, 53) solid 3px'\u001b[39m,\n  offset: \u001b[32m'3px'\u001b[39m,\n  tag: \u001b[32m'BUTTON'\u001b[39m,\n  cls: \u001b[32m'mcy-account-row'\u001b[39m,\n  scrollY: \u001b[33m0\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "actual focus {\n  top: \u001b[33m509.25\u001b[39m,\n  bottom: \u001b[33m590.4375\u001b[39m,\n  left: \u001b[33m378\u001b[39m,\n  right: \u001b[33m723\u001b[39m,\n  header: \u001b[33m193\u001b[39m,\n  footer: \u001b[33m910\u001b[39m,\n  ring: \u001b[33m6\u001b[39m,\n  visible: \u001b[33mtrue\u001b[39m,\n  outline: \u001b[32m'rgb(142, 75, 53) solid 3px'\u001b[39m,\n  offset: \u001b[32m'3px'\u001b[39m,\n  tag: \u001b[32m'BUTTON'\u001b[39m,\n  cls: \u001b[32m'mcy-account-row'\u001b[39m,\n  scrollY: \u001b[33m0\u001b[39m\n}\n"
+                    },
+                    {
+                      "text": "actual focus {\n  top: \u001b[33m590.4375\u001b[39m,\n  bottom: \u001b[33m671.625\u001b[39m,\n  left: \u001b[33m378\u001b[39m,\n  right: \u001b[33m723\u001b[39m,\n  header: \u001b[33m193\u001b[39m,\n  footer: \u001b[33m910\u001b[39m,\n  ring: \u001b[33m3\u001b[39m,\n  visible: \u001b[33mtrue\u001b[39m,\n  outline: \u001b[32m'rgb(40, 61, 49) solid 3px'\u001b[39m,\n  offset: \u001b[32m'0px'\u001b[39m,\n  tag: \u001b[32m'BUTTON'\u001b[39m,\n  cls: \u001b[32m'mcy-account-row'\u001b[39m,\n  scrollY: \u001b[33m0\u001b[39m\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T18:04:43.378Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-6-2026-10-18\\diagnostic-v2-results\\ux-profile-Profile-actual--aa933-d-footer-safe-area-pixel-10\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-6-20261018\\tests\\ux-profile.spec.ts",
+                    "column": 650,
+                    "line": 29
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c65abd101ca5e9df4dd8-6c24e005286b95e591d5",
+          "file": "ux-profile.spec.ts",
+          "line": 38,
+          "column": 43
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T18:04:22.542Z",
+    "duration": 25584.344,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

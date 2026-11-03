@@ -1,0 +1,115 @@
+
+Running 4 tests using 1 worker
+
+(node:2264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 guest (6.0s)
+(node:24740) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 account (2.7s)
+(node:22500) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 guest (6.5s)
+(node:11472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 account (1.7s)
+
+
+  1) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 guest 
+
+    Error: locator.evaluate: Error: strict mode violation: getByTestId('flow-current') resolved to 2 elements:
+        1) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').first()
+        2) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').nth(1)
+
+    Call log:
+      - waiting for getByTestId('flow-current')
+
+
+      24 |  });return{mutations,reads,external};
+      25 | }
+    > 26 | async function enter(p:Page,options:Parameters<typeof fixture>[1]={},query='?mode=web',english=false){const f=await fixture(p,options);await p.emulateMedia({reducedMotion:'reduce'});await p.goto('/'+query);if(options.signed){await expect(p.locator('.mcy-home-page')).toBeVisible();}else{if(english)await p.locator('.mcy-language-toggle').click();await p.getByRole('button',{name:english?'Explore as a guest':'Thử tìm hiểu như khách',exact:true}).click();await p.getByRole('button',{name:english?'Browse free video lessons':'Tự chọn bài học miễn phí',exact:true}).click();}await p.locator('.flow-fixed-footer').getByRole('button',{name:english?'Profile':'Cá nhân',exact:true}).click();await expect(view(p)).toBeVisible();await expect.poll(()=>active(p).evaluate(e=>Math.round(e.getBoundingClientRect().left-e.parentElement!.getBoundingClientRect().left))).toBe(0);return f;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+      29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:753
+        at enter (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:721)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:53
+
+    Error Context: ..\test-results\ux-profile-Profile-hierarchy-320-guest\error-context.md
+
+  2) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 account 
+
+    Error: locator.evaluate: Error: strict mode violation: getByTestId('flow-current') resolved to 2 elements:
+        1) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').first()
+        2) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').nth(1)
+
+    Call log:
+      - waiting for getByTestId('flow-current')
+
+
+      24 |  });return{mutations,reads,external};
+      25 | }
+    > 26 | async function enter(p:Page,options:Parameters<typeof fixture>[1]={},query='?mode=web',english=false){const f=await fixture(p,options);await p.emulateMedia({reducedMotion:'reduce'});await p.goto('/'+query);if(options.signed){await expect(p.locator('.mcy-home-page')).toBeVisible();}else{if(english)await p.locator('.mcy-language-toggle').click();await p.getByRole('button',{name:english?'Explore as a guest':'Thử tìm hiểu như khách',exact:true}).click();await p.getByRole('button',{name:english?'Browse free video lessons':'Tự chọn bài học miễn phí',exact:true}).click();}await p.locator('.flow-fixed-footer').getByRole('button',{name:english?'Profile':'Cá nhân',exact:true}).click();await expect(view(p)).toBeVisible();await expect.poll(()=>active(p).evaluate(e=>Math.round(e.getBoundingClientRect().left-e.parentElement!.getBoundingClientRect().left))).toBe(0);return f;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+      29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:753
+        at enter (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:721)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:53
+
+    Error Context: ..\test-results\ux-profile-Profile-hierarchy-320-account\error-context.md
+
+  3) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 guest 
+
+    Error: locator.evaluate: Error: strict mode violation: getByTestId('flow-current') resolved to 2 elements:
+        1) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').first()
+        2) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').nth(1)
+
+    Call log:
+      - waiting for getByTestId('flow-current')
+
+
+      24 |  });return{mutations,reads,external};
+      25 | }
+    > 26 | async function enter(p:Page,options:Parameters<typeof fixture>[1]={},query='?mode=web',english=false){const f=await fixture(p,options);await p.emulateMedia({reducedMotion:'reduce'});await p.goto('/'+query);if(options.signed){await expect(p.locator('.mcy-home-page')).toBeVisible();}else{if(english)await p.locator('.mcy-language-toggle').click();await p.getByRole('button',{name:english?'Explore as a guest':'Thử tìm hiểu như khách',exact:true}).click();await p.getByRole('button',{name:english?'Browse free video lessons':'Tự chọn bài học miễn phí',exact:true}).click();}await p.locator('.flow-fixed-footer').getByRole('button',{name:english?'Profile':'Cá nhân',exact:true}).click();await expect(view(p)).toBeVisible();await expect.poll(()=>active(p).evaluate(e=>Math.round(e.getBoundingClientRect().left-e.parentElement!.getBoundingClientRect().left))).toBe(0);return f;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+      29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:753
+        at enter (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:721)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:53
+
+    Error Context: ..\test-results\ux-profile-Profile-hierarchy-390-guest\error-context.md
+
+  4) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 account 
+
+    Error: locator.evaluate: Error: strict mode violation: getByTestId('flow-current') resolved to 3 elements:
+        1) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').first()
+        2) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').nth(1)
+        3) <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div> aka getByTestId('flow-current').nth(2)
+
+    Call log:
+      - waiting for getByTestId('flow-current')
+
+
+      24 |  });return{mutations,reads,external};
+      25 | }
+    > 26 | async function enter(p:Page,options:Parameters<typeof fixture>[1]={},query='?mode=web',english=false){const f=await fixture(p,options);await p.emulateMedia({reducedMotion:'reduce'});await p.goto('/'+query);if(options.signed){await expect(p.locator('.mcy-home-page')).toBeVisible();}else{if(english)await p.locator('.mcy-language-toggle').click();await p.getByRole('button',{name:english?'Explore as a guest':'Thử tìm hiểu như khách',exact:true}).click();await p.getByRole('button',{name:english?'Browse free video lessons':'Tự chọn bài học miễn phí',exact:true}).click();}await p.locator('.flow-fixed-footer').getByRole('button',{name:english?'Profile':'Cá nhân',exact:true}).click();await expect(view(p)).toBeVisible();await expect.poll(()=>active(p).evaluate(e=>Math.round(e.getBoundingClientRect().left-e.parentElement!.getBoundingClientRect().left))).toBe(0);return f;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+      29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:753
+        at enter (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:26:721)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:31:53
+
+    Error Context: ..\test-results\ux-profile-Profile-hierarchy-390-account\error-context.md
+
+  4 failed
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 guest 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 account 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 guest 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 account 

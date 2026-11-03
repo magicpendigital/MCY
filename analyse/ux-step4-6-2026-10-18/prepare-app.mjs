@@ -1,0 +1,9 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+const root=process.cwd(),dir=path.join(root,'analyse/ux-step4-6-2026-10-18'),source=path.join(root,'.vercel/ux-step4-5-20261017'),target=path.join(root,'.vercel/ux-step4-6-20261018');
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const manifest=path.join(root,'analyse/ux-step4-5-2026-10-17/SOURCE-FREEZE-v2.json');assert.equal(sha(manifest),'f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8');
+const baseline=JSON.parse(fs.readFileSync(manifest));assert.equal(baseline.appInputs.length,235);
+for(const input of baseline.appInputs){assert(!/(^|\/)(\.env[^/]*|\.git|dist|node_modules)(\/|$)/.test(input.path));assert(!/^(android|ios)\//.test(input.path));assert.equal(sha(path.join(source,input.path)),input.sha256,input.path);}
+if(fs.existsSync(target))for(const entry of fs.readdirSync(target,{recursive:true,withFileTypes:true})){if(!entry.isFile())continue;const rel=path.relative(target,path.join(entry.parentPath,entry.name)).replaceAll('\\','/'),input=baseline.appInputs.find(x=>x.path===rel);assert(input,'Unexpected partial-copy file '+rel);assert.equal(sha(path.join(target,rel)),input.sha256,rel);}
+const inputs=baseline.appInputs.map(input=>{const dest=path.join(target,input.path);if(!fs.existsSync(dest)){fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(path.join(source,input.path),dest,fs.constants.COPYFILE_EXCL);}return{path:input.path,sourceSha256:input.sha256,rootSha256:fs.existsSync(path.join(root,input.path))?sha(path.join(root,input.path)):null};});
+fs.writeFileSync(path.join(dir,'app-baseline.json'),JSON.stringify({createdAt:new Date().toISOString(),source,target,sourceManifestSha256:sha(manifest),inputs},null,2)+'\n');console.log({copied:inputs.length,target});

@@ -1,0 +1,158 @@
+
+Running 25 tests using 1 worker
+
+(node:23680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 guest (5.6s)
+  ok  2 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 320 account (3.3s)
+  ok  3 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 360 guest (4.5s)
+  ok  4 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 360 account (3.9s)
+  ok  5 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 guest (2.8s)
+  ok  6 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy 390 account (4.4s)
+  ok  7 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy landscape guest (3.1s)
+  ok  8 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy landscape account (2.6s)
+  ok  9 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy desktop guest (3.0s)
+  ok 10 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy desktop account (2.8s)
+  ok 11 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy iphone guest (2.9s)
+  ok 12 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy iphone account (2.7s)
+  ok 13 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy pixel guest (2.8s)
+  ok 14 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:30:338 › Profile hierarchy pixel account (3.9s)
+  ok 15 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:33:1 › All nine original row destinations and back are reachable without mutations (13.1s)
+  ok 16 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:34:1 › Guest account CTA opens create email form without sending email (4.1s)
+  ok 17 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:35:1 › Notification and security parity: real preferences, no scheduling and other account login (4.1s)
+  x  18 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:36:50 › Existing local logout pending error (7.5s)
+(node:13388) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 19 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:36:50 › Existing local logout pending success (2.7s)
+  x  20 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer (3.4s)
+(node:12444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  21 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area iphone (2.8s)
+(node:17736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  22 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area pixel-10 (2.7s)
+(node:8540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  23 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:39:1 › Partial English stays disclosed; account routes remain Vietnamese (8.4s)
+(node:10864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 24 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:40:1 › Hydration failure preserves Profile controls without invented consent status (4.2s)
+  ok 25 ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:41:1 › Leaving Profile retains Home layout and no Profile styles in later routes (5.4s)
+
+
+  1) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:36:50 › Existing local logout pending error 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })
+    Expected: enabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" with timeout 5000ms
+      - waiting for getByTestId('flow-current').last().locator('.mcy-account-home').getByRole('button', { name: 'Đăng xuất thiết bị này', exact: true })
+
+
+      34 | test('Guest account CTA opens create email form without sending email',async({page})=>{const f=await enter(page);await view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true}).click();await expect(active(page).locator('.mcy-eyebrow')).toHaveText('TẠO TÀI KHOẢN');await expect(page.getByLabel('Địa chỉ email')).toBeVisible();expect(f.mutations).toEqual([]);await page.getByRole('button',{name:'Quay lại',exact:true}).click();await expect(view(page)).toBeVisible();});
+      35 | test('Notification and security parity: real preferences, no scheduling and other account login',async({page})=>{const f=await enter(page,{signed:true});await view(page).getByRole('button',{name:/Tùy chọn thông báo/}).click();await expect(active(page)).toContainText('Nhắc tập chưa mở');await expect(active(page)).toContainText('Chỉ lưu lựa chọn nhận tin; chưa đặt giờ hay gửi nhắc tập.');await expect(active(page).getByRole('button',{name:'Cho phép nhận thông báo nhắc tập · Bật',exact:true})).toHaveAttribute('aria-pressed','true');await page.getByRole('button',{name:'Quay lại',exact:true}).click();await view(page).getByRole('button',{name:/Bảo mật tài khoản/}).click();await expect(active(page)).toContainText('Hồ sơ và Hành trình được giữ riêng theo từng tài khoản.');await active(page).getByRole('button',{name:'Đăng nhập bằng tài khoản khác',exact:true}).click();await expect(active(page).locator('.mcy-eyebrow')).toHaveText('ĐĂNG NHẬP');await expect(page.getByLabel('Địa chỉ email')).toBeVisible();expect(f.mutations).toEqual([]);});
+    > 36 | for(const result of ['error','success'] as const)test('Existing local logout pending '+result,async({page})=>{const delay=latch(),f=await enter(page,{signed:true,logout:result,logoutDelay:delay});await view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true}).click();await expect(view(page).getByRole('button',{name:'Đang đăng xuất…',exact:true})).toBeDisabled();await expect.poll(()=>f.mutations.length).toBe(1);expect(f.mutations[0]).toMatchObject({path:'/auth/v1/logout',query:'?scope=local',method:'POST'});delay.release();if(result==='error'){await expect(view(page).getByRole('alert')).toContainText('Fictional logout unavailable');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeEnabled();await expect(view(page).locator('h1')).toHaveText('Chào, Fixture A.');}else{await expect(view(page).getByRole('button',{name:'Tạo tài khoản hoặc đăng nhập',exact:true})).toBeVisible();await expect(view(page)).not.toContainText('a@example.test');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBeNull();}expect(f.mutations).toHaveLength(1);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      37 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});
+      38 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});
+      39 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('Tiếng Anh hiện đang được hoàn thiện');await expect(active(page)).toContainText('tài khoản, đồng ý, hỗ trợ và nội dung kiến thức vẫn dùng tiếng Việt');expect(f.mutations).toEqual([]);});
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:36:744
+
+    Error Context: ..\test-results\ux-profile-Existing-local-logout-pending-error\error-context.md
+
+  2) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 30.5
+    Received:    11
+
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+    > 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{
+      31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);
+      32 | });
+        at focusedBounds (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:29:573)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:841
+
+    Error Context: ..\test-results\ux-profile-Long-identity-a-6263a-s-every-row-clear-of-footer\error-context.md
+
+  3) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area iphone 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 6
+    Received:    3
+
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+    > 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+      30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{
+      31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);
+      32 | });
+        at focusedBounds (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:29:526)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:320
+
+    Error Context: ..\test-results\ux-profile-Profile-actual--f3815-and-footer-safe-area-iphone\error-context.md
+
+  4) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area pixel-10 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 6
+    Received:    3
+
+      27 | async function noOverflow(p:Page){const s=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(s.scroll).toBeLessThanOrEqual(s.client);}
+      28 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Actual Tab did not reach '+selector);}
+    > 29 | async function focusedBounds(p:Page){const g=await p.evaluate(()=>{const e=document.activeElement!,r=e.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),s=getComputedStyle(e);return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,header:h.bottom,footer:f.top,ring:parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset),visible:e.matches(':focus-visible')};});expect(g.visible).toBe(true);expect(g.ring).toBeGreaterThanOrEqual(6);expect(g.top-g.ring).toBeGreaterThanOrEqual(g.header-.5);expect(g.bottom+g.ring).toBeLessThanOrEqual(g.footer+.5);return g;}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+      30 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)for(const signed of [false,true])test('Profile hierarchy '+label+' '+(signed?'account':'guest'),async({page},info)=>{
+      31 |  await page.setViewportSize({width,height});const f=await enter(page,{signed});await expect(view(page).locator('h2')).toHaveText(['Hồ sơ và dữ liệu','Tài khoản và hướng dẫn','Tính năng và trạng thái hiện có']);await expect(view(page).locator('.mcy-account-row strong')).toHaveText(titles);await expect(view(page).locator('details')).toHaveCount(0);await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|chuỗi ngày|tiến độ của bạn/i);await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page).getByRole('button',{name:/Tùy chọn thông báo/})).toContainText('Lưu lựa chọn nhận tin');await expect(view(page).getByRole('button',{name:/Nội dung và quyền đang có/})).toContainText('Bài học miễn phí đang có');await noOverflow(page);await page.screenshot({path:info.outputPath('early-'+label+'-'+signed+'.png'),animations:'disabled'});expect(f.mutations).toEqual([]);expect(f.external).toEqual([]);
+      32 | });
+        at focusedBounds (D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:29:526)
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:320
+
+    Error Context: ..\test-results\ux-profile-Profile-actual--aa933-d-footer-safe-area-pixel-10\error-context.md
+
+  5) ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:39:1 › Partial English stays disclosed; account routes remain Vietnamese 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByTestId('flow-current').last()
+    Expected substring: "Tiếng Anh hiện đang được hoàn thiện"
+    Received string:    "HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" with timeout 5000ms
+      - waiting for getByTestId('flow-current').last()
+        13 × locator resolved to <div class="flow-screen" data-flow-current="true" data-testid="flow-current">…</div>
+           - unexpected value "HỒ SƠThông tin tối thiểu, do bạn sửa.Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.Tên hiển thịNgôn ngữTiếng ViệtEnglish · đang hoàn thiệnEnglish is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese.Múi giờ thiết bị: Asia/BangkokHình body mapChange illustration Lưu thay đổiHủyHồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng."
+
+
+      37 | test('Long identity and true 28px text reflow; actual Tab reaches every row clear of footer',async({page},info)=>{await page.setViewportSize({width:320,height:568});const name='Nguyễn Thị Minh An '.repeat(5).trim(),email='long.synthetic.account.name.without.breaks@example.test',f=await enter(page,{signed:true,name,email});await page.addStyleTag({content:'.mcy-account-home :is(p,button,small,strong,h2){font-size:28px!important;line-height:1.5!important}.mcy-bottom-nav button{font-size:28px!important;line-height:1.5!important}'});await expect(view(page).locator('h1')).toHaveText('Chào, '+name+'.');await expect(view(page).locator('.mcy-lead')).toHaveText(email);await noOverflow(page);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i===4){await page.keyboard.press('Tab');await expect(view(page).getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeFocused();await focusedBounds(page);}if(i<8)await page.keyboard.press('Tab');}await noOverflow(page);await page.screenshot({path:info.outputPath('large-identity-focused.png'),animations:'disabled'});expect(f.mutations).toEqual([]);});
+      38 | for(const device of ['iphone','pixel-10'])test('Profile actual keyboard and footer safe area '+device,async({page})=>{await enter(page,{},'?mode=review&device='+device);await tabTo(page,'.mcy-account-home .mcy-account-row');for(let i=0;i<9;i++){await expect(view(page).locator('.mcy-account-row').nth(i)).toBeFocused();await focusedBounds(page);if(i<8)await page.keyboard.press('Tab');}const g=await page.locator('.flow-fixed-footer').evaluate(e=>{const r=e.getBoundingClientRect(),v=document.querySelector('.mobile-app-viewport')!.getBoundingClientRect(),s=parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0;return{bottom:r.bottom,viewport:v.bottom,safe:s};});expect(g.bottom).toBeLessThanOrEqual(g.viewport-g.safe+.5);});
+    > 39 | test('Partial English stays disclosed; account routes remain Vietnamese',async({page})=>{const f=await enter(page,{},'?mode=web',true);await expect(view(page).locator('h2').first()).toHaveText('Hồ sơ và dữ liệu');await view(page).getByRole('button',{name:/Thông tin cá nhân/}).click();await expect(active(page)).toContainText('Tiếng Anh hiện đang được hoàn thiện');await expect(active(page)).toContainText('tài khoản, đồng ý, hỗ trợ và nội dung kiến thức vẫn dùng tiếng Việt');expect(f.mutations).toEqual([]);});
+         |                                                                                                                                                                                                                                                                                                                         ^
+      40 | test('Hydration failure preserves Profile controls without invented consent status',async({page})=>{const f=await fixture(page,{signed:true,profileError:true});await page.goto('/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Cá nhân',exact:true}).click();await expect(view(page)).toBeVisible();await expect(view(page).getByRole('button',{name:/Quyền riêng tư và đồng ý/})).toBeEnabled();await expect(view(page)).not.toContainText(/Email đã xác minh|đã đồng bộ|đã đọc quyền/i);expect(f.mutations).toEqual([]);});
+      41 | test('Leaving Profile retains Home layout and no Profile styles in later routes',async({page})=>{const f=await enter(page);await page.locator('.flow-fixed-footer').getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);await page.getByRole('button',{name:'Khám phá',exact:true}).click();await page.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-profile-scroll')).toHaveCount(0);expect(f.mutations).toEqual([]);});
+      42 |
+        at D:\Projects\MCY\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:39:313
+
+    Error Context: ..\test-results\ux-profile-Partial-English-89b59-nt-routes-remain-Vietnamese\error-context.md
+
+  5 failed
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:36:50 › Existing local logout pending error 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:37:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area iphone 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:38:43 › Profile actual keyboard and footer safe area pixel-10 
+    ..\..\..\.vercel\ux-step4-6-20261018\tests\ux-profile.spec.ts:39:1 › Partial English stays disclosed; account routes remain Vietnamese 
+  20 passed (2.2m)

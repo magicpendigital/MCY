@@ -1,0 +1,1 @@
+import fs from 'node:fs';import path from 'node:path';const dir=import.meta.dirname;for(const name of ['runtime.log','catalogue.log','typecheck.log','build.log','sites-prep.log','bundle.log','sites-isolation.log','checks.json'])fs.copyFileSync(path.join(dir,name),path.join(dir,'initial-sandbox-'+name),fs.constants.COPYFILE_EXCL);

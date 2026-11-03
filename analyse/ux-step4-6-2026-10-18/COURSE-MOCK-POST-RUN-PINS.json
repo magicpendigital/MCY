@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-10-17T18:38:10.2964100Z",
+  "status": "PASS_POST_RUN_INPUT_PINS",
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "originalSupplementFreezeSha256": "ef06ba78d7420bc69c74dd67665e35eb9ab7b0c0cc2576c93b20dcc84ba35237",
+  "v2FreezeSha256": "824e00e96f65fb7aeffaeaec3fd56e745d2628379647063b8e5f072a084ae4fe",
+  "counts": {
+    "originalSupplement": 7,
+    "app": 236,
+    "originalHarness": 16,
+    "v2Supplement": 4
+  },
+  "total": 263.0,
+  "runExitCode": 0,
+  "runExpected": 15,
+  "runUnexpected": 0,
+  "server4212": "closed",
+  "browserProcessInventory": "CIM denied; runner exited and server closed"
+}

@@ -1,0 +1,120 @@
+{
+  "recordedAt": "2026-10-17T17:51:01.660Z",
+  "scope": "Read-only targeted source discovery before R1 documentation; no app copy/edit/tests or external effects",
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "f0afdff7cb51b5f8e7e6a10690a840af7c606f4fb64b04658bbff15bda95bf96"
+    },
+    {
+      "path": "docs/quality/TASK_LIFECYCLE.md",
+      "sha256": "addf9d7330e9ecc78b87d7933d60900fa438a10ac58fe3cf3a9baf29701c2dc0"
+    },
+    {
+      "path": "docs/quality/TASK_INTAKE.template.md",
+      "sha256": "5ef2a269cf60f49c367e27738673943ea9a892b40f6bfd19fae1b094aa9b70a9"
+    },
+    {
+      "path": "docs/quality/TASK_QC.template.md",
+      "sha256": "e044ff32aa6abae4a276e2d02f493bf417264a0a26369b89fb1e009079f941e4"
+    },
+    {
+      "path": "skills/mcy-change-review/SKILL.md",
+      "sha256": "ecc59a91d6f4d1b7bda365652f60d27a88c1813f81423a03efb528e2258a6d12"
+    },
+    {
+      "path": "skills/mcy-change-review/references/review-matrix.md",
+      "sha256": "ba5081bee4b80106867124c1f1f1cd4039dff06cacc21a28c3896a6fef52c82f"
+    },
+    {
+      "path": "skills/mcy-brand-ux/SKILL.md",
+      "sha256": "629e350d0ece752f1eaf37b30368a5340ab1f1c3954d7305a96d1d8afa43511b"
+    },
+    {
+      "path": "brand/BRAND_GUIDELINES.md",
+      "sha256": "cb3ce525e1e923ebeadcfa1255c4a88b4611dea5e7282c79ef88baf27f7002e7"
+    },
+    {
+      "path": "design-system/DESIGN_SYSTEM.md",
+      "sha256": "0dac87f15cecbbbcf5708a286df5cd5e47747e9ea0df41023477e160fc48c894"
+    },
+    {
+      "path": "design-system/tokens.json",
+      "sha256": "26419a048d59ba853ac6e46bd81627239963f7b37000e3fdd64d8dafe01c53f3"
+    },
+    {
+      "path": "analyse/ux-implementation-2026-10-14/PLAN.vi.md",
+      "sha256": "243235956968c4cf2060f6805455a91a55f40047d0f101879ea3dbcc6fd278b1"
+    },
+    {
+      "path": "analyse/ux-audit-2026-10-14/source-ux-notes.md",
+      "sha256": "6ec08844db30eaf32607aa7e925d8738f0fcc2fdbfefe22a87b2a1ff06ccdf05"
+    },
+    {
+      "path": "analyse/ux-step4-5-2026-10-17/SOURCE-FREEZE-v2.json",
+      "sha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8"
+    },
+    {
+      "path": "analyse/ux-step4-5-2026-10-17/EVIDENCE-FREEZE-v2.json",
+      "sha256": "a81bf13ee6d378600658b891c287ae3c01c59dec9b4135edb51217ed4e6b7270"
+    },
+    {
+      "path": "analyse/ux-step4-5-2026-10-17/CURRENT-STATUS.vi.md",
+      "sha256": "9195cc94306a989916b8ccc5e858cb1fcead0df3d5ea03180f59556a71916e2b"
+    },
+    {
+      "path": "analyse/ux-step4-5-2026-10-17/ROOT-VERIFICATION.vi.md",
+      "sha256": "482c349d6610a4cd2e04ea835939339a732b123323becffd1830903bfc9facc9"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/src/Prototype.tsx",
+      "sha256": "6fb23c018c64eede47df1c149490b7aa5daba6653a311b97955d4fdeadcacb48"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/src/prototype.css",
+      "sha256": "e809b95abb7fbd1d360d39b280cbb385ea29c156ea4c1bf9d0e76a82cb1974a0"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/src/backend/supabase.ts",
+      "sha256": "e4c5f2b7fb84f69dff28b4af13e09b12ee7338dfbd7789ca760e8cc22ba108c9"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/src/backend/learnerData.ts",
+      "sha256": "7e007bde10cda2d45e1c187e1a2e1f9d1d6f0999d3e185945dd68a6077019776"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/src/backend/learnerSession.ts",
+      "sha256": "3286c118eac57cc1a83d85144a22b6787b3b146cdba7df290cca6ac66a48ece1"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/src/backend/authEmailMetadata.ts",
+      "sha256": "1aa385a2792330930d18e5051a1e3330bacc7571723efc4b64fff378185c5067"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/tests/learner-ux.spec.ts",
+      "sha256": "01af770a5c27f9d31d526b09d0a6bcfdc9348a8b18e8e1abf2dfee3c8a8c91ef"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/tests/ux-save-feedback.spec.ts",
+      "sha256": "e93cff373c22efda83b47e2706ffc34ac7aec2b9ba46741b9c88941b22410e00"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/package.json",
+      "sha256": "29f4b35bb7ead83c72ecbbc97b3d664d77cd204cb0c6c8ca752d76b4e7c639f9"
+    },
+    {
+      "path": ".vercel/ux-step4-5-20261017/playwright.config.ts",
+      "sha256": "f90b40a2e2a57a5a39b84680d2474dadfe6e348edc9ebeef60a1d9d46f6d44ba"
+    }
+  ],
+  "findings": {
+    "profileRows": 9,
+    "exportDeleteDestination": "help",
+    "aboutRoute": "none in traced learner Profile",
+    "roleControls": "no staff-role conditional Profile controls; staff query workspaces separate",
+    "verificationClaim": "Profile consumer uses signedIn; narrow removal of verified claim allowed, no Auth changes",
+    "notificationPreference": "existing writable preference; scheduling unavailable",
+    "dirtyBaseline": "analyse/ux-step4-6-2026-10-18/ROOT-DIRTY-BASELINE.json"
+  },
+  "validationMethod": "Node assertions; missing input/hash mismatch throws; process exit required"
+}
