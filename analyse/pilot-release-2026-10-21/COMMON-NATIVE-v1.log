@@ -1,0 +1,388 @@
+[runtime/stdout] Mobile runtime integrity check passed (28 protected files).
+[catalog/stdout] Reviewed practice catalogue check passed (0 sessions; recommendations closed; 1 version-bound review candidates).
+[vite-native/stdout] [36mvite v8.3.1 [32mbuilding client environment for production...[36m[39m
+[vite-native/stdout] transforming...
+[vite-native/stdout] ✓ 603 modules transformed.
+[vite-native/stdout] rendering chunks...
+[vite-native/stdout] computing gzip size...
+[vite-native/stdout] .vercel/pilot-artifacts/native-web-v1/index.html                                            1.06 kB │ gzip:   0.59 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-vietnamese-400-normal-DnpnVwnf.woff     6.34 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-vietnamese-700-normal-DsFyXAL4.woff     6.38 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-vietnamese-500-normal-D380IkQ8.woff     6.41 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-vietnamese-400-normal-D2PTxGxD.woff2    8.36 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-vietnamese-700-normal-BEVeWqJt.woff2    8.41 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-vietnamese-500-normal-B3ncpOoB.woff2    8.54 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-latin-400-normal-DyYNIH4P.woff         21.77 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-latin-400-normal-BqEyEoaF.woff2        21.88 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-latin-500-normal-DQZyH_nt.woff         21.92 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-latin-700-normal-DLgJJpmK.woff         21.92 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-latin-500-normal-7RbcRiD8.woff2        22.20 kB
+.vercel/pilot-artifacts/native-web-v1/assets/roboto-latin-700-normal-BZpUvMxY.woff2        22.24 kB
+.vercel/pilot-artifacts/native-web-v1/assets/LessonReader-DIuFVfDc.css                      2.77 kB │ gzip:   0.90 kB
+.vercel/pilot-artifacts/native-web-v1/assets/UnitReviewWorkspace-aeSLLhZ7.css               4.78 kB │ gzip:   1.47 kB
+.vercel/pilot-artifacts/native-web-v1/assets/owner-CCktePmf.css                            13.87 kB │ gzip:   3.81 kB
+.vercel/pilot-artifacts/native-web-v1/assets/teacher-BBhbwVaC.css                          13.91 kB │ gzip:   3.60 kB
+.vercel/pilot-artifacts/native-web-v1/assets/index-BgbT6aoE.css                           110.66 kB │ gzip:  20.96 kB
+.vercel/pilot-artifacts/native-web-v1/assets/mark-forest-BqMZe9Gf.js                        0.55 kB │ gzip:   0.37 kB
+.vercel/pilot-artifacts/native-web-v1/assets/web-DU5L04iI.js                                0.84 kB │ gzip:   0.40 kB
+.vercel/pilot-artifacts/native-web-v1/assets/ContentReviewWorkspace-Dp-mHe5m.js             1.23 kB │ gzip:   0.72 kB
+.vercel/pilot-artifacts/native-web-v1/assets/LessonReader-izn_yFqT.js                       1.57 kB │ gzip:   0.84 kB
+.vercel/pilot-artifacts/native-web-v1/assets/contentReviewCandidates-FWo7P7-p.js            1.94 kB │ gzip:   1.01 kB
+.vercel/pilot-artifacts/native-web-v1/assets/AuthCallback-0daYZON3.js                       2.91 kB │ gzip:   1.39 kB
+.vercel/pilot-artifacts/native-web-v1/assets/freeCourses-C_KZyTb-.js                        3.33 kB │ gzip:   1.62 kB
+.vercel/pilot-artifacts/native-web-v1/assets/DiscoverScreen-BTJN9DG5.js                     3.79 kB │ gzip:   1.63 kB
+.vercel/pilot-artifacts/native-web-v1/assets/jsx-runtime-CB_p5Kcx.js                        8.74 kB │ gzip:   3.34 kB
+.vercel/pilot-artifacts/native-web-v1/assets/CourseDetailScreen-baHQjiuD.js                10.03 kB │ gzip:   3.49 kB
+.vercel/pilot-artifacts/native-web-v1/assets/ContentReviewPanel-BsMVI3-9.js                10.61 kB │ gzip:   3.85 kB
+.vercel/pilot-artifacts/native-web-v1/assets/PracticeFlowScreen-BcZRjnkp.js                12.57 kB │ gzip:   4.64 kB
+.vercel/pilot-artifacts/native-web-v1/assets/JourneyScreen-BZZkbY49.js                     13.78 kB │ gzip:   4.22 kB
+.vercel/pilot-artifacts/native-web-v1/assets/owner-lPFh-MpF.js                             17.47 kB │ gzip:   5.75 kB
+.vercel/pilot-artifacts/native-web-v1/assets/UnitReviewWorkspace-C8-8QN-A.js               18.28 kB │ gzip:   6.41 kB
+.vercel/pilot-artifacts/native-web-v1/assets/teacher-BFzOoeLZ.js                           41.02 kB │ gzip:  11.28 kB
+.vercel/pilot-artifacts/native-web-v1/assets/DevicePicker-BSFrjQrS.js                      49.63 kB │ gzip:  16.75 kB
+.vercel/pilot-artifacts/native-web-v1/assets/dist-C8esRUvu.js                             213.60 kB │ gzip:  54.83 kB
+.vercel/pilot-artifacts/native-web-v1/assets/index-q4V7p8Ti.js                            566.25 kB │ gzip: 174.29 kB
+
+[vite-native/stderr] [33m[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[vite-native/stdout] [32m✓ built in 1.38s[39m
+[native-web-secret-scan/stdout] Client bundle secret check passed (25 text files).
+[capacitor-sync-android/stdout] √ Copying web assets from native-web-v1 to android\app\src\main\assets\public in 56.49ms
+[capacitor-sync-android/stdout] √ Creating capacitor.config.json in android\app\src\main\assets in 1.78ms
+[capacitor-sync-android/stdout] √ copy android in 82.52ms
+[capacitor-sync-android/stdout] √ Updating Android plugins in 4.50ms
+[capacitor-sync-android/stdout] [info] Found 3 Capacitor plugins for android:
+       @capacitor/app@8.1.1
+       @capacitor/keyboard@8.0.5
+       @capacitor/status-bar@8.0.3
+[capacitor-sync-android/stdout] √ update android in 65.46ms
+[capacitor-sync-android/stdout] [info] Sync finished in 0.182s
+[cached-gradle-version/stdout] 
+[cached-gradle-version/stdout] ------------------------------------------------------------
+[cached-gradle-version/stdout] Gradle 8.14.3[cached-gradle-version/stdout] 
+[cached-gradle-version/stdout] ------------------------------------------------------------[cached-gradle-version/stdout] 
+
+[cached-gradle-version/stdout] Build time:    2025-07-04 13:15:44 UTC[cached-gradle-version/stdout] 
+[cached-gradle-version/stdout] Revision:      e5ee1df3d88b8ca3a8074787a94f373e3090e1db[cached-gradle-version/stdout] 
+
+[cached-gradle-version/stdout] Kotlin:        2.0.21[cached-gradle-version/stdout] 
+[cached-gradle-version/stdout] Groovy:        3.0.24
+[cached-gradle-version/stdout] Ant:           Apache Ant(TM) version 1.10.15 compiled on August 25 2024[cached-gradle-version/stdout] 
+[cached-gradle-version/stdout] Launcher JVM:  21.0.12.1 (Microsoft 21.0.12.1+1-LTS)[cached-gradle-version/stdout] 
+[cached-gradle-version/stdout] Daemon JVM:    C:\Program Files\Microsoft\jdk-21.0.12.101-hotspot (no JDK specified, using current Java home)[cached-gradle-version/stdout] 
+[cached-gradle-version/stdout] OS:            Windows 11 10.0 amd64[cached-gradle-version/stdout] 
+
+[assemble-parallel-offline/stdout] To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] Daemon will be stopped at the end of the build [assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Configure project :app[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] WARNING: BuildType(parallel): resValue 'string/app_name' value is being replaced.[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] WARNING: BuildType(parallel): resValue 'string/title_activity_main' value is being replaced.[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] WARNING: BuildType(parallel): resValue 'string/custom_url_scheme' value is being replaced.
+[assemble-parallel-offline/stdout] WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Configure project :capacitor-cordova-android-plugins
+[assemble-parallel-offline/stdout] WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :app:preBuild[assemble-parallel-offline/stdout]  UP-TO-DATE[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :app:preParallelBuild[assemble-parallel-offline/stdout]  UP-TO-DATE[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :app:mergeParallelNativeDebugMetadata NO-SOURCE[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-android:preBuild[assemble-parallel-offline/stdout]  UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-android:preDebugBuild[assemble-parallel-offline/stdout]  UP-TO-DATE[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-app:preBuild[assemble-parallel-offline/stdout]  UP-TO-DATE[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-app:preDebugBuild[assemble-parallel-offline/stdout]  UP-TO-DATE[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:preBuild[assemble-parallel-offline/stdout]  UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:preDebugBuild UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :app:javaPreCompileParallel[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-android:writeDebugAarMetadata[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:preBuild[assemble-parallel-offline/stdout]  UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:preDebugBuild[assemble-parallel-offline/stdout]  UP-TO-DATE[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-app:writeDebugAarMetadata[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:writeDebugAarMetadata[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:preBuild UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:preDebugBuild UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:writeDebugAarMetadata[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:writeDebugAarMetadata[assemble-parallel-offline/stdout] 
+> Task :capacitor-android:processDebugNavigationResources
+[assemble-parallel-offline/stdout] > Task :capacitor-app:processDebugNavigationResources
+> Task :capacitor-cordova-android-plugins:processDebugNavigationResources
+> Task :capacitor-keyboard:processDebugNavigationResources
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:processDebugNavigationResources
+[assemble-parallel-offline/stdout] > Task :app:checkParallelAarMetadata
+[assemble-parallel-offline/stdout] > Task :app:processParallelNavigationResources
+[assemble-parallel-offline/stdout] > Task :app:compileParallelNavigationResources
+[assemble-parallel-offline/stdout] > Task :app:generateParallelResValues[assemble-parallel-offline/stdout] 
+> Task :capacitor-android:generateDebugResValues
+[assemble-parallel-offline/stdout] > Task :capacitor-android:generateDebugResources
+[assemble-parallel-offline/stdout] > Task :capacitor-android:packageDebugResources
+[assemble-parallel-offline/stdout] > Task :capacitor-app:generateDebugResValues
+[assemble-parallel-offline/stdout] > Task :capacitor-app:generateDebugResources
+[assemble-parallel-offline/stdout] > Task :capacitor-app:packageDebugResources
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:generateDebugResValues
+> Task :capacitor-cordova-android-plugins:generateDebugResources
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:packageDebugResources[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:generateDebugResValues[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:generateDebugResources
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:packageDebugResources
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:generateDebugResValues
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:generateDebugResources[assemble-parallel-offline/stdout] 
+> Task :capacitor-status-bar:packageDebugResources
+[assemble-parallel-offline/stdout] > Task :app:mapParallelSourceSetPaths
+> Task :app:generateParallelResources
+[assemble-parallel-offline/stdout] > Task :app:packageParallelResources
+[assemble-parallel-offline/stdout] > Task :app:createParallelCompatibleScreenManifests
+> Task :app:extractDeepLinksParallel
+[assemble-parallel-offline/stdout] > Task :capacitor-android:extractDeepLinksDebug
+> Task :capacitor-app:extractDeepLinksDebug
+[assemble-parallel-offline/stdout] > Task :app:parseParallelLocalResources
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:extractDeepLinksDebug
+> Task :capacitor-app:processDebugManifest
+> Task :capacitor-android:processDebugManifest
+> Task :capacitor-cordova-android-plugins:processDebugManifest
+> Task :capacitor-keyboard:extractDeepLinksDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:extractDeepLinksDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:processDebugManifest
+[assemble-parallel-offline/stdout] > Task :capacitor-android:compileDebugLibraryResources
+> Task :capacitor-app:compileDebugLibraryResources
+[assemble-parallel-offline/stdout] > Task :capacitor-app:parseDebugLocalResources
+[assemble-parallel-offline/stdout] > Task :capacitor-android:parseDebugLocalResources
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:processDebugManifest
+> Task :capacitor-app:generateDebugRFile
+> Task :capacitor-android:generateDebugRFile
+[assemble-parallel-offline/stdout] > Task :app:mergeParallelResources
+[assemble-parallel-offline/stdout] > Task :app:processParallelMainManifest
+[assemble-parallel-offline/stdout] > Task :app:processParallelManifest
+> Task :capacitor-cordova-android-plugins:compileDebugLibraryResources
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:parseDebugLocalResources
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:compileDebugLibraryResources
+> Task :capacitor-keyboard:parseDebugLocalResources
+> Task :app:processParallelManifestForPackage
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:generateDebugRFile
+> Task :capacitor-keyboard:generateDebugRFile[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:compileDebugLibraryResources
+[assemble-parallel-offline/stdout] > Task :capacitor-android:javaPreCompileDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:parseDebugLocalResources
+> Task :capacitor-app:javaPreCompileDebug
+> Task :capacitor-status-bar:generateDebugRFile
+[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stderr] Note: Some input files use unchecked or unsafe operations.
+[assemble-parallel-offline/stdout] > Task :capacitor-android:compileDebugJavaWithJavac
+[assemble-parallel-offline/stderr] Note: Recompile with -Xlint:unchecked for details.
+[assemble-parallel-offline/stdout] 
+> Task :capacitor-cordova-android-plugins:javaPreCompileDebug
+> Task :capacitor-keyboard:javaPreCompileDebug
+> Task :capacitor-cordova-android-plugins:compileDebugJavaWithJavac NO-SOURCE
+> Task :capacitor-cordova-android-plugins:bundleLibCompileToJarDebug
+> Task :capacitor-status-bar:javaPreCompileDebug
+[assemble-parallel-offline/stdout] > Task :app:mergeParallelShaders
+[assemble-parallel-offline/stdout] > Task :app:compileParallelShaders NO-SOURCE
+> Task :app:generateParallelAssets UP-TO-DATE
+> Task :capacitor-android:mergeDebugShaders
+> Task :capacitor-android:compileDebugShaders NO-SOURCE
+> Task :capacitor-android:generateDebugAssets UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-android:bundleLibCompileToJarDebug
+> Task :capacitor-android:mergeDebugAssets
+[assemble-parallel-offline/stdout] > Task :capacitor-app:compileDebugJavaWithJavac
+> Task :capacitor-app:bundleLibCompileToJarDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:compileDebugJavaWithJavac
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:bundleLibCompileToJarDebug
+[assemble-parallel-offline/stdout] > Task :app:processParallelResources
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:compileDebugJavaWithJavac
+> Task :capacitor-app:mergeDebugShaders
+> Task :capacitor-app:compileDebugShaders NO-SOURCE
+> Task :capacitor-app:generateDebugAssets UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:bundleLibCompileToJarDebug[assemble-parallel-offline/stdout] 
+> Task :capacitor-app:mergeDebugAssets
+[assemble-parallel-offline/stdout] > Task :app:compileParallelJavaWithJavac
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:mergeDebugShaders
+> Task :capacitor-cordova-android-plugins:compileDebugShaders NO-SOURCE
+> Task :capacitor-cordova-android-plugins:generateDebugAssets UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeDebugAssets
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:mergeDebugShaders
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:compileDebugShaders NO-SOURCE
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:generateDebugAssets UP-TO-DATE
+> Task :capacitor-keyboard:mergeDebugAssets
+> Task :capacitor-status-bar:mergeDebugShaders
+> Task :capacitor-status-bar:compileDebugShaders NO-SOURCE
+> Task :capacitor-status-bar:generateDebugAssets UP-TO-DATE
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:mergeDebugAssets
+[assemble-parallel-offline/stdout] > Task :app:mergeParallelAssets
+[assemble-parallel-offline/stdout] > Task :app:compressParallelAssets
+[assemble-parallel-offline/stdout] > Task :app:desugarParallelFileDependencies
+> Task :capacitor-app:bundleLibRuntimeToDirDebug
+> Task :capacitor-keyboard:bundleLibRuntimeToDirDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:bundleLibRuntimeToDirDebug
+[assemble-parallel-offline/stdout] > Task :app:checkParallelDuplicateClasses
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:bundleLibRuntimeToDirDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-app:bundleLibRuntimeToJarDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:bundleLibRuntimeToJarDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-android:bundleLibRuntimeToDirDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:bundleLibRuntimeToJarDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-android:bundleLibRuntimeToJarDebug
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:bundleLibRuntimeToJarDebug
+[assemble-parallel-offline/stdout] > Task :app:dexBuilderParallel
+> Task :app:processParallelJavaRes NO-SOURCE
+> Task :capacitor-android:processDebugJavaRes NO-SOURCE
+> Task :capacitor-app:processDebugJavaRes NO-SOURCE
+> Task :capacitor-cordova-android-plugins:processDebugJavaRes NO-SOURCE
+> Task :capacitor-keyboard:processDebugJavaRes NO-SOURCE
+> Task :capacitor-status-bar:processDebugJavaRes NO-SOURCE
+[assemble-parallel-offline/stdout] > Task :app:mergeParallelJavaResource
+[assemble-parallel-offline/stdout] > Task :app:mergeProjectDexParallel
+> Task :app:mergeParallelJniLibFolders
+[assemble-parallel-offline/stdout] > Task :capacitor-android:mergeDebugJniLibFolders
+[assemble-parallel-offline/stdout] > Task :capacitor-android:mergeDebugNativeLibs NO-SOURCE
+[assemble-parallel-offline/stdout] > Task :capacitor-android:copyDebugJniLibsProjectOnly
+[assemble-parallel-offline/stdout] > Task :capacitor-app:mergeDebugJniLibFolders
+[assemble-parallel-offline/stdout] > Task :capacitor-app:mergeDebugNativeLibs NO-SOURCE
+> Task :capacitor-app:copyDebugJniLibsProjectOnly
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:mergeDebugJniLibFolders
+[assemble-parallel-offline/stdout] > Task :capacitor-cordova-android-plugins:mergeDebugNativeLibs NO-SOURCE
+> Task :capacitor-cordova-android-plugins:copyDebugJniLibsProjectOnly
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:mergeDebugJniLibFolders
+[assemble-parallel-offline/stdout] > Task :capacitor-keyboard:mergeDebugNativeLibs NO-SOURCE
+> Task :capacitor-keyboard:copyDebugJniLibsProjectOnly
+[assemble-parallel-offline/stdout] > Task :capacitor-status-bar:mergeDebugJniLibFolders
+> Task :capacitor-status-bar:mergeDebugNativeLibs NO-SOURCE
+> Task :capacitor-status-bar:copyDebugJniLibsProjectOnly
+[assemble-parallel-offline/stdout] > Task :app:mergeParallelNativeLibs NO-SOURCE
+[assemble-parallel-offline/stdout] > Task :app:stripParallelDebugSymbols[assemble-parallel-offline/stdout]  NO-SOURCE
+[assemble-parallel-offline/stdout] > Task :app:validateSigningParallel
+[assemble-parallel-offline/stdout] > Task :app:writeParallelAppMetadata
+[assemble-parallel-offline/stdout] > Task :app:writeParallelSigningConfigVersions
+[assemble-parallel-offline/stdout] > Task :app:mergeExtDexParallel
+[assemble-parallel-offline/stdout] > Task :app:mergeParallelGlobalSynthetics
+[assemble-parallel-offline/stdout] > Task :app:mergeLibDexParallel
+[assemble-parallel-offline/stdout] > Task :app:packageParallel[assemble-parallel-offline/stdout] 
+> Task :app:createParallelApkListingFileRedirect
+> Task :app:assembleParallel
+[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] [Incubating] Problems report is available at: file:///C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY/android/build/reports/problems/problems-report.html[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] 
+[assemble-parallel-offline/stdout] Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+[assemble-parallel-offline/stdout] You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.[assemble-parallel-offline/stdout] 
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 34s
+128 actionable tasks: 128 executed
+[public-byte-inspection/stdout] {"status":"PASS_NATIVE_PUBLIC_BYTE_PARITY_ONLY","fileCount":61,"expectedMatched":59,"evidence":"D:/Projects/MCY/analyse/pilot-release-2026-10-21/NATIVE-PUBLIC-INVENTORY-v1.json"}
+[packaged-public-secret-scan/stdout] Client bundle secret check passed (27 text files).
+[apk-badging/stdout] package: name='com.nilaza.motchutyoga.mcydebug' versionCode='1' versionName='1.0-mcydebug-pilot20261021' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'24'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='com.nilaza.motchutyoga.mcydebug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+application-label:'Một chút yoga (Pilot 21/10)'
+application-label-af:'Một chút yoga (Pilot 21/10)'
+application-label-am:'Một chút yoga (Pilot 21/10)'
+application-label-ar:'Một chút yoga (Pilot 21/10)'
+application-label-as:'Một chút yoga (Pilot 21/10)'
+application-label-az:'Một chút yoga (Pilot 21/10)'
+application-label-be:'Một chút yoga (Pilot 21/10)'
+application-label-bg:'Một chút yoga (Pilot 21/10)'
+application-label-bn:'Một chút yoga (Pilot 21/10)'
+application-label-bs:'Một chút yoga (Pilot 21/10)'
+application-label-ca:'Một chút yoga (Pilot 21/10)'
+application-label-cs:'M�[apk-badging/stdout] ��t chút yoga (Pilot 21/10)'
+application-label-da:'Một chút yoga (Pilot 21/10)'
+application-label-de:'Một chút yoga (Pilot 21/10)'
+application-label-el:'Một chút yoga (Pilot 21/10)'
+application-label-en:'A Little Yoga (Pilot 21 Oct)'
+application-label-en-AU:'A Little Yoga (Pilot 21 Oct)'
+application-label-en-CA:'A Little Yoga (Pilot 21 Oct)'
+application-label-en-GB:'A Little Yoga (Pilot 21 Oct)'
+application-label-en-IN:'A Little Yoga (Pilot 21 Oct)'
+application-label-en-XC:'A Little Yoga (Pilot 21 Oct)'
+application-label-es:'Một chút yoga (Pilot 21/10)'
+application-label-es-US:'Một chút yoga (Pilot 21/10)'
+application-label-et:'Một chút yoga (Pilot 21/10)'
+application-label-eu:'Một chút yoga (Pilot 21/10)'
+application-label-fa:'Một chút yoga (Pilot 21/10)'
+application-label-fi:'Một chút yoga (Pilot 21/10)'
+application-label-fr:'Một chút yoga (Pilot 21/10)'
+application-label-fr-CA:'Một chút yoga (Pilot 21/10)'
+application-label-gl:'Một chút yoga (Pilot 21/10)'
+application-label-gu:'Một chút yoga (Pilot 21/10)'
+application-label-hi:'Một chút yoga (Pilot 21/10)'
+application-label-hr:'Một chút yoga (Pilot 21/10)'
+application-label-hu:'Một chút yoga (Pilot 21/10)'
+application-label-hy:'Một chút yoga (Pilot 21/10)'
+application-label-in:'Một chút yoga (Pilot 21/10)'
+application-label-is:'Một chút yoga (Pilot 21/10)'
+application-label-it:'Một chút yoga (Pilot 21/10)'
+application-label-iw:'Một chút yoga (Pilot 21/10)'
+application-label-ja:'Một chút yoga (Pilot 21/10)'
+application-label-ka:'Một chút yoga (Pilot 21/10)'
+application-label-kk:'Một chút yoga (Pilot 21/10)'
+application-label-km:'Một chút yoga (Pilot 21/10)'
+application-label-kn:'Một chút yoga (Pilot 21/10)'
+application-label-ko:'Một chút yoga (Pilot 21/10)'
+application-label-ky:'Một chút yoga (Pilot 21/10)'
+application-label-lo:'Một chút yoga (Pilot 21/10)'
+application-label-lt:'Một chút yoga (Pilot 21/10)'
+application-label-lv:'Một chút yoga (Pilot 21/10)'
+application-label-mk:'Một chút yoga (Pilot 21/10)'
+application-label-ml:'Một chút yoga (Pilot 21/10)'
+application-label-mn:'Một chút yoga (Pilot 21/10)'
+application-label-mr:'Một chút yoga (Pilot 21/10)'
+application-label-ms:'Một chút yoga (Pilot 21/10)'
+application-label-my:'Một chút yoga (Pilot 21/10)'
+application-label-nb:'Một chút yoga (Pilot 21/10)'
+application-label-ne:'Một chút yoga (Pilot 21/10)'
+application-label-nl:'Một chút yoga (Pilot 21/10)'
+application-label-or:'Một chút yoga (Pilot 21/10)'
+application-label-pa:'Một chút yoga (Pilot 21/10)'
+application-label-pl:'Một chút yoga (Pilot 21/10)'
+application-label-pt:'Một chút yoga (Pilot 21/10)'
+application-label-pt-BR:'Một chút yoga (Pilot 21/10)'
+application-label-pt-PT:'Một chút yoga (Pilot 21/10)'
+application-label-ro:'Một chút yoga (Pilot 21/10)'
+application-label-ru:'Một chút yoga (Pilot 21/10)'
+application-label-si:'Một chút yoga (Pilot 21/10)'
+application-label-sk:'Một chút yoga (Pilot 21/10)'
+app[apk-badging/stdout] lication-label-sl:'Một chút yoga (Pilot 21/10)'
+application-label-sq:'Một chút yoga (Pilot 21/10)'
+application-label-sr:'Một chút yoga (Pilot 21/10)'
+application-label-sr-Latn:'Một chút yoga (Pilot 21/10)'
+application-label-sv:'Một chút yoga (Pilot 21/10)'
+application-label-sw:'Một chút yoga (Pilot 21/10)'
+application-label-ta:'Một chút yoga (Pilot 21/10)'
+application-label-te:'Một chút yoga (Pilot 21/10)'
+application-label-th:'Một chút yoga (Pilot 21/10)'
+application-label-tl:'Một chút yoga (Pilot 21/10)'
+application-label-tr:'Một chút yoga (Pilot 21/10)'
+application-label-uk:'Một chút yoga (Pilot 21/10)'
+application-label-ur:'Một chút yoga (Pilot 21/10)'
+application-label-uz:'Một chút yoga (Pilot 21/10)'
+application-label-vi:'Một chút yoga (Pilot 21/10)'
+application-label-zh-CN:'Một chút yoga (Pilot 21/10)'
+application-label-zh-HK:'Một chút yoga (Pilot 21/10)'
+application-label-zh-TW:'Một chút yoga (Pilot 21/10)'
+application-label-zu:'Một chút yoga (P[apk-badging/stdout] ilot 21/10)'
+application-icon-160:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-240:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-320:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-480:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-640:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-65534:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application: label='Một chút yoga (Pilot 21/10)' icon='res/mipmap-anydpi-v26/ic_launcher.xml'
+application-debuggable
+launchable-activity: name='com.nilaza.motchutyoga.MainActivity'  label='Một chút yoga (Pilot 21/10)' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+other-receivers
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'e[apk-badging/stdout] s-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320' '480' '640' '65534'
+[apk-signature/stdout] Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+[apk-signature/stdout] Signer #1 certificate SHA-256 digest: dd3c8ee6d7ab263842a4dcce514efd398efa45ab54ca19c1c3d83456e54033c2
+[apk-signature/stdout] Signer #1 certificate SHA-1 digest: 5b30380d4c12c3ab2dca66d35ff887c71333c3b6
+[apk-signature/stdout] Signer #1 certificate MD5 digest: a63609fd7e2e133ffcb32d74c01fb34e

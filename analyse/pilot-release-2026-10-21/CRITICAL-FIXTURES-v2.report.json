@@ -1,0 +1,1189 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\critical-fixtures.playwright-v2.mjs"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\critical-fixtures.playwright-v2.mjs",
+    "rootDir": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY/.vercel/critical-fixtures-v2-source/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\critical-fixtures-setup-v2.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY/.vercel/critical-fixtures-v2/results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY/.vercel/critical-fixtures-v2-source/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/ux-save-feedback.spec.ts",
+          "**/learner-device-acceptance.spec.ts",
+          "**/auth-callback.spec.ts"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:/Projects/MCY/analyse/pilot-release-2026-10-21/CRITICAL-FIXTURES-v2.report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth-callback.spec.ts",
+      "file": "auth-callback.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "callback destinations are fixed screens and preserve existing native deep links",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:02.177Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-c3489dbd85c1b4f51025",
+          "file": "auth-callback.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "Owner email request keeps the same origin, Owner callback and no account creation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1706,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:02.247Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-c3ca8257e55d287c3114",
+          "file": "auth-callback.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "Owner email failure over_email_send_rate_limit has safe actionable copy without retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1175,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:05.144Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-3ae4842b9ca84d2497ca",
+          "file": "auth-callback.spec.ts",
+          "line": 48,
+          "column": 4
+        },
+        {
+          "title": "Owner email failure unknown_private_provider_error has safe actionable copy without retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1192,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:06.335Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-3f102aa0a3a259834680",
+          "file": "auth-callback.spec.ts",
+          "line": 48,
+          "column": 4
+        },
+        {
+          "title": "real SDK completes one PKCE exchange, stores email locale under the initiating token and returns to Owner before learner data hydration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1213,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:07.542Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-5dc26409c584af4cc19d",
+          "file": "auth-callback.spec.ts",
+          "line": 65,
+          "column": 1
+        },
+        {
+          "title": "missing verifier cannot treat an older session as the new callback's success",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:08.771Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-d6b90558f6ef00701c78",
+          "file": "auth-callback.spec.ts",
+          "line": 95,
+          "column": 1
+        },
+        {
+          "title": "expired root callback displays a safe error and clears provider text and auth URL parameters",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:09.861Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-97643a09c01df699740c",
+          "file": "auth-callback.spec.ts",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "denied PKCE exchange is not retried and never opens Owner controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1058,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:10.421Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-1ea4e187cd8889b8b7fc",
+          "file": "auth-callback.spec.ts",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "a valid login still needs server Owner authorization",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1048,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:11.493Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-f905043da20bca44b2ef",
+          "file": "auth-callback.spec.ts",
+          "line": 129,
+          "column": 1
+        },
+        {
+          "title": "ambiguous callback codes fail without exchange or an external return URL",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 573,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:12.556Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4cc2a23857009c817ff2-7c3f92016db0375fedb9",
+          "file": "auth-callback.spec.ts",
+          "line": 140,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "learner-device-acceptance.spec.ts",
+      "file": "learner-device-acceptance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reload restores the saved actor and current consent without writing acceptance again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2646,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:13.158Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97ced4fc6ccf5ea535b6-b78874b9568231f8906a",
+          "file": "learner-device-acceptance.spec.ts",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "standalone saved check-in is read back in Journey after reload with honest missing reflection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6176,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:15.817Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97ced4fc6ccf5ea535b6-be174ecfa09a88d5159d",
+          "file": "learner-device-acceptance.spec.ts",
+          "line": 106,
+          "column": 1
+        },
+        {
+          "title": "account switch and reload do not expose the previous actor saved check-in",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8114,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:22.003Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97ced4fc6ccf5ea535b6-e3855b155c4e20f58e13",
+          "file": "learner-device-acceptance.spec.ts",
+          "line": 120,
+          "column": 1
+        },
+        {
+          "title": "wellbeing revocation survives reload and prevents a new save request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8713,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:30.130Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97ced4fc6ccf5ea535b6-2705044c8346a1380ef5",
+          "file": "learner-device-acceptance.spec.ts",
+          "line": 135,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ux-save-feedback.spec.ts",
+      "file": "ux-save-feedback.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guest standalone explicitly stays unsaved and keeps the draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:38.887Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-06a39b38a9372b2971cf",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 77,
+          "column": 36
+        },
+        {
+          "title": "revoked account standalone explicitly stays unsaved and keeps the draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3146,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:42.203Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-433517c85fb6d5bb9dfa",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 77,
+          "column": 36
+        },
+        {
+          "title": "guest session recording requires the existing explicit opt-in and makes no account write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8041,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:45.369Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-ac75d5305d82fa52a041",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "consented account success writes once then opens Journey with the real record",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3834,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:53.425Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-b9591aad9ffadee0a20c",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 119,
+          "column": 1
+        },
+        {
+          "title": "uncertain save retries the same key and payload while retaining edited draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4069,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:06:57.279Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-9ced2aa52e0d7f2f76d4",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 133,
+          "column": 1
+        },
+        {
+          "title": "leaving during client preparation cancels dispatch and navigation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2690,
+                  "error": {
+                    "message": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4292/src/backend/supabase.ts",
+                    "stack": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4292/src/backend/supabase.ts\n    at C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v2-source\\tests\\ux-save-feedback.spec.ts:155:14",
+                    "location": {
+                      "file": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v2-source\\tests\\ux-save-feedback.spec.ts",
+                      "column": 14,
+                      "line": 155
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 153 |\u001b[39m   \u001b[36mconst\u001b[39m backend \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m fixture(page)\u001b[33m;\u001b[39m\n \u001b[90m 154 |\u001b[39m   \u001b[36mawait\u001b[39m draft(page)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 155 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mevaluate(\u001b[36masync\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m     |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 156 |\u001b[39m     \u001b[90m// Test-only gate on the real account-bound client preparation, no app hook.\u001b[39m\n \u001b[90m 157 |\u001b[39m     \u001b[36mconst\u001b[39m { getSupabaseClient } \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m \u001b[36mimport\u001b[39m(\u001b[32m'/src/backend/supabase.ts'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 158 |\u001b[39m     \u001b[36mconst\u001b[39m client \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getSupabaseClient()\u001b[33m;\u001b[39m\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v2-source\\tests\\ux-save-feedback.spec.ts",
+                        "column": 14,
+                        "line": 155
+                      },
+                      "message": "Error: page.evaluate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4292/src/backend/supabase.ts\n\n  153 |   const backend = await fixture(page);\n  154 |   await draft(page);\n> 155 |   await page.evaluate(async () => {\n      |              ^\n  156 |     // Test-only gate on the real account-bound client preparation, no app hook.\n  157 |     const { getSupabaseClient } = await import('/src/backend/supabase.ts');\n  158 |     const client = await getSupabaseClient();\n    at C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v2-source\\tests\\ux-save-feedback.spec.ts:155:14"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:01.372Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v2\\results\\ux-save-feedback-leaving-d-72bce-els-dispatch-and-navigation\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v2-source\\tests\\ux-save-feedback.spec.ts",
+                    "column": 14,
+                    "line": 155
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-c06982ea01f08bcf53b4",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 152,
+          "column": 1
+        },
+        {
+          "title": "response from an already dispatched save cannot navigate a switched account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4046,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:05.167Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-f746863a495e8350614d",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "no-draft onboarding accurately labels profile saving and preserves explicit retry after error",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2573,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:09.455Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-aa635f45f83c7a335c6e",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 194,
+          "column": 1
+        },
+        {
+          "title": "onboarding with a draft retains the unsaved draft after an explicit profile retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5040,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:12.045Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-8ee144c8b2f9e9c36880",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 213,
+          "column": 40
+        },
+        {
+          "title": "onboarding with a draft confirms account check-in saving after an explicit profile retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:17.099Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-6807923dfd5b57e4207c",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 213,
+          "column": 40
+        },
+        {
+          "title": "returning from check-in without a body or energy draft saves only the profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2839,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:21.883Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-bc19d7ffc1ccba6a8009",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 240,
+          "column": 1
+        },
+        {
+          "title": "consent missing required versions with no draft only transfers actual data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3002,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:24.737Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-d86a5cc255e06abf134f",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 253,
+          "column": 103
+        },
+        {
+          "title": "consent missing required versions with an actual draft only transfers actual data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3549,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:27.760Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-8ebb891430456db459ca",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 253,
+          "column": 103
+        },
+        {
+          "title": "consent stale required versions with no draft only transfers actual data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2504,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:31.326Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-89dfbab6fe46573dc011",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 253,
+          "column": 103
+        },
+        {
+          "title": "consent stale required versions with an actual draft only transfers actual data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3581,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:33.843Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-11cf9fc05d42bb7fef1b",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 253,
+          "column": 103
+        },
+        {
+          "title": "failed save leaves Journey ready and its pending CTA preserves the exact retry and edited draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4761,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:37.437Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-6535e26cae73e9e46ec4",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 277,
+          "column": 1
+        },
+        {
+          "title": "security action describes other-account sign-in and notification copy promises no scheduling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3730,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T19:07:42.211Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-3fe3b5bb549266c2dca2",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 305,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-20T19:05:56.849Z",
+    "duration": 109318.20199999999,
+    "expected": 30,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,416 @@
+{
+  "status": "PASS_COMMON_WEB_ARTIFACT_ONLY",
+  "startedUtc": "2026-10-20T18:31:16.936Z",
+  "endedUtc": "2026-10-20T18:31:25.899Z",
+  "cwd": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY",
+  "sourceFreezeSha256": "9e9c5c88d7721c4986bf61396dac9dd8a17586377c493971895e70ae77f9d256",
+  "publicConfigProposalSha256": "50f20a6735b8b925175f153b1eb7bd861bbb9901527dc8391d78568108911792",
+  "publicTarget": "https://mhumbczqrzutdnraafhs.supabase.co",
+  "publicKeySha256": "ba8150fb18a4662bf891065b80118362eae97caae4e451c876f42d8c614fba44",
+  "rawKeyLoggedOrEnvFileWritten": false,
+  "environmentPolicy": "OS_ALLOWLIST_PLUS_EXACT_PUBLIC_STAGING_BUILD_CONFIG_NO_ENV_FILES",
+  "steps": [
+    {
+      "id": "runtime",
+      "executable": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "scripts/check-mobile-runtime.mjs"
+      ],
+      "exitCode": 0,
+      "closed": true,
+      "timedOut": false,
+      "outputCapped": false,
+      "cleanup": "NORMAL_EXIT"
+    },
+    {
+      "id": "catalog",
+      "executable": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "scripts/check-reviewed-practice-catalog.mjs"
+      ],
+      "exitCode": 0,
+      "closed": true,
+      "timedOut": false,
+      "outputCapped": false,
+      "cleanup": "NORMAL_EXIT"
+    },
+    {
+      "id": "typescript",
+      "executable": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "node_modules/typescript/bin/tsc"
+      ],
+      "exitCode": 0,
+      "closed": true,
+      "timedOut": false,
+      "outputCapped": false,
+      "cleanup": "NORMAL_EXIT"
+    },
+    {
+      "id": "vite-web",
+      "executable": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "build",
+        "--configLoader",
+        "runner"
+      ],
+      "exitCode": 0,
+      "closed": true,
+      "timedOut": false,
+      "outputCapped": false,
+      "cleanup": "NORMAL_EXIT"
+    },
+    {
+      "id": "sites-package",
+      "executable": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "scripts/prepare-sites-build.mjs"
+      ],
+      "exitCode": 0,
+      "closed": true,
+      "timedOut": false,
+      "outputCapped": false,
+      "cleanup": "NORMAL_EXIT"
+    },
+    {
+      "id": "bundle-secret-scan",
+      "executable": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "scripts/check-client-bundle-secrets.mjs",
+        "dist/client"
+      ],
+      "exitCode": 0,
+      "closed": true,
+      "timedOut": false,
+      "outputCapped": false,
+      "cleanup": "NORMAL_EXIT"
+    },
+    {
+      "id": "sites-fixtures",
+      "executable": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "--test",
+        "tests/sites-worker.test.mjs"
+      ],
+      "exitCode": 0,
+      "closed": true,
+      "timedOut": false,
+      "outputCapped": false,
+      "cleanup": "NORMAL_EXIT"
+    }
+  ],
+  "error": null,
+  "sourcePreserved": true,
+  "outputCapBytes": 4194304,
+  "archive": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\pilot-artifacts\\web-common-v1",
+  "files": [
+    {
+      "path": ".openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981",
+      "bytes": 96
+    },
+    {
+      "path": "client/assets/android/Keyboard.png",
+      "sha256": "6085e50be17ca2705b4351283187be2c5b01b58262c70b90d74b3376efb4adfe",
+      "bytes": 42695
+    },
+    {
+      "path": "client/assets/android/navigation-bar.svg",
+      "sha256": "077a782a3b6c2915fc518dfb4bba825c8c5861b2572f9522a7024902b9cb2850",
+      "bytes": 542
+    },
+    {
+      "path": "client/assets/android/Pixel10.png",
+      "sha256": "a87c1250ba20756f5d020b5351a7ae71d663dcfc64aca3a1cd56452e8a05233e",
+      "bytes": 214337
+    },
+    {
+      "path": "client/assets/AuthCallback-D0fNpLzV.js",
+      "sha256": "e0e6a7285e4954d34d7df125fed029058e2243ebe3b6a9518dd90269553f0bb8",
+      "bytes": 2912
+    },
+    {
+      "path": "client/assets/body-map-feminine-full-1024.webp",
+      "sha256": "e4a7e3917533079f52cdd731031f3a3fc5b776eeb7faf553866abf479978de62",
+      "bytes": 174416
+    },
+    {
+      "path": "client/assets/body-map-feminine-full-512.webp",
+      "sha256": "f38e4e09cac103d8c17715f25bb542c9ac15c55cb3feb77539c06294d46b7af0",
+      "bytes": 51330
+    },
+    {
+      "path": "client/assets/body-map-masculine-full-1024.webp",
+      "sha256": "f54af039b83197847f157ee042162979ee3853b0f71c9c4b8f8b339a211958a0",
+      "bytes": 201084
+    },
+    {
+      "path": "client/assets/body-map-masculine-full-512.webp",
+      "sha256": "fbdcaefb9b7b3cefd7afb960d51ef78b5762ff8360883bd7b746b3412fc72614",
+      "bytes": 56400
+    },
+    {
+      "path": "client/assets/body-map-neutral-full-1024.webp",
+      "sha256": "529dc4ab170647b01bac9c51a18eddafe4ae7d53035b60af12dd7e23858a8927",
+      "bytes": 168836
+    },
+    {
+      "path": "client/assets/body-map-neutral-full-512.webp",
+      "sha256": "f164856ab73549b891a0e1f224c4dd8e71ecb27fbc8a9f48e72cb1f5d57dd894",
+      "bytes": 50876
+    },
+    {
+      "path": "client/assets/contentReviewCandidates-FWo7P7-p.js",
+      "sha256": "787809c9c9bfe972d37a0b261dd41afb54d64c95b66a2c11170f9b6ca5b49e55",
+      "bytes": 1942
+    },
+    {
+      "path": "client/assets/ContentReviewPanel-CWTsudmu.js",
+      "sha256": "918978d8c4094ca715822c4543d66bda513283c0909b736b544c1adf9328d49a",
+      "bytes": 10616
+    },
+    {
+      "path": "client/assets/ContentReviewWorkspace-Dp-mHe5m.js",
+      "sha256": "bcbd069c483455cd1919350bfada57fd3b96aa6b45a29d23d68c7797bfda8195",
+      "bytes": 1235
+    },
+    {
+      "path": "client/assets/CourseDetailScreen-B3f2VsBL.js",
+      "sha256": "51ebde74f4c137d0264fe806a41a79f578c0160b5920a029d77b0ab0e1bd0f0e",
+      "bytes": 10032
+    },
+    {
+      "path": "client/assets/DevicePicker-CSZ9GPrh.js",
+      "sha256": "b686ad7f7d7fbac33989a8fdda5727146fbf2e4120c6d3a613c4d1c375bc291d",
+      "bytes": 49632
+    },
+    {
+      "path": "client/assets/DiscoverScreen-CYiQLvD_.js",
+      "sha256": "688be9e2cde11c08e381f9d77e4296a5f867a6eec9b8953e5b1b0d66d88e08f1",
+      "bytes": 3792
+    },
+    {
+      "path": "client/assets/dist-BHu_Slbu.js",
+      "sha256": "0778e04f6aa399ea41858fac0ce41204a32433cc1cfbc4994e6e0798e275b850",
+      "bytes": 213600
+    },
+    {
+      "path": "client/assets/freeCourses-C_KZyTb-.js",
+      "sha256": "143cfa838004e759d7c30e413cb4afde267657cc48ea04a618d0c570a7bd73a2",
+      "bytes": 3334
+    },
+    {
+      "path": "client/assets/index-BgbT6aoE.css",
+      "sha256": "619c23d7b7aa06c28ef1bd51ba02fc27b8fb9e66bafa3a6e5aad45f7b9b3446d",
+      "bytes": 110665
+    },
+    {
+      "path": "client/assets/index-DPMdlVY_.js",
+      "sha256": "b9e45f65ea639fd871329d5223f79a4fae1386602c6e9e9840efde408a473752",
+      "bytes": 566248
+    },
+    {
+      "path": "client/assets/iphone/Bezel.png",
+      "sha256": "ee2514d74d2f75f3541405fa2f20811f159879a66586778cfd8c9c84c44959df",
+      "bytes": 353980
+    },
+    {
+      "path": "client/assets/iphone/Keyboard.png",
+      "sha256": "292e2d83d69adaeb663d6a840ce8db8d0a5257710b472c20713e03f56b08ea88",
+      "bytes": 53341
+    },
+    {
+      "path": "client/assets/JourneyScreen-CenWAWBX.js",
+      "sha256": "19684fea0776adf29780a6bcb0964c4ea89e272b25e2c909d7c2085a99dfd3e1",
+      "bytes": 13780
+    },
+    {
+      "path": "client/assets/jsx-runtime-CB_p5Kcx.js",
+      "sha256": "25b47d9ef7c5d280b9be6d1a0c5928b5bcc6eb68e6ae0aa0078afd7dcd09202f",
+      "bytes": 8742
+    },
+    {
+      "path": "client/assets/LessonReader-DIuFVfDc.css",
+      "sha256": "3680ceab6bfce1d52b246f563db609059e373a1981c4edd119d0bcc324eca698",
+      "bytes": 2774
+    },
+    {
+      "path": "client/assets/LessonReader-izn_yFqT.js",
+      "sha256": "3ad7543e9e6f0048be48c3b6fd9e3afbc0d4ac1fcf70cf3a1fa86a63faf1ef83",
+      "bytes": 1576
+    },
+    {
+      "path": "client/assets/mark-forest-BqMZe9Gf.js",
+      "sha256": "d94dc2e07a30dde929b22573f7886544e40c6a0cbf49853ec14e8e6c04051fe7",
+      "bytes": 558
+    },
+    {
+      "path": "client/assets/owner-CCktePmf.css",
+      "sha256": "935ec6e30df762fe2c99d2aae2c5a5ab2680a5687f7b7a4022c05f6c71238197",
+      "bytes": 13879
+    },
+    {
+      "path": "client/assets/owner-CIBkymfC.js",
+      "sha256": "e715855c955d12b021cd26c1ab77e8b28a8aae35aee004b79ca06fc7418a349f",
+      "bytes": 17479
+    },
+    {
+      "path": "client/assets/practice/preparation-draft/choice.wav",
+      "sha256": "2f75a005ed7d5774b4b0c82f825217ed31a550d249acb56d981c839eb8c79906",
+      "bytes": 1099052
+    },
+    {
+      "path": "client/assets/practice/preparation-draft/room.png",
+      "sha256": "7e1a324171b280389cc3bc1d49753136c76f08fea987f3e38235dda50c90f251",
+      "bytes": 2502940
+    },
+    {
+      "path": "client/assets/practice/preparation-draft/space.wav",
+      "sha256": "64fb7b4447815289198a944d7be87eeedbdd206e8c27f88ec636f772e41db887",
+      "bytes": 783984
+    },
+    {
+      "path": "client/assets/practice/preparation-draft/welcome.wav",
+      "sha256": "0531b1425413f19da0952393ba7c98f9373f9e6d7ffce2f1ba92b14816baddbd",
+      "bytes": 826334
+    },
+    {
+      "path": "client/assets/PracticeFlowScreen-UtSX8m5o.js",
+      "sha256": "8ed657631989d59db005385cbeead3bfd882efb04f81d1990bd5485157249ec0",
+      "bytes": 12578
+    },
+    {
+      "path": "client/assets/roboto-latin-400-normal-BqEyEoaF.woff2",
+      "sha256": "425c0713a8176f92273d378599c7eac57de7fafabd4bd0ed457b70eb8f80d371",
+      "bytes": 21884
+    },
+    {
+      "path": "client/assets/roboto-latin-400-normal-DyYNIH4P.woff",
+      "sha256": "050cd689ba150e71c4ae131021474f48d97f367d94634654c8c06a5310279f3c",
+      "bytes": 21776
+    },
+    {
+      "path": "client/assets/roboto-latin-500-normal-7RbcRiD8.woff2",
+      "sha256": "5bcc3aa180e7f26f643cd5b2621cd7c2de193d0661d913a94afd3d4881a7a34b",
+      "bytes": 22200
+    },
+    {
+      "path": "client/assets/roboto-latin-500-normal-DQZyH_nt.woff",
+      "sha256": "b9c3346f0ae869eee449c94a182d90b100f253d916827785577887d03eff51db",
+      "bytes": 21920
+    },
+    {
+      "path": "client/assets/roboto-latin-700-normal-BZpUvMxY.woff2",
+      "sha256": "b9d66d1708156f765ada51939bc24ed259dafa69eb631b36e443680fe9e15879",
+      "bytes": 22240
+    },
+    {
+      "path": "client/assets/roboto-latin-700-normal-DLgJJpmK.woff",
+      "sha256": "a2238b3178ba89b791fb7ced9e118f720b7ef43386b452ab8ce9198d119cf32a",
+      "bytes": 21924
+    },
+    {
+      "path": "client/assets/roboto-vietnamese-400-normal-D2PTxGxD.woff2",
+      "sha256": "76afb0e482ab569c50a1ca35dfd052daa3d0f6d54d1b30865f6fea4c35c2b350",
+      "bytes": 8368
+    },
+    {
+      "path": "client/assets/roboto-vietnamese-400-normal-DnpnVwnf.woff",
+      "sha256": "a7ece9e36309c1eac204bcaa7006b76d17b66ee673c4dbf7f8aa62fb9dc9ef2e",
+      "bytes": 6344
+    },
+    {
+      "path": "client/assets/roboto-vietnamese-500-normal-B3ncpOoB.woff2",
+      "sha256": "15c77aed355b2ca99b34986268c33c67107613a2987c71dd9e12e79bbd6f9e63",
+      "bytes": 8540
+    },
+    {
+      "path": "client/assets/roboto-vietnamese-500-normal-D380IkQ8.woff",
+      "sha256": "9ed919194333df14907c7e02e99a5e73278a6538c8539c0500246ab86391c6dc",
+      "bytes": 6412
+    },
+    {
+      "path": "client/assets/roboto-vietnamese-700-normal-BEVeWqJt.woff2",
+      "sha256": "bec340ec8c7ec4940533eeceadddb00ac2da872c57c67b0c55e772c7c32dad4e",
+      "bytes": 8416
+    },
+    {
+      "path": "client/assets/roboto-vietnamese-700-normal-DsFyXAL4.woff",
+      "sha256": "532acd9d5e13d343d56e3cedbe9c3354b857971dd3be09482365ed6c9690fa1c",
+      "bytes": 6384
+    },
+    {
+      "path": "client/assets/status/ios-status-icons.svg",
+      "sha256": "40e218b274d0973d519b50f42884e6e05ef0f2b6a0e46e102fda54218784466d",
+      "bytes": 2765
+    },
+    {
+      "path": "client/assets/status/status-icons.svg",
+      "sha256": "1a8bd4207cf34532ae514bdcdca693acc9a2b8ebc9d3182dc163c3e9ddcc4823",
+      "bytes": 824
+    },
+    {
+      "path": "client/assets/teacher-BBhbwVaC.css",
+      "sha256": "8d7b1947ed7b21bac88950a8416b2a3988480f32b8ad4530dae4518b256fa705",
+      "bytes": 13910
+    },
+    {
+      "path": "client/assets/teacher-_Hvlke0P.js",
+      "sha256": "ae846256a367631eb0ebb0a5489c6e586217760e754eb9ea25ddd6ffb5632368",
+      "bytes": 41028
+    },
+    {
+      "path": "client/assets/today-neck-stretch-1200.webp",
+      "sha256": "83af3f60f06fe862dc9cd980646756b5b194e62d9ebdf80ea4970a067997900a",
+      "bytes": 92690
+    },
+    {
+      "path": "client/assets/today-neck-stretch-600.webp",
+      "sha256": "bfbf4e4670672ec5d2df4aacf9616907998a3f110f36e2d4eb26ecefc922a7a0",
+      "bytes": 27498
+    },
+    {
+      "path": "client/assets/UnitReviewWorkspace-aeSLLhZ7.css",
+      "sha256": "e73bf80eeb8aa5f9caf61de32ef9bf718c2689b10381fd0b05b67f8ff3e40d97",
+      "bytes": 4783
+    },
+    {
+      "path": "client/assets/UnitReviewWorkspace-CV8xeKJI.js",
+      "sha256": "9085f61d61e4de205acfb5fb056f1a80df089718c9af746a84b71d603c52489a",
+      "bytes": 18289
+    },
+    {
+      "path": "client/assets/web-CwUMNP0y.js",
+      "sha256": "61424272958da8d30136519d76b58c822ca8303f61a8338d3587538ea6a5f748",
+      "bytes": 844
+    },
+    {
+      "path": "client/assets/welcome-portrait-1024.webp",
+      "sha256": "c6ae8b8b5d8ba39dbb117b3864d6092f493e1df85c853ddb96637ce2c2bed1a1",
+      "bytes": 210456
+    },
+    {
+      "path": "client/assets/welcome-portrait-512.webp",
+      "sha256": "0c89d95d41fc80a754fb019a271ffa3117c60316c2cc09ef33a17fa8caccf1af",
+      "bytes": 53060
+    },
+    {
+      "path": "client/favicon.svg",
+      "sha256": "ea6990d5d9541fb66e5d630400581258c09f8a6b011e9e2ffd9b7ca8c5ad16e0",
+      "bytes": 420
+    },
+    {
+      "path": "client/index.html",
+      "sha256": "c587c47761bf61d73f75a7025f07fb58af0a5f779e60cf8372f70a143a96b692",
+      "bytes": 1067
+    },
+    {
+      "path": "server/index.js",
+      "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389",
+      "bytes": 483
+    }
+  ],
+  "liveRoleOrNativeOrDeploymentAcceptance": false,
+  "serverDeviceProviderCloudWriteCommitActions": 0
+}

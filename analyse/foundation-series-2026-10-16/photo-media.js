@@ -1,0 +1,58 @@
+"use strict";
+// Photo overlay: original lesson copy and illustration files stay unchanged.
+const photoMediaDraft = {
+  "standing": [
+    {
+      "image": "assets/standing-photo-01.png",
+      "alt": "Ảnh AI: người phụ nữ trưởng thành tóc búi thấp, áo không tay xanh olive và quần màu ngà, đứng tự nhiên trên thảm xanh sage; ghế gỗ ở bên cạnh.",
+      "caption": "Nhìn toàn bộ cách đứng tự nhiên và khoảng trống xung quanh."
+    },
+    {
+      "image": "assets/standing-photo-02.png",
+      "alt": "Ảnh AI cận hai bàn chân trần và gấu quần màu ngà; hai chân cách nhau thoải mái, gót và ngón chân cùng chạm thảm xanh sage.",
+      "caption": "Quan sát những phần của bàn chân đang chạm thảm."
+    },
+    {
+      "image": "assets/standing-photo-03.png",
+      "alt": "Ảnh AI: người phụ nữ áo không tay xanh olive, quần màu ngà, đặt một tay lên lưng ghế gỗ; hai bàn chân vẫn đặt trên thảm xanh sage.",
+      "caption": "Một lựa chọn dùng ghế ở bên cạnh làm điểm hỗ trợ."
+    },
+    {
+      "image": "assets/standing-photo-04.png",
+      "alt": "Ảnh AI cận từ đầu đến đùi người phụ nữ; vai để tự nhiên, cằm ngang, hai tay buông cạnh thân; áo không tay xanh olive và quần màu ngà.",
+      "caption": "Quan sát vai, cổ và cánh tay khi đang đứng."
+    },
+    {
+      "image": "assets/standing-photo-05.png",
+      "alt": "Ảnh AI toàn thân nhìn nghiêng: người phụ nữ quay sang trái, đứng tự nhiên, hai tay buông, hai bàn chân đặt trên thảm xanh sage.",
+      "caption": "Dừng lại ở một cách đứng tự nhiên trước khi chọn điều tiếp theo."
+    }
+  ],
+  "tabletop": [
+    {
+      "image": "assets/tabletop-photo-01.png",
+      "alt": "Ảnh AI nhìn nghiêng: người phụ nữ áo không tay xanh olive, quần màu ngà, ở bốn điểm tựa, hai bàn tay dưới vai và hai đầu gối dưới hông; đầu hướng trái, lưng gần trung tính.",
+      "caption": "Chuẩn bị bốn điểm tựa và quan sát đường lưng gần trung tính."
+    },
+    {
+      "image": "assets/tabletop-photo-02.png",
+      "alt": "Ảnh AI nhìn nghiêng người phụ nữ ở bốn điểm tựa; ngực dịch nhẹ về trước, lưng hơi võng, cổ giữ dài, hai bàn tay và đầu gối vẫn chạm thảm.",
+      "caption": "Bò: một chuyển động mở nhẹ phía trước, trong biên độ nhỏ."
+    },
+    {
+      "image": "assets/tabletop-photo-03.png",
+      "alt": "Ảnh AI nhìn nghiêng gần hơn: người phụ nữ vẫn ở bốn điểm tựa với đường lưng trở về gần ngang, đầu hướng trái và ánh nhìn về phía thảm.",
+      "caption": "Đi qua vị trí giữa trước khi đổi chiều chuyển động."
+    },
+    {
+      "image": "assets/tabletop-photo-04.png",
+      "alt": "Ảnh AI nhìn nghiêng người phụ nữ ở bốn điểm tựa; phần lưng tròn nhẹ, đầu đi theo đường cong xuống tự nhiên; hai bàn tay và đầu gối vẫn đặt trên thảm.",
+      "caption": "Mèo: cuộn nhẹ lưng, giữ chuyển động nhỏ và cổ tự nhiên."
+    },
+    {
+      "image": "assets/tabletop-photo-05.png",
+      "alt": "Ảnh AI góc ba phần tư: người phụ nữ trở về bốn điểm tựa, hai tay và hai đầu gối thấy riêng, lưng gần trung tính và ánh nhìn hướng xuống thảm.",
+      "caption": "Trở về vị trí gần trung tính và tạm dừng trước khi kết thúc."
+    }
+  ]
+};

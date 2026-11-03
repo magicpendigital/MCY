@@ -1,0 +1,65 @@
+[runtime/stdout] Mobile runtime integrity check passed (28 protected files).
+[catalog/stdout] Reviewed practice catalogue check passed (0 sessions; recommendations closed; 1 version-bound review candidates).
+[vite-web/stdout] [36mvite v8.3.1 [32mbuilding client environment for production...[36m[39m
+[vite-web/stdout] transforming...
+[vite-web/stdout] ✓ 603 modules transformed.
+[vite-web/stdout] rendering chunks...
+[vite-web/stdout] computing gzip size...
+[vite-web/stdout] dist/client/index.html                                            1.06 kB │ gzip:   0.60 kB
+dist/client/assets/roboto-vietnamese-400-normal-DnpnVwnf.woff     6.34 kB
+dist/client/assets/roboto-vietnamese-700-normal-DsFyXAL4.woff     6.38 kB
+dist/client/assets/roboto-vietnamese-500-normal-D380IkQ8.woff     6.41 kB
+dist/client/assets/roboto-vietnamese-400-normal-D2PTxGxD.woff2    8.36 kB
+dist/client/assets/roboto-vietnamese-700-normal-BEVeWqJt.woff2    8.41 kB
+dist/client/assets/roboto-vietnamese-500-normal-B3ncpOoB.woff2    8.54 kB
+dist/client/assets/roboto-latin-400-normal-DyYNIH4P.woff         21.77 kB
+dist/client/assets/roboto-latin-400-normal-BqEyEoaF.woff2        21.88 kB
+dist/client/assets/roboto-latin-500-normal-DQZyH_nt.woff         21.92 kB
+dist/client/assets/roboto-latin-700-normal-DLgJJpmK.woff         21.92 kB
+dist/client/assets/roboto-latin-500-normal-7RbcRiD8.woff2        22.20 kB
+dist/client/assets/roboto-latin-700-normal-BZpUvMxY.woff2        22.24 kB
+dist/client/assets/LessonReader-DIuFVfDc.css                      2.77 kB │ gzip:   0.90 kB
+dist/client/assets/UnitReviewWorkspace-aeSLLhZ7.css               4.78 kB │ gzip:   1.47 kB
+dist/client/assets/owner-CCktePmf.css                            13.87 kB │ gzip:   3.81 kB
+dist/client/assets/teacher-BBhbwVaC.css                          13.91 kB │ gzip:   3.60 kB
+dist/client/assets/index-BgbT6aoE.css                           110.66 kB │ gzip:  20.96 kB
+dist/client/assets/mark-forest-BqMZe9Gf.js                        0.55 kB │ gzip:   0.37 kB
+dist/client/assets/web-CwUMNP0y.js                                0.84 kB │ gzip:   0.40 kB
+dist/client/assets/ContentReviewWorkspace-Dp-mHe5m.js             1.23 kB │ gzip:   0.72 kB
+dist/client/assets/LessonReader-izn_yFqT.js                       1.57 kB │ gzip:   0.84 kB
+dist/client/assets/contentReviewCandidates-FWo7P7-p.js            1.94 kB │ gzip:   1.01 kB
+dist/client/assets/AuthCallback-D0fNpLzV.js                       2.91 kB │ gzip:   1.39 kB
+dist/client/assets/freeCourses-C_KZyTb-.js                        3.33 kB │ gzip:   1.62 kB
+dist/client/assets/DiscoverScreen-CYiQLvD_.js                     3.79 kB │ gzip:   1.63 kB
+dist/client/assets/jsx-runtime-CB_p5Kcx.js                        8.74 kB │ gzip:   3.34 kB
+dist/client/assets/CourseDetailScreen-B3f2VsBL.js                10.03 kB │ gzip:   3.49 kB
+dist/client/assets/ContentReviewPanel-CWTsudmu.js                10.61 kB │ gzip:   3.85 kB
+dist/client/assets/PracticeFlowScreen-UtSX8m5o.js                12.57 kB │ gzip:   4.64 kB
+dist/client/assets/JourneyScreen-CenWAWBX.js                     13.78 kB │ gzip:   4.22 kB
+dist/client/assets/owner-CIBkymfC.js                             17.47 kB │ gzip:   5.75 kB
+dist/client/assets/UnitReviewWorkspace-CV8xeKJI.js               18.28 kB │ gzip:   6.41 kB
+dist/client/assets/teacher-_Hvlke0P.js                           41.02 kB │ gzip:  11.27 kB
+dist/client/assets/DevicePicker-CSZ9GPrh.js                      49.63 kB │ gzip:  16.74 kB
+dist/client/assets/dist-BHu_Slbu.js                             213.60 kB │ gzip:  54.83 kB
+dist/client/assets/index-DPMdlVY_.js                            566.24 kB │ gzip: 174.28 kB
+
+[vite-web/stderr] [33m[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[vite-web/stdout] [32m✓ built in 1.43s[39m
+[sites-package/stdout] Prepared Sites build: dist/server/index.js and dist/.openai/hosting.json
+[bundle-secret-scan/stdout] Client bundle secret check passed (25 text files).
+[sites-fixtures/stdout] ✔ serves existing static assets without a fallback (48.1275ms)
+[sites-fixtures/stdout] ✔ falls back to index.html for an unknown app route (3.0126ms)
+✔ does not turn missing API or write requests into the app shell (1.2419ms)
+[sites-fixtures/stdout] ✔ emits the files required by Sites packaging (9.0711ms)
+[sites-fixtures/stdout] ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 215.5998

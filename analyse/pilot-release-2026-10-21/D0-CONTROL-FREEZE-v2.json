@@ -1,0 +1,91 @@
+{
+  "schema": "mcy.pilot-D0-registry-amendment-control-freeze.v2",
+  "capturedUtc": "2026-10-20T18:21:29.2056714Z",
+  "status": "PREPARED_SOURCE_ONLY_PENDING_INDEPENDENT_QC_ROOT_REGISTRY_GO",
+  "inputs": [
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\deps-registry-invoker-v2.mjs",
+      "sha256": "f88dd4c9f5a5bd3be675d71b62ed87978e4198240b87b4e9f8eda22ad9d6b659",
+      "bytes": 9860
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\SOURCE-FREEZE-v1.json",
+      "sha256": "5cd254ae1bd366e67ef763279c8db207cc061e67f10c39693cbb2a89e809fec5",
+      "bytes": 175105
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\D0-OFFLINE-DEPS-v1.json",
+      "sha256": "46f1ce905ed6c04704cca88a3dca63b383ae789d47a10766717f80a13c1d9e9b",
+      "bytes": 939
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\D0-OFFLINE-DEPS-v1.log",
+      "sha256": "dc0bb67ab0effb0a6fe099a716dca6e24f7161a90cc430e2b30e2e63f30e8eab",
+      "bytes": 5000
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\SOURCE-R3-QC-v1.vi.md",
+      "sha256": "77f8170249a3195c9bf3372a929fdc7673cbea8c6f350c2c3c175a87afb78ee8",
+      "bytes": 7316
+    }
+  ],
+  "dependencySource": [
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\package.json",
+      "sha256": "29f4b35bb7ead83c72ecbbc97b3d664d77cd204cb0c6c8ca752d76b4e7c639f9",
+      "bytes": 5097
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\package-lock.json",
+      "sha256": "f983447a10aaeb56091f43bf99ac5f9a01040e6c8a4b95bedf2f98d29cfd3fc6",
+      "bytes": 122208
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.npmrc",
+      "sha256": "4b86f5f917232873bbf42e48812de3a2869a739df361ffa4a3b117a9f4ff65aa",
+      "bytes": 25
+    }
+  ],
+  "invocation": {
+    "executable": "C:/Program Files/nodejs/node.exe",
+    "args": [
+      "D:/Projects/MCY/analyse/pilot-release-2026-10-21/deps-registry-invoker-v2.mjs",
+      "--root-approved-D0-v2-registry"
+    ],
+    "outerCwd": "D:/Projects/MCY",
+    "childCwd": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY",
+    "child": "Node npmCLI ci --ignore-scripts --no-audit --fund=false --registry https://registry.npmjs.org/ --fetch-retries=0 --fetch-timeout=120000; all229resolvedlockURLs requireHTTPSregistryorigin+SHA512",
+    "cache": "C:/Users/Admin/AppData/Local/npm-cache",
+    "emptyConfigsExpectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "toolPins": [
+    {
+      "path": "C:/Program Files/nodejs/node.exe",
+      "sha256": "98843732431bad6c2c165908bb7dde6fe2a221ddbc491a955d548a2e6ab9ebff",
+      "bytes": 95618048
+    },
+    {
+      "path": "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+      "sha256": "3ce7cba6f5128dd5f54c98b6a5036b0f850496878cc2e21044b675fe3c594e3e",
+      "bytes": 56
+    },
+    {
+      "path": "C:/Program Files/nodejs/node_modules/npm/package.json",
+      "sha256": "dd22990c7d233865d203c01c229c33924f97fb5c825f87044cd9d36da04eb688",
+      "bytes": 6828
+    }
+  ],
+  "limits": {
+    "timeoutMs": 600000,
+    "outputCapBytes": 4194304,
+    "network": "Exactly pinned229registrytarballorigins/integrity validated beforechild; no git/local/otherorigin/unpinned dependency; no lifecycle/update/audit/credentials/envfile; explicitregistry no fallback or retry",
+    "packageLifecycle": "--ignore-scripts",
+    "npmConfig": "Frozenfundfalseauditfalse project; emptyuser/global configs; no credentials/envfile",
+    "retry": "Separate reviewedamendment, not automaticretry; v1receipt/log/partialtree retained; no rerunoncev2archive/control/evidenceexists",
+    "effects": "One contained realpath-verified rename of failedpartial node_modules to .vercel/dependency-failures/d0-v1-node_modules, newseparate dependencyinstall in same managedtree, configs + sanitizedv2receipt/log; no deletion/rootmodulecopy",
+    "forbidden": "No tests/build/server/gitcommit/provider/device",
+    "publicConfig": "Not read into buildenv inD0; proposalv2 laterQC/GO"
+  },
+  "next": "OnceD0 exits0 verifydependencytree/tool executableavailability, then separatechecks/web/nativeinvoker freeze/QC/rootGO; readerrelocation doesnotblock",
+  "previousAttempt": "D0v1 exit1 ENOTCACHEDvite8.3.1; cleanupEPERM warnings; normalclosed/source479preserved; no networkfallback. Exactfailurehash included."
+}

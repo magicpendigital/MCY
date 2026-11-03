@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="theme-color" content="#fffcf7">
+  <title>Một chút nền tảng · Bản xem trước thiết kế</title>
+  <link rel="stylesheet" href="preview.css">
+  <script src="standing-lesson.js" defer></script>
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#screen">Đến nội dung bản mẫu</a>
+  <aside class="reviewer" aria-label="Công cụ xem thiết kế">
+    <div class="reviewer-copy"><strong>MCY / Một chút nền tảng</strong><span>Bản xem trước thiết kế · 16.10.2026</span></div>
+    <div class="reviewer-tools">
+      <div class="reviewer-links"><button type="button" data-action="review-standing">Bài 01 mới</button><button type="button" data-action="review-discover">Khám phá</button><button type="button" data-action="review-today">Từ Hôm nay</button></div>
+      <label>Khung xem <select id="viewport"><option value="compact">Gọn</option><option value="320">320 px</option><option value="390">390 px</option><option value="desktop">Desktop</option></select></label>
+    </div>
+  </aside>
+  <div class="review-layout">
+    <aside class="design-intro" aria-label="Ghi chú cho người xem thiết kế">
+      <p class="eyebrow">MỞ THÊM MỘT CÁCH HỌC</p>
+      <h1>Một hình để nhìn kỹ.<br>Một ý để hiểu rõ.</h1>
+      <p>Thử luồng từ Khám phá, hoặc mở bài trong ngữ cảnh Hôm nay. Ba bài mẫu cùng một cấu trúc, theo nhịp do bạn chọn.</p>
+      <div class="review-note"><strong>Bài 01 · Nội dung và 5 hình riêng</strong><p>Đọc bài “Đứng và nhận biết điểm tựa”, mở từng hình và chọn phần muốn xem lại.</p><p>Bản biên tập để bạn đánh giá, chưa được giáo viên thẩm định. Hai bài còn lại giữ ở mức đề cương.</p></div>
+      <p class="quiet">Giữ bốn mục điều hướng hiện có.<br>Thêm chiều sâu cho Khám phá.</p>
+    </aside>
+    <section id="app" class="app" data-mode="compact" aria-label="Bản mẫu ứng dụng Một chút yoga">
+      <div class="draft-ribbon">BẢN MẪU NỘI DUNG · CHƯA DUYỆT CHUYÊN MÔN</div>
+      <header id="app-header" class="app-header"></header>
+      <main id="screen" class="screen" tabindex="-1"></main>
+      <div id="app-footer"></div>
+    </section>
+  </div>
+  <dialog id="steps-dialog" class="sheet" aria-labelledby="steps-title">
+    <div class="dialog-heading"><h2 id="steps-title">Các bước trong bài</h2><button type="button" data-action="close-steps" aria-label="Đóng danh sách các bước">Đóng</button></div>
+    <div id="steps-list"></div>
+  </dialog>
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-title">
+    <div class="dialog-heading"><h2 id="image-title">Hình concept của bài</h2><button type="button" data-action="close-image">Đóng hình lớn</button></div>
+    <img id="zoom-image" alt="">
+    <p id="image-caption"></p>
+  </dialog>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>

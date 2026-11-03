@@ -1,0 +1,65 @@
+{
+  "schema": "mcy.critical-fixtures-control-freeze.v3",
+  "status": "PREPARED_NOT_INVOKED_REQUIRES_R3_ROOT_GO",
+  "sourceFreeze": {
+    "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\SOURCE-FREEZE-v2.json",
+    "sha256": "9e9c5c88d7721c4986bf61396dac9dd8a17586377c493971895e70ae77f9d256",
+    "bytes": 177073
+  },
+  "effectiveDependencies": {
+    "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\EFFECTIVE-DEPENDENCIES-v3.json",
+    "sha256": "b17373a876dc6bda3e3f9e5c97fcef5a3fd479314a65557a0dcb70853ab69810",
+    "bytes": 89071
+  },
+  "inputs": {
+    "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-INPUTS-v3.json",
+    "sha256": "a6dcd8c603aa3342d61dc0a6620319efd60d231aa3db195088a2dc8d40be8f8b",
+    "bytes": 84692
+  },
+  "invoker": {
+    "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\critical-fixtures-invoker-v3.mjs",
+    "sha256": "b2a3c004e799e39a3309cdc24dccced3cefaf418fce6ff3eeeeef4753a0274bc",
+    "bytes": 7809
+  },
+  "overlay": {
+    "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-OVERLAY-v2.json",
+    "sha256": "220a54922f83afc90e9d916af5cfc0ae359aab5bbd69fad98627ba8faf070a6b",
+    "bytes": 85089
+  },
+  "controls": [
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\critical-fixtures.playwright-v3.mjs",
+      "sha256": "c67aac51fae67536a98d91b4070217794f5dab53ff2ef0fd751dcff370d074cf",
+      "bytes": 1114
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\critical-fixtures-setup-v3.mjs",
+      "sha256": "2c12914c7ca5dbafb49309e820fbd18cef92ddf35c2323508b057f6bba6ffb88",
+      "bytes": 2410
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\critical-egress-guard-v2.mjs",
+      "sha256": "ccc1d6bb2fac7f5baf2eccdbe11313d8c0a8ed1bd69cb7a78debc94dee54d0da",
+      "bytes": 4809
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-OVERLAY-v2.json",
+      "sha256": "220a54922f83afc90e9d916af5cfc0ae359aab5bbd69fad98627ba8faf070a6b",
+      "bytes": 85089
+    }
+  ],
+  "priorFailures": [
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-v1.json",
+      "sha256": "ab1f7698ebc4f8019df5d62b24be8584125847e1016f37361fa00755250e06dd",
+      "bytes": 1025
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-v2.json",
+      "sha256": "44c5d4d3cfab65daa9596b78f828d4f532edbee605cc918c0f34908b1e77275e",
+      "bytes": 1403
+    }
+  ],
+  "command": "& 'C:/Program Files/nodejs/node.exe' 'D:/Projects/MCY/analyse/pilot-release-2026-10-21/critical-fixtures-invoker-v3.mjs' --root-approved-critical-fixtures-v3",
+  "noAutomaticRetry": true
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "path": "standing-lesson.json",
+    "sha256": "A94A1349CDFEF36620DE99B3D13873446C59799AE44B9D9C6E0E7A8F8141F797"
+  },
+  {
+    "path": "standing-lesson.js",
+    "sha256": "BB8A483A29C0FBCAB10B89FC411B0470FC8DABA612C863AA9CB00B31702C925B"
+  },
+  {
+    "path": "assets\\standing-step-01.png",
+    "sha256": "E511C3C576CCBA27F13FD4E5B1E774ED5F39FBA262EF2AF479987E1DECF6487E"
+  },
+  {
+    "path": "assets\\standing-step-02.png",
+    "sha256": "CD26DB67C3B01FB265D50D7397DA0199754EAAFE11602ED9D11DDB412F57EC49"
+  },
+  {
+    "path": "assets\\standing-step-03.png",
+    "sha256": "30156E2C4EBA3F332C583B873EA7D6FE83623EBE0B7E2E00D53BAEB395E7652F"
+  },
+  {
+    "path": "assets\\standing-step-04.png",
+    "sha256": "340646362A6A66F21F01D8CCA9E199532C66DDF9C29925402B0770285D9B1430"
+  },
+  {
+    "path": "assets\\standing-step-05.png",
+    "sha256": "AD76E37022C77C082A26D12879BA7B69C851CD488531A63BA9145CE790FB6137"
+  }
+]

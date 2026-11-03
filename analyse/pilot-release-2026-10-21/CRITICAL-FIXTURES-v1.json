@@ -1,0 +1,34 @@
+{
+  "status": "FAIL_STOP_NO_AUTOMATIC_RETRY",
+  "startedUtc": "2026-10-20T18:52:16.751Z",
+  "endedUtc": "2026-10-20T18:54:30.376Z",
+  "cwd": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY",
+  "selected": [
+    "ux-save-feedback.spec.ts",
+    "learner-device-acceptance.spec.ts",
+    "auth-callback.spec.ts"
+  ],
+  "environmentPolicy": "OS_ALLOWLIST_PLUS_EXISTING_INVALID_FIXTURE_NO_ENVFILE_OR_PUBLIC_REAL_CONFIG",
+  "timeoutMs": 600000,
+  "outputCapBytes": 4194304,
+  "timedOut": false,
+  "outputCapped": false,
+  "closed": true,
+  "cleanup": "NORMAL_EXIT",
+  "exitCode": 1,
+  "sourcePreserved": true,
+  "ports": [
+    {
+      "port": 4290,
+      "state": "CLOSED"
+    },
+    {
+      "port": 4291,
+      "state": "CLOSED"
+    }
+  ],
+  "egressPath": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v1\\egress.json",
+  "egressUnexpected": 220,
+  "exactBuiltArtifactOrLiveRoleOrNativeAcceptance": false,
+  "realProviderCloudWriteDeviceDeployCommitActions": 0
+}

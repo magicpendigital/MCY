@@ -1,0 +1,107 @@
+"use strict";
+// Draft content for the local owner preview; not a publication approval.
+const tabletopLessonDraft = {
+  "id": "tabletop",
+  "version": "2026-10-16-owner-preview-v2",
+  "status": "Bản biên tập để đánh giá · chưa thẩm định chuyên môn",
+  "title": "Làm quen chuyển động Bò–Mèo",
+  "short": "Chuyển động Bò–Mèo",
+  "subtitle": "Nhìn cả đoạn chuyển, theo nhịp của bạn.",
+  "minutes": 4,
+  "readTimeNote": "Thời gian đọc ước lượng; không phải thời gian giữ tư thế hoặc thời lượng tập.",
+  "image": "assets/tabletop-step-01.png",
+  "alt": "Minh họa nhìn nghiêng một người mặc áo xanh nhạt, quần xanh đậm ở tư thế bốn điểm tựa trên thảm màu đất nung; hai bàn tay, hai gối và bàn chân đều nhìn thấy.",
+  "intro": "Làm quen hai hướng chuyển động của lưng và phần ở giữa: bắt đầu từ bốn điểm tựa, mở nhẹ, trở qua vị trí giữa rồi cuộn nhẹ. Bạn có thể xem toàn bộ trước và mở lại phần mình cần.",
+  "goal": [
+    "Nhận ra nền bốn điểm tựa, hình Bò, hình Mèo và vị trí giữa.",
+    "Hiểu cách chuyển nhỏ, trở về và chủ động dừng."
+  ],
+  "audience": "Bài làm quen dành cho người lớn đã có thể tự xuống, rời sàn và chống tay–gối thoải mái trong sinh hoạt. Nếu việc này đang làm bạn đau, tê hoặc khó thực hiện, hãy chỉ xem bài và hỏi người có chuyên môn trước khi thử.",
+  "preparation": [
+    "Chọn khoảng sàn phẳng, không trơn; dùng thảm không xê dịch. Có thể thêm lớp lót mỏng, ổn định dưới gối nếu thấy dễ chịu.",
+    "Bài bắt đầu khi bạn đã ở tư thế bốn điểm tựa. Dùng cách xuống và rời sàn quen thuộc; bài này không hướng dẫn một kỹ thuật chuyển từ đứng xuống sàn.",
+    "Đọc trước khi thử; đặt thiết bị ở chỗ dễ xem khi nghỉ, tránh xoay hoặc ngẩng cổ để nhìn màn hình lúc đang chuyển động.",
+    "Thở tự nhiên, không nín thở. Bạn có thể chuyển rất ít hoặc dừng ở vị trí giữa."
+  ],
+  "stopCue": "Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài; nghỉ theo cách an toàn, quen thuộc. Nếu cảm giác không hết hoặc khiến bạn lo lắng, hãy tìm hỗ trợ y tế.",
+  "material": "Bò–Mèo được trình bày như hai hướng chuyển động nhỏ qua nền bốn điểm tựa. Không có yêu cầu giữ tư thế, số lần lặp hoặc độ cong phải đạt. Năm hình tĩnh đánh dấu các thời điểm, không thể hiện tốc độ hay mọi thời điểm của chuyển động.",
+  "alternative": "Bạn có thể chỉ đọc, chuyển trong khoảng nhỏ hơn hoặc dừng ở nền bốn điểm tựa nếu vẫn thoải mái. Nếu chống tay hoặc quỳ gây khó chịu, không cố đổi sang nắm tay, chống cẳng tay hay một biến thể khác chỉ để theo bài; hỏi người có chuyên môn về lựa chọn phù hợp.",
+  "reviewQuestion": "Phần nào bạn muốn nhìn kỹ hơn?",
+  "reviewOptions": [
+    "Điểm bắt đầu",
+    "Bò",
+    "Vị trí giữa",
+    "Mèo",
+    "Kết thúc"
+  ],
+  "ending": "Bạn đã đến cuối phần đọc. Điều đáng nhớ là nhìn được cả đoạn chuyển và đường trở về. Bạn không cần đạt độ cong giống hình, giữ đủ lâu hay cảm thấy khác đi.",
+  "steps": [
+    {
+      "title": "Chuẩn bị bốn điểm tựa",
+      "body": "Ở tư thế chống hai tay và hai gối, đặt bàn tay dưới vai và gối dưới hông, cách nhau thoải mái. Để lưng ở đường cong tự nhiên, cổ tiếp nối thân và mắt hướng về thảm.",
+      "detail": "Trải các ngón tay thoải mái, không khóa cứng khuỷu tay. Mu bàn chân có thể đặt trên thảm như hình nếu dễ chịu. Nền bắt đầu không đòi hỏi lưng phẳng như một đường kẻ; đừng ép cơ thể để giống hình.",
+      "alternative": "Nếu tay hoặc gối đang khó chịu, dừng thử và chỉ xem bài. Một lớp lót mỏng dưới gối là lựa chọn chuẩn bị, không phải cách bỏ qua đau hoặc tê.",
+      "image": "assets/tabletop-step-01.png",
+      "alt": "Người nhìn nghiêng ở tư thế bốn điểm tựa: hai tay đặt trên thảm dưới vùng vai, gối dưới vùng hông, lưng có đường cong tự nhiên và đầu hướng xuống. Mu bàn chân nằm trên thảm; không có ghế hoặc dụng cụ khác.",
+      "caption": "Nền bốn điểm tựa. Lưng giữ đường cong tự nhiên, không cần ép phẳng."
+    },
+    {
+      "title": "Mở nhẹ phía trước · Bò",
+      "body": "Từ nền bắt đầu, để vùng chậu nghiêng nhẹ, bụng hạ một chút và ngực mở về phía trước trong khoảng dễ chịu. Giữ cổ đi cùng đường lưng; không hất đầu hoặc cố nhìn lên trần.",
+      "detail": "Giữ hai bàn tay và hai gối trên thảm. Chọn một chuyển động nhỏ, không thả sụp xuống vai hoặc cố võng lưng sâu. Nếu dễ phối hợp, có thể hít vào nhẹ khi mở; nếu không, cứ thở tự nhiên và không nín thở.",
+      "alternative": "Bạn có thể mở ít hơn hình, hoặc ở lại nền bốn điểm tựa. Độ cong trong hình là một minh họa, không phải mục tiêu của mọi cơ thể.",
+      "image": "assets/tabletop-step-02.png",
+      "alt": "Cùng người nhìn nghiêng, hai tay và hai gối vẫn trên thảm. Lưng có độ võng nhẹ, ngực hướng về trước, vùng chậu nâng nhẹ; đầu không ngửa ra sau.",
+      "caption": "Bò là một hướng mở nhẹ; chọn khoảng chuyển động phù hợp với bạn."
+    },
+    {
+      "title": "Đi qua vị trí giữa",
+      "body": "Từ từ giảm độ võng và đưa lưng trở về đường cong tự nhiên như lúc bắt đầu. Để đầu đi cùng thân, vẫn giữ hai tay và hai gối trên thảm; bạn có thể dừng ở đây.",
+      "detail": "Đây là phần nối từ Bò sang Mèo, không phải một động tác giật hoặc đổi nhanh giữa hai hình. Tiếp tục thở tự nhiên. Chỉ chuyển sang bước tiếp khi muốn; không cần tạo một nhịp cố định.",
+      "alternative": "Nếu đã đủ cho hôm nay, bỏ qua bước Mèo và chuyển đến phần kết thúc. Việc dừng ở giữa không phải là làm thiếu bài.",
+      "image": "assets/tabletop-step-03.png",
+      "alt": "Hình nhìn nghiêng của cùng người ở nền bốn điểm tựa; lưng trở về gần đường cong tự nhiên, đầu hướng xuống thảm. Hai tay, hai gối và hai bàn chân vẫn nhìn thấy, không có mũi tên hoặc đường căn chỉnh.",
+      "caption": "Vị trí giữa nối hai hướng chuyển động và cũng là nơi có thể dừng."
+    },
+    {
+      "title": "Cuộn nhẹ lưng · Mèo",
+      "body": "Từ vị trí giữa, để vùng chậu cuộn nhẹ và lưng tròn dần lên trong khoảng dễ chịu. Đầu đi theo chuyển động của thân; không ép cằm sát ngực hoặc cố đẩy lưng cao nhất.",
+      "detail": "Giữ tay và gối ở nền đỡ, tránh chuyển nhanh hoặc gồng để tạo đường cong lớn. Nếu dễ phối hợp, có thể thở ra nhẹ khi cuộn; nếu không, giữ nhịp thở tự nhiên. Bạn không cần giữ ở hình Mèo.",
+      "alternative": "Có thể cuộn ít hơn, trở về vị trí giữa hoặc kết thúc ngay. Nếu thấy đau, tê, chóng mặt hoặc không vững, ngừng chuyển động và dừng bài.",
+      "image": "assets/tabletop-step-04.png",
+      "alt": "Cùng người nhìn nghiêng với hai bàn tay và hai gối trên thảm; phần lưng tròn lên, vùng chậu cuộn nhẹ, đầu theo thân và hướng xuống. Không có mũi tên ép biên độ hoặc động tác nhấc tay, chân.",
+      "caption": "Mèo là hướng cuộn nhẹ, không phải độ cong cao nhất cần đạt."
+    },
+    {
+      "title": "Trở về và kết thúc",
+      "body": "Giảm độ cuộn, trở về nền bốn điểm tựa với lưng ở đường cong tự nhiên rồi ngừng chuyển động. Khi đã dừng và thấy vững, nghỉ hoặc rời sàn theo cách bạn vẫn dùng thoải mái trong sinh hoạt.",
+      "detail": "Không cần chuyển thẳng sang một tư thế khác hoặc lặp lại để đủ số lần. Bài kết thúc chuyển động ở nền bốn điểm tựa; cách rời sàn không được minh họa ở đây. Nếu xuống hoặc rời sàn cần hỗ trợ, chỉ xem bài và trao đổi với người có chuyên môn trước khi thử.",
+      "alternative": "Bạn có thể xem lại một khung, chọn bài khác hoặc kết thúc phần đọc. Việc chuyển hết năm hình không tự ghi nhận một buổi tập.",
+      "image": "assets/tabletop-step-05.png",
+      "alt": "Cùng người ở nền bốn điểm tựa được nhìn từ góc ba phần tư: lưng trở về đường cong tự nhiên, đầu hướng xuống, hai bàn tay và hai gối vẫn trên thảm. Hình không thể hiện đứng lên hoặc chuyển sang tư thế nghỉ khác.",
+      "caption": "Trở về và dừng. Góc nhìn minh họa thay đổi; bạn không cần xoay người theo hình."
+    }
+  ],
+  "sources": [
+    {
+      "title": "ACE — Cat-Cow",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/15/cat-cow/",
+      "use": "Đối chiếu nền tay–gối, hai hướng chuyển động và trở về. Bản MCY không dùng liều giữ 10–15 giây hoặc bắt buộc co ngón chân của nguồn."
+    },
+    {
+      "title": "Mayo Clinic — Cat-cow pose",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/stress-management/multimedia/cat-cow-pose/vid-20453581",
+      "use": "Đối chiếu vị trí tay–gối và hướng vùng chậu, lưng, đầu; có thể phối hợp hơi thở. Không lấy số lần hoặc yêu cầu hít sâu làm liều tập."
+    },
+    {
+      "title": "Cleveland Clinic — Cat-Cow Stretch",
+      "url": "https://health.clevelandclinic.org/cat-cow-stretch",
+      "use": "Đối chiếu cổ tiếp nối cột sống, mu bàn chân trên sàn và chuyển động chậm trong khoảng phù hợp. Không sử dụng lời hứa tác dụng sức khỏe hoặc tự áp biến thể cho người có triệu chứng."
+    },
+    {
+      "title": "NHS — Chair-based pilates video workout",
+      "url": "https://www.nhs.uk/live-well/exercise/pilates-and-yoga/chair-based-pilates-exercise-video/",
+      "use": "Đối chiếu lời nhắc dừng khi đau hoặc thấy không khỏe và tìm trợ giúp nếu cảm giác không hết. Đây không phải phê duyệt kỹ thuật Bò–Mèo."
+    }
+  ]
+};

@@ -1,0 +1,80 @@
+{
+  "schema": "mcy.pilot-D0-control-freeze.v1",
+  "capturedUtc": "2026-10-20T18:14:39.5114756Z",
+  "status": "PREPARED_SOURCE_ONLY_PENDING_INDEPENDENT_QC_ROOT_D0_GO",
+  "inputs": [
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\deps-offline-invoker-v1.mjs",
+      "sha256": "0c491318de856bf1b90da3e3522cda24c1660772856ab073ed084783439a5b17",
+      "bytes": 7186
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\SOURCE-FREEZE-v1.json",
+      "sha256": "5cd254ae1bd366e67ef763279c8db207cc061e67f10c39693cbb2a89e809fec5",
+      "bytes": 175105
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\PUBLIC-CONFIG-REUSE-PROPOSAL-v2.json",
+      "sha256": "50f20a6735b8b925175f153b1eb7bd861bbb9901527dc8391d78568108911792",
+      "bytes": 2516
+    }
+  ],
+  "dependencySource": [
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\package.json",
+      "sha256": "29f4b35bb7ead83c72ecbbc97b3d664d77cd204cb0c6c8ca752d76b4e7c639f9",
+      "bytes": 5097
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\package-lock.json",
+      "sha256": "f983447a10aaeb56091f43bf99ac5f9a01040e6c8a4b95bedf2f98d29cfd3fc6",
+      "bytes": 122208
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.npmrc",
+      "sha256": "4b86f5f917232873bbf42e48812de3a2869a739df361ffa4a3b117a9f4ff65aa",
+      "bytes": 25
+    }
+  ],
+  "invocation": {
+    "executable": "C:/Program Files/nodejs/node.exe",
+    "args": [
+      "D:/Projects/MCY/analyse/pilot-release-2026-10-21/deps-offline-invoker-v1.mjs",
+      "--root-approved-D0"
+    ],
+    "outerCwd": "D:/Projects/MCY",
+    "childCwd": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY",
+    "child": "Node with exact npm-cli ci --offline --ignore-scripts",
+    "cache": "C:/Users/Admin/AppData/Local/npm-cache",
+    "emptyConfigsExpectedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "toolPins": [
+    {
+      "path": "C:/Program Files/nodejs/node.exe",
+      "sha256": "98843732431bad6c2c165908bb7dde6fe2a221ddbc491a955d548a2e6ab9ebff",
+      "bytes": 95618048
+    },
+    {
+      "path": "C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js",
+      "sha256": "3ce7cba6f5128dd5f54c98b6a5036b0f850496878cc2e21044b675fe3c594e3e",
+      "bytes": 56
+    },
+    {
+      "path": "C:/Program Files/nodejs/node_modules/npm/package.json",
+      "sha256": "dd22990c7d233865d203c01c229c33924f97fb5c825f87044cd9d36da04eb688",
+      "bytes": 6828
+    }
+  ],
+  "limits": {
+    "timeoutMs": 600000,
+    "outputCapBytes": 4194304,
+    "network": "npm --offline no fallback",
+    "packageLifecycle": "--ignore-scripts",
+    "npmConfig": "Frozenfundfalseauditfalse project; emptyuser/global configs; no credentials/envfile",
+    "retry": "No automaticretry with existingnode_modules/control/evidence",
+    "effects": "Dependencies/configs insideisolatedtree and sanitizedD0receipt/log only",
+    "forbidden": "No tests/build/server/gitcommit/provider/device",
+    "publicConfig": "Not read into buildenv inD0; proposalv2 laterQC/GO"
+  },
+  "next": "OnceD0 exits0 verifydependencytree/tool executableavailability, then separatechecks/web/nativeinvoker freeze/QC/rootGO; readerrelocation doesnotblock"
+}

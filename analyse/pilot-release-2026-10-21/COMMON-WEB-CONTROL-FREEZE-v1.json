@@ -1,0 +1,62 @@
+{
+  "schema": "mcy.pilot-common-web-control-freeze.v1",
+  "capturedUtc": "2026-10-20T18:28:38.9263762Z",
+  "status": "SOURCE_PREPARED_PENDING_INDEPENDENT_QC_ROOT_C1_W1_GO",
+  "inputs": [
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\web-common-invoker-v1.mjs",
+      "sha256": "6d435a1260dbb9db178ef0d8e2f1eb31c2514f4ff31fb4e9ad769aa2e87007c3",
+      "bytes": 9926
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\SOURCE-FREEZE-v2.json",
+      "sha256": "9e9c5c88d7721c4986bf61396dac9dd8a17586377c493971895e70ae77f9d256",
+      "bytes": 177073
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\EFFECTIVE-DEPENDENCIES-v3.json",
+      "sha256": "b17373a876dc6bda3e3f9e5c97fcef5a3fd479314a65557a0dcb70853ab69810",
+      "bytes": 89071
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\D0-REGISTRY-DEPS-v2.json",
+      "sha256": "da2a8070f246001948a81aa7692b284266008ef0a2f6396e6a38b126549da8a8",
+      "bytes": 1397
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\PUBLIC-CONFIG-REUSE-PROPOSAL-v2.json",
+      "sha256": "50f20a6735b8b925175f153b1eb7bd861bbb9901527dc8391d78568108911792",
+      "bytes": 2516
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-NATIVE-IDENTITY-SOURCE-GO-v1.json",
+      "sha256": "0173edb131cff80c6bb7d50af636b4e1b0fccf02c822a56b10f0fcec212ea77d",
+      "bytes": 1452
+    }
+  ],
+  "invocation": {
+    "exe": "C:/Program Files/nodejs/node.exe",
+    "args": [
+      "D:/Projects/MCY/analyse/pilot-release-2026-10-21/web-common-invoker-v1.mjs",
+      "--root-approved-common-web"
+    ],
+    "cwd": "D:/Projects/MCY",
+    "childCwd": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY"
+  },
+  "phases": [
+    "runtime28protectedinputs",
+    "catalog0recommendationsclosed",
+    "typescriptactualnativecompilerpinned",
+    "Vitewebbuild",
+    "Sitespackage",
+    "bundlesecretscan",
+    "Sites4fixturetests",
+    "exactdistfileinventoryandmanagedtreearchive",
+    "479sourcepreserved"
+  ],
+  "config": "OnlyexactpublishedstagingpublicURL/publishablekey frompinnedoldAndroidpublicentry; ephemeralchildenv/noeval/rawkeylog/envfiles",
+  "env": "OSallowlist pluspublicbuildconfig/NODE_ENVproduction/CI/nonotifier",
+  "limits": "Finiteeachstep120or180seconds,totaloutput4MB,ownedchildcleanup,stoponfail/noretry",
+  "effects": "Managedtreeoutputs/archive + sanitizedwebreceipt/log only; no server/device/providercalls/cloudwrites/commit/deploy",
+  "next": "IndependentQC/rootreviewexactwebAPKbytes; actualparticipantdeliverypending; no fulllegacyUIrequalification"
+}

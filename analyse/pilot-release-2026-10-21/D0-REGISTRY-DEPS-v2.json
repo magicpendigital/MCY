@@ -1,0 +1,28 @@
+{
+  "status": "PASS_PINNED_REGISTRY_DEPENDENCIES_ONLY",
+  "startedUtc": "2026-10-20T18:23:43.124Z",
+  "endedUtc": "2026-10-20T18:24:47.348Z",
+  "cwd": "C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY",
+  "sourceFreezeSha256": "5cd254ae1bd366e67ef763279c8db207cc061e67f10c39693cbb2a89e809fec5",
+  "command": "node npm-cli.js ci --ignore-scripts --no-audit --fund=false --registry https://registry.npmjs.org/ --fetch-retries=0 --fetch-timeout=120000 plus pinned empty config/cache arguments",
+  "environmentPolicy": "OS_ALLOWLIST_NO_ENV_FILES_EMPTY_USER_GLOBAL_NPMRC_FROZEN_PUBLIC_PROJECT_NPMRC",
+  "cache": "C:/Users/Admin/AppData/Local/npm-cache",
+  "archivedPartial": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\dependency-failures\\d0-v1-node_modules",
+  "resolvedCount": 229,
+  "registryPolicy": "ALL_229_LOCK_RESOLVED_HTTPS_REGISTRY_NPMJS_ORG_SHA512_INTEGRITY_NO_LIFECYCLES_NO_AUDIT_NO_RETRIES",
+  "priorReceiptSha256": "46f1ce905ed6c04704cca88a3dca63b383ae789d47a10766717f80a13c1d9e9b",
+  "rawEnvironmentValuesLogged": false,
+  "timeoutMs": 600000,
+  "outputCapBytes": 4194304,
+  "capturedBytes": 26,
+  "timedOut": false,
+  "outputExceeded": false,
+  "closed": true,
+  "cleanup": {
+    "status": "NORMAL_EXIT"
+  },
+  "sourcePreserved": true,
+  "exitCode": 0,
+  "spawnError": false,
+  "sourceTestsBuildServerCommitProviderDeviceActions": 0
+}
