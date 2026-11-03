@@ -60,3 +60,9 @@ Dừng và báo Owner (không tự sửa bằng cách bỏ qua) khi: HEAD khác 
 
 - CI bắt buộc trên GitHub chưa được xác minh là đang bật; script `release-sync-status.mjs` là kiểm tra thủ công chỉ đọc, không phải rào cản thực thi.
 - iOS/TestFlight, closed/production track, App Links xác minh, bản đồ mapping/deobfuscation cho Play.
+
+## Bài học đợt 5 (2026-11-04)
+
+- Đẩy một lần hơn ~100 MB có thể bị GitHub trả HTTP 408 dù đã tăng `http.postBuffer`. Đẩy từng lát vào nhánh tạm (mỗi lát ≤ ~6 MB), rồi nối các commit thật lên lát cuối; xóa nhánh tạm sau đó. Đừng commit đầu ra sinh tự động lớn (`analyse/`).
+- Khi chạy script dựng trong nền bằng PowerShell và chuyển hướng đầu ra, Gradle daemon giữ handle nên lệnh bọc có thể không bao giờ kết thúc; kiểm tra bằng tệp kết quả (`*.apk`, `*.aab`) thay vì chờ lệnh.
+- Tiện ích Chrome có thể đổi tên giữa các phiên: hỏi Owner trình duyệt nào đang đăng nhập Play (tài khoản Tuyên Trịnh) trước khi tải AAB.
