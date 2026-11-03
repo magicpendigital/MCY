@@ -1,0 +1,105 @@
+{
+  "scope": "COLLECTION_AND_FIRST_MOCK_UI_ATTEMPT_ONLY",
+  "capturedAt": "2026-10-18T16:13:15.682Z",
+  "channel": "msedge",
+  "runs": [
+    {
+      "id": "1792339879771-17712",
+      "kind": "COLLECTION",
+      "project": "unit-review-ui",
+      "exitCode": 0,
+      "status": "PASS_PROCESS",
+      "actualCount": 15,
+      "cleanup": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+      "receipt": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339879771-17712.json",
+        "bytes": 1951,
+        "sha256": "5f3bb1fd69be78a1507966a38c654eb582799ff932117710e1e6b887eea8af8c"
+      },
+      "stdout": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339879771-17712.stdout.log",
+        "bytes": 2038,
+        "sha256": "80f73c290502ffc39be7cd4b0b2e3bda300473e85202bfcad6e73decc4bb58f6"
+      },
+      "stderr": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339879771-17712.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "1792339893837-27812",
+      "kind": "COLLECTION",
+      "project": "preserved-regressions",
+      "exitCode": 0,
+      "status": "PASS_PROCESS",
+      "actualCount": 12,
+      "cleanup": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+      "receipt": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339893837-27812.json",
+        "bytes": 1965,
+        "sha256": "32371b4bc0b340296f71a952ef216ce2a7320ae185cce8faeedbe8b8c7f8306f"
+      },
+      "stdout": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339893837-27812.stdout.log",
+        "bytes": 1691,
+        "sha256": "b62f83f8bd78f9d37da8792ae1b6257658303edce6d7c1c968033aa8f9abd77d"
+      },
+      "stderr": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339893837-27812.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "1792339922211-28652",
+      "kind": "UI_SUITE_SETUP_FAILED",
+      "project": "unit-review-ui",
+      "exitCode": 1,
+      "status": "FAIL_PROCESS",
+      "actualCount": 0,
+      "cleanup": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+      "receipt": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339922211-28652.json",
+        "bytes": 1938,
+        "sha256": "196f43f426e26c60ca2cb6b4dd9fabea150c2e0d5497398a5f5b3bf480b572f4"
+      },
+      "stdout": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339922211-28652.stdout.log",
+        "bytes": 1119,
+        "sha256": "3a56cd7d9ffd72e45c50ddedaac5ac5b5d124accbb47584c7aec4f7f3a3fa035"
+      },
+      "stderr": {
+        "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792339922211-28652.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "collection": {
+    "ui": 15,
+    "mappedRegressions": 12,
+    "unchangedBrowserRegressions": 11,
+    "nodeWorkerEquivalent": 1
+  },
+  "uiSuite": {
+    "status": "FAIL_GLOBAL_SETUP_BEFORE_TESTS",
+    "reason": "Unexpected static artifact: three existing baseline public intro WAV files rejected by static extension allowlist",
+    "executedTests": 0
+  },
+  "preservedRegressionSuite": "NOT_RUN_AFTER_SETUP_FAILURE",
+  "proxyReceipt": "NOT_CREATED_SETUP_FAILED_BEFORE_GUARD_START",
+  "prePostChecks": {
+    "sourcePins": 10,
+    "clientArtifactPins": 59,
+    "status": "MATCHED_BEFORE_AND_AFTER"
+  },
+  "artifactFreeze": {
+    "path": "analyse/ux-step5-3-2026-10-18/BUILD-ARTIFACT-FREEZE-v1.json",
+    "bytes": 22159,
+    "sha256": "d9a5c81f5291d6404cdadff228f21acbd5f044de82382fbad991ca338ff43fda"
+  },
+  "noSourceEditsDuringExecution": true,
+  "ownerBootstrap": "NOT_RUN",
+  "automaticRetry": false
+}

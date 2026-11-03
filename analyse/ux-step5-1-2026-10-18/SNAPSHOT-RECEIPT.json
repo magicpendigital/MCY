@@ -1,0 +1,696 @@
+{
+  "schema": "mcy-ux-step5-1-consumer-snapshot-v1",
+  "capturedAtUtc": "2026-10-18T11:34:40.7103318Z",
+  "status": "STABLE_CONSUMER_SNAPSHOT",
+  "baselineSha256": "c97d03b86868de6b6692f0e8f05b56ef3f3e02ca38c852faae28be757b30ebee",
+  "canonicalOwner": "content/yoga-library upstream",
+  "consumerScope": "READ_ONLY_METADATA_LEDGER",
+  "inventoryRecordCount": 38,
+  "sourceRecords": [
+    {
+      "courseId": "gentle",
+      "lessonId": "01",
+      "youtubeId": "yKm7aOAWn-k",
+      "durationMetadata": "0:43",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "02",
+      "youtubeId": "mjxV5BTR5jA",
+      "durationMetadata": "1:04",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "03",
+      "youtubeId": "8KKUtPicnX0",
+      "durationMetadata": "0:53",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "04",
+      "youtubeId": "lJkD5OsUs4E",
+      "durationMetadata": "0:36",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "05",
+      "youtubeId": "XPk59lYaNzU",
+      "durationMetadata": "1:00",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "06",
+      "youtubeId": "BSiC_g5FmRI",
+      "durationMetadata": "0:17",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "07",
+      "youtubeId": "I5pwMv2jYT4",
+      "durationMetadata": "0:20",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "08",
+      "youtubeId": "OJEzzRobrWQ",
+      "durationMetadata": "0:37",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "09",
+      "youtubeId": "Ie55V8b4sD4",
+      "durationMetadata": "0:45",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "10",
+      "youtubeId": "GQrO8VFJhss",
+      "durationMetadata": "0:34",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "11",
+      "youtubeId": "uLVYaURNcsM",
+      "durationMetadata": "0:22",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "12",
+      "youtubeId": "Gc8zn8NcCVk",
+      "durationMetadata": "0:25",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "13",
+      "youtubeId": "CVjhYYhpn3o",
+      "durationMetadata": "0:30",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "14",
+      "youtubeId": "_DttB5pLYjk",
+      "durationMetadata": "0:58",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "15",
+      "youtubeId": "-o-0h5H0_2I",
+      "durationMetadata": "0:50",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "16",
+      "youtubeId": "NxSbVNT_D-Y",
+      "durationMetadata": "0:28",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "17",
+      "youtubeId": "67PlLgpEpnU",
+      "durationMetadata": "0:23",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "gentle",
+      "lessonId": "18",
+      "youtubeId": "DLnOXS8BgJw",
+      "durationMetadata": "0:27",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "19",
+      "youtubeId": "McOZ1FW5jBM",
+      "durationMetadata": "0:24",
+      "linkedUnitIds": [
+        "mcy.pose.kneeling-backbend"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "20",
+      "youtubeId": "54IPJkU7f_o",
+      "durationMetadata": "0:35",
+      "linkedUnitIds": [
+        "mcy.pose.cobra-gentle"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "21",
+      "youtubeId": "KtMlgK2cjsU",
+      "durationMetadata": "0:49",
+      "linkedUnitIds": [
+        "mcy.pose.cobra"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "22",
+      "youtubeId": "0fs1LCnK3-U",
+      "durationMetadata": "0:39",
+      "linkedUnitIds": [
+        "mcy.pose.low-crow"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "23",
+      "youtubeId": "p3sKiK8szF8",
+      "durationMetadata": "0:53",
+      "linkedUnitIds": [
+        "mcy.pose.wild-thing-high"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "24",
+      "youtubeId": "DOmYgUoQyZI",
+      "durationMetadata": "0:38",
+      "linkedUnitIds": [
+        "mcy.transition.stand-up"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "25",
+      "youtubeId": "CwhLdstN0dc",
+      "durationMetadata": "0:53",
+      "linkedUnitIds": [
+        "mcy.pose.downward-dog"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "26",
+      "youtubeId": "oFWjSKxXvKY",
+      "durationMetadata": "0:46",
+      "linkedUnitIds": [
+        "mcy.pose.high-lunge"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "27",
+      "youtubeId": "rWl5ySBsrG0",
+      "durationMetadata": "0:35",
+      "linkedUnitIds": [
+        "mcy.foundation.cat-cow"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "28",
+      "youtubeId": "6Y-eWBnD8r8",
+      "durationMetadata": "0:54",
+      "linkedUnitIds": [
+        "mcy.pose.low-wheel"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "29",
+      "youtubeId": "wnenFwBE5oY",
+      "durationMetadata": "0:48",
+      "linkedUnitIds": [
+        "mcy.pose.cow-face"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "30",
+      "youtubeId": "wYiSFpP7vjs",
+      "durationMetadata": "0:33",
+      "linkedUnitIds": [
+        "mcy.pose.three-legged-dog"
+      ]
+    },
+    {
+      "courseId": "poses",
+      "lessonId": "31",
+      "youtubeId": "gkiWrw9hREU",
+      "durationMetadata": "0:47",
+      "linkedUnitIds": [
+        "mcy.pose.warrior-ii"
+      ]
+    },
+    {
+      "courseId": "sequences",
+      "lessonId": "32",
+      "youtubeId": "6DwXHdN_ccg",
+      "durationMetadata": "0:22",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "sequences",
+      "lessonId": "33",
+      "youtubeId": "f7UfRc4TKdM",
+      "durationMetadata": "0:21",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "sequences",
+      "lessonId": "34",
+      "youtubeId": "ZV-eHhsNlgo",
+      "durationMetadata": "0:21",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "sequences",
+      "lessonId": "35",
+      "youtubeId": "npBdMvsuIto",
+      "durationMetadata": "0:19",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "sequences",
+      "lessonId": "36",
+      "youtubeId": "jgQLZsoIDKc",
+      "durationMetadata": "0:21",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "sequences",
+      "lessonId": "37",
+      "youtubeId": "rSOEcU1xGYA",
+      "durationMetadata": "0:21",
+      "linkedUnitIds": []
+    },
+    {
+      "courseId": "sequences",
+      "lessonId": "38",
+      "youtubeId": "AfMciZa5npw",
+      "durationMetadata": "0:18",
+      "linkedUnitIds": []
+    }
+  ],
+  "selectedUnitCount": 14,
+  "units": [
+    {
+      "id": "mcy.pose.cobra",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/cobra/r1.json",
+      "sha256": "63febd72a5956852c20a3b77e2366658dbc7bfa49515fecef2d6037fadc1a6c0",
+      "kind": "pose_education",
+      "productionStatus": "media_draft",
+      "mediaSlots": 5,
+      "draftPresent": 5,
+      "identityBlocked": 0,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.cobra-gentle",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/cobra-gentle/r1.json",
+      "sha256": "d0491edfaefaa91d6d06999b685a2bef47cf7f96b6801e442e9781efcf8ab7f3",
+      "kind": "pose_education",
+      "productionStatus": "editorial_draft",
+      "mediaSlots": 5,
+      "draftPresent": 0,
+      "identityBlocked": 0,
+      "notProduced": 5,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.cow-face",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/cow-face/r1.json",
+      "sha256": "11410eb99910832630a5510cdd5aa8623a7b287aed8134453fb24d9f4cfac551",
+      "kind": "pose_education",
+      "productionStatus": "media_draft",
+      "mediaSlots": 5,
+      "draftPresent": 5,
+      "identityBlocked": 0,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.downward-dog",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/downward-dog/r1.json",
+      "sha256": "452299229d75604b1912bb55c100f88c8294bf36636d54178e5922940c702aaa",
+      "kind": "pose_education",
+      "productionStatus": "media_draft",
+      "mediaSlots": 5,
+      "draftPresent": 5,
+      "identityBlocked": 0,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.foundation.cat-cow",
+      "revision": "r3",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/foundation-cat-cow/r3.json",
+      "sha256": "aaa9cec5ac78e4fafc43657ec89dc77cc9ec0cb149a120484897b2f6abcb1854",
+      "kind": "movement_education",
+      "productionStatus": "media_draft",
+      "mediaSlots": 10,
+      "draftPresent": 10,
+      "identityBlocked": 0,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.foundation.standing",
+      "revision": "r3",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/foundation-standing/r3.json",
+      "sha256": "f208ff64d776b0be4a01e81b89cd49d36144c47ca105d7acc44466b5486a7f89",
+      "kind": "pose_education",
+      "productionStatus": "media_draft",
+      "mediaSlots": 10,
+      "draftPresent": 10,
+      "identityBlocked": 0,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.high-lunge",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/high-lunge/r1.json",
+      "sha256": "78135b89cbc95a8d8809afa28b88f605cb4e5d00b87f8e246a22e6936cef1368",
+      "kind": "pose_education",
+      "productionStatus": "media_draft",
+      "mediaSlots": 5,
+      "draftPresent": 5,
+      "identityBlocked": 0,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.kneeling-backbend",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/kneeling-backbend/r1.json",
+      "sha256": "461ee017f41acd05c775de9760249adb0ca420a22ad384166193b9c9952ba05c",
+      "kind": "pose_education",
+      "productionStatus": "editorial_draft",
+      "mediaSlots": 5,
+      "draftPresent": 0,
+      "identityBlocked": 5,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.low-crow",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/low-crow/r1.json",
+      "sha256": "0536caa4f45ac08fedf43e32c1c2c25415c7e7408f2790421c8d3694af6594af",
+      "kind": "pose_education",
+      "productionStatus": "editorial_draft",
+      "mediaSlots": 5,
+      "draftPresent": 0,
+      "identityBlocked": 5,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.low-wheel",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/low-wheel/r1.json",
+      "sha256": "29d87457775ddac019dbcb02d79f7185fdb7df117da7e747910da9101b34072a",
+      "kind": "pose_education",
+      "productionStatus": "editorial_draft",
+      "mediaSlots": 5,
+      "draftPresent": 0,
+      "identityBlocked": 5,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.transition.stand-up",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/stand-up/r1.json",
+      "sha256": "1a1c68e89af79469ecea8f111bb7a2df2de8f8b96e9e6dc09512761d1fed504a",
+      "kind": "transition_education",
+      "productionStatus": "editorial_draft",
+      "mediaSlots": 5,
+      "draftPresent": 0,
+      "identityBlocked": 5,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.three-legged-dog",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/three-legged-dog/r1.json",
+      "sha256": "60ed4d0c1f1901c6649cc63ce0654dca486a1f77eeb50b1921f171250212eae1",
+      "kind": "pose_education",
+      "productionStatus": "editorial_draft",
+      "mediaSlots": 5,
+      "draftPresent": 0,
+      "identityBlocked": 0,
+      "notProduced": 5,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.warrior-ii",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/warrior-ii/r1.json",
+      "sha256": "e666a51c0cf89a777b5d3ee8870deba4605af0049a8f8c90c342664e774cd067",
+      "kind": "pose_education",
+      "productionStatus": "media_draft",
+      "mediaSlots": 5,
+      "draftPresent": 5,
+      "identityBlocked": 0,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    },
+    {
+      "id": "mcy.pose.wild-thing-high",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "path": "content/yoga-library/units/wild-thing-high/r1.json",
+      "sha256": "1f3780456235b38f877f4bf392b72d3006a28651ea37e9c464f385af3c3446ae",
+      "kind": "pose_education",
+      "productionStatus": "editorial_draft",
+      "mediaSlots": 5,
+      "draftPresent": 0,
+      "identityBlocked": 5,
+      "notProduced": 0,
+      "learnerVisible": false,
+      "recommendationEligible": false,
+      "publishStatus": "unpublished",
+      "practiceDurationSeconds": null,
+      "approvalRecordsCount": 0
+    }
+  ],
+  "sourceRefCount": 13,
+  "sourceRefs": [
+    {
+      "unitId": "mcy.pose.cobra",
+      "courseId": "poses",
+      "lessonId": "21",
+      "youtubeId": "KtMlgK2cjsU",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.cobra-gentle",
+      "courseId": "poses",
+      "lessonId": "20",
+      "youtubeId": "54IPJkU7f_o",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.cow-face",
+      "courseId": "poses",
+      "lessonId": "29",
+      "youtubeId": "wnenFwBE5oY",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.downward-dog",
+      "courseId": "poses",
+      "lessonId": "25",
+      "youtubeId": "CwhLdstN0dc",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.foundation.cat-cow",
+      "courseId": "poses",
+      "lessonId": "27",
+      "youtubeId": "rWl5ySBsrG0",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.high-lunge",
+      "courseId": "poses",
+      "lessonId": "26",
+      "youtubeId": "oFWjSKxXvKY",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.kneeling-backbend",
+      "courseId": "poses",
+      "lessonId": "19",
+      "youtubeId": "McOZ1FW5jBM",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.low-crow",
+      "courseId": "poses",
+      "lessonId": "22",
+      "youtubeId": "0fs1LCnK3-U",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.low-wheel",
+      "courseId": "poses",
+      "lessonId": "28",
+      "youtubeId": "6Y-eWBnD8r8",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.transition.stand-up",
+      "courseId": "poses",
+      "lessonId": "24",
+      "youtubeId": "DOmYgUoQyZI",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.three-legged-dog",
+      "courseId": "poses",
+      "lessonId": "30",
+      "youtubeId": "wYiSFpP7vjs",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.warrior-ii",
+      "courseId": "poses",
+      "lessonId": "31",
+      "youtubeId": "gkiWrw9hREU",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    },
+    {
+      "unitId": "mcy.pose.wild-thing-high",
+      "courseId": "poses",
+      "lessonId": "23",
+      "youtubeId": "p3sKiK8szF8",
+      "inventoryMatchCount": 1,
+      "relation": "topic_reference",
+      "contentObserved": false
+    }
+  ],
+  "sourceRefExactMatchCount": 13,
+  "media": {
+    "slotCount": 80,
+    "draftPresentCount": 45,
+    "identityBlockedCount": 25,
+    "notProducedCount": 10,
+    "draftPresentPathShaMatchCount": 45,
+    "draftPresentMismatchCount": 0,
+    "physicalFileCount": 46
+  },
+  "finalUpstreamManifest": "PENDING",
+  "preAndPostCanonicalPinMismatchCount": 0,
+  "limits": [
+    "Snapshot metadata does not approve subject matter, rights, accessibility or publication.",
+    "Physical media file count is distinct from declared unit slots.",
+    "Content source remains live; final upstream manifest is pending.",
+    "No external clips were viewed and no app/runtime import occurred."
+  ]
+}

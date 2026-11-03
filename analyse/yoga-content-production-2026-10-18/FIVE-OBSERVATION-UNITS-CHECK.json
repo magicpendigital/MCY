@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "scope": "Five unit schema, source ref, evidence and null-media validation; inventory backlinks not modified by writer.",
+  "results": [
+    {
+      "id": "mcy.pose.kneeling-backbend",
+      "revision": "r1",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.pose.low-crow",
+      "revision": "r1",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.pose.wild-thing-high",
+      "revision": "r1",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.transition.stand-up",
+      "revision": "r1",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.pose.low-wheel",
+      "revision": "r1",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    }
+  ]
+}

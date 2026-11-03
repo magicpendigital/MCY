@@ -1,0 +1,26 @@
+{
+  "capturedAt": "2026-10-18T16:23:31.7051150Z",
+  "status": "GO_BOUNDED_V3_NODE_MOCK_UI_AND_INDEPENDENT_PROBES",
+  "controlFreezeSha256": "a919d6f3f90b16a1e922b6ae2c1cf81f685b4118615d972b33c5d30bd7f21664",
+  "controlQcSha256": "c937d13fe0b6c83c0f0e4e4d0bc90220b087de00003ffc0adeca354f141b5ac5",
+  "probeFreezeSha256": "7a82a74e51dc73c17dfd85c36873a884c880822d98b7fdc878122bf02f0098dd",
+  "pins": {
+    "ui": 10,
+    "artifact": 59,
+    "control": 9,
+    "canonical": 71,
+    "probe": 3
+  },
+  "allowed": [
+    "one13groupNode suite run by implementer",
+    "one15UI suite then12mappedregressions by UI agent",
+    "one5case independent probe run by QC"
+  ],
+  "probeSourceReview": "Root full v1 read and v2 exact diff read; latency-only unchanged-result wrapper approved",
+  "environment": "sanitized OS allowlist, localhost only, exact reviewed runners/caps, known EACCES sandbox elevation permitted",
+  "blocked": [
+    "Owner actual preview pending results/finalQC",
+    "cloud/native/deploy",
+    "step6"
+  ]
+}

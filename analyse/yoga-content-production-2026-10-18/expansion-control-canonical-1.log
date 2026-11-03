@@ -1,0 +1,6 @@
+Error: Local assertion needs exact existing inventory record locator
+    at fail (file:///D:/Projects/MCY/analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs:13:28)
+    at refs (file:///D:/Projects/MCY/analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs:124:61)
+    at name (file:///D:/Projects/MCY/analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs:131:3)
+    at validateExpansionDocument (file:///D:/Projects/MCY/analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs:141:3)
+    at async file:///D:/Projects/MCY/analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs:203:33

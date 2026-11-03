@@ -1,0 +1,16 @@
+{
+  "capturedAt": "2026-10-18T16:07:40.1142017Z",
+  "status": "GO_BOUNDED_NODE_TESTS_ONLY",
+  "controlFreezeSha256": "04aae7b43aef4649c34abb6f0058100a33353a682319374a3fdc062ebb16788d",
+  "controlSourcePinsMatched": 9,
+  "canonicalPinsMatched": 71,
+  "rootDirtyPinsMatched": 35,
+  "independentQcEvidence": "profile46_qc direct v2 report16:06:23Z, formal supplement pending",
+  "allowed": "three exact server/contentReview *.test.mjs suites, explicit local-only safe environment, one run outside sandbox local-connect restriction",
+  "blocked": [
+    "Owner preview pending tests/finalQC",
+    "cloud/native/deploy",
+    "step6"
+  ],
+  "residual": "finite source verification; no deterministic during-HTTP source-race proof yet"
+}

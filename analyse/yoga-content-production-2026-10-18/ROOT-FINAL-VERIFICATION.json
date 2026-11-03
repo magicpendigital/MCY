@@ -1,0 +1,39 @@
+{
+  "status": "PASS_ROOT_FINAL_LOCAL_DRAFT",
+  "date": "2026-10-20",
+  "capturedAt": "2026-10-20T07:19:37.8347913Z",
+  "verifier": "/root",
+  "manifest": {
+    "path": "content/yoga-library/manifest.json",
+    "sha256": "0fa137d5ea658fadfdb8a1ab97e5fd86550a03b82fbed972530b338e65d114b1",
+    "bytes": 44303,
+    "inputFiles": 168
+  },
+  "qcReceiptSha256": "f71752bbcd3f316cc87f4088ed13f74071547fe924129162af3fcac5cb344591",
+  "qcReportSha256": "901d545555b78783bba88ba1464e8cc2e8ffd13efc64d33b69c618c23c1d85a9",
+  "actualRootCommands": [
+    "run-library-checks.mjs --label=final-v1: exit0, five commands PASS",
+    "create-manifest.mjs --write: exit0",
+    "verify-manifest.mjs: exit0,168 inputs PASS",
+    "PowerShell final hash readback:168 inputs and6 evidence pins match"
+  ],
+  "tests": {
+    "corePass": 64,
+    "coreFail": 0,
+    "expansionPass": 81,
+    "expansionFail": 0,
+    "expansionSkip": 1,
+    "skipReason": "Windows file symlink fixture unavailable"
+  },
+  "scope": "14 reading drafts70steps55present25identity-blocked media;114metadata planning entries",
+  "sourcePins": "Four app dependency hashes unchanged against reviewed baseline; not whole-repository claim",
+  "rootInspection": "Read generated coverage, selected lesson copy, current reports and independent QC; earlier direct image review plus current WarriorII photo3; current status links5/5 exist",
+  "integration": "Shared filesystem and task coordination; local UX reader5.3 acceptance is attributed to receiving task, not a root browser rerun",
+  "limitations": [
+    "Human expert/rights/editorial/accessibility review pending",
+    "Five units still missing25images and full practice entry/exit",
+    "114metadata entries are not114lessons or universal exhaustive catalog",
+    "No cloud/database/native/publication write"
+  ],
+  "finalSync": "pending separate receipt"
+}

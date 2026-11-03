@@ -1,0 +1,722 @@
+{
+  "schemaVersion": "mcy-yoga-expansion-research-1",
+  "status": "data_candidate_written_controls_pending",
+  "researchAccessedAt": "2026-10-18",
+  "dataWrittenDate": "2026-10-19",
+  "scope": "Metadata-only seed nomenclature and editorial taxonomy; no yoga instructions, new research, media generation, human approval or publication.",
+  "intakePin": {
+    "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-INTAKE.vi.md",
+    "bytes": 37544,
+    "sha256": "0b1b084d1c25a006d70144887a6380160e50bb44531d248c8047e549fd0efe83"
+  },
+  "artifactPins": [
+    {
+      "path": "content/yoga-library/expansion/catalog.json",
+      "bytes": 272795,
+      "sha256": "055317c193a4b66a8f52f5eed4faf7a390b76c0e5c79f4cd243d3e5ff4c60830"
+    },
+    {
+      "path": "content/yoga-library/expansion/README.vi.md",
+      "bytes": 21762,
+      "sha256": "03380421b36842e5c33b30ecab1d479ec4da53587d00b7b638b03b67e856e444"
+    }
+  ],
+  "previousArtifactPins": [
+    {
+      "path": "content/yoga-library/expansion/catalog.json",
+      "bytes": 272175,
+      "sha256": "74dd755ca379a54865b02aecf7f3894b233e8d0aee3ec6611d350ac98fe875ab"
+    },
+    {
+      "path": "content/yoga-library/expansion/README.vi.md",
+      "bytes": 21542,
+      "sha256": "0cd6717a109b3b0b512d0d71939c82a97d5f6a877c7a61cfc47dc0738647e4d7"
+    }
+  ],
+  "repairRecord": {
+    "date": "2026-10-19",
+    "previousEvidenceSha256": "fb66d667212b73985ee3588b3fa418f8a892a6e2fb83f5d942b2f694a683c390",
+    "catalogDelta": "Only taxonomy local-topic.unresolved.label.conceptualSourceRefs changed: one broad local locator replaced by five exact inventory record locators for 19,22,23,24,28. Entities, sources, flags and controls unchanged.",
+    "readmeDelta": "Added the missing arm-balance group and Crow row. Initial producer claim of 114 README rows was inaccurate; independent QC found 113 because the first-facet arm-balance group was absent.",
+    "firstRejection": {
+      "reportedBy": "/root/pose_photo_production",
+      "evidenceType": "parent report; not rerun by data producer",
+      "tests": {
+        "exitCode": 0,
+        "passed": 81,
+        "skipped": 1,
+        "skipReason": "OS symlink"
+      },
+      "canonicalCLI": {
+        "exitCode": 1,
+        "reason": "Local taxonomy conceptual ref locator was too broad; exact existing inventory record required."
+      },
+      "disposition": "Preserved as initial rejection; data repaired and repinned. No control/schema change and no new validator invocation by data producer."
+    },
+    "postRepairAcceptance": "pending independent control invocation and QC/root verification",
+    "stop": "DATA_REPAIR_STOP"
+  },
+  "localInventoryPin": {
+    "path": "content/yoga-library/inventory.json",
+    "bytes": 24947,
+    "sha256": "85b1242a4f9fd06fa8eb53f3a12adb4e1bc401ab277813ff149b0c9a65ebe3ed"
+  },
+  "productionMethod": "Canonical JSON written directly from the reviewed in-session seed and prior source pool. README index derived from the same entity data. No persistent generator/helper/seed file was created or executed; no new validation control was invoked.",
+  "entityCounts": {
+    "total": 114,
+    "pose_family": 68,
+    "pose_variant": 3,
+    "skill": 28,
+    "knowledge_topic": 10,
+    "local_unresolved_topic": 5
+  },
+  "sourceSnapshots": [
+    {
+      "id": "ye-poses-1",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses archive — page 1",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.bharadvaja-twist",
+        "mcy.expansion.pose.boat",
+        "mcy.expansion.pose.bound-angle",
+        "mcy.expansion.pose.bow",
+        "mcy.expansion.pose.bridge",
+        "mcy.expansion.pose.camel",
+        "mcy.expansion.pose.cat",
+        "mcy.expansion.pose.chair",
+        "mcy.expansion.pose.child",
+        "mcy.expansion.pose.cobra"
+      ]
+    },
+    {
+      "id": "ye-poses-2",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses/page/2",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses archive — page 2",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.cow-face",
+        "mcy.expansion.pose.cow",
+        "mcy.expansion.pose.high-lunge",
+        "mcy.expansion.pose.crow",
+        "mcy.expansion.pose.dancer",
+        "mcy.expansion.variant.dolphin",
+        "mcy.expansion.pose.downward-dog",
+        "mcy.expansion.pose.eagle",
+        "mcy.expansion.pose.easy",
+        "mcy.expansion.pose.extended-hand-to-big-toe",
+        "mcy.expansion.skill.standing-balance-literacy",
+        "mcy.expansion.skill.hand-support-balance-literacy"
+      ]
+    },
+    {
+      "id": "ye-poses-3",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses/page/3",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses archive — page 3",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.extended-side-angle",
+        "mcy.expansion.pose.fish",
+        "mcy.expansion.pose.forearm-balance",
+        "mcy.expansion.variant.forearm-plank",
+        "mcy.expansion.pose.four-limbed-staff",
+        "mcy.expansion.pose.gate",
+        "mcy.expansion.pose.half-frog",
+        "mcy.expansion.pose.half-lord-of-fishes",
+        "mcy.expansion.pose.half-standing-forward-bend",
+        "mcy.expansion.pose.half-moon",
+        "mcy.expansion.skill.forearm-support-balance-literacy"
+      ]
+    },
+    {
+      "id": "ye-poses-4",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses/page/4",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses archive — page 4",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.hand-to-big-toe-forward-fold",
+        "mcy.expansion.pose.happy-baby",
+        "mcy.expansion.pose.head-to-knee",
+        "mcy.expansion.pose.headstand",
+        "mcy.expansion.pose.hero",
+        "mcy.expansion.pose.heron",
+        "mcy.expansion.pose.intense-side-stretch",
+        "mcy.expansion.pose.locust",
+        "mcy.expansion.pose.lotus",
+        "mcy.expansion.pose.low-lunge"
+      ]
+    },
+    {
+      "id": "ye-poses-5",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses/page/5",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses archive — page 5",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.mountain",
+        "mcy.expansion.pose.pigeon",
+        "mcy.expansion.pose.plank",
+        "mcy.expansion.pose.plough",
+        "mcy.expansion.pose.marichi-a",
+        "mcy.expansion.pose.marichi-c",
+        "mcy.expansion.pose.reclined-butterfly",
+        "mcy.expansion.pose.reclined-big-toe",
+        "mcy.expansion.pose.reclining-hero",
+        "mcy.expansion.pose.revolved-head-to-knee"
+      ]
+    },
+    {
+      "id": "ye-poses-6",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses/page/6",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses archive — page 6",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.reverse-warrior",
+        "mcy.expansion.pose.revolved-triangle",
+        "mcy.expansion.pose.seated-forward-bend",
+        "mcy.expansion.pose.shoulderstand",
+        "mcy.expansion.pose.side-plank",
+        "mcy.expansion.pose.sphinx",
+        "mcy.expansion.pose.staff",
+        "mcy.expansion.pose.standing-forward-bend",
+        "mcy.expansion.pose.standing-splits",
+        "mcy.expansion.pose.tree"
+      ]
+    },
+    {
+      "id": "ye-poses-7",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses/page/7",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses archive — page 7",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.triangle",
+        "mcy.expansion.pose.wheel",
+        "mcy.expansion.pose.upward-dog",
+        "mcy.expansion.pose.upward-wide-angle-seated",
+        "mcy.expansion.pose.upward-plank",
+        "mcy.expansion.pose.warrior-i",
+        "mcy.expansion.pose.warrior-ii",
+        "mcy.expansion.pose.warrior-iii",
+        "mcy.expansion.pose.wide-legged-forward-bend",
+        "mcy.expansion.variant.wide-legged-forward-bend-c"
+      ]
+    },
+    {
+      "id": "ya-rys-standards",
+      "kind": "web_teaching",
+      "url": "https://yogaalliance.org/Standards-for-RYS-Credentials",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Standards for RYS Credentials",
+      "publisher": "Yoga Alliance",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.skill.joint-motion-literacy",
+        "mcy.expansion.skill.personal-range-observation",
+        "mcy.expansion.skill.sequencing-literacy",
+        "mcy.expansion.skill.mudra-topic",
+        "mcy.expansion.skill.self-reflection",
+        "mcy.expansion.knowledge.posture-transition-sequence",
+        "mcy.expansion.knowledge.history-lineage",
+        "mcy.expansion.knowledge.mantra-mudra-terminology"
+      ]
+    },
+    {
+      "id": "ya-code",
+      "kind": "web_teaching",
+      "url": "https://yogaalliance.org/policies-priorities-progress/code-of-conduct/",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Code of Conduct",
+      "publisher": "Yoga Alliance",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.skill.choice-communication",
+        "mcy.expansion.skill.consent-communication",
+        "mcy.expansion.knowledge.consent-agency",
+        "mcy.expansion.knowledge.image-source-limitations"
+      ]
+    },
+    {
+      "id": "sivananda-12",
+      "kind": "web_teaching",
+      "url": "https://sivananda.org/teachings/12-basic-asanas/",
+      "repoPath": null,
+      "sha256": null,
+      "title": "12 Basic Asanas",
+      "publisher": "Sivananda International",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": []
+    },
+    {
+      "id": "sivananda-5",
+      "kind": "web_teaching",
+      "url": "https://sivananda.org/teachings/5-points-of-yoga/",
+      "repoPath": null,
+      "sha256": null,
+      "title": "5 Points of Yoga",
+      "publisher": "Sivananda International",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.skill.relaxation-literacy"
+      ]
+    },
+    {
+      "id": "yogapoint-asana",
+      "kind": "web_teaching",
+      "url": "https://www.yogapoint.com/info/yogasana.htm",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Yoga Poses",
+      "publisher": "Yoga Vidya Gurukul / YogaPoint",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.pose.supine-rest",
+        "mcy.expansion.knowledge.asana-terminology"
+      ]
+    },
+    {
+      "id": "yogapoint-home",
+      "kind": "web_teaching",
+      "url": "https://www.yogapoint.com/",
+      "repoPath": null,
+      "sha256": null,
+      "title": "YogaPoint home teaching directory",
+      "publisher": "Yoga Vidya Gurukul / YogaPoint",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": []
+    },
+    {
+      "id": "yogapoint-pranayama",
+      "kind": "web_teaching",
+      "url": "https://www.yogapoint.com/info/pranayama.htm",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Pranayama — Breathing exercises",
+      "publisher": "Yoga Vidya Gurukul / YogaPoint",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.skill.breath-awareness",
+        "mcy.expansion.skill.abdominal-breathing-topic",
+        "mcy.expansion.skill.yogic-breathing-topic",
+        "mcy.expansion.skill.alternate-nostril-topic",
+        "mcy.expansion.skill.ujjayi-topic",
+        "mcy.expansion.skill.bhramari-topic",
+        "mcy.expansion.skill.viloma-topic",
+        "mcy.expansion.knowledge.hatha-ashtanga-context",
+        "mcy.expansion.knowledge.pranayama-breath-awareness"
+      ]
+    },
+    {
+      "id": "yogapoint-meditation",
+      "kind": "web_teaching",
+      "url": "https://www.yogapoint.com/info/meditation.htm",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Meditation",
+      "publisher": "Yoga Vidya Gurukul / YogaPoint",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.skill.attention-anchor-topic",
+        "mcy.expansion.skill.meditation-observation",
+        "mcy.expansion.skill.mantra-topic",
+        "mcy.expansion.knowledge.yama-niyama",
+        "mcy.expansion.knowledge.dharana-dhyana-context"
+      ]
+    },
+    {
+      "id": "ye-awareness",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/posture-alignment-and-recovering-from-injury",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Posture, alignment and recovering from injury",
+      "publisher": "Dawn Meredith-Davies / YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.skill.body-awareness",
+        "mcy.expansion.skill.support-point-literacy",
+        "mcy.expansion.skill.side-difference-observation",
+        "mcy.expansion.skill.ground-transition-literacy",
+        "mcy.expansion.skill.entry-exit-literacy"
+      ]
+    },
+    {
+      "id": "ye-high-lunge",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/crescent-pose-high-lunge",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Crescent Pose / High Lunge",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": [
+        "mcy.expansion.skill.weight-shift-literacy",
+        "mcy.expansion.skill.movement-breath-coordination"
+      ]
+    },
+    {
+      "id": "ye-warrior-3",
+      "kind": "web_teaching",
+      "url": "https://www.yogaeasy.com/artikel/warrior-3",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Warrior 3 — conflicting heading and image label",
+      "publisher": "YogaEasy",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": []
+    },
+    {
+      "id": "iyengar-index",
+      "kind": "web_teaching",
+      "url": "https://eyalshifroni.com/blog/b-k-s-iyengars-light-on-yoga-asanas-index/",
+      "repoPath": null,
+      "sha256": null,
+      "title": "Light on Yoga Asanas Index",
+      "publisher": "Eyal Shifroni",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Teaching-source nomenclature/context only; no instructional, medical, suitability, rights or human-review clearance.",
+      "retrievalStatus": "opened_read_only_on_research_date",
+      "usedEntityIds": []
+    },
+    {
+      "id": "local-inventory",
+      "kind": "local_draft_inventory",
+      "url": null,
+      "repoPath": "content/yoga-library/inventory.json",
+      "sha256": "85b1242a4f9fd06fa8eb53f3a12adb4e1bc401ab277813ff149b0c9a65ebe3ed",
+      "title": "MCY current 38-clip draft inventory",
+      "publisher": "MCY local draft",
+      "accessedAt": "2026-10-18",
+      "usage": "nomenclature_and_classification_only",
+      "limits": "Local draft labels and exact source tuples only; no external pose identity, transcript, rights or expertise proof.",
+      "retrievalStatus": "local_bytes_read_and_sha256_pinned",
+      "usedEntityIds": [
+        "mcy.expansion.local-topic.kneeling-backbend",
+        "mcy.expansion.local-topic.low-crow",
+        "mcy.expansion.local-topic.wild-thing-high",
+        "mcy.expansion.local-topic.stand-up",
+        "mcy.expansion.local-topic.low-wheel"
+      ]
+    }
+  ],
+  "unresolvedNomenclature": [
+    {
+      "id": "mcy.expansion.pose.high-lunge",
+      "kind": "pose_family",
+      "sourceRefs": [
+        {
+          "sourceId": "ye-poses-2",
+          "scope": "conceptual_topic",
+          "locator": "Crescent Pose / High Lunge heading"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.pose.crow",
+      "kind": "pose_family",
+      "sourceRefs": [
+        {
+          "sourceId": "ye-poses-2",
+          "scope": "conceptual_topic",
+          "locator": "Crow Pose heading"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.pose.low-lunge",
+      "kind": "pose_family",
+      "sourceRefs": [
+        {
+          "sourceId": "ye-poses-4",
+          "scope": "conceptual_topic",
+          "locator": "Low lunge heading"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.pose.reclining-hero",
+      "kind": "pose_family",
+      "sourceRefs": [
+        {
+          "sourceId": "ye-poses-5",
+          "scope": "conceptual_topic",
+          "locator": "Reclining Hero Pose heading"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.pose.warrior-iii",
+      "kind": "pose_family",
+      "sourceRefs": [
+        {
+          "sourceId": "ye-poses-7",
+          "scope": "conceptual_topic",
+          "locator": "Warrior 3 heading"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.local-topic.kneeling-backbend",
+      "kind": "local_unresolved_topic",
+      "sourceRefs": [
+        {
+          "sourceId": "local-inventory",
+          "scope": "conceptual_topic",
+          "locator": "records[courseId=poses,id=19]"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.local-topic.low-crow",
+      "kind": "local_unresolved_topic",
+      "sourceRefs": [
+        {
+          "sourceId": "local-inventory",
+          "scope": "conceptual_topic",
+          "locator": "records[courseId=poses,id=22]"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.local-topic.wild-thing-high",
+      "kind": "local_unresolved_topic",
+      "sourceRefs": [
+        {
+          "sourceId": "local-inventory",
+          "scope": "conceptual_topic",
+          "locator": "records[courseId=poses,id=23]"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.local-topic.stand-up",
+      "kind": "local_unresolved_topic",
+      "sourceRefs": [
+        {
+          "sourceId": "local-inventory",
+          "scope": "conceptual_topic",
+          "locator": "records[courseId=poses,id=24]"
+        }
+      ]
+    },
+    {
+      "id": "mcy.expansion.local-topic.low-wheel",
+      "kind": "local_unresolved_topic",
+      "sourceRefs": [
+        {
+          "sourceId": "local-inventory",
+          "scope": "conceptual_topic",
+          "locator": "records[courseId=poses,id=28]"
+        }
+      ]
+    }
+  ],
+  "conflictDecisions": [
+    {
+      "topic": "Warrior III",
+      "decision": "Sanskrit null: the already-read YogaEasy page has contradictory heading and image label; do not use Prasarita Padottanasana as Warrior III alias.",
+      "sourceIds": [
+        "ye-poses-7",
+        "ye-warrior-3"
+      ]
+    },
+    {
+      "topic": "High / Low Lunge",
+      "decision": "Separate English topics, Sanskrit null, unresolved; same Anjaneyasana label in source does not justify merge.",
+      "sourceIds": [
+        "ye-poses-2",
+        "ye-poses-4",
+        "ye-high-lunge"
+      ]
+    },
+    {
+      "topic": "Crow",
+      "decision": "English family kept with Sanskrit null and unresolved; Bakasana/Kakasana/Heron context conflicts are not merged.",
+      "sourceIds": [
+        "ye-poses-2",
+        "sivananda-12",
+        "yogapoint-asana"
+      ]
+    },
+    {
+      "topic": "Mountain",
+      "decision": "Tadasana is recorded only in YogaEasy Mountain context. No Parvatasana alias or family added from matching English.",
+      "sourceIds": [
+        "ye-poses-5",
+        "yogapoint-asana"
+      ]
+    },
+    {
+      "topic": "Reclining Hero / Saddle",
+      "decision": "Supta Virasana source spelling retained, nomenclature unresolved; no universal Saddle alias.",
+      "sourceIds": [
+        "ye-poses-5"
+      ]
+    },
+    {
+      "topic": "Local identity-blocked topics",
+      "decision": "Five local_unresolved_topic entities use local inventory conceptual source only, names editorial, no standard-asana relation.",
+      "sourceIds": [
+        "local-inventory"
+      ]
+    },
+    {
+      "topic": "Sanskrit spellings",
+      "decision": "Source spellings are preserved as attestation only, including nonstandard-looking source forms. Pending nomenclature is not correctness or pronunciation clearance.",
+      "sourceIds": [
+        "ye-poses-1",
+        "ye-poses-2",
+        "ye-poses-3",
+        "ye-poses-4",
+        "ye-poses-5",
+        "ye-poses-6",
+        "ye-poses-7"
+      ]
+    }
+  ],
+  "notUsedAsAssertions": [
+    {
+      "url": "https://yoga.ayush.gov.in/uploads/assets/cyp/CYP_Book_English_2026.pdf",
+      "reason": "Open returned Internal Error during prior research; no source assertions imported."
+    },
+    {
+      "url": "https://www.yogaeasy.com/artikel/category/yoga-poses/page/8",
+      "reason": "Direct and Next retrieval failed during prior research; no page-8 names guessed."
+    },
+    {
+      "url": "https://www.yogapoint.com/pdf/Yogapoint%20Book%20of%20Practices.pdf",
+      "reason": "Tool rejected 17,235,773-byte PDF; no PDF assertions imported."
+    },
+    {
+      "url": "https://sivananda.org/teachings/five-points/",
+      "reason": "Guessed route failed; successful canonical 5-points-of-yoga route used instead."
+    },
+    {
+      "url": "https://yogaalliance.org/policies-priorities-progress/scope-of-practice/",
+      "reason": "Search-result context read during prior research; not included as canonical assertion source. Choice/agency entity uses already-opened Code of Conduct."
+    }
+  ],
+  "productionFailures": [
+    {
+      "event": "apply_patch_invalid_multiple_operations_same_path",
+      "effect": "Initial whole-file replacement patch was rejected without modifying the file. Corrected with Update File. This is neither a validator invocation nor app acceptance failure."
+    }
+  ],
+  "checks": [
+    {
+      "status": "PASS",
+      "scope": "Producer file/hash readback only",
+      "command": "PowerShell Get-Item + Get-FileHash for catalog, README, inventory and approved intake",
+      "environment": "Local Windows workspace",
+      "exitCode": 0,
+      "limitations": "Does not validate catalog semantics or establish independent QC."
+    },
+    {
+      "status": "BLOCKED",
+      "scope": "New schema/checker/negative fixtures invocation",
+      "reason": "Reserved for reviewed controls and separate QC/root invocation gate; not executed by data producer."
+    },
+    {
+      "status": "BLOCKED",
+      "scope": "Human yoga/rights/editorial/accessibility acceptance",
+      "reason": "No human approvals in this task."
+    }
+  ],
+  "closedState": {
+    "productionStatus": "metadata_only",
+    "learnerVisible": false,
+    "recommendationEligible": false,
+    "publishStatus": "unpublished",
+    "review": {
+      "expert": "pending",
+      "rights": "pending",
+      "editorial": "pending",
+      "accessibility": "pending"
+    },
+    "approvalRecords": []
+  },
+  "stop": "DATA_WRITE_STOP: canonical data, README and research evidence written; no further data edits or new control invocation without coordinator direction."
+}

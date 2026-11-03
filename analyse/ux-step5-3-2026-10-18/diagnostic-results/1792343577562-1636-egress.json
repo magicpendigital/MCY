@@ -1,0 +1,21 @@
+{
+  "scope": "FICTIONAL_UI_TEST_EGRESS_ONLY",
+  "allowedOrigin": "http://127.0.0.1:4253",
+  "proxyOrigin": "http://127.0.0.1:4255",
+  "startedAt": "2026-10-18T17:12:57.672Z",
+  "endedAt": "2026-10-18T17:13:14.186Z",
+  "requestCap": 10000,
+  "requestBodyCapBytes": 16384,
+  "counts": {
+    "forwarded": 12,
+    "deniedHttp": 1,
+    "deniedConnect": 18,
+    "deniedUpgrade": 0,
+    "capExceeded": 0,
+    "localTransportErrors": 0
+  },
+  "unexpected": 19,
+  "status": "FAIL_UNEXPECTED_EGRESS_OR_CAP",
+  "recordedDestinations": false,
+  "recordedHeadersOrBodies": false
+}

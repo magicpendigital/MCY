@@ -1,0 +1,225 @@
+{
+  "schema": "mcy.step6-1.doc-checks.v1",
+  "capturedUtc": "2026-10-20T07:36:19.961Z",
+  "status": "PASS_SUPPLEMENTAL_DOCUMENT_CHECKS_ONLY",
+  "by": "/root/snapshot53_sync",
+  "command": "InlineNodebuiltins fs/path/crypto:4doclinks/actual9blanktables/baselinehashbytes; manualpaperwalkthrough. No moduleimport/test/app/pilot.",
+  "environment": {
+    "node": "v25.9.0"
+  },
+  "deliverables": [
+    {
+      "path": "analyse/ux-step6-1-2026-10-20/PILOT-READINESS.vi.md",
+      "sha256": "666643e6b7809f421d1ddaa4d158b8033ad7ee5c68ac85609a3ad1caabaf9747",
+      "bytes": 5835
+    },
+    {
+      "path": "analyse/ux-step6-1-2026-10-20/ROUTE-TASK-MATRIX.vi.md",
+      "sha256": "93ca3a976e9f2cd71eb7c81df715906dbfd07cec1f7445f8e7b7b111eb15fbcd",
+      "bytes": 5341
+    },
+    {
+      "path": "analyse/ux-step6-1-2026-10-20/MODERATOR-PACKET.vi.md",
+      "sha256": "1aede8907e7736e1aa060eecd68389394762df961375cde97f70e278776ae36f",
+      "bytes": 5886
+    },
+    {
+      "path": "analyse/ux-step6-1-2026-10-20/PILOT-RESULTS.template.md",
+      "sha256": "8be1ed7fc64d50fdd4dbe2a2764d5a30fbc57e55efc7ae83813eef9599a36793",
+      "bytes": 4019
+    }
+  ],
+  "links": {
+    "count": 17,
+    "broken": [],
+    "items": [
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-READINESS.vi.md",
+        "target": "../ux-implementation-2026-10-14/PLAN.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-READINESS.vi.md",
+        "target": "../ux-implementation-2026-10-14/content/pilot-test-protocol.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-READINESS.vi.md",
+        "target": "../ux-step5-1-2026-10-18/NEXT-STEPS.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-READINESS.vi.md",
+        "target": "../../content/yoga-library/manifest.json",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-READINESS.vi.md",
+        "target": "../ux-implementation-2026-10-14/content/lesson-template.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-READINESS.vi.md",
+        "target": "PILOT-RESULTS.template.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/ROUTE-TASK-MATRIX.vi.md",
+        "target": "PILOT-READINESS.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/ROUTE-TASK-MATRIX.vi.md",
+        "target": "MODERATOR-PACKET.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/ROUTE-TASK-MATRIX.vi.md",
+        "target": "PILOT-RESULTS.template.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/MODERATOR-PACKET.vi.md",
+        "target": "PILOT-READINESS.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/MODERATOR-PACKET.vi.md",
+        "target": "../ux-implementation-2026-10-14/content/pilot-test-protocol.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/MODERATOR-PACKET.vi.md",
+        "target": "ROUTE-TASK-MATRIX.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/MODERATOR-PACKET.vi.md",
+        "target": "PILOT-RESULTS.template.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-RESULTS.template.md",
+        "target": "PILOT-READINESS.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-RESULTS.template.md",
+        "target": "../ux-implementation-2026-10-14/content/pilot-test-protocol.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-RESULTS.template.md",
+        "target": "MODERATOR-PACKET.vi.md",
+        "exists": true
+      },
+      {
+        "source": "analyse/ux-step6-1-2026-10-20/PILOT-RESULTS.template.md",
+        "target": "ROUTE-TASK-MATRIX.vi.md",
+        "exists": true
+      }
+    ]
+  },
+  "emptyResults": {
+    "tables": 9,
+    "headers": [
+      "| Mã nghiên cứu không định danh | Vòng | Lượt mới/quay lại | Moderator/người ghi theo phân công | Ngày | Artifact ID/revision/locale/SHA và asset hashes hoặc evidence ref | Task được phép |",
+      "| Người khác nhau toàn pilot | Lượt vòng 1 | Lượt vòng 2 | Tổng lượt tham dự | Người quay lại | Cách đối chiếu, không đếm trùng |",
+      "| Mã nghiên cứu/vòng/task | Artifact/vị trí | Thời gian chọn/đơn vị | Quan sát không định danh | Trợ giúp đã dùng | Hiểu sai hoặc trạng thái bỏ qua/dừng | Diễn giải của nhóm, tách khỏi quan sát | Cần xác minh |",
+      "| Task/chỉ số định tính | Số trường hợp | Mẫu số hợp lệ | Thiếu dữ liệu/bỏ qua | Trước hay sau trợ giúp | Giới hạn/phiên bản |",
+      "| Mã nghiên cứu/vòng | Lý do muốn/không muốn quay lại do người đọc nêu, không định danh | Không trả lời/giới hạn |",
+      "| Artifact/version | Vai trò theo phân công | Công việc/số vòng sửa | Giờ dự toán và nguồn | Giờ thực tế | Review lại phần nào/evidence ref |",
+      "| Finding/evidence ref | Mức ưu tiên và lý do | Phần bị ảnh hưởng | Người chịu trách nhiệm theo phân công | Đề xuất xử lý | Quyết định thật/ngày/evidence ref | Phiên bản cần review lại | Điều kiện vòng kế/giữ BLOCKED |",
+      "| Nội dung/phiên bản nào được xét cho vòng kế | Evidence matching và scope | Người quyết định | Ngày | Kết luận/giới hạn |",
+      "| Custodian/nơi lưu được chọn | Ai được xem | Ngày xóa/retention | Cách nhận yêu cầu rút lại và giới hạn sau tổng hợp | Xử lý dòng vô tình có thông tin nhạy cảm | Xác nhận xử lý theo phương án |"
+    ],
+    "status": "PASS_EACH_TABLE_ONLY_HEADER_SEPARATOR_EMPTYBODY"
+  },
+  "preservation": {
+    "manifestInputs": {
+      "count": 168,
+      "mismatches": []
+    },
+    "canonical": {
+      "count": 71,
+      "mismatches": []
+    },
+    "candidateSource": {
+      "count": 255,
+      "mismatches": []
+    },
+    "client": {
+      "count": 59,
+      "mismatches": []
+    },
+    "rootDirty": {
+      "count": 35,
+      "mismatches": []
+    },
+    "references": {
+      "count": 29,
+      "mismatches": []
+    }
+  },
+  "paperWalkthrough": [
+    {
+      "scenario": "Reported decisions/detailsmissing",
+      "observed": "READINESS requires exactperson/version/purpose; stays BLOCKED_DETAILS_PENDING",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Onlyintroreviewed",
+      "observed": "ROUTE T tasks contingent; P tasks pending/no replacementpractice",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Hash/media/scopechanges",
+      "observed": "READINESS requires affectedrereview/no latest/oldapprovalcarry",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Decline/stop",
+      "observed": "MODERATOR endswithnoreason/no hiddennotes; questionsskippable",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Noresponse/completion",
+      "observed": "MODERATOR+RESULTS missing/skip notprogress",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Identity/healthdisclosure",
+      "observed": "MODERATOR no copy; accidentalrow excluded,custodianhandlesbeforeaggregate",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Attendance arithmetic",
+      "observed": "3+2-1=4 not5;3+3-1=5;4+4-2=6unique/8attendance,examplesnotresults",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Owner5.3delivery",
+      "observed": "READINESS no capshare/extend/reuse;deliverypending/noexport",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    },
+    {
+      "scenario": "Emptyresults/purpose",
+      "observed": "9tablesallblank; no quotes/participants/decisions; nomovementtasks",
+      "status": "PASS_MANUAL_PAPER_WALKTHROUGH_ONLY"
+    }
+  ],
+  "initialFailure": {
+    "path": "analyse/ux-step6-1-2026-10-20/DOCUMENT-CHECKS-INITIAL-BLOCK.json",
+    "sha256": "7be05b906a5c483fcfaf1d6bf6dfdff1363b3f989c4874b70e120d21167dd753",
+    "bytes": 624
+  },
+  "failureDisposition": "Wrong expected8tablecount corrected to actual9; original docs remained unchanged; initialcommandnotPASS",
+  "human": "OWNER_REPORTED_DECISIONS_EXIST_DETAILS_PENDING",
+  "pilot": "BLOCKED_DETAILS_PENDING_NOT_RUN",
+  "limits": [
+    "ImplementerselfchecknotindependentQC",
+    "No participantdata/consent/recording",
+    "PapermatrixnotruntimeUIimplementation"
+  ],
+  "next": "IndependentQC/rootdirectread/STOPOwner"
+}

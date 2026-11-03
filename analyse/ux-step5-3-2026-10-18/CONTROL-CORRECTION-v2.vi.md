@@ -1,0 +1,10 @@
+# 5.3 control source correction — pre-invocation v2
+
+18/10/2026 · [v1 freeze](CONTROL-SOURCE-FREEZE-v1.json) và [QC v1](CONTROL-PREINVOCATION-QC-v1.vi.md) là lịch sử **BLOCKED_INVOCATION**, giữ nguyên. 9 file v1 đã sao lưu nguyên hash tại `control-v1-preimage/`; v2 chỉ thay source control và negative test, không sửa candidate 4.7, canonical hoặc app root. Chưa import module, chạy test/build/server/browser.
+
+- Fixture draft thêm CAS nguồn hiện hành ngay trước commit; read/note/review và HTTP response đối chiếu source hash hiện hành sau await. Hai draft cùng precondition giờ phải có đúng một commit và một conflict; stale actor không nhận record cũ sau edit.
+- Server recheck lease/epoch cùng source pin ngay trước emit ở list/read/asset/note/draft/review. Adapter kiểm lại contract/inventory/unit/asset đã tiêu thụ sau awaited work, trả bytes asset đã hash/MIME trong buffer trước byte đầu. Đây là **finite verification**, không là atomic filesystem transaction; không thể rút lại response đã gửi.
+- Static `dist/client` có allowlist path+hash+size chụp lúc start, reject symlink ancestor và artifact mới/drift; private bootstrap path kiểm ancestor symlink/containment. Expired/revoked notes được purge theo lease; Owner mode không có edit/review. Bootstrap one-use private ignored file ngoài Vite root, không token URL/log/storage. Fixture và Owner fixed mode tách process/cookie/session.
+- Sửa negative test sai đường lỗi revision để kiểm identity sau selection hợp lệ; thêm đồng thời hai draft, source drift trên temp copy, Owner HTTP read/asset/note + deny edit/review, wrong token/Host/Origin/intent/process cookie/raw path/expiry. Contract schema SHA được pin và các field **đang tiêu thụ** được kiểm; không tuyên bố thực thi toàn bộ JSON Schema. Quản lý danh tính, quyền và review người thật vẫn BLOCKED.
+
+Sau source freeze v2, QC độc lập phải đọc lại actual controls/runner và xác minh pin trước khi root cấp **invocation GO**. `node --check` chỉ là static parse, không là test acceptance.

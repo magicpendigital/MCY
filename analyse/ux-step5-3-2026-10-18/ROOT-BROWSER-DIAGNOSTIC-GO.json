@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-10-18T17:12:21.0481367Z",
+  "status": "GO_ONE_THREE_PHASE_LOCAL_DIAGNOSTIC_ONLY",
+  "sourcePins": {
+    "analyse/ux-step5-3-2026-10-18/BROWSER-DIAGNOSTIC-SOURCE.vi.md": "1999d0e9e425538a99c2634b010807aaae4e695df3eddb81bd49a8e6b91f1a30",
+    "analyse/ux-step5-3-2026-10-18/diagnostic-source/unit-review-run.mjs": "12bb5db218780512bce7ea272b6403c9dabcdc8a8652d133d558c8f337957f00",
+    "analyse/ux-step5-3-2026-10-18/diagnostic-source/unit-review-browser-diagnostic.mjs": "6cafe6fb7c34c4d8510de122aed9999b83c33c3db7ec92f73df1985d0052f313",
+    "analyse/ux-step5-3-2026-10-18/diagnostic-source/unit-review-egress-guard.mjs": "f3072899263205ba212646d597e75eac4baecca93a3a36c12c4bf897068adb88"
+  },
+  "qcSha256": "a93b6d4f0a846e62d6c919b3f903394c5a0e991c59dbd2cfcf3983b8fa4d2ac0",
+  "portsClosed": [
+    4253,
+    4255
+  ],
+  "command": "node analyse/ux-step5-3-2026-10-18/diagnostic-source/unit-review-run.mjs --project browser-baseline-diagnostic --channel chromium",
+  "limits": "120s/4MiB/1browser/1context/3pages/4s observations; no canonical/capability access; sanitizedcategories/unknownhashonly",
+  "guard": "deny403/counters/FAIL unchanged; result diagnostic cannotclear27suitefailures",
+  "environment": "reviewedfixedcache/safeenv/localhostonly"
+}

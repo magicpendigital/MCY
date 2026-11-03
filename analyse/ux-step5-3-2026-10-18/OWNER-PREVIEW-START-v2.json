@@ -1,0 +1,30 @@
+{
+  "schema": "mcy.step5-3.owner-local-preview.start.v2",
+  "status": "STARTED_PENDING_HEALTH_AND_ROOT_MANUAL",
+  "startedUtc": "2026-10-18T16:50:27.5304732Z",
+  "pid": 32092,
+  "origin": "http://127.0.0.1:4260",
+  "mode": "owner_local_preview",
+  "command": "node server/contentReview/startLocalReview.mjs --mode owner_local_preview --port 4260",
+  "candidate": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1",
+  "capabilityPath": "D:\\Projects\\MCY\\.vercel\\local-review-private\\review-7LJGnm\\owner.cap",
+  "capabilityValueRecorded": false,
+  "rootGoSha256": "5c3e84cd2ffd98ba6286fa3d574ac8548b25f6063e02401b02594964f1291966",
+  "controlFreezeSha256": "8fa517d08d99f938b76f93b11f07fe00ee8dd302155205a2fa13d6e2e0ca7c97",
+  "artifactFreezeSha256": "d9a5c81f5291d6404cdadff228f21acbd5f044de82382fbad991ca338ff43fda",
+  "preControlPinsMatched": 9,
+  "preCanonicalPinsMatched": 71,
+  "preArtifactPinsMatched": 59,
+  "environmentKeys": [
+    "SystemRoot",
+    "WINDIR",
+    "PATH",
+    "TEMP",
+    "TMP",
+    "USERPROFILE"
+  ],
+  "nodeOptionsExcluded": true,
+  "providerKeysExcluded": true,
+  "envFilesLoaded": false,
+  "previousOwnerPreviewStopReceiptSha256": "377388a6016a8dbd8b9c10a1ccb70fe97c64ee7e093e26aad5e8ee575f7d7e60"
+}

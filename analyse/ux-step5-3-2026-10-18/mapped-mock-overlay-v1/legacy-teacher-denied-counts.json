@@ -1,0 +1,7 @@
+{
+  "caseId": "legacy-teacher-denied",
+  "validCalls": 1,
+  "invalidCalls": 0,
+  "consumed": true,
+  "allRequestsMatchedContract": true
+}

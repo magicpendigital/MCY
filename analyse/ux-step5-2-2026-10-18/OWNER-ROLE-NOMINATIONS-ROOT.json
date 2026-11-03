@@ -1,0 +1,33 @@
+{
+  "verifiedAt": "2026-10-18T14:13:42.6334149Z",
+  "status": "PASS_ROOT_OWNER_NOMINATIONS_ONLY",
+  "privateIgnored": true,
+  "privateTracked": false,
+  "publicEmailCount": 0,
+  "localLinks": 3,
+  "coreDocsUnchanged": 9,
+  "qcStatus": "PASS_R0_NOMINATION_DOCUMENTATION_HUMAN_REVIEW_BLOCKED",
+  "privateSha256": "e96a4cd6a83c2b982aabf75baa9b8447063176f37eeef153a27e64f090ea19e9",
+  "publicSha256": "f8395ff11d14a0313d3cdecc5e986f2b77c9975197ff98103a97d37fd513d11d",
+  "qcSha256": "59c2476f226bc3416e5b555d9d0dc49b805e1b748e38267f9395f6038bc52c4d",
+  "schema": "mcy-ux-step5-2-owner-nominations-root-check-v1",
+  "actualExitCode": 0,
+  "exactOwnerRoleMappingsVerified": 2,
+  "contactIds": [
+    {
+      "contactId": "teacher-contact-01",
+      "role": "Teacher"
+    },
+    {
+      "contactId": "reviewer-contact-01",
+      "role": "Reviewer"
+    }
+  ],
+  "accountIdentityVerified": false,
+  "roleGrantOrInvitationPerformed": false,
+  "humanReviewStatus": "BLOCKED_SCOPE_QUALIFICATION_INDEPENDENCE_ASSIGNMENT_AND_DECISIONS_PENDING",
+  "step52Complete": false,
+  "nextStepAuthorized": false,
+  "scope": "R0_APPEND_ONLY_NOMINATION_RECORD; app/canonical/runtime checks NOT_APPLICABLE",
+  "privateEqualityCheck": "Root independently compared the two private role/contact mappings to direct user input; raw contacts intentionally excluded from this public receipt."
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "mcy.step5-3.control-node-test.v3b",
+  "startedUtc": "2026-10-18T16:27:53.0504561Z",
+  "endedUtc": "2026-10-18T16:28:02.9339648Z",
+  "freezeSha256": "a919d6f3f90b16a1e922b6ae2c1cf81f685b4118615d972b33c5d30bd7f21664",
+  "rootGoSha256": "9a74c2040dc9eac16bc85b320973faf1fbc4b7a7fe74fd324d46452bab0fa685",
+  "command": "node --test server/contentReview/canonicalAdapter.test.mjs server/contentReview/reviewModel.test.mjs server/contentReview/localReviewServer.test.mjs",
+  "environmentKeys": [
+    "SystemRoot",
+    "WINDIR",
+    "PATH",
+    "TEMP",
+    "TMP",
+    "USERPROFILE"
+  ],
+  "providerKeysExcluded": true,
+  "nodeOptionsExcluded": true,
+  "envFilesLoaded": false,
+  "timeoutMs": 600000,
+  "timedOut": false,
+  "childExitCode": 0,
+  "stdoutPath": "D:\\Projects\\MCY\\analyse\\ux-step5-3-2026-10-18\\control-node-v3b\\stdout.tap",
+  "stderrPath": "D:\\Projects\\MCY\\analyse\\ux-step5-3-2026-10-18\\control-node-v3b\\stderr.txt",
+  "stdoutSha256": "1678a29e243e4b986183bb3ab41032a5b1586dd35d502fab31a2fda0d054c93f",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "preSourceMismatches": 0,
+  "preCanonicalMismatches": 0,
+  "postSourceMismatches": 0,
+  "postCanonicalMismatches": 0
+}

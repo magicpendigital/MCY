@@ -1,0 +1,693 @@
+{
+  "version": "mcy-photo-production-2026-10-18",
+  "recordedAt": "2026-10-18T17:17:32.414Z",
+  "status": "PRODUCER_COMPLETE_PENDING_ROOT_QC",
+  "canonicalWriteStop": true,
+  "scope": "35 original fictional photoAI drafts for seven reading units. Producer handoff, not release or human expert approval.",
+  "tool": "builtin:image_gen.imagegen",
+  "acceptedImages": 35,
+  "totalGenerations": 41,
+  "rejectedGenerations": 6,
+  "canonicalImageBytes": 63800177,
+  "dimensions": "1536x1024",
+  "ledger": {
+    "path": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+    "status": "PASS",
+    "accepted": 35,
+    "rejected": 6,
+    "sha256": "da6aec401c8732fa89c41369b98e337442b0e989628dcf2cb9ffc2d28f9354b2",
+    "bytes": 199889,
+    "canonicalBytes": 63800177
+  },
+  "changedScope": [
+    "35 PNGs in content/yoga-library/media/new-poses/{pose}/",
+    "GENERATION-LEDGER.json",
+    "7 unit media and assetBrief metadata, productionStatus, missing-media blocker only, stale provenance.notes and changelog",
+    "PHOTO-PRODUCTION receipt and preserved corrupt ledger bytes"
+  ],
+  "preserved": "Unit body/scope/steps/review/learner flags/source fields preserved by producer. Root may make a separately recorded exit-copy update after this handoff; unit hashes below are pre-root-exit-edit producer snapshots.",
+  "unitProof": [
+    {
+      "pose": "downward-dog",
+      "finalUnitSha256": "452299229d75604b1912bb55c100f88c8294bf36636d54178e5922940c702aaa",
+      "protectedFieldsUnchanged": true,
+      "changedProtectedFields": [],
+      "blockersOnlyMissingMediaRemoved": true,
+      "provenanceInputsUnchanged": true,
+      "gatesPreserved": true,
+      "presentMedia": 5,
+      "mediaReviewPending": true
+    },
+    {
+      "pose": "high-lunge",
+      "finalUnitSha256": "78135b89cbc95a8d8809afa28b88f605cb4e5d00b87f8e246a22e6936cef1368",
+      "protectedFieldsUnchanged": true,
+      "changedProtectedFields": [],
+      "blockersOnlyMissingMediaRemoved": true,
+      "provenanceInputsUnchanged": true,
+      "gatesPreserved": true,
+      "presentMedia": 5,
+      "mediaReviewPending": true
+    },
+    {
+      "pose": "warrior-ii",
+      "finalUnitSha256": "e666a51c0cf89a777b5d3ee8870deba4605af0049a8f8c90c342664e774cd067",
+      "protectedFieldsUnchanged": true,
+      "changedProtectedFields": [],
+      "blockersOnlyMissingMediaRemoved": true,
+      "provenanceInputsUnchanged": true,
+      "gatesPreserved": true,
+      "presentMedia": 5,
+      "mediaReviewPending": true
+    },
+    {
+      "pose": "cow-face",
+      "finalUnitSha256": "11410eb99910832630a5510cdd5aa8623a7b287aed8134453fb24d9f4cfac551",
+      "protectedFieldsUnchanged": true,
+      "changedProtectedFields": [],
+      "blockersOnlyMissingMediaRemoved": true,
+      "provenanceInputsUnchanged": true,
+      "gatesPreserved": true,
+      "presentMedia": 5,
+      "mediaReviewPending": true
+    },
+    {
+      "pose": "three-legged-dog",
+      "finalUnitSha256": "8d55dc8db1761c88ff20801d31085f22aeb50d1b7d068e8f27f6fc1b212b404b",
+      "protectedFieldsUnchanged": true,
+      "changedProtectedFields": [],
+      "blockersOnlyMissingMediaRemoved": true,
+      "provenanceInputsUnchanged": true,
+      "gatesPreserved": true,
+      "presentMedia": 5,
+      "mediaReviewPending": true
+    },
+    {
+      "pose": "cobra",
+      "finalUnitSha256": "e599f8a6f6f406c3e222d68d33c491dd679cde45b75f6dfcae67ba5e15ee713d",
+      "protectedFieldsUnchanged": true,
+      "changedProtectedFields": [],
+      "blockersOnlyMissingMediaRemoved": true,
+      "provenanceInputsUnchanged": true,
+      "gatesPreserved": true,
+      "presentMedia": 5,
+      "mediaReviewPending": true
+    },
+    {
+      "pose": "cobra-gentle",
+      "finalUnitSha256": "3460c3ada4ee8676c428694d55a9af3dbea36b8a513e98237385896a63063b01",
+      "protectedFieldsUnchanged": true,
+      "changedProtectedFields": [],
+      "blockersOnlyMissingMediaRemoved": true,
+      "provenanceInputsUnchanged": true,
+      "gatesPreserved": true,
+      "presentMedia": 5,
+      "mediaReviewPending": true
+    }
+  ],
+  "sourceCopyProof": [
+    {
+      "id": "downward-dog-photo-1",
+      "sourceSha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+      "targetSha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb",
+      "match": true,
+      "bytes": 1812300,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "downward-dog-photo-2",
+      "sourceSha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+      "targetSha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060",
+      "match": true,
+      "bytes": 1848438,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "downward-dog-photo-3",
+      "sourceSha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+      "targetSha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4",
+      "match": true,
+      "bytes": 1852535,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "downward-dog-photo-4",
+      "sourceSha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+      "targetSha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479",
+      "match": true,
+      "bytes": 1901426,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "downward-dog-photo-5",
+      "sourceSha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+      "targetSha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db",
+      "match": true,
+      "bytes": 1814976,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "warrior-ii-photo-1",
+      "sourceSha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
+      "targetSha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
+      "match": true,
+      "bytes": 1831659,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "warrior-ii-photo-2",
+      "sourceSha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483",
+      "targetSha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483",
+      "match": true,
+      "bytes": 1828870,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "warrior-ii-photo-3",
+      "sourceSha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8",
+      "targetSha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8",
+      "match": true,
+      "bytes": 2091941,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "warrior-ii-photo-4",
+      "sourceSha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555",
+      "targetSha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555",
+      "match": true,
+      "bytes": 1859874,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "warrior-ii-photo-5",
+      "sourceSha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af",
+      "targetSha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af",
+      "match": true,
+      "bytes": 1790732,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "high-lunge-photo-1",
+      "sourceSha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "targetSha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "match": true,
+      "bytes": 1802841,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "high-lunge-photo-2",
+      "sourceSha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+      "targetSha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022",
+      "match": true,
+      "bytes": 1755447,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "high-lunge-photo-3",
+      "sourceSha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+      "targetSha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae",
+      "match": true,
+      "bytes": 1909823,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "high-lunge-photo-4",
+      "sourceSha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+      "targetSha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514",
+      "match": true,
+      "bytes": 1789814,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "high-lunge-photo-5",
+      "sourceSha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+      "targetSha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94",
+      "match": true,
+      "bytes": 1757696,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cow-face-photo-1",
+      "sourceSha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "targetSha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "match": true,
+      "bytes": 1862363,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cow-face-photo-2",
+      "sourceSha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+      "targetSha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb",
+      "match": true,
+      "bytes": 1817244,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cow-face-photo-3",
+      "sourceSha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+      "targetSha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4",
+      "match": true,
+      "bytes": 1820114,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cow-face-photo-4",
+      "sourceSha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+      "targetSha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8",
+      "match": true,
+      "bytes": 1867541,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cow-face-photo-5",
+      "sourceSha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+      "targetSha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b",
+      "match": true,
+      "bytes": 1832690,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-photo-1",
+      "sourceSha256": "457007a58c66e278bebc8e8d2a65e95b839a0e064e072fc0dd6c1a89085ad7cf",
+      "targetSha256": "457007a58c66e278bebc8e8d2a65e95b839a0e064e072fc0dd6c1a89085ad7cf",
+      "match": true,
+      "bytes": 1771011,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-photo-2",
+      "sourceSha256": "00d6700f8d060947612d9ec06484f8b7bb8b828760c57eab8c2e9d330af4086f",
+      "targetSha256": "00d6700f8d060947612d9ec06484f8b7bb8b828760c57eab8c2e9d330af4086f",
+      "match": true,
+      "bytes": 1790538,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-photo-3",
+      "sourceSha256": "48e7d22e350f161f61174686700cf929f2126106becabc8566a5578e63e309a3",
+      "targetSha256": "48e7d22e350f161f61174686700cf929f2126106becabc8566a5578e63e309a3",
+      "match": true,
+      "bytes": 1771498,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-photo-4",
+      "sourceSha256": "8f8289598b2238344aa9ba757f9add69eaf01a80312b94be7ebbddc4f0e1febe",
+      "targetSha256": "8f8289598b2238344aa9ba757f9add69eaf01a80312b94be7ebbddc4f0e1febe",
+      "match": true,
+      "bytes": 1825658,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-photo-5",
+      "sourceSha256": "b5a9d2ba50800d59f1dd105c10185903176fd3556c10dca0ba31b143f6e68af3",
+      "targetSha256": "b5a9d2ba50800d59f1dd105c10185903176fd3556c10dca0ba31b143f6e68af3",
+      "match": true,
+      "bytes": 1747997,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "three-legged-dog-photo-1",
+      "sourceSha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
+      "targetSha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
+      "match": true,
+      "bytes": 1807481,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "three-legged-dog-photo-2",
+      "sourceSha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
+      "targetSha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
+      "match": true,
+      "bytes": 1808495,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "three-legged-dog-photo-3",
+      "sourceSha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901",
+      "targetSha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901",
+      "match": true,
+      "bytes": 1834690,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "three-legged-dog-photo-4",
+      "sourceSha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f",
+      "targetSha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f",
+      "match": true,
+      "bytes": 1817553,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "three-legged-dog-photo-5",
+      "sourceSha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be",
+      "targetSha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be",
+      "match": true,
+      "bytes": 1839967,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-gentle-photo-1",
+      "sourceSha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
+      "targetSha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
+      "match": true,
+      "bytes": 1758455,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-gentle-photo-2",
+      "sourceSha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356",
+      "targetSha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356",
+      "match": true,
+      "bytes": 1741187,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-gentle-photo-3",
+      "sourceSha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0",
+      "targetSha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0",
+      "match": true,
+      "bytes": 1730099,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-gentle-photo-4",
+      "sourceSha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d",
+      "targetSha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d",
+      "match": true,
+      "bytes": 1970907,
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "cobra-gentle-photo-5",
+      "sourceSha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c",
+      "targetSha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c",
+      "match": true,
+      "bytes": 1736317,
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "referenceProof": [
+    {
+      "path": "D:/Projects/MCY/analyse/foundation-series-2026-10-16/assets/standing-photo-01.png",
+      "sha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6",
+      "bytes": 1901732
+    },
+    {
+      "path": "D:/Projects/MCY/analyse/foundation-series-2026-10-16/assets/tabletop-photo-01.png",
+      "sha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2",
+      "bytes": 1863364
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-9252bb28-d0e2-45ca-aee2-f2ff3b2e186e.png",
+      "sha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d",
+      "bytes": 1831659
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-0413c362-5b7c-4efe-bdb8-a189e189d84d.png",
+      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5",
+      "bytes": 1802841
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-a3df47cd-be03-468d-827d-f1689d4ba3d4.png",
+      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346",
+      "bytes": 1862363
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-8db7b7ff-f189-4068-9510-5c648b7701ab.png",
+      "sha256": "457007a58c66e278bebc8e8d2a65e95b839a0e064e072fc0dd6c1a89085ad7cf",
+      "bytes": 1771011
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-297f9dce-a8d9-4f82-bcce-c2bdaaf2773b.png",
+      "sha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e",
+      "bytes": 1807481
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-2eb3c4e1-f67a-4821-9b6b-51a72964e510.png",
+      "sha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735",
+      "bytes": 1808495
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-d1465b3f-c7a7-46d7-ab59-3ab0847153ef.png",
+      "sha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1",
+      "bytes": 1758455
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-5b126f7b-4e7e-4e96-abba-721ef6a35eab.png",
+      "sha256": "d40b5bf96d59bbdc775f2a31b269552d0ba6f9e96fdc8ffa184b25b4d21fec44",
+      "bytes": 1769166
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-cc5411f1-5c0d-4216-8cad-3bf6bd0299e5.png",
+      "sha256": "c00be5670eb0468409d9ebc1ff18c16c03105f07aee2905d0cc7f7fd8509040a",
+      "bytes": 1789098
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-c487d924-d634-4d08-ab99-c7a3bded02de.png",
+      "sha256": "410ebd5483c5e6e3321ea93c7e5dcddcfcc4207dec630422c6877f01385e9272",
+      "bytes": 1840706
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-bc9511e2-db29-4e20-ad98-bdea3a2e4bab.png",
+      "sha256": "28e2dee2c4a3f44b0aa8eb51facebd0ac7901f46fe784ae3e7f44235ee0e6239",
+      "bytes": 1824077
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-b86d8369-249b-4386-8aa5-6d8bcc2052a9.png",
+      "sha256": "8f0d56da06815e4eedd6576554dd1b5de2ae2a624e8f91c4492beac91e205dbd",
+      "bytes": 1864885
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\generated_images\\01a14db2-85c8-7c21-93d7-621648dc7201\\exec-e37098bd-1d95-443b-b86d-8992e3a6b813.png",
+      "sha256": "0a121cd4cedd572e338d435b2fcffbcd320c99a8156eaf723a291df3a62d724b",
+      "bytes": 1862773
+    },
+    {
+      "path": "D:/Projects/MCY/public/assets/welcome-portrait-1024.webp",
+      "sha256": "c6ae8b8b5d8ba39dbb117b3864d6092f493e1df85c853ddb96637ce2c2bed1a1",
+      "bytes": 210456
+    }
+  ],
+  "checks": [
+    {
+      "command": "node analyse/yoga-content-production-2026-10-18/validate-library.mjs",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "scope": "Local draft schema/inventory/bytes/reference consistency only; no human yoga or rights approval.",
+        "inventoryRecords": 38,
+        "units": [
+          {
+            "id": "mcy.pose.cobra-gentle",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 5,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.pose.cobra",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 5,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.pose.cow-face",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 5,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.pose.downward-dog",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 5,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.foundation.cat-cow",
+            "revision": "r3",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 10,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.foundation.standing",
+            "revision": "r3",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 10,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.pose.high-lunge",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 5,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.pose.kneeling-backbend",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "editorial_draft",
+            "steps": 5,
+            "presentMedia": 0,
+            "missingMedia": 5
+          },
+          {
+            "id": "mcy.pose.low-crow",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "editorial_draft",
+            "steps": 5,
+            "presentMedia": 0,
+            "missingMedia": 5
+          },
+          {
+            "id": "mcy.pose.low-wheel",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "editorial_draft",
+            "steps": 5,
+            "presentMedia": 0,
+            "missingMedia": 5
+          },
+          {
+            "id": "mcy.transition.stand-up",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "editorial_draft",
+            "steps": 5,
+            "presentMedia": 0,
+            "missingMedia": 5
+          },
+          {
+            "id": "mcy.pose.three-legged-dog",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 5,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.pose.warrior-ii",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "media_draft",
+            "steps": 5,
+            "presentMedia": 5,
+            "missingMedia": 0
+          },
+          {
+            "id": "mcy.pose.wild-thing-high",
+            "revision": "r1",
+            "locale": "vi-VN",
+            "status": "editorial_draft",
+            "steps": 5,
+            "presentMedia": 0,
+            "missingMedia": 5
+          }
+        ],
+        "totalPresentMedia": 55,
+        "totalMissingMedia": 25
+      }
+    },
+    {
+      "command": "Node JSON.parse + accepted/rejected count + SHA256 after single-document repair",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "accepted": 35,
+        "rejected": 6,
+        "sha256": "da6aec401c8732fa89c41369b98e337442b0e989628dcf2cb9ffc2d28f9354b2",
+        "bytes": 199889,
+        "canonicalBytes": 63800177
+      }
+    },
+    {
+      "command": "PowerShell SHA256 source output versus canonical copy + PNG IHDR",
+      "exitCode": 0,
+      "result": "35/35 exact copies; 35 unique hashes; all1536x1024"
+    }
+  ],
+  "failuresAndDisposition": [
+    {
+      "error": "Initial downward-dog package media paths used repo-relative form",
+      "disposition": "Root validator correctly rejected. Fixed package-relative media/assetBrief paths; provenance remains repo-relative. Checker unchanged."
+    },
+    {
+      "error": "PowerShell long command ledger write CreateProcess206",
+      "disposition": "Recovered ledger; switched writes to apply_patch. No image lost."
+    },
+    {
+      "error": "Read-only anchor-hash foreach pipeline parse",
+      "disposition": "Rewrote as assignment+pipeline; subsequent process exit0."
+    },
+    {
+      "error": "Whole-file ledger patch left two concatenated JSON documents; root parse FAIL at position190975/line1887",
+      "disposition": "Preserved failed bytes at PHOTO-PRODUCTION.ledger-write-failure.txt; deleted/recreated canonical ledger as one complete JSON document; PowerShell parse and Node JSON.parse/count/hash now exit0."
+    }
+  ],
+  "limitations": [
+    "All expert/rights/editorial/accessibility approvals pending; hidden/unpublished/not recommendation eligible.",
+    "Static images are observations, not individualized practice instructions or video transcripts.",
+    "Exact anatomical side can be ambiguous in lateral photos; editorial side choices recorded.",
+    "Downward5 far knee occluded; Cobra and gentle side views partly occlude far hand; alt wording reflects this.",
+    "HighLunge4 fingertips close to top edge: preserve full-image contain presentation.",
+    "ThreeLeg2/4 side compositions are close; retained after correcting critical wrong-pose generations, without further aesthetic tuning.",
+    "Rejected 6 outputs retained at original tool paths with prompt/reason/hash in ledger."
+  ],
+  "noExternalEffects": "No paid connector/API key/credit purchase, private instructor reference pixels, upload/publish/deploy/app configuration/Auth/health/cloud write."
+}

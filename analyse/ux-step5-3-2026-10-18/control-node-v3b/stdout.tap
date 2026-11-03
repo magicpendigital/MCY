@@ -1,0 +1,21 @@
+✔ selected 14 canonical structures and 55 actual image buffers remain exact and unpublished (5972.6149ms)
+✔ canonical selection rejects duplicate identities, path traversal, changed unit and changed schema pin (75.8199ms)
+✔ ancestor symlink to exact bytes still cannot escape selected canonical root (64.8192ms)
+✔ final bounded recheck detects copied-source drift after list/read/asset work (2415.5474ms)
+✔ fixture HTTP stays same-origin, one-use, no-store and revocable without canonical files (337.3118ms)
+✔ expired one-use bootstrap capability cannot establish a local lease (65.3457ms)
+✔ owner local mode reads exact selected draft but denies edit/review and blocked media (3163.2705ms)
+✔ strict static allowlist serves pinned RIFF/WAVE audio and rejects invalid WAV bytes (58.4235ms)
+✔ fictional lease is exact-version scoped; edit invalidates reviewer until reassigned (19.7654ms)
+✔ two simultaneous same-version draft requests commit at most once (0.8884ms)
+✔ revoke, expiry and stale epoch clear lease access and version-scoped notes (6.6094ms)
+✔ owner mode reads selected source but cannot draft or review; post-await revoke denies stale result (16.6888ms)
+✔ delayed owner note cannot commit after revoke; final source verification rejects list and asset drift (11.2838ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8825.2135

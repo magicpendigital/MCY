@@ -1,0 +1,45 @@
+{
+  "status": "PASS_READ_REPAIR_GO_CANONICAL_CLI",
+  "date": "2026-10-19",
+  "scope": "Independent read-only semantic diff/index/hash check before authorized canonical CLI rerun; no invocation by reviewer.",
+  "catalog": {
+    "path": "content/yoga-library/expansion/catalog.json",
+    "bytes": 272795,
+    "sha256": "055317c193a4b66a8f52f5eed4faf7a390b76c0e5c79f4cd243d3e5ff4c60830"
+  },
+  "readme": {
+    "path": "content/yoga-library/expansion/README.vi.md",
+    "bytes": 21762,
+    "sha256": "03380421b36842e5c33b30ecab1d479ec4da53587d00b7b638b03b67e856e444"
+  },
+  "research": {
+    "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-RESEARCH-SOURCES.json",
+    "bytes": 27820,
+    "sha256": "14a0f305a7baca2483cf9fe872cd4377b750eba328277ff6a3380e7e9a736584"
+  },
+  "controls": [
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs",
+      "sha256": "a77f42072b8cba7388e6441d314adae1e95a873721be148baf9c92547d578f49"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.test.mjs",
+      "sha256": "71e2723eaf3d5d0408977d789c45aa655f64519dffd294d700defa8ad4b0cb01"
+    }
+  ],
+  "onlySemanticCatalogChange": "local-topic.unresolved.label.conceptualSourceRefs: broad locator replaced by5exact records19,22,23,24,28",
+  "changedJSONPaths": [
+    "$.taxonomies.23.label.conceptualSourceRefs.0.locator",
+    "$.taxonomies.23.label.conceptualSourceRefs.1",
+    "$.taxonomies.23.label.conceptualSourceRefs.2",
+    "$.taxonomies.23.label.conceptualSourceRefs.3",
+    "$.taxonomies.23.label.conceptualSourceRefs.4"
+  ],
+  "readmeRows": 114,
+  "canonicalEntities": 114,
+  "initialFailuresPreserved": [
+    "EXPANSION-README-INDEX-FAIL.json",
+    "expansion-control-canonical-1.log"
+  ],
+  "limits": "No global tests, final manifest or human review approval."
+}

@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "Local draft schema/inventory/bytes/reference consistency only; no human yoga or rights approval.",
+  "inventoryRecords": 38,
+  "units": [
+    {
+      "id": "mcy.foundation.cat-cow",
+      "revision": "r3",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 10,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.foundation.standing",
+      "revision": "r3",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 10,
+      "missingMedia": 0
+    }
+  ],
+  "totalPresentMedia": 20,
+  "totalMissingMedia": 0
+}

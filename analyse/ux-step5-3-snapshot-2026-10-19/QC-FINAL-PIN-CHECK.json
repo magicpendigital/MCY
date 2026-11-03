@@ -1,0 +1,76 @@
+{
+  "schema": "mcy.step5-3.independent-final-pin-check.v1",
+  "reviewer": "/root/qc53_rebind_final",
+  "capturedUtc": "2026-10-19T07:14:19.718Z",
+  "checks": {
+    "sourceFiles": {
+      "count": 255,
+      "mismatches": []
+    },
+    "clientFiles": {
+      "count": 59,
+      "mismatches": []
+    },
+    "canonicalDependencies": {
+      "count": 71,
+      "mismatches": []
+    },
+    "rootDirtyPreserved": {
+      "count": 35,
+      "mismatches": []
+    },
+    "preservedOldEvidence": {
+      "count": 6,
+      "mismatches": []
+    },
+    "oldFrozenSource": {
+      "count": 255,
+      "mismatches": []
+    },
+    "oldClient": {
+      "count": 59,
+      "mismatches": []
+    }
+  },
+  "receipts": {
+    "node13-v1": {
+      "receiptSha256": "4b1126bbeb65a1fffd60fe48cb3d92b42ce4c3cf340acc093a1033bbd69827ec",
+      "status": "PASS",
+      "childExitCode": 0,
+      "wrapperExitCode": "verified by PASS branch in pinned wrapper + implementer tool exit0",
+      "timedOut": false,
+      "outputs": {
+        "stdout": {
+          "sha256": "de3e8be20f4bd7570c8476615073b186e2da98fcdd86dd4ae9ea46e31c57b12c",
+          "bytes": 3199,
+          "matched": true
+        },
+        "stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "matched": true
+        }
+      }
+    },
+    "independent-probe-v1": {
+      "receiptSha256": "0b9f95f914bcbea299f3bb12e5c793b587f1e228a1c1e3a2064607ef575d9a80",
+      "status": "PASS",
+      "childExitCode": 0,
+      "wrapperExitCode": 0,
+      "timedOut": false,
+      "outputs": {
+        "stdout": {
+          "sha256": "765675f0f1265b33c0593f4227cf056a662f39556c51b4b17ff8fb2918ac3abd",
+          "bytes": 212,
+          "matched": true
+        },
+        "stderr": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "matched": true
+        }
+      }
+    }
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,11 @@
+{
+  "capturedAt": "2026-10-18T18:34:19.5095229Z",
+  "scope": "DEFAULT_GET_PROCESS_NODE_STARTED_SINCE_V2_NOT_EXHAUSTIVE_DESCENDANT_PROOF",
+  "nodes": [],
+  "tempPattern": "playwright-download*",
+  "tempEntryCount": 0,
+  "tempEntries": [],
+  "cacheLockExists": true,
+  "shellExists": false,
+  "killOrCleanupPerformed": false
+}

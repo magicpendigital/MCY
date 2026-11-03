@@ -1,0 +1,75 @@
+{
+  "runId": "1792355673095-17904",
+  "startedAt": "2026-10-18T20:34:33.098Z",
+  "endedAt": "2026-10-18T20:34:34.217Z",
+  "project": "preserved-regressions",
+  "channel": "configured-default",
+  "listing": true,
+  "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1",
+  "args": [
+    "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "--config",
+    "D:\\Projects\\MCY\\analyse\\ux-step5-3-2026-10-18\\mapped-mock-overlay-v1\\mapped.playwright.config.ts",
+    "--project",
+    "preserved-regressions",
+    "--project",
+    "teacher-workspace-overlay",
+    "--list"
+  ],
+  "environmentPolicy": "OS_ALLOWLIST_PLUS_EXPLICIT_INVALID_FIXTURE_ONLY_NO_ENV_FILES",
+  "browserCachePolicy": "FIXED_WORKSPACE_TEST_CACHE_NO_INHERITED_PATH",
+  "browserCachePath": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-browser-tools",
+  "inheritedEnvironmentKeys": [
+    "APPDATA",
+    "ComSpec",
+    "CommonProgramFiles",
+    "LOCALAPPDATA",
+    "PATHEXT",
+    "Path",
+    "ProgramFiles",
+    "ProgramFiles(x86)",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "USERPROFILE",
+    "windir"
+  ],
+  "timeoutMs": 120000,
+  "secondaryDeadlineMs": 20000,
+  "taskkillDeadlineMs": 8000,
+  "outputCapBytes": 4194304,
+  "capturedBytes": 1699,
+  "totalObservedBytes": 1699,
+  "cleanup": {
+    "attempted": false,
+    "reason": null,
+    "method": "NORMAL_TEARDOWN",
+    "taskkillExitCode": null,
+    "taskkillTimedOut": false,
+    "secondaryDeadlineExceeded": false,
+    "status": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+    "verified": true,
+    "childClosed": true,
+    "listeners": [
+      {
+        "port": 4253,
+        "state": "CLOSED"
+      },
+      {
+        "port": 4255,
+        "state": "CLOSED"
+      }
+    ],
+    "descendantEvidence": "NORMAL_DESCENDANTS_NOT_INDEPENDENTLY_ENUMERATED"
+  },
+  "childPid": 30824,
+  "outputCapExceeded": false,
+  "timedOut": false,
+  "exitCode": 0,
+  "signal": null,
+  "spawnError": false,
+  "status": "PASS_PROCESS",
+  "stdoutPath": "D:\\Projects\\MCY\\analyse\\ux-step5-3-2026-10-18\\mapped-mock-overlay-v1\\invocations\\1792355673095-17904.stdout.log",
+  "stderrPath": "D:\\Projects\\MCY\\analyse\\ux-step5-3-2026-10-18\\mapped-mock-overlay-v1\\invocations\\1792355673095-17904.stderr.log"
+}

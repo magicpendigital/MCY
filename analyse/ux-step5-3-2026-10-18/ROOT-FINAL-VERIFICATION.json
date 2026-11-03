@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-10-18T21:59:26.2961125Z",
+  "status": "PASS_LOCAL_CODE_AND_FIXTURE_QA",
+  "currentCanonical": "CURRENT_CANONICAL_REBIND_BLOCKED_7_OF_71",
+  "finalFreezeSha256": "7adae517bdaecbce60638af2f036fd1d83e972d2f83ccb3ca3ea338529deb75a",
+  "finalEvidenceRefsVerified": 45,
+  "finalQcSha256": "90809c9d4c8b12a0e2c49c0a4df53affee3c84828dd9bd1d1a763c3606cca4f0",
+  "preservationReceiptSha256": "277aa0295669fc5221be0fe725bd91895c74e9ac3d2f43e5cd06c14d65c81ebc",
+  "directChecks": [
+    "full final QC and handoff read",
+    "Prototype diff only lazy workspace entry",
+    "historical actual Owner IAB desktop1280x720/narrow320x640/image+blocked media",
+    "raw Node13/independent5 summaries",
+    "raw mapped stdout+counts1and2/invalid0/egress0/process0/cleanup",
+    "final45ref hashes/bytecounts",
+    "fresh root35/accepted47inputs237/candidate255/client59/prior16docs/guidance unchanged"
+  ],
+  "tests": {
+    "mappedComposition": "11 same-assertion browser,2 with exact setup overlay;1 equivalent Node contract",
+    "newUi": 15,
+    "independentControls": 5,
+    "currentSourceNegative": "14selected/7changed/7matched/listDenied/no payload",
+    "mappedSelectedChecks": 12,
+    "nodeControl": 13
+  },
+  "ownerPreview": "STOPPED_VERIFIED_NO_LIVE_URL",
+  "canonicalOrAppWrittenByRoot": false,
+  "finalScope": "No human/expertise/rights/real assignment/private production/native/web release approval",
+  "nextStep": "STOP_WAIT_OWNER_BEFORE_STEP6",
+  "qcModelFallback": "gpt-6-sol/high after gpt-6.1-sol capacity failure"
+}

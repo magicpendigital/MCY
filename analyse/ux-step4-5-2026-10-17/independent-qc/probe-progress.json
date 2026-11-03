@@ -1,0 +1,395 @@
+[
+  {
+    "name": "geometry-keyboard-vi-normal",
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: {\"top\":431.796875,\"bottom\":496.796875,\"header\":55,\"footer\":464}\n    at focusClear (file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:31:63)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:91:166\n    at async run (file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:82:24)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:88:70",
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "geometry-keyboard-vi-28",
+    "status": "PASS",
+    "detail": {
+      "initialCore": {
+        "header": 55,
+        "footer": 464,
+        "scope": 378.796875,
+        "choices": [
+          250.421875,
+          250.421875,
+          318.421875,
+          318.421875
+        ]
+      },
+      "footerGeometry": {
+        "footer": {
+          "left": 0,
+          "right": 320,
+          "top": 464,
+          "bottom": 568,
+          "width": 320,
+          "height": 104
+        },
+        "primary": {
+          "left": 108,
+          "right": 304,
+          "top": 471,
+          "bottom": 561,
+          "width": 196,
+          "height": 90
+        },
+        "skip": {
+          "left": 16,
+          "right": 100,
+          "top": 471,
+          "bottom": 561,
+          "width": 84,
+          "height": 90
+        },
+        "safe": 0
+      },
+      "textFocus": {
+        "top": 278.21875,
+        "bottom": 386.21875,
+        "header": 55,
+        "footer": 464
+      },
+      "overflowGeometry": {
+        "client": 320,
+        "scroll": 320,
+        "offenders": []
+      },
+      "skipFocus": {
+        "footer": {
+          "left": 0,
+          "right": 320,
+          "top": 464,
+          "bottom": 568,
+          "width": 320,
+          "height": 104
+        },
+        "primary": {
+          "left": 108,
+          "right": 304,
+          "top": 471,
+          "bottom": 561,
+          "width": 196,
+          "height": 90
+        },
+        "skip": {
+          "left": 16,
+          "right": 100,
+          "top": 471,
+          "bottom": 561,
+          "width": 84,
+          "height": 90
+        },
+        "safe": 0
+      }
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "geometry-keyboard-en-normal",
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: {\"top\":431.796875,\"bottom\":496.796875,\"header\":55,\"footer\":464}\n    at focusClear (file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:31:63)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:91:166\n    at async run (file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:82:24)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:88:70",
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "geometry-keyboard-en-28",
+    "status": "FAIL",
+    "error": "Error: expect(locator).toContainText(expected) failed\n\nLocator: getByTestId('flow-current').locator('.mcy-sync-card')\nExpected substring: \"No overall feedback was provided.\"\nReceived string:    \"KEPT ONLY FOR THIS SESSIONNo feeling was recordedNo overall feeling was provided. No area level was inferred.\"\nTimeout: 5000ms\n\nCall log:\n  - Expect \"to.have.text\" with timeout 5000ms\n  - waiting for getByTestId('flow-current').locator('.mcy-sync-card')\n    13 × locator resolved to <div class=\"mcy-sync-card\">…</div>\n       - unexpected value \"KEPT ONLY FOR THIS SESSIONNo feeling was recordedNo overall feeling was provided. No area level was inferred.\"\n\n    at captureRawStack (D:\\Projects\\MCY\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toContainText (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\independent-probe.mjs:95:88\n    at async run (D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\independent-probe.mjs:82:24)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:88:70",
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "safearea-iphone",
+    "status": "FAIL",
+    "error": "AssertionError [ERR_ASSERTION]: {\"footer\":{\"left\":353.5,\"right\":746.5,\"top\":838,\"bottom\":942,\"width\":393,\"height\":104},\"primary\":{\"left\":483.390625,\"right\":730.5,\"top\":845,\"bottom\":935,\"width\":247.109375,\"height\":90},\"skip\":{\"left\":369.5,\"right\":475.390625,\"top\":845,\"bottom\":889,\"width\":105.890625,\"height\":44},\"safe\":34}\n    at footer (file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:39:278)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:98:340\n    at async run (file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:82:24)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:98:48",
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "safearea-pixel-10",
+    "status": "PASS",
+    "detail": {
+      "footer": {
+        "left": 337,
+        "right": 764,
+        "top": 874,
+        "bottom": 978,
+        "width": 427,
+        "height": 104
+      },
+      "primary": {
+        "left": 477.09375,
+        "right": 748,
+        "top": 881,
+        "bottom": 932,
+        "width": 270.90625,
+        "height": 51
+      },
+      "skip": {
+        "left": 353,
+        "right": 469.09375,
+        "top": 881,
+        "bottom": 925,
+        "width": 116.09375,
+        "height": 44
+      },
+      "safe": 0
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "prior-status-none",
+    "status": "PASS",
+    "detail": {
+      "text": "Trước tập, bạn đã chọn không thấy khó chịu",
+      "noInventedComparison": true
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "prior-status-unknown",
+    "status": "PASS",
+    "detail": {
+      "text": "Trước tập, bạn đã chọn chưa rõ",
+      "noInventedComparison": true
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "prior-status-skip",
+    "status": "PASS",
+    "detail": {
+      "text": "Chưa có ghi nhận vùng trước tập",
+      "noInventedComparison": true
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "new-post-edit-delete-and-retained-route",
+    "status": "PASS",
+    "detail": {
+      "currentRegionEditableWithoutInventedBefore": true,
+      "retainedCourseFooterClean": true
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "unequal-sides-keep-uncertain",
+    "status": "PASS",
+    "detail": {
+      "perSideLevelsPreserved": true,
+      "noImplicitSame": true,
+      "uncertainClearsAfterEntries": true
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "signed-in-session-only-false",
+    "status": "FAIL",
+    "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('flow-current').locator('.mcy-state-pill')\nExpected: \"CHỈ GIỮ TRONG PHIÊN\"\nReceived: \"CHỈ GIỮ TẠM TRONG PHIÊN\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.text\" with timeout 5000ms\n  - waiting for getByTestId('flow-current').locator('.mcy-state-pill')\n    12 × locator resolved to <span class=\"mcy-state-pill\">CHỈ GIỮ TẠM TRONG PHIÊN</span>\n       - unexpected value \"CHỈ GIỮ TẠM TRONG PHIÊN\"\n\n    at captureRawStack (D:\\Projects\\MCY\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveText (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\independent-probe.mjs:102:659\n    at async run (D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\independent-probe.mjs:82:24)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:102:42",
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_state"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/checkins"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_state"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/checkins"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_state"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/checkins"
+      },
+      {
+        "method": "POST",
+        "path": "/functions/v1/mcy-ai-assistant"
+      },
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "signed-in-session-only-true",
+    "status": "FAIL",
+    "error": "Error: expect(locator).toHaveText(expected) failed\n\nLocator:  getByTestId('flow-current').locator('.mcy-state-pill')\nExpected: \"CHỈ GIỮ TRONG PHIÊN\"\nReceived: \"CHỈ GIỮ TẠM TRONG PHIÊN\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"to.have.text\" with timeout 5000ms\n  - waiting for getByTestId('flow-current').locator('.mcy-state-pill')\n    14 × locator resolved to <span class=\"mcy-state-pill\">CHỈ GIỮ TẠM TRONG PHIÊN</span>\n       - unexpected value \"CHỈ GIỮ TẠM TRONG PHIÊN\"\n\n    at captureRawStack (D:\\Projects\\MCY\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveText (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\independent-probe.mjs:102:659\n    at async run (D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\independent-probe.mjs:82:24)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/independent-probe.mjs:102:42",
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/checkins"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_state"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/checkins"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_state"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_policy_versions"
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/checkins"
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/get_my_consent_state"
+      },
+      {
+        "method": "POST",
+        "path": "/functions/v1/mcy-ai-assistant"
+      },
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "name": "explicit-skip-discards-worse",
+    "status": "PASS",
+    "detail": {
+      "skipDistinctFromBlankAndWorse": true
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/embed/yKm7aOAWn-k"
+      }
+    ],
+    "pageErrors": []
+  }
+]

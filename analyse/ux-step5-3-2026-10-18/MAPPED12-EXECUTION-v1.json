@@ -1,0 +1,52 @@
+{
+  "schema": "mcy.step5-3.mapped12-execution.v1",
+  "capturedUtc": "2026-10-18T17:10:37.7704611Z",
+  "scope": "ONE_ROOT_APPROVED_PRESERVED_REGRESSIONS_CHROMIUM_INVOCATION",
+  "actualOutcome": "ASSERTIONS_12_OF_12_PASS_BUT_PROCESS_FAIL_UNEXPECTED_CONNECT",
+  "outerReceipt": {
+    "path": "analyse/ux-step5-3-2026-10-18/mapped12-run-v1/receipt.json",
+    "sha256": "5da7589e5eb59e81d8a59a944fc04f6dcccf0d77c864aacdd67d405f2752f200"
+  },
+  "innerReceipt": {
+    "path": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1\\test-results\\unit-review-invocations\\1792343280589-3992.json",
+    "sha256": "b88e89f3b6986e40e59b2f7515769ab60548dc3565bd0b75301d3fb7967ebd0e"
+  },
+  "innerStdout": {
+    "path": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1\\test-results\\unit-review-invocations\\1792343280589-3992.stdout.log",
+    "sha256": "f9b9b7d7a699b5b2bb7e5db74a953fdb76d806e65d4b838c04f8dd3119a3cd59"
+  },
+  "innerStderr": {
+    "path": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1\\test-results\\unit-review-invocations\\1792343280589-3992.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "egressReceipt": {
+    "path": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1\\test-results\\unit-review-5-3\\egress-1792343282047-13944.json",
+    "sha256": "a55e926a815014d8baa728060869109189b53b7a0f9a86049c9ed7fb306afda0"
+  },
+  "assertionsPassed": 12,
+  "selectedCases": 12,
+  "workerErrorsOutsideTests": 1,
+  "childExitCode": 1,
+  "outerExitCode": 1,
+  "timedOut": false,
+  "outputCapExceeded": false,
+  "pinMismatchesPre": 0,
+  "pinMismatchesPost": 0,
+  "egressCounts": {
+    "forwarded": 185,
+    "deniedHttp": 0,
+    "deniedConnect": 63,
+    "deniedUpgrade": 0,
+    "capExceeded": 0,
+    "localTransportErrors": 0
+  },
+  "egressUnexpected": 63,
+  "egressStatus": "FAIL_UNEXPECTED_EGRESS_OR_CAP",
+  "cleanupVerified": true,
+  "cleanupStatus": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+  "limits": [
+    "Denied CONNECT origins intentionally not recorded; cause/provider remains unproven",
+    "12 assertions passing is not a process PASS",
+    "Owner actual preview4260 separate and untouched"
+  ]
+}

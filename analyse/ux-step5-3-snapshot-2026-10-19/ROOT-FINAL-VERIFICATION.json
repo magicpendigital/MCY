@@ -1,0 +1,31 @@
+{
+  "schema": "mcy.step5-3.root-final-verification.v1",
+  "capturedUtc": "2026-10-20T07:15:23.1486816Z",
+  "verifier": "/root",
+  "status": "PASS_LOCAL_SNAPSHOT_REBIND_STOP_USER_REVIEW",
+  "implementationBy": "/root/snapshot53_sync",
+  "independentQcBy": "/root/qc53_rebind_final",
+  "rootAppSourceEdits": 0,
+  "candidate": ".vercel/ux-step5-3-rebind-20261019-v1",
+  "snapshotSha256": "2e9ffee39872c08891bedce9ed5a93f93ec4af4d878ce50d47b09aaa8d71a937",
+  "applicationDiff": "selectedSnapshot.json only;7unit hashes+capturedUtc;254source+59client unchanged",
+  "sourceSelection": "root385/385 exact pins and own8field semantic comparison",
+  "tests": "19October Node13 child0/toolwrapper0/13pass0fail0skip0cancel; independentprobe once PASS14fresh/7stale rejected+7matched/identity-MIME-blocked denied",
+  "rootBrowser": "19October actual IAB:14list;7updatedunitSHA matches;28newexit/oldabsent/loadedimages/noalerts;5blockedlowcrow labels/noimages;own tabclosed",
+  "freshFinalPins": "20October root independenthash+bytes255source/59client/71canonical/root35/old6/old255+59 zero drift;42/42evidence refs exact",
+  "cleanup": "20October PIDalreadyabsent/no kill bywrapper orroot;expectedprivateDir removed;root independently confirmed processabsent+4260closed+privateabsent",
+  "independentFinalQc": "PASS_LOCAL_REBIND_HANDOFF_SCOPE/noP1P2 scoped",
+  "references": {
+    "FINAL-EVIDENCE-FREEZE-v1.json": "e1a3ba685317d5710d5e1f4f442c2c01f402190c279a50b9b4f61f7b9c2b8a67",
+    "FINAL-QC-SUPPLEMENT-2026-10-20.vi.md": "fc035ee5c31b36228bac8d8c4e78e9cff99c463d10bc0ebde5ab3fc55abcdc4f",
+    "QC-SUPPLEMENT-PINS-2026-10-20.json": "44730561b1d990d2a14b30bf237d2c03b12e7cf6cdac061d336806d1a07b8465",
+    "ROOT-EVIDENCE-CHECK.json": "660013034858d28d7a6b072292820cfb957403baef6a22d58246f724e5fe36e8",
+    "ROOT-FINAL-PINS-2026-10-20.json": "ec9d879819fd04f426566692d862f1b2eef54198e271566d4a7f0ce8cd3e3a76",
+    "ROOT-CLEANUP-CHECK.json": "251a1422bfcb54f8968ce09b39e7a249e688e8ce2b3ec0e007bb96133c343be0"
+  },
+  "historicalLimits": "UI/test/probe19October;freshpins/cleanup20October;prior UI15+mapped12 reused only exactunchangedinputs,not freshfullsuite",
+  "externalEffects": "no cloud/Auth/SQL/device/email/role/deploy/AI/canonical writes",
+  "remaining": "human yoga/expertise/rights/TeacherReviewer assignment;native HALTED/currentActorVerified=false;web BLOCKED_NO_UPLOAD_OR_ALIAS",
+  "rollback": "stop using newcandidate;oldcandidate stays immutable and rejects7current changedunits;no canonical/historyrevert",
+  "next": "STOP;wait userreview;no step6"
+}

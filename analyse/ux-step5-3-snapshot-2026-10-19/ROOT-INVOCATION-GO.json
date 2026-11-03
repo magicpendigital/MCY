@@ -1,0 +1,26 @@
+{
+  "capturedUtc": "2026-10-19T07:04:31.6144892Z",
+  "status": "GO_ONE_NODE13_AND_ONE_INDEPENDENT_READONLY_PROBE",
+  "pins": {
+    "run-node13-v2.ps1": "2caca1408248b6a1358656b20a8fba738b8abcd697e5b152cac3ce5e9d661524",
+    "independent-snapshot-probe.mjs": "d8c3f363c476d71a396437e7bf7bbbcd578cc81aa9ed5fc50375b453ecdde30d",
+    "CANDIDATE-FREEZE-v1.json": "6af8eb4daf3838d8abd44edfaa0009619e54b1ad42001c4c5b4869a6b9dabc5e",
+    "SELECTION-QC.vi.md": "72af40b9ade7ec2de59d0d8faef35d7cfb41f25a12b60d2ef15fad9538ccca37",
+    "NODE13-PLAN-v2.vi.md": "6bf2f32cf94ea6ec29f4877098741092f38eee655f06fc2a8dcecf285ddb4c3b"
+  },
+  "rootSelectionCheck": "385/385 exact +ownsemantic8fielddiff",
+  "nodeCommand": "run-node13-v2.ps1 -ExpectedGoSha256 <this-file-sha256>",
+  "nodeTimeoutMs": 60000,
+  "nodeReporter": "tap explicitly pinned",
+  "probeCommand": "C:/Program Files/nodejs/node.exe analyse/ux-step5-3-snapshot-2026-10-19/independent-snapshot-probe.mjs",
+  "probeTimeoutMs": 30000,
+  "probeOutputCapBytes": 1048576,
+  "childEnvironment": "six OS keys only; no NODE_OPTIONS/provider/envfile",
+  "attemptsEach": 1,
+  "parallelAllowed": "both read-only canonical; Node fixtures own temporary data/ephemeral loopback",
+  "required": "actual child+wrapper exit0; Node13no skips; probe exact expected counts/denials; pre/post25559/71+protectedold/root pins unchanged",
+  "noAutomaticRetry": true,
+  "actualOwnerServerOrBrowserAuthorized": false,
+  "externalEffects": "no cloud/native/Auth/SQL/email/role/deploy/AI/canonical writes",
+  "stop": "after local snapshot acceptance rootchecks and user review before nextstep"
+}

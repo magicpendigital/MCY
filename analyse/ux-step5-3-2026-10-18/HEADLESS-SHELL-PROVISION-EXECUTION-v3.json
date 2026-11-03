@@ -1,0 +1,110 @@
+{
+  "scope": "V3_OFFICIAL_HEADLESS_SHELL_PROVISION_COMPLETE_HOLD_BROWSER",
+  "capturedAt": "2026-10-18T18:44:10.894Z",
+  "go": {
+    "path": "analyse/ux-step5-3-2026-10-18/ROOT-HEADLESS-SHELL-PROVISION-GO-v3.json",
+    "bytes": 1262,
+    "sha256": "ff2adc832a83e797c8fece9fd23521bd84aeb9632b13fc920537da09e136478a"
+  },
+  "receipt": {
+    "scope": "ONE_SEPARATELY_APPROVED_V3_OFFICIAL_HEADLESS_SHELL_PROVISION",
+    "startedAt": "2026-10-18T18:40:34.605Z",
+    "endedAt": "2026-10-18T18:43:20.798Z",
+    "childPid": 30416,
+    "args": [
+      "D:\\Projects\\MCY\\node_modules\\playwright\\cli.js",
+      "install",
+      "chromium",
+      "--only-shell"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "errorCode": null,
+    "timeoutMs": 600000,
+    "outputCapBytes": 4194304,
+    "environmentPolicy": "OS_ALLOWLIST_PLUS_FIXED_WORKSPACE_BROWSER_CACHE_NO_ENV_FILES_OR_PROVIDER_OVERRIDES",
+    "inheritedEnvironmentKeys": [
+      "APPDATA",
+      "ComSpec",
+      "CommonProgramFiles",
+      "LOCALAPPDATA",
+      "PATHEXT",
+      "Path",
+      "ProgramFiles",
+      "ProgramFiles(x86)",
+      "SystemRoot",
+      "TEMP",
+      "TMP",
+      "USERPROFILE",
+      "windir"
+    ],
+    "cache": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-browser-tools",
+    "shellExistedBefore": false,
+    "shellExistsAfter": true,
+    "browserLaunched": false,
+    "outerInvocationsUnderV3": 1,
+    "automaticOuterRetry": false,
+    "cliInternalDownloadAttempts": 1
+  },
+  "cleanup": {
+    "capturedAt": "2026-10-18T18:43:58.1946154Z",
+    "childPid": 30416,
+    "childPidVisible": false,
+    "method": "DEFAULT_GET_PROCESS_EXACT_RECORDED_CHILD_PID_READONLY_NOT_OSWIDE_DESCENDANT_PROOF",
+    "tempPattern": "playwright-download*",
+    "tempEntryCount": 0,
+    "cacheLockExists": false,
+    "agentKilledOrDeleted": false
+  },
+  "artifactManifest": {
+    "path": "analyse/ux-step5-3-2026-10-18/headless-shell-provision-v3/artifact-manifest.json",
+    "bytes": 319572,
+    "sha256": "7c2d633a56b32ea9994f9ffe138fb0effa3e5e00c42f1b21fd32b2e374772b70"
+  },
+  "sourceMatched": 7,
+  "sourceTotal": 7,
+  "existing318Matched": 318,
+  "existing318Total": 318,
+  "threeDbMatched": 3,
+  "threeDbTotal": 3,
+  "newFileCount": 292,
+  "newBytes": 282539741,
+  "newExecutables": [
+    {
+      "path": ".vercel/ux-step5-3-browser-tools/chromium_headless_shell-1228/chrome-headless-shell-win64/chrome-headless-shell.exe",
+      "bytes": 203034112,
+      "sha256": "28016df6864d302434c9231e1f9f1a8a7ecc512cb2fe3faabb2a36130b96bcf1"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/headless-shell-provision-v3/started.json",
+      "bytes": 275,
+      "sha256": "3068521deefa18bf33cd02a4a559d23a481c18fc69fad3812c52c5e337aa8b88"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/headless-shell-provision-v3/receipt.json",
+      "bytes": 1038,
+      "sha256": "e0b2d04ca80eff8e55b5b12a40ffc98a9474581827e488806b56822f8c808c17"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/headless-shell-provision-v3/stdout.log",
+      "bytes": 2357,
+      "sha256": "269474adedaddc297fd6fb0dedb15d023173d245ceffe87d9971b281c258676a"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/headless-shell-provision-v3/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/headless-shell-provision-v3/cleanup-observation.json",
+      "bytes": 332,
+      "sha256": "5456072f51869a9c76faf948f3e3c961f8b386d6fc678c5e4283ca373e48d345"
+    }
+  ],
+  "browserLaunched": false,
+  "sourceAppChanged": false,
+  "canonicalRebased": false,
+  "historicalFailuresPreserved": true
+}

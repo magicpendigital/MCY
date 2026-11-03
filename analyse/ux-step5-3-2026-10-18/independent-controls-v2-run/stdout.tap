@@ -1,0 +1,13 @@
+✔ independent static artifact changes and additions fail closed (568.5396ms)
+✔ independent static root junction is rejected before server startup (12.1943ms)
+✔ independent final HTTP emit denies source-drift after model read (120.8349ms)
+✔ independent final HTTP emit denies revoke after model read (82.5479ms)
+✔ independent final HTTP emit denies expiry after model read (135.1081ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1719.0673

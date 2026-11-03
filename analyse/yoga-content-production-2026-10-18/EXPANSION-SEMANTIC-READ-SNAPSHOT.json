@@ -1,0 +1,32 @@
+{
+  "status": "PASS_READ_AUDIT",
+  "date": "2026-10-19",
+  "scope": "Independent read-only semantic/tuple audit; not control-suite invocation or human/source-truth approval.",
+  "catalog": {
+    "path": "content/yoga-library/expansion/catalog.json",
+    "bytes": 272175,
+    "sha256": "74dd755ca379a54865b02aecf7f3894b233e8d0aee3ec6611d350ac98fe875ab"
+  },
+  "counts": {
+    "pose_family": 68,
+    "pose_variant": 3,
+    "skill": 28,
+    "knowledge_topic": 10,
+    "local_unresolved_topic": 5
+  },
+  "sources": 20,
+  "taxonomies": 24,
+  "names": 281,
+  "viEditorialNames": 114,
+  "saSourceAttestedNames": 58,
+  "existingLinks": 17,
+  "distinctCurrentUnits": 14,
+  "localUnresolved": [
+    "mcy.expansion.local-topic.kneeling-backbend",
+    "mcy.expansion.local-topic.low-crow",
+    "mcy.expansion.local-topic.wild-thing-high",
+    "mcy.expansion.local-topic.stand-up",
+    "mcy.expansion.local-topic.low-wheel"
+  ],
+  "findings": []
+}

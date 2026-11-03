@@ -1,0 +1,33 @@
+
+Running 15 tests using 1 worker
+
+[1/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:55:1 › unit review stays closed without a local session and never requests learner auth
+[2/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:67:1 › owner local reader shows exact source and blocked media without practice or review controls
+[3/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:83:1 › notes are explicit lease-version requests and an uncertain result cannot be resubmitted
+[4/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:99:1 › fictional rehearsal controls remain visibly fictional and do not appear in owner mode
+[5/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:112:3 › mutation foreign-epoch clears private DOM immediately
+[6/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:112:3 › mutation malformed-unit clears private DOM immediately
+[7/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:112:3 › mutation changed-source clears private DOM immediately
+[8/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:126:1 › a changed session clears private content and rejects a late prior read
+[9/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:143:1 › expiry clears the unit and unsaved notes at the lease deadline
+[10/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:154:1 › version conflict hides old content and never silently opens the newer revision
+[11/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:161:1 › invalid transport response clears the reader instead of trusting a role label
+[12/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:167:1 › fourteen-item narrow list moves keyboard focus and scroll to the validated reader
+[13/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:180:3 › unit reader remains reachable at 320x640 with large text
+[14/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:180:3 › unit reader remains reachable at 844x390 with large text
+[15/15] [unit-review-ui] › tests\unit-review-workspace.spec.ts:180:3 › unit reader remains reachable at 1280x900 with large text
+Error: UI test egress guard rejected 81 unexpected requests/cap violations.
+
+   at ..\scripts\unit-review-global-setup.mjs:36
+
+  34 |     let receipt;
+  35 |     try { receipt = await guard.close(); } finally { await running.close(); }
+> 36 |     if (receipt.unexpected) throw new Error(`UI test egress guard rejected ${receipt.unexpected} unexpected requests/cap violations.`);
+     |                                   ^
+  37 |   };
+  38 | }
+  39 |
+    at D:\Projects\MCY\.vercel\ux-step5-3-20261018-v1\scripts\unit-review-global-setup.mjs:36:35
+
+  15 passed (24.2s)
+  1 error was not a part of any test, see above for details

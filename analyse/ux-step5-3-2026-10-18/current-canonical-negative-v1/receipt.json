@@ -1,0 +1,45 @@
+{
+  "schema": "mcy.step5-3.current-canonical-negative.v1",
+  "startedUtc": "2026-10-18T18:35:58.3782527Z",
+  "endedUtc": "2026-10-18T18:36:05.1200798Z",
+  "cwd": "D:/Projects/MCY",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "--input-type=module",
+    "-e",
+    "import{readFile}from'node:fs/promises';import{createCanonicalAdapter}from'./.vercel/ux-step5-3-20261018-v1/server/contentReview/canonicalAdapter.mjs';const snapshot=JSON.parse(await readFile('./.vercel/ux-step5-3-20261018-v1/server/contentReview/selectedSnapshot.json','utf8'));const a=createCanonicalAdapter({repoRoot:process.cwd(),snapshot});let changed=0,matched=0;for(const key of a.selectedKeys){try{await a.verifyCurrent(key);matched++}catch(e){if(e.code!=='SOURCE_CHANGED')throw Error('unexpected validation code');changed++}}let denied=false;try{await a.listUnits()}catch(e){if(e.code!=='SOURCE_CHANGED')throw Error('unexpected list code');denied=true}console.log(JSON.stringify({selected:a.selectedKeys.length,changed,matched,listDenied:denied,payloadEmitted:false}));if(changed!==7||matched!==7||!denied)process.exitCode=1;"
+  ],
+  "environmentKeys": [
+    "SystemRoot",
+    "WINDIR",
+    "PATH",
+    "TEMP",
+    "TMP",
+    "USERPROFILE"
+  ],
+  "envFilesLoaded": false,
+  "providerKeysExcluded": true,
+  "timeoutMs": 30000,
+  "outputCapBytes": 1048576,
+  "stopReason": null,
+  "childExitCode": 0,
+  "result": {
+    "selected": 14,
+    "changed": 7,
+    "matched": 7,
+    "listDenied": true,
+    "payloadEmitted": false
+  },
+  "preControlPins": 9,
+  "selectedSnapshotIncludedInControl": true,
+  "preCanonicalPins": 71,
+  "preHistoricalCanonicalMismatches": 7,
+  "postInputChanges": [],
+  "ownedChildExited": true,
+  "httpOrServerStarted": false,
+  "payloadEmitted": false,
+  "status": "PASS_EXPECTED_CURRENT_DRIFT_DENIAL",
+  "stdoutSha256": "3423011fce0a8239303cd2549b7f9a74f1501ffdcb58c5f995cc094cebf23cd0",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "controlFreezeSha256": "8fa517d08d99f938b76f93b11f07fe00ee8dd302155205a2fa13d6e2e0ca7c97"
+}

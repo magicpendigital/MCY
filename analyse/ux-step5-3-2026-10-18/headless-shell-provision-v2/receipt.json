@@ -1,0 +1,39 @@
+{
+  "scope": "ONE_SEPARATELY_APPROVED_V2_OFFICIAL_HEADLESS_SHELL_PROVISION",
+  "startedAt": "2026-10-18T18:28:01.779Z",
+  "endedAt": "2026-10-18T18:33:01.839Z",
+  "args": [
+    "D:\\Projects\\MCY\\node_modules\\playwright\\cli.js",
+    "install",
+    "chromium",
+    "--only-shell"
+  ],
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "errorCode": "ETIMEDOUT",
+  "timeoutMs": 300000,
+  "outputCapBytes": 4194304,
+  "environmentPolicy": "OS_ALLOWLIST_PLUS_FIXED_WORKSPACE_BROWSER_CACHE_NO_ENV_FILES_OR_PROVIDER_OVERRIDES",
+  "inheritedEnvironmentKeys": [
+    "APPDATA",
+    "ComSpec",
+    "CommonProgramFiles",
+    "LOCALAPPDATA",
+    "PATHEXT",
+    "Path",
+    "ProgramFiles",
+    "ProgramFiles(x86)",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "USERPROFILE",
+    "windir"
+  ],
+  "cache": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-browser-tools",
+  "shellExistedBefore": false,
+  "shellExistsAfter": false,
+  "browserLaunched": false,
+  "outerInvocationsUnderV2": 1,
+  "automaticOuterRetry": false,
+  "cliInternalDownloadAttempts": 1
+}

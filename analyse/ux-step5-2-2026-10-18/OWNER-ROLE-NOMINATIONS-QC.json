@@ -1,0 +1,91 @@
+{
+  "schema": "mcy-ux5-2-owner-role-nominations-qc-v1",
+  "recordedAt": "2026-10-18T14:10:35.112Z",
+  "status": "PASS_R0_NOMINATION_DOCUMENTATION_HUMAN_REVIEW_BLOCKED",
+  "reviewer": "/root/profile46_qc",
+  "artifacts": {
+    "privateReceipt": {
+      "path": ".vercel/ux-step5-2-owner-contacts-20261018/contacts.json",
+      "sha256": "e96a4cd6a83c2b982aabf75baa9b8447063176f37eeef153a27e64f090ea19e9"
+    },
+    "publicNomination": {
+      "path": "analyse/ux-step5-2-2026-10-18/OWNER-ROLE-NOMINATIONS.vi.md",
+      "sha256": "f8395ff11d14a0313d3cdecc5e986f2b77c9975197ff98103a97d37fd513d11d"
+    }
+  },
+  "privateExactRoleMapReview": {
+    "status": "PASS",
+    "mappingsChecked": 2,
+    "source": "Trusted direct Owner input relayed by root",
+    "actualCommand": "node -e private exact-role/contact equality assertions; raw expected contact arguments intentionally excluded from public record",
+    "actualExitCode": 0,
+    "stdout": "PASS_PRIVATE_EXACT_OWNER_ROLE_MAP; exactMappings=2; rawContactsExported=false"
+  },
+  "publicSanitizedCommand": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "-e",
+    "const fs=require(\"fs\"),path=require(\"path\"),crypto=require(\"crypto\"),assert=require(\"assert/strict\"),cp=require(\"child_process\");const d=\"analyse/ux-step5-2-2026-10-18/\",privatePath=\".vercel/ux-step5-2-owner-contacts-20261018/contacts.json\",publicPath=d+\"OWNER-ROLE-NOMINATIONS.vi.md\",sha=p=>crypto.createHash(\"sha256\").update(fs.readFileSync(p)).digest(\"hex\");const a={privateReceipt:{path:privatePath,sha256:sha(privatePath)},publicNomination:{path:publicPath,sha256:sha(publicPath)}};assert.equal(a.privateReceipt.sha256,\"e96a4cd6a83c2b982aabf75baa9b8447063176f37eeef153a27e64f090ea19e9\");assert.equal(a.publicNomination.sha256,\"f8395ff11d14a0313d3cdecc5e986f2b77c9975197ff98103a97d37fd513d11d\");const j=JSON.parse(fs.readFileSync(privatePath)),text=fs.readFileSync(publicPath,\"utf8\");assert.equal(j.source,\"directOwner\");assert.equal(j.status,\"OWNER_PROVIDED_ROLE_CONTACT_NOMINATIONS_ONLY\");assert.equal(j.externalActionAuthorizedByThisReceipt,false);assert.equal(j.contacts.length,2);assert.deepEqual(j.contacts.map(c=>[c.contactId,c.role]),[[\"teacher-contact-01\",\"Teacher\"],[\"reviewer-contact-01\",\"Reviewer\"]]);for(const c of j.contacts){assert.equal(c.ownerProvidedContact,true);assert.equal(c.nominationStatus,\"NOMINATED\");assert(c.proposedScope.startsWith(\"PROPOSED_SCOPE_\"));for(const k of[\"accountIdentityVerified\",\"globalRoleGranted\",\"invitationSent\"])assert.equal(c[k],false);for(const k of[\"qualification\",\"independence\",\"scope\",\"exactVersionAssignment\",\"decisions\"])assert.equal(c[k],\"PENDING\");assert(!text.includes(c.email),\"Private value found in public doc\");}assert.equal(j.distinctContactsProveIndependence,false);assert.equal(j.humanReviewStatus,\"BLOCKED_SCOPE_QUALIFICATION_INDEPENDENCE_ASSIGNMENT_AND_DECISIONS_PENDING\");assert.equal((text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi)||[]).length,0);assert(text.includes(\"Hai địa chỉ khác nhau không chứng minh hai người độc lập\"));const links=[...text.matchAll(/\\]\\(([^)]+)\\)/g)].map(m=>m[1]);for(const l of links)assert(fs.existsSync(path.resolve(d,l)),l);assert.equal(links.length,3);const ignore=cp.spawnSync(\"git\",[\"check-ignore\",\"-q\",\"--\",privatePath],{encoding:\"utf8\"});assert.equal(ignore.status,0,\"Expected private path ignored\");const tracked=cp.spawnSync(\"git\",[\"ls-files\",\"--\",privatePath],{encoding:\"utf8\"});assert.equal(tracked.status,0);assert.equal(tracked.stdout.trim(),\"\",\"Expected private path untracked\");const freezePath=d+\"FINAL-EVIDENCE-FREEZE.json\",freezeSha=\"80cb5e10adb4701135034aff4dbb120e4a1796ee0b24a97a3fd2297b2dcc6410\";assert.equal(sha(freezePath),freezeSha);const f=JSON.parse(fs.readFileSync(freezePath));for(const p of f.gateAndDeliverablePins)assert.equal(sha(p.path),p.sha256,p.path);const result={schema:\"mcy-ux5-2-owner-role-nominations-qc-v1\",recordedAt:new Date().toISOString(),status:\"PASS_R0_NOMINATION_DOCUMENTATION_HUMAN_REVIEW_BLOCKED\",reviewer:\"/root/profile46_qc\",artifacts:a,privateExactRoleMapReview:{status:\"PASS\",mappingsChecked:2,source:\"Trusted direct Owner input relayed by root\",actualCommand:\"node -e private exact-role/contact equality assertions; raw expected contact arguments intentionally excluded from public record\",actualExitCode:0,stdout:\"PASS_PRIVATE_EXACT_OWNER_ROLE_MAP; exactMappings=2; rawContactsExported=false\"},publicSanitizedCommand:[process.execPath,...process.execArgv],actualExitCode:0,nominationKeys:j.contacts.map(c=>({contactId:c.contactId,role:c.role})),ownerProvenanceVerifiedAsDeclaration:true,flags:{accountIdentityVerified:false,globalRoleGranted:false,invitationSent:false,externalActionAuthorizedByThisReceipt:false,distinctContactsProveIndependence:false},remainingEvidence:[\"identity\",\"qualification\",\"independence\",\"scope\",\"exactVersionAssignment\",\"human decisions\",\"rights/editorial/accessibility review\"],humanReviewStatus:j.humanReviewStatus,publicEmailTokens:0,localLinksChecked:links.length,gitChecks:[{command:[\"git\",\"check-ignore\",\"-q\",\"--\",privatePath],actualExitCode:ignore.status,ignored:true},{command:[\"git\",\"ls-files\",\"--\",privatePath],actualExitCode:tracked.status,trackedPaths:0}],preservation:{technicalPacketFreezeSha256:freezeSha,coreDocPins:f.gateAndDeliverablePins.length,allCorePinsMatch:true,mediaAndAppResweep:\"NOT_RUN_BOUNDARY\"},findings:[],limits:\"Offline nomination metadata only. No account lookup, grant, invitation, mail, API, SDK, app or upstream mutation. Distinct contacts do not establish independent humans. Does not complete5.2 or open5.3/6.\"};const target=d+\"OWNER-ROLE-NOMINATIONS-QC.json\";const out=JSON.stringify(result,null,2)+\"\\n\";for(const c of j.contacts)assert(!out.includes(c.email),\"Private value would leak into QC receipt\");fs.writeFileSync(target,out,{flag:\"wx\"});console.log(JSON.stringify({status:result.status,actualExitCode:0,artifacts:a,privateMappings:2,publicEmailTokens:0,links:links.length,ignoredAndUntracked:true,coreDocPins:f.gateAndDeliverablePins.length,receiptSha256:sha(target)},null,2));"
+  ],
+  "actualExitCode": 0,
+  "nominationKeys": [
+    {
+      "contactId": "teacher-contact-01",
+      "role": "Teacher"
+    },
+    {
+      "contactId": "reviewer-contact-01",
+      "role": "Reviewer"
+    }
+  ],
+  "ownerProvenanceVerifiedAsDeclaration": true,
+  "flags": {
+    "accountIdentityVerified": false,
+    "globalRoleGranted": false,
+    "invitationSent": false,
+    "externalActionAuthorizedByThisReceipt": false,
+    "distinctContactsProveIndependence": false
+  },
+  "remainingEvidence": [
+    "identity",
+    "qualification",
+    "independence",
+    "scope",
+    "exactVersionAssignment",
+    "human decisions",
+    "rights/editorial/accessibility review"
+  ],
+  "humanReviewStatus": "BLOCKED_SCOPE_QUALIFICATION_INDEPENDENCE_ASSIGNMENT_AND_DECISIONS_PENDING",
+  "publicEmailTokens": 0,
+  "localLinksChecked": 3,
+  "gitChecks": [
+    {
+      "command": [
+        "git",
+        "check-ignore",
+        "-q",
+        "--",
+        ".vercel/ux-step5-2-owner-contacts-20261018/contacts.json"
+      ],
+      "actualExitCode": 0,
+      "ignored": true
+    },
+    {
+      "command": [
+        "git",
+        "ls-files",
+        "--",
+        ".vercel/ux-step5-2-owner-contacts-20261018/contacts.json"
+      ],
+      "actualExitCode": 0,
+      "trackedPaths": 0
+    }
+  ],
+  "preservation": {
+    "technicalPacketFreezeSha256": "80cb5e10adb4701135034aff4dbb120e4a1796ee0b24a97a3fd2297b2dcc6410",
+    "coreDocPins": 9,
+    "allCorePinsMatch": true,
+    "mediaAndAppResweep": "NOT_RUN_BOUNDARY"
+  },
+  "findings": [],
+  "limits": "Offline nomination metadata only. No account lookup, grant, invitation, mail, API, SDK, app or upstream mutation. Distinct contacts do not establish independent humans. Does not complete5.2 or open5.3/6."
+}

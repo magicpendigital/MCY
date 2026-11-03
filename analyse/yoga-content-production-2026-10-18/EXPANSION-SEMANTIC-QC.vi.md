@@ -1,0 +1,29 @@
+# QC ngữ nghĩa danh mục mở rộng — 2026-10-19
+
+**GO trong phạm vi metadata nháp đã đọc; không có P1/P2 cụ thể còn mở trong phạm vi này.** Kết luận tách khỏi kiểm control/suite/manifest, chuyên môn yoga, quyền sử dụng và phát hành.
+
+Snapshot đọc độc lập: [EXPANSION-SEMANTIC-READ-SNAPSHOT.json](EXPANSION-SEMANTIC-READ-SNAPSHOT.json). Catalog 272175 byte, SHA256 `74dd755ca379a54865b02aecf7f3894b233e8d0aee3ec6611d350ac98fe875ab`; README 21542 byte, SHA256 `0cd6717a109b3b0b512d0d71939c82a97d5f6a877c7a61cfc47dc0738647e4d7`; research receipt SHA256 `fb66d667212b73985ee3588b3fa418f8a892a6e2fb83f5d942b2f694a683c390`.
+
+Đã đọc toàn bộ danh sách tên/kind/facet/nguồn và kiểm chi tiết các điểm xung đột, biến thể, nhãn skills/knowledge và toàn bộ links. Snapshot có 114 entity: 68 pose family, 3 variant, 28 skill, 10 knowledge và 5 local unresolved; 20 nguồn, 24 facet. Không cộng metadata vào số bài hoặc ảnh. Tất cả 114 tên Việt là editorial label/translation, sourceAttested false, không có attestation giả và review pending. 58 tên Sanskrit có provenance source-attested và reference; không coi việc một nguồn dùng tên là xác nhận đúng xuyên truyền thống. English skills/knowledge cũng là nhãn biên tập tường minh.
+
+Ba variant có nguồn và family parent: Dolphin theo Downward Dog, Forearm Plank theo Plank và Wide Legged Forward Bend C theo family gập trước chân rộng. Hai quan hệ đầu được nêu trực tiếp ở [YogaEasy trang 2](https://www.yogaeasy.com/artikel/category/yoga-poses/page/2) và [trang 3](https://www.yogaeasy.com/artikel/category/yoga-poses/page/3); tên biến thể C có trên [trang 7](https://www.yogaeasy.com/artikel/category/yoga-poses/page/7). Facet và study-topic còn editorial/pending, không là prerequisite hay progression.
+
+Các quyết định quarantine phù hợp với dữ liệu đã mở: High/Low Lunge tách topic và Sanskrit null thay vì merge qua cùng một tên; Crow null thay vì nhập Bakasana/Kakasana; Warrior III null vì [trang chi tiết YogaEasy](https://www.yogaeasy.com/artikel/warrior-3) tự có heading và image label khác nhau. Mountain giữ Tadasana trong [ngữ cảnh YogaEasy](https://www.yogaeasy.com/artikel/category/yoga-poses/page/5), không thêm Parvatasana như alias từ [YogaPoint](https://www.yogapoint.com/info/yogasana.htm). Reclining Hero vẫn unresolved, không gộp Saddle xuyên ngữ cảnh. Đây là quản lý bất định, không giải quyết danh pháp bằng trí nhớ.
+
+Các topic về hơi thở/thiền có khái niệm hoặc tên trong [YogaPoint pranayama](https://www.yogapoint.com/info/pranayama.htm) và [meditation](https://www.yogapoint.com/info/meditation.htm). Skills biomechanics, sequencing, self-reflection dựa khái niệm trong [Yoga Alliance RYS Standards](https://yogaalliance.org/Standards-for-RYS-Credentials); consent/agency có trong [Code Principle 7](https://yogaalliance.org/policies-priorities-progress/code-of-conduct/). Đã kiểm các locator rủi ro và mẫu nguồn; không tuyên bố độc lập xác minh mọi assertion lẻ hoặc mọi truyền thống. Không nhập instructions, liều thở, thời lượng, benefits hoặc các claims y tế từ nguồn vào catalog.
+
+17 existingContentLinks phủ đúng 14 unit hiện tại theo id+revision+locale+repo path. Đã đọc JSON đích và đối chiếu inventory tuple/backlink. Các link trùng là hai component Cat/Cow, hai skills cho foundation standing và local+skill cho stand-up, không phải thêm bài. Cobra gentle chỉ related topic; Cow Face là phần tay, Three-legged Dog editorial, không exact clip/side/variant claim. Năm local topics19/22/23/24/28 có nguồn inventory pin thật, English/Sanskrit null, aliases/relations rỗng, không map chuẩn hóa sang Camel/Crow/WildThing/Wheel hoặc foundation standing.
+
+Tất cả entity/envelope vẫn metadata_only, learnerVisible false, recommendationEligible false, unpublished, bốn review pending và approvalRecords rỗng. Không có nội dung thực hành, media mới hay consumer runtime. Independent read audit đã chạy exit0 với các phép so sánh trên; đây không phải invocation của validator mới. Control source/negative tests và manifest cần review riêng trước run cuối.
+
+## Bổ sung kiểm bảng README sau semantic audit
+
+**P2 đang mở ở bảng đọc README:** bản README pin `0cd671…e4d7` tuyên bố 114 mục/mỗi mục một lần nhưng chỉ có 113 dòng entity riêng biệt. Thiếu duy nhất `mcy.expansion.pose.crow` có facet đầu `posture.arm-balance`. Catalog vẫn đủ 114; không thấy lỗi ở dữ liệu Crow. Kiểm read-only đầu tiên exit1, chi tiết [EXPANSION-README-INDEX-FAIL.json](EXPANSION-README-INDEX-FAIL.json). Đã báo root và data producer, không chỉnh canonical. GO ngữ nghĩa catalog ở trên không mở rộng sang completeness README; cần thêm dòng và pin lại README/research trước final package.
+
+## Chốt repair — P2 mục lục đã đóng, GO canonical CLI lần 2
+
+Data producer đã STOP lần sửa. Đã đọc buffer trước/sau và deep-compare: thay đổi ngữ nghĩa duy nhất của catalog là `taxonomies[23].label.conceptualSourceRefs` từ một locator broad thành năm locator chính xác của records19/22/23/24/28. Cả 114 entity/names/links/closed flags không đổi. Bản mới catalog 272795 byte SHA256 `055317c193a4b66a8f52f5eed4faf7a390b76c0e5c79f4cd243d3e5ff4c60830`.
+
+README mới 21762 byte SHA256 `03380421b36842e5c33b30ecab1d479ec4da53587d00b7b638b03b67e856e444` có đúng 114 rows/114 IDs riêng biệt và đủ tên từ catalog; Crow đã được thêm ở nhóm cân bằng tay. **P2 mục lục ở appendix trước đã đóng.** Research receipt mới SHA256 `14a0f305a7baca2483cf9fe872cd4377b750eba328277ff6a3380e7e9a736584` pin đúng current bytes, giữ previous pins và initial rejection/repair notes.
+
+[EXPANSION-REPAIR-READ-QC.json](EXPANSION-REPAIR-READ-QC.json) ghi exact pins, semantic diff paths và audit đọc exit0. GO cho coordinator/producer chạy lại canonical CLI theo authorization trước, source freezev2 không đổi. Reviewer không chạy CLI hay fixtures; không cần lặp suite nếu không đổi source. Log CLI lần1 exit1 và README read-assertion exit1 vẫn là failure lịch sử, không thay thành PASS. Đây chưa là final manifest verdict.

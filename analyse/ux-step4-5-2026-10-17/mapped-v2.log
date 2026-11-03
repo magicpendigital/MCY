@@ -1,0 +1,19 @@
+
+Running 10 tests using 2 workers
+
+(node:9924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-ux.spec.ts:212:1 › body-region contract keeps locale-neutral regions, sides and bilateral edits distinct (57ms)
+  ok  1 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-write-review.spec.ts:236:1 › delayed consent success cannot mutate a new same-account session after A to B to A (17.1s)
+  ok  4 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-write-review.spec.ts:257:1 › check-in retry sends the exact frozen record and keeps later edits for a new key (7.6s)
+  ok  3 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-ux.spec.ts:920:1 › English learner flow follows check-in, practice and honest reflection on mobile web (30.8s)
+  ok  5 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-write-review.spec.ts:313:1 › delayed check-in confirmation does not navigate away from the lesson library the learner opened (7.4s)
+  ok  6 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-ux.spec.ts:1226:1 › inactive FlowStack routes are inert and keyboard focus follows the active screen (7.6s)
+  ok  7 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-write-review.spec.ts:336:1 › leaving and returning to the library keeps the old check-in continuation inactive (9.8s)
+  ok  8 ..\..\..\.vercel\ux-step4-5-20261017\tests\learner-ux.spec.ts:1445:1 › short portrait keeps welcome, lesson and reflection actions inside the viewport (7.7s)
+  ok  9 ..\..\..\.vercel\ux-step4-5-20261017\tests\practice-flow.spec.ts:38:46 › reviewed plan and explicit start/reflection in iphone simulator (8.5s)
+  ok 10 ..\..\..\.vercel\ux-step4-5-20261017\tests\practice-flow.spec.ts:38:46 › reviewed plan and explicit start/reflection in pixel-10 simulator (6.9s)
+
+  10 passed (1.5m)

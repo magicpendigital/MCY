@@ -1,0 +1,32 @@
+{
+  "schema": "mcy.step5-3.independent-controls-freeze.v3",
+  "capturedUtc": "2026-10-18T16:47:48.3659016Z",
+  "status": "SOURCE_ONLY_UNINVOKED_ROOT_REVIEW_PENDING",
+  "files": [
+    {
+      "path": "analyse\\ux-step5-3-2026-10-18\\independent-controls-v3.mjs",
+      "sha256": "e941252745f712f98bda32ca4bff9521fa1a480d9b204bf321bbfc4661b41402",
+      "bytes": 10769
+    },
+    {
+      "path": "analyse\\ux-step5-3-2026-10-18\\INDEPENDENT-CONTROLS-PLAN-v3.vi.md",
+      "sha256": "29b884a56549daa380838ab11e5fe551bf651d7f181f46bb9fa7f03e20c6fd8e",
+      "bytes": 1528
+    },
+    {
+      "path": "analyse\\ux-step5-3-2026-10-18\\CONTROL-SOURCE-FREEZE-v4.json",
+      "sha256": "8fa517d08d99f938b76f93b11f07fe00ee8dd302155205a2fa13d6e2e0ca7c97",
+      "bytes": 16389
+    }
+  ],
+  "previousFreeze": {
+    "path": "analyse\\ux-step5-3-2026-10-18\\INDEPENDENT-CONTROLS-FREEZE-v2.json",
+    "sha256": "7a82a74e51dc73c17dfd85c36873a884c880822d98b7fdc878122bf02f0098dd",
+    "oldInputsMatch": true
+  },
+  "command": "node --test analyse/ux-step5-3-2026-10-18/independent-controls-v3.mjs",
+  "outerCapMs": 180000,
+  "cases": 5,
+  "staticParseExitCode": 0,
+  "delta": "Only control v4 freeze path/hash and new results path, unchanged five cases"
+}

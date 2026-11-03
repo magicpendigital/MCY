@@ -1,0 +1,33 @@
+{
+  "schema": "mcy.step5-3.independent-controls-freeze.v2",
+  "capturedUtc": "2026-10-18T16:22:17.7444224Z",
+  "status": "SOURCE_ONLY_UNINVOKED_ROOT_REVIEW_PENDING",
+  "files": [
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/independent-controls-v2.mjs",
+      "sha256": "288b30b4286d8d9b37bb0e07a14f949e841a547503338edcf38811dcdba394dd",
+      "bytes": 10769
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/INDEPENDENT-CONTROLS-PLAN-v2.vi.md",
+      "sha256": "69570e232063936401603f97884c8d84d6cd9a2bce64c2ec393ef1c075e79940",
+      "bytes": 2732
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/CONTROL-SOURCE-FREEZE-v3.json",
+      "sha256": "a919d6f3f90b16a1e922b6ae2c1cf81f685b4118615d972b33c5d30bd7f21664",
+      "bytes": 17856
+    }
+  ],
+  "previousFreeze": {
+    "path": "analyse/ux-step5-3-2026-10-18/INDEPENDENT-CONTROLS-FREEZE-v1.json",
+    "sha256": "e826a561d796ce604462c94f281525e64606045771a07c472f731d92ac7fa8a3",
+    "oldInputsMatch": true
+  },
+  "controlDependencyPins": "9 source + 71 canonical via exact CONTROL-SOURCE-FREEZE-v3, checked pre/post",
+  "command": "node --test analyse/ux-step5-3-2026-10-18/independent-controls-v2.mjs",
+  "outerCapMs": 180000,
+  "cases": 5,
+  "staticParseExitCode": 0,
+  "delta": "Control v3 binding/results path plus explicit resolved dist/client delete bound only; assertions and additive read latency unchanged"
+}

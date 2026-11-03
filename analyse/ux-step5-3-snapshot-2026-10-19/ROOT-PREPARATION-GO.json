@@ -1,0 +1,17 @@
+{
+  "capturedUtc": "2026-10-19T06:52:39.2112192Z",
+  "status": "GO_ISOLATED_CANDIDATE_PREPARATION_ONLY",
+  "intakePins": {
+    "BASELINE.json": "ad9ae5385a517c5b0f078d2b875d77c3b3641dd23657dace0dfa4f7f8e35fd10",
+    "INTAKE-QC.vi.md": "e811b52b3a051bef99c8631d0849941424948acc70b075aa1604015ceea55412",
+    "TASK-INTAKE.vi.md": "56105bf265256e4c5adcdcb6a61ef654d71e3534b23386b18fb88a34a6e31509"
+  },
+  "candidate": "D:/Projects/MCY/.vercel/ux-step5-3-rebind-20261019-v1",
+  "copies": "exact255acceptedsource+exact59dist/client",
+  "change": "selectedSnapshot.json only:7unit SHA256+capturedUtc;8JSONfield differences",
+  "preserve": "oldcandidate/evidence/rootdirty/canonical untouched",
+  "required": "freeze255source59client71canonical andactualdiff; independent selectionQC beforetestinvocation",
+  "testOrServerInvocationAuthorized": false,
+  "nextStep": "STOP_AFTER_THIS_REBIND_FOR_OWNER_REVIEW",
+  "externalEffects": "none"
+}

@@ -1,0 +1,361 @@
+{
+  "schema": "mcy.step5-3.control-source-freeze.v1",
+  "capturedUtc": "2026-10-18T15:52:11.0544471Z",
+  "status": "SOURCE_ONLY_UNINVOKED_R3_REVIEW_PENDING",
+  "candidate": ".vercel/ux-step5-3-20261018-v1",
+  "approved47Freeze": {
+    "path": "analyse/ux-step4-7-2026-10-18/CANDIDATE-SOURCE-FREEZE-v7.json",
+    "sha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1"
+  },
+  "intake": {
+    "path": "analyse/ux-step5-3-2026-10-18/TASK-INTAKE.vi.md",
+    "sha256": "dcd2c2c970f87189a0b8495a451c3cb7302c8cdef5d8641540a65701f40fa9c7"
+  },
+  "ownerDesign": {
+    "path": "analyse/ux-step5-3-2026-10-18/OWNER-LOCAL-PREVIEW-DESIGN.vi.md",
+    "sha256": "04af84b2bc07e750fbe73e253e294e49ed127dce0399e33efe385726f403f230"
+  },
+  "files": [
+    {
+      "path": "src/review/localReviewContract.ts",
+      "sha256": "9cbe4c047cb7fcfc0f273748513456a8acba2d5bac01e74245bbb157a7b7fdfd",
+      "bytes": 3865
+    },
+    {
+      "path": "server/contentReview/selectedSnapshot.json",
+      "sha256": "887a05f4c7887581f39084a1b0d30289d6e69586a097e1266e6bdd30064fa224",
+      "bytes": 25070
+    },
+    {
+      "path": "server/contentReview/canonicalAdapter.mjs",
+      "sha256": "6438ba0ba3725861df14169d3622f72361711ff85d7da8da476a6f442488570e",
+      "bytes": 11060
+    },
+    {
+      "path": "server/contentReview/reviewModel.mjs",
+      "sha256": "a7612752ab838b8885c4345bf82dba66b90627620fc2ffa1f719a4a0f8f928de",
+      "bytes": 11122
+    },
+    {
+      "path": "server/contentReview/localReviewServer.mjs",
+      "sha256": "6c12d5bc4aebfa032821d5f9abd1a17c0bc2ecfb18408b3dd90ff6ebbde03fc5",
+      "bytes": 15590
+    },
+    {
+      "path": "server/contentReview/startLocalReview.mjs",
+      "sha256": "6bc6c4da1cafe104364d3be3227fe65e5c0a113c5e81cd5e7207b57b9dc8ce55",
+      "bytes": 1210
+    },
+    {
+      "path": "server/contentReview/canonicalAdapter.test.mjs",
+      "sha256": "1254cd1af4b991e729b989c0d1e0d8de57db9d7fc25a18713dbad0260383fcf0",
+      "bytes": 4565
+    },
+    {
+      "path": "server/contentReview/reviewModel.test.mjs",
+      "sha256": "522640ce70991d87c7fc70a703fc0ee4f0b0abadd7b8429535da8411dd7de3c4",
+      "bytes": 5701
+    },
+    {
+      "path": "server/contentReview/localReviewServer.test.mjs",
+      "sha256": "8715959cf4e4dd8e79971511857db4d8fb33631cae7c0042286bd671a4c72366",
+      "bytes": 6913
+    }
+  ],
+  "canonicalDependencies": [
+    {
+      "path": "content/yoga-library/contract.jsonschema",
+      "sha256": "d7ec1f7b33050ff5c03dfdffe06439f70fea0eaaabbafb000cd1f2db8e42ea07"
+    },
+    {
+      "path": "content/yoga-library/inventory.json",
+      "sha256": "85b1242a4f9fd06fa8eb53f3a12adb4e1bc401ab277813ff149b0c9a65ebe3ed"
+    },
+    {
+      "path": "content/yoga-library/units/cobra/r1.json",
+      "sha256": "e599f8a6f6f406c3e222d68d33c491dd679cde45b75f6dfcae67ba5e15ee713d"
+    },
+    {
+      "path": "content/yoga-library/units/cobra-gentle/r1.json",
+      "sha256": "3460c3ada4ee8676c428694d55a9af3dbea36b8a513e98237385896a63063b01"
+    },
+    {
+      "path": "content/yoga-library/units/cow-face/r1.json",
+      "sha256": "11410eb99910832630a5510cdd5aa8623a7b287aed8134453fb24d9f4cfac551"
+    },
+    {
+      "path": "content/yoga-library/units/downward-dog/r1.json",
+      "sha256": "452299229d75604b1912bb55c100f88c8294bf36636d54178e5922940c702aaa"
+    },
+    {
+      "path": "content/yoga-library/units/foundation-cat-cow/r3.json",
+      "sha256": "aaa9cec5ac78e4fafc43657ec89dc77cc9ec0cb149a120484897b2f6abcb1854"
+    },
+    {
+      "path": "content/yoga-library/units/foundation-standing/r3.json",
+      "sha256": "f208ff64d776b0be4a01e81b89cd49d36144c47ca105d7acc44466b5486a7f89"
+    },
+    {
+      "path": "content/yoga-library/units/high-lunge/r1.json",
+      "sha256": "78135b89cbc95a8d8809afa28b88f605cb4e5d00b87f8e246a22e6936cef1368"
+    },
+    {
+      "path": "content/yoga-library/units/kneeling-backbend/r1.json",
+      "sha256": "461ee017f41acd05c775de9760249adb0ca420a22ad384166193b9c9952ba05c"
+    },
+    {
+      "path": "content/yoga-library/units/low-crow/r1.json",
+      "sha256": "0536caa4f45ac08fedf43e32c1c2c25415c7e7408f2790421c8d3694af6594af"
+    },
+    {
+      "path": "content/yoga-library/units/low-wheel/r1.json",
+      "sha256": "29d87457775ddac019dbcb02d79f7185fdb7df117da7e747910da9101b34072a"
+    },
+    {
+      "path": "content/yoga-library/units/stand-up/r1.json",
+      "sha256": "1a1c68e89af79469ecea8f111bb7a2df2de8f8b96e9e6dc09512761d1fed504a"
+    },
+    {
+      "path": "content/yoga-library/units/three-legged-dog/r1.json",
+      "sha256": "8d55dc8db1761c88ff20801d31085f22aeb50d1b7d068e8f27f6fc1b212b404b"
+    },
+    {
+      "path": "content/yoga-library/units/warrior-ii/r1.json",
+      "sha256": "e666a51c0cf89a777b5d3ee8870deba4605af0049a8f8c90c342664e774cd067"
+    },
+    {
+      "path": "content/yoga-library/units/wild-thing-high/r1.json",
+      "sha256": "1f3780456235b38f877f4bf392b72d3006a28651ea37e9c464f385af3c3446ae"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-1.png",
+      "sha256": "457007a58c66e278bebc8e8d2a65e95b839a0e064e072fc0dd6c1a89085ad7cf"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-2.png",
+      "sha256": "00d6700f8d060947612d9ec06484f8b7bb8b828760c57eab8c2e9d330af4086f"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-3.png",
+      "sha256": "48e7d22e350f161f61174686700cf929f2126106becabc8566a5578e63e309a3"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-4.png",
+      "sha256": "8f8289598b2238344aa9ba757f9add69eaf01a80312b94be7ebbddc4f0e1febe"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra/cobra-photo-5.png",
+      "sha256": "b5a9d2ba50800d59f1dd105c10185903176fd3556c10dca0ba31b143f6e68af3"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-1.png",
+      "sha256": "640d51865510615ce9edc0448bda766e351ebeab2b6a29673e79cf15b0c737e1"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-2.png",
+      "sha256": "4c1dd0fb9461c2045d9e2d7b7eab5ecf75f5f0d9f09297e08c38526efb5f8356"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-3.png",
+      "sha256": "f024ea8680b078a1c3251632beb95c252388f9176f91105d1cacf85e81cbabb0"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-4.png",
+      "sha256": "eb6611b59c5ae3e9cd1d6801d2bce7c52a6a776659cb0e38e78ae6b7ea20067d"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cobra-gentle/cobra-gentle-photo-5.png",
+      "sha256": "f2d3059396a8242423a0b8f850394c41586a27780615d7fb1be589f6fa65202c"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-1.png",
+      "sha256": "3a9c47f9e1fb9bd753f0504749b4391e63a8cecdc34d1bdd4f10c5dcdf03e346"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-2.png",
+      "sha256": "15ded044b977159c5a3d0ec92bfcc0e6c881417623f5050a928159f52b0555bb"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-3.png",
+      "sha256": "e9900176eb4950c033945a3840be4c1588b3dae190b0cfa5bf2c07476bf082a4"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-4.png",
+      "sha256": "883636d7c8d15f25c41b2a020218524c660f28f9f717c40610236a27444825e8"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/cow-face/cow-face-photo-5.png",
+      "sha256": "1561a9fa4a2a157ddb1ee7071a94672c67b4b9a32566d4a263083fdc5084cc0b"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-1.png",
+      "sha256": "af5291edba005d745604cccb849c32f86c1727acfe0c77b683e3b56c0b77bbfb"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-2.png",
+      "sha256": "a01e7f5caf308cfa5efda633c1ae59a3b60f2a5a63bb40de95a7c0d0ac49e060"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-3.png",
+      "sha256": "3a32ad85caa7c402fed484ebd21488f7e328c09e54e5e26eca344679de4416f4"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-4.png",
+      "sha256": "d44a036e80e51209eeec9c48462ee110efef3303f33055b7407aeccf4f8bd479"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/downward-dog/downward-dog-photo-5.png",
+      "sha256": "97ce66561f9d47c41bf49e0433022058dac5a64898b22244295d992b4bdf35db"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-01.png",
+      "sha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-01.png",
+      "sha256": "a850217766ea3860820e3c7bfe9dc76de194e248a3413492870fe60c4410107c"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-02.png",
+      "sha256": "83671dd1ff6f1e1c5fd8d8e106993ec460472880bce042e475a3ddcd83b32099"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-02.png",
+      "sha256": "2c0c2d7ed5f880da917eda40796e2c8db2149a886a38c3d0ca5cf09fcfdedef7"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-03.png",
+      "sha256": "8b3e4cdb2d2db1263024b7d427b18b00ca4afc9fcc314eda139e8c1cbc7ac149"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-03.png",
+      "sha256": "47a4d630ead5b4616084625f1a1952f9f919949e4d155b9fdbcab7aa02545106"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-04.png",
+      "sha256": "e4b1f8a87c7bb8d0247551703d54c532fca5ff7f2915544391560de4465af019"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-04.png",
+      "sha256": "24850fe94bc61e1190f8c0c506c8d45df7d25a6721ec63f53bf62d95efb1e9b3"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-photo-05.png",
+      "sha256": "058480e418ddd023bade704de90a349f3fc907a8d7a64b7559a9f13f2705b8b1"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-cat-cow/r3/tabletop-step-05.png",
+      "sha256": "2f7d7d7d6d2b709ebd0586bc704e5be64c7e8718014088d1055acf07f1c04130"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-01.png",
+      "sha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-01.png",
+      "sha256": "e511c3c576ccba27f13fd4e5b1e774ed5f39fba262ef2af479987e1decf6487e"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-02.png",
+      "sha256": "c3223681f3b2545a63b9315ecc6fbf3a57a8403e90ff5eba9e5c296e8e44ddba"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-02.png",
+      "sha256": "cd26db67c3b01fb265d50d7397da0199754eaafe11602ed9d11ddb412f57ec49"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-03.png",
+      "sha256": "9702379d9ef6fecb5d0b03bd251864db5e74bfa7c78c8a08dcfdc5dbb8bb6bd5"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-03.png",
+      "sha256": "30156e2c4eba3f332c583b873ea7d6fe83623ebe0b7e2e00d53baeb395e7652f"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-04.png",
+      "sha256": "1db229e0cebb9255304470f05253ab2aff9dde6e3248763c022982f3041139d2"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-04.png",
+      "sha256": "340646362a6a66f21f01d8cca9e199532c66ddf9c29925402b0770285d9b1430"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-photo-05.png",
+      "sha256": "4a8ed0d7d336610a0a6913140ecdddd77c79c2754f437316977a8fa6ce2c8e54"
+    },
+    {
+      "path": "content/yoga-library/media/foundation-standing/r3/standing-step-05.png",
+      "sha256": "ad76e37022c77c082a26d12879ba7b69c851cd488531a63ba9145ce790fb6137"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-1.png",
+      "sha256": "7f227842fa0b4684ccf2141eb877cf5ae7310975302c836b9a2acc4b68c8d4c5"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-2.png",
+      "sha256": "46892914fa006debf076f23c8ac1859305d26054f1e0679f586b42e23eac4022"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-3.png",
+      "sha256": "c6cdc4efc946255a7c0b19699ad8c8da33b274c275db166b75dd88d4cd1237ae"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-4.png",
+      "sha256": "f872b7c3fcca3501f1f79f62b293b98bc791e16d53c65a072a653eed7d1ef514"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/high-lunge/high-lunge-photo-5.png",
+      "sha256": "d56b5970ea9e8f4c33bfe590368a4ffa2bbe3dc1254daab87eaf8f9f8a5fca94"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-1.png",
+      "sha256": "482f1972d789d2707ce971cbf1578d85444ea47caa483051c3df1f2d467ab43e"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-2.png",
+      "sha256": "a24594809927c44f3cd6ed9e9bfa8aef9f19e6c13abdc15562dc26f2d324a735"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-3.png",
+      "sha256": "458f8bfeb52a990d4f32caf99b6ba0241fac86b25d640e0696585a31d629b901"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-4.png",
+      "sha256": "ec25eab80551d49f9bbfc622cd34f7f220fd4ad937c290f1f6bf1c99f00e658f"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/three-legged-dog/three-legged-dog-photo-5.png",
+      "sha256": "68ccb795d80c18a9b3dbe15fa5b895b130de59467ef52659dd04af5250b779be"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-1.png",
+      "sha256": "5d007533e951d1315d166b5e9b8a0c203dee60f9c7689e1e9d5e2261e3d4a39d"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-2.png",
+      "sha256": "a5ef00add136019fd398c58a8b3da58a4b64ad2a4486b64e40bffd20ccf98483"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-3.png",
+      "sha256": "ad9eb9c15656d92970c13b88b7cb9b824c6bcd315f52e4cc9a6bc36a3351cad8"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-4.png",
+      "sha256": "c98977e99d1586239d44501de314b3d6ec35e06944cd76e477462c6bcf791555"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/warrior-ii/warrior-ii-photo-5.png",
+      "sha256": "1ae0dfd81a93b09d1b5f045dd7c70a3412d3da7d77dc6378f21489b4a7cf68af"
+    }
+  ],
+  "staticParse": {
+    "files": 7,
+    "exitCode": 0,
+    "note": "node --check only; no module import/test/server/browser invocation"
+  },
+  "limits": [
+    "Selected schema SHA is pinned and consumed-field invariants are checked; not a complete JSON-Schema validator",
+    "Bounded final source rechecks are not atomic filesystem snapshots",
+    "Local capabilities are machine-scoped rehearsal, not real identity or rights proof"
+  ]
+}

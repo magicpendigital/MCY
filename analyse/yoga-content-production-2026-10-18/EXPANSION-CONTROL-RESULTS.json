@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "mcy-expansion-control-results-1",
+  "recordedAt": "2026-10-18T21:59:25.237Z",
+  "status": "FIXTURES_PASS_CANONICAL_PASS_AFTER_DATA_REPAIR",
+  "scope": "Metadata-only local expansion contract; not source truth, instructional, expert/rights or release acceptance.",
+  "controlFreeze": "v2",
+  "controlPins": [
+    {
+      "path": "content/yoga-library/expansion/catalog.schema.json",
+      "sha256": "8a19e8ae10498faade1294db0b1e51015483451197b2d1740aca3d195eb55d23",
+      "bytes": 12395
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/expansion-contract.mjs",
+      "sha256": "c24f6f5bf07fe697b5c211a6d8df0eedeadcb2115bedb870662797d0d51f09af",
+      "bytes": 12529
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs",
+      "sha256": "a77f42072b8cba7388e6441d314adae1e95a873721be148baf9c92547d578f49",
+      "bytes": 17901
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.test.mjs",
+      "sha256": "71e2723eaf3d5d0408977d789c45aa655f64519dffd294d700defa8ad4b0cb01",
+      "bytes": 18919
+    }
+  ],
+  "preInvocationReview": {
+    "reviewer": "/root/content_independent_qc",
+    "path": "analyse/yoga-content-production-2026-10-18/CONTROL-EXPANSION-PREINVOCATION-REVIEW.vi.md",
+    "go": "GO freezev2 before invocation; no P1/P2 in control scope"
+  },
+  "environment": {
+    "node": "v25.9.0",
+    "platform": "win32",
+    "arch": "x64",
+    "shellLogin": false
+  },
+  "runs": [
+    {
+      "id": "fixtures-1",
+      "command": "node --test analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.test.mjs",
+      "exitCode": 0,
+      "summary": {
+        "tests": 82,
+        "pass": 81,
+        "fail": 0,
+        "skipped": 1,
+        "skipReason": "OS does not permit file symlinks in this fixture",
+        "exitCode": 0
+      },
+      "logPath": "analyse/yoga-content-production-2026-10-18/expansion-control-fixtures-1.log"
+    },
+    {
+      "id": "canonical-1",
+      "command": "node analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs",
+      "catalogSha256": "74dd755ca379a54865b02aecf7f3894b233e8d0aee3ec6611d350ac98fe875ab",
+      "exitCode": 1,
+      "status": "FAIL_DATA_LOCATOR_REJECTION",
+      "finding": "Taxonomy local-topic.unresolved label used broad local locator records[courseId=poses], not an exact existing inventory record.",
+      "logPath": "analyse/yoga-content-production-2026-10-18/expansion-control-canonical-1.log",
+      "acceptanceOutcome": "Initial canonical validation failed unexpectedly for production acceptance; guard rejected an overbroad local locator. This is not relabeled as PASS."
+    },
+    {
+      "id": "canonical-2",
+      "command": "node analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs",
+      "catalogSha256": "055317c193a4b66a8f52f5eed4faf7a390b76c0e5c79f4cd243d3e5ff4c60830",
+      "exitCode": 0,
+      "status": "PASS",
+      "result": {
+        "status": "PASS",
+        "scope": "Local metadata-only structure, provenance-reference and current-crosswalk checks; not source truth, expertise, rights, practice or release approval.",
+        "schemaVersion": "mcy-yoga-expansion-1",
+        "taxonomyVersion": "mcy-yoga-taxonomy-1",
+        "entities": 114,
+        "sources": 20,
+        "taxonomies": 24,
+        "counts": {
+          "byKind": {
+            "knowledge_topic": 10,
+            "local_unresolved_topic": 5,
+            "pose_family": 68,
+            "pose_variant": 3,
+            "skill": 28
+          },
+          "bySourceKind": {
+            "local_draft_inventory": 1,
+            "web_teaching": 19
+          },
+          "byTaxonomyDomain": {
+            "knowledge": 3,
+            "local_topic": 1,
+            "posture": 14,
+            "skill": 6
+          },
+          "relations": 11,
+          "existingContentLinks": 17
+        },
+        "unitCountContribution": 0,
+        "mediaCountContribution": 0
+      },
+      "logPath": "analyse/yoga-content-production-2026-10-18/expansion-control-canonical-2.log"
+    }
+  ],
+  "repair": {
+    "status": "DATA_ONLY_REPAIR_QC_GO_AND_CANONICAL_RERUN_PASS",
+    "details": "Taxonomy local label changed only from broad record-group reference to five exact records19/22/23/24/28. Data reviewer deep-diff confirmed entities unchanged. README missing Crow row fixed separately; all114IDs/names indexed. Original rejection/log remains.",
+    "reviewer": "/root/content_independent_qc",
+    "reviewPath": "analyse/yoga-content-production-2026-10-18/EXPANSION-REPAIR-READ-QC.json",
+    "fixtureReuse": "82-case fixture suite was not repeated because all4 control pins remained unchanged; original81PASS/1OSsymlinkSKIP evidence retained."
+  },
+  "limits": [
+    "File-symlink denial fixture SKIP because Windows denied creation; source path traversal/absolute/canonical-selector tests passed.",
+    "Structural/reference tests do not establish truth of teaching sources or correct names across traditions.",
+    "No unit, media, app/runtime/cloud/publish/deploy changes in this control scope."
+  ],
+  "controlWriteStop": true,
+  "repairedDataPins": [
+    {
+      "path": "content/yoga-library/expansion/catalog.json",
+      "sha256": "055317c193a4b66a8f52f5eed4faf7a390b76c0e5c79f4cd243d3e5ff4c60830",
+      "bytes": 272795
+    },
+    {
+      "path": "content/yoga-library/expansion/README.vi.md",
+      "sha256": "03380421b36842e5c33b30ecab1d479ec4da53587d00b7b638b03b67e856e444",
+      "bytes": 21762
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-RESEARCH-SOURCES.json",
+      "sha256": "14a0f305a7baca2483cf9fe872cd4377b750eba328277ff6a3380e7e9a736584",
+      "bytes": 27820
+    }
+  ],
+  "api": {
+    "module": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs",
+    "signature": "export async function validateExpansionCatalog({root=libraryRoot,repo=repoRoot}={})",
+    "sideEffects": "Import performs no output or writes; CLI validates read-only; temporary test fixtures only.",
+    "returns": [
+      "status",
+      "scope",
+      "schemaVersion",
+      "taxonomyVersion",
+      "entities",
+      "sources",
+      "taxonomies",
+      "counts.byKind",
+      "counts.bySourceKind",
+      "counts.byTaxonomyDomain",
+      "counts.relations",
+      "counts.existingContentLinks",
+      "unitCountContribution:0",
+      "mediaCountContribution:0"
+    ]
+  }
+}

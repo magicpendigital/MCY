@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-10-18T05:26:24.999Z",
+  "phase": "initial-controls-v2",
+  "environment": "local Node.js fictional data checks only",
+  "checks": [
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\validate-library.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/initial-controls-v2-validate-library.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\validate-library.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/initial-controls-v2-validate-library.test.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\render-library.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/initial-controls-v2-render-library.log"
+    }
+  ],
+  "status": "PASS"
+}

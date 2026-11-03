@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-10-18T18:45:58.1509270Z",
+  "status": "GO_ONE_DEFAULT_HEADLESS_UI15_THEN_MAPPED12_IF_CLEAN",
+  "toolExecutionSha256": "945b7132262825069dd5f1a185dbb459cd561d40e1a7d4d9d36390d173371cec",
+  "toolManifestSha256": "7c2d633a56b32ea9994f9ffe138fb0effa3e5e00c42f1b21fd32b2e374772b70",
+  "rootActualPinsVerified": 620,
+  "toolFiles": 613,
+  "newToolFiles": 292,
+  "commands": [
+    "node scripts/unit-review-run.mjs --project unit-review-ui",
+    "node scripts/unit-review-run.mjs --project preserved-regressions"
+  ],
+  "channel": "OMITTED:official default headless shell1228/149",
+  "conditions": "same reviewed runner/proxy/env/caps/staticallowlist, zero unexpected egress; stop onfailure; no auto retry",
+  "sourceFreezeSha256": "fdfedf82b83c57f2ede7ac85bf9bb1d053604992b600fc13390b9b68375d4d6c",
+  "fixtures": "neutral fictional; canonicaladapter null by serverfixedmode",
+  "canonical": "current7/71drift, actualdenyPASS; no rebase/Owner",
+  "requiredAfter": "independent finalQC+rootpreservation/handoff",
+  "stillBlocked": [
+    "real human content approval",
+    "cloud/native/deploy",
+    "step6"
+  ]
+}

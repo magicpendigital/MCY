@@ -1,0 +1,37 @@
+{
+  "scope": "ONE_OFFICIAL_INSTALLED_PLAYWRIGHT_PROVISION",
+  "startedAt": "2026-10-18T16:47:42.275Z",
+  "endedAt": "2026-10-18T16:48:46.541Z",
+  "args": [
+    "D:\\Projects\\MCY\\node_modules\\playwright\\cli.js",
+    "install",
+    "chromium",
+    "--no-shell"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "timeoutMs": 300000,
+  "outputCapBytes": 4194304,
+  "environmentPolicy": "OS_ALLOWLIST_PLUS_FIXED_WORKSPACE_BROWSER_CACHE_NO_ENV_FILES_OR_PROVIDER_OVERRIDES",
+  "inheritedEnvironmentKeys": [
+    "APPDATA",
+    "ComSpec",
+    "CommonProgramFiles",
+    "LOCALAPPDATA",
+    "PATHEXT",
+    "Path",
+    "ProgramFiles",
+    "ProgramFiles(x86)",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "USERPROFILE",
+    "windir"
+  ],
+  "cache": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-browser-tools",
+  "cacheExistedBefore": false,
+  "cacheExistsAfter": true,
+  "browserLaunched": false,
+  "automaticRetry": false
+}

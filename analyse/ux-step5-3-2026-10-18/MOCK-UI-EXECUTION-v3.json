@@ -1,0 +1,71 @@
+{
+  "scope": "ONE_EXPLICIT_CHROME_ENVIRONMENT_COMPARISON",
+  "capturedAt": "2026-10-18T16:32:13.114Z",
+  "channel": "chrome",
+  "sameReviewedRunnerAndArtifact": true,
+  "selectedCases": 15,
+  "finalCaseCountSummary": "UNAVAILABLE_PROCESS_ABORTED",
+  "knownFailure": "Expiry case timed out waiting first unit button; page snapshot showed NETWORK closed state",
+  "processFailure": "Unhandled Socket ECONNRESET before proxy teardown receipt",
+  "processExitCode": 1,
+  "status": "FAIL_PROCESS",
+  "receipt": {
+    "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792340905235-27440.json",
+    "bytes": 1938,
+    "sha256": "2cbf90146feaab40a363319b008946a4dd39c1b70431cd9acd9659faa8895ccb"
+  },
+  "stdout": {
+    "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792340905235-27440.stdout.log",
+    "bytes": 2599,
+    "sha256": "e34e3a8aaf9e108f4ccb0663b5accc23d3feb08bb3477d30322999e737df353d"
+  },
+  "stderr": {
+    "path": ".vercel/ux-step5-3-20261018-v1/test-results/unit-review-invocations/1792340905235-27440.stderr.log",
+    "bytes": 490,
+    "sha256": "0fd8fb9470db72633dad7de6125bb60c768bd8d096da0b89b5a5b3d920795c7e"
+  },
+  "errorContext": {
+    "path": "analyse/ux-step5-3-2026-10-18/MOCK-UI-CHROME-EXPIRY-ERROR-CONTEXT.md",
+    "bytes": 14241,
+    "sha256": "d4e6efc3d20e9a5445c4f39d26be26e49c7c2b661e4d256434d9867754c13dcd"
+  },
+  "proxyReceiptCount": 0,
+  "egressStatus": "UNKNOWN_NO_FINAL_PROXY_RECEIPT",
+  "cleanup": {
+    "attempted": false,
+    "reason": null,
+    "method": "NORMAL_TEARDOWN",
+    "taskkillExitCode": null,
+    "taskkillTimedOut": false,
+    "secondaryDeadlineExceeded": false,
+    "status": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+    "verified": true,
+    "childClosed": true,
+    "listeners": [
+      {
+        "port": 4253,
+        "state": "CLOSED"
+      },
+      {
+        "port": 4255,
+        "state": "CLOSED"
+      }
+    ],
+    "descendantEvidence": "NORMAL_DESCENDANTS_NOT_INDEPENDENTLY_ENUMERATED"
+  },
+  "priorEdgeResult": "15_ASSERTIONS_PASSED_PROCESS_FAILED_71_DENIED_CONNECT_UNKNOWN_PRODUCER",
+  "regressions": "NOT_RUN",
+  "automaticRetry": false,
+  "sourceEdits": false,
+  "prePostPins": {
+    "ui": 10,
+    "clientArtifact": 59,
+    "status": "MATCHED"
+  },
+  "artifactFreeze": {
+    "path": "analyse/ux-step5-3-2026-10-18/BUILD-ARTIFACT-FREEZE-v1.json",
+    "bytes": 22159,
+    "sha256": "d9a5c81f5291d6404cdadff228f21acbd5f044de82382fbad991ca338ff43fda"
+  },
+  "ownerBootstrap": "NOT_RUN"
+}

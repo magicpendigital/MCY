@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "mcy-yoga-draft-1",
+  "id": "mcy.pose.example",
+  "revision": "r1",
+  "legacyAliases": [],
+  "locale": "vi-VN",
+  "kind": "pose_education",
+  "seriesId": null,
+  "productionStatus": "brief_blocked",
+  "learnerVisible": false,
+  "recommendationEligible": false,
+  "publishStatus": "unpublished",
+  "title": "Thay bằng tên đã xác định",
+  "shortTitle": "Tên ngắn",
+  "intro": "",
+  "scope": "",
+  "learningObjectives": [],
+  "audience": "",
+  "prerequisites": [],
+  "preparation": [],
+  "stopGuidance": "",
+  "alternatives": [],
+  "readTimeSecondsEstimate": null,
+  "practiceDurationSeconds": null,
+  "sourceRefs": [],
+  "sourceObservations": [],
+  "steps": [],
+  "media": [],
+  "assetBriefs": [],
+  "sources": [],
+  "review": {
+    "expert": "pending",
+    "rights": "pending",
+    "editorial": "pending",
+    "accessibility": "pending",
+    "approvalRecords": []
+  },
+  "blockers": [
+    "Chưa biên soạn; mẫu không phải nội dung hướng dẫn."
+  ],
+  "changeLog": [
+    "Mẫu hợp đồng; không nhập unit này vào kho."
+  ],
+  "provenance": {
+    "createdAt": "2026-10-18",
+    "authoring": "ai_assisted_original",
+    "sourceFiles": [],
+    "notes": "Template only."
+  }
+}

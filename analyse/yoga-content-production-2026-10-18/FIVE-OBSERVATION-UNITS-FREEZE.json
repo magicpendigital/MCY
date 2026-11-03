@@ -1,0 +1,75 @@
+{
+  "scope": "Five reading-only canonical unit drafts, not final whole library or release manifest",
+  "date": "2026-10-18",
+  "contentFiles": [
+    {
+      "path": "content/yoga-library/units/kneeling-backbend/r1.json",
+      "bytes": 24260,
+      "sha256": "461ee017f41acd05c775de9760249adb0ca420a22ad384166193b9c9952ba05c"
+    },
+    {
+      "path": "content/yoga-library/units/low-crow/r1.json",
+      "bytes": 24030,
+      "sha256": "0536caa4f45ac08fedf43e32c1c2c25415c7e7408f2790421c8d3694af6594af"
+    },
+    {
+      "path": "content/yoga-library/units/wild-thing-high/r1.json",
+      "bytes": 23994,
+      "sha256": "1f3780456235b38f877f4bf392b72d3006a28651ea37e9c464f385af3c3446ae"
+    },
+    {
+      "path": "content/yoga-library/units/stand-up/r1.json",
+      "bytes": 24339,
+      "sha256": "1a1c68e89af79469ecea8f111bb7a2df2de8f8b96e9e6dc09512761d1fed504a"
+    },
+    {
+      "path": "content/yoga-library/units/low-wheel/r1.json",
+      "bytes": 24089,
+      "sha256": "ca3926c1fc004040912f3441ec6c3a3c2c6df23f01d0cafa19bcd5dbea1ed5d6"
+    }
+  ],
+  "dependentFiles": [
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS.json",
+      "bytes": 34120,
+      "sha256": "158ec08c1fff49b140b7ca357ffaca174641276c6fef01e7d0e30749a484a01c"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/SOURCE-OBSERVATIONS-supplement.json",
+      "bytes": 27438,
+      "sha256": "362407dbb9c5902e253324372a79386a954776a0f1361c117c2fa5b88f227854"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/UNIT-TEMPLATE.json",
+      "bytes": 1227,
+      "sha256": "a87d3693f830e96ca5eae1f49cf1f87ab5772798bd1f06302c723c7068833add"
+    },
+    {
+      "path": "content/yoga-library/contract.jsonschema",
+      "bytes": 14431,
+      "sha256": "d7ec1f7b33050ff5c03dfdffe06439f70fea0eaaabbafb000cd1f2db8e42ea07"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-library.mjs",
+      "bytes": 13837,
+      "sha256": "cb59f2311c991b896035ac56fd0883549e09e7478fc7946c3214f1b79d33c5af"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/FIVE-OBSERVATION-UNITS-CHECK.json",
+      "bytes": 1048,
+      "sha256": "75a09dea9d8fbe73713803440633bf54af0d0fa2cf700b6824343b1eaf89f85c"
+    }
+  ],
+  "checks": {
+    "validateUnit": "PASS exit0, five units",
+    "wholeLibraryBacklinks": "ROOT_PENDING not modified by writer",
+    "humanExpertRights": "BLOCKED",
+    "newImagesProduced": 0,
+    "newAssetBriefs": 25
+  },
+  "closedState": {
+    "learnerVisible": false,
+    "recommendationEligible": false,
+    "publishStatus": "unpublished"
+  }
+}

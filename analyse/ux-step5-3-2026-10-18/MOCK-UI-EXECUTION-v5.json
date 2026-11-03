@@ -1,0 +1,93 @@
+{
+  "scope": "LOCAL_CODE_FICTIONAL_FIXTURE_QA_ONLY",
+  "runId": "1792349197869-11504",
+  "channel": "DEFAULT_HEADLESS_SHELL_NO_CHANNEL_OVERRIDE",
+  "startedAt": "2026-10-18T18:46:37.870Z",
+  "endedAt": "2026-10-18T18:47:05.103Z",
+  "assertions": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  "processStatus": "PASS_PROCESS",
+  "exitCode": 0,
+  "proxy": {
+    "scope": "FICTIONAL_UI_TEST_EGRESS_ONLY",
+    "allowedOrigin": "http://127.0.0.1:4253",
+    "proxyOrigin": "http://127.0.0.1:4255",
+    "startedAt": "2026-10-18T18:46:38.685Z",
+    "endedAt": "2026-10-18T18:47:05.035Z",
+    "requestCap": 10000,
+    "requestBodyCapBytes": 16384,
+    "counts": {
+      "forwarded": 165,
+      "deniedHttp": 0,
+      "deniedConnect": 0,
+      "deniedUpgrade": 0,
+      "capExceeded": 0,
+      "localTransportErrors": 0
+    },
+    "unexpected": 0,
+    "status": "NO_UNEXPECTED_EGRESS",
+    "recordedDestinations": false,
+    "recordedHeadersOrBodies": false
+  },
+  "cleanup": {
+    "attempted": false,
+    "reason": null,
+    "method": "NORMAL_TEARDOWN",
+    "taskkillExitCode": null,
+    "taskkillTimedOut": false,
+    "secondaryDeadlineExceeded": false,
+    "status": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+    "verified": true,
+    "childClosed": true,
+    "listeners": [
+      {
+        "port": 4253,
+        "state": "CLOSED"
+      },
+      {
+        "port": 4255,
+        "state": "CLOSED"
+      }
+    ],
+    "descendantEvidence": "NORMAL_DESCENDANTS_NOT_INDEPENDENTLY_ENUMERATED"
+  },
+  "timedOut": false,
+  "outputCapExceeded": false,
+  "mappedComposition": null,
+  "postPins": {
+    "path": "analyse/ux-step5-3-2026-10-18/HEADLESS-SUITES-POST-PINS-v1.json",
+    "bytes": 229240,
+    "sha256": "ec92504829bfae19cb73a417a0b0aa220a00d1f87d904b709a24854a3f76f8ca"
+  },
+  "evidence": [
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/HEADLESS-UI-v1.json",
+      "bytes": 2100,
+      "sha256": "4b33436b308073cce56cb7c039c8af0eac3fee5a6cabc01e99ec040d6d1a4766"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/HEADLESS-UI-v1.stdout.log",
+      "bytes": 2222,
+      "sha256": "235134efe146864184b7ab341653500e5f2f617b21933cb1063c6798779bbc3d"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/HEADLESS-UI-v1.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/HEADLESS-UI-v1-egress.json",
+      "bytes": 558,
+      "sha256": "740a115e2217f22a510600f3ab095b2f1c19d420dee7ea6febce7575b1d9edb3"
+    }
+  ],
+  "automaticRetry": false,
+  "historicalFailuresPreserved": true,
+  "currentCanonicalGate": "CURRENT_CANONICAL_REBIND_BLOCKED_7_OF_71_CHANGED",
+  "humanReviewOrProductApproval": false,
+  "rejectedRequestOrigin": null
+}

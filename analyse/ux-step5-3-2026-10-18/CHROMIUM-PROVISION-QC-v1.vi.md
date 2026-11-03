@@ -1,0 +1,11 @@
+# Independent managed Chromium provisioning scope QC
+
+Reviewer `/root/profile46_qc`,18/10/2026. **PASS_PLAN_FOR_ONE_BOUNDED_PROVISION_AND_TWO_EGRESS_NEGATIVES_AFTER_ROOT_GO**; không download/install/launch từ QC, không tự cho browser suite rerun.
+
+[Plan](CHROMIUM-PROVISION-PLAN.vi.md) SHA `7905e12b27667496610800d64531592b1ee1db32b3136de0b836eebbf98c1945`; runner SHA `3f717c23c24391317718a9cc6428499dd9acbb85aa6530e67d348fc232f52c8f`. Đã đọc source: chỉ explicit fixed PLAYWRIGHT_BROWSERS_PATH sau allowlist và receipt policy/path thêm, giữ project/channel/caps/cleanup/env secret exclusion. Không nhận arbitrary cache từ parent. Socket-reset guard/test theo [QC riêng](UI-TRANSPORT-RESET-QC-v1.vi.md), hai negative cần actual processPASS trước suite.
+
+Independent primary installed-code inspection: Playwright1.61.1, Chromium1228/version149.0.7827.55; fullchromium cho channelchromium, `--no-shell` không tải headless shell. Windows CLI chọn thêm FFmpeg1011/Winldd1007. Plan's installed CLI/package/coreBundle/browsers pins khớp readback; dry-run receipt/stdout/stderr đọc trực tiếp, exit0/official targets và custom cache đã bind. `git check-ignore` actualexit0, `git ls-files`0; fixed cache hiện chưa tồn tại tại check. Không chỉnh package/lock hoặc user/system browser profile.
+
+Cho root xét một command `node D:/Projects/MCY/node_modules/playwright/cli.js install chromium --no-shell`, cleared OS environment cộng literal cache `D:/Projects/MCY/.vercel/ux-step5-3-browser-tools`,300s/4MiB/durable actualexit+cleanup; không --with-deps/npm/npx/force/custom-host override. Chỉ official installed registry URLs/mirrors đã dry-run; không mang provider credentials/proxy/userdata. Ghi executable/version/artifact hashes sau provision, không auto retry fail/unknown. Provision là test tool, không app/cloud/native/release.
+
+Sau source/pins rootGO riêng có thể chạy runner `--project egress-negative` với2cases; expected deny receipt được assert, không nới denyguard. Managed15+12 chỉ sau v4 control gate và root tiếp tụcGO; giữ source/mock fixtures/proxy/CSP/assertions. Edge71deniedCONNECT producerUNKNOWN và Chrome reset failures vẫn lịch sửFAIL; managed browser kết quả tốt sau này không chứng minh cause của chúng. Final5.3handoff còn BLOCKED.

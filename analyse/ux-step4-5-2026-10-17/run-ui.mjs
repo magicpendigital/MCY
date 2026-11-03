@@ -1,0 +1,10 @@
+import {spawnSync} from 'node:child_process';import fs from 'node:fs';import path from 'node:path';
+const dir=path.resolve('analyse/ux-step4-5-2026-10-17'),kind=process.argv[2]??'focused';
+const args=[path.resolve('node_modules/@playwright/test/cli.js'),'test','--config',path.join(dir,'qa.playwright.config.mjs')];
+if(kind==='focused')args.push('ux-reflection.spec.ts');
+else if(kind==='mapped')args.push('practice-flow.spec.ts','learner-ux.spec.ts','learner-write-review.spec.ts','--grep','reviewed plan and explicit|English learner flow|short portrait keeps welcome|body-region|paired|regional|honest reflection|inactive FlowStack|check-in retry sends|delayed check-in confirmation|leaving and returning to the library|delayed consent success');
+else if(kind==='adjacent')args.push('ux-home.spec.ts','ux-checkin-layout.spec.ts','ux-energy-time.spec.ts','ux-course-detail.spec.ts','ux-save-feedback.spec.ts','ux-journey-selection.spec.ts');
+else throw Error('Unknown bounded suite');
+args.push('--reporter=list,json');const env={...process.env,PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(dir,kind+'-results.json')};
+const cwd=kind!=='focused'?path.join(dir,kind+'-run'):process.cwd();fs.mkdirSync(cwd,{recursive:true});
+const r=spawnSync(process.execPath,args,{encoding:'utf8',env,cwd});fs.writeFileSync(path.join(dir,kind+'.log'),r.stdout+r.stderr);fs.writeFileSync(path.join(dir,kind+'-command.json'),JSON.stringify({command:['node',...args].join(' '),cwd,exitCode:r.status,signal:r.signal},null,2)+'\n');console.log((r.stdout+r.stderr).slice(-20000));process.exitCode=r.status??1;

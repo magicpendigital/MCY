@@ -1,0 +1,218 @@
+{
+  "status": "PASS_LOCAL_FROZEN_PACKAGE_QC",
+  "date": "2026-10-20",
+  "reviewer": "/root/final_content_qc",
+  "scope": "Independent manifest verifier invocation plus builtin-only read/hash/reference audit; no canonical mutation, suite rerun, fresh pixel/source-web or human review claim.",
+  "manifest": {
+    "path": "content/yoga-library/manifest.json",
+    "bytes": 44303,
+    "sha256": "0fa137d5ea658fadfdb8a1ab97e5fd86550a03b82fbed972530b338e65d114b1"
+  },
+  "manifestInputs": 168,
+  "canonicalFiles": 92,
+  "core": {
+    "inventory": 38,
+    "units": 14,
+    "steps": 70,
+    "presentMedia": 55,
+    "missingIdentityBlocked": 25,
+    "unchangedAgainstCoreReadSnapshot": 14,
+    "newPhotosOriginalAndPreviouslyReviewedPixelBytesMatched": 35,
+    "expectedDependencies": 71,
+    "actualDependencies": 71,
+    "externalDependencies": 35,
+    "observationCaptures": 6,
+    "rawMOVFilesInManifest": 0,
+    "handoffSelectors": 14
+  },
+  "expansion": {
+    "entities": 114,
+    "readmeUniqueRows": 114,
+    "existingContentLinks": 17,
+    "distinctLinkedUnits": 14,
+    "counts": {
+      "byKind": {
+        "knowledge_topic": 10,
+        "local_unresolved_topic": 5,
+        "pose_family": 68,
+        "pose_variant": 3,
+        "skill": 28
+      },
+      "bySourceKind": {
+        "local_draft_inventory": 1,
+        "web_teaching": 19
+      },
+      "byTaxonomyDomain": {
+        "knowledge": 3,
+        "local_topic": 1,
+        "posture": 14,
+        "skill": 6
+      },
+      "relations": 11,
+      "existingContentLinks": 17
+    },
+    "metadataOnly": true
+  },
+  "independentVerifier": {
+    "command": "node analyse/yoga-content-production-2026-10-18/verify-manifest.mjs",
+    "exitCode": 0,
+    "result": {
+      "status": "PASS",
+      "inputFiles": 168
+    }
+  },
+  "rootFinalRunRead": {
+    "commands": 5,
+    "allExitZero": true,
+    "coreTests": {
+      "total": 64,
+      "passed": 64,
+      "failed": 0,
+      "skipped": 0
+    },
+    "expansionTests": {
+      "total": 82,
+      "passed": 81,
+      "failed": 0,
+      "skipped": 1,
+      "skipReason": "OS does not permit file symlinks in fixture"
+    },
+    "rerunByReviewer": false
+  },
+  "appSourcePins": [
+    {
+      "path": "src/courses/freeCourses.ts",
+      "bytes": 5186,
+      "sha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436"
+    },
+    {
+      "path": "supabase/functions/_shared/practiceContract.ts",
+      "bytes": 6833,
+      "sha256": "e52debcc8dd088e249a3b90f049ddc59d786582dadc1f88f96e54caf24eb0e17"
+    },
+    {
+      "path": "supabase/functions/_shared/contentReviewCandidates.ts",
+      "bytes": 2315,
+      "sha256": "97b1cf85050861da17f21282a57f773f854e1d53a185cf7d5fdcbed93e680ffe"
+    },
+    {
+      "path": "supabase/functions/_shared/reviewedPracticeCatalog.ts",
+      "bytes": 399,
+      "sha256": "119d31e0aca5854d47c8bb0992b0aed68a9a24224fa76646053350c34d911f1e"
+    }
+  ],
+  "controlPins": [
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/create-manifest.mjs",
+      "bytes": 5146,
+      "sha256": "0a8d7c37d91623d8775916012218608c6d64eeabd21b858a9bf2ad1bdcfc4b00"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/verify-manifest.mjs",
+      "bytes": 2398,
+      "sha256": "c3aaba9adec6836c63d860e7cdfc69d076a874cd7762a0300e33dc592988a3b4"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/run-library-checks.mjs",
+      "bytes": 1749,
+      "sha256": "b6955a82bcdbbbfc438c0f3d596b0d8cad3d40eab4a86887f663f0f307179644"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-library.mjs",
+      "bytes": 21067,
+      "sha256": "cbe8ee17dfcf57e1800f265aa7d0cec0ab63c91cefeec46b87c423482f731541"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/render-library.mjs",
+      "bytes": 4383,
+      "sha256": "71d4fd3cae116e66dd734e7698de1ee55f3c35a9023f6aa426f0f55a77da32c9"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-library.test.mjs",
+      "bytes": 20630,
+      "sha256": "53c8d39953a81eec2f652b236e18bc70deb08f33cab0847fe3204283172625a2"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/expansion-contract.mjs",
+      "bytes": 12529,
+      "sha256": "c24f6f5bf07fe697b5c211a6d8df0eedeadcb2115bedb870662797d0d51f09af"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.mjs",
+      "bytes": 17901,
+      "sha256": "a77f42072b8cba7388e6441d314adae1e95a873721be148baf9c92547d578f49"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/validate-expansion-catalog.test.mjs",
+      "bytes": 18919,
+      "sha256": "71e2723eaf3d5d0408977d789c45aa655f64519dffd294d700defa8ad4b0cb01"
+    }
+  ],
+  "dataPins": [
+    {
+      "path": "content/yoga-library/expansion/catalog.json",
+      "bytes": 272795,
+      "sha256": "055317c193a4b66a8f52f5eed4faf7a390b76c0e5c79f4cd243d3e5ff4c60830"
+    },
+    {
+      "path": "content/yoga-library/expansion/catalog.schema.json",
+      "bytes": 12395,
+      "sha256": "8a19e8ae10498faade1294db0b1e51015483451197b2d1740aca3d195eb55d23"
+    },
+    {
+      "path": "content/yoga-library/expansion/README.vi.md",
+      "bytes": 21762,
+      "sha256": "03380421b36842e5c33b30ecab1d479ec4da53587d00b7b638b03b67e856e444"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/EXPANSION-RESEARCH-SOURCES.json",
+      "bytes": 27820,
+      "sha256": "14a0f305a7baca2483cf9fe872cd4377b750eba328277ff6a3380e7e9a736584"
+    },
+    {
+      "path": "content/yoga-library/media/new-poses/GENERATION-LEDGER.json",
+      "bytes": 199889,
+      "sha256": "da6aec401c8732fa89c41369b98e337442b0e989628dcf2cb9ffc2d28f9354b2"
+    }
+  ],
+  "evidencePins": [
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/final-v1-checks.json",
+      "bytes": 2075,
+      "sha256": "dc462e61ed54fe34547a149550bb13aca9973837ca602a810d8b39199764563d"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/final-v1-validate-library.log",
+      "bytes": 3006,
+      "sha256": "4d68370a016542438211922b81a0879ce496796ad024e0b0f6aabcfc628c8226"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/final-v1-validate-library.test.log",
+      "bytes": 4743,
+      "sha256": "9ca6977870caa5da85562285b745fa23214a2716a08f423477c0e791172ee2fe"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/final-v1-render-library.log",
+      "bytes": 65,
+      "sha256": "f750ab409e434c07ecad2f80ecd28adbacb5b83a937d766ac36fb4f76799644d"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/final-v1-validate-expansion-catalog.log",
+      "bytes": 821,
+      "sha256": "b58f42bee3f7a09903a0528a3dadfe8b01fc022f088e5942816b8fd36e9667bb"
+    },
+    {
+      "path": "analyse/yoga-content-production-2026-10-18/final-v1-validate-expansion-catalog.test.log",
+      "bytes": 4463,
+      "sha256": "f55e535a55a0c6cbee3cdea0051f896892f7b42e4ea290c8d798c8d44c7dccf9"
+    }
+  ],
+  "initialAuditCommandNote": "A preliminary PowerShell shape inspection addressed absent ledger.entries instead of ledger.assets and exited1; read-only inspection error, not a validator/test or canonical mutation. Corrected shape inspection exited0 before this audit.",
+  "limitations": [
+    "All units and metadata remain private/unpublished/pending human review; no expert, rights, editorial, accessibility or release approval.",
+    "Five units have25identity-blocked media slots; expanded114entries are metadata, not114lessons or an exhaustive universal yoga list.",
+    "Prior pixel/semantic reviews reused only where exact reviewed bytes match; reviewer did not repeat35pixel views or web research.",
+    "Manifest is an unsigned byte snapshot, not authority proof; no app/cloud/native changes or integration acceptance.",
+    "One OS symlink fixture remains unexercised; not represented as PASS."
+  ]
+}

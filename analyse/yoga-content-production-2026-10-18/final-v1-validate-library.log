@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "scope": "Local draft schema/inventory/bytes/reference consistency only; no human yoga or rights approval.",
+  "inventoryRecords": 38,
+  "units": [
+    {
+      "id": "mcy.pose.cobra-gentle",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 5,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.pose.cobra",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 5,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.pose.cow-face",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 5,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.pose.downward-dog",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 5,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.foundation.cat-cow",
+      "revision": "r3",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 10,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.foundation.standing",
+      "revision": "r3",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 10,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.pose.high-lunge",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 5,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.pose.kneeling-backbend",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.pose.low-crow",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.pose.low-wheel",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.transition.stand-up",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    },
+    {
+      "id": "mcy.pose.three-legged-dog",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 5,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.pose.warrior-ii",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "media_draft",
+      "steps": 5,
+      "presentMedia": 5,
+      "missingMedia": 0
+    },
+    {
+      "id": "mcy.pose.wild-thing-high",
+      "revision": "r1",
+      "locale": "vi-VN",
+      "status": "editorial_draft",
+      "steps": 5,
+      "presentMedia": 0,
+      "missingMedia": 5
+    }
+  ],
+  "totalPresentMedia": 55,
+  "totalMissingMedia": 25
+}

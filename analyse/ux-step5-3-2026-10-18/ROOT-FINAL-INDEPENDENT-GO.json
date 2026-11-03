@@ -1,0 +1,8 @@
+{
+  "capturedAt": "2026-10-18T16:48:55.0430507Z",
+  "status": "GO_INDEPENDENT_FIVE_FINAL_V4_CONTROLS",
+  "probeFreezeSha256": "793bdf1b2adc158c0df71b1c49f062e2d0acf4b526ef49c722361b693c8b77b2",
+  "inputPins": 3,
+  "command": "node --test analyse/ux-step5-3-2026-10-18/independent-controls-v3.mjs",
+  "conditions": "same5 assertions, only3bindingliterals changed; safeenv/localonly/180s/one run"
+}

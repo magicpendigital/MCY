@@ -1,0 +1,18 @@
+{
+  "schema": "mcy.step5-3.owner-local-preview.cleanup-unknown.v1",
+  "recordedUtc": "2026-10-18T18:38:05.7376926Z",
+  "startReceiptSha256": "fedeef7648ca190486e4e9d9184be6bdd6e48638a70664094b9b5978e6b63b85",
+  "pid": 32092,
+  "status": "UNKNOWN_NO_ACTION_IDENTITY_NOT_VERIFIED",
+  "observations": [
+    "Default read-only Get-Process returned process identifier absent; exit1",
+    "Scoped elevated cleanup precheck returned a process for the same PID and threw before any stop, delete, port probe, or receipt write"
+  ],
+  "exactCliVerified": false,
+  "exactStartTimeVerified": false,
+  "processKilled": false,
+  "privateDirectoryRemoved": false,
+  "port4260VerifiedClosed": false,
+  "capabilityValueRead": false,
+  "nextAction": "No PID kill without exact process identity; root decision required"
+}

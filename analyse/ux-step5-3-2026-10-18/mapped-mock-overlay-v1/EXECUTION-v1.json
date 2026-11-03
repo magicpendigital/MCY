@@ -1,0 +1,175 @@
+{
+  "scope": "LOCAL_CODE_FICTIONAL_FIXTURE_QA_WITH_EXACT_MOCK_OVERLAY",
+  "capturedAt": "2026-10-18T20:50:32.7753872Z",
+  "go": {
+    "path": "analyse/ux-step5-3-2026-10-18/ROOT-MAPPED-OVERLAY-GO-v1.json",
+    "bytes": 1306,
+    "sha256": "8550c19cc597363398b3fa8a8d9ec58222c8f7810d0f51066f6ff1569558c5b0"
+  },
+  "collection": {
+    "teacherOverlayProject": 2,
+    "process": "PASS_PROCESS",
+    "exitCode": 0,
+    "preservedProject": 10,
+    "total": 12
+  },
+  "browser": {
+    "skipped": 0,
+    "passed": 12,
+    "timedOut": false,
+    "proxy": {
+      "scope": "FICTIONAL_UI_TEST_EGRESS_ONLY",
+      "allowedOrigin": "http://127.0.0.1:4253",
+      "proxyOrigin": "http://127.0.0.1:4255",
+      "startedAt": "2026-10-18T20:46:58.875Z",
+      "endedAt": "2026-10-18T20:47:19.014Z",
+      "requestCap": 10000,
+      "requestBodyCapBytes": 16384,
+      "counts": {
+        "forwarded": 175,
+        "deniedHttp": 0,
+        "deniedConnect": 0,
+        "deniedUpgrade": 0,
+        "capExceeded": 0,
+        "localTransportErrors": 0
+      },
+      "unexpected": 0,
+      "status": "NO_UNEXPECTED_EGRESS",
+      "recordedDestinations": false,
+      "recordedHeadersOrBodies": false
+    },
+    "process": "PASS_PROCESS",
+    "outputCapExceeded": false,
+    "exitCode": 0,
+    "total": 12,
+    "failed": 0,
+    "cleanup": {
+      "attempted": false,
+      "reason": null,
+      "method": "NORMAL_TEARDOWN",
+      "taskkillExitCode": null,
+      "taskkillTimedOut": false,
+      "secondaryDeadlineExceeded": false,
+      "status": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+      "verified": true,
+      "childClosed": true,
+      "listeners": [
+        {
+          "port": 4253,
+          "state": "CLOSED"
+        },
+        {
+          "port": 4255,
+          "state": "CLOSED"
+        }
+      ],
+      "descendantEvidence": "NORMAL_DESCENDANTS_NOT_INDEPENDENTLY_ENUMERATED"
+    },
+    "composition": "11_SAME_ASSERTION_BROWSER_2_WITH_EXACT_SETUP_OVERLAY_PLUS_1_EQUIVALENT_NODE",
+    "runId": "1792356418081-17624"
+  },
+  "fixtureCounts": [
+    {
+      "caseId": "legacy-teacher-denied",
+      "validCalls": 1,
+      "invalidCalls": 0,
+      "consumed": true,
+      "allRequestsMatchedContract": true
+    },
+    {
+      "caseId": "legacy-teacher-switch",
+      "validCalls": 2,
+      "invalidCalls": 0,
+      "consumed": true,
+      "allRequestsMatchedContract": true
+    }
+  ],
+  "preservation": {
+    "uiTotal": 10,
+    "clientTotal": 59,
+    "uiMatched": 10,
+    "toolTotal": 613,
+    "frozenTotal": 19,
+    "toolMatched": 613,
+    "clientMatched": 59,
+    "frozenInputsMatched": 19
+  },
+  "evidence": [
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/SOURCE-FREEZE.json",
+      "bytes": 4819,
+      "sha256": "f42459035f46f7f16a334aea552a0ff17afcf53e64dff9e5a24a84b546760825"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/PRE-PINS.json",
+      "bytes": 5232,
+      "sha256": "b22bba14aa94e0bc65a5e03d7271b04c385db21c450b79761c9740b2710b577f"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/POST-PINS.json",
+      "bytes": 239969,
+      "sha256": "4938b25170b8b245cfbb229eaa366d5b990a2af56d86ab40cfaf0f2030c93cbb"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/EGRESS.json",
+      "bytes": 558,
+      "sha256": "1d567be221409f6e23d629b0c1f825266a95bc6323f27e58d775833ae365cb9f"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/legacy-teacher-denied-counts.json",
+      "bytes": 138,
+      "sha256": "5f84649083d54808b354e2081e4768aa79fab2dec6a93e0e9ab10ee0416fdf45"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/legacy-teacher-switch-counts.json",
+      "bytes": 138,
+      "sha256": "5952dec8ad40810f587ac1f183b145570658aaf6eba517ac65cacde1981e4acd"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/invocations/1792356418081-17624.json",
+      "bytes": 2228,
+      "sha256": "b57059cf009de5d29377c159bafb456934efb40f38c51bb090f0f3b0c7bbd379"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/invocations/1792356418081-17624.stdout.log",
+      "bytes": 1846,
+      "sha256": "6052f506420a3296638d22457038a6e79a35119e32719f68d25fd3dae7aaa916"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/invocations/1792356418081-17624.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/invocations/1792355673095-17904.json",
+      "bytes": 2241,
+      "sha256": "21fc556f485067114855fe4fd12d063f15f80a5e01e71a74c994b159fd3be9f8"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/invocations/1792355673095-17904.stdout.log",
+      "bytes": 1699,
+      "sha256": "c1ee07817f29a44b9df8d9ffe412835c475990325efd40bcad137b78365ef366"
+    },
+    {
+      "path": "analyse/ux-step5-3-2026-10-18/mapped-mock-overlay-v1/invocations/1792355673095-17904.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "priorClean15Ui": {
+    "path": "analyse/ux-step5-3-2026-10-18/MOCK-UI-EXECUTION-v5.json",
+    "bytes": 2793,
+    "sha256": "f48c5818005bed2f3eef8fa4fa313bb5c47283eae8a97acabcaa79dc876e1938"
+  },
+  "historicalMappedFailure": {
+    "path": "analyse/ux-step5-3-2026-10-18/MAPPED-REGRESSIONS-EXECUTION-v2.json",
+    "bytes": 2902,
+    "sha256": "64db2759313286c2cf362701deca9e504c4027e9bb4c1120b71ece04309fffa7"
+  },
+  "historicalConnectAttribution": "NOT_PROVEN_BY_THIS_SUCCESS",
+  "canonical": "CURRENT_CANONICAL_REBIND_BLOCKED_7_OF_71",
+  "humanApproval": false,
+  "productReleaseApproval": false,
+  "appOrOriginalTestSourceChanges": 0,
+  "automaticRetry": false
+}

@@ -1,0 +1,35 @@
+✔ valid fictional draft remains unpublished, pending and non-recommendable (45.4011ms)
+✔ rejects duplicate steps (31.1343ms)
+✔ rejects missing step media ref (27.4331ms)
+✔ rejects path traversal (24.905ms)
+✔ rejects absolute path (27.1596ms)
+✔ rejects media hash drift (30.7534ms)
+✔ rejects fake approval (24.5405ms)
+✔ rejects approved human review status (26.5268ms)
+✔ rejects published flag (32.4757ms)
+✔ rejects learner visible flag (25.7448ms)
+✔ rejects recommendation flag (30.5823ms)
+✔ rejects reading time used as practice duration (27.2732ms)
+✔ rejects wrong canonical source ID (26.3782ms)
+✔ rejects stale title mapping (30.3066ms)
+✔ rejects missing inventory record (47.1532ms)
+✔ rejects missing inventory unit (47.1373ms)
+✔ rejects missing inventory backlink (83.2079ms)
+✔ rejects nonconsecutive step order (38.6373ms)
+✔ rejects fake ready asset with no path (25.8418ms)
+✔ rejects unproduced media with existing path (23.9846ms)
+✔ rejects missing source binding (24.2907ms)
+✔ rejects false video observed assertion (24.3803ms)
+✔ rejects unsupported unvalidated schema extension (26.9773ms)
+✔ rejects a missing referenced image file (22.035ms)
+✔ rejects a wrong image size despite correct bytes and hash (33.9177ms)
+✔ unproduced media is accepted only with null fields and a matching explicit brief (35.8914ms)
+✔ unsupported JSON Schema validation keywords fail closed (0.3436ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 970.3897

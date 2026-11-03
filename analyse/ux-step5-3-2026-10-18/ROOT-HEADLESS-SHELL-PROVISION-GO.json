@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-10-18T17:20:54.1491594Z",
+  "status": "GO_ONE_OFFICIAL_HEADLESS_SHELL_PROVISION",
+  "planAndQcPins": {
+    "HEADLESS-SHELL-PROVISION-PLAN.vi.md": "033db193840cf0418c1af8a386d0facc2baabb2afdb4aa94d309de4bbb507d68",
+    "HEADLESS-SHELL-PROVISION-QC-v1.vi.md": "54310daf2a67f2e1a78535d4acbdb61dc9f94fe8085a63c23ca08e9c8dbf108f"
+  },
+  "rootIndependentPinCheck": "328/328:7 source+318 existing artifacts+3 evidence, all exact",
+  "command": "installed Playwright CLI install chromium --only-shell",
+  "allowedArtifact": "Chrome Headless Shell149.0.7827.55/revision1228",
+  "cache": "D:/Projects/MCY/.vercel/ux-step5-3-browser-tools",
+  "environment": "reviewed OS allowlist + fixed cache; no envfile/credentials/download-host/proxy override",
+  "timeoutMs": 300000,
+  "outputCapBytes": 4194304,
+  "attempts": 1,
+  "noAutomaticRetry": true,
+  "browserLaunchAuthorized": false,
+  "requiredAfter": "new artifact hashes,318 old artifacts unchanged, source pins unchanged, rootGO before15UI",
+  "primaryEvidence": "https://github.com/microsoft/playwright/issues/42910",
+  "limitations": "Primary report is different versions/platform; local149 hypothesis only until tested",
+  "stillBlocked": [
+    "cloud/native/AI/roles/deploy",
+    "step6"
+  ]
+}

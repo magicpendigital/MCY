@@ -1,0 +1,10 @@
+{
+  "capturedUtc": "2026-10-20T07:12:07.8235289Z",
+  "verifier": "/root",
+  "process17808Absent": true,
+  "port4260Closed": true,
+  "expectedPrivateDirectoryAbsent": true,
+  "noProcessKillByRoot": true,
+  "noPrivateFileReadByRootForCleanup": true,
+  "priorSandboxProbe": "Access denied reading OS TCP listener table; no record/effect; narrow readonly OS recheck used"
+}

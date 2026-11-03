@@ -1,0 +1,35 @@
+{
+  "capturedUtc": "2026-10-20T07:10:54.2963302Z",
+  "verifier": "/root",
+  "scope": "Fresh final source/hash/bytes check after clientdate20October; UI/testrecords19October retained as dated evidence",
+  "groups": {
+    "source": {
+      "count": 255,
+      "mismatches": []
+    },
+    "client": {
+      "count": 59,
+      "mismatches": []
+    },
+    "canonical": {
+      "count": 71,
+      "mismatches": []
+    },
+    "rootDirty": {
+      "count": 35,
+      "mismatches": []
+    },
+    "oldEvidence": {
+      "count": 6,
+      "mismatches": []
+    },
+    "oldSource": {
+      "count": 255,
+      "mismatches": []
+    },
+    "oldClient": {
+      "count": 59,
+      "mismatches": []
+    }
+  }
+}

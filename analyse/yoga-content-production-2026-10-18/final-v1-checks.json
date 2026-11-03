@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2026-10-20T07:14:30.407Z",
+  "phase": "final-v1",
+  "environment": "local Node.js fictional data checks only",
+  "checks": [
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\validate-library.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/final-v1-validate-library.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\validate-library.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/final-v1-validate-library.test.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\render-library.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/final-v1-render-library.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\validate-expansion-catalog.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/final-v1-validate-expansion-catalog.log"
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--test",
+        "D:\\Projects\\MCY\\analyse\\yoga-content-production-2026-10-18\\validate-expansion-catalog.test.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "log": "analyse/yoga-content-production-2026-10-18/final-v1-validate-expansion-catalog.test.log"
+    }
+  ],
+  "status": "PASS"
+}

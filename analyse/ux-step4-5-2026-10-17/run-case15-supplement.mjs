@@ -1,0 +1,6 @@
+import fs from 'node:fs';import path from 'node:path';import {spawn} from 'node:child_process';import {createHash} from 'node:crypto';
+const root=process.cwd(),dir=path.resolve('analyse/ux-step4-5-2026-10-17');const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const args=[path.resolve('node_modules/@playwright/test/cli.js'),'test','--config',path.join(dir,'qa.playwright.config.mjs'),'ux-reflection.spec.ts','--grep','Honest overall, no-answer and local consent off Khó chịu hơn','--trace','on','--output',path.join(dir,'case15-supplement-results'),'--reporter=list,json'];
+const env={...process.env,PLAYWRIGHT_JSON_OUTPUT_FILE:path.join(dir,'case15-supplement.json')},start=new Date().toISOString(),fd=fs.openSync(path.join(dir,'case15-supplement.log'),'wx');
+const child=spawn(process.execPath,args,{cwd:root,env,stdio:['ignore','pipe','pipe']});for(const stream of [child.stdout,child.stderr])stream.on('data',c=>{fs.writeSync(fd,c);process.stdout.write(c);});
+child.on('close',(exitCode,signal)=>{fs.closeSync(fd);fs.writeFileSync(path.join(dir,'case15-supplement-command.json'),JSON.stringify({command:['node',...args].join(' '),cwd:root,start,end:new Date().toISOString(),exitCode,signal,sourceFreezeSha256:sha(path.join(dir,'SOURCE-FREEZE-v2.json')),runnerSha256:sha(new URL(import.meta.url))},null,2)+'\n');process.exitCode=exitCode??1;});

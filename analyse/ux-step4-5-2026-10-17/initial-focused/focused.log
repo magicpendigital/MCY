@@ -1,0 +1,94 @@
+
+Running 30 tests using 1 worker
+
+320 core geometry {
+  footer: 464,
+  scopeBottom: 378.796875,
+  choices: [ 250.421875, 250.421875, 318.421875, 318.421875 ]
+}
+  ok  1 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 320 (6.4s)
+  ok  2 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 360 (5.2s)
+  ok  3 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 390 (4.7s)
+  ok  4 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope baseline390 (9.5s)
+  ok  5 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope landscape (5.6s)
+  ok  6 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope desktop (5.8s)
+  ok  7 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope iphone (4.4s)
+  ok  8 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope pixel (4.6s)
+  ok  9 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region none (5.8s)
+  ok 10 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region unknown (6.0s)
+  ok 11 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region skip (4.5s)
+  ok 12 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region undefined (4.9s)
+  ok 13 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Dễ chịu hơn (7.1s)
+  ok 14 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Như cũ (6.9s)
+  ok 15 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Khó chịu hơn (6.9s)
+  ok 16 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Chưa rõ (6.4s)
+  ok 17 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off undefined (6.4s)
+  ok 18 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:46:1 › Explicit skip stays distinct from blank despite chosen worse (5.8s)
+  ok 19 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:47:1 › New post areas stay visible editable and do not invent before levels (12.9s)
+  ok 20 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:51:1 › Paired comparisons preserve unequal sides, explicit keep and unsure (11.6s)
+  ok 21 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:52:1 › Existing guest opt-in records an honest session reflection and clears on reload (13.0s)
+  ok 22 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:55:1 › Reflection return does not leak styles into retained course or Home routes (7.1s)
+  x  23 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea false (9.0s)
+  x  24 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea true (8.6s)
+FOOTER false false {"viewport":320,"footer":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"container":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"primary":{"x":108,"y":469,"right":304,"bottom":520,"width":196,"height":51,"client":196,"scroll":196},"skip":{"x":16,"y":469,"right":100,"bottom":513,"width":84,"height":44,"client":84,"scroll":84}}
+  ok 25 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:62:67 › Measure actual footer false false (4.9s)
+FOOTER false true {"viewport":320,"footer":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"container":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"primary":{"x":108,"y":469,"right":304,"bottom":561,"width":196,"height":92,"client":196,"scroll":196},"skip":{"x":16,"y":469,"right":100,"bottom":561,"width":84,"height":92,"client":84,"scroll":84}}
+  ok 26 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:62:67 › Measure actual footer false true (4.4s)
+FOOTER true false {"viewport":320,"footer":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"container":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"primary":{"x":108,"y":469,"right":304,"bottom":520,"width":196,"height":51,"client":196,"scroll":196},"skip":{"x":16,"y":469,"right":100,"bottom":513,"width":84,"height":44,"client":84,"scroll":84}}
+  ok 27 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:62:67 › Measure actual footer true false (4.2s)
+FOOTER true true {"viewport":320,"footer":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"container":{"x":0,"y":464,"right":320,"bottom":568,"width":320,"height":104,"client":320,"scroll":320},"primary":{"x":108,"y":469,"right":304,"bottom":561,"width":196,"height":92,"client":196,"scroll":196},"skip":{"x":16,"y":469,"right":100,"bottom":519,"width":84,"height":50,"client":84,"scroll":84}}
+  ok 28 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:62:67 › Measure actual footer true true (4.8s)
+SIMFOOTER iphone {"viewport":{"top":124,"bottom":976,"left":353.5,"right":746.5,"height":852},"safe":"34px","footer":{"top":838,"bottom":942,"left":353.5,"right":746.5,"height":104},"primary":{"top":843,"bottom":935,"left":483.390625,"right":730.5,"height":92},"skip":{"top":843,"bottom":893,"left":369.5,"right":475.390625,"height":50}}
+  ok 29 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:63:43 › Measure simulator footer iphone (5.4s)
+SIMFOOTER pixel-10 {"viewport":{"top":74,"bottom":978,"left":337,"right":764,"height":904},"safe":"0px","footer":{"top":874,"bottom":978,"left":337,"right":764,"height":104},"primary":{"top":879,"bottom":930,"left":477.09375,"right":748,"height":51},"skip":{"top":879,"bottom":929,"left":353,"right":469.09375,"height":50}}
+  ok 30 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:63:43 › Measure simulator footer pixel-10 (5.2s)
+
+
+  1) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea false 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 320
+    Received:    375
+
+      27 |  await expect(view(p)).toBeVisible();await expect.poll(()=>active(p).evaluate(e=>Math.round(e.getBoundingClientRect().left-e.parentElement!.getBoundingClientRect().left))).toBe(0);return writes;
+      28 | }
+    > 29 | async function noOverflow(p:Page){const size=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(size.scroll).toBeLessThanOrEqual(size.client);}
+         |                                                                                                                                                                       ^
+      30 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Tab did not reach '+selector);}
+      31 | async function clearFocus(p:Page){const b=await p.evaluate(()=>{const r=document.activeElement!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect();return{top:r.top,bottom:r.bottom,header:h.bottom,footer:f.top};});expect(b.top).toBeGreaterThanOrEqual(b.header-1);expect(b.bottom).toBeLessThanOrEqual(b.footer+1);}
+      32 | for(const [label,width,height,query,before] of [['320',320,568,'?mode=web',undefined],['360',360,640,'?mode=web',undefined],['390',390,844,'?mode=web',undefined],['baseline390',390,844,'?mode=web','regions'],['landscape',844,390,'?mode=web',undefined],['desktop',1440,1000,'?mode=web',undefined],['iphone',1100,1100,'?mode=review&device=iphone',undefined],['pixel',1100,1100,'?mode=review&device=pixel-10',undefined]] as const)test('Reflection hierarchy and scope '+label,async({page})=>{
+        at noOverflow (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:29:167)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:60:604
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Actual-keybo-f1d58-and-optional-textarea-false\error-context.md
+
+  2) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea true 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 320
+    Received:    375
+
+      27 |  await expect(view(p)).toBeVisible();await expect.poll(()=>active(p).evaluate(e=>Math.round(e.getBoundingClientRect().left-e.parentElement!.getBoundingClientRect().left))).toBe(0);return writes;
+      28 | }
+    > 29 | async function noOverflow(p:Page){const size=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));expect(size.scroll).toBeLessThanOrEqual(size.client);}
+         |                                                                                                                                                                       ^
+      30 | async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Tab did not reach '+selector);}
+      31 | async function clearFocus(p:Page){const b=await p.evaluate(()=>{const r=document.activeElement!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect();return{top:r.top,bottom:r.bottom,header:h.bottom,footer:f.top};});expect(b.top).toBeGreaterThanOrEqual(b.header-1);expect(b.bottom).toBeLessThanOrEqual(b.footer+1);}
+      32 | for(const [label,width,height,query,before] of [['320',320,568,'?mode=web',undefined],['360',360,640,'?mode=web',undefined],['390',390,844,'?mode=web',undefined],['baseline390',390,844,'?mode=web','regions'],['landscape',844,390,'?mode=web',undefined],['desktop',1440,1000,'?mode=web',undefined],['iphone',1100,1100,'?mode=review&device=iphone',undefined],['pixel',1100,1100,'?mode=review&device=pixel-10',undefined]] as const)test('Reflection hierarchy and scope '+label,async({page})=>{
+        at noOverflow (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:29:167)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:60:604
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Actual-keybo-155ee--and-optional-textarea-true\error-context.md
+
+  2 failed
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea false 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea true 
+  28 passed (3.4m)
+(node:17884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:19072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

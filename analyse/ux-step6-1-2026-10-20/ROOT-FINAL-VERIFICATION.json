@@ -1,0 +1,29 @@
+{
+  "schema": "mcy.step6-1.root-final-verification.v1",
+  "capturedUtc": "2026-10-20T07:41:16.4741366Z",
+  "status": "PASS_FOUR_DOCUMENT_PREPARATION_STOP_USER_REVIEW",
+  "verifier": "/root",
+  "implementer": "/root/snapshot53_sync",
+  "independentQc": "/root/qc53_rebind_final",
+  "rootImplementationEdits": 0,
+  "scope": "New step6.1 preparation supplement;4operationaldocuments,not originalplanUIroutes or actualpilot",
+  "rootDirect": "Read all4documents in full;17links valid;9resulttablesblank;7hypotheticalpaperlogiccases only",
+  "rootPreservation": "Exacthash+bytes168manifest/71core/255source/59client/35rootdirty/29baseline references plus4docs/36freeze references",
+  "independentVerdict": "PASS_FOUR_DOCUMENT_PREPARATION_SCOPE/noP1P2",
+  "references": {
+    "FINAL-EVIDENCE-FREEZE-v1.json": "a0bb0b74f220381bce4dffe77561ebfff75719a41fb61071d11363b50e22ce33",
+    "FINAL-QC.vi.md": "d77eee970054c4addad67975b7dacda41b8a2074c83bf45f3f44bbd4208c924c",
+    "ROOT-DIRECT-DOCUMENT-CHECK.json": "7723025f381b66402fac4c90b620de2186dfcc013e9b6303726858e54e6663cb",
+    "ROOT-FINAL-PINS.json": "663a8ce3a52908b8eb6e62abd564d26b5f7a39f067591a2433118dc33eccbacf"
+  },
+  "history": "Initial implementer8-vs9tables expectationblock retained; corrected bookkeeping withoutdocumentchanges; QCseparator diagnostic corrected; no initialcommand retroactivePASS",
+  "human": "OWNER_REPORTED_DECISIONS_EXIST_DETAILS_PENDING",
+  "actualPilotExecuted": false,
+  "appBuildRuntimeBrowserTests": "NOT_APPLICABLE/doconly,no executable orfrontend/controlchange",
+  "remaining": "Exacthuman decisions/contentversionhash/purpose/scope;delivery/environment/rights;moderator/custodian;consentandnoteshandling beforeparticipants",
+  "noEffects": "No recruitment/email/messages/realconsent/participantdata/draftsharing/export/appserver/cloud/native/AI/canonicalwrites",
+  "native": "HALTED/currentActorVerified=false",
+  "web": "BLOCKED_NO_UPLOAD_OR_ALIAS",
+  "rollback": "Do not consume supplement;oldprotocol/canonical/candidate/historyunchanged",
+  "stop": "Waituserreview/details;no actualpilot/nextstep/course/AI"
+}

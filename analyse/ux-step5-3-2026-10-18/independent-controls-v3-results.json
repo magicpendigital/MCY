@@ -1,0 +1,40 @@
+{
+  "scope": "INDEPENDENT_LOCAL_TEMP_FIXTURE_CONTROL_ONLY",
+  "controlFreezeSha256": "8fa517d08d99f938b76f93b11f07fe00ee8dd302155205a2fa13d6e2e0ca7c97",
+  "results": [
+    {
+      "case": "static-integrity-and-added-path",
+      "status": "PASS",
+      "changed": 409,
+      "added": 404
+    },
+    {
+      "case": "static-root-junction",
+      "status": "PASS"
+    },
+    {
+      "case": "final-emit-source-drift",
+      "status": "PASS",
+      "httpStatus": 409,
+      "privateUnitEmitted": false
+    },
+    {
+      "case": "final-emit-revoke",
+      "status": "PASS",
+      "httpStatus": 401,
+      "privateUnitEmitted": false
+    },
+    {
+      "case": "final-emit-expiry",
+      "status": "PASS",
+      "httpStatus": 401,
+      "privateUnitEmitted": false
+    }
+  ],
+  "prePinsMatch": true,
+  "postPinsMatch": true,
+  "sourcePins": 9,
+  "canonicalPins": 71,
+  "outputContainsDraftBodiesOrCapabilities": false,
+  "limit": "Finite source rechecks; not atomic filesystem, physical device, live Auth or human approval"
+}

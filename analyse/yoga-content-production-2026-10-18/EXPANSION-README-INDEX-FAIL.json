@@ -1,0 +1,21 @@
+{
+  "status": "FAIL",
+  "priority": "P2",
+  "date": "2026-10-19",
+  "readme": {
+    "path": "content/yoga-library/expansion/README.vi.md",
+    "bytes": 21542,
+    "sha256": "0cd6717a109b3b0b512d0d71939c82a97d5f6a877c7a61cfc47dc0738647e4d7"
+  },
+  "canonicalEntities": 114,
+  "tableRows": 113,
+  "distinctTableRows": 113,
+  "missing": [
+    {
+      "id": "mcy.expansion.pose.crow",
+      "firstFacet": "posture.arm-balance"
+    }
+  ],
+  "execution": "Initial read-only assertion md.includes(e.id) exited1; diagnostic extraction only, no control invocation or canonical writes.",
+  "requestedFix": "Add missing Crow row and repin README/research receipt; catalog itself unchanged."
+}

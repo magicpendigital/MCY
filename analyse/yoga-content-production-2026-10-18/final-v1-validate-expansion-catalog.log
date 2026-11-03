@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "scope": "Local metadata-only structure, provenance-reference and current-crosswalk checks; not source truth, expertise, rights, practice or release approval.",
+  "schemaVersion": "mcy-yoga-expansion-1",
+  "taxonomyVersion": "mcy-yoga-taxonomy-1",
+  "entities": 114,
+  "sources": 20,
+  "taxonomies": 24,
+  "counts": {
+    "byKind": {
+      "knowledge_topic": 10,
+      "local_unresolved_topic": 5,
+      "pose_family": 68,
+      "pose_variant": 3,
+      "skill": 28
+    },
+    "bySourceKind": {
+      "local_draft_inventory": 1,
+      "web_teaching": 19
+    },
+    "byTaxonomyDomain": {
+      "knowledge": 3,
+      "local_topic": 1,
+      "posture": 14,
+      "skill": 6
+    },
+    "relations": 11,
+    "existingContentLinks": 17
+  },
+  "unitCountContribution": 0,
+  "mediaCountContribution": 0
+}

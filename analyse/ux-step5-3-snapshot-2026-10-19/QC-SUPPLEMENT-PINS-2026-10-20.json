@@ -1,0 +1,44 @@
+{
+  "schema": "mcy.step5-3.independent-final-supplement-pins.v1",
+  "capturedUtc": "2026-10-20T07:13:29.864Z",
+  "reviewer": "/root/qc53_rebind_final",
+  "finalFreezeSha256": "e1a3ba685317d5710d5e1f4f442c2c01f402190c279a50b9b4f61f7b9c2b8a67",
+  "checks": {
+    "finalEvidenceRefs": {
+      "count": 42,
+      "mismatches": []
+    },
+    "sourceFiles": {
+      "count": 255,
+      "mismatches": []
+    },
+    "clientFiles": {
+      "count": 59,
+      "mismatches": []
+    },
+    "canonicalDependencies": {
+      "count": 71,
+      "mismatches": []
+    },
+    "rootDirtyPreserved": {
+      "count": 35,
+      "mismatches": []
+    },
+    "preservedOldEvidence": {
+      "count": 6,
+      "mismatches": []
+    },
+    "oldFrozenSource": {
+      "count": 255,
+      "mismatches": []
+    },
+    "oldClient": {
+      "count": 59,
+      "mismatches": []
+    }
+  },
+  "rootUiRecordConsistent": true,
+  "rootUiObservedBy": "/root (19October); QC reviewed JSON and two saved PNG only",
+  "cleanupConsistent": true,
+  "status": "PASS"
+}

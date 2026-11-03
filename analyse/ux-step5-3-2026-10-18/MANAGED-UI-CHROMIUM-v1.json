@@ -1,0 +1,72 @@
+{
+  "runId": "1792342871311-11432",
+  "startedAt": "2026-10-18T17:01:11.312Z",
+  "endedAt": "2026-10-18T17:01:37.910Z",
+  "project": "unit-review-ui",
+  "channel": "chromium",
+  "listing": false,
+  "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1",
+  "args": [
+    "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "--config",
+    "unit-review.playwright.config.ts",
+    "--project",
+    "unit-review-ui"
+  ],
+  "environmentPolicy": "OS_ALLOWLIST_PLUS_EXPLICIT_INVALID_FIXTURE_ONLY_NO_ENV_FILES",
+  "browserCachePolicy": "FIXED_WORKSPACE_TEST_CACHE_NO_INHERITED_PATH",
+  "browserCachePath": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-browser-tools",
+  "inheritedEnvironmentKeys": [
+    "APPDATA",
+    "ComSpec",
+    "CommonProgramFiles",
+    "LOCALAPPDATA",
+    "PATHEXT",
+    "Path",
+    "ProgramFiles",
+    "ProgramFiles(x86)",
+    "SystemRoot",
+    "TEMP",
+    "TMP",
+    "USERPROFILE",
+    "windir"
+  ],
+  "timeoutMs": 600000,
+  "secondaryDeadlineMs": 20000,
+  "taskkillDeadlineMs": 8000,
+  "outputCapBytes": 4194304,
+  "capturedBytes": 2830,
+  "totalObservedBytes": 2830,
+  "cleanup": {
+    "attempted": false,
+    "reason": null,
+    "method": "NORMAL_TEARDOWN",
+    "taskkillExitCode": null,
+    "taskkillTimedOut": false,
+    "secondaryDeadlineExceeded": false,
+    "status": "VERIFIED_OWNED_CHILD_AND_SELECTED_LISTENERS",
+    "verified": true,
+    "childClosed": true,
+    "listeners": [
+      {
+        "port": 4253,
+        "state": "CLOSED"
+      },
+      {
+        "port": 4255,
+        "state": "CLOSED"
+      }
+    ],
+    "descendantEvidence": "NORMAL_DESCENDANTS_NOT_INDEPENDENTLY_ENUMERATED"
+  },
+  "childPid": 29272,
+  "outputCapExceeded": false,
+  "timedOut": false,
+  "exitCode": 1,
+  "signal": null,
+  "spawnError": false,
+  "status": "FAIL_PROCESS",
+  "stdoutPath": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1\\test-results\\unit-review-invocations\\1792342871311-11432.stdout.log",
+  "stderrPath": "D:\\Projects\\MCY\\.vercel\\ux-step5-3-20261018-v1\\test-results\\unit-review-invocations\\1792342871311-11432.stderr.log"
+}

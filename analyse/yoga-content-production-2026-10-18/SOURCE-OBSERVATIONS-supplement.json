@@ -1,0 +1,834 @@
+{
+  "schemaVersion": "mcy-private-source-observations/1",
+  "date": "2026-10-18",
+  "timezone": "Asia/Bangkok",
+  "initialEvidence": {
+    "path": "SOURCE-OBSERVATIONS.json",
+    "sha256": "158ec08c1fff49b140b7ca357ffaca174641276c6fef01e7d0e30749a484a01c"
+  },
+  "status": "supplemental_partial_still_samples",
+  "recordCount": 13,
+  "supplementRecordsWithVisiblePixels": 11,
+  "cumulativeRecordsWithVisiblePixels": 12,
+  "cumulativeStillUnobservedIndices": [
+    2
+  ],
+  "scope": "Visible-pixel reading only. Initial failed/partial captures retained. Neither timestamps nor loading/readiness are treated as proof of video pixels. No safety classification, full-video, audio or remote YouTube observation.",
+  "records": [
+    {
+      "localIndex": 0,
+      "sourceFileName": "Bánh xe thấp.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Bánh xe thấp.mov",
+      "sourceSha256": "50397ee6a697e7c30910ffd364aac511d815eba14215b918ea67959303a283a1",
+      "sourceBytes": 13550762,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-0.png",
+      "captureSha256": "67ce543a546deb73118ffbcfc9095c5f74f21839b08e413fcc733a4ca948a548",
+      "browserMeasurements": [
+        {
+          "actualTime": 8.028,
+          "duration": 53.5,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 18.733,
+          "duration": 53.5,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 29.437,
+          "duration": 53.5,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 42.818,
+          "duration": 53.5,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2
+      ],
+      "blackColumns": [
+        3,
+        4
+      ],
+      "visibleTimestampsSeconds": [
+        8.028,
+        18.733
+      ],
+      "visualIdentity": "Supine deep backbend with elbows/forearms on mat, head very close to mat; exact head load unknown.",
+      "pixelObservations": [
+        "Column1 shows seated arms-up/elbows-bent preparation.",
+        "Column2 shows feet planted, body arched upward, elbows/forearms at mat and head near mat; caption addresses elbows. This is not standard Bridge and not a straight-arm Wheel demonstration."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 1,
+      "sourceFileName": "Bò mèo.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Bò mèo.mov",
+      "sourceSha256": "1b46e66304609ecced96a211b350c54e0ff5751ffc3e9a38e2cd60a806aa8d07",
+      "sourceBytes": 9536106,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-1.png",
+      "captureSha256": "6ca533d9e31f0dee2f526c5d15def4638ef44e75912764ce0a07840916809209",
+      "browserMeasurements": [
+        {
+          "actualTime": 5.214,
+          "duration": 34.733333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 12.166,
+          "duration": 34.733333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 19.119,
+          "duration": 34.733333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 27.809,
+          "duration": 34.733333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2,
+        3
+      ],
+      "blackColumns": [
+        4
+      ],
+      "visibleTimestampsSeconds": [
+        5.214,
+        12.166,
+        19.119
+      ],
+      "visualIdentity": "All-fours Cat–Cow pair.",
+      "pixelObservations": [
+        "Rounded spine/head lowered in column1; extended curve/chest lifted in columns2–3. Initial capture additionally shows column4 rounded."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 2,
+      "sourceFileName": "Chiến binh 2.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Chiến binh 2.mov",
+      "sourceSha256": "220fa374979d2a72298c3ca2975718101bf148a3ff40dcf3db11cc6e65b5f2a8",
+      "sourceBytes": 13388852,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-2.png",
+      "captureSha256": "96fc952aad8113b82745297ff5a443bb3d43cb0f3eaedc7561e3ed54e76daebe",
+      "browserMeasurements": [
+        {
+          "actualTime": 6.955999,
+          "duration": 46.333333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 16.23,
+          "duration": 46.333333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 25.504,
+          "duration": 46.333333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 37.097,
+          "duration": 46.333333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [],
+      "blackColumns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visibleTimestampsSeconds": [],
+      "visualIdentity": null,
+      "pixelObservations": [
+        "All four video panels are black. Correct timestamps and readyState do not supply visible pose evidence."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 3,
+      "sourceFileName": "Chó 3 chân.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Chó 3 chân.mov",
+      "sourceSha256": "603d09378fb3dae4097440ba6ade073bbc7754397f0cc6fb53a2d11461f928be",
+      "sourceBytes": 8541521,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-3.png",
+      "captureSha256": "8b07f18fbfd5ff989fc0350c9e21192cd7b33f88ddf18ad088803de38bc5c4f1",
+      "browserMeasurements": [
+        {
+          "actualTime": 4.81,
+          "duration": 32.033333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 11.223,
+          "duration": 32.033333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 17.637,
+          "duration": 32.033333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 25.654,
+          "duration": 32.033333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "blackColumns": [],
+      "visibleTimestampsSeconds": [
+        4.81,
+        11.223,
+        17.637,
+        25.654
+      ],
+      "visualIdentity": "Three-legged Downward Dog family with one leg raised.",
+      "pixelObservations": [
+        "All four panels contain body pixels despite loading spinners.",
+        "Two hands and one foot are on mat, other leg raised; hip/foot orientation varies. Still side/three-quarter view cannot quantify hip rotation or loading."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 4,
+      "sourceFileName": "Đầu bò.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Đầu bò.mov",
+      "sourceSha256": "80bd0cfbf4a1b3d62380fbcaf9b0668ead853cb3c32078bc1213126c9da47679",
+      "sourceBytes": 11369553,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-4.png",
+      "captureSha256": "d4fa0c070bd49bd20175d7117fa35663249d3bf03e52f57810d89855fdbe8eaa",
+      "browserMeasurements": [
+        {
+          "actualTime": 7.071,
+          "duration": 47.1,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 16.498,
+          "duration": 47.1,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 25.925,
+          "duration": 47.1,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 37.71,
+          "duration": 47.1,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "blackColumns": [],
+      "visibleTimestampsSeconds": [
+        7.071,
+        16.498,
+        25.925,
+        37.71
+      ],
+      "visualIdentity": "Cow-Face arm sequence on a cross-legged seated base.",
+      "pixelObservations": [
+        "Back view: cross-legged seat, arms open; then one elbow above shoulder and other arm behind back; both hands approach behind torso.",
+        "No stacked-knee full Cow-Face leg arrangement is visible in these samples."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 5,
+      "sourceFileName": "Đứng lên thẳng lưng.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Đứng lên thẳng lưng.mov",
+      "sourceSha256": "8f8349a2352151957fec14c93655805048e4268ce62b9dda716d7f839bedbbc6",
+      "sourceBytes": 12301770,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-5.png",
+      "captureSha256": "7e55913988f20358cd6d9c375fb529039e1acd250538a2fb5fb6f904dff3f34f",
+      "browserMeasurements": [
+        {
+          "actualTime": 5.596999,
+          "duration": 37.267007,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 13.06,
+          "duration": 37.267007,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 20.523,
+          "duration": 37.267007,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 29.852,
+          "duration": 37.267007,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        4
+      ],
+      "blackColumns": [
+        2,
+        3
+      ],
+      "visibleTimestampsSeconds": [
+        5.596999,
+        29.852
+      ],
+      "visualIdentity": "Standing/reaching frame and a forward-fold comparison montage; full transition is missing.",
+      "pixelObservations": [
+        "Column1 shows person upright on two feet with arms reaching.",
+        "Column4 shows two comparison panels of a folded/hip-hinged torso, including another scene/person and embedded comparison labels.",
+        "No continuous fold-to-stand sequence can be reconstructed from these two visible samples."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 6,
+      "sourceFileName": "Hoang dã cao.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Hoang dã cao.mov",
+      "sourceSha256": "de09638cf31ab79b1bf345f509f9845004b4dfb872a741188a8a7484e6521e71",
+      "sourceBytes": 21574980,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-6.png",
+      "captureSha256": "6190191a572a1ebaa3b58f72f89d9bda5f69c8f5a972e217c5e352d4e402c910",
+      "browserMeasurements": [
+        {
+          "actualTime": 7.861,
+          "duration": 52.366667,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 18.343,
+          "duration": 52.366667,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 28.824,
+          "duration": 52.366667,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 41.926,
+          "duration": 52.366667,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        3
+      ],
+      "blackColumns": [
+        1,
+        2,
+        4
+      ],
+      "visibleTimestampsSeconds": [
+        28.824
+      ],
+      "visualIdentity": "Wild-Thing / flipped-dog family: one-hand-supported backbend with both feet on floor.",
+      "pixelObservations": [
+        "Only column3 contains the pose, partly overlaid by a loading spinner.",
+        "One palm and both feet form visible supports, torso/chest arched upward, free arm reaches behind/overhead. Both knees appear bent; exact hand-side and foot-loading not established."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 7,
+      "sourceFileName": "Quạ thấp.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Quạ thấp.mov",
+      "sourceSha256": "d3b170c90fa34f2bcdf2954b85705982023b41921936b36914ce927eb6164c82",
+      "sourceBytes": 10778028,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-7.png",
+      "captureSha256": "fcfa55b87a7a7456366c60d29d88ff95a40863d20aff5fa26d71d48fb14986cd",
+      "browserMeasurements": [
+        {
+          "actualTime": 5.744,
+          "duration": 38.266667,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 13.401,
+          "duration": 38.266667,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 21.059,
+          "duration": 38.266667,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 30.632,
+          "duration": 38.266667,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        2,
+        3
+      ],
+      "blackColumns": [
+        1,
+        4
+      ],
+      "visibleTimestampsSeconds": [
+        13.401,
+        21.059
+      ],
+      "visualIdentity": "Crow arm balance and a distinct forearm/elbow-lowered low variant.",
+      "pixelObservations": [
+        "Column2 shows knees near upper arms, elbows bent and feet lifted in a Crow-like shape.",
+        "Column3 shows torso/head much lower, elbows/forearms at the mat and feet raised; exact head contact and load cannot be confirmed.",
+        "The two shapes must not be treated as interchangeable support arrangements or a self-practice progression."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 8,
+      "sourceFileName": "Quỳ gối ngả sau.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Quỳ gối ngả sau.mov",
+      "sourceSha256": "3b1d486099c06e5b21ad81e7c9b29fa7177af75acec2eaa4b08ab3e2ca1ff988",
+      "sourceBytes": 11669299,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-8.png",
+      "captureSha256": "5918b2a9d6b98d6f79b5eb242f504181c8c010371b77131a2bb533f9c8b2f523",
+      "browserMeasurements": [
+        {
+          "actualTime": 7.269,
+          "duration": 48.433333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 16.961,
+          "duration": 48.433333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 26.654,
+          "duration": 48.433333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 38.769,
+          "duration": 48.433333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [],
+      "blackColumns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visibleTimestampsSeconds": [],
+      "visualIdentity": null,
+      "pixelObservations": [
+        "All supplement panels black. Initial capture columns1–2 remain the only visible evidence for this local file."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 9,
+      "sourceFileName": "Rắn hổ mang.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Rắn hổ mang.mov",
+      "sourceSha256": "eb51faaa944ed3f6ac9738fa8062353228fb5ab618f07bb6dbd59ea347beede5",
+      "sourceBytes": 5019965,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-9.png",
+      "captureSha256": "da2571b2d82c83b42a15654131fe936944e354ab10f7638aff2dd8efd7fb2da3",
+      "browserMeasurements": [
+        {
+          "actualTime": 3.501,
+          "duration": 23.3,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 8.167999,
+          "duration": 23.3,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 12.835,
+          "duration": 23.3,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 18.67,
+          "duration": 23.3,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2
+      ],
+      "blackColumns": [
+        3,
+        4
+      ],
+      "visibleTimestampsSeconds": [
+        3.501,
+        8.167999
+      ],
+      "visualIdentity": "Cobra-like chest lift alternating with a knees-down, hips-raised low-chest shape.",
+      "pixelObservations": [
+        "Column1 shows prone chest lift with bent elbows and pelvis/legs low.",
+        "Column2 shows knees at mat, hips raised/flexed and chest/head near mat with elbows bent; not enough to assert a precise knees–chest–chin technique."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 10,
+      "sourceFileName": "Rắng hổ mang phiên bản dễ.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Rắng hổ mang phiên bản dễ.mov",
+      "sourceSha256": "ace948fd84e001f922ef4fda59f058a92975ce4c6c2dc51ae568dd8bcbb00c22",
+      "sourceBytes": 15360320,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-10.png",
+      "captureSha256": "92b64cd80ca14854e527e8343dbe99a1ceba5ae3ca1d203bdfd0a256fc80fb11",
+      "browserMeasurements": [
+        {
+          "actualTime": 5.2,
+          "duration": 34.633333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 12.134,
+          "duration": 34.633333,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 19.067,
+          "duration": 34.633333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 27.734,
+          "duration": 34.633333,
+          "error": null,
+          "readyState": 1,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2
+      ],
+      "blackColumns": [
+        3,
+        4
+      ],
+      "visibleTimestampsSeconds": [
+        5.2,
+        12.134
+      ],
+      "visualIdentity": "Cobra-like higher chest lift and a low-chest knees-down transition.",
+      "pixelObservations": [
+        "Visible columns1–2 repeat the two movement shapes in initial capture. Initial capture has all four samples visible.",
+        "Label phiên bản dễ does not establish Baby Cobra or beginner suitability."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 11,
+      "sourceFileName": "Trường tấn cao.mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\Trường tấn cao.mov",
+      "sourceSha256": "f3c7c5a9767e3c6292fb7ba1f9c6731f0936a6e069314f402e16dd6af85b0a83",
+      "sourceBytes": 17703026,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-11.png",
+      "captureSha256": "3f6c6f7ce9939456c9e403c45216598c93d7e7bb9681a0f654a90519b923cf00",
+      "browserMeasurements": [
+        {
+          "actualTime": 6.869,
+          "duration": 45.766667,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 16.026,
+          "duration": 45.766667,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 25.184,
+          "duration": 45.766667,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 36.632,
+          "duration": 45.766667,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "blackColumns": [],
+      "visibleTimestampsSeconds": [
+        6.869,
+        16.026,
+        25.184,
+        36.632
+      ],
+      "visualIdentity": "High Lunge with rear heel lifted; arms-up and hands-at-hips variations.",
+      "pixelObservations": [
+        "Front foot flat, front knee bent, rear heel lifted on rear forefoot; torso upright.",
+        "Columns1/4 show arms overhead; columns2/3 hands near hips. No transition to the opposite side is observed."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    },
+    {
+      "localIndex": 12,
+      "sourceFileName": "V ngược (chó úp mặt).mov",
+      "sourcePath": "D:\\nilaza\\documents\\Tư thế lẻ\\V ngược (chó úp mặt).mov",
+      "sourceSha256": "af9d8fbbe027caa52dbae8dc492d5b7bd7946d8cc2d1b83e65ecbfe6d635ffb6",
+      "sourceBytes": 17377196,
+      "capturePath": "private-evidence\\browser-contacts\\supplement\\pose-12.png",
+      "captureSha256": "c676c90254e023d797484f866ad5974bfa8dfe3899d3e238f2c6bf4849bf5ade",
+      "browserMeasurements": [
+        {
+          "actualTime": 7.948,
+          "duration": 52.94,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 18.546,
+          "duration": 52.94,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 29.143,
+          "duration": 52.94,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        },
+        {
+          "actualTime": 42.39,
+          "duration": 52.94,
+          "error": null,
+          "readyState": 4,
+          "videoWidth": 1080
+        }
+      ],
+      "visibleColumns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "blackColumns": [],
+      "visibleTimestampsSeconds": [
+        7.948,
+        18.546,
+        29.143,
+        42.39
+      ],
+      "visualIdentity": "All-fours/hips-back low starting shape plus Downward-Dog inverted-V variants.",
+      "pixelObservations": [
+        "Column1 shows hips near heels and arms reaching forward.",
+        "Column2 shows inverted V with visibly bent knees; columns3/4 straighter-leg versions. Heels close to floor but exact pressure is not visible.",
+        "Embedded experience-level captions are source captions, not MCY eligibility findings."
+      ],
+      "fullClipWatched": false,
+      "audioReviewed": false,
+      "leftRightConfirmed": false,
+      "youtubeBindingVerified": false,
+      "expertApproved": false,
+      "rightsApproved": false,
+      "evidenceUse": "private_editorial_identity_research_only_not_learner_asset"
+    }
+  ]
+}

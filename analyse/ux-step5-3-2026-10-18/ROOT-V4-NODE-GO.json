@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-10-18T16:48:02.5751093Z",
+  "status": "GO_EXACT_THREE_NODE_SUITES_ON_V4",
+  "controlFreezeSha256": "8fa517d08d99f938b76f93b11f07fe00ee8dd302155205a2fa13d6e2e0ca7c97",
+  "controlQcSha256": "f3504837cb6c4911f764f0a77bd771868de810ba898146f61d3264d1217b4f00",
+  "pins": {
+    "canonical": 71,
+    "control": 9
+  },
+  "expectedTests": 13,
+  "environment": "same corrected flat-array wrapper, sanitized OSenv, no envfiles/providerkeys",
+  "caps": "600s, distinct output, explicit one run",
+  "stillBlocked": [
+    "Ownerrestart pending actual13PASS",
+    "browser suites pending managedtool provisioning/rootGO",
+    "cloud/native/deploy",
+    "step6"
+  ]
+}

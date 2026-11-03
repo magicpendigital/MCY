@@ -1,0 +1,60 @@
+{
+  "capturedAt": "2026-10-18T16:03:45.3684238Z",
+  "scope": "GO_BUILD_AND_EGRESS_NEGATIVE_ONLY",
+  "uiHandoffSha256": "9131d6b8da83d788cb2e36d15075ed611f07706868916b31025f7b7b44da39c7",
+  "uiQcSha256": "c0fe4db2b2ee205bccfb1782241a1f19e1a0b4b96cd0c048f8d5536e956da3b3",
+  "rootDirtyPinsMatched": 35,
+  "uiPins": [
+    {
+      "path": "src/Prototype.tsx",
+      "sha256": "39cc4d8434d7c43055e70d5e50a6a1d5a02388cd8979c8c4006c433ca83c79b0"
+    },
+    {
+      "path": "src/staff/UnitReviewWorkspace.tsx",
+      "sha256": "20b1366173c1ed9ea7e58038befc9b69ce1ce477de5caa0890d8476b50375141"
+    },
+    {
+      "path": "src/staff/unit-review.css",
+      "sha256": "4dd47ee66d5958f076933196d090d67d37c52a6839d0ec2e34509d6a06f3a33b"
+    },
+    {
+      "path": "tests/unit-review-workspace.spec.ts",
+      "sha256": "251a0af5bbd2fc1e257de8670e078247abbbe604aa79290576153d59e78be72e"
+    },
+    {
+      "path": "scripts/unit-review-global-setup.mjs",
+      "sha256": "40623d16459db2ba075a8f645c8c2c07361d314acb36fd1c2b7291fd5905a531"
+    },
+    {
+      "path": "unit-review.playwright.config.ts",
+      "sha256": "344b74dcd524244ba43fa397b87b9169b016f5cc1d42e203e68b91f831856a45"
+    },
+    {
+      "path": "tests/unit-review-catalog-contract.spec.ts",
+      "sha256": "52ab4527b4273062996c7157868b40c16a38bec6da6a3c743c54e6689ea7bb60"
+    },
+    {
+      "path": "scripts/unit-review-egress-guard.mjs",
+      "sha256": "9e0ac189f37f3d00a9cfca756a96e9142c1a6bc01a6dc752c72e4d7dcd3da58b"
+    },
+    {
+      "path": "scripts/unit-review-run.mjs",
+      "sha256": "6924ae8fa1d04f8dbf13f629df1e1b458732ce702c9f50dcbf00d13c1fdb37bd"
+    },
+    {
+      "path": "tests/unit-review-egress-guard.test.mjs",
+      "sha256": "7461b66317a4386fd76e3042383e2c3fa7d95af2aa88deae063951801ee8a921"
+    }
+  ],
+  "allowed": [
+    "isolated invalid build/runtime/catalog/typecheck/bundle/Sites/environment checks",
+    "reviewed egress-negative runner"
+  ],
+  "stillBlocked": [
+    "browser/mock suites pending artifact verification",
+    "backend tests pending control v2 QC",
+    "Owner actual preview",
+    "cloud/native/deploy",
+    "step6"
+  ]
+}

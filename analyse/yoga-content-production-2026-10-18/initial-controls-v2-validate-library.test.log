@@ -1,0 +1,37 @@
+✔ valid fictional draft remains unpublished, pending and non-recommendable (122.9156ms)
+✔ rejects duplicate steps (36.5892ms)
+✔ rejects missing step media ref (27.215ms)
+✔ rejects path traversal (27.5326ms)
+✔ rejects absolute path (28.0014ms)
+✔ rejects media hash drift (28.969ms)
+✔ rejects fake approval (26.8965ms)
+✔ rejects approved human review status (27.2817ms)
+✔ rejects published flag (28.7575ms)
+✔ rejects learner visible flag (26.2642ms)
+✔ rejects recommendation flag (26.6068ms)
+✔ rejects reading time used as practice duration (25.1828ms)
+✔ rejects wrong canonical source ID (28.098ms)
+✔ rejects stale title mapping (23.2263ms)
+✔ rejects missing inventory record (25.1513ms)
+✔ rejects missing inventory unit (29.8665ms)
+✔ rejects missing inventory backlink (44.0361ms)
+✔ rejects nonconsecutive step order (34.0526ms)
+✔ rejects fake ready asset with no path (27.7663ms)
+✔ rejects unproduced media with existing path (29.9315ms)
+✔ rejects missing source binding (30.56ms)
+✔ rejects false video observed assertion (24.5123ms)
+✔ rejects unsupported unvalidated schema extension (27.6668ms)
+✔ rejects a missing referenced image file (21.0495ms)
+✔ rejects a wrong image size despite correct bytes and hash (35.0016ms)
+✔ unproduced media is accepted only with null fields and a matching explicit brief (35.3603ms)
+✔ unsupported JSON Schema validation keywords fail closed (0.3573ms)
+✔ rejects weakening the declarative schema to accept a visible learner draft (23.0357ms)
+✔ rejects an invented provenance digest without its source file (33.5482ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1122.1302

@@ -1,0 +1,44 @@
+[
+  {
+    "name": "runtime",
+    "command": "node scripts/check-mobile-runtime.mjs",
+    "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017",
+    "exitCode": 0
+  },
+  {
+    "name": "catalogue",
+    "command": "node scripts/check-reviewed-practice-catalog.mjs",
+    "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017",
+    "exitCode": 0
+  },
+  {
+    "name": "typecheck",
+    "command": "node D:\\Projects\\MCY\\node_modules\\typescript\\bin\\tsc",
+    "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017",
+    "exitCode": 0
+  },
+  {
+    "name": "build",
+    "command": "node D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\build-fixture.mjs",
+    "cwd": "D:\\Projects\\MCY",
+    "exitCode": 1
+  },
+  {
+    "name": "sites-prep",
+    "command": "node scripts/prepare-sites-build.mjs",
+    "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017",
+    "exitCode": 1
+  },
+  {
+    "name": "bundle",
+    "command": "node scripts/check-client-bundle-secrets.mjs",
+    "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017",
+    "exitCode": 1
+  },
+  {
+    "name": "sites-isolation",
+    "command": "node --test tests/sites-worker.test.mjs tests/playwright-test-environment.test.mjs",
+    "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017",
+    "exitCode": 1
+  }
+]

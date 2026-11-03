@@ -1,0 +1,257 @@
+{
+  "schema": "mcy-ux-step5-2-intake-baseline-v1",
+  "capturedUtcStart": "2026-10-18T13:25:28.6271880Z",
+  "capturedUtcEnd": "2026-10-18T13:25:29.2444778Z",
+  "status": "STABLE_TWO_READS_SELECTED_INPUTS",
+  "ownership": {
+    "consumer": "/root/profile46_finish",
+    "canonical": "content/yoga-library upstream task",
+    "qc": "/root/profile46_qc",
+    "rootVerifier": "/root",
+    "allowedMode": "INTAKE_ONLY_READ_ONLY_CANONICAL"
+  },
+  "app": {
+    "candidate": ".vercel/ux-step4-7-20261018-v7",
+    "sourceFreezePath": "analyse/ux-step4-7-2026-10-18/CANDIDATE-SOURCE-FREEZE-v7.json",
+    "sourceFreezeSha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1",
+    "appInputCount": 237,
+    "inputPinsFullValidation": "ROOT_SEPARATE_237_PASS_5_1_NOT_NEW_5_2_TEST",
+    "trackedDirtyCount": 35,
+    "trackedDirtyPaths": [
+      ".github/pull_request_template.md",
+      ".github/workflows/quality.yml",
+      "AGENTS.md",
+      "analyse/MCY_IMPLEMENTATION_PLAN_2026-09-27.md",
+      "package.json",
+      "scripts/check-client-bundle-secrets.mjs",
+      "scripts/playwright-test-environment.mjs",
+      "scripts/setup-staging-actor-tokens.ps1",
+      "skills/mcy-change-review/SKILL.md",
+      "skills/mcy-change-review/references/review-matrix.md",
+      "src/Prototype.tsx",
+      "src/backend/supabase.ts",
+      "src/staff/owner.css",
+      "src/staff/owner.tsx",
+      "src/staff/teacher.tsx",
+      "supabase/README.md",
+      "supabase/config.toml",
+      "supabase/functions/_shared/aiAssistant.ts",
+      "supabase/functions/_shared/aiGates.ts",
+      "supabase/functions/_shared/aiGateway.ts",
+      "supabase/functions/_shared/ownerControlPlane.ts",
+      "supabase/functions/_shared/teacherControlPlane.ts",
+      "supabase/functions/mcy-ai-assistant/index.ts",
+      "supabase/functions/owner-control-plane/index.ts",
+      "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "supabase/migrations/20261002204228_teacher_control_plane_rpcs.sql",
+      "tests/ai-assistant-handler.test.mjs",
+      "tests/ai-current-turn-contract.test.mjs",
+      "tests/ai-gateway-models.test.mjs",
+      "tests/ai-safety-boundaries.test.mjs",
+      "tests/learner-ux.spec.ts",
+      "tests/owner-control-plane.test.mjs",
+      "tests/playwright-test-environment.test.mjs",
+      "tests/teacher-control-plane.test.mjs",
+      "tests/teacher-migration-contract.test.mjs"
+    ]
+  },
+  "prior51": {
+    "freezePath": "analyse/ux-step5-1-2026-10-18/FINAL-EVIDENCE-FREEZE.json",
+    "freezeSha256": "9b943f389e45d873b3aac835b96629d43fe0af00c1257deae6a4614236a9f5a7",
+    "nextStepsSha256": "fcd229d4949df541afdb51bf4baab7bf4e9751afa18005261d753614745d5694"
+  },
+  "canonical": {
+    "inventoryRecordCount": 38,
+    "selectedUnitCount": 14,
+    "selectedUnits": [
+      {
+        "id": "mcy.pose.cobra",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/cobra/r1.json"
+      },
+      {
+        "id": "mcy.pose.cobra-gentle",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/cobra-gentle/r1.json"
+      },
+      {
+        "id": "mcy.pose.cow-face",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/cow-face/r1.json"
+      },
+      {
+        "id": "mcy.pose.downward-dog",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/downward-dog/r1.json"
+      },
+      {
+        "id": "mcy.foundation.cat-cow",
+        "revision": "r3",
+        "locale": "vi-VN",
+        "path": "units/foundation-cat-cow/r3.json"
+      },
+      {
+        "id": "mcy.foundation.standing",
+        "revision": "r3",
+        "locale": "vi-VN",
+        "path": "units/foundation-standing/r3.json"
+      },
+      {
+        "id": "mcy.pose.high-lunge",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/high-lunge/r1.json"
+      },
+      {
+        "id": "mcy.pose.kneeling-backbend",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/kneeling-backbend/r1.json"
+      },
+      {
+        "id": "mcy.pose.low-crow",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/low-crow/r1.json"
+      },
+      {
+        "id": "mcy.pose.low-wheel",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/low-wheel/r1.json"
+      },
+      {
+        "id": "mcy.transition.stand-up",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/stand-up/r1.json"
+      },
+      {
+        "id": "mcy.pose.three-legged-dog",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/three-legged-dog/r1.json"
+      },
+      {
+        "id": "mcy.pose.warrior-ii",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/warrior-ii/r1.json"
+      },
+      {
+        "id": "mcy.pose.wild-thing-high",
+        "revision": "r1",
+        "locale": "vi-VN",
+        "path": "units/wild-thing-high/r1.json"
+      }
+    ],
+    "selectedFileCount": 17,
+    "files": [
+      {
+        "path": "content/yoga-library/README.vi.md",
+        "bytes": 4832,
+        "sha256": "cd11dd9984237e6321aa36032d41f43e9d6b4606222d12848bf1e6d842d402d5"
+      },
+      {
+        "path": "content/yoga-library/INTEGRATION-HANDOFF.vi.md",
+        "bytes": 7248,
+        "sha256": "4a9aff3a6d4d82af45615f01449ce04d77c34302dae791601bacb60d06812e76"
+      },
+      {
+        "path": "content/yoga-library/inventory.json",
+        "bytes": 24947,
+        "sha256": "85b1242a4f9fd06fa8eb53f3a12adb4e1bc401ab277813ff149b0c9a65ebe3ed"
+      },
+      {
+        "path": "content/yoga-library/units/cobra/r1.json",
+        "bytes": 23419,
+        "sha256": "e599f8a6f6f406c3e222d68d33c491dd679cde45b75f6dfcae67ba5e15ee713d"
+      },
+      {
+        "path": "content/yoga-library/units/cobra-gentle/r1.json",
+        "bytes": 23869,
+        "sha256": "3460c3ada4ee8676c428694d55a9af3dbea36b8a513e98237385896a63063b01"
+      },
+      {
+        "path": "content/yoga-library/units/cow-face/r1.json",
+        "bytes": 23319,
+        "sha256": "11410eb99910832630a5510cdd5aa8623a7b287aed8134453fb24d9f4cfac551"
+      },
+      {
+        "path": "content/yoga-library/units/downward-dog/r1.json",
+        "bytes": 24381,
+        "sha256": "452299229d75604b1912bb55c100f88c8294bf36636d54178e5922940c702aaa"
+      },
+      {
+        "path": "content/yoga-library/units/foundation-cat-cow/r3.json",
+        "bytes": 39903,
+        "sha256": "aaa9cec5ac78e4fafc43657ec89dc77cc9ec0cb149a120484897b2f6abcb1854"
+      },
+      {
+        "path": "content/yoga-library/units/foundation-standing/r3.json",
+        "bytes": 37445,
+        "sha256": "f208ff64d776b0be4a01e81b89cd49d36144c47ca105d7acc44466b5486a7f89"
+      },
+      {
+        "path": "content/yoga-library/units/high-lunge/r1.json",
+        "bytes": 23591,
+        "sha256": "78135b89cbc95a8d8809afa28b88f605cb4e5d00b87f8e246a22e6936cef1368"
+      },
+      {
+        "path": "content/yoga-library/units/kneeling-backbend/r1.json",
+        "bytes": 24260,
+        "sha256": "461ee017f41acd05c775de9760249adb0ca420a22ad384166193b9c9952ba05c"
+      },
+      {
+        "path": "content/yoga-library/units/low-crow/r1.json",
+        "bytes": 24030,
+        "sha256": "0536caa4f45ac08fedf43e32c1c2c25415c7e7408f2790421c8d3694af6594af"
+      },
+      {
+        "path": "content/yoga-library/units/low-wheel/r1.json",
+        "bytes": 25803,
+        "sha256": "29d87457775ddac019dbcb02d79f7185fdb7df117da7e747910da9101b34072a"
+      },
+      {
+        "path": "content/yoga-library/units/stand-up/r1.json",
+        "bytes": 24339,
+        "sha256": "1a1c68e89af79469ecea8f111bb7a2df2de8f8b96e9e6dc09512761d1fed504a"
+      },
+      {
+        "path": "content/yoga-library/units/three-legged-dog/r1.json",
+        "bytes": 24092,
+        "sha256": "8d55dc8db1761c88ff20801d31085f22aeb50d1b7d068e8f27f6fc1b212b404b"
+      },
+      {
+        "path": "content/yoga-library/units/warrior-ii/r1.json",
+        "bytes": 23180,
+        "sha256": "e666a51c0cf89a777b5d3ee8870deba4605af0049a8f8c90c342664e774cd067"
+      },
+      {
+        "path": "content/yoga-library/units/wild-thing-high/r1.json",
+        "bytes": 23994,
+        "sha256": "1f3780456235b38f877f4bf392b72d3006a28651ea37e9c464f385af3c3446ae"
+      }
+    ],
+    "finalManifestExists": false,
+    "expansionCatalogExists": false,
+    "expansionReadmeExists": false,
+    "inventorySourceDeclaredSha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436",
+    "inventorySourceActualSha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436"
+  },
+  "gaps": [
+    "Human teacher/author and independent yoga reviewer identity, qualifications, assignment and evidence pending Owner reply.",
+    "Human rights/editorial/accessibility decisions on exact unit/media/source bytes absent.",
+    "Upstream README and handoff mention expansion metadata-only paths, but expansion folder paths are absent in this intake snapshot.",
+    "Canonical final manifest absent; source may change after this two-read snapshot.",
+    "No content, asset, video or external service review performed by this consumer."
+  ],
+  "intake": {
+    "path": "analyse/ux-step5-2-2026-10-18/TASK-INTAKE.vi.md",
+    "sha256": "46ee6c0763f2fdfad216f0a3e3ef68c48982972d96ea666eb23bf96caa495520"
+  }
+}

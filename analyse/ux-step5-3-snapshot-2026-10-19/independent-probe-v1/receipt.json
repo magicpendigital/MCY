@@ -1,0 +1,92 @@
+{
+  "schema": "mcy.step5-3.independent-snapshot-probe.v1",
+  "status": "PASS",
+  "reviewer": "/root/qc53_rebind_final",
+  "startedUtc": "2026-10-19T07:05:57.6241982Z",
+  "endedUtc": "2026-10-19T07:06:05.6716234Z",
+  "probeSha256": "d8c3f363c476d71a396437e7bf7bbbcd578cc81aa9ed5fc50375b453ecdde30d",
+  "freezeSha256": "6af8eb4daf3838d8abd44edfaa0009619e54b1ad42001c4c5b4869a6b9dabc5e",
+  "rootGoSha256": "1be48c30c9cac1a80a3744a7e77a2d0cb0fe1013199c58a236b49491d4a5e026",
+  "command": "C:/Program Files/nodejs/node.exe analyse/ux-step5-3-snapshot-2026-10-19/independent-snapshot-probe.mjs",
+  "cwd": "D:\\Projects\\MCY",
+  "environmentKeys": [
+    "SystemRoot",
+    "WINDIR",
+    "PATH",
+    "TEMP",
+    "TMP",
+    "USERPROFILE"
+  ],
+  "timeoutMs": 30000,
+  "outputLimitBytesEach": 1048576,
+  "childPid": 30024,
+  "childExitCode": 0,
+  "wrapperExitCode": 0,
+  "timedOut": false,
+  "executionError": null,
+  "bounded": true,
+  "counts": {
+    "status": "PASS_INDEPENDENT_SNAPSHOT_BINDING",
+    "freshAccepted": 14,
+    "staleChanged": 7,
+    "staleMatched": 7,
+    "staleListDenied": true,
+    "identityDenied": true,
+    "mimeDenied": true,
+    "blockedMediaDenied": true,
+    "payloadEmitted": false
+  },
+  "prePins": {
+    "sourceFiles": {
+      "count": 255,
+      "mismatches": []
+    },
+    "clientFiles": {
+      "count": 59,
+      "mismatches": []
+    },
+    "canonicalDependencies": {
+      "count": 71,
+      "mismatches": []
+    },
+    "rootDirtyPreserved": {
+      "count": 35,
+      "mismatches": []
+    },
+    "preservedOldEvidence": {
+      "count": 6,
+      "mismatches": []
+    }
+  },
+  "postPins": {
+    "sourceFiles": {
+      "count": 255,
+      "mismatches": []
+    },
+    "clientFiles": {
+      "count": 59,
+      "mismatches": []
+    },
+    "canonicalDependencies": {
+      "count": 71,
+      "mismatches": []
+    },
+    "rootDirtyPreserved": {
+      "count": 35,
+      "mismatches": []
+    },
+    "preservedOldEvidence": {
+      "count": 6,
+      "mismatches": []
+    }
+  },
+  "stdout": {
+    "sha256": "765675f0f1265b33c0593f4227cf056a662f39556c51b4b17ff8fb2918ac3abd",
+    "path": "D:\\Projects\\MCY\\analyse\\ux-step5-3-snapshot-2026-10-19\\independent-probe-v1\\stdout.json"
+  },
+  "stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "path": "D:\\Projects\\MCY\\analyse\\ux-step5-3-snapshot-2026-10-19\\independent-probe-v1\\stderr.txt"
+  },
+  "scope": "Pure readonly canonical adapter; no HTTP/server/UI/cloud writes"
+}
