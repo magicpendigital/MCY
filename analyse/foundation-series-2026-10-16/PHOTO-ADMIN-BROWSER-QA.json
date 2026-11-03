@@ -1,0 +1,174 @@
+{
+  "scope": "local static prototype only; not server enforcement",
+  "date": "2026-10-16",
+  "tabletop": [
+    {
+      "alt": "Ảnh AI nhìn nghiêng: người phụ nữ áo không tay xanh olive, quần màu ngà, ở bốn điểm tựa, hai bàn tay dưới vai và hai đầu gối dưới hông; đầu hướng trái, lưng gần trung tính.",
+      "heading": "Chuẩn bị bốn điểm tựa",
+      "image": "assets/tabletop-photo-01.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/tabletop-photo-01.png"
+    },
+    {
+      "alt": "Ảnh AI nhìn nghiêng người phụ nữ ở bốn điểm tựa; ngực dịch nhẹ về trước, lưng hơi võng, cổ giữ dài, hai bàn tay và đầu gối vẫn chạm thảm.",
+      "heading": "Mở nhẹ phía trước · Bò",
+      "image": "assets/tabletop-photo-02.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/tabletop-photo-02.png"
+    },
+    {
+      "alt": "Ảnh AI nhìn nghiêng gần hơn: người phụ nữ vẫn ở bốn điểm tựa với đường lưng trở về gần ngang, đầu hướng trái và ánh nhìn về phía thảm.",
+      "heading": "Đi qua vị trí giữa",
+      "image": "assets/tabletop-photo-03.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/tabletop-photo-03.png"
+    },
+    {
+      "alt": "Ảnh AI nhìn nghiêng người phụ nữ ở bốn điểm tựa; phần lưng tròn nhẹ, đầu đi theo đường cong xuống tự nhiên; hai bàn tay và đầu gối vẫn đặt trên thảm.",
+      "heading": "Cuộn nhẹ lưng · Mèo",
+      "image": "assets/tabletop-photo-04.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/tabletop-photo-04.png"
+    },
+    {
+      "alt": "Ảnh AI góc ba phần tư: người phụ nữ trở về bốn điểm tựa, hai tay và hai đầu gối thấy riêng, lưng gần trung tính và ánh nhìn hướng xuống thảm.",
+      "heading": "Trở về và kết thúc",
+      "image": "assets/tabletop-photo-05.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/tabletop-photo-05.png"
+    }
+  ],
+  "standing": [
+    {
+      "heading": "Chọn chỗ đứng",
+      "image": "assets/standing-photo-01.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/standing-photo-01.png"
+    },
+    {
+      "heading": "Nhận biết bàn chân",
+      "image": "assets/standing-photo-02.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/standing-photo-02.png"
+    },
+    {
+      "heading": "Thêm điểm tựa khi cần",
+      "image": "assets/standing-photo-03.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/standing-photo-03.png"
+    },
+    {
+      "heading": "Đứng nhẹ và thở tự nhiên",
+      "image": "assets/standing-photo-04.png",
+      "loaded": 1536
+    },
+    {
+      "open": true,
+      "zoom": "assets/standing-photo-04.png"
+    },
+    {
+      "heading": "Kết thúc theo ý bạn",
+      "image": "assets/standing-photo-05.png",
+      "loaded": 0
+    },
+    {
+      "open": true,
+      "zoom": "assets/standing-photo-05.png"
+    }
+  ],
+  "standing05DeferredLoadRecheck": {
+    "complete": true,
+    "naturalWidth": 1536
+  },
+  "responsive": {
+    "reader390": {
+      "horizontalOverflow": false,
+      "footerBottom": 843,
+      "viewportHeight": 844
+    },
+    "reader320": {
+      "horizontalOverflow": false,
+      "footerBottom": 739,
+      "viewportHeight": 740
+    },
+    "admin390": {
+      "horizontalOverflow": false
+    },
+    "report": {
+      "photoCount": 10,
+      "loaded": 10
+    }
+  },
+  "console": {
+    "readerWarningsErrors": 0,
+    "adminWarningsErrors": 0
+  },
+  "admin": [
+    {
+      "check": "samePhotoZoom",
+      "loaded": 1536,
+      "src": "assets/tabletop-photo-02.png"
+    },
+    {
+      "check": "approvalWithoutChecklist",
+      "notice": "Đánh dấu đủ ba nội dung kiểm để thử quyết định duyệt. Đây vẫn chỉ là mô phỏng."
+    },
+    {
+      "check": "oldAssignmentDeniedForNewRevision",
+      "disabled": true
+    },
+    {
+      "check": "publishDeniedBeforeExpert",
+      "disabled": true
+    },
+    {
+      "check": "publishDeniedBeforeEditorial",
+      "disabled": true
+    },
+    {
+      "check": "publishAfterBothDecisions",
+      "text": "Bản nội dung r4 · Hà biên soạn · 5 bước / photo-draft r3 · chỉ dùng dữ liệu giả\nBản hiển thị mô phỏng: r4"
+    },
+    {
+      "check": "repeatAssignmentNoop",
+      "notice": "Linh đã có phân công đúng r4 với cùng thời hạn. Không thay đổi quyết định hoặc ghi thêm sự kiện.",
+      "text": "Bản nội dung r4 · Hà biên soạn · 5 bước / photo-draft r3 · chỉ dùng dữ liệu giả\nBản hiển thị mô phỏng: r4"
+    },
+    {
+      "check": "newDraftPreservesPublishedRevision",
+      "text": "Bản nội dung r5 · Hà biên soạn · 5 bước / photo-draft r3 · chỉ dùng dữ liệu giả\nBản hiển thị mô phỏng: r4"
+    },
+    {
+      "check": "revokeOldAssignedPublishedRevisionWhileEditingNew",
+      "text": "Bản nội dung r5 · Hà biên soạn · 5 bước / photo-draft r3 · chỉ dùng dữ liệu giả\nChưa có bản hiển thị cho người học"
+    },
+    {
+      "check": "expiredAssignmentDeniesApproval",
+      "disabled": true
+    }
+  ]
+}

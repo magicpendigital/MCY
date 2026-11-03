@@ -1,0 +1,116 @@
+{
+  "hash": "363a0ab1",
+  "configHash": "6be9c2f2",
+  "lockfileHash": "c042319f",
+  "browserHash": "6d365f1e",
+  "optimized": {
+    "@capacitor/app": {
+      "src": "../../../../node_modules/@capacitor/app/dist/esm/index.js",
+      "file": "@capacitor_app.js",
+      "fileHash": "a9210203",
+      "needsInterop": false
+    },
+    "@capacitor/core": {
+      "src": "../../../../node_modules/@capacitor/core/dist/index.js",
+      "file": "@capacitor_core.js",
+      "fileHash": "a9c400f8",
+      "needsInterop": false
+    },
+    "@capacitor/keyboard": {
+      "src": "../../../../node_modules/@capacitor/keyboard/dist/esm/index.js",
+      "file": "@capacitor_keyboard.js",
+      "fileHash": "0969e0a8",
+      "needsInterop": false
+    },
+    "@capacitor/status-bar": {
+      "src": "../../../../node_modules/@capacitor/status-bar/dist/esm/index.js",
+      "file": "@capacitor_status-bar.js",
+      "fileHash": "de72c75d",
+      "needsInterop": false
+    },
+    "@radix-ui/react-dialog": {
+      "src": "../../../../node_modules/@radix-ui/react-dialog/dist/index.mjs",
+      "file": "@radix-ui_react-dialog.js",
+      "fileHash": "728f6c35",
+      "needsInterop": false
+    },
+    "@radix-ui/react-dropdown-menu": {
+      "src": "../../../../node_modules/@radix-ui/react-dropdown-menu/dist/index.mjs",
+      "file": "@radix-ui_react-dropdown-menu.js",
+      "fileHash": "2b794c11",
+      "needsInterop": false
+    },
+    "@radix-ui/react-icons": {
+      "src": "../../../../node_modules/@radix-ui/react-icons/dist/react-icons.esm.js",
+      "file": "@radix-ui_react-icons.js",
+      "fileHash": "ea9b7ce5",
+      "needsInterop": false
+    },
+    "@supabase/supabase-js": {
+      "src": "../../../../node_modules/@supabase/supabase-js/dist/index.mjs",
+      "file": "@supabase_supabase-js.js",
+      "fileHash": "7982f276",
+      "needsInterop": false
+    },
+    "@use-gesture/react": {
+      "src": "../../../../node_modules/@use-gesture/react/dist/use-gesture-react.esm.js",
+      "file": "@use-gesture_react.js",
+      "fileHash": "8206dca0",
+      "needsInterop": false
+    },
+    "motion/react": {
+      "src": "../../../../node_modules/motion/dist/es/react.mjs",
+      "file": "motion_react.js",
+      "fileHash": "8be30707",
+      "needsInterop": false
+    },
+    "react-dom": {
+      "src": "../../../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "bbbb7bcb",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "8a952501",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "034a2a52",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "09816af8",
+      "needsInterop": true
+    },
+    "react/jsx-runtime": {
+      "src": "../../../../node_modules/react/jsx-runtime.js",
+      "file": "react_jsx-runtime.js",
+      "fileHash": "7e2c031d",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "es2015-BwomE_or": {
+      "file": "es2015-BwomE_or.js",
+      "isDynamicEntry": false
+    },
+    "rolldown-runtime-DC62tzP2": {
+      "file": "rolldown-runtime-DC62tzP2.js",
+      "isDynamicEntry": false
+    },
+    "tslib.es6-B1NP4NDs": {
+      "file": "tslib.es6-B1NP4NDs.js",
+      "isDynamicEntry": false
+    },
+    "web-8YuiPUEH": {
+      "file": "web-8YuiPUEH.js",
+      "isDynamicEntry": true
+    }
+  }
+}

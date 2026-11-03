@@ -1,0 +1,77 @@
+{
+  "scope": "local prototype only",
+  "count": 10,
+  "unique": 10,
+  "assets": [
+    {
+      "image": "assets/standing-photo-01.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1901732,
+      "sha256": "30057869efb6e2038c5c1748e9e5f1c2427b2b74a99ada0b174ddf4016c69fe6"
+    },
+    {
+      "image": "assets/standing-photo-02.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2264740,
+      "sha256": "c3223681f3b2545a63b9315ecc6fbf3a57a8403e90ff5eba9e5c296e8e44ddba"
+    },
+    {
+      "image": "assets/standing-photo-03.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1790440,
+      "sha256": "9702379d9ef6fecb5d0b03bd251864db5e74bfa7c78c8a08dcfdc5dbb8bb6bd5"
+    },
+    {
+      "image": "assets/standing-photo-04.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1724506,
+      "sha256": "1db229e0cebb9255304470f05253ab2aff9dde6e3248763c022982f3041139d2"
+    },
+    {
+      "image": "assets/standing-photo-05.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1735900,
+      "sha256": "4a8ed0d7d336610a0a6913140ecdddd77c79c2754f437316977a8fa6ce2c8e54"
+    },
+    {
+      "image": "assets/tabletop-photo-01.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1863364,
+      "sha256": "7482d368b19c233026fa0a3bc966e233ed0738aa168a21f2d22913d407884db2"
+    },
+    {
+      "image": "assets/tabletop-photo-02.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1909518,
+      "sha256": "83671dd1ff6f1e1c5fd8d8e106993ec460472880bce042e475a3ddcd83b32099"
+    },
+    {
+      "image": "assets/tabletop-photo-03.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1949476,
+      "sha256": "8b3e4cdb2d2db1263024b7d427b18b00ca4afc9fcc314eda139e8c1cbc7ac149"
+    },
+    {
+      "image": "assets/tabletop-photo-04.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1890923,
+      "sha256": "e4b1f8a87c7bb8d0247551703d54c532fca5ff7f2915544391560de4465af019"
+    },
+    {
+      "image": "assets/tabletop-photo-05.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1784957,
+      "sha256": "058480e418ddd023bade704de90a349f3fc907a8d7a64b7559a9f13f2705b8b1"
+    }
+  ]
+}
