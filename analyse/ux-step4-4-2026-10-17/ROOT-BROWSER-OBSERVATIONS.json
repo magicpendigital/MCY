@@ -1,0 +1,88 @@
+{
+  "recordedAt": "2026-10-16T17:45:05.688Z",
+  "sourceFreeze": "f11a6af114f42427cd6d758f5ac191d0af65324d5018e82524adf913fde7e243",
+  "url": "http://127.0.0.1:4192/?mode=web",
+  "environment": "Cua in-app browser; guest; preview CSP blocks external video/network",
+  "viewportChecks": [
+    {
+      "name": "320",
+      "width": 320,
+      "height": 568,
+      "iframeCount": 0,
+      "overflow": false,
+      "playBottom": 545.640625,
+      "playTop": 494.640625,
+      "ratio": 0.5625076828518746
+    },
+    {
+      "name": "360",
+      "width": 360,
+      "height": 640,
+      "iframeCount": 0,
+      "overflow": false,
+      "playBottom": 525.34375,
+      "playTop": 474.34375,
+      "ratio": 0.562508425224448
+    },
+    {
+      "name": "landscape",
+      "width": 844,
+      "height": 390,
+      "iframeCount": 0,
+      "overflow": false,
+      "playBottom": 485.234375,
+      "playTop": 434.234375,
+      "ratio": 0.5625
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "iframeCount": 0,
+      "overflow": false,
+      "playBottom": 509.234375,
+      "playTop": 458.234375,
+      "ratio": 0.562511041752547
+    }
+  ],
+  "initial390": {
+    "width": 390,
+    "height": 844,
+    "playTop": 562.015625,
+    "playBottom": 613.015625,
+    "ratio": 0.5625,
+    "iframes": 0,
+    "overflow": false
+  },
+  "manual": [
+    "Guest → library3groups/38videos → selecteddetail",
+    "Native details Enter opens full caption notice; privacy link before Play",
+    "Tab: privacy then Play; Enter opens iframe only explicitly",
+    "Media group focused, top66.640625/header55 at320; exact9:16; CSP-blocked video is not playback acceptance",
+    "First Tab enters iframe; Playwright :focus and iframe press unavailable in blocked frame; native cua pressKey Tab succeeds to visible recovery top289.875/bottom333.875; Return expands help",
+    "Reload produces one iframe with data-load-attempt1",
+    "Next selects02 and removes iframe/reflection prompt",
+    "Last selects18 and Next disabled; back tolibrary removes iframe",
+    "Reopen firstlesson has zeroiframe; explicitPlay then explicitIpractised opens existingreflection; no submit; back leaveszeroiframe",
+    "Longlesson05 wraps without horizontaloverflow at390"
+  ],
+  "imagesDirectlyInspected": [
+    "root-final-320.png",
+    "root-final-360.png",
+    "root-final-390.png",
+    "root-final-landscape.png",
+    "root-final-desktop.png",
+    "root-playing-320.png",
+    "root-long-390.png",
+    "text28-false.png",
+    "text28-true.png",
+    "final-iphone.png",
+    "final-pixel.png"
+  ],
+  "limits": [
+    "Local guest preview only",
+    "No real YouTube playback/native/liveAuth/healthwrite/expert-rights/release acceptance",
+    "Large-text/iPhone/Pixel evidence inspected as screenshots, not root physical-device tests",
+    "Native HALTED; web BLOCKED; STOP before4.5"
+  ]
+}

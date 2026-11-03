@@ -1,0 +1,10 @@
+import { createServer } from 'vite';
+import { resolve } from 'node:path';
+import { isolatePlaywrightTestEnvironment } from '../../scripts/playwright-test-environment.mjs';
+const root = resolve('.vercel/ux-implementation-20261014');
+for (const key of Object.keys(process.env)) if(key.startsWith('VITE_')) delete process.env[key];
+isolatePlaywrightTestEnvironment();
+const server = await createServer({root, envDir:root, configFile:resolve(root,'vite.config.ts'),configLoader:'runner',cacheDir:resolve(root,'.vite-cache'),server:{host:'127.0.0.1',port:4186,strictPort:true,fs:{allow:[resolve('.')]}}});
+await server.listen();
+console.log('UX candidate preview http://127.0.0.1:4186 ; fictional .invalid backend; candidate contains no .env.');
+for (const signal of ['SIGINT','SIGTERM']) process.on(signal,async()=>{await server.close();process.exit(0);});

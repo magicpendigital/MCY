@@ -1,0 +1,340 @@
+{
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(!c.clipped&&c.box.h>=44)\n",
+  "results": [
+    {
+      "case": "320 hierarchy, initial no answer, 44px, 14px, keyboard, visible focus, disclosure does not change answer",
+      "initial": {
+        "entry": {
+          "x": 17,
+          "y": 149,
+          "w": 286,
+          "h": 166,
+          "b": 315
+        },
+        "choices": [
+          {
+            "text": "Không thấy khó chịu",
+            "box": {
+              "x": 17,
+              "y": 323,
+              "w": 154.4375,
+              "h": 59.1875,
+              "b": 382.1875
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          },
+          {
+            "text": "Chưa xác định",
+            "box": {
+              "x": 179.4375,
+              "y": 323,
+              "w": 123.5625,
+              "h": 59.1875,
+              "b": 382.1875
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 392,
+          "w": 320,
+          "h": 176,
+          "b": 568
+        },
+        "pageOverflow": false
+      },
+      "focus": {
+        "outline": "solid",
+        "width": "3px",
+        "color": "rgb(142, 75, 53)"
+      }
+    },
+    {
+      "case": "initial layout",
+      "width": 360,
+      "height": 640,
+      "metrics": {
+        "entry": {
+          "x": 17,
+          "y": 149,
+          "w": 326,
+          "h": 166,
+          "b": 315
+        },
+        "choices": [
+          {
+            "text": "Không thấy khó chịu",
+            "box": {
+              "x": 17,
+              "y": 323,
+              "w": 176.65625,
+              "h": 44,
+              "b": 367
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          },
+          {
+            "text": "Chưa xác định",
+            "box": {
+              "x": 201.65625,
+              "y": 323,
+              "w": 141.328125,
+              "h": 44,
+              "b": 367
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 464,
+          "w": 360,
+          "h": 176,
+          "b": 640
+        },
+        "pageOverflow": false
+      }
+    },
+    {
+      "case": "landscape quiet answers reachable with ordinary wheel",
+      "metrics": {
+        "entry": {
+          "x": 97,
+          "y": -90.046875,
+          "w": 650,
+          "h": 178,
+          "b": 87.953125
+        },
+        "choices": [
+          {
+            "text": "Không thấy khó chịu",
+            "box": {
+              "x": 97,
+              "y": 95.953125,
+              "w": 157.984375,
+              "h": 44,
+              "b": 139.953125
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          },
+          {
+            "text": "Chưa xác định",
+            "box": {
+              "x": 266.984375,
+              "y": 95.953125,
+              "w": 121.15625,
+              "h": 44,
+              "b": 139.953125
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 228,
+          "w": 844,
+          "h": 162,
+          "b": 390
+        },
+        "pageOverflow": false
+      }
+    },
+    {
+      "case": "initial layout",
+      "width": 844,
+      "height": 390,
+      "metrics": {
+        "entry": {
+          "x": 97,
+          "y": 159.953125,
+          "w": 650,
+          "h": 178,
+          "b": 337.953125
+        },
+        "choices": [
+          {
+            "text": "Không thấy khó chịu",
+            "box": {
+              "x": 97,
+              "y": 345.953125,
+              "w": 157.984375,
+              "h": 44,
+              "b": 389.953125
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          },
+          {
+            "text": "Chưa xác định",
+            "box": {
+              "x": 266.984375,
+              "y": 345.953125,
+              "w": 121.15625,
+              "h": 44,
+              "b": 389.953125
+            },
+            "font": "14px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 228,
+          "w": 844,
+          "h": 162,
+          "b": 390
+        },
+        "pageOverflow": false
+      }
+    },
+    {
+      "case": "changed text color-pair contrast from computed quiet color and source tokens",
+      "ratios": {
+        "quietOnCanvas": 7.097710223247178,
+        "helperOnSage": 5.163159748415313,
+        "headingOnSage": 9.867127393908275
+      }
+    },
+    {
+      "case": "distinct none",
+      "summary": "Cảm nhận cơ thể\nKhông thấy khó chịu\nSửa"
+    },
+    {
+      "case": "distinct uncertain",
+      "summary": "Cảm nhận cơ thể\nChưa xác định\nSửa"
+    },
+    {
+      "case": "distinct no-answer",
+      "summary": "Cảm nhận cơ thể\nChưa ghi nhận\nSửa"
+    },
+    {
+      "case": "distinct skip",
+      "summary": "Cảm nhận cơ thể\nBỏ qua phần cơ thể\nSửa"
+    },
+    {
+      "case": "unequal sides survive collapse/reopen, actual route remount, chosen illustration, none/skip cancel; explicit replacement clears",
+      "retained": "Khuỷu tay\nTrái · Vừa / Phải · Nhẹ",
+      "final": "Cảm nhận cơ thể\nChưa xác định\nSửa"
+    },
+    {
+      "case": "ordinary wheel last-region reachability",
+      "width": 320,
+      "height": 568,
+      "last": {
+        "x": 164,
+        "y": 237.5625,
+        "width": 139,
+        "height": 55
+      },
+      "footer": {
+        "x": 0,
+        "y": 392,
+        "width": 320,
+        "height": 176
+      }
+    },
+    {
+      "case": "ordinary wheel last-region reachability",
+      "width": 844,
+      "height": 390,
+      "last": {
+        "x": 611.84375,
+        "y": 112.328125,
+        "width": 212.15625,
+        "height": 55
+      },
+      "footer": {
+        "x": 0,
+        "y": 228,
+        "width": 844,
+        "height": 162
+      }
+    },
+    {
+      "case": "2x changed card/choice text stress, tab reachability",
+      "english": false,
+      "metrics": {
+        "entry": {
+          "x": 17,
+          "y": -201,
+          "w": 286,
+          "h": 435.5,
+          "b": 234.5
+        },
+        "choices": [
+          {
+            "text": "Không thấy khó chịu",
+            "box": {
+              "x": 17,
+              "y": 242.5,
+              "w": 154.4375,
+              "h": 137.5625,
+              "b": 380.0625
+            },
+            "font": "28px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgba(0, 0, 0, 0)",
+            "pressed": "false",
+            "clipped": false
+          },
+          {
+            "text": "Chưa xác định",
+            "box": {
+              "x": 179.4375,
+              "y": 242.5,
+              "w": 123.5625,
+              "h": 137.5625,
+              "b": 380.0625
+            },
+            "font": "28px",
+            "color": "rgb(66, 93, 72)",
+            "background": "rgb(232, 238, 228)",
+            "pressed": "true",
+            "clipped": false
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 392,
+          "w": 320,
+          "h": 176,
+          "b": 568
+        },
+        "pageOverflow": false
+      }
+    }
+  ],
+  "external": []
+}

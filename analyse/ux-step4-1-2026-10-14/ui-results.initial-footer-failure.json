@@ -1,0 +1,468 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "analyse/ux-step4-1-2026-10-14/qa.playwright.config.mjs",
+      "ux-home.spec.ts"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\qa.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-1-20261014/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-1-2026-10-14/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-1-20261014/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-home.spec.ts",
+          "learner-ux.spec.ts",
+          "practice-flow.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "runtime.spec.ts"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\ui-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ux-home.spec.ts",
+      "file": "ux-home.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Home actions and uncropped image 360",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2908,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                      "column": 29,
+                      "line": 21
+                    },
+                    "snippet": "  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                        "column": 29,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n\n  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T06:43:48.835Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\test-results\\ux-home-Home-actions-and-uncropped-image-360\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                    "column": 29,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b51cf702fa2069dd6f6d-fca5a07285c4a0332d11",
+          "file": "ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Home actions and uncropped image 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1633,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                      "column": 29,
+                      "line": 21
+                    },
+                    "snippet": "  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                        "column": 29,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n\n  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T06:43:53.276Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\test-results\\ux-home-Home-actions-and-uncropped-image-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                    "column": 29,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b51cf702fa2069dd6f6d-878bf86959bc85282165",
+          "file": "ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Home actions and uncropped image desktop",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1924,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                      "column": 29,
+                      "line": 21
+                    },
+                    "snippet": "  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                        "column": 29,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n\n  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T06:43:56.013Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\test-results\\ux-home-Home-actions-and-uncropped-image-desktop\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                    "column": 29,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b51cf702fa2069dd6f6d-32e744450c9340c2d2ce",
+          "file": "ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Home actions and uncropped image iphone",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1827,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                      "column": 29,
+                      "line": 21
+                    },
+                    "snippet": "  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                        "column": 29,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n\n  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T06:43:59.295Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\test-results\\ux-home-Home-actions-and-uncropped-image-iphone\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                    "column": 29,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b51cf702fa2069dd6f6d-9ce3dc992aaaf274234e",
+          "file": "ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Home actions and uncropped image pixel",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1721,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                      "column": 29,
+                      "line": 21
+                    },
+                    "snippet": "  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                        "column": 29,
+                        "line": 21
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\nExpected substring: \u001b[32m\"Bạn tự chọn bài học video trong thư viện.\"\u001b[39m\nError: strict mode violation: locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]') resolved to 2 elements:\n    1) <div data-flow-active=\"true\" data-flow-route=\"discover\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(3) > .mcy-flow-route-accessibility')\n    2) <div data-flow-route=\"home\" data-flow-active=\"true\" class=\"mcy-flow-route-accessibility\">…</div> aka locator('div:nth-child(4) > .mcy-flow-route-accessibility')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]')\u001b[22m\n\n\n  19 |  await expect(primary).toBeVisible();await expect(manual).toBeVisible();\n  20 |  expect(await active(page).locator('.mcy-action').count()).toBe(1);\n> 21 |  await expect(active(page)).toContainText('Bạn tự chọn bài học video trong thư viện.');\n     |                             ^\n  22 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);\n  23 |  const image=active(page).locator('.mcy-home-photo img');await image.scrollIntoViewIfNeeded();\n  24 |  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:21:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T06:44:02.343Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\test-results\\ux-home-Home-actions-and-uncropped-image-pixel\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                    "column": 29,
+                    "line": 21
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b51cf702fa2069dd6f6d-c025f44ebe6051d79c6d",
+          "file": "ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Home resumes an actual guest draft without saving or clearing it",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 20047,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts",
+                        "column": 91,
+                        "line": 36
+                      },
+                      "message": "Error: locator.click: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"flow-current\"] > [data-flow-active=\"true\"]').getByRole('button', { name: 'Tiếp: năng lượng và thời gian', exact: true })\u001b[22m\n\n\n  34 |  await active(page).getByRole('button',{name:'Sửa',exact:true}).click();\n  35 |  await active(page).getByRole('button',{name:'Không thấy khó chịu',exact:true}).click();\n> 36 |  await active(page).getByRole('button',{name:'Tiếp: năng lượng và thời gian',exact:true}).click();\n     |                                                                                           ^\n  37 |  await page.getByRole('button',{name:'Quay lại',exact:true}).click();\n  38 |  await expect(active(page)).toContainText('Lựa chọn được giữ trong phiên này; chưa lưu vào tài khoản.');\n  39 |  await active(page).getByRole('button',{name:'Tiếp tục check-in',exact:true}).click();\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\ux-home.spec.ts:36:91"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-14T06:44:05.221Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-1-2026-10-14\\test-results\\ux-home-Home-resumes-an-ac-ac448-thout-saving-or-clearing-it\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b51cf702fa2069dd6f6d-286d34164443d38eea37",
+          "file": "ux-home.spec.ts",
+          "line": 32,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-14T06:43:47.793Z",
+    "duration": 38100.508,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

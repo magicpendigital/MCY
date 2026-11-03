@@ -1,0 +1,37 @@
+{
+  "task": "ux-step4-4-plan-intake",
+  "date": "2026-10-17",
+  "environment": "Windows/PowerShell; D:/Projects/MCY; Asia/Bangkok",
+  "status": "BLOCKED_AWAITING_INTAKE_CONTROL_QC",
+  "scope": "Documentation only; no app source edits or execution",
+  "oldPlanChange": "One pointer paragraph only; preimage retained",
+  "files": [
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md",
+      "sha256": "71870e85a7913fb85174a26222820c09b5d5ba00716847c8e21c077863da9f1e"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md",
+      "sha256": "e6a8655e921abba9aec090762c35213ff5e526d1cc299dc2af86cfd8d10adc2c"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/OLD-PLAN.pre-pointer.vi.md",
+      "sha256": "0b4a368e15a3c32bad29ed79c8ca386c3fb33b6d1be16805564dbd38374b18a2"
+    },
+    {
+      "path": "analyse/ux-implementation-2026-10-14/PLAN.vi.md",
+      "sha256": "243235956968c4cf2060f6805455a91a55f40047d0f101879ea3dbcc6fd278b1"
+    }
+  ],
+  "baselineSource": {
+    "candidate": ".vercel/ux-step4-3-20261016",
+    "prototypeSha256": "4301656f5e45197b421a98d63d9da8898a699cbc608449ce51ce909bc0e84bee",
+    "cssSha256": "4a4a251b4ab64b5ea6b94813f24175d36fdbe3161b0a23bd1d5841027a5067a1"
+  },
+  "limitations": [
+    "This freeze identifies documentation bytes, not a final app candidate",
+    "New quality guidance is separately owned and frozen by the process agent",
+    "App tests and manual acceptance remain unrun",
+    "No live/native/release permission or clearance"
+  ]
+}

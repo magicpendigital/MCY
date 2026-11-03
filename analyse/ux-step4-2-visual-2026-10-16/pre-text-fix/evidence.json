@@ -1,0 +1,327 @@
+{
+  "createdAt": "2026-10-16T05:05:08.894Z",
+  "status": "LOCAL_COMPLETE_AWAITING_INDEPENDENT_QC_AND_ROOT",
+  "risk": "R1: check-in presentation only, existing interactions and contracts retained",
+  "sourceFreezeSha256": "257633c2db418f93e1623e7112e8275059b58d18bfc375a2f9c5faa1d3ccad31",
+  "changes": [
+    {
+      "path": "src/prototype.css",
+      "baselineSha256": "856165bc65112bb46b9c4f0ee346820d5fe17607f4ecd4b0cc7fe97b8d5a340d",
+      "sha256": "b56d1c10c696104bd3c6b351309d237da2a511ea40846d727ac7b65ea86a62b2"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "baselineSha256": "873111024377eb65ee55d229b9899d04acc798dca11c02924ab428cd6d39528c",
+      "sha256": "0d2875338cbd0efe6f16b1c301629a157e043775624754338d471782ad7ec761"
+    },
+    {
+      "path": "tests/learner-ux.spec.ts",
+      "baselineSha256": "8310820d8ffc64e3da1aee67cb7b4a9b367a0ea72b2822cc5271cce67ee4f0b9",
+      "sha256": "d1072606ba3c97a75e4c94b761885cac0ebd55a73398818fcd5defe0d3c681ea"
+    },
+    {
+      "path": "tests/ux-checkin-layout.spec.ts",
+      "baselineSha256": "4b75a9c2a457ced4710e6965e59f547267989aa4e178ebf33a8d6a028fed9ecd",
+      "sha256": "06f7628f8cf9244158bb5cbd9a7c98a784eca5aae34150cd7c9f424883c37098"
+    }
+  ],
+  "patchSha256": "0ba05d9719a9f47329086d2b341f2e8357c7cdbfa040f67ce13bfbaa6170ec58",
+  "checks": [
+    {
+      "name": "runtime",
+      "command": "node scripts/check-mobile-runtime.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "catalogue",
+      "command": "node scripts/check-reviewed-practice-catalog.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "command": "node D:\\Projects\\MCY\\node_modules\\typescript\\bin\\tsc",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "command": "node D:\\Projects\\MCY\\node_modules\\vite\\bin\\vite.js build",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-prep",
+      "command": "node scripts/prepare-sites-build.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "bundle",
+      "command": "node scripts/check-client-bundle-secrets.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-isolation",
+      "command": "node --test tests/sites-worker.test.mjs tests/playwright-test-environment.test.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    }
+  ],
+  "uiChecks": [
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-visual-2026-10-16/qa.playwright.config.mjs ux-checkin-layout.spec.ts learner-ux.spec.ts mobile-runtime.spec.ts ux-save-feedback.spec.ts --grep Visual hierarchy|Distinct body|Regional entries|English disclosure|Large text|review preserves check-in|full-body check-in|body-region contract|English learner flow|short portrait and landscape mobile|short second check-in|BottomSheet remains|keyboard and its attached|switching to Pixel|FlowStack pushes|save|permission|denied|retry",
+      "exitCode": 0,
+      "report": "regression-45-results.json",
+      "sha256": "961527e450e23ab0ea4ae615ac3ec4271312dd967c29afe4bb1c41d23db02eb5",
+      "stats": {
+        "startTime": "2026-10-16T04:48:59.965Z",
+        "duration": 123886.73199999999,
+        "expected": 45,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sourcePins": "regression-45-source-pins.json",
+      "note": "45 passed before final narrow CSS row/spacing refinements; final15 rerun covers these narrow changes. Fully mocked Owner AI-off fixture matched save grep; no live Owner save."
+    },
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-visual-2026-10-16/qa.playwright.config.mjs ux-checkin-layout.spec.ts",
+      "exitCode": 0,
+      "report": "ui-results.json",
+      "sha256": "37f45552788b19fd4458314d3735bab247bc5f91d2fd983c8399ca58e025212f",
+      "stats": {
+        "startTime": "2026-10-16T05:03:08.992Z",
+        "duration": 85721.571,
+        "expected": 15,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "note": "Final source15/15, seven viewports320/short/360/390/landscape/iPhone/Pixel, four distinct outcomes, regional retention/unequal laterality/clear confirmation, English preview, large-text keyboard cases. Final320 includes fullbuttonrect+6pxfocus-ring clearance guard."
+    },
+    {
+      "command": "node analyse/ux-step4-2-visual-2026-10-16/capture-details.mjs",
+      "exitCode": 0,
+      "report": "detail-captures.json",
+      "sha256": "613ef68c320a54f34660f4edba8ef2c4f98bd811ca3517b7b06a49e14d85357c",
+      "note": "4 controls: compact expanded entry/group selector, neutral+masculine current preference on map and entry, settled clear confirmation. These390px detail captures came from pre-QC source; subsequent CSS refinement is limited to<=360px, no390px style change."
+    },
+    {
+      "command": "node analyse/ux-step4-2-visual-2026-10-16/clearance-probe.mjs",
+      "exitCode": 0,
+      "report": "clearance-probe.json",
+      "sha256": "75384d0bbb0d7a47b4897acc9c3ab1e31f47189674ac0198aa5ec38375d80618",
+      "result": {
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "leadMarginBottom": "4px",
+        "quickMarginTop": "4px",
+        "footerTop": 392,
+        "choices": [
+          {
+            "label": "Không thấy khó chịu",
+            "top": 323,
+            "bottom": 382.1875,
+            "height": 59.1875,
+            "focusRingExtent": 388.1875,
+            "gapToFooter": 9.8125
+          },
+          {
+            "label": "Chưa xác định",
+            "top": 323,
+            "bottom": 382.1875,
+            "height": 59.1875,
+            "focusRingExtent": 388.1875,
+            "gapToFooter": 9.8125
+          }
+        ]
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "checkin-clearance-320.png",
+      "sha256": "773b43e68df4ab0e8afe17ef3e649396469c02d34d9e5b7579e12e56cf3c12b8"
+    },
+    {
+      "path": "checkin-confirm-settled.png",
+      "sha256": "3b32f36121deb67e8e81b4e25b45dfe0166651184e68b3f021fa7320ca3ec43e"
+    },
+    {
+      "path": "checkin-expanded-entry.png",
+      "sha256": "3350d45526446876cfb448704bf7791a3ef3c57cd8c8c6c57709259fe9943821"
+    },
+    {
+      "path": "checkin-expanded-final-320.png",
+      "sha256": "30e05f140e181bb167edd1e44f8f8e63049b712af8350a4029caccff56c7a02d"
+    },
+    {
+      "path": "checkin-expanded-final-360.png",
+      "sha256": "140bcfe94fbe2c7d909074ecb92329b27e392d58bffa02152eb541afd45fd588"
+    },
+    {
+      "path": "checkin-expanded-final-390.png",
+      "sha256": "ab8a352e45fc028379248faeca4111cae49ceaf588794f7aa80e68d5227825c9"
+    },
+    {
+      "path": "checkin-expanded-final-iphone.png",
+      "sha256": "5968ebef731a411c99bbf562aee5de9fb19e95678c9cd3e44e6f062c241cc2b2"
+    },
+    {
+      "path": "checkin-expanded-final-landscape.png",
+      "sha256": "b907a7b7298eca6524bf7fcbcfb1afa590bdfaaa6fb303965d227f7a809c1b7a"
+    },
+    {
+      "path": "checkin-expanded-final-pixel.png",
+      "sha256": "3ae577a7b12e392e5ed3e12c02fee13173a2b09f6ef9fce77f9ee465a146d113"
+    },
+    {
+      "path": "checkin-expanded-final-short.png",
+      "sha256": "3f0c6483bc57a301623d129d8e84ccb76b06c270c7301a6caeb8ce962407d8ac"
+    },
+    {
+      "path": "checkin-large-false.png",
+      "sha256": "57a735d12b27fb5776d7e22e4f19d8f79f836417eb78e1baceaf1373e36d9475"
+    },
+    {
+      "path": "checkin-large-true.png",
+      "sha256": "d0996646b16fc071f09f40b4d3ef02e9f7d25edbdd97faf3c1211fbdad020413"
+    },
+    {
+      "path": "checkin-map-final-320.png",
+      "sha256": "1d97b2ecd8342ea472c6e19c91175dfea51a628c8bd7b9c09e80b55e8e60b9cb"
+    },
+    {
+      "path": "checkin-map-final-360.png",
+      "sha256": "140bcfe94fbe2c7d909074ecb92329b27e392d58bffa02152eb541afd45fd588"
+    },
+    {
+      "path": "checkin-map-final-390.png",
+      "sha256": "ae1ff2d527a4e447baad306ce7b524ff1e550a3904f39bdadfe12038feb5b55f"
+    },
+    {
+      "path": "checkin-map-final-iphone.png",
+      "sha256": "5968ebef731a411c99bbf562aee5de9fb19e95678c9cd3e44e6f062c241cc2b2"
+    },
+    {
+      "path": "checkin-map-final-landscape.png",
+      "sha256": "224ffb28a2aee4cf513d63d627e4efca65317b0dfc946f85862171086c1f2983"
+    },
+    {
+      "path": "checkin-map-final-pixel.png",
+      "sha256": "3499198869f9539de2a618b3c35783bc3be6e98ca55d91527de76555843a0ce3"
+    },
+    {
+      "path": "checkin-map-final-short.png",
+      "sha256": "782e570cfdd098801fc1711edffef955968f2ce0632874bbfe46b8e8b021803a"
+    },
+    {
+      "path": "checkin-quick-final-320.png",
+      "sha256": "773b43e68df4ab0e8afe17ef3e649396469c02d34d9e5b7579e12e56cf3c12b8"
+    },
+    {
+      "path": "checkin-quick-final-360.png",
+      "sha256": "17edad8ef759f96cd020b65d6877549edd8a988a8abcc7d697d8f1c445284dc2"
+    },
+    {
+      "path": "checkin-quick-final-390.png",
+      "sha256": "55a241fcac077acb65ac93936d9cb82e821a4d98c5b7a30602261e92425b7256"
+    },
+    {
+      "path": "checkin-quick-final-iphone.png",
+      "sha256": "bc3838db877edcda91bde645f92bfbcc4167f994bbf104777a52919a87ec14a2"
+    },
+    {
+      "path": "checkin-quick-final-landscape.png",
+      "sha256": "826b42bb0c0fded7f8bd61280dc71b4181de4605dca82943429c8cbe3799f504"
+    },
+    {
+      "path": "checkin-quick-final-pixel.png",
+      "sha256": "afc7fe2b0170cf8c75cf5b854b91d314e5822e88a9fbe056d513e83958d9f63d"
+    },
+    {
+      "path": "checkin-quick-final-short.png",
+      "sha256": "b2a41c57567c7d7f6bb3b2602d6b2d120bb99baef12acda02f01b3164649fdb7"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/client/index.html",
+      "sha256": "1d5ecdf4722b6786e13e914f0ba22a221ea0f45bfe5dc5c70c0eae03ca1e296c"
+    },
+    {
+      "path": "dist/server/index.js",
+      "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389"
+    },
+    {
+      "path": "dist/.openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    },
+    {
+      "path": ".openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    }
+  ],
+  "intermediateFailures": [
+    {
+      "report": "focused-initial-results.json",
+      "sha256": "5c1cf6ecfaa7167427c1a18ec188b29e0a9c0a5f64917fe5afb8a2654cad337c",
+      "exitCode": 1,
+      "result": "12PASS/3FAIL. Dynamic disclosure locator included Open label then could not match Close state; changed to stable semantic heading. CSS-generated checkmark polluted exact accessible button name; replaced with shape-only radio dot. Final45 and15 pass."
+    },
+    "Sandboxed Edge startup failed; host exporter initially could not connect to sandbox loopback. Final browser fixture and local server run together on host. No screenshot from failed invocations accepted.",
+    "Initial320 screenshot had second quiet option below footer; final <=360 two-column row keeps14px text/44px targets and both options above footer. Final15 rerun and final screenshot pass.",
+    "checkin-confirm.png from normal test may capture entrance transition and is excluded; use checkin-confirm-settled.png.",
+    {
+      "report": "clearance-first-attempt.json",
+      "sha256": "4f118bb9c6ba887c522853656c65d84db37dfbddea775317e11aff284551775d",
+      "exitCode": 1,
+      "result": "First spacing fix hit collapsed paragraph margin; fullbutton+ring guard failed. Attempt intentionally interrupted after10PASS/1FAIL, not a completed15case run. Error context retained. Final two narrow margins4px give9.8125pxbutton gap and3.8125pxring clearance."
+    }
+  ],
+  "selfView": [
+    "early360/390 reviewed before broad checks",
+    "final320/360 quick and390fullmap reviewed; final320 both quiet options visible",
+    "expanded-entry and settled-confirmation captured separately"
+  ],
+  "limitations": [
+    "Only local browser with fictional .invalid fixtures; no physical Android/iOS acceptance",
+    "Large text stress styles on affected controls are not full200%browser-zoom/WCAG or screen-reader acceptance",
+    "English remains partial internal preview",
+    "Vite chunk>500kB warning retained",
+    "No root integration, native install, backend/Auth/SQL/email/live-data change, deployment, inference, or4.3 work",
+    "45 regression passes precede final narrow CSS refinements;15 final-focused checks including fullrect+focusring clearance passed afterward."
+  ],
+  "effects": {
+    "rootAppEdit": false,
+    "oldCandidateEdit": false,
+    "protectedRuntimeEdit": false,
+    "integration": false,
+    "backend": false,
+    "native": false,
+    "email": false,
+    "aiInference": false,
+    "deploy": false
+  },
+  "preview": {
+    "url": "http://127.0.0.1:4190/?mode=web",
+    "sessionId": 53370,
+    "pid": 15776
+  },
+  "preQcArchive": {
+    "manifest": "PRE-QC-ARCHIVE.json",
+    "sha256": "21333c9b2168eef0369eaaa6835ad26e4210be90fbcbeafc0e908d3911b3a2f4",
+    "note": "65 archived files preserve pre-QC source/freeze/evidence/patch/reports/screenshots/checks/logs/built artifacts with original-to-archive hash mapping. QC-owned files excluded."
+  },
+  "refinementAfterIndependentQc": {
+    "initialFinding": "At320x568 pre-QC button bottom394.1875 vsfooter392: bottom2.1875pxcovered; textvisible/exposedtarget57px. P3 polish finding.",
+    "change": "Only<=360px step1 lead margin-bottom4px and quickchoices margin-top4px; font14px, targetsize and art unchanged.",
+    "result": "Settled buttonbottom382.1875/footer392, full6pxfocus-ring extent388.1875; final15/15 and finalrequiredchecks exit0.",
+    "oldFreezeSha256": "067524d20fdea83e729b6fd3fc56f7101572262cd199cf525e990a92a82ae233"
+  }
+}

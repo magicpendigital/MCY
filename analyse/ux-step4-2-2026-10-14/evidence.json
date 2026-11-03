@@ -1,0 +1,267 @@
+{
+  "recordedAt": "2026-10-14T07:42:56.464Z",
+  "candidate": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014",
+  "risk": "R1: optional body disclosure and quick choices using existing handlers",
+  "inputsCopied": 231,
+  "oldCandidateInputsUnchanged": 231,
+  "rootExistingInputsUnchanged": 228,
+  "changes": [
+    {
+      "path": "src/prototype.css",
+      "baselineSha256": "66b2edad77bf9057d0a3c72f17c09b954c325d5d48b7df788b7f1c51cb9eb25a",
+      "sha256": "856165bc65112bb46b9c4f0ee346820d5fe17607f4ecd4b0cc7fe97b8d5a340d"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "baselineSha256": "0a9d46864b427c58dd9e0bac1f35f143176f2e1558b19e0baf1820ebd1b6fd3a",
+      "sha256": "873111024377eb65ee55d229b9899d04acc798dca11c02924ab428cd6d39528c"
+    },
+    {
+      "path": "tests/learner-ux.spec.ts",
+      "baselineSha256": "baaee748dfc6ea4c26b57bf550663d7a1cb0c68fefda66d660ea03838d176ea6",
+      "sha256": "8310820d8ffc64e3da1aee67cb7b4a9b367a0ea72b2822cc5271cce67ee4f0b9"
+    }
+  ],
+  "addition": {
+    "path": "tests/ux-checkin-layout.spec.ts",
+    "sha256": "4b75a9c2a457ced4710e6965e59f547267989aa4e178ebf33a8d6a028fed9ecd"
+  },
+  "checkinHandlersByteEquivalent": true,
+  "outsideCheckinScreenByteEquivalent": true,
+  "patchSha256": "bf07b83f48e9cd7ae465407e5fdede6972aed7bfdd7a9291f405507d48b78c2a",
+  "preview": {
+    "url": "http://127.0.0.1:4189/?mode=web",
+    "script": "analyse/ux-step4-2-2026-10-14/preview.mjs",
+    "sessionId": 48884
+  },
+  "status": "LOCAL_IMPLEMENTATION_COMPLETE_AWAITING_QC_AND_ROOT_INSPECTION",
+  "checks": [
+    {
+      "command": "npm run build",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014",
+      "exitCode": 0,
+      "result": "PASS TypeScript/runtime28/catalog0/Vite601/Sites preparation; >500kB warning retained"
+    },
+    {
+      "command": "node scripts/check-client-bundle-secrets.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014",
+      "exitCode": 0,
+      "result": "PASS23"
+    },
+    {
+      "command": "node --test tests/sites-worker.test.mjs tests/playwright-test-environment.test.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014",
+      "exitCode": 0,
+      "result": "PASS5: Sites4+isolation1"
+    },
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-2026-10-14/qa.playwright.config.mjs learner-ux.spec.ts ux-save-feedback.spec.ts ux-journey-selection.spec.ts mobile-runtime.spec.ts practice-flow.spec.ts --grep-invert \"reviewed plan and explicit start/reflection|multimodal draft\"",
+      "exitCode": 1,
+      "result": "81PASS/1 geometry assertion FAIL; final targeted rerun resolves that case after explicit map scrolling, unchanged app source",
+      "report": "regressions-initial-geometry-failure.json",
+      "sha256": "afe3442b9736f62f0e400a739dd945448608b78a247b9d48f5cbf8f10497cb5d",
+      "stats": {
+        "startTime": "2026-10-14T07:35:27.414Z",
+        "duration": 153584.451,
+        "expected": 81,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-2026-10-14/qa.playwright.config.mjs ux-checkin-layout.spec.ts learner-ux.spec.ts ux-home.spec.ts --grep \"Neutral choices|Distinct body|Regional entries|English disclosure|full-body check-in|Home resumes|Home capability|English Home\"",
+      "exitCode": 0,
+      "result": "PASS16: final focused11 + affected fullbody1 + Home4. Combined unique97 passing cases across two runs; not a single all-green82 regression run",
+      "report": "targeted-final-results.json",
+      "sha256": "647bf7a89812252efdcb799573760c72feed0dc50eb5646ab50cad9fa8ce56fb",
+      "stats": {
+        "startTime": "2026-10-14T07:39:44.187Z",
+        "duration": 36825.073000000004,
+        "expected": 16,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "checkin-expanded-final-360.png",
+      "sha256": "a0ab21f4431c6b6d6a01157dced20a8c7edd8677d7d03b03da5ef409ad118273"
+    },
+    {
+      "path": "checkin-expanded-final-390.png",
+      "sha256": "ee5c640e89a073a3675b83d78bb33567bb346b089c661f938f740a3f2511594c"
+    },
+    {
+      "path": "checkin-expanded-final-iphone.png",
+      "sha256": "6c3f9f2858a0bf6fb763a58867a266abd519a32774c046833cf62cebfee839ff"
+    },
+    {
+      "path": "checkin-expanded-final-landscape.png",
+      "sha256": "b0af393d468ee301f656db8c4f0980a54d0d565f19cf15d4aa4a37717fe35025"
+    },
+    {
+      "path": "checkin-expanded-final-pixel.png",
+      "sha256": "b8895a3897c2538d7a0dfee43e8b0e7d782fcb4a1f0626ed47db52e9051529be"
+    },
+    {
+      "path": "checkin-map-final-360.png",
+      "sha256": "a0ab21f4431c6b6d6a01157dced20a8c7edd8677d7d03b03da5ef409ad118273"
+    },
+    {
+      "path": "checkin-map-final-390.png",
+      "sha256": "ee5c640e89a073a3675b83d78bb33567bb346b089c661f938f740a3f2511594c"
+    },
+    {
+      "path": "checkin-map-final-iphone.png",
+      "sha256": "6c3f9f2858a0bf6fb763a58867a266abd519a32774c046833cf62cebfee839ff"
+    },
+    {
+      "path": "checkin-map-final-landscape.png",
+      "sha256": "ce89302a2dd09db2f77af7d6e38184c77058d13db0b33274d46714cbd2f2375a"
+    },
+    {
+      "path": "checkin-map-final-pixel.png",
+      "sha256": "42535272db75ea8a4f5b0097adebae0074a3808dc177a5b089b4b5ce4d1c0517"
+    },
+    {
+      "path": "checkin-quick-final-360.png",
+      "sha256": "027beee5f1c469d18481a37a4931210e063562402c934771c0944eb23d788001"
+    },
+    {
+      "path": "checkin-quick-final-390.png",
+      "sha256": "764051cd6d3e47cfe7c7dbc2e18f674fe8b24dbbcaaa3d0372127ca023d31d78"
+    },
+    {
+      "path": "checkin-quick-final-iphone.png",
+      "sha256": "2d90dc57cac5c6b5c3c42aa66590dbcf0e31cd06005a52bc29ed95ad36c9b1cf"
+    },
+    {
+      "path": "checkin-quick-final-landscape.png",
+      "sha256": "5a5749f461d5dac4cc2229a961c4ad13bdc4b3bdf46bc58651a553ba3b2960fc"
+    },
+    {
+      "path": "checkin-quick-final-pixel.png",
+      "sha256": "ddc5a12045b5e6257993a8500da693966b2a3a21eddef3165375626d638d7250"
+    },
+    {
+      "path": "checkin-wheel-360.png",
+      "sha256": "a4437c337fd451eeb8c8876a88edfea2232cebe4fc5736c7cf3472e2350723cf"
+    },
+    {
+      "path": "checkin-wheel-390.png",
+      "sha256": "5a2c03862aabaf0b8ce96ae78e317aec406a50041a965d99ff301fcf9479dbcb"
+    },
+    {
+      "path": "checkin-confirm-final.png",
+      "sha256": "28890a55aa49069e19473f985607da3ec9458e06cd6191f8155ba610ff7a6e4e"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/client/index.html",
+      "sha256": "5cf52a64fd6ee433173a831bf1e832f1d42445b418b619173fccacb024a8ed59"
+    },
+    {
+      "path": "dist/server/index.js",
+      "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389"
+    },
+    {
+      "path": "dist/.openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    },
+    {
+      "path": ".openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    }
+  ],
+  "intermediateFailures": [
+    "Implementation helper template interpolation syntax failure before any edits; fixed. Baseline build exit0 is not final acceptance.",
+    "First edited build failed TS narrowing ternary; scoped copy fixed, final build exit0.",
+    "Focused initial unequal-side fixture mistakenly edited existing left into right; corrected to existing right-map entry path; initial fail receipt retained.",
+    "Initial quick screenshots captured between route frames; rejected, final images await settled bounding box.",
+    "One fullbody geometry test initially expected map above footer without scrolling; native scrollIntoView did not clear overlay. Explicit mobile-scroll scrollTop aligns map; same geometry and44px assertions retained. Targeted15PASS/1FAIL receipt retained; final16PASS.",
+    "checkin-confirm.png contained only backdrop during BottomSheet entrance; rejected. Separate exporter confirm-final shows both buttons in viewport afterbounded settlement."
+  ],
+  "excludedTests": "Three practice exporters and five Home viewport exporters target historical folders; practice exporters excluded, Home4 nonexporting cases selected. No frozen screenshot overwrite.",
+  "limitations": [
+    "Local .invalid fixtures only; no native, live Auth/backend writes or AI inference",
+    "No full screen-reader/WCAG/200% reflow acceptance",
+    "Vite >500kB chunk warning remains",
+    "Source-only candidate; no root integration, installation, staging/deploy or step4.3"
+  ],
+  "effects": {
+    "rootAppEdit": false,
+    "integration": false,
+    "backend": false,
+    "native": false,
+    "email": false,
+    "aiInference": false,
+    "deploy": false
+  },
+  "scrollProbe": {
+    "command": "node analyse/ux-step4-2-2026-10-14/scroll-probe.mjs",
+    "exitCode": 0,
+    "report": "scroll-probe.json",
+    "sha256": "7bc38844f40e0097c2041dab4cfef556c904f6ea148617e5eef063a14e1c3e4d",
+    "results": [
+      {
+        "width": 360,
+        "before": {
+          "scrollTop": 0,
+          "scrollHeight": 1257,
+          "scrollClientHeight": 585,
+          "mapTop": 485,
+          "mapBottom": 800,
+          "footerTop": 464,
+          "mapHeight": 315
+        },
+        "after": {
+          "scrollTop": 420,
+          "scrollHeight": 1257,
+          "scrollClientHeight": 585,
+          "mapTop": 65,
+          "mapBottom": 380,
+          "footerTop": 464,
+          "mapHeight": 315
+        },
+        "lastRegionBottom": 365.1875,
+        "footerTop": 464,
+        "image": "analyse/ux-step4-2-2026-10-14/checkin-wheel-360.png",
+        "method": "actual browser mouse wheel; no programmatic scrolling"
+      },
+      {
+        "width": 390,
+        "before": {
+          "scrollTop": 0,
+          "scrollHeight": 1294,
+          "scrollClientHeight": 789,
+          "mapTop": 491.625,
+          "mapBottom": 836.625,
+          "footerTop": 668,
+          "mapHeight": 345
+        },
+        "after": {
+          "scrollTop": 420,
+          "scrollHeight": 1294,
+          "scrollClientHeight": 789,
+          "mapTop": 71.625,
+          "mapBottom": 416.625,
+          "footerTop": 668,
+          "mapHeight": 345
+        },
+        "lastRegionBottom": 568.8125,
+        "footerTop": 668,
+        "image": "analyse/ux-step4-2-2026-10-14/checkin-wheel-390.png",
+        "method": "actual browser mouse wheel; no programmatic scrolling"
+      }
+    ]
+  },
+  "confirmCapture": {
+    "command": "node analyse/ux-step4-2-2026-10-14/capture-confirm.mjs",
+    "exitCode": 0,
+    "report": "confirm-capture.json"
+  }
+}

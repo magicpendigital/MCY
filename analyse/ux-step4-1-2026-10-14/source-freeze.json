@@ -1,0 +1,36 @@
+{
+  "recordedAt": "2026-10-14T06:55:21.144Z",
+  "candidate": "D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014",
+  "risk": "R1: Home UI and read-only in-session draft/capability labels within existing handlers",
+  "inputsCopied": 230,
+  "oldCandidateInputsUnchanged": 230,
+  "rootExistingInputsUnchanged": 228,
+  "changes": [
+    {
+      "path": "src/prototype.css",
+      "baselineSha256": "df6ef3f80b47c01461f9ee51bffe868db2599966db2fc5c93488946869200aa9",
+      "sha256": "66b2edad77bf9057d0a3c72f17c09b954c325d5d48b7df788b7f1c51cb9eb25a"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "baselineSha256": "1ba0188b54edd5d34eaeb04dc2d4ccbc51da3073cc440564f4db3140fc623c03",
+      "sha256": "0a9d46864b427c58dd9e0bac1f35f143176f2e1558b19e0baf1820ebd1b6fd3a"
+    }
+  ],
+  "addition": {
+    "path": "tests/ux-home.spec.ts",
+    "sha256": "d4b26b7bed811561f25d03b1a4c06071d4dc5e9fc4a7d30fba78a69434ef0996"
+  },
+  "patchSha256": "a70605f93a58a876f96398e7f1eb96897af047a663965b98e2a0549ac64862c6",
+  "preview": {
+    "url": "http://127.0.0.1:4188/?mode=web",
+    "script": "analyse/ux-step4-1-2026-10-14/preview.mjs",
+    "sessionId": 88396
+  },
+  "limitations": [
+    "Resume label only for guest draft in current session before practice/manual-flow baseline handoff; no authenticated pending-save resume expansion",
+    "No physical native/device testing or live backend/write/AI inference",
+    "No full WCAG/screen-reader acceptance",
+    "Existing >500kB Vite chunk warning remains"
+  ]
+}

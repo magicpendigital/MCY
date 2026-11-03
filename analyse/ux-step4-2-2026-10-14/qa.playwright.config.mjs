@@ -1,0 +1,3 @@
+import {defineConfig} from '@playwright/test';
+import path from 'node:path';
+export default defineConfig({testDir:path.resolve(import.meta.dirname,'../../.vercel/ux-step4-2-20261014/tests'),testMatch:['ux-checkin-layout.spec.ts','ux-home.spec.ts','learner-ux.spec.ts','practice-flow.spec.ts','ux-save-feedback.spec.ts','ux-journey-selection.spec.ts','mobile-runtime.spec.ts'],globalSetup:'./qa-global-setup.mjs',timeout:20000,workers:2,reporter:[['list'],['json',{outputFile:path.join(import.meta.dirname,'ui-results.json')}]],outputDir:path.join(import.meta.dirname,'test-results'),use:{baseURL:'http://127.0.0.1:4194',viewport:{width:1100,height:1100},launchOptions:{channel:'msedge'}}});

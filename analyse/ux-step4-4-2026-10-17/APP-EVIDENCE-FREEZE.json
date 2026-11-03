@@ -1,0 +1,555 @@
+{
+  "createdAt": "2026-10-16T17:38:31.210Z",
+  "sourceFreeze": {
+    "path": "analyse/ux-step4-4-2026-10-17/SOURCE-FREEZE.json",
+    "sha256": "f11a6af114f42427cd6d758f5ac191d0af65324d5018e82524adf913fde7e243"
+  },
+  "checks": [
+    {
+      "name": "runtime",
+      "command": "node scripts/check-mobile-runtime.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017",
+      "exitCode": 0
+    },
+    {
+      "name": "catalogue",
+      "command": "node scripts/check-reviewed-practice-catalog.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017",
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "command": "node D:\\Projects\\MCY\\node_modules\\typescript\\bin\\tsc",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017",
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "command": "node D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\build-fixture.mjs",
+      "cwd": "D:\\Projects\\MCY",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-prep",
+      "command": "node scripts/prepare-sites-build.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017",
+      "exitCode": 0
+    },
+    {
+      "name": "bundle",
+      "command": "node scripts/check-client-bundle-secrets.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-isolation",
+      "command": "node --test tests/sites-worker.test.mjs tests/playwright-test-environment.test.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017",
+      "exitCode": 0
+    }
+  ],
+  "suites": [
+    {
+      "name": "focused",
+      "command": {
+        "command": "node node_modules/@playwright/test/cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs ux-course-detail.spec.ts --reporter=list,json",
+        "cwd": "D:\\Projects\\MCY",
+        "exitCode": 0,
+        "signal": null
+      },
+      "stats": {
+        "startTime": "2026-10-16T17:29:24.096Z",
+        "duration": 56252.348000000005,
+        "expected": 15,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "name": "mapped",
+      "command": {
+        "command": "node node_modules/@playwright/test/cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs free-courses-contract.spec.ts learner-ux.spec.ts --grep free-course source|guest can browse free|free-course screens load|learner app defers course|course guidance has honest|English learner flow|free course detail groups|inactive FlowStack|embedded lesson offers|course player timeout|short portrait keeps welcome --reporter=list,json",
+        "cwd": "D:\\Projects\\MCY",
+        "exitCode": 0,
+        "signal": null
+      },
+      "stats": {
+        "startTime": "2026-10-16T17:30:28.863Z",
+        "duration": 89758.85399999999,
+        "expected": 11,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "name": "adjacent",
+      "command": {
+        "command": "node D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs ux-home.spec.ts ux-checkin-layout.spec.ts ux-energy-time.spec.ts ux-save-feedback.spec.ts ux-journey-selection.spec.ts --reporter=list,json",
+        "cwd": "D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\adjacent-run",
+        "exitCode": 0,
+        "signal": null
+      },
+      "stats": {
+        "startTime": "2026-10-16T17:33:20.412Z",
+        "duration": 282990.391,
+        "expected": 69,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/checks.json",
+      "sha256": "6d8a5cf6fec39cbf80f7c63e8176a696a61fa9e8bcc50433afbfbdbee5097e7a"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/focused-command.json",
+      "sha256": "ee4f2a2cc9ff2a717e08d7a364c1523bfcdbb91b23f1d54c9ca74184ba5c1820"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/focused-results.json",
+      "sha256": "3e9223e9384e035905b50711ef3b0d8e65abfd2a5b2ccff9029093f9f3f06375"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/focused.log",
+      "sha256": "bf6b2a5fce2bb318f94102167c1d43569b144bce124aa90b3c811da08122bcc9"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/mapped-command.json",
+      "sha256": "3250dde1c824bf7cdb7c0d3e1cec71dd7649dc2bd729f36c74c4aa9b78ec09ad"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/mapped-results.json",
+      "sha256": "b60447c74a7df39ea062fcb72573807ca41b95d226d2ff60609f45dca1d82b5e"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/mapped.log",
+      "sha256": "69a0b9b4c5d64931f9bb2b979c65df4714a37af445ffeca588bd8d8eec698091"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/adjacent-command.json",
+      "sha256": "62d976d7fa4832738aac3f47cfda682b0a1511e3b2ab7eab096185058d44a5df"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/adjacent-results.json",
+      "sha256": "418c6f46b7cf9f51c4575e3cea1d989d41a1f2db20d0b3d0360006d5853980d3"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/adjacent.log",
+      "sha256": "d05911928f590ef597f4cc7edf25172e60b20b10abcb1242bb42cf542cfda278"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/runtime.log",
+      "sha256": "dc8efc87822c49f2e7fd2cf41e71c5534553566286b4325bb0b14ec1654066d9"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/catalogue.log",
+      "sha256": "a9d05a0afbc011dcb4b4a008554d39365214576fb7dbd0438720bb40e9364a30"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/build.log",
+      "sha256": "9a45f055d093a08d56eeaaea2ec4e2d51582aa67e98ad9dab2d59476d01c3c69"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/sites-prep.log",
+      "sha256": "b20a681cac5bceaeaf037571701267999bfc75ce61e60510f556c2656fafc5ba"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/bundle.log",
+      "sha256": "ae262bee097ae4f17a4bcb2c97bc890efe2253efcc758736add053c99dd629b4"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/sites-isolation.log",
+      "sha256": "b5ee9aca56e9f5fe41eaad5f01186eae0e06a2e5c3f4e94560fe5681bb9eaf4d"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/course-detail.patch",
+      "sha256": "403342ac5c917ad1e096d945537a2765a290a125c71f27497da7c7e35c6c0465"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/finalise-evidence.mjs",
+      "sha256": "cb9bc2797d5ca47d79a84a582ddb482d9200e1c07489a8722b5d0ce496a5ecc1"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/final-320.png",
+      "sha256": "352d18e2aa29a252a4688f106d521cbdbcd1f17650d6fe7acba349eeea73b5a2"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/final-360.png",
+      "sha256": "2e5d11cf5b038ef10831afff9acad9315b8f4159c909347751f249796278ba35"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/final-390.png",
+      "sha256": "05e031471e30b4ca587afa593652f99cbf50461984f11de1e76569205dc999a6"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/final-desktop.png",
+      "sha256": "65b3c2c7bca7945ad22832d4ba237718f450d7f8e4fa6c543a25fc5a3b184c9d"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/final-iphone.png",
+      "sha256": "9f3a9b76fb5d41cd8884005f2a6a68bb2d64386eb06db81afebd2bd21d7787ec"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/final-landscape.png",
+      "sha256": "6d7946e27603a6736872967f9912704f81ce8cf39f7d76a5bfce451794ee3b3d"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/final-pixel.png",
+      "sha256": "f933f819859db2ccfa34d88719e3252f93501202019dcb45b503cb00a302d799"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/playing-320.png",
+      "sha256": "5bc7277cf585a4032706ec91b5d559c6e6ef17c7c62d3154ea07a5200474023e"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/playing-360.png",
+      "sha256": "7c045c5f00f701708c41583acb773fd8b4da51784505099eb08dbab70c6974fa"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/playing-390.png",
+      "sha256": "19213bf6176f7019723f5a032caa7eb5b88d8eb9545bf99600a4571058105fab"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/playing-desktop.png",
+      "sha256": "994a88991fef8a966f630747e0749d7e26eca0894af726a26036b3ebe2352115"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/playing-iphone.png",
+      "sha256": "2852449404bcb2672b25f87cbdf0dfb6a429b61ee55baa7bbbdd623de2cac8fb"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/playing-landscape.png",
+      "sha256": "1e21f3b9666195600193ad6b1b8207422c17ca56b9bd11621c9cc393832a2c1c"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/playing-pixel.png",
+      "sha256": "26dcbca54f806bfa8e44f5642004ef79f6769fa33a9e1fb23a3472a083e134da"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/text28-false.png",
+      "sha256": "10045e79c20e039fcb03bf598839c9336975d95073a3ac8333f602c1013de8f1"
+    },
+    {
+      "path": "analyse/ux-step4-4-2026-10-17/text28-true.png",
+      "sha256": "b16f66ca3c572da6539d8559ffa2da99d0108ef5836ab4709060f905e3a6e99b"
+    }
+  ],
+  "build": [
+    {
+      "path": "dist/.openai/hosting.json",
+      "bytes": 96,
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    },
+    {
+      "path": "dist/client/assets/android/Keyboard.png",
+      "bytes": 42695,
+      "sha256": "6085e50be17ca2705b4351283187be2c5b01b58262c70b90d74b3376efb4adfe"
+    },
+    {
+      "path": "dist/client/assets/android/navigation-bar.svg",
+      "bytes": 542,
+      "sha256": "077a782a3b6c2915fc518dfb4bba825c8c5861b2572f9522a7024902b9cb2850"
+    },
+    {
+      "path": "dist/client/assets/android/Pixel10.png",
+      "bytes": 214337,
+      "sha256": "a87c1250ba20756f5d020b5351a7ae71d663dcfc64aca3a1cd56452e8a05233e"
+    },
+    {
+      "path": "dist/client/assets/AuthCallback-5SmrVAl9.js",
+      "bytes": 2912,
+      "sha256": "b48399bc5eb522ae8561db2ab35ea4f91f2ff362e610654deb9a047fab1af5d6"
+    },
+    {
+      "path": "dist/client/assets/body-map-feminine-full-1024.webp",
+      "bytes": 174416,
+      "sha256": "e4a7e3917533079f52cdd731031f3a3fc5b776eeb7faf553866abf479978de62"
+    },
+    {
+      "path": "dist/client/assets/body-map-feminine-full-512.webp",
+      "bytes": 51330,
+      "sha256": "f38e4e09cac103d8c17715f25bb542c9ac15c55cb3feb77539c06294d46b7af0"
+    },
+    {
+      "path": "dist/client/assets/body-map-masculine-full-1024.webp",
+      "bytes": 201084,
+      "sha256": "f54af039b83197847f157ee042162979ee3853b0f71c9c4b8f8b339a211958a0"
+    },
+    {
+      "path": "dist/client/assets/body-map-masculine-full-512.webp",
+      "bytes": 56400,
+      "sha256": "fbdcaefb9b7b3cefd7afb960d51ef78b5762ff8360883bd7b746b3412fc72614"
+    },
+    {
+      "path": "dist/client/assets/body-map-neutral-full-1024.webp",
+      "bytes": 168836,
+      "sha256": "529dc4ab170647b01bac9c51a18eddafe4ae7d53035b60af12dd7e23858a8927"
+    },
+    {
+      "path": "dist/client/assets/body-map-neutral-full-512.webp",
+      "bytes": 50876,
+      "sha256": "f164856ab73549b891a0e1f224c4dd8e71ecb27fbc8a9f48e72cb1f5d57dd894"
+    },
+    {
+      "path": "dist/client/assets/contentReviewCandidates-FWo7P7-p.js",
+      "bytes": 1942,
+      "sha256": "787809c9c9bfe972d37a0b261dd41afb54d64c95b66a2c11170f9b6ca5b49e55"
+    },
+    {
+      "path": "dist/client/assets/ContentReviewPanel-6PV9wI5O.js",
+      "bytes": 10616,
+      "sha256": "c8d6acd2f487c985a7bc6e407431da5fe419613531f9af00121ef162f87faac7"
+    },
+    {
+      "path": "dist/client/assets/ContentReviewWorkspace-Dp-mHe5m.js",
+      "bytes": 1235,
+      "sha256": "bcbd069c483455cd1919350bfada57fd3b96aa6b45a29d23d68c7797bfda8195"
+    },
+    {
+      "path": "dist/client/assets/CourseDetailScreen-DzuYFQ5P.js",
+      "bytes": 10032,
+      "sha256": "b4fbb8e9c77255b4e8740285ce06ba7888f91cedb92bd6d101b65bf6a10fb40f"
+    },
+    {
+      "path": "dist/client/assets/DevicePicker-C_QJHYOV.js",
+      "bytes": 49629,
+      "sha256": "51ea5c68c0bfaa2cde49cbe9fb979c5425b1d1079fda1fc02b963d45cb8df237"
+    },
+    {
+      "path": "dist/client/assets/DiscoverScreen-cJwnZo_q.js",
+      "bytes": 3792,
+      "sha256": "70d57132c14dbf872c5097181cf15566856c136d1c66fafd61f1ddde300cf99b"
+    },
+    {
+      "path": "dist/client/assets/dist-CXcZYXxE.js",
+      "bytes": 213600,
+      "sha256": "ed0062d726219d6283720869db43e90d5189749431f60ce09185539457310126"
+    },
+    {
+      "path": "dist/client/assets/freeCourses-C_KZyTb-.js",
+      "bytes": 3334,
+      "sha256": "143cfa838004e759d7c30e413cb4afde267657cc48ea04a618d0c570a7bd73a2"
+    },
+    {
+      "path": "dist/client/assets/index-oHZbTWU3.js",
+      "bytes": 560013,
+      "sha256": "4d4ec9d7361de9b74b7376dae8377b5411140fc80ea20c321ef145c328ebc45f"
+    },
+    {
+      "path": "dist/client/assets/index-roxcEX-D.css",
+      "bytes": 100059,
+      "sha256": "def69be5acc01e78335bee03653149462a65d093dcce2f995f6d95489934bfe5"
+    },
+    {
+      "path": "dist/client/assets/iphone/Bezel.png",
+      "bytes": 353980,
+      "sha256": "ee2514d74d2f75f3541405fa2f20811f159879a66586778cfd8c9c84c44959df"
+    },
+    {
+      "path": "dist/client/assets/iphone/Keyboard.png",
+      "bytes": 53341,
+      "sha256": "292e2d83d69adaeb663d6a840ce8db8d0a5257710b472c20713e03f56b08ea88"
+    },
+    {
+      "path": "dist/client/assets/JourneyScreen-DKXjtoDb.js",
+      "bytes": 13780,
+      "sha256": "86ba61d7f8b30d77ca6dea2525ffcad702aa2d32e74afdfd45ede3269ff18e5e"
+    },
+    {
+      "path": "dist/client/assets/jsx-runtime-CB_p5Kcx.js",
+      "bytes": 8742,
+      "sha256": "25b47d9ef7c5d280b9be6d1a0c5928b5bcc6eb68e6ae0aa0078afd7dcd09202f"
+    },
+    {
+      "path": "dist/client/assets/LessonReader-DIuFVfDc.css",
+      "bytes": 2774,
+      "sha256": "3680ceab6bfce1d52b246f563db609059e373a1981c4edd119d0bcc324eca698"
+    },
+    {
+      "path": "dist/client/assets/LessonReader-izn_yFqT.js",
+      "bytes": 1576,
+      "sha256": "3ad7543e9e6f0048be48c3b6fd9e3afbc0d4ac1fcf70cf3a1fa86a63faf1ef83"
+    },
+    {
+      "path": "dist/client/assets/mark-forest-BqMZe9Gf.js",
+      "bytes": 558,
+      "sha256": "d94dc2e07a30dde929b22573f7886544e40c6a0cbf49853ec14e8e6c04051fe7"
+    },
+    {
+      "path": "dist/client/assets/owner-CCktePmf.css",
+      "bytes": 13879,
+      "sha256": "935ec6e30df762fe2c99d2aae2c5a5ab2680a5687f7b7a4022c05f6c71238197"
+    },
+    {
+      "path": "dist/client/assets/owner-DqunB5lH.js",
+      "bytes": 17479,
+      "sha256": "28cd557f1da805106488a46e51542302823854847bd8baf8d01bf081c29c1627"
+    },
+    {
+      "path": "dist/client/assets/practice/preparation-draft/choice.wav",
+      "bytes": 1099052,
+      "sha256": "2f75a005ed7d5774b4b0c82f825217ed31a550d249acb56d981c839eb8c79906"
+    },
+    {
+      "path": "dist/client/assets/practice/preparation-draft/room.png",
+      "bytes": 2502940,
+      "sha256": "7e1a324171b280389cc3bc1d49753136c76f08fea987f3e38235dda50c90f251"
+    },
+    {
+      "path": "dist/client/assets/practice/preparation-draft/space.wav",
+      "bytes": 783984,
+      "sha256": "64fb7b4447815289198a944d7be87eeedbdd206e8c27f88ec636f772e41db887"
+    },
+    {
+      "path": "dist/client/assets/practice/preparation-draft/welcome.wav",
+      "bytes": 826334,
+      "sha256": "0531b1425413f19da0952393ba7c98f9373f9e6d7ffce2f1ba92b14816baddbd"
+    },
+    {
+      "path": "dist/client/assets/PracticeFlowScreen-taDUoUtI.js",
+      "bytes": 12578,
+      "sha256": "2ee3fda30bbb157f1fd3f1029cbe450bd08c1aa53d6860bf006cac816c96e4a3"
+    },
+    {
+      "path": "dist/client/assets/roboto-latin-400-normal-BqEyEoaF.woff2",
+      "bytes": 21884,
+      "sha256": "425c0713a8176f92273d378599c7eac57de7fafabd4bd0ed457b70eb8f80d371"
+    },
+    {
+      "path": "dist/client/assets/roboto-latin-400-normal-DyYNIH4P.woff",
+      "bytes": 21776,
+      "sha256": "050cd689ba150e71c4ae131021474f48d97f367d94634654c8c06a5310279f3c"
+    },
+    {
+      "path": "dist/client/assets/roboto-latin-500-normal-7RbcRiD8.woff2",
+      "bytes": 22200,
+      "sha256": "5bcc3aa180e7f26f643cd5b2621cd7c2de193d0661d913a94afd3d4881a7a34b"
+    },
+    {
+      "path": "dist/client/assets/roboto-latin-500-normal-DQZyH_nt.woff",
+      "bytes": 21920,
+      "sha256": "b9c3346f0ae869eee449c94a182d90b100f253d916827785577887d03eff51db"
+    },
+    {
+      "path": "dist/client/assets/roboto-latin-700-normal-BZpUvMxY.woff2",
+      "bytes": 22240,
+      "sha256": "b9d66d1708156f765ada51939bc24ed259dafa69eb631b36e443680fe9e15879"
+    },
+    {
+      "path": "dist/client/assets/roboto-latin-700-normal-DLgJJpmK.woff",
+      "bytes": 21924,
+      "sha256": "a2238b3178ba89b791fb7ced9e118f720b7ef43386b452ab8ce9198d119cf32a"
+    },
+    {
+      "path": "dist/client/assets/roboto-vietnamese-400-normal-D2PTxGxD.woff2",
+      "bytes": 8368,
+      "sha256": "76afb0e482ab569c50a1ca35dfd052daa3d0f6d54d1b30865f6fea4c35c2b350"
+    },
+    {
+      "path": "dist/client/assets/roboto-vietnamese-400-normal-DnpnVwnf.woff",
+      "bytes": 6344,
+      "sha256": "a7ece9e36309c1eac204bcaa7006b76d17b66ee673c4dbf7f8aa62fb9dc9ef2e"
+    },
+    {
+      "path": "dist/client/assets/roboto-vietnamese-500-normal-B3ncpOoB.woff2",
+      "bytes": 8540,
+      "sha256": "15c77aed355b2ca99b34986268c33c67107613a2987c71dd9e12e79bbd6f9e63"
+    },
+    {
+      "path": "dist/client/assets/roboto-vietnamese-500-normal-D380IkQ8.woff",
+      "bytes": 6412,
+      "sha256": "9ed919194333df14907c7e02e99a5e73278a6538c8539c0500246ab86391c6dc"
+    },
+    {
+      "path": "dist/client/assets/roboto-vietnamese-700-normal-BEVeWqJt.woff2",
+      "bytes": 8416,
+      "sha256": "bec340ec8c7ec4940533eeceadddb00ac2da872c57c67b0c55e772c7c32dad4e"
+    },
+    {
+      "path": "dist/client/assets/roboto-vietnamese-700-normal-DsFyXAL4.woff",
+      "bytes": 6384,
+      "sha256": "532acd9d5e13d343d56e3cedbe9c3354b857971dd3be09482365ed6c9690fa1c"
+    },
+    {
+      "path": "dist/client/assets/status/ios-status-icons.svg",
+      "bytes": 2765,
+      "sha256": "40e218b274d0973d519b50f42884e6e05ef0f2b6a0e46e102fda54218784466d"
+    },
+    {
+      "path": "dist/client/assets/status/status-icons.svg",
+      "bytes": 824,
+      "sha256": "1a8bd4207cf34532ae514bdcdca693acc9a2b8ebc9d3182dc163c3e9ddcc4823"
+    },
+    {
+      "path": "dist/client/assets/teacher-BBhbwVaC.css",
+      "bytes": 13910,
+      "sha256": "8d7b1947ed7b21bac88950a8416b2a3988480f32b8ad4530dae4518b256fa705"
+    },
+    {
+      "path": "dist/client/assets/teacher-DXkG-2RZ.js",
+      "bytes": 41028,
+      "sha256": "831bbea19e38141011aa6ab893022fae2c61e77a9b78cdfa35eefc7b4c23b209"
+    },
+    {
+      "path": "dist/client/assets/today-neck-stretch-1200.webp",
+      "bytes": 92690,
+      "sha256": "83af3f60f06fe862dc9cd980646756b5b194e62d9ebdf80ea4970a067997900a"
+    },
+    {
+      "path": "dist/client/assets/today-neck-stretch-600.webp",
+      "bytes": 27498,
+      "sha256": "bfbf4e4670672ec5d2df4aacf9616907998a3f110f36e2d4eb26ecefc922a7a0"
+    },
+    {
+      "path": "dist/client/assets/web-B3vVmyUv.js",
+      "bytes": 844,
+      "sha256": "7dbc6ef350c520f6012788adcb5713c4c94143ff04d75f50ab5452793e5e121c"
+    },
+    {
+      "path": "dist/client/assets/welcome-portrait-1024.webp",
+      "bytes": 210456,
+      "sha256": "c6ae8b8b5d8ba39dbb117b3864d6092f493e1df85c853ddb96637ce2c2bed1a1"
+    },
+    {
+      "path": "dist/client/assets/welcome-portrait-512.webp",
+      "bytes": 53060,
+      "sha256": "0c89d95d41fc80a754fb019a271ffa3117c60316c2cc09ef33a17fa8caccf1af"
+    },
+    {
+      "path": "dist/client/favicon.svg",
+      "bytes": 420,
+      "sha256": "ea6990d5d9541fb66e5d630400581258c09f8a6b011e9e2ffd9b7ca8c5ad16e0"
+    },
+    {
+      "path": "dist/client/index.html",
+      "bytes": 1067,
+      "sha256": "0d22af3d66891b135253be1f40269bc70d2f48d48fffb4e884f9f866911e1333"
+    },
+    {
+      "path": "dist/server/index.js",
+      "bytes": 483,
+      "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389"
+    }
+  ],
+  "comparison": {
+    "appInputsMatch": 234,
+    "harnessAndIntakeMatch": 16,
+    "approved43InputsUnchanged": 233,
+    "existingRootInputsUnchanged": 228,
+    "preRenderLogicEquivalentExcludingOnlyNewFocusRefHook": true,
+    "iframeJsxByteEquivalent": true
+  },
+  "initialFailures": "Preserved separately: initial-focused-failure (11/13 exit1), second-focused-failure (12/13 exit1); no final acceptance from those runs. No whole-suite claims.",
+  "limits": "Local Edge/browser/simulator fixtures only, external network blocked/proxied to unavailable loopback; no physical/native/real playback/live actor/data/content rights/expertise/release acceptance. Vite >500kB warning retained. Independent QC and root final verification pending separately. STOP before4.5."
+}

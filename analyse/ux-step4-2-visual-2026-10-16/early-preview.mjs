@@ -1,0 +1,5 @@
+import {chromium,expect} from '@playwright/test';
+import {start} from './qa-global-setup.mjs';
+const server=await start(4198);
+const browser=await chromium.launch({channel:'msedge'});
+try{for(const width of [360,390]){const page=await browser.newPage({viewport:{width,height:width===360?640:844}});await page.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());await page.goto('http://127.0.0.1:4198/?mode=web');await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await expect(page.locator('.mcy-body-disclosure')).toBeVisible();await expect.poll(async()=>Math.abs((await page.locator('[data-testid="flow-current"] > [data-flow-active="true"]').last().boundingBox()).x)).toBeLessThan(.2);await page.locator('.mcy-body-entry-art img').evaluate(i=>i.decode());await page.screenshot({path:`analyse/ux-step4-2-visual-2026-10-16/early-${width}.png`,animations:'disabled'});await page.close();}}finally{await browser.close();await server.close();}

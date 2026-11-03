@@ -1,0 +1,98 @@
+{
+  "verifiedAt": "2026-10-16T00:55:19.9155719+07:00",
+  "scope": "Read-only final handoff verification; no source/test changes and no test reruns",
+  "candidate": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014",
+  "candidateHashes": {
+    "focusedCheckinTest": "4b75a9c2a457ced4710e6965e59f547267989aa4e178ebf33a8d6a028fed9ecd",
+    "PrototypeTsx": "873111024377eb65ee55d229b9899d04acc798dca11c02924ab428cd6d39528c",
+    "previewScript": "9d1bf73b71d2b9b1543b101c02c8228e55515d4823314f3472f48a72a63b6248",
+    "qaGlobalSetup": "b0feb00c212c39f8ce6e708a1513e069a17473c72cf3081789b9f0effe0a641a",
+    "qcReport": "91d42892e947b2653788c8cf001aed1c40634d94c0c8dce714abf89638a0e0c7",
+    "prototypeCss": "856165bc65112bb46b9c4f0ee346820d5fe17607f4ecd4b0cc7fe97b8d5a340d",
+    "patch": "bf07b83f48e9cd7ae465407e5fdede6972aed7bfdd7a9291f405507d48b78c2a",
+    "learnerUx": "8310820d8ffc64e3da1aee67cb7b4a9b367a0ea72b2822cc5271cce67ee4f0b9"
+  },
+  "baselineComparison": {
+    "currentRootPinnedMatches": true,
+    "candidateDifferencesExpected": [
+      "src/Prototype.tsx",
+      "src/prototype.css",
+      "tests/learner-ux.spec.ts"
+    ],
+    "oldCandidateMatchesBaseline": true,
+    "currentRootPinnedDrift": [],
+    "additionalFocusedTestFromBaseline": "tests/ux-checkin-layout.spec.ts",
+    "reviewedSourceFreezeCounts": {
+      "oldCandidateInputsUnchanged": 231,
+      "rootExistingInputsUnchanged": 228,
+      "inputsCopied": 231
+    },
+    "rootPinnedCount": 228,
+    "oldCandidateMismatches": 0,
+    "inputCount": 231,
+    "candidateDifferencesFromPrechangeBaseline": [
+      {
+        "path": "src/prototype.css",
+        "baseline": "66b2edad77bf9057d0a3c72f17c09b954c325d5d48b7df788b7f1c51cb9eb25a",
+        "current": "856165bc65112bb46b9c4f0ee346820d5fe17607f4ecd4b0cc7fe97b8d5a340d"
+      },
+      {
+        "path": "src/Prototype.tsx",
+        "baseline": "0a9d46864b427c58dd9e0bac1f35f143176f2e1558b19e0baf1820ebd1b6fd3a",
+        "current": "873111024377eb65ee55d229b9899d04acc798dca11c02924ab428cd6d39528c"
+      },
+      {
+        "path": "tests/learner-ux.spec.ts",
+        "baseline": "baaee748dfc6ea4c26b57bf550663d7a1cb0c68fefda66d660ea03838d176ea6",
+        "current": "8310820d8ffc64e3da1aee67cb7b4a9b367a0ea72b2822cc5271cce67ee4f0b9"
+      }
+    ]
+  },
+  "recordedChecks": [
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "result": "PASS TypeScript/runtime28/catalog0/Vite601/Sites preparation; >500kB warning retained"
+    },
+    {
+      "command": "node scripts/check-client-bundle-secrets.mjs",
+      "exitCode": 0,
+      "result": "PASS23"
+    },
+    {
+      "command": "node --test tests/sites-worker.test.mjs tests/playwright-test-environment.test.mjs",
+      "exitCode": 0,
+      "result": "PASS5: Sites4+isolation1"
+    },
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-2026-10-14/qa.playwright.config.mjs learner-ux.spec.ts ux-save-feedback.spec.ts ux-journey-selection.spec.ts mobile-runtime.spec.ts practice-flow.spec.ts --grep-invert \"reviewed plan and explicit start/reflection|multimodal draft\"",
+      "exitCode": 1,
+      "result": "81PASS/1 geometry assertion FAIL; final targeted rerun resolves that case after explicit map scrolling, unchanged app source"
+    },
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-2026-10-14/qa.playwright.config.mjs ux-checkin-layout.spec.ts learner-ux.spec.ts ux-home.spec.ts --grep \"Neutral choices|Distinct body|Regional entries|English disclosure|full-body check-in|Home resumes|Home capability|English Home\"",
+      "exitCode": 0,
+      "result": "PASS16: final focused11 + affected fullbody1 + Home4. Combined unique97 passing cases across two runs; not a single all-green82 regression run"
+    }
+  ],
+  "focusedEvidence": {
+    "composition": "81 prior passing + 16 targeted PASS across separate runs",
+    "initialRegressionResult": "81 PASS / 1 geometry assertion FAIL",
+    "targetedFinalUniquePassingCases": 97,
+    "noRerunInThisVerification": true,
+    "initialRegressionExitCode": 1,
+    "single82CaseRegressionRunAllGreen": false
+  },
+  "preview": {
+    "externalBackendObserved": false,
+    "environmentFileCopy": false,
+    "localOnly": true,
+    "freshExecSessionId": 6059,
+    "httpStatus": 200,
+    "fictionalInvalidBackend": true,
+    "script": "analyse/ux-step4-2-2026-10-14/preview.mjs",
+    "url": "http://127.0.0.1:4189/?mode=web"
+  },
+  "rootVisualInspection": "PENDING ROOT DIRECT CHECK",
+  "step43": "STOP; WAITING_USER"
+}

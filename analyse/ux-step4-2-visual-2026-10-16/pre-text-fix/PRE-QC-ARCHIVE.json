@@ -1,0 +1,331 @@
+{
+  "createdAt": "2026-10-16T04:59:21.185Z",
+  "reason": "Preserve pre-QC source/evidence/report/screenshot pins before narrow clearance refinement; QC-owned files excluded",
+  "mapping": [
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/archive-pre-qc.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/archive-pre-qc.mjs",
+      "sha256": "750797ba6593c8edfe5219b0c6ee2bfa428c2fb4fa3bfec8172a131cba686ee3"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/baseline.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/baseline.json",
+      "sha256": "38d88ded7f8136915bacdfd23b08b0c578344b141f7490e36307bae5e38e3468"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/build.log",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/build.log",
+      "sha256": "81e0abc9fd1d1b76372ef6d0e4cc2edfad560cca0ac14aa59337eb46e138601d"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/bundle.log",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/bundle.log",
+      "sha256": "ae262bee097ae4f17a4bcb2c97bc890efe2253efcc758736add053c99dd629b4"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/capture-details.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/capture-details.mjs",
+      "sha256": "51c54c094babb9ab3d3849f0660d46e4724035662edcc314315785e4be9eb796"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/catalogue.log",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/catalogue.log",
+      "sha256": "a9d05a0afbc011dcb4b4a008554d39365214576fb7dbd0438720bb40e9364a30"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-confirm-settled.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-confirm-settled.png",
+      "sha256": "3b32f36121deb67e8e81b4e25b45dfe0166651184e68b3f021fa7320ca3ec43e"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-confirm.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-confirm.png",
+      "sha256": "d4d14638748b7c14d21339071e38569dcead5ca80fd6616f5ecdb44e23841eb4"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-entry.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-entry.png",
+      "sha256": "3350d45526446876cfb448704bf7791a3ef3c57cd8c8c6c57709259fe9943821"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-320.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-final-320.png",
+      "sha256": "b4adce16b2143eceb8a516733a6ec3a25c7f2bf879684eca362cc63bb6c64902"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-360.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-final-360.png",
+      "sha256": "153ff48f9c871b0aeba92ba44edadf0bc34e8bc3c33248d8e2d860b5f11078e8"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-390.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-final-390.png",
+      "sha256": "ae1ff2d527a4e447baad306ce7b524ff1e550a3904f39bdadfe12038feb5b55f"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-iphone.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-final-iphone.png",
+      "sha256": "1d88d16ff43333db372a50997c821646693370f73014dc511c2571a56c70d5c6"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-landscape.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-final-landscape.png",
+      "sha256": "b907a7b7298eca6524bf7fcbcfb1afa590bdfaaa6fb303965d227f7a809c1b7a"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-pixel.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-final-pixel.png",
+      "sha256": "f2e09935c06c81a5b6986d2deca9f7ea328557ee79f1fb6836569f9eec468f3c"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-short.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-expanded-final-short.png",
+      "sha256": "3f0c6483bc57a301623d129d8e84ccb76b06c270c7301a6caeb8ce962407d8ac"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-large-false.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-large-false.png",
+      "sha256": "59526357c849607ae7c6df097a1b9cf2177caf2534508d898e9d50cbd85808c9"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-large-true.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-large-true.png",
+      "sha256": "503bf0f9a9b221553537825f02fb039605d41fd518fb7f8d496e4c358d06a452"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-320.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-map-final-320.png",
+      "sha256": "bf1a38d74425ee8a7812dc615b2e96c2d101cbddaa834d8cf0b8cd68f88a151f"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-360.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-map-final-360.png",
+      "sha256": "d406d237b9bcac7dc6278931bbb4fb628772d531428b005f4e08710f6d16aa0b"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-390.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-map-final-390.png",
+      "sha256": "ae1ff2d527a4e447baad306ce7b524ff1e550a3904f39bdadfe12038feb5b55f"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-iphone.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-map-final-iphone.png",
+      "sha256": "d5291206749d9e849b407fc7d523dcc0ed1f1466bc35bb5d73a6b9247a4d6f48"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-landscape.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-map-final-landscape.png",
+      "sha256": "def78f9751522cb48ffcf03ec830cfff23d8ed8f51cd9907439fba852acc7bd9"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-pixel.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-map-final-pixel.png",
+      "sha256": "4f0f05041f8f66b4397d0849d4cbb97223859da6d9172a22d59ac0b41cb4b072"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-short.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-map-final-short.png",
+      "sha256": "4a4b614995dba1cd5b65510ba2723a93249f6f4f63df375a9949b7e6e5c9635d"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-320.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-quick-final-320.png",
+      "sha256": "9a464957c63e826e153c363f5b4b7f2d329b99c7c0e412ab90c09df073dadc41"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-360.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-quick-final-360.png",
+      "sha256": "a109b93ca9ecdde240cbab8ad53ef0fdddc8eacbfc758c60ece406af61e65e06"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-390.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-quick-final-390.png",
+      "sha256": "55a241fcac077acb65ac93936d9cb82e821a4d98c5b7a30602261e92425b7256"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-iphone.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-quick-final-iphone.png",
+      "sha256": "496d2232f0a96d279ee7dbf3b887967f46191ccd2d93fc38a19d6211c068124e"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-landscape.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-quick-final-landscape.png",
+      "sha256": "826b42bb0c0fded7f8bd61280dc71b4181de4605dca82943429c8cbe3799f504"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-pixel.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-quick-final-pixel.png",
+      "sha256": "ab826592337863d017e9890b70e7088aecd4b6b8402ef6fe2fc0a750fe5ccef6"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-short.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-quick-final-short.png",
+      "sha256": "b2a41c57567c7d7f6bb3b2602d6b2d120bb99baef12acda02f01b3164649fdb7"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checkin-visual.patch",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checkin-visual.patch",
+      "sha256": "c8e5171e013ae7b1b896ff6c69b618b5f02e7f5fbab56575ee9cc0e752bb7723"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/checks.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/checks.json",
+      "sha256": "0f99d9999de5ed8f8d4a0d7f397f576666cede08bd16fc55611191965ea69120"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/COORDINATION.vi.md",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/COORDINATION.vi.md",
+      "sha256": "2a214e4ecec328fe02d2bfd60d9495e035a707d0bbc11c873d7a68edcd898dbb"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/detail-captures.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/detail-captures.json",
+      "sha256": "613ef68c320a54f34660f4edba8ef2c4f98bd811ca3517b7b06a49e14d85357c"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/early-360.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/early-360.png",
+      "sha256": "09d1fb3264d45eb5c86066402f9b2aa21683268da530c6220b32995e67092be2"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/early-390.png",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/early-390.png",
+      "sha256": "ee15aeef1f52f144f5504e3c962dc792caed72d56d5b4cb0c472a01ded00accc"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/early-preview.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/early-preview.mjs",
+      "sha256": "f42d15f9ef3e665dd22c9bafd8dfd712ca0551ec7ad52e5a8ee2de75cb3c3fcf"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/evidence.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/evidence.json",
+      "sha256": "4a79b66787b9dd71432159b67dcf51dbcca5e8508cc91ed356545f29f596a2c0"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/focused-initial-results.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/focused-initial-results.json",
+      "sha256": "5c1cf6ecfaa7167427c1a18ec188b29e0a9c0a5f64917fe5afb8a2654cad337c"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/freeze.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/freeze.mjs",
+      "sha256": "d9b1e02b443c5a8242d6536a54f16db67b3c394d038b344f59fb9a757b05b872"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/HANDOFF.vi.md",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/HANDOFF.vi.md",
+      "sha256": "8055affdeabb3365a5ec98c794d943db5d4a42de178b177875d8f442cd572754"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/prepare.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/prepare.mjs",
+      "sha256": "2dfb8ab9e6235ad6c7b55cd1936281a4e82d1bd8c879d83b34e6021bfd6eea78"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/preview.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/preview.mjs",
+      "sha256": "54ce15f2c333df041267c48b944bef73fe3f955990f47fe2889582bee0836e3a"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/qa-global-setup.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/qa-global-setup.mjs",
+      "sha256": "bd7c01907b0cd32ef1a85ce0f61b3ee521e2b68cd18d650ac4360b1460eeed84"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/qa.playwright.config.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/qa.playwright.config.mjs",
+      "sha256": "be4f8c05de35f9d757df78ab89c0bf3a6d8fd08f307e241c5585597dccaba37c"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/regression-45-results.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/regression-45-results.json",
+      "sha256": "961527e450e23ab0ea4ae615ac3ec4271312dd967c29afe4bb1c41d23db02eb5"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/regression-45-source-pins.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/regression-45-source-pins.json",
+      "sha256": "e97435bc9de5909fc47bb66100c62a5bc78a0931ed3ad9a369f306f290f18c47"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/run-checks.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/run-checks.mjs",
+      "sha256": "fcb75e71b29b2c92fc0c70ecf8036163715c5d4518566f1b96609019e112bdb5"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/runtime.log",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/runtime.log",
+      "sha256": "dc8efc87822c49f2e7fd2cf41e71c5534553566286b4325bb0b14ec1654066d9"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/sites-isolation.log",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/sites-isolation.log",
+      "sha256": "6e86ed62fa9f5f23ffa727cadbaecb81ab27edcfe1bd5489166da9cdb837ebf1"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/sites-prep.log",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/sites-prep.log",
+      "sha256": "b20a681cac5bceaeaf037571701267999bfc75ce61e60510f556c2656fafc5ba"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/source-freeze.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/source-freeze.json",
+      "sha256": "067524d20fdea83e729b6fd3fc56f7101572262cd199cf525e990a92a82ae233"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/typecheck.log",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/ui-results.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/ui-results.json",
+      "sha256": "6e50d30de53d2e5d75faf2dc18eeccdae4cbcc02128c1d7d3bcc5a8a2870460e"
+    },
+    {
+      "original": "analyse/ux-step4-2-visual-2026-10-16/update-tests.mjs",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/update-tests.mjs",
+      "sha256": "0fecafc8e9c2d02d4ba3665587fc61ee439926b5ab25cb397fb2db4b57568c63"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/src/Prototype.tsx",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/src/Prototype.tsx",
+      "sha256": "0d2875338cbd0efe6f16b1c301629a157e043775624754338d471782ad7ec761"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/src/prototype.css",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/src/prototype.css",
+      "sha256": "9e00794f7f8e8cd1146858e7cf190dd49442bc4336b8f3661d0b9b7be8e69115"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/tests/learner-ux.spec.ts",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/tests/learner-ux.spec.ts",
+      "sha256": "d1072606ba3c97a75e4c94b761885cac0ebd55a73398818fcd5defe0d3c681ea"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/tests/ux-checkin-layout.spec.ts",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/tests/ux-checkin-layout.spec.ts",
+      "sha256": "0c7582631598abd6db40db56dcda5619f55cb916572091402ee5aeaf7f1deddb"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/dist/client/index.html",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/dist/client/index.html",
+      "sha256": "86dd31a5f093876a4a497b97c6f3f6d69cede8aceb7de5bf2b61e4c46e8678af"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/dist/server/index.js",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/dist/server/index.js",
+      "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/dist/.openai/hosting.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/dist/.openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    },
+    {
+      "original": ".vercel/ux-step4-2-visual-20261016/.openai/hosting.json",
+      "archived": "analyse/ux-step4-2-visual-2026-10-16/pre-qc/candidate/.openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    }
+  ]
+}

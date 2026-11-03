@@ -1,0 +1,11 @@
+# Independent handoff documentation QC
+
+**PASS; no P1/P2 found in the new handoff records.** Reviewer `/root/step44_independent_qc` read the final `ROOT-VERIFICATION.vi.md`, `CURRENT-STATUS.vi.md`, root raw browser observations and immutable root-record freeze `287279527cb6a54f684bb0c328ec6b081562ed5d137d877c723f4bfd71bbd668` after root authorized this review.
+
+The records accurately attribute Cua/manual actions and the 257-pin command result to root; this reviewer did not rerun those actions. Five viewport observations include the separate initial 390 record. The account-free library/player/selection/back/reopen/reflection observations match the root JSON. The two blocked-frame keyboard tooling errors and recovery through Cua Tab remain disclosed; iframe creation is not claimed as real playback. Font 28px and iPhone/Pixel evidence is correctly described as screenshot inspection, rather than physical-device or OS-font testing.
+
+Counts agree with frozen worker and independent QC evidence: 95 selected UI cases, seven baseline commands, seven independent probe cases, 807 earlier independent pins. The docs retain the PyYAML validator BLOCKED gap, partial English, P3 historical header label, content expertise/rights and live/native/player acceptance limits. They do not claim remote CI enforcement or zero regression. Current local PASS/WAITING_USER supersedes progress-only pending fields without editing old frozen evidence. Native HALTED, web BLOCKED_NO_UPLOAD_OR_ALIAS and STOP before 4.5 remain explicit.
+
+`node analyse/ux-step4-4-2026-10-17/independent-qc/root-doc-checks.cjs` exited 0: **372 raw-byte pin checks, 20 local links, all 12 new root-record files matched**, including rechecking those files after inspection. Source f11, evidence ea5e, independent app QC report and candidate/source/harness/build/evidence inputs remain unchanged. [Check receipt](independent-qc/root-doc-checks.json). No application suite was rerun, and this reviewer changed only its own QC files.
+
+Root reports it has directly read the new final records. The handoff is ready for Owner review of local 4.4; no further app step, integration, native or release action is authorized by this documentation check.

@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "locale": "vi-VN",
+      "metrics": [
+        {
+          "label": "Không thấy khó chịu",
+          "fontSize": "28px",
+          "clientWidth": 152,
+          "scrollWidth": 152,
+          "height": 137.5625,
+          "left": 17,
+          "right": 171.4375,
+          "lines": [
+            {
+              "left": 44,
+              "right": 124.15625,
+              "width": 80.15625
+            },
+            {
+              "left": 44,
+              "right": 149.59375,
+              "width": 105.59375
+            },
+            {
+              "left": 44,
+              "right": 96.328125,
+              "width": 52.328125
+            }
+          ]
+        },
+        {
+          "label": "Chưa xác định",
+          "fontSize": "28px",
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "height": 137.5625,
+          "left": 179.4375,
+          "right": 303,
+          "lines": [
+            {
+              "left": 212.4375,
+              "right": 278.421875,
+              "width": 65.984375
+            },
+            {
+              "left": 212.4375,
+              "right": 256.265625,
+              "width": 43.828125
+            },
+            {
+              "left": 212.4375,
+              "right": 268.875,
+              "width": 56.4375
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "locale": "en-US",
+      "metrics": [
+        {
+          "label": "No discomfort now",
+          "fontSize": "28px",
+          "clientWidth": 152,
+          "scrollWidth": 152,
+          "height": 137.5625,
+          "left": 17,
+          "right": 171.4375,
+          "lines": [
+            {
+              "left": 44,
+              "right": 79.953125,
+              "width": 35.953125
+            },
+            {
+              "left": 44,
+              "right": 161.9375,
+              "width": 117.9375
+            },
+            {
+              "left": 44,
+              "right": 122.75,
+              "width": 78.75
+            }
+          ]
+        },
+        {
+          "label": "Not sure",
+          "fontSize": "28px",
+          "clientWidth": 122,
+          "scrollWidth": 122,
+          "height": 137.5625,
+          "left": 179.4375,
+          "right": 303,
+          "lines": [
+            {
+              "left": 212.4375,
+              "right": 257.484375,
+              "width": 45.046875
+            },
+            {
+              "left": 212.4375,
+              "right": 267.625,
+              "width": 55.1875
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

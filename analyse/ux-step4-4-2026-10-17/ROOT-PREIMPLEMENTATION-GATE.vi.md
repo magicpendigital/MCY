@@ -1,0 +1,13 @@
+# Root kiểm trước triển khai 4.4 — 17/10/2026
+
+**PASS cho tài liệu/quy trình và đủ điều kiện bắt đầu implementation local 4.4. Chưa phải acceptance ứng dụng.** Record bổ sung này ghi quyết định hiện tại của root; các trường BLOCKED/pending trong input đã frozen được giữ nguyên như checkpoint lịch sử.
+
+Root đã đọc trực tiếp lifecycle cuối, scoped patch, kế hoạch đồng bộ, phiếu intake và [independent CONTROL + PLAN QC](../process-workflow-2026-10-17/INDEPENDENT-CONTROL-PLAN-QC.md). Báo cáo độc lập có SHA256 `750cd0652a2085759898cef6eea7566982075751b0c080c5af668201101399fd`, verdict PASS, không còn P1/P2 trong phạm vi control/plan. Reviewer chạy 81 bounded checks, 25 local links, exit 0 và walkthrough ba tình huống protocol. Đây là kiểm tài liệu/control, **không phải test app**; xem [evidence kiểm độc lập](../process-workflow-2026-10-17/independent-control-plan-checks.json).
+
+Root sau đó độc lập dùng GetFileHash kiểm đủ bảy workflow files trong [workflow freeze](../process-workflow-2026-10-17/source-freeze.json) và đủ bốn plan inputs trong [plan/intake freeze](PLAN-INTAKE-FREEZE.json). Hai command exit 0; mọi hash đều khớp. Đây là kết quả root trực tiếp kiểm và giao lại để documentation worker ghi record, không được gán thành lần rerun của worker. Root cũng đối chiếu sự thật source/metadata và [PHOTO-ADMIN-HANDOFF](../foundation-series-2026-10-16/PHOTO-ADMIN-HANDOFF.vi.md): foundation là R3 draft/preview, không có expert/clinical/rights clearance hay tích hợp catalog.
+
+Baseline tiếp tục là `.vercel/ux-step4-3-20261016`, chưa tích hợp root: Prototype SHA256 `4301656f5e45197b421a98d63d9da8898a699cbc608449ce51ce909bc0e84bee`, CSS `4a4a251b4ab64b5ea6b94813f24175d36fdbe3161b0a23bd1d5841027a5067a1`. Phạm vi local 4.4 theo [intake](TASK-INTAKE.vi.md) và [kế hoạch](PLAN-CONSOLIDATED.vi.md), R1 trình bày existing video CourseDetail; không thay contract/provider/playback behavior hoặc đưa nội dung mới chưa duyệt vào app.
+
+Root đã gửi GO cho `course_detail_implementer` sau kiểm này. Team hiện tại: process worker gpt-6.1-sol/high; plan worker gpt-6.1-sol/medium; app worker gpt-6.1-sol/high; independent QC gpt-6.1-sol/high. Model/reasoning ghi theo phân công hiện tại, không phải cam kết hạn mức hay chi phí cho các lượt tương lai. Root điều phối và kiểm tay; root và documentation worker không sửa app source.
+
+Implementation vẫn phải có checks được ánh xạ, freeze source/artifact cuối, independent app QC rồi root verification trước bàn giao. App acceptance hiện **BLOCKED — implementation/checks/QC/root manual chưa hoàn tất tại checkpoint này**. Dừng trước 4.5 để Owner xem và quyết định bước tiếp. Native HALTED và web BLOCKED_NO_UPLOAD_OR_ALIAS vẫn giữ nguyên; GO local không cho phép cloud writes, install hoặc deploy.

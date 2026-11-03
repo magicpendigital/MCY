@@ -1,0 +1,94 @@
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\src\\prototype.css" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014\\src\\prototype.css"
+index 4c40c82..73426cd 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\src\\prototype.css"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014\\src\\prototype.css"
+@@ -1071,3 +1071,15 @@ button { cursor: pointer; }
+ .mcy-journey-status { margin: 16px 0; padding: 16px; border-radius: 16px; background: var(--color-sage-soft, #E8EEE4); color: var(--color-ink, #283D31); font-size: 14px; line-height: 1.5; }
+ .mcy-journey-empty h2 { margin: 0; font-size: 24px; }
+ .mcy-journey-empty p { font-size: 15px; line-height: 1.5; }
++
++/* Step 4.2: neutral choices precede optional body-area editing. */
++.mcy-checkin-quick-choices { display:grid; gap:10px; width:100%; max-width:1000px; margin:16px auto; }
++.mcy-checkin-quick-choices > .mcy-choice { width:100%; min-height:52px; padding:13px 16px; font-size:14px; text-align:left; }
++.mcy-body-disclosure { display:flex; align-items:center; gap:12px; }
++.mcy-body-disclosure > span { flex:1; }
++.mcy-body-disclosure > small { color:var(--mcy-muted); font-size:11px; }
++.mcy-body-disclosure > svg { width:18px; height:18px; flex:none; }
++.mcy-body-disclosure[aria-expanded="true"] > svg { transform:rotate(180deg); }
++.mcy-checkin-quick-choices + .mcy-status-caption { max-width:1000px; margin:8px auto 16px; }
++#checkin-body-areas[hidden] { display:none; }
++@media (min-width:900px) { .mobile-web-stage[data-runtime-mode="web"] .mcy-checkin-quick-choices { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\src\\Prototype.tsx" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014\\src\\Prototype.tsx"
+index 10893c7..2c1a5f7 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\src\\Prototype.tsx"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014\\src\\Prototype.tsx"
+@@ -1365,6 +1365,10 @@ function CheckinScreen() {
+   const flow = useFlow();
+   const { state, update, setState } = useDemo();
+   const locale = state.locale;
++  const [showBodyAreas, setShowBodyAreas] = useState(() => state.preObservations.length > 0);
++  useEffect(() => {
++    if (state.checkinStep === 1 && state.preObservations.length > 0) setShowBodyAreas(true);
++  }, [state.checkinStep, flow.current.key]);
+   const [regionGroup, setRegionGroup] = useState<BodyRegionGroup>("trunk");
+   const [showStepTwoScrollHint, setShowStepTwoScrollHint] = useState(false);
+   useLayoutEffect(() => {
+@@ -1468,8 +1472,20 @@ function CheckinScreen() {
+   return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
+     <div className="mcy-step-count" aria-live="polite">{formatMessage(locale, "checkin.stepCount", { step: state.checkinStep })}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
+     <h1>{msg(locale, state.checkinStep === 1 ? "checkin.step1.title" : "checkin.step2.title")}</h1>
+-    <p className="mcy-lead">{state.checkinStep === 2 && state.aiCapability === "ready" ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
+-    {state.checkinStep === 1 ? <div className="mcy-checkin-content checkin-step-body">
++    <p className="mcy-lead">{state.checkinStep === 1 ? (locale === "en-US" ? "Choose what fits now. You can add a body area if you want." : "Chọn điều phù hợp lúc này. Bạn có thể ghi thêm một vùng nếu muốn.") : state.aiCapability === "ready" ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, "checkin.step2.lead")}</p>
++    {state.checkinStep === 1 ? <>
++      <div className="mcy-checkin-quick-choices" aria-label={locale === "en-US" ? "How your body feels now" : "Cảm nhận cơ thể lúc này"}>
++        <Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice>
++        <button className="mcy-choice mcy-body-disclosure" aria-expanded={showBodyAreas} aria-controls="checkin-body-areas" onClick={() => setShowBodyAreas(open => !open)}>
++          <span>{state.preObservations.length ? (locale === "en-US" ? "Edit body areas" : "Sửa vùng đã ghi") : (locale === "en-US" ? "Add a body area" : "Muốn ghi một vùng")}</span>
++          {state.preObservations.length > 0 && <small>{locale === "en-US" ? state.preObservations.length + " entries retained" : "Giữ " + state.preObservations.length + " ghi nhận"}</small>}
++          <ChevronDownIcon aria-hidden="true" />
++        </button>
++        <Choice selected={state.bodyStatus === "uncertain"} onClick={() => chooseStatus("uncertain")}>{msg(locale, "checkin.unsure")}</Choice>
++      </div>
++      {statusDescription && <p className="mcy-status-caption" role="status">{statusDescription}</p>}
++      <div id="checkin-body-areas" hidden={!showBodyAreas}>
++      {showBodyAreas && <div className="mcy-checkin-content checkin-step-body">
+       <div className="mcy-checkin-illustration">
+         <div className="mcy-scroll-hint"><ChevronDownIcon />{msg(locale, "checkin.scrollHint")}</div>
+         <div className="mcy-body-groups" aria-label={locale === "en-US" ? "Body areas" : "Nhóm vùng cơ thể"}>{(["trunk", "arms", "legs"] as BodyRegionGroup[]).map(group => <button key={group} aria-pressed={regionGroup === group} onClick={() => setRegionGroup(group)}>{msg(locale, `checkin.group.${group}` as "checkin.group.trunk" | "checkin.group.arms" | "checkin.group.legs")}<small>{state.preObservations.filter(item => BODY_REGION_GROUPS[group].includes(item.region)).length}</small></button>)}</div>
+@@ -1479,11 +1495,12 @@ function CheckinScreen() {
+       <div className="mcy-checkin-fields">
+         <h2 className="mcy-inline-section-title">{msg(locale, "checkin.regions")}</h2>
+         <div className="mcy-region-list" aria-label={locale === "en-US" ? "Choose a body area" : "Chọn vùng cơ thể"}>{BODY_REGION_GROUPS[regionGroup].map(region => { const items = state.preObservations.filter(entry => entry.region === region); const detail = items.length ? items.map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(locale, item.side)} · ` : ""}${item.status === "uncertain" ? msg(locale, "checkin.unsure") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(" / ") : msg(locale, "checkin.tapToRecord"); return <button key={region} className={items.length ? "selected" : ""} onClick={() => openRegion(region)}><span>{regionLabel(locale, region)}</span><small>{detail}</small><ArrowRightIcon /></button>; })}</div>
+-        <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one of these:" : "Hoặc chọn một trạng thái:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "uncertain"} onClick={() => chooseStatus("uncertain")}>{msg(locale, "checkin.unsure")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
+-        {statusDescription && <p className="mcy-status-caption">{statusDescription}</p>}
+         <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
+       </div>
+-    </div> : <div className="mcy-checkin-step-two">
++    </div>}
++      </div>
++      {!showBodyAreas && <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>}
++    </> : <div className="mcy-checkin-step-two">
+       {showStepTwoScrollHint && <div className="mcy-scroll-hint mcy-checkin-step-two-scroll-hint"><ChevronDownIcon aria-hidden="true" />{msg(locale, "checkin.step2.scrollHint")}</div>}
+       <section className="mcy-energy-card"><h2>{msg(locale, "checkin.energy")} <small>({msg(locale, "checkin.optional")})</small></h2><div className="mcy-energy-options">{(["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"] as Energy[]).map((value, index) => <button key={value} aria-pressed={state.energy === value} onClick={() => update({ energy: value })}><EnergyFace level={index} /><span>{energyLabel(locale, value)}</span></button>)}</div></section>
+       <section className="mcy-field-section compact"><h2>{msg(locale, "checkin.duration")}</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}>{formatMessage(locale, "checkin.minutes", { minutes: localizedNumber(locale, time) })}</Choice>)}</div></section>
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\learner-ux.spec.ts" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014\\tests\\learner-ux.spec.ts"
+index 8dab9c3..225fcba 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-1-20261014\\tests\\learner-ux.spec.ts"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-2-20261014\\tests\\learner-ux.spec.ts"
+@@ -246,6 +246,7 @@ async function openGuestCheckin(page: Page, touch = false, locale: "vi-VN" | "en
+   await activate(page.locator(".mcy-welcome-bottom .mcy-action"), touch);
+   await expect(page.getByRole("heading", { name: locale === "en-US" ? "How does your body feel today?" : "Hôm nay, cơ thể bạn cảm thấy thế nào?" })).toBeVisible();
+   if (locale === "en-US") await expect(page.locator(".mcy-header-title")).toHaveText("A Little Yoga");
++  await activate(page.locator(".mcy-body-disclosure"), touch);
+ }
+ 
+ for (const device of ["iphone", "pixel-10"] as const) {
+@@ -341,6 +342,7 @@ test("full-body check-in covers office-work areas and preserves distinct sides",
+   await openGuestCheckin(page);
+   await expect(page.locator(".mcy-checkin-illustration .mcy-body-art img")).toHaveAttribute("src", "/assets/body-map-feminine-full-1024.webp");
+   await expect(page.getByTestId("body-orientation")).toContainText("Toàn thân");
++  await page.locator(".mcy-checkin-illustration .mcy-body-art").evaluate(map => { const scroll = map.closest(".mobile-scroll")!; scroll.scrollTop += map.getBoundingClientRect().top - scroll.getBoundingClientRect().top; });
+   const mapAndFooter = await page.evaluate(() => ({
+     mapBottom: document.querySelector(".mcy-checkin-illustration .mcy-body-art")!.getBoundingClientRect().bottom,
+     footerTop: document.querySelector(".flow-fixed-footer")!.getBoundingClientRect().top,

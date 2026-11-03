@@ -1,0 +1,10 @@
+{
+  "status": "FAIL_INTERRUPTED_AFTER_KNOWN_GEOMETRY_FAILURE",
+  "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-visual-2026-10-16/qa.playwright.config.mjs ux-checkin-layout.spec.ts",
+  "exitCode": 1,
+  "observedCompletedCases": {"passed": 10, "failed": 1},
+  "suiteCompleted": false,
+  "reason": "320 assertion: button bottom388.1875 +6pxfocus outline=394.1875 >footer392. Remaining suite interrupted once the spacing failure was established. Partial result is not a full15case report; ui-results.json still held the earlier pre-QC15PASS and is not used as this attempt receipt.",
+  "errorContext": "clearance-first-attempt-error.md",
+  "cause": "The quickchoices top margin4px was capped by adjacent lead paragraph bottom margin10px through margin collapse. Need narrow step1 lead margin4px too."
+}

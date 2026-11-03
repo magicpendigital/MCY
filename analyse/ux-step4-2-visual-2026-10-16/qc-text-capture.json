@@ -1,0 +1,91 @@
+{
+  "status": "CAPTURED",
+  "results": [
+    {
+      "english": false,
+      "bodyWidth": 320,
+      "viewport": 320,
+      "choices": [
+        {
+          "text": "Không thấy khó chịu",
+          "width": 152,
+          "scrollWidth": 152,
+          "height": 136,
+          "overflow": "visible",
+          "font": "28px",
+          "rect": {
+            "x": 17.64332389831543,
+            "y": 592.5,
+            "width": 154.4375,
+            "height": 137.5625,
+            "top": 592.5,
+            "right": 172.08082389831543,
+            "bottom": 730.0625,
+            "left": 17.64332389831543
+          }
+        },
+        {
+          "text": "Chưa xác định",
+          "width": 122,
+          "scrollWidth": 122,
+          "height": 136,
+          "overflow": "visible",
+          "font": "28px",
+          "rect": {
+            "x": 180.08082580566406,
+            "y": 592.5,
+            "width": 123.56248474121094,
+            "height": 137.5625,
+            "top": 592.5,
+            "right": 303.643310546875,
+            "bottom": 730.0625,
+            "left": 180.08082580566406
+          }
+        }
+      ]
+    },
+    {
+      "english": true,
+      "bodyWidth": 320,
+      "viewport": 320,
+      "choices": [
+        {
+          "text": "No discomfort now",
+          "width": 152,
+          "scrollWidth": 163,
+          "height": 136,
+          "overflow": "visible",
+          "font": "28px",
+          "rect": {
+            "x": 17,
+            "y": 242.5,
+            "width": 154.4375,
+            "height": 137.5625,
+            "top": 242.5,
+            "right": 171.4375,
+            "bottom": 380.0625,
+            "left": 17
+          }
+        },
+        {
+          "text": "Not sure",
+          "width": 122,
+          "scrollWidth": 122,
+          "height": 136,
+          "overflow": "visible",
+          "font": "28px",
+          "rect": {
+            "x": 179.4375,
+            "y": 242.5,
+            "width": 123.5625,
+            "height": 137.5625,
+            "top": 242.5,
+            "right": 303,
+            "bottom": 380.0625,
+            "left": 179.4375
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+const root=process.cwd(),dir=path.join(root,'analyse/ux-step4-2-visual-2026-10-16'),archive=path.join(dir,'pre-qc'),candidate=path.join(root,'.vercel/ux-step4-2-visual-20261016'),sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+assert(!fs.existsSync(archive));fs.mkdirSync(archive);const mapping=[];
+const copy=(from,to)=>{fs.mkdirSync(path.dirname(to),{recursive:true});fs.copyFileSync(from,to,fs.constants.COPYFILE_EXCL);assert.equal(sha(from),sha(to));mapping.push({original:path.relative(root,from).replaceAll('\\','/'),archived:path.relative(root,to).replaceAll('\\','/'),sha256:sha(to)});};
+for(const f of fs.readdirSync(dir,{withFileTypes:true})){if(f.isFile()&&!/^qc[.-]/i.test(f.name)&&f.name!=='PRE-QC-ARCHIVE.json')copy(path.join(dir,f.name),path.join(archive,f.name));}
+for(const p of ['src/Prototype.tsx','src/prototype.css','tests/learner-ux.spec.ts','tests/ux-checkin-layout.spec.ts','dist/client/index.html','dist/server/index.js','dist/.openai/hosting.json','.openai/hosting.json'])copy(path.join(candidate,p),path.join(archive,'candidate',p));
+fs.writeFileSync(path.join(dir,'PRE-QC-ARCHIVE.json'),JSON.stringify({createdAt:new Date().toISOString(),reason:'Preserve pre-QC source/evidence/report/screenshot pins before narrow clearance refinement; QC-owned files excluded',mapping},null,2)+'\n');console.log({archived:mapping.length,archive});

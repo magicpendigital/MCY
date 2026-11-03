@@ -1,0 +1,6 @@
+{
+  "status": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(c.box.b<=initial.footer.y)\n",
+  "results": [],
+  "external": []
+}

@@ -1,0 +1,997 @@
+diff --git a/brand/BRAND_GUIDELINES.md b/brand/BRAND_GUIDELINES.md
+index a3007b8..ff41a73 100644
+--- a/brand/BRAND_GUIDELINES.md
++++ b/brand/BRAND_GUIDELINES.md
+@@ -81,7 +81,7 @@ Default to forest ink on warm ivory or white. Use the ivory artwork on solid dee
+ 
+ ## Typography
+ 
+-- **Editorial headings and the wordmark treatment:** Georgia, then Times New Roman, then serif fallback. Use regular weight and compact line height. Keep Vietnamese marks unobstructed.
++- **Editorial headings and the wordmark treatment — UX candidate 14 October 2026:** Times New Roman where installed, then the already bundled Vietnamese Roboto, then serif fallback. The Windows audit found missing Vietnamese glyphs in Georgia and separated accents in headings. This candidate removes Georgia from the app token without downloading a font at runtime. On devices without Times New Roman, headings intentionally use Roboto until a licensed bundled serif is selected and verified. Keep regular weight, comfortable line height and unobstructed Vietnamese marks. This is a candidate change, not native-device acceptance or a change to exported logo artwork.
+ - **Interface text:** Roboto on Android, native system sans on iOS, with a sans-serif fallback. Use 400–700 weights; reserve heavier weights for labels and active states.
+ - **Number / practice timing:** interface sans by default; editorial serif can distinguish a single, prominent duration.
+ - Do not set long copy in all caps. Eyebrow labels may use uppercase with generous tracking.
+diff --git a/design-system/tokens.css b/design-system/tokens.css
+index fe195e0..b5a9c36 100644
+--- a/design-system/tokens.css
++++ b/design-system/tokens.css
+@@ -25,7 +25,7 @@
+ 
+   /* Typography */
+   --font-sans: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+-  --font-editorial: Georgia, "Times New Roman", serif;
++  --font-editorial: "Times New Roman", "Roboto", serif;
+   --text-caption: 0.6875rem;
+   --text-small: 0.75rem;
+   --text-body: 0.875rem;
+diff --git a/design-system/tokens.json b/design-system/tokens.json
+index f15fa6d..3ca878f 100644
+--- a/design-system/tokens.json
++++ b/design-system/tokens.json
+@@ -27,7 +27,7 @@
+   },
+   "fontFamily": {
+     "sans": { "$value": "Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif", "$type": "fontFamily" },
+-    "editorial": { "$value": "Georgia, Times New Roman, serif", "$type": "fontFamily" }
++    "editorial": { "$value": "Times New Roman, Roboto, serif", "$type": "fontFamily" }
+   },
+   "fontSize": {
+     "caption": { "$value": "11px", "$type": "dimension" },
+diff --git a/src/JourneyScreen.tsx b/src/JourneyScreen.tsx
+index 156c059..9c65b35 100644
+--- a/src/JourneyScreen.tsx
++++ b/src/JourneyScreen.tsx
+@@ -63,7 +63,7 @@ function journeyBodyStatus(locale: AppLocale, status: Snapshot["status"]) {
+   return msg(locale, status === "none_now" ? "journey.noneNow" : status === "uncertain" ? "journey.unsure" : status === "skipped" ? "journey.skipped" : "journey.noLevel");
+ }
+ 
+-export default function JourneyScreen({
++function JourneyContent({
+   state,
+   setState,
+   update,
+@@ -75,8 +75,8 @@ export default function JourneyScreen({
+   DemoNoteComponent,
+ }: JourneyScreenProps) {
+   const [range, setRange] = useState<7 | 30>(7);
+-  const [selectedDay, setSelectedDay] = useState(localDateOrdinal(todayLocalDate()));
+-  const [selectedId, setSelectedId] = useState<string | null>(null);
++  // null follows arrivals. A date choice follows that date; an id pins a user's record choice.
++  const [selection, setSelection] = useState<{ day: number; id?: string | null } | null>(null);
+   const [detailRegion, setDetailRegion] = useState<BodyRegion | null>(null);
+   const [detailSide, setDetailSide] = useState<BodySide | undefined>();
+   const [editingRegion, setEditingRegion] = useState<BodyRegion | null>(null);
+@@ -95,15 +95,17 @@ export default function JourneyScreen({
+     .sort((left, right) => left.date.localeCompare(right.date) || left.time.localeCompare(right.time));
+   const maxDay = Math.max(localDateOrdinal(todayLocalDate()), ...snapshots.map(item => item.day));
+   const days = Array.from({ length: range }, (_, index) => maxDay - (range - 1 - index));
+-  const selected = snapshots.find(item => item.id === selectedId && item.day === selectedDay);
++  const selectedDay = selection?.day ?? snapshots.at(-1)?.day ?? maxDay;
+   const daySnapshots = snapshots.filter(item => item.day === selectedDay);
++  const selectedId = selection ? selection.id === undefined ? daySnapshots.at(-1)?.id ?? null : selection.id : snapshots.at(-1)?.id ?? null;
++  const selected = daySnapshots.find(item => item.id === selectedId);
+   const detail = selected?.observations.find(item => item.region === detailRegion && item.side === detailSide) ?? selected?.observations.find(item => item.region === detailRegion);
+   const editCurrent = selected?.observations.find(item => item.region === editingRegion && item.side === editingStoredSide) ?? selected?.observations.find(item => item.region === editingRegion);
+   const a = snapshots.find(item => item.id === compareA);
+   const b = snapshots.find(item => item.id === compareB);
+   const compatible = Boolean(a && b && (a.kind === b.kind || (a.kind !== "Sau tập" && b.kind !== "Sau tập") || (a.date === b.date && [a.kind, b.kind].includes("Trước tập") && [a.kind, b.kind].includes("Sau tập"))));
+   const trend = snapshots.filter(item => item.kind !== "Sau tập" && item.observations.some(observation => observation.region === trendRegion));
+-  const chooseDay = (day: number) => { setSelectedDay(day); setSelectedId(snapshots.filter(item => item.day === day).at(-1)?.id ?? null); setDetailRegion(null); setDetailSide(undefined); };
++  const chooseDay = (day: number) => { const latestForDay = snapshots.filter(item => item.day === day).at(-1); setSelection({ day, ...(latestForDay ? { id: latestForDay.id } : {}) }); setDetailRegion(null); setDetailSide(undefined); };
+   const saveEdited = (value: Observation) => { if (!selected || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => item.id === selected.id ? { ...item, status: "reported", observations: replaceBodyObservation(item.observations, value, editingStoredSide ?? value.side) } : item) })); };
+   const deleteEdited = () => { if (!selected || !editingRegion || !editingStoredSide || selected.remoteId) return; setState(previous => ({ ...previous, history: previous.history.map(item => { if (item.id !== selected.id) return item; const observations = removeBodyObservation(item.observations, editingRegion, editingStoredSide); return { ...item, observations, status: observations.length ? "reported" : null }; }) })); };
+   const deleteSelected = async () => {
+@@ -120,7 +122,7 @@ export default function JourneyScreen({
+       } else {
+         setState(previous => ({ ...previous, history: previous.history.filter(item => item.id !== selected.id) }));
+       }
+-      setSelectedId(null);
++      setSelection({ day: selectedDay, id: null });
+       setDeletePending(false);
+     } catch (cause) {
+       setDeleteError(cause instanceof Error ? cause.message : "Chưa xóa được bản ghi.");
+@@ -128,14 +130,33 @@ export default function JourneyScreen({
+       setDeleting(false);
+     }
+   };
++  const loading = state.checkinReadStatus === "loading";
++  const loadError = state.checkinReadStatus === "error";
++  const pendingSave = Boolean(state.pendingCheckinPayload);
++  const pendingMessage = state.locale === "en-US" ? "A previous check-in save is still unconfirmed. Your draft is kept; review that save before starting a new record." : "Một lần lưu check-in chưa được xác nhận. Nháp vẫn được giữ; hãy xem lại lần lưu đó trước khi tạo bản ghi mới.";
++  const nextLabel = pendingSave ? (state.locale === "en-US" ? "Review the unconfirmed save" : "Xem lại lần lưu chưa xác nhận") : msg(state.locale, "journey.nextCheckin");
++  const loadMessage = state.locale === "en-US" ? "Loading your saved records…" : "Đang tải bản ghi của bạn…";
++  const errorMessage = state.locale === "en-US" ? "Saved records could not be loaded. Check your connection and reload the app to try again." : "Chưa tải được bản ghi. Hãy kiểm tra kết nối và tải lại ứng dụng để thử lại.";
++  if (!snapshots.length) return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-journey-page">
++    <h1>{msg(state.locale, "journey.title")}</h1>
++    {loading ? <div className="mcy-journey-status" role="status">{loadMessage}</div>
++      : loadError ? <div className="mcy-journey-status" role="alert">{errorMessage}</div>
++      : !pendingSave && <div className="mcy-empty large mcy-journey-empty"><ReaderIcon /><h2>{msg(state.locale, "journey.emptyTitle")}</h2><p>{msg(state.locale, "journey.emptyLead")}</p></div>}
++    {pendingSave && <p className="mcy-journey-status" role="status">{pendingMessage}</p>}
++    {(!loading && !loadError || pendingSave) && <ActionComponent onClick={onStartNext}>{nextLabel}</ActionComponent>}
++    <DemoNoteComponent>{msg(state.locale, "journey.note")}</DemoNoteComponent>
++  </main></MobileScroll>;
+   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-journey-page">
+     <h1>{msg(state.locale, "journey.title")}</h1><p className="mcy-lead">{msg(state.locale, "journey.lead")}</p>
++    {loading && <div className="mcy-journey-status" role="status">{loadMessage}</div>}
++    {loadError && <div className="mcy-journey-status" role="alert">{errorMessage}</div>}
++    {pendingSave && <p className="mcy-journey-status" role="status">{pendingMessage}</p>}
+     <div className="mcy-journey-toolbar"><div className="mcy-view-tabs"><button aria-pressed={range === 7} onClick={() => setRange(7)}>{msg(state.locale, "journey.days7")}</button><button aria-pressed={range === 30} onClick={() => setRange(30)}>{msg(state.locale, "journey.days30")}</button></div></div>
+     <div className="mcy-timeline-head"><strong>{msg(state.locale, range === 30 ? "journey.timelineRecent" : "journey.timelineChoose")}</strong><button onClick={() => chooseDay(snapshots.at(-1)?.day ?? maxDay)}>{msg(state.locale, "journey.latest")}</button></div>
+     <Carousel ariaLabel={msg(state.locale, "journey.title")} className="mcy-timeline-carousel" contentClassName="mcy-timeline-track">{days.map(day => { const count = snapshots.filter(item => item.day === day).length; const date = dateFromOrdinal(day); return <button key={day} className={selectedDay === day ? "selected" : ""} aria-pressed={selectedDay === day} onClick={() => chooseDay(day)}><small>{formatMessage(state.locale, "journey.month", { month: date.slice(5, 7) })}</small><strong>{date.slice(8, 10)}</strong><span>{count ? formatMessage(state.locale, "journey.recordCount", { count: localizedNumber(state.locale, count) }) : msg(state.locale, "journey.noRecord")}</span></button>; })}</Carousel>
+     <section className="mcy-snapshot-card" aria-label={msg(state.locale, "journey.currentRecord")}>
+       <div className="mcy-snapshot-heading"><span>{msg(state.locale, selected?.remoteId ? "journey.accountRecord" : "journey.sessionRecord")}</span><h2>{selected ? snapshotLabel(selected, state.locale) : `${prettyDate(dateFromOrdinal(selectedDay), state.locale)} · ${msg(state.locale, "journey.noRecordForDay")}`}</h2>{selected?.lessonTitle && <small>{msg(state.locale, "course.reflectionLesson")} {selected.lessonTitle}</small>}</div>
+-      {daySnapshots.length > 1 && <Carousel ariaLabel={msg(state.locale, "journey.sameDayEntries")} className="mcy-record-carousel" contentClassName="mcy-record-track">{daySnapshots.map(item => <button key={item.id} aria-pressed={selectedId === item.id} onClick={() => setSelectedId(item.id)}>{snapshotLabel(item, state.locale)}</button>)}</Carousel>}
++      {daySnapshots.length > 1 && <Carousel ariaLabel={msg(state.locale, "journey.sameDayEntries")} className="mcy-record-carousel" contentClassName="mcy-record-track">{daySnapshots.map(item => <button key={item.id} aria-pressed={selectedId === item.id} onClick={() => { setSelection({ day: item.day, id: item.id }); setDetailRegion(null); setDetailSide(undefined); }}>{snapshotLabel(item, state.locale)}</button>)}</Carousel>}
+       {selected ? <div className="mcy-snapshot-body">
+         <div className="mcy-snapshot-map"><BodyMapComponent observations={selected.observations} bodyStyle={state.bodyStyle} locale={state.locale} onSelect={(region, side) => { setDetailRegion(region); setDetailSide(side); }} showAll={false} /><BodyStylePickerComponent value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>
+         <div className="mcy-snapshot-details">
+@@ -149,9 +170,8 @@ export default function JourneyScreen({
+     </section>
+     <button className="mcy-compare-toggle" onClick={() => { setCompare(!compare); setCompareA(snapshots.find(item => item.kind !== "Sau tập")?.id ?? null); setCompareB(selected?.id ?? snapshots.at(-1)?.id ?? null); }}>{msg(state.locale, compare ? "journey.compareClose" : "journey.compareOpen")}<ArrowRightIcon /></button>
+     {compare && <section className="mcy-compare-card"><h2>{msg(state.locale, "journey.compareTitle")}</h2><p>{msg(state.locale, "journey.compareLead")}</p><div className="mcy-compare-pickers"><button onClick={() => setComparePicker("A")}><small>{msg(state.locale, "journey.markerA")}</small><strong>{a ? snapshotLabel(a, state.locale) : msg(state.locale, "journey.chooseMarker")}</strong></button><button onClick={() => setComparePicker("B")}><small>{msg(state.locale, "journey.markerB")}</small><strong>{b ? snapshotLabel(b, state.locale) : msg(state.locale, "journey.chooseMarker")}</strong></button></div>{!compatible ? <p className="mcy-compare-warning">{msg(state.locale, "journey.compareHelp")}</p> : <div className="mcy-compare-rows">{BODY_REGIONS.map(region => { const describe = (snapshot?: Snapshot) => snapshot?.observations.filter(item => item.region === region).map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(state.locale, item.side)}: ` : ""}${item.status === "uncertain" ? msg(state.locale, "journey.unsure") : bodyLevelLabel(state.locale, item.level ?? msg(state.locale, "checkin.notRecorded"))}`).join(" · ") || msg(state.locale, "journey.noRecord"); const sidesA = (a?.observations.filter(item => item.region === region) ?? []).map(item => item.side).sort().join(","); const sidesB = (b?.observations.filter(item => item.region === region) ?? []).map(item => item.side).sort().join(","); return <div key={region}><strong>{regionLabel(state.locale, region)}</strong><span>{describe(a)} <ArrowRightIcon /> {describe(b)}{sidesA !== sidesB && sidesA && sidesB && <small>{msg(state.locale, "journey.otherSide")}</small>}</span></div>; })}</div>}</section>}
+-    <section className="mcy-region-trend"><h2>{msg(state.locale, "journey.trendTitle")}</h2><p>{msg(state.locale, "journey.trendLead")}</p><Carousel ariaLabel={msg(state.locale, "journey.chooseRegionTrend")} className="mcy-trend-carousel" contentClassName="mcy-trend-track">{BODY_REGIONS.map(region => <button key={region} aria-pressed={trendRegion === region} onClick={() => setTrendRegion(region)}>{regionLabel(state.locale, region)}</button>)}</Carousel><div className="mcy-trend-observations">{trend.length ? trend.map(item => { const observations = item.observations.filter(entry => entry.region === trendRegion); const summary = observations.map(observation => `${isPairedBodyRegion(trendRegion) && observation.side !== "unspecified" ? `${sideLabel(state.locale, observation.side)}: ` : ""}${observation.status === "uncertain" ? msg(state.locale, "journey.unsure") : bodyLevelLabel(state.locale, observation.level ?? msg(state.locale, "checkin.notRecorded"))}`).join(" · "); return <button key={item.id} onClick={() => { setSelectedDay(item.day); setSelectedId(item.id); }}><span>{prettyDate(item.date, state.locale)}</span><strong>{summary}</strong><ArrowRightIcon /></button>; }) : <p>{msg(state.locale, "journey.noRegionLevels")}</p>}</div><small>{msg(state.locale, trend.length <= 1 ? "journey.trendNotEnough" : "journey.trendGaps")}</small></section>
+-    {snapshots.length === 0 && <div className="mcy-empty large"><ReaderIcon /><strong>{msg(state.locale, "journey.emptyTitle")}</strong><p>{msg(state.locale, "journey.emptyLead")}</p></div>}
+-    <ActionComponent onClick={onStartNext}>{msg(state.locale, "journey.nextCheckin")}</ActionComponent>
++    <section className="mcy-region-trend"><h2>{msg(state.locale, "journey.trendTitle")}</h2><p>{msg(state.locale, "journey.trendLead")}</p><Carousel ariaLabel={msg(state.locale, "journey.chooseRegionTrend")} className="mcy-trend-carousel" contentClassName="mcy-trend-track">{BODY_REGIONS.map(region => <button key={region} aria-pressed={trendRegion === region} onClick={() => setTrendRegion(region)}>{regionLabel(state.locale, region)}</button>)}</Carousel><div className="mcy-trend-observations">{trend.length ? trend.map(item => { const observations = item.observations.filter(entry => entry.region === trendRegion); const summary = observations.map(observation => `${isPairedBodyRegion(trendRegion) && observation.side !== "unspecified" ? `${sideLabel(state.locale, observation.side)}: ` : ""}${observation.status === "uncertain" ? msg(state.locale, "journey.unsure") : bodyLevelLabel(state.locale, observation.level ?? msg(state.locale, "checkin.notRecorded"))}`).join(" · "); return <button key={item.id} onClick={() => { setSelection({ day: item.day, id: item.id }); setDetailRegion(null); setDetailSide(undefined); }}><span>{prettyDate(item.date, state.locale)}</span><strong>{summary}</strong><ArrowRightIcon /></button>; }) : <p>{msg(state.locale, "journey.noRegionLevels")}</p>}</div><small>{msg(state.locale, trend.length <= 1 ? "journey.trendNotEnough" : "journey.trendGaps")}</small></section>
++    <ActionComponent onClick={onStartNext}>{nextLabel}</ActionComponent>
+     <DemoNoteComponent>{msg(state.locale, "journey.note")}</DemoNoteComponent>
+     <BottomSheet open={Boolean(detailRegion)} onOpenChange={open => { if (!open) { setDetailRegion(null); setDetailSide(undefined); } }} title={detailRegion ? `${regionLabel(state.locale, detailRegion)}${isPairedBodyRegion(detailRegion) && detailSide && detailSide !== "unspecified" ? ` · ${sideLabel(state.locale, detailSide)}` : ""}` : msg(state.locale, "journey.detail")} description={selected ? snapshotLabel(selected, state.locale) : msg(state.locale, "journey.currentRecord")} snap={0.49}><div className="mcy-detail-sheet">{detail ? <><strong>{observationLabel(detail, state.locale)}</strong><p>{detail.note || msg(state.locale, "journey.noNote")}</p>{!selected?.remoteId && <button className="mcy-quiet-link" onClick={() => { setEditingRegion(detail.region); setEditingStoredSide(detail.side); setEditingSuggestedSide(detail.side); setDetailRegion(null); setDetailSide(undefined); }}>{msg(state.locale, "journey.editObservation")}</button>}</> : <p>{msg(state.locale, "journey.regionNotRecorded")}</p>}</div></BottomSheet>
+     <RegionEditorComponent region={editingRegion} current={editCurrent} suggestedSide={editingSuggestedSide} onSave={saveEdited} onDelete={deleteEdited} onClose={() => { setEditingRegion(null); setEditingStoredSide(undefined); setEditingSuggestedSide(undefined); }} />
+@@ -159,3 +179,8 @@ export default function JourneyScreen({
+     <BottomSheet open={deletePending} onOpenChange={setDeletePending} title={msg(state.locale, "journey.deleteTitle")} description={msg(state.locale, selected?.remoteId ? "journey.deleteRemote" : "journey.deleteLocal")} snap={0.36}><div className="mcy-sheet-actions">{deleteError && <div className="mcy-form-error" role="alert">{deleteError}</div>}<button className="mcy-action danger-action" disabled={deleting} onClick={() => { void deleteSelected(); }}>{msg(state.locale, deleting ? "journey.deleting" : "journey.deleteAction")} <ArrowRightIcon /></button><button className="mcy-quiet-link" disabled={deleting} onClick={() => setDeletePending(false)}>{msg(state.locale, "journey.keepEntry")}</button></div></BottomSheet>
+   </main></MobileScroll>;
+ }
++
++// Remount transient selectors and sheets at the account boundary, including sign-out.
++export default function JourneyScreen(props: JourneyScreenProps) {
++  return <JourneyContent key={`${props.state.signedIn}:${props.state.userId ?? "guest"}`} {...props} />;
++}
+diff --git a/src/prototype.css b/src/prototype.css
+index 6b60293..5288bea 100644
+--- a/src/prototype.css
++++ b/src/prototype.css
+@@ -698,9 +698,9 @@ button { cursor: pointer; }
+ .mcy-state-link { display:block; min-height:39px; width:100%; margin:8px auto; color:#778475; font-size:10px; text-align:center; }
+ .mcy-consent-card { margin:11px 0; padding:14px; border:1px solid #e3e7de; border-radius:13px; background:#fffdf8; }
+ .mcy-consent-card.required { border-color:#dfc9b6; background:#fbf4e9; }
+-.mcy-consent-card > strong { display:block; margin:4px 0 5px; color:#314c38; font-size:12px; line-height:1.4; }
+-.mcy-consent-card p { margin:4px 0 10px; color:#56665a; font-size:12px; line-height:1.55; }
+-.mcy-consent-card > button { display:flex; min-height:36px; align-items:center; gap:8px; padding:6px 0; border:0; background:transparent; color:#536b55; font-size:10px; font-weight:800; text-align:left; }
++.mcy-consent-card > strong { display:block; margin:4px 0 5px; color:#314c38; font-size:16px; line-height:1.4; }
++.mcy-consent-card p { margin:4px 0 10px; color:#56665a; font-size:14px; line-height:1.55; }
++.mcy-consent-card > button { display:flex; min-height:48px; align-items:center; gap:8px; padding:8px 0; border:0; background:transparent; color:#425d48; font-size:14px; font-weight:700; text-align:left; }
+ .mcy-consent-card > button i { display:grid; width:18px; height:18px; place-items:center; border:1px solid #8da08b; border-radius:5px; background:#e9efe5; color:#476647; font-size:12px; font-style:normal; }
+ .mcy-account-group { margin-top:18px; }
+ .mcy-account-group > .mcy-section-label { display:block; margin:20px 0 7px; }
+@@ -726,11 +726,11 @@ button { cursor: pointer; }
+ .mcy-toggle-row { display:flex; align-items:center; justify-content:space-between; gap:13px; }
+ .mcy-toggle-row > span { display:flex; min-width:0; flex-direction:column; gap:5px; }
+ .mcy-toggle-row > span strong { margin:0; }
+-.mcy-toggle-row > span small { color:var(--mcy-muted); font-size:12px; line-height:1.5; }
+-.mcy-toggle-row > button { display:flex; min-width:56px; min-height:30px; flex:none; align-items:center; justify-content:center; gap:4px; padding:4px 8px; border:1px solid #e1e4dc; border-radius:20px; background:#fffdf8; color:#8b9388; font-size:9px; font-weight:800; }
++.mcy-toggle-row > span small { color:var(--mcy-muted); font-size:14px; line-height:1.5; }
++.mcy-toggle-row > button { display:flex; min-width:64px; min-height:48px; flex:none; align-items:center; justify-content:center; gap:4px; padding:8px 10px; border:1px solid #bdc8bb; border-radius:24px; background:#fffdf8; color:#425d48; font-size:14px; font-weight:700; }
+ .mcy-toggle-row > button.on { border-color:#cad9c9; background:#e7eee4; color:#4d6a50; }
+ .mcy-toggle-row > button i { font-style:normal; }
+-.mcy-toggle { min-height:35px; margin-top:7px; padding:7px 10px; border:1px solid #dfe6dc; border-radius:8px; background:#fffdf8; color:#536f55; font-size:10px; font-weight:800; }
++.mcy-toggle { min-height:48px; margin-top:7px; padding:10px 12px; border:1px solid #dfe6dc; border-radius:8px; background:#fffdf8; color:#425d48; font-size:14px; font-weight:700; }
+ .mcy-policy-meta { display:grid; gap:6px; margin:14px 0; padding:11px 12px; border-radius:9px; background:#f3f2ea; color:#798477; font-size:9px; }
+ .mcy-reauth { display:flex; align-items:flex-start; gap:9px; margin:18px 0; color:#596d5d; font-size:10px; line-height:1.5; }
+ .mcy-reauth input { width:17px; height:17px; flex:none; margin:0; accent-color:#5d795e; }
+@@ -1059,3 +1059,8 @@ button { cursor: pointer; }
+   .mcy-course-featured-copy p { margin:6px 0; font-size:14px; line-height:1.45; }
+   .mcy-course-featured-copy small { margin-top:7px; font-size:14px; }
+ }
++
++/* Journey pending reads and the first useful next action. */
++.mcy-journey-status { margin: 16px 0; padding: 16px; border-radius: 16px; background: var(--color-sage-soft, #E8EEE4); color: var(--color-ink, #283D31); font-size: 14px; line-height: 1.5; }
++.mcy-journey-empty h2 { margin: 0; font-size: 24px; }
++.mcy-journey-empty p { font-size: 15px; line-height: 1.5; }
+diff --git a/src/Prototype.tsx b/src/Prototype.tsx
+index 64849a5..3b5976a 100644
+--- a/src/Prototype.tsx
++++ b/src/Prototype.tsx
+@@ -99,6 +99,7 @@ export type DemoState = {
+   signedIn: boolean;
+   userId: string | null;
+   backendStatus: "loading" | "ready" | "error";
++  checkinReadStatus: "loading" | "ready" | "error";
+   backendError: string;
+   remoteCheckins: Snapshot[];
+   currentRemoteCheckinId: string | null;
+@@ -138,7 +139,7 @@ const initialState: DemoState = {
+   reflectionBeforeObservations: [],
+   reflectionLessonTitle: "",
+   endedEarly: false, rememberPace: true, usePreviousFeedback: false, history: [],
+-  signedIn: false, userId: null, backendStatus: backendConfigured ? "loading" : "ready", backendError: "", remoteCheckins: [], currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null,
++  signedIn: false, userId: null, backendStatus: backendConfigured ? "loading" : "ready", checkinReadStatus: "ready", backendError: "", remoteCheckins: [], currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null,
+   accountEmail: "", authReturnTo: "home", authMode: "create", authCode: "", displayName: "",
+   onboardingComplete: false, termsAccepted: false, privacyAccepted: false, consentBaseline: emptyConsentState, consentPolicyVersions: {}, aiConsent: false, saveFeedbackConsent: false, teacherShareConsent: false,
+   marketingConsent: false, shareActive: false, notificationEnabled: false, emailUpdates: false, lastReflection: null,
+@@ -226,6 +227,7 @@ function clearAccountScopedState(previous: DemoState): DemoState {
+     notificationEnabled: false,
+     emailUpdates: false,
+     remoteCheckins: [],
++    checkinReadStatus: "ready",
+     currentRemoteCheckinId: null,
+     pendingCheckinIdempotencyKey: null,
+     pendingCheckinPayload: null,
+@@ -241,6 +243,9 @@ function hasCurrentAiConsent(state: DemoState) {
+ function isCheckinAuthReturn(destination: string) {
+   return destination === "discover" || destination === "dialogue";
+ }
++function hasCheckinTransferDraft(state: Pick<DemoState, "authReturnTo" | "bodyStatus" | "preObservations" | "energy" | "pendingCheckinPayload">) {
++  return isCheckinAuthReturn(state.authReturnTo) && Boolean(state.bodyStatus || state.preObservations.length || state.energy || state.pendingCheckinPayload);
++}
+ function normalizeAuthDestination(destination: string) {
+   return destination === "dialogue" ? "discover" : destination;
+ }
+@@ -396,17 +401,27 @@ function toLearnerCheckinPayload(state: DemoState, captureType: CheckinPayload["
+     idempotencyKey,
+   };
+ }
++type CheckinSaveResult =
++  | { status: "saved_account"; snapshot: Snapshot }
++  | { status: "saved_session" }
++  | { status: "not_saved_permission" }
++  | { status: "cancelled" };
++
+ async function persistCurrentCheckin(
+   state: DemoState,
+   setState: Dispatch<SetStateAction<DemoState>>,
+   captureType: CheckinPayload["captureType"],
+   canDispatch: () => boolean,
+-) {
+-  if (!canDispatch() || !state.signedIn || !state.userId || !state.saveFeedbackConsent) return null;
++): Promise<CheckinSaveResult> {
++  if (!canDispatch()) return { status: "cancelled" };
++  if (!state.saveFeedbackConsent) return { status: "not_saved_permission" };
++  // Only the existing opted-in guest standalone path records local history.
++  if (!state.signedIn) return { status: captureType === "standalone" ? "saved_session" : "not_saved_permission" };
++  if (!state.userId) return { status: "not_saved_permission" };
+   const expectedUserId = state.userId;
+   const generation = learnerSessionGeneration();
+   const client = await getAccountBoundSupabaseClient(expectedUserId);
+-  if (generation !== learnerSessionGeneration() || !canDispatch()) return null;
++  if (generation !== learnerSessionGeneration() || !canDispatch()) return { status: "cancelled" };
+   const payload = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, captureType, state.pendingCheckinIdempotencyKey ?? crypto.randomUUID());
+   const idempotencyKey = payload.idempotencyKey;
+   const current = (previous: DemoState) => generation === learnerSessionGeneration() && isCurrentLearnerSession(previous.signedIn, previous.userId, expectedUserId);
+@@ -414,7 +429,7 @@ async function persistCurrentCheckin(
+     ? { ...previous, pendingCheckinIdempotencyKey: idempotencyKey, pendingCheckinPayload: payload, backendStatus: "loading", backendError: "" }
+     : previous);
+   const saved = await saveLearnerCheckin(client, payload, expectedUserId);
+-  if (generation !== learnerSessionGeneration()) return null;
++  if (generation !== learnerSessionGeneration()) return { status: "cancelled" };
+   const row: LearnerCheckin = {
+     id: saved.checkin_id,
+     user_id: state.userId,
+@@ -449,7 +464,7 @@ async function persistCurrentCheckin(
+         backendError: "",
+       }
+     : previous);
+-  return snapshot;
++  return { status: "saved_account", snapshot };
+ }
+ async function handleNativeAuthUrl(url: string) {
+   const client = await getSupabaseClient();
+@@ -686,7 +701,7 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
+   memory: { id: "memory", header: () => <Header title="AI và điều được nhớ" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="memory" /> },
+   sharing: { id: "sharing", header: () => <Header title="Chia sẻ với giáo viên" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="sharing" /> },
+   security: { id: "security", header: () => <Header title="Bảo mật tài khoản" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="security" /> },
+-  notifications: { id: "notifications", header: () => <Header title="Nhắc tập" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="notifications" /> },
++  notifications: { id: "notifications", header: () => <Header title="Tùy chọn thông báo" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="notifications" /> },
+   access: { id: "access", header: () => <Header title="Nội dung và quyền" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="access" /> },
+   help: { id: "help", header: () => <Header title="Hướng dẫn và hỗ trợ" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="help" /> },
+   sync: { id: "sync", header: () => <Header title="Phản hồi sau tập" back />, headerHeight: 55, render: () => <SyncScreen /> },
+@@ -784,6 +799,11 @@ function JourneyRoute() {
+       ActionComponent={Action}
+       DemoNoteComponent={DemoNote}
+       onStartNext={() => {
++        if (state.pendingCheckinPayload) {
++          update({ checkinStep: 2 });
++          flow.push(ROUTES.checkin);
++          return;
++        }
+         update({ dialogueChoice: null, dialogueText: "", aiConversation: [], aiPending: false, aiError: "", minutes: 10, energy: null, regions: [], preObservations: [], postObservations: [], bodyStatus: null, postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly: false, usePreviousFeedback: false, lastReflection: null, checkinBaselineReady: false, reflectionHasCheckinBaseline: false, reflectionBeforeStatus: null, reflectionBeforeObservations: [], reflectionLessonTitle: "", currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null, pendingCheckinPayload: null });
+         flow.push(ROUTES.checkin);
+       }}
+@@ -902,7 +922,7 @@ function LearnerPrototype() {
+       }
+       const switchedAccount = lastHydratedUserId !== null && lastHydratedUserId !== session.user.id;
+       lastHydratedUserId = session.user.id;
+-      setState(previous => ({ ...(switchedAccount ? clearAccountScopedState(previous) : previous), backendStatus: "loading", backendError: "" }));
++      setState(previous => ({ ...(switchedAccount ? clearAccountScopedState(previous) : previous), backendStatus: "loading", checkinReadStatus: "loading", backendError: "" }));
+       try {
+         if (!client) throw new Error("Chưa tải được kết nối tài khoản. Hãy thử tải lại.");
+         const data = await loadLearnerSnapshot(client);
+@@ -930,6 +950,7 @@ function LearnerPrototype() {
+           remoteCheckins,
+           currentRemoteCheckinId: previous.currentRemoteCheckinId ?? remoteCheckins.at(-1)?.remoteId ?? null,
+           backendStatus: "ready",
++          checkinReadStatus: "ready",
+           backendError: "",
+         }));
+       } catch (error) {
+@@ -940,6 +961,7 @@ function LearnerPrototype() {
+           userId: session.user.id,
+           accountEmail: session.user.email ?? previous.accountEmail,
+           backendStatus: "error",
++          checkinReadStatus: "error",
+           backendError: error instanceof Error ? error.message : "Chưa đọc được dữ liệu tài khoản.",
+         }));
+       }
+@@ -960,7 +982,7 @@ function LearnerPrototype() {
+         subscription = authSubscription.data.subscription;
+         const { data, error } = await authClient.auth.getSession();
+         if (!active) return;
+-        if (error) setState(previous => ({ ...previous, backendStatus: "error", backendError: error.message }));
++        if (error) setState(previous => ({ ...previous, backendStatus: "error", checkinReadStatus: "error", backendError: error.message }));
+         else { observeLearnerSession(data.session?.user.id ?? null); void hydrate(data.session); }
+         if (Capacitor.isNativePlatform()) {
+           void CapacitorApp.addListener("appUrlOpen", ({ url }) => { void receiveNativeAuthUrl(url); }).then(listener => {
+@@ -977,6 +999,7 @@ function LearnerPrototype() {
+         if (active) setState(previous => ({
+           ...previous,
+           backendStatus: "error",
++          checkinReadStatus: "error",
+           backendError: error instanceof Error ? error.message : "Chưa tải được kết nối tài khoản. Hãy thử lại.",
+         }));
+       }
+@@ -1171,7 +1194,7 @@ function ConsentScreen() {
+       ["marketingConsent", "Nhận tin về nội dung mới", "Tùy chọn; tách khỏi thông báo dịch vụ và nhắc tập.", state.marketingConsent],
+     ] as const).map(([key, title, description, value]) => <section className="mcy-consent-card" key={key}><strong>{title}</strong><p>{description}</p><button disabled={key === "teacherShareConsent" && !value} aria-pressed={value} onClick={() => togglePurpose(key)}><i>{value ? "✓" : ""}</i>{key === "teacherShareConsent" && !value ? "Chưa có lớp được kết nối" : value && key === "teacherShareConsent" ? "Rút đồng ý" : value ? "Cho phép" : "Không cho phép"}</button></section>)}
+     <div className="mcy-form-error subtle">Từ chối AI, bạn vẫn có thể tự chọn video miễn phí. Từ chối lưu thì check-in chỉ còn trong phiên và không được ghi vào tài khoản.</div>
+-    {state.onboardingComplete && isCheckinAuthReturn(state.authReturnTo) && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.saveFeedbackConsent ? "Xác nhận tiếp tục sẽ gắn nháp với tài khoản của bạn." : "Bạn chưa cho phép lưu check-in; nháp chỉ dùng trong phiên này."} Nếu không muốn dùng nháp nữa, chọn Bỏ nháp.</p></div>}
++    {state.onboardingComplete && hasCheckinTransferDraft(state) && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.saveFeedbackConsent ? "Xác nhận tiếp tục sẽ gắn nháp với tài khoản của bạn." : "Bạn chưa cho phép lưu check-in; nháp chỉ dùng trong phiên này."} Nếu không muốn dùng nháp nữa, chọn Bỏ nháp.</p></div>}
+     <DemoNote>Mỗi thay đổi được ghi thành sự kiện đồng ý riêng của tài khoản. Ngôn ngữ và phiên bản hiển thị được lưu cùng lựa chọn.</DemoNote>
+   </main></MobileScroll>;
+ }
+@@ -1186,7 +1209,7 @@ function ConsentFooter() {
+   const captureContinuation = useLearnerContinuation();
+   if (actor.current.id !== state.userId || actor.current.signedIn !== state.signedIn) actor.current = { id: state.userId, signedIn: state.signedIn, generation: actor.current.generation + 1 };
+   useEffect(() => () => { actor.current.generation++; }, []);
+-  const hasTransferDraft = state.onboardingComplete && isCheckinAuthReturn(state.authReturnTo);
++  const hasTransferDraft = state.onboardingComplete && hasCheckinTransferDraft(state);
+   const continueNext = async (discardDraft = false) => {
+     if (!state.termsAccepted || !state.privacyAccepted || saving) return;
+     setSaving(true);
+@@ -1214,7 +1237,7 @@ function ConsentFooter() {
+       }));
+       if (!saved.matchesRequested) { setError("Quyền dữ liệu đã thay đổi. Kiểm tra và chọn lại trước khi tiếp tục."); return; }
+       if (state.onboardingComplete) {
+-        if (!discardDraft && isCheckinAuthReturn(state.authReturnTo) && state.saveFeedbackConsent) {
++        if (!discardDraft && hasTransferDraft && state.saveFeedbackConsent) {
+           await persistCurrentCheckin({ ...state, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions, privacyAccepted: true }, setState, "practice_preparation", current);
+         }
+         if (!current()) return;
+@@ -1244,6 +1267,7 @@ function OnboardingScreen() {
+   const [saving, setSaving] = useState(false);
+   const [error, setError] = useState("");
+   const captureContinuation = useLearnerContinuation();
++  const hasTransferDraft = hasCheckinTransferDraft(state);
+   const complete = async (discardDraft = false) => {
+     if (saving) return;
+     keyboard.hide();
+@@ -1263,7 +1287,7 @@ function OnboardingScreen() {
+       } : state;
+       await persistProfile(nextState, displayName, nextState.bodyStyle, nextState.locale);
+       if (!current()) return;
+-      if (!discardDraft && isCheckinAuthReturn(nextState.authReturnTo) && nextState.saveFeedbackConsent) {
++      if (!discardDraft && hasTransferDraft && nextState.saveFeedbackConsent) {
+         await persistCurrentCheckin({ ...nextState, displayName, onboardingComplete: true }, setState, "practice_preparation", current);
+       }
+       if (!current()) return;
+@@ -1288,15 +1312,14 @@ function OnboardingScreen() {
+     }
+   };
+   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
+-    <Eyebrow>A04 · THIẾT LẬP TỐI THIỂU</Eyebrow><h1>Chỉ thêm điều hữu ích.</h1>
++    <Eyebrow>THIẾT LẬP TỐI THIỂU</Eyebrow><h1>Chỉ thêm điều hữu ích.</h1>
+     <p className="mcy-lead">Tên hiển thị không bắt buộc. Hình minh họa là sở thích hiển thị, không dùng để suy luận giới hay sức khỏe.</p>
+     <label className="mcy-form-field">Tên hiển thị · tùy chọn<KeyboardInput autoComplete="nickname" aria-label="Tên hiển thị" placeholder="Bạn muốn được gọi là gì?" value={name} onChange={event => setName(event.target.value)} onBlur={() => keyboard.hide()} /></label>
+     <section className="mcy-account-panel"><strong>Hình minh họa cơ thể</strong><p>Chọn hình dễ dùng nhất; có thể đổi bất cứ lúc nào.</p><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></section>
+-    {showTransfer && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.preObservations.length || state.regions.length ? `${state.preObservations.length || state.regions.length} vùng đã ghi, ${state.minutes} phút${state.energy ? `, năng lượng ${state.energy}` : ""}.` : "Chưa có ghi nhận cơ thể trong phiên này."} Tiếp tục sẽ gắn nháp với tài khoản hiện tại theo lựa chọn lưu của bạn.</p><div className="mcy-auth-secondary"><button disabled={saving} onClick={() => { void complete(); }}>Xác nhận chuyển nháp</button><button disabled={saving} onClick={() => { void complete(true); }}>Bỏ nháp</button></div></div>}
++    {showTransfer && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.preObservations.length || state.regions.length ? `${state.preObservations.length || state.regions.length} vùng đã ghi, ${state.minutes} phút${state.energy ? `, năng lượng ${state.energy}` : ""}.` : "Có cảm nhận hoặc năng lượng đã chọn trong nháp."} {state.saveFeedbackConsent ? "Bạn đã cho phép lưu check-in. Xác nhận sẽ lưu hồ sơ và nháp vào tài khoản hiện tại." : "Bạn chưa cho phép lưu check-in. Tiếp tục chỉ lưu hồ sơ; nháp check-in vẫn dùng trong phiên này."}</p><div className="mcy-auth-secondary"><button disabled={saving} onClick={() => { void complete(); }}>{state.saveFeedbackConsent ? "Lưu hồ sơ và check-in" : "Lưu hồ sơ và giữ nháp"}</button><button disabled={saving} onClick={() => { void complete(true); }}>Lưu hồ sơ và bỏ nháp</button></div></div>}
+     {error && <div className="mcy-form-error" role="alert">{error}</div>}
+-    {!showTransfer && <Action disabled={saving} onClick={() => setShowTransfer(true)}>Tiếp tục</Action>}
+-    {!showTransfer && <button className="mcy-quiet-link" disabled={saving} onClick={() => { if (isCheckinAuthReturn(state.authReturnTo)) setShowTransfer(true); else void complete(); }}>{saving ? "Đang lưu…" : "Để sau"}</button>}
+-    <DemoNote>Hồ sơ và lựa chọn được đồng bộ với tài khoản. Check-in chỉ ghi server nếu bạn đã cho phép lưu.</DemoNote>
++    {!showTransfer && <Action disabled={saving} onClick={() => { if (hasTransferDraft) setShowTransfer(true); else void complete(); }}>{saving ? "Đang lưu hồ sơ…" : hasTransferDraft ? "Xem lựa chọn nháp check-in" : "Lưu hồ sơ và tiếp tục"}</Action>}
++    <DemoNote>Hồ sơ và lựa chọn được lưu vào tài khoản. Check-in chỉ được lưu khi bạn đã cho phép.</DemoNote>
+   </main></MobileScroll>;
+ }
+ 
+@@ -1402,8 +1425,15 @@ function CheckinScreen() {
+     setSaveNotice("");
+     const current = captureContinuation();
+     try {
+-      const remote = await persistCurrentCheckin(state, setState, "standalone", current);
++      const result = await persistCurrentCheckin(state, setState, "standalone", current);
+       if (!current()) return;
++      if (result.status === "cancelled") return;
++      if (result.status === "not_saved_permission") {
++        setSaveNotice(locale === "en-US"
++          ? "Check-in has not been saved. Your draft stays here. To save it to an account, sign in and choose check-in saving in Privacy and consent."
++          : "Check-in chưa được lưu. Nháp vẫn ở đây. Để lưu vào tài khoản, đăng nhập và chọn cho phép lưu check-in trong Quyền riêng tư và đồng ý.");
++        return;
++      }
+       const original = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, "standalone", "comparison");
+       const latestDraft = toLearnerCheckinPayload(latestCheckinState.current, "standalone", original.idempotencyKey);
+       const sameDraft = latestDraft.bodyStatus === original.bodyStatus && latestDraft.energyLevel === original.energyLevel
+@@ -1411,7 +1441,7 @@ function CheckinScreen() {
+       if (!sameDraft) { setSaveNotice(locale === "en-US" ? "The previous record is confirmed. Your edits remain in the draft; save again to create a new record." : "Đã xác nhận bản ghi trước. Nháp vừa sửa vẫn được giữ; chọn lưu lần nữa để tạo bản ghi mới."); setSaving(false); return; }
+       setState(previous => !current(previous) ? previous : ({
+         ...previous,
+-        history: !remote && previous.saveFeedbackConsent ? [...previous.history, makeSnapshot("Ghi riêng", previous.bodyStatus, previous.preObservations)] : previous.history,
++        history: result.status === "saved_session" && previous.saveFeedbackConsent ? [...previous.history, makeSnapshot("Ghi riêng", previous.bodyStatus, previous.preObservations)] : previous.history,
+         preObservations: [], postObservations: [], regions: [], bodyStatus: null, energy: null,
+         pendingCheckinIdempotencyKey: null,
+         pendingCheckinPayload: null,
+@@ -1419,10 +1449,10 @@ function CheckinScreen() {
+     } catch (cause) {
+       if (!current()) return;
+       setSaveError(cause instanceof Error ? cause.message : "Chưa lưu được check-in. Kiểm tra mạng rồi thử lại.");
+-      setSaving(false);
+       return;
++    } finally {
++      setSaving(false);
+     }
+-    setSaving(false);
+     if (!current()) return;
+     flow.push(ROUTES.journey);
+   };
+@@ -1452,6 +1482,11 @@ function CheckinScreen() {
+       <section className="mcy-field-section compact"><h2>{msg(locale, "checkin.duration")}</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}>{formatMessage(locale, "checkin.minutes", { minutes: localizedNumber(locale, time) })}</Choice>)}</div></section>
+       <div className="mcy-checkin-summary"><span><strong>{locale === "en-US" ? "Body check-in" : "Cảm nhận cơ thể"}</strong><small>{bodySummary || (locale === "en-US" ? "Not added" : "Chưa ghi nhận")}</small></span><button onClick={() => update({ checkinStep: 1 })}>{locale === "en-US" ? "Edit" : "Sửa"}</button></div>
+       {state.pendingCheckinPayload && <p role="status">{locale === "en-US" ? "The previous save is unconfirmed. Retry that exact record first; edits remain in your draft." : "Lần lưu trước chưa được xác nhận. Hãy thử lại đúng bản ghi đó trước; phần sửa được giữ trong nháp."}</p>}
++      <p className="mcy-inline-note">{state.signedIn && state.userId && state.saveFeedbackConsent
++        ? (locale === "en-US" ? "This check-in will be saved to your account." : "Check-in này sẽ được lưu vào tài khoản của bạn.")
++        : !state.signedIn && state.saveFeedbackConsent
++          ? (locale === "en-US" ? "This check-in is kept only in this session and will be lost when the app reloads." : "Check-in chỉ được giữ trong phiên này và sẽ mất khi tải lại ứng dụng.")
++          : (locale === "en-US" ? "Check-in saving is off. Your choices stay in the current draft." : "Bạn chưa cho phép lưu check-in. Các lựa chọn vẫn nằm trong nháp hiện tại.")}</p>
+       <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : state.pendingCheckinPayload ? (locale === "en-US" ? "Retry the previous record" : "Thử lại bản ghi trước") : msg(locale, "checkin.standalone")}</button>
+       {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
+       {saveNotice && <p role="status">{saveNotice}</p>}
+@@ -1584,7 +1619,7 @@ function ProfileScreen() {
+   };
+   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-account-home">
+     <Eyebrow>CÁ NHÂN · {state.signedIn ? "TÀI KHOẢN HỌC VIÊN" : "KHÁCH"}</Eyebrow><h1>{state.signedIn ? `Chào${state.displayName ? `, ${state.displayName}` : " bạn"}.` : "Bạn kiểm soát tài khoản và dữ liệu."}</h1>
+-    <p className="mcy-lead">{state.signedIn ? `${state.accountEmail} · Đã xác minh qua Supabase Auth.` : "Bạn có thể xem nội dung mà không cần tài khoản. Đăng nhập để lưu hồ sơ, lựa chọn quyền và check-in đã đồng ý."}</p>
++    <p className="mcy-lead">{state.signedIn ? `${state.accountEmail} · Email đã xác minh.` : "Bạn có thể xem nội dung mà không cần tài khoản. Đăng nhập để lưu hồ sơ, lựa chọn quyền và check-in đã đồng ý."}</p>
+     {!state.signedIn ? <div className="mcy-profile-card"><span className="mcy-tag">TÀI KHOẢN</span><strong>Lưu hành trình trên tài khoản của bạn</strong><p>Đăng nhập bằng email để đồng bộ hồ sơ, quyền dữ liệu và check-in có đồng ý.</p><button onClick={() => { update({ authMode: "create", authReturnTo: "profile" }); flow.push(ROUTES.authEmail); }}>Tạo tài khoản hoặc đăng nhập</button></div> : <div className="mcy-profile-card"><span className="mcy-tag">TRẠNG THÁI</span><strong>Đang dùng tài khoản học viên</strong><p>Hồ sơ, quyền riêng tư và check-in được lưu theo lựa chọn của bạn.</p><button disabled={signingOut} onClick={() => { void signOut(); }}>{signingOut ? "Đang đăng xuất…" : "Đăng xuất thiết bị này"}</button></div>}
+     {error && <div className="mcy-form-error" role="alert">{error}</div>}
+     <div className="mcy-account-group"><span className="mcy-section-label">HỒ SƠ VÀ QUYỀN DỮ LIỆU</span>
+@@ -1592,7 +1627,7 @@ function ProfileScreen() {
+       <AccountRow title="AI và điều được nhớ" detail={feedback ? "Có phản hồi để xem nguồn và cách rút lại" : "Chưa có thông tin được nhớ"} onClick={() => flow.push(ROUTES.memory)} />
+       <AccountRow title="Quyền riêng tư và đồng ý" detail="Mỗi mục đích, phiên bản và cách thay đổi" onClick={() => flow.push(ROUTES.privacy)} />
+       <AccountRow title="Bảo mật tài khoản" detail="Email, phiên đăng nhập và xác minh lại" onClick={() => flow.push(ROUTES.security)} />
+-      <AccountRow title="Nhắc tập và thông báo" detail="Tùy chọn kênh, giờ và múi giờ" onClick={() => flow.push(ROUTES.notifications)} />
++      <AccountRow title="Tùy chọn thông báo" detail="Lựa chọn nhận tin · nhắc tập chưa mở" onClick={() => flow.push(ROUTES.notifications)} />
+       <AccountRow title="Nội dung và quyền đang có" detail="Khóa học miễn phí · quyền trả phí" onClick={() => flow.push(ROUTES.access)} />
+       <AccountRow title="Chia sẻ với giáo viên" detail="Chưa có lớp được kết nối · mặc định tắt" onClick={() => flow.push(ROUTES.sharing)} />
+     </div>
+@@ -1693,15 +1728,16 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
+     </>,
+   );
+   if (panel === "sharing") return screen("CHIA SẺ DỮ LIỆU", "Bạn luôn chọn người nhận và phạm vi.", "Chia sẻ với giáo viên hiện chưa được kết nối trong tài khoản này. Mặc định chia sẻ đang tắt.", <><div className="mcy-empty large"><PersonIcon /><strong>Chưa có lớp được kết nối</strong><p>Khi có lớp được cấp quyền, bạn sẽ thấy rõ tên người nhận, dữ liệu được chia sẻ và thời hạn trước khi bật.</p></div><div className="mcy-consent-card"><strong>Nguyên tắc chia sẻ</strong><p>Không chia sẻ mặc định. Check-in, ghi chú và phản hồi chỉ được gửi khi bạn chọn đúng người nhận và phạm vi.</p></div><AccountRow title="Quyền riêng tư" detail="Rút đồng ý và xem các mục đích khác" onClick={() => flow.push(ROUTES.privacy)} /></>);
+-  if (panel === "security") return screen("BẢO MẬT", "Kiểm soát email và phiên đang mở.", "Xác minh lại email khi cần. Việc quản lý thiết bị và khôi phục danh tính luôn cần kiểm tra ở máy chủ.", <><div className="mcy-account-panel"><strong>Email đăng nhập</strong><p>{state.accountEmail || "Chưa đăng nhập"} · {state.signedIn ? "đã xác minh" : "chưa đăng nhập"}</p><button className="mcy-toggle" onClick={() => { update({ authMode: "login", authReturnTo: "security" }); flow.push(ROUTES.authEmail); }}>Đổi email có xác minh</button></div><div className="mcy-account-row static"><span><strong>Thiết bị này</strong><small>{state.signedIn ? "Phiên hiện tại" : "Chưa có phiên đăng nhập"}</small></span><span className="mcy-state-pill">{state.signedIn ? "HIỆN TẠI" : "KHÁCH"}</span></div><p className="mcy-inline-note">Nếu mất quyền truy cập email hoặc nghi có người dùng tài khoản, hãy liên hệ kênh hỗ trợ của MCY. Không tự gộp hai tài khoản.</p>{error && <div className="mcy-form-error subtle">{error}</div>}</>);
+-  if (panel === "notifications") return screen("THÔNG BÁO", "Nhắc tập theo lịch của bạn.", "Backend chưa gửi push hoặc email nhắc. Lựa chọn thông báo của tài khoản được lưu để dùng khi dịch vụ được triển khai.", <><PrivacyToggle title="Nhắc tập trong ứng dụng" detail="Múi giờ lấy từ thiết bị · lịch gửi chưa được cấu hình." value={state.notificationEnabled} disabled={consentPending} onToggle={value => { void changeConsent("notifications", value, { notificationEnabled: value }); }} /><PrivacyToggle title="Email cập nhật nội dung" detail="Tùy chọn marketing; không ảnh hưởng email đăng nhập." value={state.emailUpdates} disabled={consentPending} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value, emailUpdates: value }); }} />{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}<div className="mcy-account-panel"><strong>Giờ yên lặng</strong><p>Chưa có lịch nhắc nào được gửi hoặc lên lịch.</p></div></>);
++  if (panel === "security") return screen("BẢO MẬT", "Kiểm soát email và phiên đang mở.", "Đăng nhập bằng email khác sẽ mở tài khoản đó. Hồ sơ và Hành trình được giữ riêng theo từng tài khoản.", <><div className="mcy-account-panel"><strong>Email đăng nhập</strong><p>{state.accountEmail || "Chưa đăng nhập"} · {state.signedIn ? "đã xác minh" : "chưa đăng nhập"}</p><button className="mcy-toggle" onClick={() => { update({ authMode: "login", authReturnTo: "security" }); flow.push(ROUTES.authEmail); }}>Đăng nhập bằng tài khoản khác</button></div><div className="mcy-account-row static"><span><strong>Thiết bị này</strong><small>{state.signedIn ? "Phiên hiện tại" : "Chưa có phiên đăng nhập"}</small></span><span className="mcy-state-pill">{state.signedIn ? "HIỆN TẠI" : "KHÁCH"}</span></div><p className="mcy-inline-note">Nếu mất quyền truy cập email hoặc nghi có người dùng tài khoản, hãy liên hệ kênh hỗ trợ của MCY. Không tự gộp hai tài khoản.</p>{error && <div className="mcy-form-error subtle">{error}</div>}</>);
++  if (panel === "notifications") return screen("THÔNG BÁO", "Tùy chọn thông báo của bạn.", "Nhắc tập chưa mở; hiện chưa gửi thông báo đẩy hoặc email nhắc. Khi đăng nhập, lựa chọn nhận thông báo được lưu vào tài khoản để dùng khi tính năng sẵn sàng.", <><PrivacyToggle title="Cho phép nhận thông báo nhắc tập" detail="Chỉ lưu lựa chọn nhận tin; chưa đặt giờ hay gửi nhắc tập." value={state.notificationEnabled} disabled={consentPending} onToggle={value => { void changeConsent("notifications", value, { notificationEnabled: value }); }} /><PrivacyToggle title="Email cập nhật nội dung" detail="Tùy chọn marketing; không ảnh hưởng email đăng nhập." value={state.emailUpdates} disabled={consentPending} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value, emailUpdates: value }); }} />{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}<div className="mcy-account-panel"><strong>Nhắc tập chưa mở</strong><p>Ứng dụng chưa có thao tác đặt giờ hoặc lên lịch nhắc tập.</p></div></>);
+   if (panel === "access") return screen("QUYỀN NỘI DUNG", "Những gì đang mở cho bạn.", "Khóa học miễn phí có thể học không cần giao dịch. Mục này cho biết nội dung trả phí hiện có trong ứng dụng.", <><div className="mcy-access-card"><span className="mcy-tag">HỌC MIỄN PHÍ</span><strong>Khóa học trong Khám phá</strong><p>Bạn có thể xem các bài học video ngay trong ứng dụng mà không cần mua quyền truy cập.</p></div><div className="mcy-empty large"><ReaderIcon /><strong>Chưa có khóa học trả phí</strong><p>Giao dịch, thời hạn học và quyền lợi đi kèm hiện chưa được cung cấp trong ứng dụng.</p></div><button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.discover)}>Mở Khám phá</button></>);
+   if (panel === "help") return screen("HỖ TRỢ", "Tìm hướng dẫn rõ ràng.", "Chọn một chủ đề để xem hướng dẫn. Hiện chưa thể gửi yêu cầu tài khoản từ ứng dụng.", <><label className="mcy-form-field">Tìm hướng dẫn<KeyboardInput aria-label="Tìm hướng dẫn" value={query} onChange={event => setQuery(event.target.value)} onBlur={() => keyboard.hide()} placeholder="Ví dụ: phản hồi sau tập" /></label><div className="mcy-help-results">{filteredHelpArticles.length ? filteredHelpArticles.map(article => <AccountRow key={article.id} title={article.title} detail={article.detail} onClick={() => flow.push(HELP_ARTICLE_ROUTES[article.id])} />) : <p className="mcy-help-empty" role="status">Chưa tìm thấy hướng dẫn phù hợp. Thử một từ khác.</p>}</div><div className="mcy-account-panel"><strong>Chưa thể gửi yêu cầu trong ứng dụng</strong><p>Các mục bên dưới là hướng dẫn tham khảo; hiện chưa có nội dung nào được gửi tới đội ngũ hỗ trợ của MCY.</p></div>{error && <div className="mcy-form-error">{error}</div>}</>);
+    return screen("YÊU CẦU VỀ DỮ LIỆU", "Yêu cầu về dữ liệu tài khoản.", "Chức năng gửi yêu cầu xuất hoặc xóa dữ liệu chưa sẵn sàng. Bạn có thể xem hướng dẫn quyền riêng tư hoặc liên hệ kênh chính thức của MCY.", <><div className="mcy-empty large"><InfoCircledIcon /><strong>Hiện chưa thể gửi yêu cầu trong ứng dụng</strong><p>Ứng dụng chưa tiếp nhận yêu cầu xuất hoặc xóa dữ liệu, nên chưa có thao tác nào được thực hiện.</p></div><AccountRow title="Quyền riêng tư" detail="Xem phạm vi lưu và chia sẻ" onClick={() => flow.push(ROUTES.privacy)} /><AccountRow title="Hướng dẫn và hỗ trợ" detail="Đọc các hướng dẫn đang có" onClick={() => flow.push(ROUTES.help)} /> </>);
+ }
+ 
+ function PrivacyToggle({ title, detail, value, onToggle, actionLabels, disabled = false }: { title: string; detail: string; value: boolean; onToggle: (value: boolean) => void; actionLabels?: { active: string; inactive: string }; disabled?: boolean }) {
+-  return <div className="mcy-account-panel mcy-toggle-row"><span><strong>{title}</strong><small>{detail}</small></span><button disabled={disabled} aria-pressed={value} className={value ? "on" : ""} onClick={() => onToggle(!value)}><i>{value ? "✓" : ""}</i><span>{value ? actionLabels?.active ?? "Bật" : actionLabels?.inactive ?? "Tắt"}</span></button></div>;
++  const label = value ? actionLabels?.active ?? "Bật" : actionLabels?.inactive ?? "Tắt";
++  return <div className="mcy-account-panel mcy-toggle-row"><span><strong>{title}</strong><small>{detail}</small></span><button disabled={disabled} aria-label={`${title} · ${label}`} aria-pressed={value} className={value ? "on" : ""} onClick={() => onToggle(!value)}><i aria-hidden="true">{value ? "✓" : ""}</i><span>{label}</span></button></div>;
+ }
+ 
+ function SyncScreen() {
+diff --git a/tests/learner-device-acceptance.spec.ts b/tests/learner-device-acceptance.spec.ts
+index d5d4c99..89ff13f 100644
+--- a/tests/learner-device-acceptance.spec.ts
++++ b/tests/learner-device-acceptance.spec.ts
+@@ -114,7 +114,8 @@ test('account switch and reload do not expose the previous actor saved check-in'
+   await page.reload();await account(page,'Device Fixture B');await nav(page,'Hành trình').click();
+   await expect(page.getByRole('heading',{name:'Hành trình của bạn',exact:true})).toBeVisible();
+   expect(fixture.rows.get(B)).toHaveLength(0);
+-  await page.getByRole('button',{name:'Đến gần nhất',exact:true}).click();
++  await expect(page.locator('.mcy-journey-empty')).toBeVisible();
++  await expect(page.getByRole('button',{name:'Đến gần nhất',exact:true})).toHaveCount(0);
+   await expect(page.locator('.mcy-snapshot-body')).toHaveCount(0);
+   await expect(page.getByRole('button',{name:/Xem hành trình mẫu/})).toHaveCount(0);
+   await switchActor(page,A);await expect.poll(()=>fixture.reads.get(A)).toBeGreaterThan(1);await account(page);
+@@ -133,8 +134,9 @@ test('wellbeing revocation survives reload and prevents a new save request',asyn
+   await expect(page.locator('.mcy-toggle-row').filter({hasText:'Lưu check-in trong hành trình'}).getByRole('button')).toHaveAttribute('aria-pressed','false');
+   await page.getByRole('button',{name:'Quay lại',exact:true}).click();await beginCheckin(page);
+   await saveOnly(page).click();
+-  await expect(page.getByRole('heading',{name:'Hành trình của bạn',exact:true})).toBeVisible();
+-  await page.getByRole('button',{name:'Đến gần nhất',exact:true}).click();
++  await expect(page.locator('.mcy-checkin-page')).toBeVisible();
++  await expect(page.getByRole('status').filter({hasText:'Check-in chưa được lưu'})).toBeVisible();
++  await expect(page.locator('.mcy-checkin-summary')).toContainText('Không thấy khó chịu');
+   await expect(page.locator('.mcy-snapshot-body')).toHaveCount(0);
+   expect(fixture.saves).toHaveLength(0);expect(fixture.rows.get(A)).toHaveLength(0);expect(fixture.consentWrites).toHaveLength(1);expect(fixture.unexpected).toEqual([]);
+ });
+diff --git a/tests/learner-ux.spec.ts b/tests/learner-ux.spec.ts
+index fd29986..8dab9c3 100644
+--- a/tests/learner-ux.spec.ts
++++ b/tests/learner-ux.spec.ts
+@@ -968,7 +968,9 @@ test("English learner flow follows check-in, practice and honest reflection on m
+     await expect(mainNavigation).toContainText("Journey");
+     await expect(mainNavigation).toContainText("Explore");
+     await expect(mainNavigation).toContainText("Profile");
+-    await expect(page.getByText("IN THIS SESSION", { exact: true })).toBeVisible();
++    // This guest has not opted into check-in history; an empty history has no record badge.
++    await expect(page.getByRole("heading", { name: "No entries yet", exact: true })).toBeVisible();
++    await expect(page.locator(".mcy-snapshot-body")).toHaveCount(0);
+     await expect(page.getByRole("button", { name: "View sample journey" })).toHaveCount(0);
+     await tapVisible(mainNavigation.getByRole("button", { name: "Explore" }));
+     await expect(activeScreen.getByTestId("free-course-catalog")).toBeVisible();
+diff --git a/tests/practice-flow.spec.ts b/tests/practice-flow.spec.ts
+index 3185987..efa8cb1 100644
+--- a/tests/practice-flow.spec.ts
++++ b/tests/practice-flow.spec.ts
+@@ -102,7 +102,7 @@ test("consent withdrawal through privacy invalidates pending plan and blocks a n
+   await page.getByRole("button", { name: /Quyền riêng tư/ }).click();
+   const aiPrivacy = page.locator(".mcy-toggle-row").filter({ hasText: "Dùng check-in với trợ lý AI" });
+   await aiPrivacy.getByRole("button", { name: /Rút đồng ý/ }).click();
+-  await expect(aiPrivacy.getByRole("button", { name: "Đồng ý", exact: true })).toBeVisible(); release();
++  await expect(aiPrivacy.getByRole("button", { name: "Dùng check-in với trợ lý AI · Đồng ý", exact: true })).toHaveAttribute("aria-pressed", "false"); release();
+   await expect(page.getByRole("region", { name: "Kế hoạch hôm nay" })).toHaveCount(0); expect(calls).toBe(1);
+   await page.getByRole("button", { name: "Quay lại", exact: true }).click();
+   await page.locator('.flow-fixed-footer').getByRole("button", { name: "Hôm nay", exact: true }).click();
+diff --git a/tests/ux-save-feedback.spec.ts b/tests/ux-save-feedback.spec.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/ux-save-feedback.spec.ts
+@@ -0,0 +1,322 @@
++import { expect, test, type Page, type Route } from '@playwright/test';
++import { CONSENT_POLICY_VERSIONS, emptyConsentState } from '../src/backend/learnerData';
++
++const origin = 'https://mcy-playwright.invalid';
++const storageKey = 'sb-mcy-playwright-auth-token';
++const A = '11111111-1111-4111-8111-111111111111';
++const B = '77777777-7777-4777-8777-777777777777';
++const writer = '/save_my_checkin_for_current_user_with_current_consent';
++const saveLabel = 'Chỉ ghi lại cảm nhận hôm nay, không chọn bài';
++const active = (page: Page) => page.getByTestId('flow-current');
++const activeRoute = (page: Page) => page.locator('[data-testid="flow-current"] > [data-flow-route]');
++async function expectRoute(page: Page, id: string) {
++  await expect.poll(() => activeRoute(page).evaluateAll(routes => routes.length === 1 ? routes[0].getAttribute('data-flow-route') : null)).toBe(id);
++}
++function session(id = A) {
++  return { access_token: id === A ? 'fictional-ux-a' : 'fictional-ux-b', refresh_token: 'fictional-refresh', token_type: 'bearer', expires_at: Math.floor(Date.now() / 1000) + 3600, expires_in: 3600,
++    user: { id, email: 'fixture@example.test', aud: 'authenticated', role: 'authenticated', email_confirmed_at: '2026-01-01T00:00:00Z', app_metadata: {}, user_metadata: { locale: 'vi-VN' }, identities: [], created_at: '2026-01-01T00:00:00Z' } };
++}
++function latch() {
++  let release!: () => void;
++  const promise = new Promise<void>(resolve => { release = resolve; });
++  return { promise, release };
++}
++async function fixture(page: Page, options: { guest?: boolean; wellbeing?: boolean; noProfile?: boolean; requiredConsent?: 'missing' | 'stale'; handle?: (route: Route, path: string) => Promise<boolean> } = {}) {
++  const writes: Array<{ path: string; body: Record<string, unknown> }> = [];
++  const profileReads = { [A]: 0, [B]: 0 };
++  const consents = { ...emptyConsentState, terms: options.requiredConsent !== 'missing', privacy: options.requiredConsent !== 'missing', wellbeing_data: options.wellbeing ?? true };
++  const versions: Record<string, string> = { ...CONSENT_POLICY_VERSIONS, ...(options.requiredConsent === 'stale' ? { terms: 'fictional-old-terms', privacy: 'fictional-old-privacy' } : {}) };
++  await page.addInitScript(({ key, value }) => localStorage.setItem(key, JSON.stringify(value)), { key: storageKey, value: options.guest ? null : session() });
++  await page.route('https://*.supabase.co/**', route => route.abort('blockedbyclient'));
++  await page.route(origin + '/**', async route => {
++    const path = new URL(route.request().url()).pathname;
++    if (route.request().method() !== 'GET' && !path.endsWith('/get_my_consent_state') && !path.endsWith('/get_my_consent_policy_versions') && !path.endsWith('/mcy-ai-assistant')) writes.push({ path, body: route.request().postDataJSON() });
++    if (await options.handle?.(route, path)) return;
++    const id = route.request().headers().authorization?.endsWith('fictional-ux-b') ? B : A;
++    if (path.endsWith('/profiles')) {
++      if (route.request().method() !== 'GET') return route.fulfill({ json: {} });
++      profileReads[id]++;
++      return route.fulfill({ json: options.noProfile ? null : { user_id: id, display_name: id === A ? 'Fixture A' : 'Fixture B', locale: 'vi-VN', body_display_preference: 'neutral' } });
++    }
++    if (path.endsWith('/get_my_consent_state')) return route.fulfill({ json: consents });
++    if (path.endsWith('/get_my_consent_policy_versions')) return route.fulfill({ json: versions });
++    if (path.endsWith('/record_my_consent')) {
++      const body = route.request().postDataJSON();
++      consents[body.p_purpose as keyof typeof consents] = body.p_action === 'granted';
++      versions[body.p_purpose] = body.p_policy_version;
++      return route.fulfill({ json: 'fictional-ux-consent-' + writes.length });
++    }
++    if (path.endsWith('/checkins') || path.endsWith('/checkin_observations')) return route.fulfill({ json: [] });
++    if (path.endsWith('/mcy-ai-assistant')) return route.fulfill({ json: { available: false, contractVersion: 'reviewed-practice-1' } });
++    if (path.endsWith('/user')) return route.fulfill({ json: session(id).user });
++    if (path.endsWith(writer)) return route.fulfill({ json: [{ checkin_id: '55000000-0000-4000-8000-000000000001', created_at: new Date().toISOString() }] });
++    throw Error('Unexpected synthetic UX request: ' + path);
++  });
++  return { writes, profileReads };
++}
++async function switchActor(page: Page, id = A) {
++  await page.evaluate(({ key, value }) => {
++    localStorage.setItem(key, JSON.stringify(value));
++    const channel = new BroadcastChannel(key); channel.postMessage({ event: 'SIGNED_IN', session: value }); channel.close();
++  }, { key: storageKey, value: session(id) });
++}
++async function draft(page: Page, guest = false) {
++  await page.goto('/?mode=web');
++  if (guest) await page.getByRole('button', { name: 'Thử tìm hiểu như khách', exact: true }).click();
++  else await active(page).getByRole('button', { name: 'Bắt đầu check-in', exact: true }).click();
++  await active(page).getByRole('button', { name: 'Không thấy khó chịu', exact: true }).click();
++  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian', exact: true }).click();
++  await active(page).getByRole('button', { name: 'Bình thường', exact: true }).click();
++}
++async function expectDraft(page: Page) {
++  await expectRoute(page, 'checkin');
++  await expect(active(page).getByRole('button', { name: 'Bình thường', exact: true })).toHaveAttribute('aria-pressed', 'true');
++  await expect(active(page).locator('.mcy-checkin-summary')).toContainText('Không thấy khó chịu');
++}
++
++for (const guest of [true, false]) test(`${guest ? 'guest' : 'revoked account'} standalone explicitly stays unsaved and keeps the draft`, async ({ page }) => {
++  const backend = await fixture(page, { guest, wellbeing: false });
++  await draft(page, guest);
++  await active(page).getByRole('button', { name: saveLabel, exact: true }).click();
++  await expect(active(page).getByRole('status')).toContainText('Check-in chưa được lưu. Nháp vẫn ở đây.');
++  await expectDraft(page);
++  expect(backend.writes.filter(call => !call.path.endsWith('/mcy-ai-assistant'))).toEqual([]);
++});
++
++test('guest session recording requires the existing explicit opt-in and makes no account write', async ({ page }) => {
++  const backend = await fixture(page, { guest: true, wellbeing: false });
++  await page.goto('/?mode=web');
++  await page.getByRole('button', { name: 'Thử tìm hiểu như khách', exact: true }).click();
++  await expectRoute(page, 'checkin');
++  await page.getByRole('button', { name: 'Tự chọn bài học miễn phí', exact: true }).click();
++  await page.getByRole('button', { name: 'Cá nhân', exact: true }).click();
++  await active(page).getByRole('button', { name: /Quyền riêng tư và đồng ý/ }).click();
++  const permission = active(page).getByRole('button', { name: 'Lưu check-in trong hành trình · Tắt', exact: true });
++  await expect(permission).toHaveAttribute('aria-pressed', 'false');
++  await permission.click();
++  await expect(active(page).getByRole('button', { name: 'Lưu check-in trong hành trình · Bật', exact: true })).toHaveAttribute('aria-pressed', 'true');
++  await page.getByRole('button', { name: 'Quay lại', exact: true }).click();
++  await page.getByRole('button', { name: 'Hôm nay', exact: true }).click();
++  await active(page).getByRole('button', { name: 'Bắt đầu check-in', exact: true }).click();
++  await active(page).getByRole('button', { name: 'Không thấy khó chịu', exact: true }).click();
++  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian', exact: true }).click();
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page)).toContainText('Check-in chỉ được giữ trong phiên này');
++  await active(page).getByRole('button', { name: saveLabel, exact: true }).click();
++  await expectRoute(page, 'journey');
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page)).toContainText('Ghi riêng');
++  expect(backend.writes).toEqual([]);
++  await page.reload();
++  await page.getByRole('button', { name: 'Thử tìm hiểu như khách', exact: true }).click();
++  await expectRoute(page, 'checkin');
++  await page.getByRole('button', { name: 'Tự chọn bài học miễn phí', exact: true }).click();
++  await page.getByRole('button', { name: 'Hành trình', exact: true }).click();
++  await expectRoute(page, 'journey');
++  await expect(active(page)).not.toContainText('Ghi riêng');
++});
++
++test('consented account success writes once then opens Journey with the real record', async ({ page }) => {
++  const backend = await fixture(page);
++  await draft(page);
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page)).toContainText('Check-in này sẽ được lưu vào tài khoản của bạn.');
++  await active(page).getByRole('button', { name: saveLabel, exact: true }).click();
++  await expectRoute(page, 'journey');
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page)).toContainText('Ghi riêng');
++  const calls = backend.writes.filter(call => call.path.endsWith(writer));
++  expect(calls).toHaveLength(1);
++  expect(calls[0].body).toMatchObject({ p_expected_user_id: A, p_body_status: 'none_now', p_energy_level: 2, p_capture_type: 'standalone', p_observations: [] });
++});
++
++test('uncertain save retries the same key and payload while retaining edited draft', async ({ page }) => {
++  let attempts = 0;
++  const backend = await fixture(page, { handle: async (route, path) => {
++    if (!path.endsWith(writer) || ++attempts !== 1) return false;
++    await route.abort('failed'); return true;
++  } });
++  await draft(page);
++  await active(page).getByRole('button', { name: saveLabel, exact: true }).click();
++  await expect(active(page).getByRole('alert')).toBeVisible();
++  await expectDraft(page);
++  await active(page).getByRole('button', { name: 'Rất thấp', exact: true }).click();
++  await active(page).getByRole('button', { name: 'Thử lại bản ghi trước', exact: true }).click();
++  await expect(active(page).getByRole('status')).toContainText('Nháp vừa sửa vẫn được giữ');
++  const calls = backend.writes.filter(call => call.path.endsWith(writer));
++  expect(calls).toHaveLength(2); expect(calls[1].body).toEqual(calls[0].body);
++  await expect(active(page).getByRole('button', { name: 'Rất thấp', exact: true })).toHaveAttribute('aria-pressed', 'true');
++  await expectRoute(page, 'checkin');
++});
++
++test('leaving during client preparation cancels dispatch and navigation', async ({ page }) => {
++  const backend = await fixture(page);
++  await draft(page);
++  await page.evaluate(async () => {
++    // Test-only gate on the real account-bound client preparation, no app hook.
++    const { getSupabaseClient } = await import('/src/backend/supabase.ts');
++    const client = await getSupabaseClient();
++    const original = client.auth.getSession.bind(client.auth);
++    const controls = window as unknown as { uxStarted: boolean; uxRelease: () => void; uxSettled: boolean };
++    const gate = new Promise<void>(resolve => { controls.uxRelease = resolve; });
++    client.auth.getSession = async () => { controls.uxStarted = true; await gate; const result = await original(); controls.uxSettled = true; return result; };
++  });
++  await active(page).getByRole('button', { name: saveLabel, exact: true }).click();
++  await expect.poll(() => page.evaluate(() => (window as unknown as { uxStarted: boolean }).uxStarted)).toBe(true);
++  await page.getByRole('button', { name: 'Tự chọn bài học video miễn phí', exact: true }).click();
++  await page.evaluate(() => (window as unknown as { uxRelease: () => void }).uxRelease());
++  await expect.poll(() => page.evaluate(() => (window as unknown as { uxSettled: boolean }).uxSettled)).toBe(true);
++  await active(page).getByRole('button', { name: /Cách chọn bài học video/ }).click();
++  await expectRoute(page, 'discover-detail');
++  expect(backend.writes.filter(call => call.path.endsWith(writer))).toEqual([]);
++});
++
++test('response from an already dispatched save cannot navigate a switched account', async ({ page }) => {
++  const started = latch(), release = latch();
++  const backend = await fixture(page, { handle: async (route, path) => {
++    if (!path.endsWith(writer)) return false;
++    started.release(); await release.promise;
++    await route.fulfill({ json: [{ checkin_id: '55000000-0000-4000-8000-000000000001', created_at: new Date().toISOString() }] }); return true;
++  } });
++  await draft(page);
++  await active(page).getByRole('button', { name: saveLabel, exact: true }).click(); await started.promise;
++  await switchActor(page, B); await expect.poll(() => backend.profileReads[B]).toBeGreaterThan(0);
++  const response = page.waitForResponse(result => result.url().endsWith(writer));
++  release.release(); await (await response).json();
++  await expectRoute(page, 'checkin');
++  await page.getByRole('button', { name: 'Quay lại', exact: true }).click();
++  await page.getByRole('button', { name: 'Cá nhân', exact: true }).click();
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page).locator('.mcy-account-home h1')).toHaveText('Chào, Fixture B.');
++  expect(backend.writes.filter(call => call.path.endsWith(writer))).toHaveLength(1);
++});
++
++test('no-draft onboarding accurately labels profile saving and preserves explicit retry after error', async ({ page }) => {
++  let profileAttempts = 0;
++  const backend = await fixture(page, { noProfile: true, handle: async (route, path) => {
++    if (!path.endsWith('/profiles') || route.request().method() === 'GET' || ++profileAttempts !== 1) return false;
++    await route.fulfill({ status: 503, json: { message: 'Fictional profile failure' } }); return true;
++  } });
++  await page.goto('/?mode=web');
++  await page.getByLabel('Tên hiển thị').fill('Optional name');
++  await page.getByRole('button', { name: 'Lưu hồ sơ và tiếp tục', exact: true }).click();
++  await expect(active(page).getByRole('alert')).toBeVisible();
++  await expect(page.getByLabel('Tên hiển thị')).toHaveValue('Optional name');
++  await expect(active(page)).not.toContainText('Nháp check-in trong phiên này');
++  await expect(active(page).getByRole('button', { name: 'Để sau', exact: true })).toHaveCount(0);
++  await page.getByRole('button', { name: 'Lưu hồ sơ và tiếp tục', exact: true }).click();
++  await expectRoute(page, 'home');
++  expect(backend.writes.filter(call => call.path.endsWith('/profiles'))).toHaveLength(2);
++  expect(backend.writes.filter(call => call.path.endsWith(writer))).toEqual([]);
++});
++
++for (const wellbeing of [false, true]) test(`onboarding with a draft ${wellbeing ? 'confirms account check-in saving' : 'retains the unsaved draft'} after an explicit profile retry`, async ({ page }) => {
++  let profileAttempts = 0;
++  const backend = await fixture(page, { guest: true, noProfile: true, wellbeing, handle: async (route, path) => {
++    if (!path.endsWith('/profiles') || route.request().method() === 'GET' || ++profileAttempts !== 1) return false;
++    await route.fulfill({ status: 503, json: { message: 'Fictional profile failure' } }); return true;
++  } });
++  await draft(page, true);
++  await page.getByRole('button', { name: 'Đăng nhập hoặc tạo tài khoản (tùy chọn)', exact: true }).click();
++  // The fixture's initialized SDK subscription receives a fictional account;
++  // this test does not request or verify any email.
++  await switchActor(page);
++  await expect(page.getByRole('button', { name: 'Xem lựa chọn nháp check-in', exact: true })).toBeVisible();
++  await page.getByRole('button', { name: 'Xem lựa chọn nháp check-in', exact: true }).click();
++  const confirmation = page.getByRole('button', { name: wellbeing ? 'Lưu hồ sơ và check-in' : 'Lưu hồ sơ và giữ nháp', exact: true });
++  await confirmation.click();
++  await expect(active(page).getByRole('alert')).toBeVisible();
++  await expect(confirmation).toBeEnabled();
++  await confirmation.click();
++  await expectRoute(page, 'discover');
++  expect(backend.writes.filter(call => call.path.endsWith('/profiles'))).toHaveLength(2);
++  expect(backend.writes.filter(call => call.path.endsWith(writer))).toHaveLength(wellbeing ? 1 : 0);
++  await page.getByRole('button', { name: 'Hôm nay', exact: true }).click();
++  await expectRoute(page, 'home');
++  await active(page).getByRole('button', { name: 'Bắt đầu check-in', exact: true }).click();
++  await expectDraft(page);
++});
++
++test('returning from check-in without a body or energy draft saves only the profile', async ({ page }) => {
++  const backend = await fixture(page, { guest: true, noProfile: true });
++  await page.goto('/?mode=web');
++  await page.getByRole('button', { name: 'Thử tìm hiểu như khách', exact: true }).click();
++  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian', exact: true }).click();
++  await page.getByRole('button', { name: 'Đăng nhập hoặc tạo tài khoản (tùy chọn)', exact: true }).click();
++  await switchActor(page);
++  await page.getByRole('button', { name: 'Lưu hồ sơ và tiếp tục', exact: true }).click();
++  await expectRoute(page, 'discover');
++  expect(backend.writes.filter(call => call.path.endsWith('/profiles'))).toHaveLength(1);
++  expect(backend.writes.filter(call => call.path.endsWith(writer))).toEqual([]);
++});
++
++for (const requiredConsent of ['missing', 'stale'] as const) for (const actualDraft of [false, true]) test(`consent ${requiredConsent} required versions with ${actualDraft ? 'an actual' : 'no'} draft only transfers actual data`, async ({ page }) => {
++  const backend = await fixture(page, { guest: true, requiredConsent });
++  await page.goto('/?mode=web');
++  await page.getByRole('button', { name: 'Thử tìm hiểu như khách', exact: true }).click();
++  await expectRoute(page, 'checkin');
++  if (actualDraft) await active(page).getByRole('button', { name: 'Không thấy khó chịu', exact: true }).click();
++  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian', exact: true }).click();
++  if (actualDraft) await active(page).getByRole('button', { name: 'Bình thường', exact: true }).click();
++  await page.getByRole('button', { name: 'Đăng nhập hoặc tạo tài khoản (tùy chọn)', exact: true }).click();
++  await switchActor(page);
++  await expectRoute(page, 'consent');
++  const draftNotice = active(page).locator('.mcy-consent-card').filter({ hasText: 'Nháp check-in trong phiên này' });
++  await expect(draftNotice).toHaveCount(actualDraft ? 1 : 0);
++  await page.getByRole('button', { name: 'Tôi đồng ý điều khoản và thông báo · phiên bản 0.1', exact: true }).click();
++  await page.getByRole('button', { name: actualDraft ? 'Xác nhận chuyển nháp' : 'Tiếp tục', exact: true }).click();
++  await expectRoute(page, 'discover');
++  const events = backend.writes.filter(call => call.path.endsWith('/record_my_consent'));
++  expect(events.map(call => call.body.p_purpose).sort()).toEqual(['privacy', 'terms']);
++  const records = backend.writes.filter(call => call.path.endsWith(writer));
++  expect(records).toHaveLength(actualDraft ? 1 : 0);
++  if (actualDraft) expect(records[0].body).toMatchObject({ p_capture_type: 'practice_preparation', p_body_status: 'none_now', p_energy_level: 2 });
++  expect(backend.writes.filter(call => call.path.endsWith('/profiles'))).toHaveLength(0);
++});
++
++test('failed save leaves Journey ready and its pending CTA preserves the exact retry and edited draft', async ({ page }) => {
++  let attempts = 0;
++  const backend = await fixture(page, { handle: async (route, path) => {
++    if (!path.endsWith(writer) || ++attempts !== 1) return false;
++    await route.abort('failed'); return true;
++  } });
++  await draft(page);
++  await active(page).getByRole('button', { name: saveLabel, exact: true }).click();
++  await expect(active(page).getByRole('alert')).toBeVisible();
++  await active(page).getByRole('button', { name: 'Rất thấp', exact: true }).click();
++  await page.getByRole('button', { name: 'Tự chọn bài học video miễn phí', exact: true }).click();
++  await expectRoute(page, 'discover');
++  await page.getByRole('button', { name: 'Hành trình', exact: true }).click();
++  await expectRoute(page, 'journey');
++  await expect(active(page).getByText('Đang tải bản ghi của bạn…', { exact: true })).toHaveCount(0);
++  await expect(active(page).getByRole('status')).toContainText('Một lần lưu check-in chưa được xác nhận. Nháp vẫn được giữ');
++  await expect(active(page).locator('.mcy-journey-empty')).toHaveCount(0);
++  await page.getByRole('button', { name: 'Xem lại lần lưu chưa xác nhận', exact: true }).click();
++  await expectRoute(page, 'checkin');
++  await expect(active(page).getByRole('button', { name: 'Rất thấp', exact: true })).toHaveAttribute('aria-pressed', 'true');
++  expect(backend.writes.filter(call => call.path.endsWith(writer))).toHaveLength(1);
++  await active(page).getByRole('button', { name: 'Thử lại bản ghi trước', exact: true }).click();
++  await expect(active(page).getByRole('status')).toContainText('Nháp vừa sửa vẫn được giữ');
++  const records = backend.writes.filter(call => call.path.endsWith(writer));
++  expect(records).toHaveLength(2); expect(records[1].body).toEqual(records[0].body);
++  await expect(active(page).getByRole('button', { name: 'Rất thấp', exact: true })).toHaveAttribute('aria-pressed', 'true');
++});
++
++test('security action describes other-account sign-in and notification copy promises no scheduling', async ({ page }) => {
++  const backend = await fixture(page);
++  await page.goto('/?mode=web');
++  await page.getByRole('button', { name: 'Cá nhân', exact: true }).click();
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page)).toContainText('Email đã xác minh.');
++  await active(page).getByRole('button', { name: /Tùy chọn thông báo/ }).click();
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page)).toContainText('Nhắc tập chưa mở');
++  await expect(active(page).getByRole('button', { name: 'Cho phép nhận thông báo nhắc tập · Tắt', exact: true })).toHaveAttribute('aria-pressed', 'false');
++  await page.getByRole('button', { name: 'Quay lại', exact: true }).click();
++  await active(page).getByRole('button', { name: /Bảo mật tài khoản/ }).click();
++  await expect(active(page)).toHaveCount(1);
++  await expect(active(page)).toContainText('Hồ sơ và Hành trình được giữ riêng theo từng tài khoản.');
++  await active(page).getByRole('button', { name: 'Đăng nhập bằng tài khoản khác', exact: true }).click();
++  await expect(page.getByLabel('Địa chỉ email')).toBeVisible();
++  expect(backend.writes.filter(call => !call.path.endsWith('/mcy-ai-assistant'))).toEqual([]);
++});
+diff --git a/tests/ux-journey-selection.spec.ts b/tests/ux-journey-selection.spec.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/ux-journey-selection.spec.ts
+@@ -0,0 +1,118 @@
++import { expect, test, type Page } from '@playwright/test';
++import type { Snapshot } from '../src/Prototype';
++
++// Mount the real Journey and runtime with synthetic state; no Auth/session/provider path is used.
++async function mount(page: Page, patch: Record<string, unknown> = {}, device = 'iphone') {
++  await page.route('https://**/*', route => route.abort('blockedbyclient'));
++  await page.goto(`/?mode=review&device=${device}`);
++  await page.evaluate(async patch => {
++    // Use Vite's resolved URLs (including optimizer revision) to share the app's React instance.
++    const moduleSource = await (await fetch('/src/main.tsx')).text();
++    const reactPath = moduleSource.match(/"([^"]+\/react\.js\?[^"]+)"/)![1];
++    const domPath = moduleSource.match(/"([^"]+\/react-dom_client\.js\?[^"]+)"/)![1];
++    const journeyPath = '/src/JourneyScreen.tsx';
++    const runtimePath = '/src/mobile/MobileRuntime.tsx';
++    const reactModule = await import(reactPath), domModule = await import(domPath);
++    const React = reactModule.default ?? reactModule, { createRoot } = domModule.default ?? domModule;
++    const { default: Journey } = await import(journeyPath), { MobileRuntime } = await import(runtimePath);
++    document.getElementById('root')!.style.display = 'none';
++    const host = document.createElement('div'); document.body.append(host);
++    const root = createRoot(host);
++    const Blank = () => null;
++    const Action = ({children, onClick}: any) => React.createElement('button', {onClick}, children);
++    const Note = ({children}: any) => React.createElement('p', null, children);
++    let setFixture: any;
++    function Fixture() {
++      const [state, setState] = React.useState({locale:'vi-VN', signedIn:true, userId:'fictional-a', checkinReadStatus:'loading', backendError:'', remoteCheckins:[], history:[], bodyStyle:'neutral', ...patch});
++      setFixture = (value: any) => setState((old: any) => ({...old, ...value}));
++      return React.createElement(MobileRuntime, null, React.createElement(Journey, {state, setState, update:setFixture, onStartNext:() => { (window as any).journeyNext = true; }, BodyMapComponent:Blank, BodyStylePickerComponent:Blank, RegionEditorComponent:Blank, ActionComponent:Action, DemoNoteComponent:Note}));
++    }
++    root.render(React.createElement(Fixture));
++    (window as any).patchJourney = (value: any) => setFixture(value);
++  }, patch);
++  await expect(page.locator('.mcy-journey-page')).toBeVisible();
++}
++async function patch(page: Page, value: Record<string, unknown>) { await page.evaluate(value => (window as any).patchJourney(value), value); }
++function entry(id: string, date: string, time = '08:00'): Snapshot {
++  return {id, date, time, day:0, kind:'Ghi riêng', status:'uncertain', observations:[], note:`fixture-${id}`};
++}
++const old = entry('old','2026-10-12');
++const latest = entry('latest','2026-10-13','12:00');
++const card = (page: Page) => page.locator('.mcy-snapshot-card');
++
++for (const records of [[old], [old,latest], [entry('morning','2026-10-13'),latest]]) {
++  test(`hydration opens latest of ${records.map(item => item.id).join(',')}`, async ({page}) => {
++    await mount(page);
++    await expect(page.getByRole('status')).toContainText('Đang tải bản ghi');
++    await expect(page.locator('.mcy-compare-toggle,.mcy-region-trend,.mcy-journey-empty')).toHaveCount(0);
++    await patch(page, {remoteCheckins:records, checkinReadStatus:'ready'});
++    await expect(card(page)).toContainText(`fixture-${records.at(-1)!.id}`);
++    await expect(card(page)).toContainText('Bạn đã chọn chưa rõ.');
++    await expect(page.getByRole('status')).toHaveCount(0);
++  });
++}
++
++test('an intentional record survives same-day and later-day hydration', async ({page}) => {
++  const morning = entry('morning','2026-10-13');
++  await mount(page,{remoteCheckins:[morning,latest], checkinReadStatus:'ready'});
++  await page.locator('.mcy-record-track button').first().click();
++  await expect(card(page)).toContainText('fixture-morning');
++  await patch(page,{remoteCheckins:[morning,latest,entry('evening','2026-10-13','18:00'),entry('next','2026-10-14')]});
++  await expect(card(page)).toContainText('fixture-morning');
++  await expect(page.locator('.mcy-record-track button').first()).toHaveAttribute('aria-pressed','true');
++});
++
++test('intentional blank date stays blank; Latest restores the latest snapshot', async ({page}) => {
++  await mount(page,{remoteCheckins:[old,latest],checkinReadStatus:'ready'},'pixel-10');
++  const blank = page.locator('.mcy-timeline-track button').filter({hasText:'Chưa ghi'}).last();
++  await blank.click();
++  const chosenDate = await page.locator('.mcy-timeline-track button[aria-pressed=true]').textContent();
++  await expect(card(page).locator('.mcy-snapshot-empty')).toBeVisible();
++  await patch(page,{remoteCheckins:[old,latest,entry('new','2026-10-13','18:00')]});
++  await expect(page.locator('.mcy-timeline-track button[aria-pressed=true]')).toHaveText(chosenDate!);
++  await expect(card(page).locator('.mcy-snapshot-empty')).toBeVisible();
++  await page.locator('.mcy-timeline-head button').click();
++  await expect(card(page)).toContainText('fixture-new');
++});
++
++test('account replacement resets selection and comparison before its records arrive', async ({page}) => {
++  await mount(page,{remoteCheckins:[old,latest],checkinReadStatus:'ready'});
++  await page.locator('.mcy-timeline-track button').filter({hasText:'Chưa ghi'}).last().click();
++  await page.locator('.mcy-compare-toggle').click();
++  await patch(page,{userId:'fictional-b',remoteCheckins:[],history:[],checkinReadStatus:'loading'});
++  await expect(page.getByRole('status')).toContainText('Đang tải bản ghi');
++  await expect(page.locator('.mcy-compare-card,.mcy-snapshot-card')).toHaveCount(0);
++  await patch(page,{remoteCheckins:[entry('b','2026-10-13')],checkinReadStatus:'ready'});
++  await expect(card(page)).toContainText('fixture-b');
++  await expect(page.locator('.mcy-compare-card')).toHaveCount(0);
++  await expect(page.getByText('fixture-latest')).toHaveCount(0);
++});
++
++for (const locale of ['vi-VN','en-US']) test(`empty ${locale} history shows only a useful next action; errors stay distinct`, async ({page}) => {
++  await mount(page,{locale,checkinReadStatus:'ready'},locale === 'en-US' ? 'pixel-10' : 'iphone');
++  await expect(page.locator('.mcy-journey-empty')).toBeVisible();
++  await expect(page.locator('.mcy-snapshot-card,.mcy-region-trend,.mcy-compare-toggle,.mcy-timeline-carousel')).toHaveCount(0);
++  await page.getByRole('button',{name:locale === 'en-US' ? 'Start another check-in' : 'Thử lần quay lại tiếp theo'}).click();
++  expect(await page.evaluate(() => (window as any).journeyNext)).toBe(true);
++  await patch(page,{checkinReadStatus:'error'});
++  await expect(page.getByRole('alert')).toBeVisible();
++  await expect(page.locator('.mcy-journey-empty')).toHaveCount(0);
++});
++
++
++
++test('choosing a date preserves its selected record when another record arrives', async ({page}) => {
++  await mount(page,{remoteCheckins:[old,latest],checkinReadStatus:'ready'});
++  const dateButton = page.locator('.mcy-timeline-track button').filter({has:page.locator('strong', {hasText:'12'})});
++  await dateButton.click();
++  await expect(card(page)).toContainText('fixture-old');
++  await patch(page,{remoteCheckins:[old,entry('new-old-day','2026-10-12','20:00'),latest]});
++  await expect(card(page)).toContainText('fixture-old');
++});
++
++test('session history retains its label and honest worse outcome', async ({page}) => {
++  await mount(page,{history:[{...old,outcome:'Khó chịu hơn'}],checkinReadStatus:'ready'});
++  await expect(card(page)).toContainText('BẢN GHI TRONG PHIÊN');
++  await expect(card(page)).toContainText('Khó chịu hơn');
++  await expect(page.locator('.mcy-compare-toggle')).toBeVisible();
++});

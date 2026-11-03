@@ -1,0 +1,477 @@
+{
+  "createdAt": "2026-10-16T05:16:28.679Z",
+  "status": "LOCAL_COMPLETE_AWAITING_INDEPENDENT_QC_AND_ROOT",
+  "risk": "R1: check-in presentation only, existing interactions and contracts retained",
+  "sourceFreezeSha256": "d4e0b80ec2074414f2630ca9ac28e7926a6c7a20a8d0c956026552acf7eb04ce",
+  "changes": [
+    {
+      "path": "src/prototype.css",
+      "baselineSha256": "856165bc65112bb46b9c4f0ee346820d5fe17607f4ecd4b0cc7fe97b8d5a340d",
+      "sha256": "390d1f2f58ae4cea1957243d41a2138420ab9241086a5d9dbf8d63f5c7216f6e"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "baselineSha256": "873111024377eb65ee55d229b9899d04acc798dca11c02924ab428cd6d39528c",
+      "sha256": "f25242eb356fbf7289bf6b67596599e2c84959533252d929a065864fee3ab781"
+    },
+    {
+      "path": "tests/learner-ux.spec.ts",
+      "baselineSha256": "8310820d8ffc64e3da1aee67cb7b4a9b367a0ea72b2822cc5271cce67ee4f0b9",
+      "sha256": "d1072606ba3c97a75e4c94b761885cac0ebd55a73398818fcd5defe0d3c681ea"
+    },
+    {
+      "path": "tests/ux-checkin-layout.spec.ts",
+      "baselineSha256": "4b75a9c2a457ced4710e6965e59f547267989aa4e178ebf33a8d6a028fed9ecd",
+      "sha256": "e76bd8af417182cac1f6b9f3f03e6417196237b3f3bf41253c039830182fc7e5"
+    }
+  ],
+  "patchSha256": "a5e8abfe207d29b21514c97ae6798001c7ab56a652db0feda2d853313f6ab56f",
+  "checks": [
+    {
+      "name": "runtime",
+      "command": "node scripts/check-mobile-runtime.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "catalogue",
+      "command": "node scripts/check-reviewed-practice-catalog.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "command": "node D:\\Projects\\MCY\\node_modules\\typescript\\bin\\tsc",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "command": "node D:\\Projects\\MCY\\node_modules\\vite\\bin\\vite.js build",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-prep",
+      "command": "node scripts/prepare-sites-build.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "bundle",
+      "command": "node scripts/check-client-bundle-secrets.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-isolation",
+      "command": "node --test tests/sites-worker.test.mjs tests/playwright-test-environment.test.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016",
+      "exitCode": 0
+    }
+  ],
+  "uiChecks": [
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-visual-2026-10-16/qa.playwright.config.mjs ux-checkin-layout.spec.ts learner-ux.spec.ts mobile-runtime.spec.ts ux-save-feedback.spec.ts --grep Visual hierarchy|Distinct body|Regional entries|English disclosure|Large text|review preserves check-in|full-body check-in|body-region contract|English learner flow|short portrait and landscape mobile|short second check-in|BottomSheet remains|keyboard and its attached|switching to Pixel|FlowStack pushes|save|permission|denied|retry",
+      "exitCode": 0,
+      "report": "regression-45-results.json",
+      "sha256": "961527e450e23ab0ea4ae615ac3ec4271312dd967c29afe4bb1c41d23db02eb5",
+      "stats": {
+        "startTime": "2026-10-16T04:48:59.965Z",
+        "duration": 123886.73199999999,
+        "expected": 45,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sourcePins": "regression-45-source-pins.json",
+      "note": "45 passed before the final narrow CSS/label-span refinements. Retained unchanged historical report; no45rerun. Final15 covers narrow/default and true2x text/keyboard cases. Fully mocked Owner fixture is not a live save."
+    },
+    {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/ux-step4-2-visual-2026-10-16/qa.playwright.config.mjs ux-checkin-layout.spec.ts",
+      "exitCode": 0,
+      "report": "ui-results.json",
+      "sha256": "e0d81e8fddcbb5ebd92883591c5285f6267c3d9c06647c5db9841715baca1668",
+      "stats": {
+        "startTime": "2026-10-16T05:15:33.396Z",
+        "duration": 46474.006,
+        "expected": 15,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "note": "Final15/15: default320+360fullbuttonrect+6pxfocusclearance,7viewports,4bodyoutcomes,regionalretention/laterality/confirmclear,Englishpreview,actual28pxVI/ENtext-range bounds on both selected states and keyboard. No truncated labels or horizontal overflow."
+    },
+    {
+      "command": "node analyse/ux-step4-2-visual-2026-10-16/capture-details.mjs",
+      "exitCode": 0,
+      "report": "detail-captures.json",
+      "sha256": "613ef68c320a54f34660f4edba8ef2c4f98bd811ca3517b7b06a49e14d85357c",
+      "note": "4 controls: compact expanded entry/group selector, neutral+masculine current preference on map and entry, settled clear confirmation. These390px detail captures came from pre-QC source; subsequent CSS refinement is limited to<=360px, no390px style change."
+    },
+    {
+      "command": "node analyse/ux-step4-2-visual-2026-10-16/clearance-probe.mjs",
+      "exitCode": 0,
+      "report": "clearance-probe.json",
+      "sha256": "75384d0bbb0d7a47b4897acc9c3ab1e31f47189674ac0198aa5ec38375d80618",
+      "result": {
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "leadMarginBottom": "4px",
+        "quickMarginTop": "4px",
+        "footerTop": 392,
+        "choices": [
+          {
+            "label": "Không thấy khó chịu",
+            "top": 323,
+            "bottom": 382.1875,
+            "height": 59.1875,
+            "focusRingExtent": 388.1875,
+            "gapToFooter": 9.8125
+          },
+          {
+            "label": "Chưa xác định",
+            "top": 323,
+            "bottom": 382.1875,
+            "height": 59.1875,
+            "focusRingExtent": 388.1875,
+            "gapToFooter": 9.8125
+          }
+        ]
+      }
+    },
+    {
+      "command": "node analyse/ux-step4-2-visual-2026-10-16/text-reflow-probe.mjs",
+      "exitCode": 0,
+      "report": "text-reflow-probe.json",
+      "sha256": "e9dc3d3ddd2ddb976012fb2ab0a502617c94766137f7bd02e6a581aed68be074",
+      "result": {
+        "status": "PASS",
+        "results": [
+          {
+            "locale": "vi-VN",
+            "metrics": [
+              {
+                "label": "Không thấy khó chịu",
+                "fontSize": "28px",
+                "clientWidth": 284,
+                "scrollWidth": 284,
+                "height": 59.1875,
+                "top": 166.5,
+                "bottom": 225.6875,
+                "left": 17,
+                "right": 303,
+                "lines": [
+                  {
+                    "left": 44,
+                    "right": 295.953125,
+                    "width": 251.953125
+                  }
+                ]
+              },
+              {
+                "label": "Chưa xác định",
+                "fontSize": "28px",
+                "clientWidth": 284,
+                "scrollWidth": 284,
+                "height": 59.1875,
+                "top": 233.6875,
+                "bottom": 292.875,
+                "left": 17,
+                "right": 303,
+                "lines": [
+                  {
+                    "left": 50,
+                    "right": 230.140625,
+                    "width": 180.140625
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "locale": "en-US",
+            "metrics": [
+              {
+                "label": "No discomfort now",
+                "fontSize": "28px",
+                "clientWidth": 284,
+                "scrollWidth": 284,
+                "height": 59.1875,
+                "top": 166.5,
+                "bottom": 225.6875,
+                "left": 17,
+                "right": 303,
+                "lines": [
+                  {
+                    "left": 44,
+                    "right": 283.578125,
+                    "width": 239.578125
+                  }
+                ]
+              },
+              {
+                "label": "Not sure",
+                "fontSize": "28px",
+                "clientWidth": 284,
+                "scrollWidth": 284,
+                "height": 59.1875,
+                "top": 233.6875,
+                "bottom": 292.875,
+                "left": 17,
+                "right": 303,
+                "lines": [
+                  {
+                    "left": 50,
+                    "right": 157.1875,
+                    "width": 107.1875
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "note": "Ordinary wheel scrolling then keyboard selection; both full28pxlabels visible in button bounds. Adaptive fullwidth rows keep complete words."
+    },
+    {
+      "command": "node analyse/ux-step4-2-visual-2026-10-16/clearance-probe.mjs 360",
+      "exitCode": 0,
+      "report": "clearance-probe-360.json",
+      "sha256": "46e2d61c53f25d36a8c2bb89ace68583d151be7cc1c7e845210306c2cfe41596",
+      "result": {
+        "viewport": {
+          "width": 360,
+          "height": 640
+        },
+        "leadMarginBottom": "4px",
+        "quickMarginTop": "4px",
+        "footerTop": 464,
+        "choices": [
+          {
+            "label": "Không thấy khó chịu",
+            "top": 323,
+            "bottom": 367,
+            "height": 44,
+            "focusRingExtent": 373,
+            "gapToFooter": 97
+          },
+          {
+            "label": "Chưa xác định",
+            "top": 323,
+            "bottom": 367,
+            "height": 44,
+            "focusRingExtent": 373,
+            "gapToFooter": 97
+          }
+        ]
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "checkin-clearance-320.png",
+      "sha256": "9920cc1690f84ad21dc58a66c773a6ce82325c97c2385e1af1a8f7477487159f"
+    },
+    {
+      "path": "checkin-clearance-360.png",
+      "sha256": "e0aba51f8cde6a436c500a0e1e28826559161e7066da3934d039a28d79a17ff0"
+    },
+    {
+      "path": "checkin-confirm-settled.png",
+      "sha256": "3b32f36121deb67e8e81b4e25b45dfe0166651184e68b3f021fa7320ca3ec43e"
+    },
+    {
+      "path": "checkin-expanded-entry.png",
+      "sha256": "3350d45526446876cfb448704bf7791a3ef3c57cd8c8c6c57709259fe9943821"
+    },
+    {
+      "path": "checkin-expanded-final-320.png",
+      "sha256": "30e05f140e181bb167edd1e44f8f8e63049b712af8350a4029caccff56c7a02d"
+    },
+    {
+      "path": "checkin-expanded-final-360.png",
+      "sha256": "140bcfe94fbe2c7d909074ecb92329b27e392d58bffa02152eb541afd45fd588"
+    },
+    {
+      "path": "checkin-expanded-final-390.png",
+      "sha256": "ae1ff2d527a4e447baad306ce7b524ff1e550a3904f39bdadfe12038feb5b55f"
+    },
+    {
+      "path": "checkin-expanded-final-iphone.png",
+      "sha256": "3c41928cf71244b5247d710746c59208ddd55b61d3c284fda18f532e2ccdb9da"
+    },
+    {
+      "path": "checkin-expanded-final-landscape.png",
+      "sha256": "b907a7b7298eca6524bf7fcbcfb1afa590bdfaaa6fb303965d227f7a809c1b7a"
+    },
+    {
+      "path": "checkin-expanded-final-pixel.png",
+      "sha256": "2524b08178aecb79883cf0d0443bce5419c0cf73df20ecb22fedabd45221aafb"
+    },
+    {
+      "path": "checkin-expanded-final-short.png",
+      "sha256": "3f0c6483bc57a301623d129d8e84ccb76b06c270c7301a6caeb8ce962407d8ac"
+    },
+    {
+      "path": "checkin-large-false.png",
+      "sha256": "88418b40ef4df2f76ef05f7eea7b251e719997fbb2c7f9d16579188b6a8dc53e"
+    },
+    {
+      "path": "checkin-large-true.png",
+      "sha256": "5f28347933ad2bd09612d0a8d64c52fa43515d6234510238df135be8ea81ba6a"
+    },
+    {
+      "path": "checkin-map-final-320.png",
+      "sha256": "59639163d0d901dea62aa5da6cca9a51358b299ce9ec766de6b56b9933eb37e2"
+    },
+    {
+      "path": "checkin-map-final-360.png",
+      "sha256": "140bcfe94fbe2c7d909074ecb92329b27e392d58bffa02152eb541afd45fd588"
+    },
+    {
+      "path": "checkin-map-final-390.png",
+      "sha256": "ae1ff2d527a4e447baad306ce7b524ff1e550a3904f39bdadfe12038feb5b55f"
+    },
+    {
+      "path": "checkin-map-final-iphone.png",
+      "sha256": "b59c393f2ff48f4177a80129d6ab9bac2c66ceae5741abb10cd21c687c0dfe63"
+    },
+    {
+      "path": "checkin-map-final-landscape.png",
+      "sha256": "def78f9751522cb48ffcf03ec830cfff23d8ed8f51cd9907439fba852acc7bd9"
+    },
+    {
+      "path": "checkin-map-final-pixel.png",
+      "sha256": "37eef3cdc5f5c169ca7d7e2e2cb20eafcf2d3343448c15ad0ed60a384072fc40"
+    },
+    {
+      "path": "checkin-map-final-short.png",
+      "sha256": "782e570cfdd098801fc1711edffef955968f2ce0632874bbfe46b8e8b021803a"
+    },
+    {
+      "path": "checkin-quick-final-320.png",
+      "sha256": "9920cc1690f84ad21dc58a66c773a6ce82325c97c2385e1af1a8f7477487159f"
+    },
+    {
+      "path": "checkin-quick-final-360.png",
+      "sha256": "e0aba51f8cde6a436c500a0e1e28826559161e7066da3934d039a28d79a17ff0"
+    },
+    {
+      "path": "checkin-quick-final-390.png",
+      "sha256": "55a241fcac077acb65ac93936d9cb82e821a4d98c5b7a30602261e92425b7256"
+    },
+    {
+      "path": "checkin-quick-final-iphone.png",
+      "sha256": "feacf32274adf5a89817cd0d90089f1105cd7124dfb55c84a647af0a217bcec2"
+    },
+    {
+      "path": "checkin-quick-final-landscape.png",
+      "sha256": "826b42bb0c0fded7f8bd61280dc71b4181de4605dca82943429c8cbe3799f504"
+    },
+    {
+      "path": "checkin-quick-final-pixel.png",
+      "sha256": "bf4a0079bc9c1cd3c4f40891fb8cf8981dabd25a768051bf38d6f5a83befde63"
+    },
+    {
+      "path": "checkin-quick-final-short.png",
+      "sha256": "b2a41c57567c7d7f6bb3b2602d6b2d120bb99baef12acda02f01b3164649fdb7"
+    },
+    {
+      "path": "checkin-true2x-false.png",
+      "sha256": "af89d7a640277baff9c6aeac18737e31b86d3074e08b2cfbebec7cf118bdbb49"
+    },
+    {
+      "path": "checkin-true2x-true.png",
+      "sha256": "972904f5f29b399b8bfadb7418a1fe4b1d68c5abfe3c295f16333ca293df2921"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/client/index.html",
+      "sha256": "237bcbcc6791d7978c0ddcaa2f286d3446011bfbc36f8b4325225de98d532a1d"
+    },
+    {
+      "path": "dist/server/index.js",
+      "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389"
+    },
+    {
+      "path": "dist/.openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    },
+    {
+      "path": ".openai/hosting.json",
+      "sha256": "2b3c4e26be5ae18c6cc3381121728443b8979d097a29ba768c33c4755fb0a981"
+    }
+  ],
+  "intermediateFailures": [
+    {
+      "report": "focused-initial-results.json",
+      "sha256": "5c1cf6ecfaa7167427c1a18ec188b29e0a9c0a5f64917fe5afb8a2654cad337c",
+      "exitCode": 1,
+      "result": "12PASS/3FAIL. Dynamic disclosure locator included Open label then could not match Close state; changed to stable semantic heading. CSS-generated checkmark polluted exact accessible button name; replaced with shape-only radio dot. Final45 and15 pass."
+    },
+    "Sandboxed Edge startup failed; host exporter initially could not connect to sandbox loopback. Final browser fixture and local server run together on host. No screenshot from failed invocations accepted.",
+    "Initial320 screenshot had second quiet option below footer; final <=360 two-column row keeps14px text/44px targets and both options above footer. Final15 rerun and final screenshot pass.",
+    "checkin-confirm.png from normal test may capture entrance transition and is excluded; use checkin-confirm-settled.png.",
+    {
+      "report": "clearance-first-attempt.json",
+      "sha256": "4f118bb9c6ba887c522853656c65d84db37dfbddea775317e11aff284551775d",
+      "exitCode": 1,
+      "result": "First spacing fix hit collapsed paragraph margin; fullbutton+ring guard failed. Attempt intentionally interrupted after10PASS/1FAIL, not a completed15case run. Error context retained. Final two narrow margins4px give9.8125pxbutton gap and3.8125pxring clearance."
+    }
+  ],
+  "selfView": [
+    "early360/390 reviewed before broad checks",
+    "final320/360 quick and390fullmap reviewed; final320 both quiet options visible",
+    "expanded-entry and settled-confirmation captured separately"
+  ],
+  "limitations": [
+    "Only local browser with fictional .invalid fixtures; no physical Android/iOS acceptance",
+    "Actual28px(2x14px) tests cover changed quiet labels/entry copy; not complete browser200%zoom/WCAG/screen-reader acceptance.",
+    "English remains partial internal preview",
+    "Vite chunk>500kB warning retained",
+    "No root integration, native install, backend/Auth/SQL/email/live-data change, deployment, inference, or4.3 work",
+    "45 historical regression passes precede final narrow CSS/local labelspan refinements; final15focused checks passed afterward, with true2x text-range assertions."
+  ],
+  "effects": {
+    "rootAppEdit": false,
+    "oldCandidateEdit": false,
+    "protectedRuntimeEdit": false,
+    "integration": false,
+    "backend": false,
+    "native": false,
+    "email": false,
+    "aiInference": false,
+    "deploy": false
+  },
+  "preview": {
+    "url": "http://127.0.0.1:4190/?mode=web",
+    "sessionId": 53370,
+    "pid": 15776
+  },
+  "preQcArchive": {
+    "manifest": "PRE-QC-ARCHIVE.json",
+    "sha256": "21333c9b2168eef0369eaaa6835ad26e4210be90fbcbeafc0e908d3911b3a2f4",
+    "note": "65 archived files preserve pre-QC source/freeze/evidence/patch/reports/screenshots/checks/logs/built artifacts with original-to-archive hash mapping. QC-owned files excluded."
+  },
+  "refinementAfterIndependentQc": {
+    "initialFinding": "At320x568 pre-QC button bottom394.1875 vsfooter392: bottom2.1875pxcovered; textvisible/exposedtarget57px. P3 polish finding.",
+    "change": "Only<=360px step1 lead margin-bottom4px and quickchoices margin-top4px; font14px, targetsize and art unchanged.",
+    "result": "Settled buttonbottom382.1875/footer392, full6pxfocus-ring extent388.1875; final15/15 and finalrequiredchecks exit0.",
+    "oldFreezeSha256": "067524d20fdea83e729b6fd3fc56f7101572262cd199cf525e990a92a82ae233"
+  },
+  "preTextFixArchive": {
+    "manifest": "PRE-TEXT-FIX-ARCHIVE.json",
+    "sha256": "5313e30bd152b55a1ae767fb45dae230a442b6978a62e6f86e24b2883943cff2",
+    "note": "73 archived files preserve previous final source/evidence/reports/images/checks/artifacts before this bounded text reflow fix; QC/root-owned files excluded."
+  },
+  "refinementAfterIndependentQcText": {
+    "finding": "QC actual2xEN28px label No discomfort now overflowed client152/scroll163 and overlapped selected Not sure; initial20pxstress was not actual2x.",
+    "change": "Only localquietchoice label spans with min-width0/overflow-wrap:anywhere and narrowflex-wrap with7.5em perbutton basis. At14px default retains compactrow; at28px stacks fullwidth. No fontshrink/truncation/globalChoice/handler/region/Step2 change.",
+    "proof": "Actual2xVI/EN eachbuttonclient=scroll284,height59.1875,text ranges insidebutton; default320 gap9.8125/ringclear3.8125; default360 gap97/ringclear91. Final15withtrue2x asserts+requiredchecks exit0.",
+    "intermediate": "Span-only fallback passed bounds but split discomfort; its text-first-wrap-* images/report retained as intermediate and excluded from final screenshot set. Adaptive stacking chosen before final suite."
+  }
+}
