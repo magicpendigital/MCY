@@ -1,5 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2.117.2";
-import { readAiGatewayModels } from "../_shared/aiGateway.ts";
+import { readOpenRouterModels } from "../_shared/openRouter.ts";
 import { readBoundedJson, RequestBodyTimeoutError, RequestBodyTooLargeError } from "../_shared/boundedRequest.ts";
 import {
   createOwnerControlPlaneHandler,
@@ -27,7 +27,7 @@ function clients(authorization: string): OwnerControlPlaneClients {
 Deno.serve(createOwnerControlPlaneHandler({
   env: name => Deno.env.get(name),
   clients,
-  readModels: readAiGatewayModels,
+  readModels: readOpenRouterModels,
   readJson: readBoundedJson,
   isBodyTooLarge: error => error instanceof RequestBodyTooLargeError,
   isBodyTimeout: error => error instanceof RequestBodyTimeoutError,

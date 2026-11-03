@@ -86,20 +86,28 @@ export function createOwnerControlPlaneHandler(dependencies: OwnerControlPlaneDe
       if (payload.action === "read_ai") {
         const { data: config, error } = await server.rpc("mcy_ai_get_owner_config", { p_actor_id: identity.user.id });
         if (error || !config) return json(403, { error: "owner_access_required" });
-        const gatewayKey = dependencies.env("AI_GATEWAY_API_KEY");
+        const providerKey = dependencies.env("OPENROUTER_API_KEY");
         const spendControlApproved = dependencies.env("MCY_AI_SPEND_CONTROL_APPROVED") === "true";
         const enableGateOpen = aiSpendGateOpen({
           supabaseUrl: dependencies.env("SUPABASE_URL"),
           stagingEnabled: dependencies.env("MCY_AI_ENABLE_STAGING"),
           spendControlApproved: dependencies.env("MCY_AI_SPEND_CONTROL_APPROVED"),
-          gatewayApiKey: gatewayKey,
+          providerApiKey: providerKey,
         });
-        const models = enableGateOpen && gatewayKey ? await dependencies.readModels(gatewayKey).catch(() => null) : null;
+        // Owner catalogue readiness is a read, independent of inference admission.
+        // Keep the DB switch, spend gate and learner cohort closed while choosing.
+        const providerModels = dependencies.env("SUPABASE_URL")?.replace(/\/$/, "") === "https://mhumbczqrzutdnraafhs.supabase.co" && providerKey
+          ? await dependencies.readModels(providerKey).catch(() => null) : null;
+        // Applied Owner RPC cannot persist ':' variants; do not offer them.
+        const models = providerModels?.filter(model => /^[a-z0-9][a-z0-9._/-]{1,200}$/.test(model.id)) ?? null;
         return json(200, {
           config,
           models,
           modelCatalogAvailable: Array.isArray(models),
-          gatewayKeyConfigured: Boolean(gatewayKey),
+          provider: "openrouter",
+          providerKeyConfigured: Boolean(providerKey?.trim()),
+          // Older AI-off clients may still read this field; never imply a Gateway key is configured.
+          gatewayKeyConfigured: false,
           spendControlApproved,
           enableGateOpen,
           environment: "staging",
@@ -122,7 +130,7 @@ export function createOwnerControlPlaneHandler(dependencies: OwnerControlPlaneDe
           supabaseUrl: dependencies.env("SUPABASE_URL"),
           stagingEnabled: dependencies.env("MCY_AI_ENABLE_STAGING"),
           spendControlApproved: dependencies.env("MCY_AI_SPEND_CONTROL_APPROVED"),
-          gatewayApiKey: dependencies.env("AI_GATEWAY_API_KEY"),
+          providerApiKey: dependencies.env("OPENROUTER_API_KEY"),
         })) {
           return json(409, { error: "ai_staging_gate_closed" });
         }
@@ -134,7 +142,7 @@ export function createOwnerControlPlaneHandler(dependencies: OwnerControlPlaneDe
           }
           let availableModels: Array<{ id: string }>;
           try {
-            availableModels = await dependencies.readModels(dependencies.env("AI_GATEWAY_API_KEY") ?? "");
+            availableModels = await dependencies.readModels(dependencies.env("OPENROUTER_API_KEY") ?? "");
           } catch {
             return json(503, { error: "model_catalog_unavailable" });
           }
@@ -154,8 +162,15 @@ export function createOwnerControlPlaneHandler(dependencies: OwnerControlPlaneDe
           p_global_daily_limit: config.global_daily_limit,
         });
         if (error || !saved) {
-          if (error?.message?.includes("changed; reload")) return json(409, { error: "configuration_conflict" });
-          if (error?.message?.includes("Owner role")) return json(403, { error: "owner_access_required" });
+          // A real serialization failure is infrastructure, not a business conflict.
+          // Never retry here or infer a 409 from its potentially overlapping message.
+          if (error?.code === "40001") return json(503, { error: "owner_service_unavailable" });
+          if (error?.code === "PT409" || (!error?.code && error?.message?.includes("changed; reload"))) {
+            return json(409, { error: "configuration_conflict" });
+          }
+          if (error?.code === "42501" || (!error?.code && error?.message?.includes("Owner role"))) {
+            return json(403, { error: "owner_access_required" });
+          }
           return json(400, { error: "configuration_rejected" });
         }
         return json(200, { config: saved });

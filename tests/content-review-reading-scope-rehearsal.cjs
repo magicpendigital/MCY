@@ -31,7 +31,7 @@ const identity = (db, id) => db.exec(`set role authenticated; set request.jwt.cl
 const consent = (db, purpose, action = 'granted', version = purpose === 'wellbeing_data' ? 'wellbeing-data-review-0.1' : `${purpose}-review-0.1`) => db.query('select public.record_my_consent($1,$2,$3,$4,$5,$6)', [purpose, action, version, 'settings', crypto.randomUUID(), 'web']);
 const save = (db, key, status = 'none_now', observations = [], expected = A) => one(db, `select * from public.save_my_checkin_for_current_user_with_current_consent($1::uuid,'2026-10-11','Asia/Bangkok',2::smallint,$2,'standalone',$3::jsonb,$4)`, [expected, status, JSON.stringify(observations), key]);
 const denied = (fn, code) => assert.rejects(fn, error => error.code === code);
-const mine = '20261023171220_content_review_reading_scope.sql';
+const mine = '20261030063241_content_review_reading_scope.sql';
 const chain = [...applied, candidate];
 const hex = c => c.repeat(64);
 const readingMeta = { id: 'reading-cobra', scope: 'learning_reading', title: 'Fictional reading unit', version: hex('a') };

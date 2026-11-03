@@ -19,9 +19,14 @@ import {
   PersonIcon, PlayIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
-import { authRedirectUrl, backendConfigured, clientChannel, getSupabaseClient, hasStoredAuthSession, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
-import { NATIVE_AUTH_PENDING_KEY, nativeAuthCodeFromCallback, rememberNativeAuthUrl } from "./backend/nativeAuth";
+import { authRedirectUrl, backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, hasStoredAuthSession, shouldInitializeAuthForCurrentLaunch, syncAuthEmailLocale } from "./backend/supabase";
+import { normalizeEmailLocale, readEmailLocale, rememberEmailLocale } from "./backend/emailLocale";
+import { EmailLanguageSelect } from "./backend/EmailLanguageSelect";
 import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage, passwordSignInMessage } from "./backend/passwordAuth";
+import { learnerSessionGeneration, observeLearnerSession } from "./backend/learnerSession";
+import { persistConsentChoices } from "./backend/consentPersistence";
+import { NATIVE_AUTH_PENDING_KEY, nativeAuthCodeFromCallback, rememberNativeAuthUrl } from "./backend/nativeAuth";
+import { isWebAuthCallback } from "./backend/authRouting";
 import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, decodeBodyRegionCode, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
 import {
   deleteLearnerCheckin,
@@ -43,6 +48,8 @@ import {
   type LearnerObservation,
 } from "./backend/learnerData";
 import type { FreeCourseId } from "./courses/freeCourses";
+import type { PracticeContext } from "../supabase/functions/_shared/practiceContract";
+import { rememberedPace } from "./practice/feedbackMemory";
 
 type Energy = "Rất thấp" | "Thấp" | "Bình thường" | "Khá ổn" | "Tràn đầy";
 export type BodyStyle = "neutral" | "feminine" | "masculine";
@@ -81,6 +88,7 @@ export type DemoState = {
   aiConversation: DialogueMessage[];
   aiPending: boolean;
   aiError: string;
+  aiCapability: "checking" | "ready" | "disabled" | "not_ready";
   selectedCourseId: FreeCourseId | null;
   selectedLessonId: string | null;
   checkinBaselineReady: boolean;
@@ -102,6 +110,7 @@ export type DemoState = {
   remoteCheckins: Snapshot[];
   currentRemoteCheckinId: string | null;
   pendingCheckinIdempotencyKey: string | null;
+  pendingCheckinPayload?: CheckinPayload | null;
   accountEmail: string;
   authReturnTo: string;
   authMode: "create" | "login";
@@ -126,6 +135,7 @@ const initialState: DemoState = {
   locale: "vi-VN", checkinStep: 1,
   minutes: 10, energy: null, regions: [], bodyStyle: "feminine", bodyStatus: null, preObservations: [], postObservations: [], postBodyStatus: null, intent: "Bắt nhịp",
   dialogueChoice: null, dialogueText: "", unrecognizedText: "", aiConversation: [], aiPending: false, aiError: "",
+  aiCapability: "disabled",
   outcome: null, pace: null, note: "",
   selectedCourseId: null,
   selectedLessonId: null,
@@ -145,10 +155,13 @@ const DemoContext = createContext<{ state: DemoState; setState: Dispatch<SetStat
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
 const CourseDetailScreen = lazy(() => import("./courses/CourseDetailScreen"));
-const ReadingPreviewScreen = lazy(() => import("./library/ReadingPreviewScreen"));
 const DiscoverScreen = lazy(() => import("./courses/DiscoverScreen"));
 const LazyJourneyScreen = lazy(() => import("./JourneyScreen"));
+const PracticeFlowScreen = lazy(() => import("./practice/PracticeFlowScreen"));
+const ReadingPreviewScreen = lazy(() => import("./library/ReadingPreviewScreen"));
 const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
+const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
+const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
 
 function useDemo() {
   const context = useContext(DemoContext);
@@ -156,9 +169,23 @@ function useDemo() {
   const update = (patch: Partial<DemoState>) => context.setState(previous => ({ ...previous, ...patch }));
   return { ...context, update };
 }
+function useLearnerContinuation() {
+  const { state } = useDemo();
+  const flow = useFlow();
+  const latest = useRef(state); latest.current = state;
+  const route = useRef({ key: flow.current.key, generation: 0 });
+  if (route.current.key !== flow.current.key) route.current = { key: flow.current.key, generation: route.current.generation + 1 };
+  const mounted = useRef(true);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
+  return () => {
+    const expected = latest.current, generation = learnerSessionGeneration(), routeGeneration = route.current.generation;
+    return (value = latest.current) => mounted.current && generation === learnerSessionGeneration()
+      && routeGeneration === route.current.generation
+      && value.userId === expected.userId && value.signedIn === expected.signedIn;
+  };
+}
 function latestFeedback(state: DemoState) {
-  const previous = [...state.history].reverse().find(item => item.kind === "Sau tập");
-  return state.saveFeedbackConsent && state.rememberPace && state.usePreviousFeedback && previous?.outcome !== "Khó chịu hơn" && !previous?.endedEarly ? previous : undefined;
+  return rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace && state.usePreviousFeedback);
 }
 function clearAccountScopedState(previous: DemoState): DemoState {
   return {
@@ -182,6 +209,7 @@ function clearAccountScopedState(previous: DemoState): DemoState {
     aiConversation: [],
     aiPending: false,
     aiError: "",
+    aiCapability: "disabled",
     selectedCourseId: null,
     selectedLessonId: null,
     checkinBaselineReady: false,
@@ -209,6 +237,7 @@ function clearAccountScopedState(previous: DemoState): DemoState {
     remoteCheckins: [],
     currentRemoteCheckinId: null,
     pendingCheckinIdempotencyKey: null,
+    pendingCheckinPayload: null,
     backendError: "",
     lastReflection: null,
   };
@@ -318,38 +347,26 @@ function consentStateForDemo(state: DemoState): ConsentState {
     marketing: state.marketingConsent,
   };
 }
-async function persistConsentChanges(
-  state: DemoState,
-  source: "onboarding" | "settings",
-): Promise<{ consents: ConsentState; policyVersions: ConsentPolicyVersions }> {
-  const client = state.userId ? await getSupabaseClient() : null;
-  if (!client || !state.userId) return { consents: state.consentBaseline, policyVersions: state.consentPolicyVersions };
-  const next = consentStateForDemo(state);
-  const events = (Object.keys(next) as ConsentPurpose[]).filter(purpose => {
-    const currentPolicyVersion = CONSENT_POLICY_VERSIONS[purpose];
-    const needsReacceptance = state.consentPolicyVersions[purpose] !== currentPolicyVersion
-      && next[purpose];
-    return next[purpose] !== state.consentBaseline[purpose] || needsReacceptance;
-  });
-  await Promise.all(events.map(purpose => saveConsentEvent(
-    client,
-    purpose,
-    next[purpose],
-    CONSENT_POLICY_VERSIONS[purpose],
-    source,
-    crypto.randomUUID(),
-    clientChannel(),
-  )));
-  const policyVersions = { ...state.consentPolicyVersions };
-  for (const purpose of events) {
-    policyVersions[purpose] = CONSENT_POLICY_VERSIONS[purpose];
+async function persistConsentChanges(state: DemoState, source: "onboarding" | "settings", retryKeys: Map<string,string>) {
+  // The development-only layout preview has no Auth identity or database writes.
+  if (import.meta.env.DEV && !state.userId && new URLSearchParams(window.location.search).get("review-screen") === "consent") {
+    return { consents: consentStateForDemo(state), policyVersions: state.consentPolicyVersions, matchesRequested: true, hasUnsettledWrites: false };
   }
-  return { consents: next, policyVersions };
+  if (!state.userId) throw new Error("account_changed");
+  const generation = learnerSessionGeneration();
+  const client = await getAccountBoundSupabaseClient(state.userId);
+  return persistConsentChoices(client, state.userId, consentStateForDemo(state), source, retryKeys, clientChannel(), () => generation === learnerSessionGeneration());
 }
 async function persistProfile(state: DemoState, displayName: string, bodyStyle: BodyStyle, locale: AppLocale = state.locale) {
   if (!state.userId) return;
-  const client = await getSupabaseClient();
-  if (!client) return;
+  const generation = learnerSessionGeneration();
+  const shared = await getSupabaseClient();
+  if (!shared) return;
+  const { data: auth } = await shared.auth.getSession();
+  if (auth.session?.user.id !== state.userId) throw new Error("account_changed");
+  const session = auth.session;
+  const client = await getAccountBoundSupabaseClient(state.userId);
+  if (generation !== learnerSessionGeneration()) return false;
   const { error } = await client.from("profiles").upsert({
     user_id: state.userId,
     display_name: displayName.trim() || null,
@@ -358,6 +375,12 @@ async function persistProfile(state: DemoState, displayName: string, bodyStyle: 
     body_display_preference: bodyStyle,
   }, { onConflict: "user_id" });
   if (error) throw new Error(error.message);
+  if (generation !== learnerSessionGeneration()) return false;
+  const emailLocale = Capacitor.isNativePlatform()
+    ? normalizeEmailLocale(session.user.user_metadata.locale) ?? locale
+    : locale !== state.locale ? locale : readEmailLocale(state.locale);
+  rememberEmailLocale(emailLocale);
+  return syncAuthEmailLocale(session, emailLocale);
 }
 function toLearnerCheckinPayload(state: DemoState, captureType: CheckinPayload["captureType"], idempotencyKey: string): CheckinPayload {
   const observations: CheckinPayload["observations"] = [];
@@ -388,19 +411,21 @@ async function persistCurrentCheckin(
   state: DemoState,
   setState: Dispatch<SetStateAction<DemoState>>,
   captureType: CheckinPayload["captureType"],
+  canDispatch: () => boolean,
 ) {
-  if (!state.signedIn || !state.userId || !state.saveFeedbackConsent) return null;
+  if (!canDispatch() || !state.signedIn || !state.userId || !state.saveFeedbackConsent) return null;
   const expectedUserId = state.userId;
-  const client = await getSupabaseClient();
-  if (!client) return null;
-  const { data: authData, error: authError } = await client.auth.getUser();
-  if (authError || authData.user?.id !== expectedUserId) return null;
-  const idempotencyKey = state.pendingCheckinIdempotencyKey ?? crypto.randomUUID();
-  setState(previous => isCurrentLearnerSession(previous.signedIn, previous.userId, expectedUserId)
-    ? { ...previous, pendingCheckinIdempotencyKey: idempotencyKey, backendStatus: "loading", backendError: "" }
+  const generation = learnerSessionGeneration();
+  const client = await getAccountBoundSupabaseClient(expectedUserId);
+  if (generation !== learnerSessionGeneration() || !canDispatch()) return null;
+  const payload = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, captureType, state.pendingCheckinIdempotencyKey ?? crypto.randomUUID());
+  const idempotencyKey = payload.idempotencyKey;
+  const current = (previous: DemoState) => generation === learnerSessionGeneration() && isCurrentLearnerSession(previous.signedIn, previous.userId, expectedUserId);
+  setState(previous => current(previous)
+    ? { ...previous, pendingCheckinIdempotencyKey: idempotencyKey, pendingCheckinPayload: payload, backendStatus: "loading", backendError: "" }
     : previous);
-  const payload = toLearnerCheckinPayload(state, captureType, idempotencyKey);
   const saved = await saveLearnerCheckin(client, payload, expectedUserId);
+  if (generation !== learnerSessionGeneration()) return null;
   const row: LearnerCheckin = {
     id: saved.checkin_id,
     user_id: state.userId,
@@ -408,8 +433,8 @@ async function persistCurrentCheckin(
     local_timezone: payload.timezone,
     energy_level: payload.energyLevel,
     overall_note: null,
-    body_status: state.bodyStatus,
-    capture_type: captureType,
+    body_status: payload.bodyStatus,
+    capture_type: payload.captureType,
     idempotency_key: idempotencyKey,
     created_at: saved.created_at,
     updated_at: saved.created_at,
@@ -425,13 +450,13 @@ async function persistCurrentCheckin(
     created_at: saved.created_at,
     updated_at: saved.created_at,
   })));
-  setState(previous => isCurrentLearnerSession(previous.signedIn, previous.userId, expectedUserId)
+  setState(previous => current(previous)
     ? {
         ...previous,
         remoteCheckins: [...previous.remoteCheckins.filter(item => item.remoteId !== saved.checkin_id), snapshot],
-        currentRemoteCheckinId: saved.checkin_id,
-        pendingCheckinIdempotencyKey: null,
-        backendStatus: "ready",
+        ...(previous.pendingCheckinIdempotencyKey === idempotencyKey ? {
+          currentRemoteCheckinId: saved.checkin_id, pendingCheckinIdempotencyKey: null, pendingCheckinPayload: null, backendStatus: "ready" as const,
+        } : {}),
         backendError: "",
       }
     : previous);
@@ -522,7 +547,7 @@ function Header({ title, back = false }: { title?: string; back?: boolean }) {
   const flow = useFlow();
   const { state } = useDemo();
   const locale = state.locale;
-  const localizedTitle = locale === "en-US"
+  const localizedTitle = title === "AI và điều được nhớ" && state.aiCapability !== "ready" ? "Điều được nhớ" : locale === "en-US"
     ? ({ "Check-in hôm nay": "Today's check-in", "Phản hồi của bạn": "Your reflection" } as Record<string, string>)[title ?? ""] ?? title
     : title;
   useLayoutEffect(() => {
@@ -551,8 +576,7 @@ function authErrorMessage(cause: unknown, fallback: string) {
 }
 
 type HelpArticleId = "body-map" | "pause-video" | "journey-record" | "ai-scope";
-const AI_OFF_PRIVACY_DETAIL = "AI inference đang tắt trong staging; tin nhắn không được gửi tới nhà cung cấp mô hình khi tính năng tắt. Việc mở sau này cần qua các gate, có đồng ý riêng và chỉ dùng dữ liệu tối thiểu của lượt hiện tại; không gửi hội thoại trước đó, tên/email hay ghi chú lịch sử. AI không chẩn đoán.";
-const AI_INFERENCE_AVAILABLE_FOR_LEARNERS = false;
+const AI_OFF_PRIVACY_DETAIL = "Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng và bạn đồng ý riêng. AI nhận lựa chọn được xác nhận của lượt hiện tại; không gửi hội thoại trước đó, tên/email, ghi chú tự do hay feedback lịch sử. AI chỉ chọn nội dung đã duyệt, không tạo động tác hoặc chẩn đoán. Khi tắt, không gửi yêu cầu mô hình.";
 const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; lead: string; paragraphs: string[] }> = [
   {
     id: "body-map",
@@ -588,10 +612,10 @@ const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; l
     id: "ai-scope",
     title: "AI dùng check-in trong phạm vi nào?",
     detail: "Tìm hiểu trạng thái AI và quyền riêng tư",
-    lead: "AI inference hiện đang tắt theo cấu hình staging của MCY.",
+    lead: "Trạng thái AI được máy chủ xác nhận trước khi gửi lựa chọn.",
     paragraphs: [
-      "Khi AI đang tắt, không có câu trả lời từ mô hình được tạo và tin nhắn không được gửi tới nhà cung cấp AI. Bạn vẫn có thể tự chọn các bài học video miễn phí.",
-      "Nếu tính năng được mở sau khi hoàn tất các gate, xử lý AI sẽ cần sự đồng ý riêng và chỉ dùng thông tin tối thiểu của lượt hiện tại. Hội thoại trước đó, tên, email và ghi chú lịch sử không được gửi; AI không chẩn đoán hoặc chỉ định động tác.",
+      "Khi trợ lý chưa sẵn sàng cho phiên của bạn, ứng dụng không gửi yêu cầu chọn buổi tới mô hình. Bạn vẫn có thể tự chọn các bài học video miễn phí.",
+      "Khi trợ lý sẵn sàng, xử lý AI cần sự đồng ý riêng và chỉ nhận lựa chọn đã xác nhận trong lượt hiện tại. Hội thoại trước đó, tên, email, ghi chú tự do và feedback lịch sử không được gửi. Mô hình chỉ chọn nội dung đã duyệt, không tự tạo động tác hoặc chẩn đoán.",
     ],
   },
 ];
@@ -659,7 +683,7 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   welcome: { id: "welcome", footer: () => <WelcomeFooter />, footerHeight: 156, render: () => <WelcomeScreen /> },
   home: { id: "home", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <HomeScreen /> },
   checkin: { id: "checkin", header: () => <Header title="Check-in hôm nay" back />, headerHeight: 55, footer: () => <CheckinFooter />, footerHeight: 124, render: () => <CheckinScreen /> },
-  dialogue: { id: "dialogue", header: () => <Header title="Trợ lý hôm nay" back />, headerHeight: 55, footer: () => <DialogueFooter />, footerHeight: 104, render: () => <DialogueScreen /> },
+  dailyPractice: { id: "daily-practice", header: () => <Header title="Buổi học hôm nay" back />, headerHeight: 55, render: () => <PracticeRoute /> },
   reflection: { id: "reflection", header: () => <Header title="Phản hồi của bạn" back />, headerHeight: 55, footer: () => <ReflectionFooter />, footerHeight: 104, render: () => <ReflectionScreen /> },
   journey: { id: "journey", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <JourneyRoute /> },
   discover: { id: "discover", header: () => <Header />, headerHeight: 55, footer: () => <BottomNav />, footerHeight: 68, render: () => <DiscoverRoute /> },
@@ -720,6 +744,48 @@ function CourseDetailRoute() {
   </Suspense>;
 }
 
+function PracticeRoute() {
+  const flow = useFlow();
+  const { state, update } = useDemo();
+  const context: Omit<PracticeContext, "revision" | "pace" | "guidance" | "floor"> = {
+    locale: state.locale, minutes: state.minutes, energy: state.energy, intent: state.intent, bodyStatus: state.bodyStatus,
+    regions: [...new Set(state.preObservations.flatMap(item => bodyRegionCodes(item.region, item.side)))],
+  };
+  return <Suspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><p role="status">Đang mở buổi học…</p></main></MobileScroll>}><PracticeFlowScreen
+    context={context} userId={state.userId} consentCurrent={hasCurrentAiConsent(state)} active={flow.current.id === ROUTES.dailyPractice.id}
+    previousWasTooFast={Boolean(rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace))}
+    onBrowse={() => flow.push(ROUTES.discover)} onConsent={() => flow.push(ROUTES.privacy)} onAdjust={() => flow.pop()}
+    onReflect={(title, endedEarly) => {
+      update({ checkinBaselineReady: false, reflectionHasCheckinBaseline: state.checkinBaselineReady, reflectionBeforeStatus: state.checkinBaselineReady ? state.bodyStatus : null, reflectionBeforeObservations: state.checkinBaselineReady ? [...state.preObservations] : [], reflectionLessonTitle: title, postObservations: [], postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly });
+      flow.push(ROUTES.reflection);
+    }}
+  /></Suspense>;
+}
+
+function PracticeCapabilityObserver() {
+  const { state, setState } = useDemo();
+  const user = useRef(state.userId); user.current = state.userId;
+  useEffect(() => {
+    const actor = state.userId;
+    if (!actor || !state.signedIn) { setState(p => ({ ...p, aiCapability: "disabled" })); return; }
+    const controller = new AbortController();
+    setState(p => ({ ...p, aiCapability: "checking" }));
+    void (async () => {
+      let capability: DemoState["aiCapability"] = "disabled";
+      try {
+        const client = await getSupabaseClient();
+        if (controller.signal.aborted || user.current !== actor) return;
+        const response = await client?.functions.invoke("mcy-ai-assistant", { signal: controller.signal, body: { action: "capability" } });
+        if (!response?.error && response?.data?.available === true && response.data.contractVersion === "reviewed-practice-1") capability = "ready";
+        else if (response?.data?.reason === "not_ready") capability = "not_ready";
+      } catch { /* fail closed, no provider request */ }
+      if (!controller.signal.aborted && user.current === actor) setState(p => p.userId === actor ? { ...p, aiCapability: capability } : p);
+    })();
+    return () => controller.abort();
+  }, [state.userId, state.signedIn, state.aiConsent, setState]);
+  return null;
+}
+
 function DiscoverRoute() {
   const flow = useFlow();
   const { state, update } = useDemo();
@@ -750,7 +816,7 @@ function JourneyRoute() {
       ActionComponent={Action}
       DemoNoteComponent={DemoNote}
       onStartNext={() => {
-        update({ dialogueChoice: null, dialogueText: "", aiConversation: [], aiPending: false, aiError: "", minutes: 10, energy: null, regions: [], preObservations: [], postObservations: [], bodyStatus: null, postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly: false, usePreviousFeedback: false, lastReflection: null, checkinBaselineReady: false, reflectionHasCheckinBaseline: false, reflectionBeforeStatus: null, reflectionBeforeObservations: [], reflectionLessonTitle: "", currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null });
+        update({ dialogueChoice: null, dialogueText: "", aiConversation: [], aiPending: false, aiError: "", minutes: 10, energy: null, regions: [], preObservations: [], postObservations: [], bodyStatus: null, postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly: false, usePreviousFeedback: false, lastReflection: null, checkinBaselineReady: false, reflectionHasCheckinBaseline: false, reflectionBeforeStatus: null, reflectionBeforeObservations: [], reflectionLessonTitle: "", currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null, pendingCheckinPayload: null });
         flow.push(ROUTES.checkin);
       }}
     />
@@ -770,7 +836,9 @@ export default function Prototype() {
   const workspace = new URLSearchParams(window.location.search).get("workspace");
   const ownerWorkspace = workspace === "owner";
   const teacherWorkspace = workspace === "teacher";
-  const staffWorkspace = ownerWorkspace || teacherWorkspace;
+  const contentReviewWorkspace = workspace === "content-review";
+  const webAuthCallback = !Capacitor.isNativePlatform() && isWebAuthCallback(window.location.pathname, window.location.search, window.location.hash);
+  const staffWorkspace = ownerWorkspace || teacherWorkspace || contentReviewWorkspace || webAuthCallback;
   useLayoutEffect(() => {
     if (!staffWorkspace) return;
     const learnerRoot = document.getElementById("root");
@@ -786,12 +854,14 @@ export default function Prototype() {
     };
   }, [staffWorkspace]);
 
+  if (webAuthCallback) return createPortal(<Suspense fallback={<p role="status">Đang xác minh đăng nhập…</p>}><WebAuthCallback /></Suspense>, document.body);
   if (ownerWorkspace) {
     return <Suspense fallback={<div className="owner-loading" role="status">Đang mở workspace…</div>}><OwnerWorkspacePortal /></Suspense>;
   }
   if (teacherWorkspace) {
     return <Suspense fallback={<div className="mcy-teacher-loading" role="status">Đang mở workspace…</div>}><TeacherWorkspacePortal /></Suspense>;
   }
+  if (contentReviewWorkspace) return createPortal(<Suspense fallback={<p role="status">Đang mở bài mẫu…</p>}><ContentReviewWorkspace /></Suspense>, document.body);
   return <LearnerPrototype />;
 }
 
@@ -890,6 +960,7 @@ function LearnerPrototype() {
         setState(previous => ({ ...previous, backendStatus: "error", backendError: error.message }));
         return;
       }
+      observeLearnerSession(data.session?.user.id ?? null);
       void hydrate(data.session);
     };
     const retryNow = () => {
@@ -972,6 +1043,7 @@ function LearnerPrototype() {
         }
         const authClient = client;
         const authSubscription = authClient.auth.onAuthStateChange((_event, session) => {
+          observeLearnerSession(session?.user.id ?? null);
           window.setTimeout(() => { void hydrate(session); }, 0);
         });
         subscription = authSubscription.data.subscription;
@@ -1005,7 +1077,7 @@ function LearnerPrototype() {
       void appUrlListener?.remove();
     };
   }, [reviewConsentScreen, authInitNonce]);
-  return <DemoContext.Provider value={{ state, setState }}><FlowStack initial={reviewConsentScreen ? ROUTES.consent : ROUTES.welcome}><AuthSessionRouter /><FlowRouteFocusManager /></FlowStack></DemoContext.Provider>;
+  return <DemoContext.Provider value={{ state, setState }}><FlowStack initial={reviewConsentScreen ? ROUTES.consent : ROUTES.welcome}><AuthSessionRouter /><FlowRouteFocusManager /><PracticeCapabilityObserver /></FlowStack></DemoContext.Provider>;
 }
 
 function AuthSessionRouter() {
@@ -1062,6 +1134,7 @@ function AuthEmailScreen() {
   const keyboard = useKeyboard();
   const { state, update } = useDemo();
   const [email, setEmail] = useState(state.accountEmail);
+  const [emailLocale, setEmailLocale] = useState(() => readEmailLocale(state.locale));
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const [method, setMethod] = useState<"code" | "password">("code");
@@ -1082,6 +1155,7 @@ function AuthEmailScreen() {
       setPassword("");
       update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? email.trim(), backendStatus: "loading", backendError: "" });
       window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
+      if (data.session && !Capacitor.isNativePlatform()) await syncAuthEmailLocale(data.session, readEmailLocale(state.locale));
     } catch (cause) {
       setError(passwordSignInMessage(cause));
     } finally {
@@ -1101,7 +1175,7 @@ function AuthEmailScreen() {
       if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
       const { error: authError } = await client.auth.signInWithOtp({
         email: email.trim(),
-        options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl() },
+        options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl("learner", emailLocale), data: { locale: emailLocale } },
       });
       if (authError) {
         if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
@@ -1124,6 +1198,7 @@ function AuthEmailScreen() {
     {state.authMode === "login" && <div className="mcy-chip-grid mcy-auth-method" role="group" aria-label="Cách đăng nhập"><Choice selected={!usePassword} disabled={sending} onClick={() => { setMethod("code"); setError(""); }}>Mã hoặc liên kết qua email</Choice><Choice selected={usePassword} disabled={sending} onClick={() => { setMethod("password"); setError(""); }}>Mật khẩu</Choice></div>}
     <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
     {usePassword && <label className="mcy-form-field">Mật khẩu<KeyboardInput type="password" autoComplete="current-password" aria-label="Mật khẩu" value={password} onChange={event => { setPassword(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>}
+    {!usePassword && <EmailLanguageSelect value={emailLocale} disabled={sending} onChange={locale => { setEmailLocale(locale); rememberEmailLocale(locale); }} />}
     {error && <div className="mcy-form-error" role="alert">{error}</div>}
     {!backendConfigured && <div className="mcy-alert">Backend chưa kết nối ở môi trường hiện tại. Bạn vẫn có thể xem và thử luồng khách.</div>}
     <Action disabled={sending || !backendConfigured} onClick={usePassword ? submitPassword : submit}>{usePassword ? (sending ? "Đang đăng nhập…" : "Đăng nhập") : sending ? "Đang gửi…" : state.authMode === "create" ? "Gửi email xác minh" : "Gửi mã"}</Action>
@@ -1146,7 +1221,7 @@ function AuthCodeScreen() {
   const [resending, setResending] = useState(false);
   const verify = async () => {
     keyboard.hide();
-    if (code.length !== 6) { setError("Nhập đủ 6 chữ số để tiếp tục."); return; }
+    if (!/^(?:\d{6}|\d{8})$/.test(code)) { setError("Nhập đủ mã xác minh trong email để tiếp tục."); return; }
     if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
     setVerifying(true);
     try {
@@ -1154,6 +1229,7 @@ function AuthCodeScreen() {
       if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
       const { data, error: authError } = await client.auth.verifyOtp({ email: state.accountEmail, token: code, type: "email" });
       if (authError || !data.user) { setError("Mã không hợp lệ hoặc đã hết hạn. Hãy kiểm tra hộp thư và thử lại."); return; }
+      if (data.session && !Capacitor.isNativePlatform()) await syncAuthEmailLocale(data.session, readEmailLocale(state.locale));
       if (Capacitor.isNativePlatform()) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
       update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? state.accountEmail, backendStatus: "loading", backendError: "" });
       window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
@@ -1171,7 +1247,8 @@ function AuthCodeScreen() {
       if (native) window.localStorage.setItem(NATIVE_AUTH_PENDING_KEY, String(Date.now()));
       const client = await getSupabaseClient();
       if (!client) return;
-      const { error: authError } = await client.auth.signInWithOtp({ email: state.accountEmail, options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl() } });
+      const emailLocale = readEmailLocale(state.locale);
+      const { error: authError } = await client.auth.signInWithOtp({ email: state.accountEmail, options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl("learner", emailLocale), data: { locale: emailLocale } } });
       if (authError) {
         if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
         setError(authErrorMessage(authError, "Chưa gửi lại được email xác minh."));
@@ -1190,8 +1267,8 @@ function AuthCodeScreen() {
   };
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
     <Eyebrow>XÁC MINH EMAIL</Eyebrow><h1>Kiểm tra hộp thư của bạn.</h1>
-    <p className="mcy-lead">Email đã gửi tới <strong>{state.accountEmail}</strong>. Nếu thư có mã 6 chữ số, nhập mã bên dưới. Nếu thư có liên kết, mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
-    <label className="mcy-form-field">Mã 6 chữ số (nếu email có mã)<KeyboardInput inputMode="numeric" autoComplete="one-time-code" aria-label="Mã xác minh" placeholder="123456" value={code} onChange={event => { setCode(event.target.value.replace(/\D/g, "").slice(0, 6)); setError(""); }} onBlur={() => keyboard.hide()} /></label>
+    <p className="mcy-lead">Email đã gửi tới <strong>{state.accountEmail}</strong>. Nếu thư có mã xác minh, nhập mã bên dưới. Nếu thư có liên kết, mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
+    <label className="mcy-form-field">Mã xác minh (nếu email có mã)<KeyboardInput inputMode="numeric" autoComplete="one-time-code" aria-label="Mã xác minh" placeholder="Nhập mã trong email" value={code} onChange={event => { setCode(event.target.value.replace(/\D/g, "").slice(0, 8)); setError(""); }} onBlur={() => keyboard.hide()} /></label>
     <div className="mcy-code-hint">Mã hoặc liên kết chỉ dùng một lần. Không gửi mã cho người khác.</div>
     {error && <div className="mcy-form-error" role="alert">{error}</div>}
     {notice && <div className="mcy-inline-note" role="status"><InfoCircledIcon />{notice}</div>}
@@ -1215,7 +1292,7 @@ function ConsentScreen() {
     {state.locale === "en-US" && <div className="mcy-locale-note" role="note">This consent screen is shown in Vietnamese. Consent evidence records the language displayed as vi-VN.</div>}
     <section className="mcy-consent-card required"><span className="mcy-tag">CẦN ĐỂ TIẾP TỤC TRONG APP</span><strong>Điều khoản dịch vụ và thông báo quyền riêng tư · phiên bản 0.1</strong><p>Supabase đã xác minh email. Đồng ý để tiếp tục sử dụng tài khoản; lựa chọn và phiên bản được ghi thành sự kiện.</p><button aria-pressed={state.termsAccepted && state.privacyAccepted} onClick={() => { const value = !(state.termsAccepted && state.privacyAccepted); update({ termsAccepted: value, privacyAccepted: value }); }}><i>{state.termsAccepted && state.privacyAccepted ? "✓" : ""}</i>{state.termsAccepted && state.privacyAccepted ? "Đã đồng ý phiên bản 0.1" : "Tôi đồng ý điều khoản và thông báo · phiên bản 0.1"}</button></section>
     {([
-      ["aiConsent", "Cho phép AI hỗ trợ trao đổi ngắn", "AI inference đang tắt theo cấu hình staging. Lựa chọn này chỉ ghi nhận đồng ý riêng cho thời điểm tính năng được mở; hiện tin nhắn không được gửi tới nhà cung cấp mô hình và không có câu trả lời AI nào được tạo. Khi được bật sau các gate, chỉ thời lượng, năng lượng, vùng bạn chọn và tin nhắn của lượt hiện tại mới được gửi tới dịch vụ AI bên ngoài; không gửi hội thoại trước đó, tên/email hay ghi chú lịch sử. AI không chẩn đoán hoặc chỉ định động tác. Bạn có thể rút đồng ý bất cứ lúc nào. Nội dung quyền riêng tư vẫn là bản rà soát, chưa phải văn bản pháp lý cuối cùng.", state.aiConsent],
+      ["aiConsent", "Cho phép AI hỗ trợ trao đổi ngắn", "Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng cho phiên của bạn. Khi bạn xác nhận lựa chọn và đồng ý AI hiện hành, chỉ thời lượng, năng lượng, mục tiêu, mã vùng và sở thích hiện tại được gửi tới dịch vụ AI bên ngoài. Không gửi hội thoại trước đó, tên/email, ghi chú tự do hoặc feedback lịch sử. AI chỉ chọn nội dung đã duyệt, không tạo động tác hoặc chẩn đoán. Bạn có thể rút đồng ý bất cứ lúc nào. Nội dung quyền riêng tư vẫn là bản rà soát, chưa phải văn bản pháp lý cuối cùng.", state.aiConsent],
       ["saveFeedbackConsent", "Lưu check-in cơ thể và năng lượng", "Cho phép lưu các lần check-in và ghi chú để xem trong Hành trình. Phản hồi sau buổi hiện chỉ được giữ trong phiên.", state.saveFeedbackConsent],
       ["teacherShareConsent", "Chia sẻ với một giáo viên cụ thể", "Chưa có lớp được kết nối. Lựa chọn này luôn tắt cho đến khi bạn chọn rõ người nhận, phạm vi và thời hạn.", state.teacherShareConsent],
       ["marketingConsent", "Nhận tin về nội dung mới", "Tùy chọn; tách khỏi thông báo dịch vụ và nhắc tập.", state.marketingConsent],
@@ -1231,27 +1308,48 @@ function ConsentFooter() {
   const { state, setState } = useDemo();
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const actor = useRef({ id: state.userId, signedIn: state.signedIn, generation: 0 });
+  const retryKeys = useRef(new Map<string, string>());
+  const captureContinuation = useLearnerContinuation();
+  if (actor.current.id !== state.userId || actor.current.signedIn !== state.signedIn) actor.current = { id: state.userId, signedIn: state.signedIn, generation: actor.current.generation + 1 };
+  useEffect(() => () => { actor.current.generation++; }, []);
   const hasTransferDraft = state.onboardingComplete && isCheckinAuthReturn(state.authReturnTo);
   const continueNext = async (discardDraft = false) => {
     if (!state.termsAccepted || !state.privacyAccepted || saving) return;
     setSaving(true);
     setError("");
+    const expectedUserId = state.userId, expectedSignedIn = state.signedIn, generation = actor.current.generation;
+    const continuation = captureContinuation();
+    const current = () => continuation() && actor.current.id === expectedUserId && actor.current.signedIn === expectedSignedIn && actor.current.generation === generation;
     try {
-      const saved = await persistConsentChanges(state, "onboarding");
-      setState(previous => ({
+      const saved = await persistConsentChanges(state, "onboarding", retryKeys.current);
+      if (!current()) return;
+      if (saved.hasUnsettledWrites) {
+        setState(previous => continuation(previous) ? { ...previous, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions } : previous);
+        setError("Một lần ghi quyền chưa được xác nhận. Lựa chọn trên màn hình vẫn là nháp; chọn Tiếp tục để đối chiếu lại trước khi đổi quyền hoặc đi tiếp.");
+        return;
+      }
+      setState(previous => !continuation(previous) || previous.userId !== expectedUserId || previous.signedIn !== expectedSignedIn ? previous : ({
         ...previous,
         consentBaseline: saved.consents,
         consentPolicyVersions: saved.policyVersions,
-        ...(discardDraft ? { preObservations: [], regions: [], bodyStatus: null, energy: null, pendingCheckinIdempotencyKey: null } : {}),
+        termsAccepted: saved.consents.terms, privacyAccepted: saved.consents.privacy,
+        saveFeedbackConsent: saved.consents.wellbeing_data, aiConsent: saved.consents.ai_processing,
+        teacherShareConsent: saved.consents.teacher_sharing, notificationEnabled: saved.consents.notifications,
+        marketingConsent: saved.consents.marketing,
+        ...(discardDraft ? { preObservations: [], regions: [], bodyStatus: null, energy: null, pendingCheckinIdempotencyKey: null, pendingCheckinPayload: null } : {}),
       }));
+      if (!saved.matchesRequested) { setError("Quyền dữ liệu đã thay đổi. Kiểm tra và chọn lại trước khi tiếp tục."); return; }
       if (state.onboardingComplete) {
         if (!discardDraft && isCheckinAuthReturn(state.authReturnTo) && state.saveFeedbackConsent) {
-          await persistCurrentCheckin({ ...state, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions, privacyAccepted: true }, setState, "practice_preparation");
+          await persistCurrentCheckin({ ...state, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions, privacyAccepted: true }, setState, "practice_preparation", current);
         }
+        if (!current()) return;
         const destination = discardDraft ? (isCheckinAuthReturn(state.authReturnTo) ? "discover" : "home") : normalizeAuthDestination(state.authReturnTo);
         finishAtAuthDestination(flow, destination);
       } else flow.replace(ROUTES.onboarding);
     } catch (cause) {
+      if (!current()) return;
       setError(cause instanceof Error ? cause.message : "Chưa lưu được lựa chọn của bạn.");
     } finally {
       setSaving(false);
@@ -1272,11 +1370,13 @@ function OnboardingScreen() {
   const [showTransfer, setShowTransfer] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const captureContinuation = useLearnerContinuation();
   const complete = async (discardDraft = false) => {
     if (saving) return;
     keyboard.hide();
     setSaving(true);
     setError("");
+    const current = captureContinuation();
     try {
       const displayName = name.trim();
       const nextState = discardDraft ? {
@@ -1286,12 +1386,15 @@ function OnboardingScreen() {
         bodyStatus: null,
         energy: null,
         pendingCheckinIdempotencyKey: null,
+        pendingCheckinPayload: null,
       } : state;
       await persistProfile(nextState, displayName, nextState.bodyStyle, nextState.locale);
+      if (!current()) return;
       if (!discardDraft && isCheckinAuthReturn(nextState.authReturnTo) && nextState.saveFeedbackConsent) {
-        await persistCurrentCheckin({ ...nextState, displayName, onboardingComplete: true }, setState, "practice_preparation");
+        await persistCurrentCheckin({ ...nextState, displayName, onboardingComplete: true }, setState, "practice_preparation", current);
       }
-      update({
+      if (!current()) return;
+      setState(previous => !current(previous) ? previous : ({ ...previous,
         displayName,
         onboardingComplete: true,
         backendStatus: "ready",
@@ -1299,11 +1402,13 @@ function OnboardingScreen() {
         ...(discardDraft ? {
           preObservations: [], regions: [], bodyStatus: null, energy: null,
           pendingCheckinIdempotencyKey: null,
+          pendingCheckinPayload: null,
         } : {}),
-      });
+      }));
       const destination = discardDraft ? (isCheckinAuthReturn(state.authReturnTo) ? "discover" : "home") : normalizeAuthDestination(state.authReturnTo);
       finishAtAuthDestination(flow, destination);
     } catch (cause) {
+      if (!current()) return;
       setError(cause instanceof Error ? cause.message : "Chưa hoàn tất được thiết lập tài khoản.");
     } finally {
       setSaving(false);
@@ -1360,11 +1465,12 @@ function HomeScreen() {
   const flow = useFlow();
   const { state } = useDemo();
   const previous = [...state.history].reverse().find(item => item.kind === "Sau tập");
+  const paceMemory = rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace);
   return <MobileScroll className="mcy-scroll"><main className="mcy-page">
     <Eyebrow>{previous ? "MỘT LẦN QUAY LẠI, KHÔNG CẦN VỘI" : "MỖI BUỔI BẮT ĐẦU TỪ HÔM NAY"}</Eyebrow>
     <h1>{previous ? "Hôm nay bạn muốn bắt đầu thế nào?" : "Một chút thời gian cho chính mình."}</h1>
     <p className="mcy-lead">Ghi lại điều bạn muốn cho hôm nay, rồi tự chọn một bài học video miễn phí. Bạn không cần đăng nhập để xem bài.</p>
-    {previous && state.saveFeedbackConsent && state.rememberPace && previous.pace === "Hơi nhanh" && previous.outcome !== "Khó chịu hơn" && !previous.endedEarly ? <div className="mcy-memory-hint"><MagicWandIcon /><span>Lần trước bạn nói nhịp hơi nhanh. Lần này bạn có thể chọn chậm hơn.</span></div> : null}
+    {paceMemory ? <div className="mcy-memory-hint"><MagicWandIcon /><span>Lần trước bạn nói nhịp hơi nhanh. Lần này bạn có thể chọn chậm hơn.</span></div> : null}
     <div className="mcy-home-photo"><img src="/assets/today-neck-stretch-1200.webp" srcSet="/assets/today-neck-stretch-600.webp 600w, /assets/today-neck-stretch-1200.webp 1200w" sizes="(min-width: 700px) 450px, 100vw" alt="Hình minh họa buổi tập yoga tại nhà" loading="lazy" decoding="async" /><span>Một bài học miễn phí, do bạn tự chọn</span></div>
     <div className="mcy-home-cta"><Action onClick={() => flow.push(ROUTES.checkin)}>{previous ? "Ghi nhận hôm nay" : "Bắt đầu check-in"}</Action><span>Không cần check-in để duyệt bài học</span></div>
     <HomeQuickPicks />
@@ -1415,6 +1521,10 @@ function CheckinScreen() {
   const [pendingStatus, setPendingStatus] = useState<"none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable" | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
+  const [saveNotice, setSaveNotice] = useState("");
+  useEffect(() => { setSaving(false); setSaveError(""); setSaveNotice(""); }, [flow.current.key]);
+  const captureContinuation = useLearnerContinuation();
+  const latestCheckinState = useRef(state); latestCheckinState.current = state;
   const selected = editing ? state.preObservations.find(item => item.region === editing && item.side === editingStoredSide) ?? state.preObservations.find(item => item.region === editing) : undefined;
   const openRegion = (region: BodyRegion, preferredSide?: BodySide) => {
     const entries = state.preObservations.filter(item => item.region === region);
@@ -1440,20 +1550,31 @@ function CheckinScreen() {
     if (saving) return;
     setSaving(true);
     setSaveError("");
+    setSaveNotice("");
+    const current = captureContinuation();
     try {
-      const remote = await persistCurrentCheckin(state, setState, "standalone");
-      setState(previous => ({
+      const remote = await persistCurrentCheckin(state, setState, "standalone", current);
+      if (!current()) return;
+      const original = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, "standalone", "comparison");
+      const latestDraft = toLearnerCheckinPayload(latestCheckinState.current, "standalone", original.idempotencyKey);
+      const sameDraft = latestDraft.bodyStatus === original.bodyStatus && latestDraft.energyLevel === original.energyLevel
+        && JSON.stringify(latestDraft.observations) === JSON.stringify(original.observations);
+      if (!sameDraft) { setSaveNotice(locale === "en-US" ? "The previous record is confirmed. Your edits remain in the draft; save again to create a new record." : "Đã xác nhận bản ghi trước. Nháp vừa sửa vẫn được giữ; chọn lưu lần nữa để tạo bản ghi mới."); setSaving(false); return; }
+      setState(previous => !current(previous) ? previous : ({
         ...previous,
         history: !remote && previous.saveFeedbackConsent ? [...previous.history, makeSnapshot("Ghi riêng", previous.bodyStatus, previous.preObservations)] : previous.history,
         preObservations: [], postObservations: [], regions: [], bodyStatus: null, energy: null,
         pendingCheckinIdempotencyKey: null,
+        pendingCheckinPayload: null,
       }));
     } catch (cause) {
+      if (!current()) return;
       setSaveError(cause instanceof Error ? cause.message : "Chưa lưu được check-in. Kiểm tra mạng rồi thử lại.");
       setSaving(false);
       return;
     }
     setSaving(false);
+    if (!current()) return;
     flow.push(ROUTES.journey);
   };
   const statusDescription = state.bodyStatus === "none_now" ? msg(locale, "checkin.selectedNone") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.selectedUnsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.selectedSkipped") : state.bodyStatus === "tired" ? msg(locale, "checkin.selectedTired") : state.bodyStatus === "uncomfortable" ? msg(locale, "checkin.selectedUncomfortable") : "";
@@ -1461,7 +1582,7 @@ function CheckinScreen() {
   return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
     <div className="mcy-step-count" aria-live="polite">{state.signedIn ? formatMessage(locale, "checkin.stepCount", { step: state.checkinStep }) : null}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
     <h1>{msg(locale, state.checkinStep === 1 ? "checkin.step1.title" : "checkin.step2.title")}</h1>
-    <p className="mcy-lead">{msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
+    <p className="mcy-lead">{state.checkinStep === 2 && state.aiCapability === "ready" ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
     {state.checkinStep === 1 ? <div className="mcy-checkin-content checkin-step-body">
       <div className="mcy-checkin-illustration">
         <div className="mcy-scroll-hint"><ChevronDownIcon />{msg(locale, "checkin.scrollHint")}</div>
@@ -1477,8 +1598,8 @@ function CheckinScreen() {
         {!state.signedIn && (state.preObservations.length > 0 || (state.bodyStatus && state.bodyStatus !== "skipped")) && <>
           <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : msg(locale, "checkin.standalone")}</button>
           {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
+          {saveNotice && <p role="status">{saveNotice}</p>}
         </>}
-        <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
         <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
       </div>
     </div> : <div className="mcy-checkin-step-two">
@@ -1486,8 +1607,10 @@ function CheckinScreen() {
       <section className="mcy-energy-card"><h2>{msg(locale, "checkin.energy")} <small>({msg(locale, "checkin.optional")})</small></h2><div className="mcy-energy-options">{(["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"] as Energy[]).map((value, index) => <button key={value} aria-pressed={state.energy === value} onClick={() => update({ energy: value })}><EnergyFace level={index} /><span>{energyLabel(locale, value)}</span></button>)}</div></section>
       <section className="mcy-field-section compact"><h2>{msg(locale, "checkin.duration")}</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}>{formatMessage(locale, "checkin.minutes", { minutes: localizedNumber(locale, time) })}</Choice>)}</div>{locale !== "en-US" && <p className="mcy-field-hint">Mỗi bài trong thư viện dài từ vài chục giây đến khoảng 1 phút; bạn có thể xem nhiều bài liên tiếp trong khoảng thời gian này.</p>}</section>
       <div className="mcy-checkin-summary"><span><strong>{locale === "en-US" ? "Body check-in" : "Cảm nhận cơ thể"}</strong><small>{bodySummary || (locale === "en-US" ? "Not added" : "Chưa ghi nhận")}</small></span><button onClick={() => update({ checkinStep: 1 })}>{locale === "en-US" ? "Edit" : "Sửa"}</button></div>
-      <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : msg(locale, "checkin.standalone")}</button>
+      {state.pendingCheckinPayload && <p role="status">{locale === "en-US" ? "The previous save is unconfirmed. Retry that exact record first; edits remain in your draft." : "Lần lưu trước chưa được xác nhận. Hãy thử lại đúng bản ghi đó trước; phần sửa được giữ trong nháp."}</p>}
+      <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : state.pendingCheckinPayload ? (locale === "en-US" ? "Retry the previous record" : "Thử lại bản ghi trước") : msg(locale, "checkin.standalone")}</button>
       {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
+      {saveNotice && <p role="status">{saveNotice}</p>}
       <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
     </div>}
     <RegionEditor region={editing} current={selected} suggestedSide={suggestedSide} onClose={closeRegion} onSave={saveObservation} onDelete={deleteObservation} />
@@ -1530,141 +1653,12 @@ function CheckinFooter() {
       <Action onClick={advanceStep}>{msg(locale, "checkin.step1.next")}</Action>
       <div className="mcy-checkin-footer-options"><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button><button onClick={browseFreeLessons}>{msg(locale, "checkin.directPlan")}</button></div>
     </> : <>
-      <Action onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</Action>
+      {state.aiCapability === "ready" ? <><Action onClick={() => { update({ checkinBaselineReady: hasCheckinBaseline(state) }); flow.push(ROUTES.dailyPractice); }}>{locale === "en-US" ? "Choose today's practice with AI" : "Chọn buổi hôm nay cùng AI"}</Action><button className="mcy-quiet-link" onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</button></> : <Action onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</Action>}
       <div className="mcy-checkin-footer-options">{!state.signedIn && <button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button>}<button onClick={() => update({ checkinStep: 1 })}>{msg(locale, "checkin.backToBody")}</button></div>
     </>}
     <BottomSheet open={confirmSkip} onOpenChange={setConfirmSkip} title={locale === "en-US" ? "Skip the body check-in?" : "Bỏ ghi nhận vùng cơ thể?"} description={locale === "en-US" ? "The areas you entered will be cleared from this check-in. You can add them again later." : "Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau."} snap={0.38}>
       <div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { applySkip(); setConfirmSkip(false); }}>{locale === "en-US" ? "Skip and continue" : "Bỏ qua và tiếp tục"} <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setConfirmSkip(false)}>{locale === "en-US" ? "Keep my entries" : "Giữ các vùng đã ghi"}</button></div>
     </BottomSheet>
-  </div>;
-}
-
-async function aiFailureMessage(error: unknown, locale: AppLocale) {
-  let code = "";
-  const response = (error as { context?: unknown } | null)?.context;
-  if (response instanceof Response) {
-    try {
-      const body = await response.clone().json() as { error?: unknown };
-      if (typeof body.error === "string") code = body.error;
-    } catch {
-      // Function errors are deliberately shown as neutral, non-sensitive copy.
-    }
-  }
-  if (locale === "en-US") {
-    if (code === "message_contains_identifiers") return "Please remove names or contact details before sending. This message was not sent to the AI provider.";
-    if (code === "ai_usage_limit_reached") return "The assistant has reached its daily limit. You can still browse the free video lessons.";
-    if (code === "current_ai_consent_required") return "Your current AI consent is missing or out of date. Review it in Privacy settings before trying again.";
-    if (code === "ai_provider_not_configured" || code === "ai_temporarily_unavailable" || code === "ai_model_unavailable") return "The assistant is not available right now. No reply was generated; you can browse the free lessons instead.";
-    return "The assistant could not reply just now. Your message was not saved; please try again or browse the free lessons.";
-  }
-  if (code === "message_contains_identifiers") return "Vui lòng xóa tên hoặc thông tin liên hệ trước khi gửi. Tin nhắn này chưa được chuyển tới nhà cung cấp AI.";
-  if (code === "ai_usage_limit_reached") return "Trợ lý đã chạm giới hạn trong ngày. Bạn vẫn có thể tự chọn bài học video miễn phí.";
-  if (code === "current_ai_consent_required") return "Đồng ý AI hiện thiếu hoặc đã cũ. Hãy xem lại mục Quyền riêng tư trước khi thử tiếp.";
-  if (code === "ai_provider_not_configured" || code === "ai_temporarily_unavailable" || code === "ai_model_unavailable") return "Trợ lý hiện chưa sẵn sàng. Chưa có câu trả lời nào được tạo; bạn vẫn có thể xem các bài học miễn phí.";
-  return "Trợ lý chưa trả lời được lúc này. Tin nhắn không được lưu; bạn có thể thử lại hoặc tự chọn bài học miễn phí.";
-}
-
-function DialogueScreen() {
-  const keyboard = useKeyboard();
-  const { state, update, setState } = useDemo();
-  const locale = state.locale;
-  const quickKeys = ["dialogue.quick.1", "dialogue.quick.2", "dialogue.quick.3", "dialogue.quick.4"] as const;
-  const sendPreference = async (message: string, choice: DialogueChoice = null) => {
-    const trimmed = message.trim();
-    if (!trimmed || state.aiPending) return;
-    keyboard.hide();
-    const requestUserId = state.userId;
-    const userTurnIndex = state.aiConversation.length;
-    if (!backendConfigured || !state.signedIn || !requestUserId || !hasCurrentAiConsent(state)) {
-      update({ aiError: locale === "en-US" ? "Sign in and review the current AI consent before continuing." : "Hãy đăng nhập và xác nhận đồng ý AI hiện hành trước khi tiếp tục." });
-      return;
-    }
-    const userTurn: DialogueMessage = { role: "user", content: trimmed.slice(0, 500) };
-    update({
-      aiPending: true,
-      aiError: "",
-      dialogueChoice: choice,
-      dialogueText: "",
-      unrecognizedText: "",
-      aiConversation: [...state.aiConversation, userTurn],
-    });
-    const regions = [...new Set(state.preObservations.flatMap(item => bodyRegionCodes(item.region, item.side)))];
-    try {
-      const client = await getSupabaseClient();
-      if (!client) throw new Error("Backend chưa kết nối.");
-      const { data, error } = await client.functions.invoke("mcy-ai-assistant", {
-        body: {
-          requestId: crypto.randomUUID(),
-          context: {
-            locale,
-            minutes: state.minutes,
-            energy: state.energy,
-            intent: state.intent,
-            regions,
-          },
-          message: userTurn.content,
-        },
-      });
-      if (error) throw error;
-      if (!data || typeof data.reply !== "string" || !data.reply.trim()) throw new Error("invalid_ai_response");
-      setState(previous => {
-        if (previous.userId !== requestUserId
-          || previous.aiConversation.length !== userTurnIndex + 1
-          || previous.aiConversation[userTurnIndex]?.role !== "user"
-          || previous.aiConversation[userTurnIndex]?.content !== userTurn.content) return previous;
-        return {
-          ...previous,
-          aiPending: false,
-          aiError: "",
-          aiConversation: [...previous.aiConversation, { role: "assistant", content: data.reply.trim().slice(0, 500) }],
-        };
-      });
-    } catch (error) {
-      const safeMessage = await aiFailureMessage(error, locale);
-      setState(previous => previous.userId !== requestUserId
-        || previous.aiConversation.length !== userTurnIndex + 1
-        || previous.aiConversation[userTurnIndex]?.role !== "user"
-        || previous.aiConversation[userTurnIndex]?.content !== userTurn.content
-        ? previous
-        : { ...previous, aiPending: false, aiError: safeMessage, aiConversation: previous.aiConversation.slice(0, userTurnIndex) });
-    }
-  };
-  const submitText = () => {
-    void sendPreference(state.dialogueText);
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-dialogue">
-    <div className="mcy-step-count">{locale === "en-US" ? "STEP 2 OF 3" : "BƯỚC 02 / 03"} <span>{msg(locale, "dialogue.step")}</span></div>
-    <h1>{AI_INFERENCE_AVAILABLE_FOR_LEARNERS ? msg(locale, "dialogue.title") : locale === "en-US" ? "Choose a free lesson at your own pace." : "Bạn có thể tự chọn một bài học phù hợp."}</h1>
-    <p className="mcy-lead">{AI_INFERENCE_AVAILABLE_FOR_LEARNERS ? msg(locale, "dialogue.lead") : locale === "en-US" ? "AI is currently off. No message will be sent and no AI reply will be created." : "AI hiện đang tắt. Không có tin nhắn nào được gửi đi và không có phản hồi AI nào được tạo."}</p>
-    {!AI_INFERENCE_AVAILABLE_FOR_LEARNERS ? <div className="mcy-account-panel" role="status"><span className="mcy-tag">{locale === "en-US" ? "AI OFF" : "AI ĐANG TẮT"}</span><strong>{locale === "en-US" ? "Browse without sharing a message" : "Xem bài học mà không gửi lời nhắn"}</strong><p>{locale === "en-US" ? "You can browse the free lessons now. Your check-in remains yours; it will not be used to generate an AI recommendation." : "Bạn có thể tự xem thư viện bài học miễn phí. Check-in vẫn thuộc về bạn và hiện chưa được dùng để tạo gợi ý bằng AI."}</p></div> : <>
-    <div className="mcy-ai-context"><div className="mcy-ai-avatar"><MagicWandIcon /><span>{locale === "en-US" ? "Today, so far" : "Điều bạn đã chọn hôm nay"}</span></div><p>{locale === "en-US" ? <>You have <strong>{localizedNumber(locale, state.minutes)} min</strong>{state.energy ? <> and your energy is <strong>{energyLabel(locale, state.energy).toLowerCase()}</strong></> : null}{regionsDescription(locale, state.preObservations)}. Tell me what would help you feel ready to begin.</> : <>Hôm nay bạn có <strong>{state.minutes} phút</strong>{state.energy ? <>, năng lượng <strong>{state.energy.toLowerCase()}</strong></> : null}{regionsDescription(locale, state.preObservations)}. Điều gì sẽ giúp bạn thấy sẵn sàng bắt đầu?</>}</p></div>
-    <div className="mcy-conversation" aria-live="polite">
-      {state.aiConversation.map((turn, index) => <div className={`mcy-bubble ${turn.role === "user" ? "mine" : "ai"}`} key={`${turn.role}-${index}`}>{turn.content}</div>)}
-      {state.aiPending && <div className="mcy-bubble ai quiet" role="status">{locale === "en-US" ? "Thinking…" : "Mình đang lắng nghe…"}</div>}
-    </div>
-    <div className="mcy-section-label">{msg(locale, "dialogue.quick")}</div>
-    <div className="mcy-chip-grid dialogue-chips">{(["Nhiều hướng dẫn", "Nhịp chậm", "Ít lời", "Không nằm sàn"] as Exclude<DialogueChoice, null>[]).map((choice, index) => <Choice key={choice} selected={state.dialogueChoice === choice} disabled={state.aiPending} onClick={() => { void sendPreference(guidedChoiceLabel(locale, choice), choice); }}>{msg(locale, quickKeys[index])}</Choice>)}</div>
-    <div className="mcy-composer"><KeyboardInput aria-label={msg(locale, "dialogue.inputLabel")} placeholder={msg(locale, "dialogue.inputPlaceholder")} value={state.dialogueText} maxLength={500} onChange={event => update({ dialogueText: event.target.value })} onKeyDown={event => { if (event.key === "Enter") { event.preventDefault(); submitText(); } }} onBlur={() => keyboard.hide()} /><button aria-label={msg(locale, "dialogue.send")} disabled={state.aiPending || !state.dialogueText.trim()} onClick={submitText}><ArrowRightIcon /></button></div>
-    {state.aiError && <div className="mcy-form-error" role="alert">{state.aiError}</div>}
-    <p className="mcy-ai-privacy-note">{locale === "en-US" ? "AI uses only today's selections and this conversation. Stored body notes and account details are not added automatically; please don't include names or contact details in your message. Replies are not saved." : "AI chỉ nhận lựa chọn hôm nay và nội dung bạn gửi trong cuộc trò chuyện. Ghi chú cơ thể đã lưu và thông tin tài khoản không được tự động gửi; vui lòng không ghi tên hoặc thông tin liên hệ vào lời nhắn. Hội thoại không được lưu vào tài khoản."}</p>
-    <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "dialogue.note")}</div>
-    </>}
-  </main></MobileScroll>;
-}
-
-function regionsDescription(locale: AppLocale, observations: Observation[]) {
-  const regions = observations.map(item => regionLabel(locale, item.region).toLowerCase());
-  return regions.length ? locale === "en-US" ? <> and selected <strong>{[...new Set(regions)].join(", ")}</strong></> : <>; bạn chọn lưu ý vùng <strong>{[...new Set(regions)].join(", ")}</strong></> : null;
-}
-
-function DialogueFooter() {
-  const flow = useFlow();
-  const keyboard = useKeyboard();
-  const { state } = useDemo();
-  const locale = state.locale;
-  return <div className="mcy-flow-footer">
-    <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); flow.pop(); }}>{locale === "en-US" ? "Adjust today's check-in" : "Điều chỉnh check-in hôm nay"}</button>
-    <Action onClick={() => { keyboard.hide(); flow.push(ROUTES.discover); }}>{locale === "en-US" ? "Browse free video lessons" : "Tự chọn bài học video miễn phí"}</Action>
   </div>;
 }
 
@@ -1736,7 +1730,7 @@ function ProfileScreen() {
   const { state, setState, update } = useDemo();
   const [signingOut, setSigningOut] = useState(false);
   const [error, setError] = useState("");
-  const feedback = state.saveFeedbackConsent ? [...state.history].reverse().find(item => item.pace === "Hơi nhanh") : undefined;
+  const feedback = rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace);
   // Owner/reviewer accounts get an extra entry when the server reports unpublished reading units for them.
   const [previewUnits, setPreviewUnits] = useState(0);
   const previewUserId = state.signedIn ? state.userId : null;
@@ -1782,7 +1776,7 @@ function ProfileScreen() {
     {error && <div className="mcy-form-error" role="alert">{error}</div>}
     <div className="mcy-account-group"><span className="mcy-section-label">HỒ SƠ VÀ QUYỀN DỮ LIỆU</span>
       <AccountRow title="Thông tin cá nhân" detail={state.displayName || "Tên tùy chọn · ngôn ngữ · hình minh họa"} onClick={() => flow.push(ROUTES.editProfile)} />
-      <AccountRow title="AI và điều được nhớ" detail={feedback ? "Có phản hồi để xem nguồn và cách rút lại" : "Chưa có thông tin được nhớ"} onClick={() => flow.push(ROUTES.memory)} />
+      <AccountRow title={state.aiCapability === "ready" ? "AI và điều được nhớ" : "Điều được nhớ"} detail={feedback ? "Có phản hồi để xem nguồn và cách rút lại" : "Chưa có thông tin được nhớ"} onClick={() => flow.push(ROUTES.memory)} />
       <AccountRow title="Quyền riêng tư và đồng ý" detail="Mỗi mục đích, phiên bản và cách thay đổi" onClick={() => flow.push(ROUTES.privacy)} />
       <AccountRow title="Bảo mật tài khoản" detail="Email, phiên đăng nhập và xác minh lại" onClick={() => flow.push(ROUTES.security)} />
       <AccountRow title="Nhắc tập và thông báo" detail="Tùy chọn kênh, giờ và múi giờ" onClick={() => flow.push(ROUTES.notifications)} />
@@ -1824,6 +1818,11 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
   const [error, setError] = useState("");
   const [editLocale, setEditLocale] = useState<AppLocale>(state.locale);
   const [name, setName] = useState(state.displayName);
+  const consentAccount = useRef(`${state.signedIn}:${state.userId}`);
+  consentAccount.current = `${state.signedIn}:${state.userId}`;
+  const consentWritePending = useRef(false);
+  const captureContinuation = useLearnerContinuation();
+  const [consentPending, setConsentPending] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [deleteWord, setDeleteWord] = useState("");
   const [deleting, setDeleting] = useState(false);
@@ -1860,21 +1859,29 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
     const searchableText = [article.title, article.detail, article.lead, ...article.paragraphs].join(" ").toLocaleLowerCase("vi");
     return searchableText.includes(query.toLocaleLowerCase("vi"));
   });
-  const latest = state.saveFeedbackConsent ? [...state.history].reverse().find(item => item.kind === "Sau tập") : undefined;
+  const latest = rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace);
   const changeConsent = async (purpose: ConsentPurpose, granted: boolean, patch: Partial<DemoState>) => {
+    if (consentWritePending.current) return;
+    consentWritePending.current = true;
+    setConsentPending(true);
+    const expectedAccount = consentAccount.current;
+    const expectedUserId = state.userId;
+    const expectedSignedIn = state.signedIn;
+    const current = captureContinuation();
     setError("");
     try {
       const policyVersion = CONSENT_POLICY_VERSIONS[purpose];
       const needsReacceptance = granted && state.consentPolicyVersions[purpose] !== policyVersion;
       if (state.userId && (state.consentBaseline[purpose] !== granted || needsReacceptance)) {
-        const client = await getSupabaseClient();
-        if (!client) throw new Error("Backend chưa kết nối.");
+        const client = await getAccountBoundSupabaseClient(expectedUserId!);
+        if (!current() || consentAccount.current !== expectedAccount) return;
         await saveConsentEvent(client, purpose, granted, policyVersion, "settings", crypto.randomUUID(), clientChannel());
       }
-      setState(previous => ({ ...previous, ...patch, consentBaseline: { ...previous.consentBaseline, [purpose]: granted }, consentPolicyVersions: { ...previous.consentPolicyVersions, [purpose]: policyVersion } }));
-    } catch (cause) {
-      setError(cause instanceof Error ? `Chưa lưu được lựa chọn quyền: ${cause.message}` : "Chưa lưu được lựa chọn quyền.");
-    }
+      if (!current() || consentAccount.current !== expectedAccount) return;
+      setState(previous => current(previous) && previous.userId === expectedUserId && previous.signedIn === expectedSignedIn ? { ...previous, ...patch, consentBaseline: { ...previous.consentBaseline, [purpose]: granted }, consentPolicyVersions: { ...previous.consentPolicyVersions, [purpose]: policyVersion } } : previous);
+    } catch {
+      if (current() && consentAccount.current === expectedAccount) setError("Chưa xác định lựa chọn quyền đã được lưu hay chưa. Hãy tải lại trạng thái trước khi thử tiếp.");
+    } finally { consentWritePending.current = false; setConsentPending(false); }
   };
   const deleteConfirmed = ["XÓA", "XOA"].includes(deleteWord.trim().normalize("NFC").toLocaleUpperCase("vi"));
   const deleteAccount = async () => {
@@ -1906,17 +1913,20 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
   const saveProfileChanges = async () => {
     keyboard.hide();
     setError("");
+    const current = captureContinuation();
     try {
-      await persistProfile(state, name, state.bodyStyle, editLocale);
-      update({ displayName: name.trim(), locale: editLocale });
-      setError(state.userId ? "Hồ sơ đã lưu vào tài khoản." : "Hồ sơ chỉ được giữ trong phiên khách.");
+      const emailLocaleSynced = await persistProfile(state, name, state.bodyStyle, editLocale);
+      if (!current()) return;
+      setState(previous => current(previous) ? { ...previous, displayName: name.trim(), locale: editLocale } : previous);
+      setError(state.userId ? emailLocaleSynced === false ? "Hồ sơ đã lưu. Ngôn ngữ email chưa đồng bộ; bạn có thể chọn lại khi đăng nhập." : "Hồ sơ đã lưu vào tài khoản." : "Hồ sơ chỉ được giữ trong phiên khách.");
     } catch (cause) {
+      if (!current()) return;
       setError(cause instanceof Error ? `Chưa lưu được hồ sơ: ${cause.message}` : "Chưa lưu được hồ sơ.");
     }
   };
-  const screen = (eyebrow: string, title: string, description: string, content: React.ReactNode) => <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-account-detail"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p className="mcy-lead">{description}</p>{content}<DemoNote>Hồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.</DemoNote></main></MobileScroll>;
+  const screen = (eyebrow: string, title: string, description: string, content: React.ReactNode) => <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-account-detail"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p className="mcy-lead">{description}</p>{consentPending && <p role="status">Đang lưu lựa chọn quyền…</p>}{content}<DemoNote>Hồ sơ và lựa chọn quyền được đồng bộ khi dịch vụ đã kết nối. Nếu một tính năng chưa sẵn sàng, ứng dụng sẽ thông báo rõ trước khi bạn sử dụng.</DemoNote></main></MobileScroll>;
   if (panel === "edit") return screen("HỒ SƠ", "Thông tin tối thiểu, do bạn sửa.", "Tên tùy chọn, cài đặt hiển thị và các trường chỉ hỏi khi thật sự cần.", <><label className="mcy-form-field">Tên hiển thị<KeyboardInput autoComplete="nickname" aria-label="Tên hiển thị" value={name} onChange={event => setName(event.target.value)} onBlur={() => keyboard.hide()} placeholder="Tên gọi trong ứng dụng" /></label><div className="mcy-account-panel"><strong>Ngôn ngữ</strong>{import.meta.env.DEV ? <><div className="mcy-chip-grid"><Choice selected={editLocale === "vi-VN"} onClick={() => setEditLocale("vi-VN")}>Tiếng Việt</Choice><Choice selected={editLocale === "en-US"} onClick={() => setEditLocale("en-US")}>English · đang hoàn thiện</Choice></div><small className="mcy-locale-note">{editLocale === "en-US" ? "English is in progress. Welcome, the main practice loop and Journey are translated; account, consent, support and knowledge screens remain in Vietnamese." : "Tiếng Anh hiện đang được hoàn thiện. Chào mừng, luồng tập chính và Hành trình đã có bản dịch; tài khoản, đồng ý, hỗ trợ và nội dung kiến thức vẫn dùng tiếng Việt."}</small></> : <p className="mcy-device-timezone">Tiếng Việt</p>}<p className="mcy-device-timezone">Múi giờ thiết bị: {deviceTimeZone}</p></div><div className="mcy-account-panel"><strong>Hình body map</strong><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>{error && <div className="mcy-form-error" role="alert">{error}</div>}<Action onClick={() => { void saveProfileChanges(); }}>Lưu thay đổi</Action><button className="mcy-quiet-link" onClick={() => flow.pop()}>Hủy</button></>);
-  if (panel === "memory") return screen("AI VÀ ĐIỀU ĐƯỢC NHỚ", "Bạn xem được nguồn của mọi điều được nhớ.", "Không có suy luận sức khỏe dài hạn. Một phản hồi khó chịu hơn không thành sở thích mặc định.", <><div className="mcy-account-panel"><span className="mcy-tag">TRẠNG THÁI</span>{latest && state.rememberPace ? <><strong>Nhịp buổi trước hơi nhanh</strong><p>Nguồn: phản hồi sau buổi · phạm vi: gợi ý nhịp lần kế tiếp · dữ liệu chỉ trong phiên.</p><button className="mcy-toggle" aria-pressed={state.rememberPace} onClick={() => update({ rememberPace: false, usePreviousFeedback: false })}>Tắt và xóa ghi nhớ</button></> : <><strong>Chưa có ghi nhớ đang bật</strong><p>Phản hồi sau buổi hiện chỉ nằm trong phiên; chưa được lưu vào tài khoản.</p></>}</div><div className="mcy-account-panel"><strong>Trợ lý AI</strong><p>{state.aiConsent ? "Bạn đã đồng ý cho phép xử lý AI khi tính năng được mở. Inference hiện đang tắt trong staging; không có câu trả lời mô hình nào được tạo." : "AI inference đang tắt. Bạn vẫn có thể xem khóa học và tự chọn bài."}</p><button className="mcy-toggle" aria-pressed={state.aiConsent} onClick={() => { void changeConsent("ai_processing", !state.aiConsent, { aiConsent: !state.aiConsent, usePreviousFeedback: false }); }}>{state.aiConsent ? "Rút đồng ý AI" : "Đồng ý cho xử lý khi tính năng được mở"}</button></div><AccountRow title="Xem quyền theo mục đích" detail="Rút đồng ý và xem ảnh hưởng" onClick={() => flow.push(ROUTES.privacy)} />{error && <div className="mcy-form-error" role="alert">{error}</div>}</>);
+  if (panel === "memory") return screen(state.aiCapability === "ready" ? "AI VÀ ĐIỀU ĐƯỢC NHỚ" : "ĐIỀU ĐƯỢC NHỚ", "Bạn xem được nguồn của mọi điều được nhớ.", "Không có suy luận sức khỏe dài hạn. Một phản hồi khó chịu hơn không thành sở thích mặc định.", <><div className="mcy-account-panel"><span className="mcy-tag">TRẠNG THÁI</span>{latest && state.rememberPace ? <><strong>Nhịp buổi trước hơi nhanh</strong><p>Nguồn: phản hồi sau buổi · phạm vi: gợi ý nhịp lần kế tiếp · dữ liệu chỉ trong phiên.</p><button className="mcy-toggle" aria-pressed={state.rememberPace} onClick={() => update({ rememberPace: false, usePreviousFeedback: false })}>Tắt và xóa ghi nhớ</button></> : <><strong>Chưa có ghi nhớ đang bật</strong><p>Phản hồi sau buổi hiện chỉ nằm trong phiên; chưa được lưu vào tài khoản.</p></>}</div><div className="mcy-account-panel"><strong>Trợ lý AI</strong><p>{state.aiCapability === "ready" ? "Trợ lý sẵn sàng cho phiên này. Chỉ gửi lựa chọn khi bạn đồng ý AI hiện hành và chủ động xác nhận." : "Trợ lý chưa sẵn sàng cho phiên này. Bạn vẫn có thể xem khóa học và tự chọn bài."}</p><button className="mcy-toggle" aria-pressed={state.aiConsent} disabled={consentPending} onClick={() => { void changeConsent("ai_processing", !state.aiConsent, { aiConsent: !state.aiConsent, usePreviousFeedback: false }); }}>{state.aiConsent ? "Rút đồng ý AI" : "Đồng ý cho xử lý khi tính năng được mở"}</button></div><AccountRow title="Xem quyền theo mục đích" detail="Rút đồng ý và xem ảnh hưởng" onClick={() => flow.push(ROUTES.privacy)} />{error && <div className="mcy-form-error" role="alert">{error}</div>}</>);
   if (panel === "privacy") return screen(
     "QUYỀN RIÊNG TƯ",
     "Mỗi mục đích có phạm vi riêng.",
@@ -1927,10 +1937,10 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
         <strong>Điều khoản dịch vụ · phiên bản 0.1</strong>
         <p>{state.termsAccepted && state.privacyAccepted ? "Đã ghi lựa chọn điều khoản và quyền riêng tư cho tài khoản này." : "Chưa ghi nhận đồng ý trong tài khoản."} Nội dung sẽ được cập nhật khi chính sách chính thức được phê duyệt.</p>
       </div>
-      <PrivacyToggle title="Dùng check-in với trợ lý AI" detail={AI_OFF_PRIVACY_DETAIL} actionLabels={{ active: "Rút đồng ý", inactive: "Đồng ý" }} value={state.aiConsent} onToggle={value => { void changeConsent("ai_processing", value, { aiConsent: value, usePreviousFeedback: false }); }} />
-      <PrivacyToggle title="Lưu check-in trong hành trình" detail="Cho phép lưu check-in mới; phản hồi sau buổi được giữ trong phiên hiện tại." value={state.saveFeedbackConsent} onToggle={value => { void changeConsent("wellbeing_data", value, { saveFeedbackConsent: value, rememberPace: value ? state.rememberPace : false, usePreviousFeedback: false }); }} />
-      <PrivacyToggle title="Đồng ý chia sẻ với giáo viên" detail={state.teacherShareConsent ? "Chưa có lớp được kết nối. Bạn có thể rút lựa chọn đã lưu; hiện không có dữ liệu nào được gửi." : "Chưa có lớp được kết nối nên chưa thể cấp đồng ý chia sẻ. Khi có người nhận, bạn sẽ chọn rõ phạm vi và thời hạn."} value={state.teacherShareConsent} disabled={!state.teacherShareConsent} onToggle={value => { if (!value) void changeConsent("teacher_sharing", false, { teacherShareConsent: false }); }} />
-      <PrivacyToggle title="Tin nội dung và marketing" detail="Tách khỏi thông báo dịch vụ và nhắc tập." value={state.marketingConsent} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value }); }} />
+      <PrivacyToggle title="Dùng check-in với trợ lý AI" detail={AI_OFF_PRIVACY_DETAIL} actionLabels={{ active: "Rút đồng ý", inactive: "Đồng ý" }} value={state.aiConsent} disabled={consentPending} onToggle={value => { void changeConsent("ai_processing", value, { aiConsent: value, usePreviousFeedback: false }); }} />
+      <PrivacyToggle title="Lưu check-in trong hành trình" detail="Cho phép lưu check-in mới; phản hồi sau buổi được giữ trong phiên hiện tại." value={state.saveFeedbackConsent} disabled={consentPending} onToggle={value => { void changeConsent("wellbeing_data", value, { saveFeedbackConsent: value, rememberPace: value ? state.rememberPace : false, usePreviousFeedback: false }); }} />
+      <PrivacyToggle title="Đồng ý chia sẻ với giáo viên" detail={state.teacherShareConsent ? "Chưa có lớp được kết nối. Bạn có thể rút lựa chọn đã lưu; hiện không có dữ liệu nào được gửi." : "Chưa có lớp được kết nối nên chưa thể cấp đồng ý chia sẻ. Khi có người nhận, bạn sẽ chọn rõ phạm vi và thời hạn."} value={state.teacherShareConsent} disabled={consentPending || !state.teacherShareConsent} onToggle={value => { if (!value) void changeConsent("teacher_sharing", false, { teacherShareConsent: false }); }} />
+      <PrivacyToggle title="Tin nội dung và marketing" detail="Tách khỏi thông báo dịch vụ và nhắc tập." value={state.marketingConsent} disabled={consentPending} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value }); }} />
       {error && <div className="mcy-form-error" role="alert">{error}</div>}
       <div className="mcy-policy-meta">
         <span>Điều khoản: phiên bản 0.1 · vi-VN</span>
@@ -1944,7 +1954,7 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
   );
   if (panel === "sharing") return screen("CHIA SẺ DỮ LIỆU", "Bạn luôn chọn người nhận và phạm vi.", "Chia sẻ với giáo viên hiện chưa được kết nối trong tài khoản này. Mặc định chia sẻ đang tắt.", <><div className="mcy-empty large"><PersonIcon /><strong>Chưa có lớp được kết nối</strong><p>Khi có lớp được cấp quyền, bạn sẽ thấy rõ tên người nhận, dữ liệu được chia sẻ và thời hạn trước khi bật.</p></div><div className="mcy-consent-card"><strong>Nguyên tắc chia sẻ</strong><p>Không chia sẻ mặc định. Check-in, ghi chú và phản hồi chỉ được gửi khi bạn chọn đúng người nhận và phạm vi.</p></div><AccountRow title="Quyền riêng tư" detail="Rút đồng ý và xem các mục đích khác" onClick={() => flow.push(ROUTES.privacy)} /></>);
   if (panel === "security") return screen("BẢO MẬT", "Kiểm soát email và phiên đang mở.", "Xác minh lại email khi cần. Việc quản lý thiết bị và khôi phục danh tính luôn cần kiểm tra ở máy chủ.", <><div className="mcy-account-panel"><strong>Email đăng nhập</strong><p>{state.accountEmail || "Chưa đăng nhập"} · {state.signedIn ? "đã xác minh" : "chưa đăng nhập"}</p><button className="mcy-toggle" onClick={() => { update({ authMode: "login", authReturnTo: "security" }); flow.push(ROUTES.authEmail); }}>Đổi email có xác minh</button></div>{state.signedIn && <div className="mcy-account-panel mcy-password-panel"><strong>Mật khẩu đăng nhập</strong><p>Tùy chọn. Đặt mật khẩu để đăng nhập bằng email và mật khẩu; bạn vẫn đăng nhập được bằng mã hoặc liên kết gửi qua email.</p><label className="mcy-form-field">Mật khẩu mới<KeyboardInput type="password" autoComplete="new-password" aria-label="Mật khẩu mới" value={newPassword} onChange={event => { setNewPassword(event.target.value); setPasswordMessage(null); }} onBlur={() => keyboard.hide()} /></label><label className="mcy-form-field">Nhập lại mật khẩu mới<KeyboardInput type="password" autoComplete="new-password" aria-label="Nhập lại mật khẩu mới" value={confirmPassword} onChange={event => { setConfirmPassword(event.target.value); setPasswordMessage(null); }} onBlur={() => keyboard.hide()} /></label>{passwordMessage && <div className={passwordMessage.tone === "ok" ? "mcy-inline-note" : "mcy-form-error"} role={passwordMessage.tone === "ok" ? "status" : "alert"}>{passwordMessage.text}</div>}<button className="mcy-toggle" disabled={passwordSaving} onClick={() => { void savePassword(); }}>{passwordSaving ? "Đang lưu…" : "Lưu mật khẩu"}</button></div>}<div className="mcy-account-row static"><span><strong>Thiết bị này</strong><small>{state.signedIn ? "Phiên hiện tại" : "Chưa có phiên đăng nhập"}</small></span><span className="mcy-state-pill">{state.signedIn ? "HIỆN TẠI" : "KHÁCH"}</span></div><p className="mcy-inline-note">Nếu mất quyền truy cập email hoặc nghi có người dùng tài khoản, hãy liên hệ kênh hỗ trợ của MCY. Không tự gộp hai tài khoản.</p>{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}{deleteNotice && <div className="mcy-inline-note" role="status">{deleteNotice}</div>}{state.signedIn && <div className="mcy-account-panel mcy-danger-zone"><strong>Xóa tài khoản</strong><p>Xóa tài khoản này cùng hồ sơ, check-in, lựa chọn quyền riêng tư và dữ liệu liên quan trên máy chủ. Việc này không thể hoàn tác.</p><button className="mcy-toggle danger" onClick={() => { setError(""); setDeleteOpen(true); }}>Xóa tài khoản và dữ liệu</button></div>}<a className="mcy-quiet-link" href={ACCOUNT_DELETION_WEB_URL} target="_blank" rel="noopener noreferrer">Trang yêu cầu xóa tài khoản trên web</a><BottomSheet open={deleteOpen} onOpenChange={open => { if (!deleting) { setDeleteOpen(open); if (!open) setDeleteWord(""); } }} title="Xóa tài khoản?" description="Hồ sơ, check-in và lựa chọn quyền riêng tư của bạn sẽ bị xóa vĩnh viễn. Gõ XÓA để xác nhận." snap={0.6}><div className="mcy-sheet-actions"><label className="mcy-form-field">Gõ XÓA để xác nhận<KeyboardInput aria-label="Gõ XÓA để xác nhận" autoComplete="off" autoCapitalize="characters" value={deleteWord} onChange={event => setDeleteWord(event.target.value)} onBlur={() => keyboard.hide()} /></label>{error && <div className="mcy-form-error" role="alert">{error}</div>}<button className="mcy-action danger" disabled={!deleteConfirmed || deleting} onClick={() => { void deleteAccount(); }}>{deleting ? "Đang xóa…" : "Xóa vĩnh viễn"}</button><button className="mcy-quiet-link" disabled={deleting} onClick={() => { keyboard.hide(); setDeleteOpen(false); setDeleteWord(""); }}>Giữ tài khoản</button></div></BottomSheet></>);
-  if (panel === "notifications") return screen("THÔNG BÁO", "Nhắc tập theo lịch của bạn.", "Backend chưa gửi push hoặc email nhắc. Lựa chọn thông báo của tài khoản được lưu để dùng khi dịch vụ được triển khai.", <><PrivacyToggle title="Nhắc tập trong ứng dụng" detail="Múi giờ lấy từ thiết bị · lịch gửi chưa được cấu hình." value={state.notificationEnabled} onToggle={value => { void changeConsent("notifications", value, { notificationEnabled: value }); }} /><PrivacyToggle title="Email cập nhật nội dung" detail="Tùy chọn marketing; không ảnh hưởng email đăng nhập." value={state.emailUpdates} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value, emailUpdates: value }); }} />{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}<div className="mcy-account-panel"><strong>Giờ yên lặng</strong><p>Chưa có lịch nhắc nào được gửi hoặc lên lịch.</p></div></>);
+  if (panel === "notifications") return screen("THÔNG BÁO", "Nhắc tập theo lịch của bạn.", "Backend chưa gửi push hoặc email nhắc. Lựa chọn thông báo của tài khoản được lưu để dùng khi dịch vụ được triển khai.", <><PrivacyToggle title="Nhắc tập trong ứng dụng" detail="Múi giờ lấy từ thiết bị · lịch gửi chưa được cấu hình." value={state.notificationEnabled} disabled={consentPending} onToggle={value => { void changeConsent("notifications", value, { notificationEnabled: value }); }} /><PrivacyToggle title="Email cập nhật nội dung" detail="Tùy chọn marketing; không ảnh hưởng email đăng nhập." value={state.emailUpdates} disabled={consentPending} onToggle={value => { void changeConsent("marketing", value, { marketingConsent: value, emailUpdates: value }); }} />{error && <div className="mcy-form-error subtle" role="alert">{error}</div>}<div className="mcy-account-panel"><strong>Giờ yên lặng</strong><p>Chưa có lịch nhắc nào được gửi hoặc lên lịch.</p></div></>);
   if (panel === "access") return screen("QUYỀN NỘI DUNG", "Những gì đang mở cho bạn.", "Khóa học miễn phí có thể học không cần giao dịch. Mục này cho biết nội dung trả phí hiện có trong ứng dụng.", <><div className="mcy-access-card"><span className="mcy-tag">HỌC MIỄN PHÍ</span><strong>Khóa học trong Khám phá</strong><p>Bạn có thể xem các bài học video ngay trong ứng dụng mà không cần mua quyền truy cập.</p></div><div className="mcy-empty large"><ReaderIcon /><strong>Chưa có khóa học trả phí</strong><p>Giao dịch, thời hạn học và quyền lợi đi kèm hiện chưa được cung cấp trong ứng dụng.</p></div><button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.discover)}>Mở Khám phá</button></>);
   if (panel === "help") return screen("HỖ TRỢ", "Tìm hướng dẫn rõ ràng.", "Chọn một chủ đề để xem hướng dẫn. Hiện chưa thể gửi yêu cầu tài khoản từ ứng dụng.", <><label className="mcy-form-field">Tìm hướng dẫn<KeyboardInput aria-label="Tìm hướng dẫn" value={query} onChange={event => setQuery(event.target.value)} onBlur={() => keyboard.hide()} placeholder="Ví dụ: phản hồi sau tập" /></label><div className="mcy-help-results">{filteredHelpArticles.length ? filteredHelpArticles.map(article => <AccountRow key={article.id} title={article.title} detail={article.detail} onClick={() => flow.push(HELP_ARTICLE_ROUTES[article.id])} />) : <p className="mcy-help-empty" role="status">Chưa tìm thấy hướng dẫn phù hợp. Thử một từ khác.</p>}</div><div className="mcy-account-panel"><strong>Chưa thể gửi yêu cầu trong ứng dụng</strong><p>Các mục bên dưới là hướng dẫn tham khảo; hiện chưa có nội dung nào được gửi tới đội ngũ hỗ trợ của MCY.</p></div>{error && <div className="mcy-form-error">{error}</div>}</>);
    return screen("YÊU CẦU VỀ DỮ LIỆU", "Yêu cầu về dữ liệu tài khoản.", "Chức năng gửi yêu cầu xuất hoặc xóa dữ liệu chưa sẵn sàng. Bạn có thể xem hướng dẫn quyền riêng tư hoặc liên hệ kênh chính thức của MCY.", <><div className="mcy-empty large"><InfoCircledIcon /><strong>Hiện chưa thể gửi yêu cầu trong ứng dụng</strong><p>Ứng dụng chưa tiếp nhận yêu cầu xuất hoặc xóa dữ liệu, nên chưa có thao tác nào được thực hiện.</p></div><AccountRow title="Quyền riêng tư" detail="Xem phạm vi lưu và chia sẻ" onClick={() => flow.push(ROUTES.privacy)} /><AccountRow title="Hướng dẫn và hỗ trợ" detail="Đọc các hướng dẫn đang có" onClick={() => flow.push(ROUTES.help)} /> </>);

@@ -4,6 +4,9 @@ const SERVER_ONLY_VARIABLES = Object.freeze([
   "SUPABASE_SERVICE_ROLE_KEY",
   "SUPABASE_ACCESS_TOKEN",
   "AI_GATEWAY_API_KEY",
+  "OPENROUTER_API_KEY",
+  "VITE_OPENROUTER_API_KEY",
+  "OPENROUTER_API_KEY",
 ]);
 
 export function createPlaywrightTestEnvironment(sourceEnvironment = process.env) {

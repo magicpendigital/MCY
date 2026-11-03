@@ -1,8 +1,11 @@
 import { lazy, Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { authRedirectUrl, backendConfigured, getSupabaseClient } from "../backend/supabase";
+import { readEmailLocale, rememberEmailLocale } from "../backend/emailLocale";
+import { EmailLanguageSelect } from "../backend/EmailLanguageSelect";
 import markUrl from "../../brand/assets/mark-forest.svg";
 import "./teacher.css";
+import { TeacherCollaborationPanel } from "./TeacherCollaborationPanel";
 const ContentReviewPanel = lazy(() => import("./ContentReviewPanel"));
 
 type DraftSummary = {
@@ -57,9 +60,8 @@ class TeacherWorkspaceError extends Error {
   constructor(readonly code: string) { super(code); }
 }
 
-function teacherAuthRedirectUrl() {
-  const baseUrl = authRedirectUrl();
-  return `${baseUrl}${baseUrl.includes("?") ? "&" : "?"}workspace=teacher`;
+function teacherAuthRedirectUrl(emailLocale?: ReturnType<typeof readEmailLocale>) {
+  return authRedirectUrl("teacher", emailLocale);
 }
 
 const emptyDraft = (): DraftForm => ({
@@ -216,8 +218,10 @@ export function TeacherWorkspace() {
   const [sendingLink, setSendingLink] = useState(false);
   const [saving, setSaving] = useState(false);
   const [email, setEmail] = useState("");
+  const [emailLocale, setEmailLocale] = useState(readEmailLocale);
   const [linkSent, setLinkSent] = useState(false);
   const [accessState, setAccessState] = useState<"unknown" | "active" | "denied" | "unavailable">("unknown");
+  const [collaborationReadyUserId, setCollaborationReadyUserId] = useState<string | null>(null);
   const [contentReviewOpen, setContentReviewOpen] = useState(false);
   const [drafts, setDrafts] = useState<DraftSummary[]>([]);
   const [form, setForm] = useState<DraftForm | null>(null);
@@ -356,7 +360,7 @@ export function TeacherWorkspace() {
       if (!client) throw new Error("not_configured");
       const { error: authError } = await client.auth.signInWithOtp({
         email: email.trim(),
-        options: { emailRedirectTo: teacherAuthRedirectUrl(), shouldCreateUser: false },
+        options: { emailRedirectTo: teacherAuthRedirectUrl(emailLocale), shouldCreateUser: false },
       });
       if (authError) throw authError;
       setLinkSent(true);
@@ -367,7 +371,21 @@ export function TeacherWorkspace() {
     }
   };
 
+  const replaceEditor = (nextForm: DraftForm | null) => {
+    // Selecting another document supersedes both reads and saves for this editor.
+    // A request already sent may finish on the server, but cannot rebind this form.
+    draftReadGeneration.current += 1;
+    draftSaveGeneration.current += 1;
+    setSaving(false);
+    setLoadingWorkspace(false);
+    setForm(nextForm);
+    setError("");
+    setNotice("");
+    setConflictDraftId(null);
+  };
+
   const openDraft = async (summary: DraftSummary) => {
+    replaceEditor(null);
     const isCurrentRequest = beginDraftRead();
     setError("");
     setNotice("");
@@ -470,7 +488,7 @@ export function TeacherWorkspace() {
     {backendConfigured && loadingSession && <main className="teacher-main"><section className="teacher-state-card" role="status"><span className="teacher-kicker">XÁC THỰC</span><h1>Đang kiểm tra phiên đăng nhập…</h1></section></main>}
     {backendConfigured && !loadingSession && !session && <main className="teacher-main teacher-auth-main">
       <section className="teacher-intro"><span className="teacher-kicker">SOẠN NỘI DUNG · CHỈ DÀNH CHO GIÁO VIÊN ĐƯỢC MỜI</span><h1>Mỗi bài học, một nhịp riêng.</h1><p>Đăng nhập bằng email đã xác minh. Quyền giáo viên chỉ được kích hoạt qua lời mời đã kiểm tra ở máy chủ; workspace này không có đăng ký giáo viên mở.</p><div className="teacher-staging-badge"><i />MÔI TRƯỜNG STAGING · KHÔNG PHẢI PRODUCTION</div></section>
-      <form className="teacher-panel teacher-auth-card" onSubmit={event => { void signIn(event); }}><h2>Đăng nhập workspace</h2><p>Nếu tài khoản chưa có lời mời đang hiệu lực, bạn sẽ không được vào phần soạn bài.</p><label htmlFor="teacher-email">Email tài khoản</label><input id="teacher-email" type="email" autoComplete="email" required value={email} onChange={event => setEmail(event.target.value)} /><button className="teacher-primary" type="submit" disabled={sendingLink}>{sendingLink ? "Đang gửi…" : "Gửi liên kết xác minh"}</button>
+      <form className="teacher-panel teacher-auth-card" onSubmit={event => { void signIn(event); }}><h2>Đăng nhập workspace</h2><p>Nếu tài khoản chưa có lời mời đang hiệu lực, bạn sẽ không được vào phần soạn bài.</p><label htmlFor="teacher-email">Email tài khoản</label><input id="teacher-email" type="email" autoComplete="email" required value={email} onChange={event => setEmail(event.target.value)} /><EmailLanguageSelect value={emailLocale} disabled={sendingLink} onChange={locale => { setEmailLocale(locale); rememberEmailLocale(locale); }} /><button className="teacher-primary" type="submit" disabled={sendingLink}>{sendingLink ? "Đang gửi…" : "Gửi liên kết xác minh"}</button>
         {linkSent && <p className="teacher-success" role="status">Nếu địa chỉ email đủ điều kiện đăng nhập, liên kết xác minh đã được gửi. Mở liên kết trên thiết bị này rồi quay lại workspace.</p>}
         {error && <p className="teacher-error" role="alert">{error}</p>}</form>
     </main>}
@@ -479,12 +497,13 @@ export function TeacherWorkspace() {
       <section className="teacher-intro teacher-workspace-intro"><span className="teacher-kicker">KHÔNG GIAN SOẠN BÀI</span><h1>Bài học của bạn.</h1><p>Bản nháp được lưu riêng cho tài khoản có quyền. Chỉ soạn nội dung có căn cứ quyền sử dụng; mọi bản nháp cần được rà soát riêng trước khi có thể đến với học viên.</p><div className="teacher-staging-badge"><i />MÔI TRƯỜNG STAGING · KHÔNG PHẢI PRODUCTION</div></section>
       <nav className="owner-workspace-tabs" aria-label="Chức năng giáo viên"><button type="button" className="teacher-secondary" aria-pressed={!contentReviewOpen} onClick={() => setContentReviewOpen(false)}>Soạn bài</button><button type="button" className="teacher-secondary" aria-pressed={contentReviewOpen} onClick={() => setContentReviewOpen(true)}>Duyệt nội dung được giao</button></nav>
       {contentReviewOpen ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={session.user.id} userId={session.user.id} /></Suspense> : <>
-      {loadingWorkspace && <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền và tải bản nháp…</h2></section>}
-      {!loadingWorkspace && accessState === "denied" && <section className="teacher-state-card"><span className="teacher-kicker">QUYỀN TRUY CẬP</span><h2>Chưa có lời mời giáo viên.</h2><p>{error}</p><p>Email đã xác minh không tự cấp quyền giáo viên. Nếu bạn nghĩ đây là nhầm lẫn, hãy liên hệ Owner qua kênh hỗ trợ đã được xác nhận.</p></section>}
-      {!loadingWorkspace && accessState === "unavailable" && <section className="teacher-state-card"><span className="teacher-kicker">DỊCH VỤ CHƯA SẴN SÀNG</span><h2>Chưa thể mở phần soạn bài.</h2><p>{error || "API workspace giáo viên chưa được triển khai hoặc đang tạm gián đoạn."}</p><p>Không có nội dung giả được hiển thị; chưa có quyền tải media hoặc publish.</p></section>}
-      {!loadingWorkspace && accessState === "active" && <div className="teacher-workspace-grid">
+      <TeacherCollaborationPanel userId={session.user.id} onReadyChange={setCollaborationReadyUserId} />
+      {collaborationReadyUserId !== session.user.id && loadingWorkspace && <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền và tải bản nháp…</h2></section>}
+      {collaborationReadyUserId !== session.user.id && !loadingWorkspace && accessState === "denied" && <section className="teacher-state-card"><span className="teacher-kicker">QUYỀN TRUY CẬP</span><h2>Chưa có lời mời giáo viên.</h2><p>{error}</p><p>Email đã xác minh không tự cấp quyền giáo viên. Nếu bạn nghĩ đây là nhầm lẫn, hãy liên hệ Owner qua kênh hỗ trợ đã được xác nhận.</p></section>}
+      {collaborationReadyUserId !== session.user.id && !loadingWorkspace && accessState === "unavailable" && <section className="teacher-state-card"><span className="teacher-kicker">DỊCH VỤ CHƯA SẴN SÀNG</span><h2>Chưa thể mở phần soạn bài.</h2><p>{error || "API workspace giáo viên chưa được triển khai hoặc đang tạm gián đoạn."}</p><p>Không có nội dung giả được hiển thị; chưa có quyền tải media hoặc publish.</p></section>}
+      {collaborationReadyUserId !== session.user.id && !loadingWorkspace && accessState === "active" && <div className="teacher-workspace-grid">
         <aside className="teacher-panel teacher-draft-list" aria-label="Danh sách bản nháp riêng">
-          <div className="teacher-list-heading"><div><span className="teacher-kicker">NỘI DUNG RIÊNG</span><h2>Bản nháp</h2></div><button className="teacher-secondary" type="button" onClick={() => { setForm(emptyDraft()); setError(""); setNotice(""); setConflictDraftId(null); }}>Bài mới</button></div>
+          <div className="teacher-list-heading"><div><span className="teacher-kicker">NỘI DUNG RIÊNG</span><h2>Bản nháp</h2></div><button className="teacher-secondary" type="button" onClick={() => { replaceEditor(emptyDraft()); }}>Bài mới</button></div>
           {drafts.length === 0 ? <div className="teacher-empty"><strong>Chưa có bản nháp.</strong><p>Bắt đầu một bài học mới. Nội dung chỉ được gửi khi bạn chọn lưu.</p></div> : <div className="teacher-draft-items">{drafts.map(draft => <button key={draft.session_id} type="button" className={`teacher-draft-item${form?.sessionId === draft.session_id ? " is-selected" : ""}`} onClick={() => { void openDraft(draft); }}>
             <strong>{draft.title}</strong><span>Nháp · phiên bản {draft.version_no}</span><time dateTime={draft.updated_at}>{new Intl.DateTimeFormat("vi-VN", { dateStyle: "medium", timeStyle: "short" }).format(new Date(draft.updated_at))}</time>
           </button>)}</div>}
@@ -492,9 +511,9 @@ export function TeacherWorkspace() {
         </aside>
 
         <section className="teacher-editor-column">
-          {!form && <section className="teacher-state-card teacher-editor-empty"><span className="teacher-kicker">BẮT ĐẦU KHI BẠN SẴN SÀNG</span><h2>Soạn một bài học.</h2><p>Chọn một bản nháp để tiếp tục hoặc tạo bài mới. Nội dung chưa lưu chỉ nằm trong phiên trình duyệt hiện tại.</p><button className="teacher-primary" type="button" onClick={() => { setForm(emptyDraft()); setError(""); setNotice(""); }}>Tạo bản nháp</button></section>}
+          {!form && <section className="teacher-state-card teacher-editor-empty"><span className="teacher-kicker">BẮT ĐẦU KHI BẠN SẴN SÀNG</span><h2>Soạn một bài học.</h2><p>Chọn một bản nháp để tiếp tục hoặc tạo bài mới. Nội dung chưa lưu chỉ nằm trong phiên trình duyệt hiện tại.</p><button className="teacher-primary" type="button" onClick={() => { replaceEditor(emptyDraft()); }}>Tạo bản nháp</button></section>}
           {form && <form className="teacher-panel teacher-editor" onSubmit={event => { void saveDraft(event); }}>
-            <div className="teacher-editor-heading"><div><span className="teacher-kicker">{form.sessionId ? `BẢN NHÁP · PHIÊN BẢN ${form.expectedVersion}` : "BẢN NHÁP MỚI"}</span><h2>{form.title || "Bài học chưa đặt tên"}</h2><p>Lưu riêng tư để tiếp tục sau. Chưa có tải video, publish hay đưa vào thư viện học viên.</p></div><button type="button" className="teacher-quiet-button" onClick={() => { setForm(null); setError(""); setNotice(""); }}>Đóng bản nháp</button></div>
+            <div className="teacher-editor-heading"><div><span className="teacher-kicker">{form.sessionId ? `BẢN NHÁP · PHIÊN BẢN ${form.expectedVersion}` : "BẢN NHÁP MỚI"}</span><h2>{form.title || "Bài học chưa đặt tên"}</h2><p>Lưu riêng tư để tiếp tục sau. Chưa có tải video, publish hay đưa vào thư viện học viên.</p></div><button type="button" className="teacher-quiet-button" onClick={() => { replaceEditor(null); }}>Đóng bản nháp</button></div>
             <label className="teacher-field">Tiêu đề bài học<input required maxLength={120} value={form.title} onChange={event => updateForm("title", event.target.value)} /></label>
             <label className="teacher-field">Tóm tắt<textarea rows={2} maxLength={1000} value={form.summary} onChange={event => updateForm("summary", event.target.value)} /></label>
             <label className="teacher-field">Mục tiêu học tập<textarea rows={2} maxLength={1000} value={form.objective} onChange={event => updateForm("objective", event.target.value)} /></label>

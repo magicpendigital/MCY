@@ -617,10 +617,10 @@ begin
     where v.session_id = v_session_id and v.locale = 'vi-VN'
     order by v.version_no desc limit 1;
     if not found or v_current.status <> 'draft' then
-      raise exception using errcode = '40001', message = 'Draft changed; reload before saving';
+      raise exception using errcode = 'PT409', message = 'Draft changed; reload before saving';
     end if;
     if v_current.version_no <> v_expected_version then
-      raise exception using errcode = '40001', message = 'Draft changed; reload before saving';
+      raise exception using errcode = 'PT409', message = 'Draft changed; reload before saving';
     end if;
     v_source_version_id := v_current.id;
   end if;

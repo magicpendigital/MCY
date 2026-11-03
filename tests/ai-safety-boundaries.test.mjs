@@ -73,7 +73,7 @@ test("AI spend gate stays closed unless staging, owner spend approval, and a key
     supabaseUrl: "https://mhumbczqrzutdnraafhs.supabase.co/",
     stagingEnabled: "true",
     spendControlApproved: "true",
-    gatewayApiKey: "test-only-key",
+    providerApiKey: "test-only-key",
   };
   assert.equal(aiSpendGateOpen(complete), true);
   for (const incomplete of [
@@ -81,7 +81,7 @@ test("AI spend gate stays closed unless staging, owner spend approval, and a key
     { ...complete, stagingEnabled: "false" },
     { ...complete, spendControlApproved: undefined },
     { ...complete, spendControlApproved: "false" },
-    { ...complete, gatewayApiKey: "  " },
+    { ...complete, providerApiKey: "  " },
   ]) {
     assert.equal(aiSpendGateOpen(incomplete), false);
   }

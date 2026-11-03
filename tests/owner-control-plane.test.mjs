@@ -99,33 +99,35 @@ test("Owner control plane rejects methods, missing identity, and non-staging con
   assert.equal(unconfirmedHarness.calls.length, 0);
 });
 
-test("Owner reads require server RPC authorization and never return the Gateway key", async () => {
+test("Owner reads require server RPC authorization and never return the OpenRouter key", async () => {
   const denied = harness({ rpcResults: { mcy_ai_get_owner_config: { data: null, error: { message: "Owner role required" } } } });
   assert.deepEqual(await jsonResponse(await denied.handler(request({ action: "read_ai" }))), {
     status: 403, body: { error: "owner_access_required" },
   });
 
   const secret = "test-only-never-return-this";
-  const allowed = harness({ env: { AI_GATEWAY_API_KEY: secret, MCY_AI_ENABLE_STAGING: "false" } });
+  const allowed = harness({ env: { OPENROUTER_API_KEY: secret, MCY_AI_ENABLE_STAGING: "false" } });
   const response = await allowed.handler(request({ action: "read_ai" }));
   const serialized = await response.text();
   assert.equal(response.status, 200);
   assert.equal(serialized.includes(secret), false);
   assert.deepEqual(JSON.parse(serialized), {
     config: DEFAULT_CONFIG,
-    models: null,
-    modelCatalogAvailable: false,
-    gatewayKeyConfigured: true,
+    models: DEFAULT_MODELS,
+    modelCatalogAvailable: true,
+    provider: "openrouter",
+    providerKeyConfigured: true,
+    gatewayKeyConfigured: false,
     spendControlApproved: false,
     enableGateOpen: false,
     environment: "staging",
   });
   assert.deepEqual(allowed.calls, [{ name: "mcy_ai_get_owner_config", args: { p_actor_id: OWNER_ID } }]);
-  assert.deepEqual(allowed.modelsCalls, []);
+  assert.deepEqual(allowed.modelsCalls, [secret], "Owner can inspect readiness while inference remains off");
 
   const gatedOn = harness({
     env: {
-      AI_GATEWAY_API_KEY: secret,
+      OPENROUTER_API_KEY: secret,
       MCY_AI_ENABLE_STAGING: "true",
       MCY_AI_SPEND_CONTROL_APPROVED: "true",
     },
@@ -146,7 +148,7 @@ test("Owner request timeout is returned as a retryable client timeout", async ()
   assert.equal(timedOut.calls.length, 0);
 });
 
-test("AI-off reads and disabled saves need no Gateway key or model catalog", async () => {
+test("AI-off reads and disabled saves need no OpenRouter key or model catalog", async () => {
   const disabledConfig = { ...DEFAULT_CONFIG, enabled: false, model_id: "" };
   const disabled = harness({
     rpcResults: {
@@ -156,7 +158,7 @@ test("AI-off reads and disabled saves need no Gateway key or model catalog", asy
   const read = await jsonResponse(await disabled.handler(request({ action: "read_ai" })));
   assert.equal(read.status, 200);
   assert.equal(read.body.models, null);
-  assert.equal(read.body.gatewayKeyConfigured, false);
+  assert.equal(read.body.providerKeyConfigured, false);
   assert.equal(read.body.spendControlApproved, false);
   assert.equal(read.body.enableGateOpen, false);
 
@@ -172,6 +174,13 @@ test("AI-off reads and disabled saves need no Gateway key or model catalog", asy
   assert.equal(saveCall.args.p_enabled, false);
   assert.equal(saveCall.args.p_actor_id, OWNER_ID, "the actor must come only from the verified access token");
   assert.equal("actor_id" in saveCall.args, false);
+});
+
+test("Owner readiness excludes models the applied save RPC cannot persist while inference remains closed", async () => {
+  const h = harness({ env: { OPENROUTER_API_KEY: "fictional-key", MCY_AI_ENABLE_STAGING: "false" }, models: [{ id: "provider/model:free" }, { id: "provider/model" }] });
+  const r = await jsonResponse(await h.handler(request({ action: "read_ai" })));
+  assert.equal(r.status, 200); assert.deepEqual(r.body.models, [{ id: "provider/model" }]); assert.equal(r.body.enableGateOpen, false);
+  assert.equal(h.calls.some(c => c.name === "mcy_ai_save_owner_config"), false);
 });
 
 test("oversized, malformed, and structurally invalid requests fail before RPC", async () => {
@@ -203,7 +212,7 @@ test("enable requests fail closed before RPC unless staging, spend approval, and
   assert.equal(noKey.modelsCalls.length, 0);
 
   const noSpendApproval = harness({
-    env: { AI_GATEWAY_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true" },
+    env: { OPENROUTER_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true" },
   });
   assert.deepEqual(await jsonResponse(await noSpendApproval.handler(request(savePayload({ enabled: true, model_id: "provider/model-a" })))), {
     status: 409, body: { error: "ai_staging_gate_closed" },
@@ -211,7 +220,7 @@ test("enable requests fail closed before RPC unless staging, spend approval, and
   assert.equal(noSpendApproval.calls.length, 0);
   assert.equal(noSpendApproval.modelsCalls.length, 0);
 
-  const closedFlag = harness({ env: { AI_GATEWAY_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "false" } });
+  const closedFlag = harness({ env: { OPENROUTER_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "false" } });
   assert.equal((await closedFlag.handler(request(savePayload({ enabled: true, model_id: "provider/model-a" })))).status, 409);
   assert.equal(closedFlag.calls.length, 0);
   assert.equal(closedFlag.modelsCalls.length, 0);
@@ -220,7 +229,7 @@ test("enable requests fail closed before RPC unless staging, spend approval, and
 test("enabled saves check owner, configuration version, and live model before persistence", async () => {
   const enabledConfig = { ...DEFAULT_CONFIG, enabled: true, model_id: "provider/model-a" };
   const ownerDenied = harness({
-    env: { AI_GATEWAY_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
+    env: { OPENROUTER_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
     rpcResults: { mcy_ai_get_owner_config: { data: null, error: { message: "Owner role required" } } },
   });
   assert.deepEqual(await jsonResponse(await ownerDenied.handler(request(savePayload(enabledConfig)))), {
@@ -229,7 +238,7 @@ test("enabled saves check owner, configuration version, and live model before pe
   assert.equal(ownerDenied.modelsCalls.length, 0);
 
   const conflict = harness({
-    env: { AI_GATEWAY_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
+    env: { OPENROUTER_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
     rpcResults: { mcy_ai_get_owner_config: { data: { ...DEFAULT_CONFIG, version_no: 2 }, error: null } },
   });
   assert.deepEqual(await jsonResponse(await conflict.handler(request(savePayload(enabledConfig)))), {
@@ -239,7 +248,7 @@ test("enabled saves check owner, configuration version, and live model before pe
   assert.equal(conflict.calls.some(call => call.name === "mcy_ai_save_owner_config"), false);
 
   const unsupported = harness({
-    env: { AI_GATEWAY_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
+    env: { OPENROUTER_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
     rpcResults: {
       mcy_ai_get_owner_config: { data: DEFAULT_CONFIG, error: null },
       mcy_ai_save_owner_config: { data: enabledConfig, error: null },
@@ -254,7 +263,7 @@ test("enabled saves check owner, configuration version, and live model before pe
 
 test("model catalogue failures and RPC failures return bounded public error codes", async () => {
   const catalogue = harness({
-    env: { AI_GATEWAY_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
+    env: { OPENROUTER_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
     modelError: true,
   });
   const read = await jsonResponse(await catalogue.handler(request({ action: "read_ai" })));
@@ -264,7 +273,7 @@ test("model catalogue failures and RPC failures return bounded public error code
 
   const enabledConfig = { ...DEFAULT_CONFIG, enabled: true, model_id: "provider/model-a" };
   const saveCatalogue = harness({
-    env: { AI_GATEWAY_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
+    env: { OPENROUTER_API_KEY: "test-only-key", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true" },
     modelError: true,
     rpcResults: { mcy_ai_get_owner_config: { data: DEFAULT_CONFIG, error: null } },
   });
@@ -299,4 +308,23 @@ test("OPTIONS and unexpected action return safe responses without logging reques
     status: 400, body: { error: "unsupported_action" },
   });
   assert.deepEqual(unknown.calls, []);
+});
+
+test("Owner domain conflicts use PT409; real serialization failures never become 409 or retry", async () => {
+  for (const [code, status, publicError] of [
+    ["PT409", 409, "configuration_conflict"],
+    ["40001", 503, "owner_service_unavailable"],
+    ["42501", 403, "owner_access_required"],
+    ["22023", 400, "configuration_rejected"],
+  ]) {
+    const h = harness({ rpcResults: { mcy_ai_save_owner_config: {
+      data: null, error: { code, message: "AI configuration changed; reload; Owner role; private row data" },
+    } } });
+    const response = await h.handler(request(savePayload()));
+    assert.equal(response.status, status);
+    assert.deepEqual(await response.json(), { error: publicError });
+    assert.equal(response.headers.get("Cache-Control"), "no-store");
+    assert.equal(h.calls.length, 1);
+    assert.equal(h.modelsCalls.length, 0);
+  }
 });

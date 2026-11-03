@@ -177,13 +177,16 @@ function safeDraftDocument(value: unknown): Record<string, unknown> | null {
 }
 
 function mapRpcFailure(error: { code?: string; message?: string } | null): Response {
+  if (error?.code === "40001") return json(503, { error: "teacher_service_unavailable" });
   if (error?.code === "54000" && /teacher draft write limit reached/i.test(error.message ?? "")) {
     return json(429, { error: "draft_save_limit_reached" });
   }
-  if (error?.code === "42501" || /role required|owner access|invitation required/i.test(error?.message ?? "")) {
+  if (error?.code === "42501"
+    || (!error?.code && /role required|owner access|invitation required/i.test(error?.message ?? ""))) {
     return json(403, { error: "workspace_access_required" });
   }
-  if (error?.code === "40001" || error?.code === "23505" || /changed; reload|already processed/i.test(error?.message ?? "")) {
+  if (error?.code === "PT409" || error?.code === "23505"
+    || (!error?.code && /changed; reload|already processed/i.test(error?.message ?? ""))) {
     return json(409, { error: "workspace_conflict" });
   }
   if (error?.code === "P0002") return json(404, { error: "draft_not_found" });

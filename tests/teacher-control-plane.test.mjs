@@ -283,7 +283,7 @@ test("draft save accepts only bounded Vietnamese draft fields and returns a publ
 });
 
 test("draft version conflicts and database failures are sanitized", async () => {
-  const conflict = harness({ responses: { mcy_teacher_save_own_draft: { data: null, error: { code: "40001", message: "internal row data" } } } });
+  const conflict = harness({ responses: { mcy_teacher_save_own_draft: { data: null, error: { code: "PT409", message: "internal row data" } } } });
   assert.deepEqual(await jsonResponse(await conflict.handler(request({ action: "save_draft", draft: draft({ session_id: SESSION_ID, expected_version: 1 }) }))), {
     status: 409, body: { error: "workspace_conflict" },
   });
@@ -292,6 +292,23 @@ test("draft version conflicts and database failures are sanitized", async () => 
   const result = await jsonResponse(await unavailable.handler(request({ action: "list_drafts" })));
   assert.deepEqual(result, { status: 503, body: { error: "teacher_service_unavailable" } });
   assert.equal(JSON.stringify(result).includes("private database detail"), false);
+});
+
+test("teacher domain conflicts and real serialization failures stay distinct without retries", async () => {
+  for (const [code, status, error] of [
+    ["PT409", 409, "workspace_conflict"],
+    ["40001", 503, "teacher_service_unavailable"],
+    ["42501", 403, "workspace_access_required"],
+    ["P0002", 404, "draft_not_found"],
+  ]) {
+    const h = harness({ responses: { mcy_teacher_save_own_draft: {
+      data: null, error: { code, message: "Draft changed; reload; Owner role required; private internal row data" },
+    } } });
+    assert.deepEqual(await jsonResponse(await h.handler(request({ action: "save_draft", draft: draft() }))), {
+      status, body: { error },
+    });
+    assert.equal(h.calls.length, 1);
+  }
 });
 
 test("teacher draft save quotas return a bounded retryable response", async () => {

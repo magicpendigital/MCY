@@ -68,3 +68,10 @@ test("teacher activation and draft RPCs remain invite-bound, actor-owned, versio
   assert.match(migration, /if v_recent_save_count >= 20 then[\s\S]*?errcode = '54000'[\s\S]*?Teacher draft write limit reached/i);
   assert.doesNotMatch(migration, /create or replace function public\.mcy_teacher_[^(]+\([^)]*publish/i);
 });
+
+test("unapplied teacher draft business conflicts use non-retryable PT409", () => {
+  assert.doesNotMatch(migration, /(?:errcode\s*=|raise\s+sqlstate)\s*'40001'/i);
+  assert.equal((migration.match(/errcode\s*=\s*'PT409'/g) ?? []).length, 2);
+  assert.match(migration, /if not found or v_current\.status <> 'draft' then\s*raise exception using errcode = 'PT409'/);
+  assert.match(migration, /if v_current\.version_no <> v_expected_version then\s*raise exception using errcode = 'PT409'/);
+});

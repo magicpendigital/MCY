@@ -10,6 +10,9 @@ test("Playwright Vite receives only the fictional Supabase configuration", () =>
     SUPABASE_SERVICE_ROLE_KEY: "service-role-canary",
     SUPABASE_ACCESS_TOKEN: "access-token-canary",
     AI_GATEWAY_API_KEY: "gateway-key-canary",
+    OPENROUTER_API_KEY: "openrouter-key-canary",
+    VITE_OPENROUTER_API_KEY: "unsafe-vite-key-canary",
+    OPENROUTER_API_KEY: "openrouter-key-canary",
   });
 
   assert.equal(environment.PATH, "fixture-path");
@@ -18,5 +21,8 @@ test("Playwright Vite receives only the fictional Supabase configuration", () =>
   assert.equal("SUPABASE_SERVICE_ROLE_KEY" in environment, false);
   assert.equal("SUPABASE_ACCESS_TOKEN" in environment, false);
   assert.equal("AI_GATEWAY_API_KEY" in environment, false);
+  assert.equal("OPENROUTER_API_KEY" in environment, false);
+  assert.equal("VITE_OPENROUTER_API_KEY" in environment, false);
+  assert.equal("OPENROUTER_API_KEY" in environment, false);
   assert.equal(JSON.stringify(environment).includes("canary"), false);
 });

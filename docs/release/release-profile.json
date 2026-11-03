@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "projectId": "mcy",
+  "mode": "cloud",
+  "targets": [],
+  "environmentPolicy": {
+    "stagingOrganizationId": "rzbpjfrndhrtxagpgdre",
+    "productionOrganizationId": "rzbpjfrndhrtxagpgdre",
+    "productionProvisioning": "same-project-promotion-blocked-until-target-cost-recovery-security-review",
+    "observedOrganizationId": "drxbmvimiekeoeesgssp",
+    "allocationStatus": "transfer-planned-not-executed-staging-not-production",
+    "allocationPlan": "docs/release/SUPABASE_ALLOCATION_2026-10-05.md",
+    "development": "local-synthetic-no-additional-paid-project"
+  },
+  "blockers": [
+    "MCY three local-only migrations remain pending in the 2026-10-03 source report; independently review compatibility and current ledger before clearing.",
+    "Official migration-list and authenticated learner A/B, teacher, reviewer and Owner evidence remain incomplete; source-only tests do not clear this gate.",
+    "MCY desired org is MagicpenDigital Pro; observed project still belongs to Nilaza Free. Transfer, exact costs and target promotion have not been executed/approved by this planning update."
+  ],
+  "inputRoots": [
+    "src",
+    "worker",
+    "scripts",
+    "tests",
+    "public",
+    "package.json",
+    "package-lock.json",
+    "vite.config.ts",
+    "vercel.json",
+    "capacitor.config.ts",
+    "mobile-runtime.lock.json",
+    ".github/workflows",
+    "skills/mcy-change-review",
+    "supabase/functions",
+    "supabase/config.toml",
+    "AGENTS.md",
+    "docs/release"
+  ],
+  "requiredChecks": [
+    {
+      "id": "source-and-artifact-review",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "owner-acceptance",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "recovery-rehearsal",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "market-readiness-and-recurring-cost",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "migration-ledger",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "clean-schema-replay",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "production-schema-upgrade-synthetic",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "old-client-expand-contract",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "grants-rls-storage-rpc-views",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "actors-a-b-revoked-old-token",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "schema-and-config-drift",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "backup-coverage-and-restore",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "protected-job-and-release-lock",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "staging-smoke-and-observation",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "health-expert-review",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "teacher-student-isolation",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "consent-revocation",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "ai-spend-and-disabled-fallback",
+      "allowNotApplicable": false
+    },
+    {
+      "id": "native-device",
+      "allowNotApplicable": false
+    }
+  ],
+  "validationResultType": "EvidenceBundleValidation"
+}

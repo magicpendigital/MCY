@@ -28,6 +28,9 @@ async function scan(directory) {
     if (/\b(?:VITE_)?SUPABASE_SERVICE_ROLE_KEY\b/.test(content)) {
       findings.push(`${path}: service-role variable name`);
     }
+    if (/sk-or-v1-[A-Za-z0-9_-]{12,}/.test(content) || /\b(?:VITE_)?OPENROUTER_API_KEY\b/.test(content)) {
+      findings.push(`${path}: OpenRouter server secret or variable name`);
+    }
     for (const match of content.matchAll(/\beyJ[A-Za-z0-9_-]+\.([A-Za-z0-9_-]+)\.[A-Za-z0-9_-]+\b/g)) {
       try {
         const payload = JSON.parse(Buffer.from(match[1], "base64url").toString("utf8"));

@@ -4,7 +4,7 @@ import { createAiAssistantHandler } from "../supabase/functions/_shared/aiAssist
 import { readBoundedJson, RequestBodyTimeoutError, RequestBodyTooLargeError } from "../supabase/functions/_shared/boundedRequest.ts";
 
 const STAGING_URL = "https://mhumbczqrzutdnraafhs.supabase.co";
-const GATEWAY_KEY = "fixture-only-not-a-secret";
+const PROVIDER_KEY = "fixture-only-not-a-secret";
 const ACCESS_TOKEN = "verified-learner-access-token";
 const ACTOR_ID = "11111111-1111-4111-8111-111111111111";
 const FORGED_ACTOR_ID = "22222222-2222-4222-8222-222222222222";
@@ -50,17 +50,17 @@ function harness(options = {}) {
     SUPABASE_URL: STAGING_URL,
     MCY_AI_ENABLE_STAGING: "true",
     MCY_AI_SPEND_CONTROL_APPROVED: "true",
-    AI_GATEWAY_API_KEY: GATEWAY_KEY,
+    OPENROUTER_API_KEY: PROVIDER_KEY,
     ...options.env,
   }));
   const rpcCalls = [];
   const modelCalls = [];
-  const gatewayCalls = [];
+  const providerCalls = [];
   const authCalls = [];
   const identity = options.identity === undefined
     ? { id: ACTOR_ID, email_confirmed_at: "2026-09-01T00:00:00Z" }
     : options.identity;
-  const response = options.gatewayResponse ?? Response.json({
+  const response = options.providerResponse ?? Response.json({
     model: MODEL_ID,
     choices: [{ message: { content: JSON.stringify({ reply: "Mình có thể cùng bạn chọn một nhịp thật nhẹ." }) } }],
     usage: { prompt_tokens: 84, completion_tokens: 22 },
@@ -96,9 +96,9 @@ function harness(options = {}) {
       if (options.modelError) throw new Error("catalog_unavailable");
       return options.models ?? [{ id: MODEL_ID }];
     },
-    fetchGateway: async (url, init) => {
-      gatewayCalls.push({ url: String(url), init });
-      if (options.gatewayError) throw new Error("provider_unavailable");
+    fetchProvider: async (url, init) => {
+      providerCalls.push({ url: String(url), init });
+      if (options.providerError) throw new Error("provider_unavailable");
       return response;
     },
     readJson: options.readJson ?? readBoundedJson,
@@ -106,7 +106,7 @@ function harness(options = {}) {
     isBodyTimeout: error => error instanceof RequestBodyTimeoutError,
     newRequestId: () => options.generatedRequestId ?? "33333333-3333-4333-8333-333333333333",
   });
-  return { handler, rpcCalls, modelCalls, gatewayCalls, authCalls };
+  return { handler, rpcCalls, modelCalls, providerCalls, authCalls };
 }
 
 async function jsonResponse(response) {
@@ -122,16 +122,17 @@ test("inference fails closed before client/provider calls unless every staging s
   assert.equal(closed.authCalls.length, 0);
   assert.equal(closed.rpcCalls.length, 0);
   assert.equal(closed.modelCalls.length, 0);
-  assert.equal(closed.gatewayCalls.length, 0);
+  assert.equal(closed.providerCalls.length, 0);
 
   for (const env of [
     { SUPABASE_URL: "https://production.supabase.co" },
     { MCY_AI_SPEND_CONTROL_APPROVED: "false" },
-    { AI_GATEWAY_API_KEY: "  " },
+    { OPENROUTER_API_KEY: "  " },
+    { OPENROUTER_API_KEY: undefined, AI_GATEWAY_API_KEY: "obsolete-key-must-not-open-gate" },
   ]) {
     const disabled = harness({ env });
     assert.equal((await disabled.handler(request(payload())).then(response => response.status)), 404);
-    assert.equal(disabled.gatewayCalls.length, 0);
+    assert.equal(disabled.providerCalls.length, 0);
   }
 });
 
@@ -147,14 +148,14 @@ test("inference rejects unsupported methods, missing auth, and unconfirmed ident
   const unconfirmed = harness({ identity: { id: ACTOR_ID, email_confirmed_at: null } });
   assert.equal((await unconfirmed.handler(request(payload()))).status, 401);
   assert.equal(unconfirmed.rpcCalls.length, 0);
-  assert.equal(unconfirmed.gatewayCalls.length, 0);
+  assert.equal(unconfirmed.providerCalls.length, 0);
 });
 
 test("request validation and direct identifiers fail before quota reservation or provider access", async () => {
   const invalid = harness();
   assert.equal((await invalid.handler(request({ ...payload(), context: { ...payload().context, regions: ["admin"] } }))).status, 400);
   assert.equal(invalid.rpcCalls.length, 0);
-  assert.equal(invalid.gatewayCalls.length, 0);
+  assert.equal(invalid.providerCalls.length, 0);
 
   const pii = harness();
   assert.deepEqual(await jsonResponse(await pii.handler(request(payload({ message: "Tên tôi là Minh Anh, muốn tập nhẹ." })))), {
@@ -162,7 +163,7 @@ test("request validation and direct identifiers fail before quota reservation or
     body: { error: "message_contains_identifiers" },
   });
   assert.equal(pii.rpcCalls.length, 0);
-  assert.equal(pii.gatewayCalls.length, 0);
+  assert.equal(pii.providerCalls.length, 0);
 
   const address = harness();
   assert.deepEqual(await jsonResponse(await address.handler(request(payload({ message: "I live at 12 Nguyễn Trãi" })))), {
@@ -170,14 +171,14 @@ test("request validation and direct identifiers fail before quota reservation or
     body: { error: "message_contains_identifiers" },
   });
   assert.equal(address.rpcCalls.length, 0);
-  assert.equal(address.gatewayCalls.length, 0);
+  assert.equal(address.providerCalls.length, 0);
 
   const previousTurn = harness();
   assert.equal((await previousTurn.handler(request(payload({
     turns: [{ role: "user", content: "I live at 12 Nguyễn Trãi" }],
   }))).then(response => response.status)), 400);
   assert.equal(previousTurn.rpcCalls.length, 0);
-  assert.equal(previousTurn.gatewayCalls.length, 0);
+  assert.equal(previousTurn.providerCalls.length, 0);
 
   const malformed = harness();
   assert.equal((await malformed.handler(request("{"))).status, 400);
@@ -200,14 +201,14 @@ test("consent and rate-limit decisions come from the server admission RPC", asyn
     status: 403,
     body: { error: "current_ai_consent_required" },
   });
-  assert.equal(noConsent.gatewayCalls.length, 0);
+  assert.equal(noConsent.providerCalls.length, 0);
   assert.equal(noConsent.rpcCalls.some(call => call.name === "mcy_ai_finish_request"), false);
 
   const limited = harness({
     rpcResults: { mcy_ai_begin_request: { data: null, error: { message: "AI usage limit reached" } } },
   });
   assert.equal((await limited.handler(request(payload())).then(response => response.status)), 429);
-  assert.equal(limited.gatewayCalls.length, 0);
+  assert.equal(limited.providerCalls.length, 0);
 });
 
 test("successful turn uses verified actor and allowlisted minimum context, then records metadata only", async () => {
@@ -226,10 +227,17 @@ test("successful turn uses verified actor and allowlisted minimum context, then 
   assert.equal(app.rpcCalls[0].args.p_actor_id === FORGED_ACTOR_ID, false);
   assert.equal(app.rpcCalls[0].args.p_request_id, REQUEST_ID);
 
-  const gateway = app.gatewayCalls[0];
-  assert.equal(gateway.url, "https://ai-gateway.vercel.sh/v1/chat/completions");
-  assert.equal(new Headers(gateway.init.headers).get("Authorization"), `Bearer ${GATEWAY_KEY}`);
+  const gateway = app.providerCalls[0];
+  assert.equal(gateway.url, "https://openrouter.ai/api/v1/chat/completions");
+  assert.equal(new Headers(gateway.init.headers).get("Authorization"), `Bearer ${PROVIDER_KEY}`);
   const modelRequest = JSON.parse(gateway.init.body);
+  assert.equal(gateway.init.redirect, "error");
+  assert.deepEqual(modelRequest.provider, { require_parameters: true, data_collection: "deny", zdr: true, allow_fallbacks: false });
+  assert.equal(modelRequest.response_format.type, "json_schema");
+  assert.equal(modelRequest.response_format.json_schema.strict, true);
+  assert.equal(modelRequest.response_format.json_schema.schema.additionalProperties, false);
+  assert.equal(modelRequest.stream, false);
+  assert.equal(modelRequest.max_tokens, CONFIG.max_output_tokens);
   const sent = JSON.stringify(modelRequest);
   const sentContext = JSON.parse(modelRequest.messages[1].content);
   assert.equal(sent.includes(ACTOR_ID), false);
@@ -250,26 +258,37 @@ test("successful turn uses verified actor and allowlisted minimum context, then 
   assert.equal("reply" in finish, false);
 });
 
+test("insufficient credit, rate limits and provider failures are not retried or leaked", async () => {
+  for (const status of [401, 402, 403, 429, 500]) {
+    const app = harness({ providerResponse: new Response("PRIVATE_ERROR_WITH_SECRET", { status }) });
+    const response = await app.handler(request(payload()));
+    assert.equal(response.status, 502);
+    assert.equal((await response.text()).includes("PRIVATE_ERROR"), false);
+    assert.equal(app.providerCalls.length, 1);
+    assert.equal(app.rpcCalls.at(-1).args.p_status, "failed");
+  }
+});
+
 test("provider, model-catalog, and malformed-output failures stay generic and finish the reserved usage event", async () => {
   const modelUnavailable = harness({ models: [{ id: "provider/other-model" }] });
   assert.equal((await modelUnavailable.handler(request(payload())).then(response => response.status)), 503);
-  assert.equal(modelUnavailable.gatewayCalls.length, 0);
+  assert.equal(modelUnavailable.providerCalls.length, 0);
   assert.equal(modelUnavailable.rpcCalls[1].args.p_status, "failed");
   assert.equal(modelUnavailable.rpcCalls[1].args.p_error_code, "model_unavailable");
 
-  const providerFailure = harness({ gatewayResponse: new Response("no", { status: 402 }) });
+  const providerFailure = harness({ providerResponse: new Response("no", { status: 402 }) });
   assert.deepEqual(await jsonResponse(await providerFailure.handler(request(payload()))), {
     status: 502,
     body: { error: "ai_temporarily_unavailable" },
   });
   assert.equal(providerFailure.rpcCalls[1].args.p_status, "failed");
-  assert.equal(providerFailure.rpcCalls[1].args.p_error_code, "gateway_request_failed");
+  assert.equal(providerFailure.rpcCalls[1].args.p_error_code, "provider_request_failed");
 
-  const malformedOutput = harness({ gatewayResponse: Response.json({ choices: [{ message: { content: "not-json" } }] }) });
+  const malformedOutput = harness({ providerResponse: Response.json({ choices: [{ message: { content: "not-json" } }] }) });
   assert.equal((await malformedOutput.handler(request(payload())).then(response => response.status)), 502);
   assert.equal(malformedOutput.rpcCalls[1].args.p_error_code, "invalid_model_response");
 
-  const oversizedProviderOutput = harness({ gatewayResponse: new Response("x".repeat(33_000)) });
+  const oversizedProviderOutput = harness({ providerResponse: new Response("x".repeat(33_000)) });
   assert.equal((await oversizedProviderOutput.handler(request(payload())).then(response => response.status)), 502);
   assert.equal(oversizedProviderOutput.rpcCalls[1].args.p_error_code, "invalid_model_response");
 });
@@ -280,7 +299,7 @@ test("unsafe medical output is never returned and its token usage is still recor
     choices: [{ message: { content: JSON.stringify({ reply: "Hãy thử tư thế em bé để giảm đau lưng." }) } }],
     usage: { prompt_tokens: 91, completion_tokens: 27 },
   };
-  const app = harness({ gatewayResponse: Response.json(responseBody) });
+  const app = harness({ providerResponse: Response.json(responseBody) });
   assert.deepEqual(await jsonResponse(await app.handler(request(payload()))), {
     status: 502,
     body: { error: "ai_temporarily_unavailable" },
@@ -318,6 +337,6 @@ test("handler accepts the Owner UI's 6000-character prompt bound and fails close
 
   const rejected = harness({ config: { ...CONFIG, system_prompt: "x".repeat(6001) } });
   assert.equal((await rejected.handler(request(payload())).then(response => response.status)), 503);
-  assert.equal(rejected.gatewayCalls.length, 0);
+  assert.equal(rejected.providerCalls.length, 0);
   assert.equal(rejected.rpcCalls[1].args.p_error_code, "invalid_configuration");
 });

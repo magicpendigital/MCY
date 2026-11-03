@@ -1,8 +1,8 @@
 import { aiSpendGateOpen } from "./aiGates.ts";
 import { containsDirectIdentifiers } from "./aiPrivacy.ts";
 import { containsUnsafeMedicalAdvice } from "./aiSafety.ts";
+import { isOpenRouterModelId, OPENROUTER_CHAT_URL, readOpenRouterJson } from "./openRouter.ts";
 
-const GATEWAY_CHAT_URL = "https://ai-gateway.vercel.sh/v1/chat/completions";
 const AI_CONSENT_VERSION = "ai-processing-review-1.0";
 const STAGING_SUPABASE_URL = "https://mhumbczqrzutdnraafhs.supabase.co";
 const SAFE_REGION_CODES = new Set([
@@ -46,7 +46,7 @@ export type AiAssistantDependencies = {
   env(name: string): string | undefined;
   clients(authorization: string): AiAssistantClients;
   readModels(apiKey: string): Promise<Array<{ id: string }>>;
-  fetchGateway(input: string | URL | Request, init?: RequestInit): Promise<Response>;
+  fetchProvider(input: string | URL | Request, init?: RequestInit): Promise<Response>;
   readJson(request: Request, maxBytes: number): Promise<unknown>;
   isBodyTooLarge(error: unknown): boolean;
   isBodyTimeout(error: unknown): boolean;
@@ -86,38 +86,6 @@ function validTokenCount(value: unknown): number | null {
   return typeof value === "number" && Number.isInteger(value) && value >= 0 && value <= 100_000 ? value : null;
 }
 
-async function readBoundedGatewayJson(response: Response, maxBytes: number): Promise<unknown> {
-  const declaredLength = response.headers.get("content-length");
-  if (declaredLength && (!/^\d+$/.test(declaredLength) || Number(declaredLength) > maxBytes)) {
-    throw new Error("gateway_response_too_large");
-  }
-  if (!response.body) throw new Error("empty_gateway_response");
-  const reader = response.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let byteLength = 0;
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      byteLength += value.byteLength;
-      if (byteLength > maxBytes) {
-        await reader.cancel().catch(() => undefined);
-        throw new Error("gateway_response_too_large");
-      }
-      chunks.push(value);
-    }
-  } finally {
-    reader.releaseLock();
-  }
-  const bytes = new Uint8Array(byteLength);
-  let offset = 0;
-  for (const chunk of chunks) {
-    bytes.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-  return JSON.parse(new TextDecoder().decode(bytes)) as unknown;
-}
-
 export function createAiAssistantHandler(dependencies: AiAssistantDependencies) {
   return async (request: Request): Promise<Response> => {
     if (request.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -130,7 +98,7 @@ export function createAiAssistantHandler(dependencies: AiAssistantDependencies) 
       supabaseUrl: dependencies.env("SUPABASE_URL"),
       stagingEnabled: dependencies.env("MCY_AI_ENABLE_STAGING"),
       spendControlApproved: dependencies.env("MCY_AI_SPEND_CONTROL_APPROVED"),
-      gatewayApiKey: dependencies.env("AI_GATEWAY_API_KEY"),
+      providerApiKey: dependencies.env("OPENROUTER_API_KEY"),
     })) {
       return json(404, { error: "ai_temporarily_unavailable" });
     }
@@ -185,8 +153,8 @@ export function createAiAssistantHandler(dependencies: AiAssistantDependencies) 
         return json(400, { error: "message_contains_identifiers" });
       }
 
-      const gatewayKey = dependencies.env("AI_GATEWAY_API_KEY");
-      if (!gatewayKey?.trim()) return json(503, { error: "ai_provider_not_configured" });
+      const providerKey = dependencies.env("OPENROUTER_API_KEY");
+      if (!providerKey?.trim()) return json(503, { error: "ai_provider_not_configured" });
 
       requestId = typeof payload.requestId === "string" && UUID_PATTERN.test(payload.requestId)
         ? payload.requestId
@@ -206,7 +174,7 @@ export function createAiAssistantHandler(dependencies: AiAssistantDependencies) 
       usageStarted = true;
       const config = configData as AiConfig | null;
       if (!config || typeof config !== "object" || !config.enabled
-        || typeof config.model_id !== "string" || !/^[a-z0-9][a-z0-9._/-]{1,200}$/.test(config.model_id)
+        || !isOpenRouterModelId(config.model_id)
         || typeof config.system_prompt !== "string" || config.system_prompt.trim().length < 40 || config.system_prompt.length > 6000
         || typeof config.temperature !== "number" || !Number.isFinite(config.temperature)
         || config.temperature < 0 || config.temperature > 0.7
@@ -218,7 +186,7 @@ export function createAiAssistantHandler(dependencies: AiAssistantDependencies) 
 
       let models: Array<{ id: string }>;
       try {
-        models = await dependencies.readModels(gatewayKey);
+        models = await dependencies.readModels(providerKey);
       } catch {
         errorCode = "model_catalog_unavailable";
         return json(503, { error: "ai_temporarily_unavailable" });
@@ -240,11 +208,12 @@ export function createAiAssistantHandler(dependencies: AiAssistantDependencies) 
         selectedBodyRegions: regions,
         currentMessage: message,
       };
-      const gatewayResponse = await dependencies.fetchGateway(GATEWAY_CHAT_URL, {
+      const providerResponse = await dependencies.fetchProvider(OPENROUTER_CHAT_URL, {
         method: "POST",
+        redirect: "error",
         signal: AbortSignal.timeout(25000),
         headers: {
-          Authorization: `Bearer ${gatewayKey}`,
+          Authorization: `Bearer ${providerKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -255,18 +224,32 @@ export function createAiAssistantHandler(dependencies: AiAssistantDependencies) 
           ],
           temperature: Math.min(Math.max(Number(config.temperature), 0), 0.7),
           max_tokens: Math.min(Math.max(Number(config.max_output_tokens), 64), 512),
-          response_format: { type: "json_object" },
+          response_format: {
+            type: "json_schema",
+            json_schema: {
+              name: "mcy_reply",
+              strict: true,
+              schema: {
+                type: "object",
+                properties: { reply: { type: "string" } },
+                required: ["reply"],
+                additionalProperties: false,
+              },
+            },
+          },
+          provider: { require_parameters: true, data_collection: "deny", zdr: true, allow_fallbacks: false },
           stream: false,
         }),
       });
-      if (!gatewayResponse.ok) {
-        errorCode = "gateway_request_failed";
+      if (!providerResponse.ok) {
+        void providerResponse.body?.cancel().catch(() => undefined);
+        errorCode = "provider_request_failed";
         return json(502, { error: "ai_temporarily_unavailable" });
       }
 
       let completion: Record<string, unknown>;
       try {
-        const responseBody: unknown = await readBoundedGatewayJson(gatewayResponse, 32_768);
+        const responseBody: unknown = await readOpenRouterJson(providerResponse, 32_768);
         if (!isRecord(responseBody)) throw new Error("invalid_model_response");
         completion = responseBody;
       } catch {

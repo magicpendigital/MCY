@@ -3,7 +3,7 @@ import { bodyRegionCodes, decodeBodyRegionCode, removeBodyObservation, replaceBo
 import { CONSENT_POLICY_VERSIONS, emptyConsentState, toCheckinObservationRpcPayload } from "../src/backend/learnerData";
 import { shouldInitializeAuthOnLaunch } from "../src/backend/authStartup";
 import { containsDirectIdentifiers } from "../supabase/functions/_shared/aiPrivacy";
-import { readAiGatewayModels } from "../supabase/functions/_shared/aiGateway";
+import { readOpenRouterModels } from "../supabase/functions/_shared/openRouter";
 import { readBoundedJson, RequestBodyTooLargeError } from "../supabase/functions/_shared/boundedRequest";
 import { MAX_HANDLED_NATIVE_AUTH_URLS, MAX_NATIVE_AUTH_CALLBACK_URL_LENGTH, nativeAuthCodeFromCallback, rememberNativeAuthUrl } from "../src/backend/nativeAuth";
 
@@ -168,33 +168,27 @@ test("AI request privacy guard detects common direct identifiers without blockin
   expect(containsDirectIdentifiers("I'm very stiff after sitting at work." )).toBe(false);
 });
 
-test("AI Gateway model catalog authenticates server-side and filters unsupported models", async () => {
+test("OpenRouter model catalog authenticates server-side and filters unsupported models", async () => {
   let receivedAuthorization = "";
-  const models = await readAiGatewayModels("test-only-server-key", async (_input, init) => {
+  const models = await readOpenRouterModels("test-only-server-key", async (_input, init) => {
     receivedAuthorization = new Headers(init?.headers).get("Authorization") ?? "";
     return new Response(JSON.stringify({ data: [
       {
         id: "provider/model-text",
         name: "Text model",
-        owned_by: "provider",
-        type: "language",
-        temperature: true,
-        supported_parameters: ["response_format"],
-        modalities: { input: ["text"], output: ["text"] },
-        pricing: { input: "0.000001", output: "0.000002" },
+        supported_parameters: ["response_format", "structured_outputs", "temperature", "max_tokens"],
+        architecture: { input_modalities: ["text"], output_modalities: ["text"] },
+        pricing: { prompt: "0.000001", completion: "0.000002" },
       },
       {
         id: "provider/model-image",
-        type: "image",
-        modalities: { input: ["image"], output: ["image"] },
-        pricing: { input: "0", output: "0" },
+        architecture: { input_modalities: ["image"], output_modalities: ["image"] },
+        pricing: { prompt: "0", completion: "0" },
       },
       {
         id: "provider/model-unpriced",
-        type: "language",
-        temperature: true,
         supported_parameters: ["response_format"],
-        modalities: { input: ["text"], output: ["text"] },
+        architecture: { input_modalities: ["text"], output_modalities: ["text"] },
       },
     ] }), { status: 200, headers: { "Content-Type": "application/json" } });
   });
@@ -652,8 +646,8 @@ test("help center opens topic-specific answers and states that AI inference is o
   await expect(page.getByTestId("flow-current").last().locator(".mcy-account-detail > .mcy-eyebrow")).toHaveText("QUYỀN RIÊNG TƯ");
   await expect(page.getByTestId("flow-current").last()).not.toContainText(/\bL\d{2}\s·/);
   const aiDisclosure = page.locator(".mcy-toggle-row").filter({ hasText: "Dùng check-in với trợ lý AI" });
-  await expect(aiDisclosure).toContainText("AI inference đang tắt trong staging");
-  await expect(aiDisclosure).toContainText("tin nhắn không được gửi tới nhà cung cấp mô hình");
+  await expect(aiDisclosure).toContainText("Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng");
+  await expect(aiDisclosure).toContainText("không gửi hội thoại trước đó");
   await expect(aiDisclosure.getByRole("button", { name: "Đồng ý" })).toHaveAttribute("aria-pressed", "false");
   await expect.poll(() => page.locator(".flow-screen[data-flow-current='true']").evaluate(element => Math.round(element.getBoundingClientRect().left))).toBe(0);
   const activePrivacyScroll = page.locator(".flow-screen[data-flow-current='true'] .mcy-scroll");
@@ -665,9 +659,9 @@ test("help center opens topic-specific answers and states that AI inference is o
   await page.screenshot({ path: testInfo.outputPath("privacy-03-ai-off.png"), fullPage: true });
 
   await page.getByRole("button", { name: "Quay lại" }).click();
-  await page.getByRole("button", { name: "AI và điều được nhớ" }).click();
-  const aiMemory = page.locator(".mcy-account-panel").filter({ hasText: "AI inference đang tắt" });
-  await expect(aiMemory).toContainText("AI inference đang tắt");
+  await page.getByRole("button", { name: "Điều được nhớ" }).click();
+  const aiMemory = page.locator(".mcy-account-panel").filter({ hasText: "Trợ lý chưa sẵn sàng cho phiên này" });
+  await expect(aiMemory).toContainText("Trợ lý chưa sẵn sàng cho phiên này");
   await expect(aiMemory.getByRole("button", { name: "Đồng ý cho xử lý khi tính năng được mở" })).toHaveAttribute("aria-pressed", "false");
 });
 
@@ -872,7 +866,9 @@ test("Owner can save an AI-off configuration with an empty model while a model l
       await route.fulfill({ json: {
         config,
         models: [{ id: "provider/model-a", name: "Model A", provider: "Provider" }],
-        gatewayKeyConfigured: true,
+        provider: "openrouter",
+        providerKeyConfigured: true,
+        gatewayKeyConfigured: false,
         spendControlApproved: true,
         enableGateOpen: true,
         environment: "staging",
@@ -894,13 +890,13 @@ test("Owner can save an AI-off configuration with an empty model while a model l
   const aiSwitch = page.locator(".owner-switch");
   await aiSwitch.click();
   await expect(aiSwitch.locator("input")).toBeChecked();
-  await expect(page.getByText("Cần chọn model để bật inference. Danh sách và giá được lấy từ Gateway; giá có thể thay đổi. Hãy đặt giới hạn chi tiêu riêng với nhà cung cấp dịch vụ.")).toBeVisible();
+  await expect(page.getByText("Cần chọn model để bật inference. Danh sách và giá được lấy từ OpenRouter; giá có thể thay đổi. Hạn mức chi tiêu được quản lý trên OpenRouter.")).toBeVisible();
   expect(await modelSelect.evaluate((element: HTMLSelectElement) => element.required)).toBe(true);
   expect(await modelSelect.evaluate((element: HTMLSelectElement) => element.validity.valueMissing)).toBe(true);
   await aiSwitch.click();
   await expect(aiSwitch.locator("input")).not.toBeChecked();
   await page.getByRole("button", { name: "Lưu cấu hình staging" }).click();
-  await expect(page.getByRole("status")).toContainText("Đã lưu cấu hình AI vào staging");
+  await expect(page.getByRole("status")).toContainText("Đã lưu cấu hình AI tắt trên staging");
   expect(saveRequests).toHaveLength(1);
   expect(saveRequests[0]).toMatchObject({ enabled: false, model_id: "" });
   expect(supabaseRequests).toEqual([

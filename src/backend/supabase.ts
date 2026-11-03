@@ -1,7 +1,11 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Session, SupabaseClient } from "@supabase/supabase-js";
 import { Capacitor } from "@capacitor/core";
 import type { Database } from "./database.types";
 import { shouldInitializeAuthOnLaunch } from "./authStartup";
+import { authRedirectForWorkspace, type AuthWorkspace } from "./authRouting";
+import { emailLocaleRedirect } from "./emailLocale";
+import type { AppLocale } from "../i18n";
+import { syncEmailLocaleForSession } from "./authEmailMetadata";
 
 const url = import.meta.env.VITE_SUPABASE_URL?.trim();
 const publishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim();
@@ -90,10 +94,16 @@ export function clientChannel(): "web" | "ios" | "android" {
   return "web";
 }
 
-export function authRedirectUrl() {
+export function authRedirectUrl(workspace: AuthWorkspace = "learner", emailLocale?: AppLocale) {
   if (Capacitor.isNativePlatform()) {
     const scheme = import.meta.env.VITE_NATIVE_AUTH_SCHEME?.trim() || "motchutyoga";
-    return `${scheme}://auth/callback`;
+    return authRedirectForWorkspace(`${scheme}://auth/callback`, workspace);
   }
-  return `${window.location.origin}/auth/callback`;
+  const callback = authRedirectForWorkspace(`${window.location.origin}/auth/callback`, workspace);
+  return emailLocale ? emailLocaleRedirect(callback, emailLocale) : callback;
+}
+
+/** Cosmetic metadata only; the captured verified session determines the account. */
+export async function syncAuthEmailLocale(session: Session, locale: AppLocale): Promise<boolean> {
+  return url && publishableKey ? syncEmailLocaleForSession(session, locale, { url, publishableKey }) : false;
 }
