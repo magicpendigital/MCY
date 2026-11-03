@@ -1,0 +1,50 @@
+
+Running 38 tests using 1 worker
+
+(node:19036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+320 core geometry {
+  footer: 464,
+  scopeBottom: 378.796875,
+  choices: [ 250.421875, 250.421875, 318.421875, 318.421875 ]
+}
+  ok  1 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 320 (6.9s)
+  ok  2 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 360 (3.8s)
+  ok  3 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 390 (3.9s)
+  ok  4 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope baseline390 (7.2s)
+  ok  5 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope landscape (3.9s)
+  ok  6 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope desktop (3.6s)
+  ok  7 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope iphone (4.6s)
+  ok  8 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope pixel (4.9s)
+  ok  9 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region none (5.9s)
+  ok 10 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region unknown (6.6s)
+  ok 11 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region skip (3.9s)
+  ok 12 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region undefined (4.8s)
+  ok 13 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Dễ chịu hơn (5.7s)
+  ok 14 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Như cũ (5.4s)
+  ok 15 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Khó chịu hơn (5.5s)
+  ok 16 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Chưa rõ (5.3s)
+  ok 17 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off undefined (5.4s)
+  ok 18 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:46:1 › Explicit skip stays distinct from blank despite chosen worse (4.2s)
+  ok 19 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:47:1 › New post areas stay visible editable and do not invent before levels (10.5s)
+  ok 20 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:51:1 › Paired comparisons preserve unequal sides, explicit keep and unsure (9.7s)
+  ok 21 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:52:1 › Existing guest opt-in records an honest session reflection and clears on reload (9.9s)
+  ok 22 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:55:1 › Reflection return does not leak styles into retained course or Home routes (5.2s)
+  ok 23 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea false (4.8s)
+  ok 24 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea true (4.5s)
+  ok 25 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 320 (3.7s)
+  ok 26 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 390 (4.5s)
+  ok 27 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 320 (4.6s)
+  ok 28 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 390 (4.1s)
+  ok 29 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 320 (5.0s)
+  ok 30 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 390 (4.2s)
+  ok 31 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 320 (4.2s)
+  ok 32 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 390 (4.2s)
+  ok 33 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone false (4.1s)
+  ok 34 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone true (4.3s)
+  ok 35 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 false (4.4s)
+  ok 36 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 true (4.3s)
+  ok 37 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:80:35 › Normal text actual Tab summary clears opaque footer false (4.9s)
+  ok 38 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:80:35 › Normal text actual Tab summary clears opaque footer true (3.8s)
+
+  38 passed (3.3m)

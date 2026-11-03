@@ -1,0 +1,89 @@
+
+Running 38 tests using 1 worker
+
+(node:13160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+320 core geometry {
+  footer: 464,
+  scopeBottom: 378.796875,
+  choices: [ 250.421875, 250.421875, 318.421875, 318.421875 ]
+}
+  ok  1 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 320 (6.0s)
+  ok  2 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 360 (4.4s)
+  ok  3 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 390 (4.8s)
+  ok  4 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope baseline390 (7.2s)
+  ok  5 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope landscape (6.1s)
+  ok  6 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope desktop (9.4s)
+  ok  7 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope iphone (7.3s)
+  ok  8 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope pixel (5.2s)
+  ok  9 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region none (6.7s)
+  ok 10 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region unknown (8.6s)
+  ok 11 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region skip (6.9s)
+  ok 12 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region undefined (6.3s)
+  ok 13 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Dễ chịu hơn (10.7s)
+  ok 14 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Như cũ (11.0s)
+  x  15 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Khó chịu hơn (25.5s)
+(node:12444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 16 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Chưa rõ (9.9s)
+  ok 17 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off undefined (7.7s)
+  ok 18 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:46:1 › Explicit skip stays distinct from blank despite chosen worse (6.0s)
+  ok 19 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:47:1 › New post areas stay visible editable and do not invent before levels (12.5s)
+  ok 20 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:51:1 › Paired comparisons preserve unequal sides, explicit keep and unsure (13.9s)
+  ok 21 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:52:1 › Existing guest opt-in records an honest session reflection and clears on reload (18.5s)
+  ok 22 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:55:1 › Reflection return does not leak styles into retained course or Home routes (11.4s)
+  ok 23 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea false (10.6s)
+  ok 24 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea true (7.3s)
+  ok 25 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 320 (5.3s)
+  ok 26 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 390 (5.4s)
+  ok 27 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 320 (7.2s)
+  ok 28 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 390 (4.5s)
+  ok 29 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 320 (4.2s)
+  ok 30 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 390 (4.8s)
+  ok 31 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 320 (4.2s)
+  ok 32 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 390 (3.9s)
+  ok 33 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone false (4.4s)
+  ok 34 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone true (4.1s)
+  ok 35 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 false (4.5s)
+  ok 36 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 true (7.3s)
+  ok 37 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:80:35 › Normal text actual Tab summary clears opaque footer false (5.0s)
+  ok 38 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:80:35 › Normal text actual Tab summary clears opaque footer true (4.6s)
+
+
+  1) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Khó chịu hơn 
+
+    Test timeout of 25000ms exceeded.
+
+    Error: locator.click: Test timeout of 25000ms exceeded.
+    Call log:
+      - waiting for getByTestId('flow-current').getByRole('button', { name: 'Mở hành trình', exact: true })
+        - locator resolved to <button class="mcy-action secondary">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+          - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      - retrying click action
+        - waiting 500ms
+
+
+      42 |  const writes=await enter(page);if(choice)await view(page).getByRole('button',{name:choice,exact:true}).click();
+      43 |  if(choice==='Khó chịu hơn'){await expect(view(page).locator('.mcy-alert')).toHaveText('Bạn đã chọn “Khó chịu hơn”. MCY sẽ không tự gợi bài để xử lý cảm giác này. Nếu đang không ổn, hãy dừng tập và tìm hỗ trợ phù hợp.');await expect(view(page).locator('.mcy-reflection-details')).not.toHaveAttribute('open','');}
+    > 44 |  await page.locator('.flow-fixed-footer .mcy-action').click();await expect(active(page).locator('.mcy-sync-card')).toContainText(expected);await active(page).getByRole('button',{name:'Mở hành trình',exact:true}).click();await expect(active(page).locator('.mcy-snapshot-card')).toHaveCount(0);expect(writes).toEqual([]);
+         |                                                                                                                                                                                                                     ^
+      45 | });
+      46 | test('Explicit skip stays distinct from blank despite chosen worse',async({page})=>{const writes=await enter(page);await view(page).getByRole('button',{name:'Khó chịu hơn',exact:true}).click();await page.locator('.flow-fixed-footer').getByRole('button',{name:'Bỏ qua',exact:true}).click();await expect(active(page).locator('.mcy-sync-card')).toContainText('Bạn đã chọn bỏ qua phản hồi');await expect(active(page).locator('.mcy-sync-card')).not.toContainText('Khó chịu hơn');expect(writes).toEqual([]);});
+      47 | test('New post areas stay visible editable and do not invent before levels',async({page})=>{
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:44:213
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Honest-overa-30006-al-consent-off-Khó-chịu-hơn\error-context.md
+
+  1 failed
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Khó chịu hơn 
+  37 passed (5.4m)

@@ -1,0 +1,1683 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\qa.playwright.config.mjs",
+      "ux-reflection.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\qa.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-5-20261017/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-5-2026-10-17/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-5-20261017/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-reflection.spec.ts",
+          "practice-flow.spec.ts",
+          "learner-write-review.spec.ts",
+          "ux-course-detail.spec.ts",
+          "free-courses-contract.spec.ts",
+          "learner-ux.spec.ts",
+          "ux-home.spec.ts",
+          "ux-checkin-layout.spec.ts",
+          "ux-energy-time.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "ux-journey-selection.spec.ts"
+        ],
+        "timeout": 25000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ux-reflection.spec.ts",
+      "file": "ux-reflection.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Reflection hierarchy and scope 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10267,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "320 core geometry {\n  footer: \u001b[33m464\u001b[39m,\n  scopeBottom: \u001b[33m378.796875\u001b[39m,\n  choices: [ \u001b[33m250.421875\u001b[39m, \u001b[33m250.421875\u001b[39m, \u001b[33m318.421875\u001b[39m, \u001b[33m318.421875\u001b[39m ]\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:00:46.773Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-77e2fdb971c56869769e",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Reflection hierarchy and scope 360",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6819,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:00:57.957Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-34bbfac59829fa42e856",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Reflection hierarchy and scope 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6525,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:04.828Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-a4908486e78bde72dd77",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Reflection hierarchy and scope baseline390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11227,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:11.390Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-e779e9ad61cfaa355df8",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Reflection hierarchy and scope landscape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8819,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:22.663Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-6cc3fd333cb5c2e66bcc",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Reflection hierarchy and scope desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6794,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:31.544Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-736b039b01fb1a587371",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Reflection hierarchy and scope iphone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7298,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:38.399Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-591f20f1c94d615b0f5b",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Reflection hierarchy and scope pixel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6971,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:45.741Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-ec2dd6c22b92a4d6caa5",
+          "file": "ux-reflection.spec.ts",
+          "line": 32,
+          "column": 428
+        },
+        {
+          "title": "Before status without region none",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6818,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:52.776Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-9bcacb96962d8b97b9cb",
+          "file": "ux-reflection.spec.ts",
+          "line": 40,
+          "column": 231
+        },
+        {
+          "title": "Before status without region unknown",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7366,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:01:59.655Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-90229d72c02d7ed7e067",
+          "file": "ux-reflection.spec.ts",
+          "line": 40,
+          "column": 231
+        },
+        {
+          "title": "Before status without region skip",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:02:07.069Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-03d456ef6f9a3c600d5a",
+          "file": "ux-reflection.spec.ts",
+          "line": 40,
+          "column": 231
+        },
+        {
+          "title": "Before status without region undefined",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8917,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:02:13.586Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-82505168e1f186cd157b",
+          "file": "ux-reflection.spec.ts",
+          "line": 40,
+          "column": 231
+        },
+        {
+          "title": "Honest overall, no-answer and local consent off Dễ chịu hơn",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7989,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:02:22.544Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-9854a1b5a7eb385aaedf",
+          "file": "ux-reflection.spec.ts",
+          "line": 41,
+          "column": 200
+        },
+        {
+          "title": "Honest overall, no-answer and local consent off Như cũ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:02:30.607Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-0c2ed62a7954e6d8cad4",
+          "file": "ux-reflection.spec.ts",
+          "line": 41,
+          "column": 200
+        },
+        {
+          "title": "Honest overall, no-answer and local consent off Khó chịu hơn",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8540,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:02:38.941Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-b415cbab8c8184a84350",
+          "file": "ux-reflection.spec.ts",
+          "line": 41,
+          "column": 200
+        },
+        {
+          "title": "Honest overall, no-answer and local consent off Chưa rõ",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8507,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:02:47.527Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-c5bea38c004b0367d28c",
+          "file": "ux-reflection.spec.ts",
+          "line": 41,
+          "column": 200
+        },
+        {
+          "title": "Honest overall, no-answer and local consent off undefined",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7447,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:02:56.081Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-12455647a8e8d31707a5",
+          "file": "ux-reflection.spec.ts",
+          "line": 41,
+          "column": 200
+        },
+        {
+          "title": "Explicit skip stays distinct from blank despite chosen worse",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6709,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:03:03.566Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-39998a0240bdd7014b47",
+          "file": "ux-reflection.spec.ts",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "New post areas stay visible editable and do not invent before levels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:03:10.313Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-205d25b8147ad4f0a1e8",
+          "file": "ux-reflection.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "Paired comparisons preserve unequal sides, explicit keep and unsure",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:03:24.219Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-a2f477af9d35e6ebf45f",
+          "file": "ux-reflection.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "Existing guest opt-in records an honest session reflection and clears on reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15245,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:03:37.820Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-b952cdb4434fd1ebf997",
+          "file": "ux-reflection.spec.ts",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "Reflection return does not leak styles into retained course or Home routes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9787,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:03:53.125Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-bebd5dc680fa8eccdf06",
+          "file": "ux-reflection.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "Actual keyboard, large text and optional textarea false",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12699,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:04:03.079Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-5b18f39e0b4ed056b852",
+          "file": "ux-reflection.spec.ts",
+          "line": 58,
+          "column": 35
+        },
+        {
+          "title": "Actual keyboard, large text and optional textarea true",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12265,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:04:15.854Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-ca54bf27cd7427f1daa0",
+          "file": "ux-reflection.spec.ts",
+          "line": 58,
+          "column": 35
+        },
+        {
+          "title": "Footer bounds and actual focus false false 320",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7469,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:04:28.162Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-false-false-320\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-e498cdff800b5e764fc2",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Footer bounds and actual focus false false 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10236,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:05:16.339Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-false-false-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-ef9a0890821287bc6191",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Footer bounds and actual focus false true 320",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12321,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:05:45.626Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-false-true-320\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-42603ac0c053f4d1db0e",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Footer bounds and actual focus false true 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12838,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:06:20.462Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-false-true-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-bc354676328a081d5ec2",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Footer bounds and actual focus true false 320",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9883,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:06:40.935Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-true-false-320\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-8458867820fb3c03397c",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Footer bounds and actual focus true false 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13268,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:07:03.547Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-true-false-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-0b5fd09b7a8c5c8eb9cd",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Footer bounds and actual focus true true 320",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8863,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:07:38.509Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-true-true-320\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-e6f270360f7cf768e1b4",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Footer bounds and actual focus true true 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8958,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:77:389"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:07:57.594Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Footer-bounds-and-actual-focus-true-true-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-b9f63d9d3cee46e81340",
+          "file": "ux-reflection.spec.ts",
+          "line": 77,
+          "column": 96
+        },
+        {
+          "title": "Simulator footer safe area and actual focus iphone false",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8039,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:08:10.216Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Simulator-fo-def3b-d-actual-focus-iphone-false\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-7f56e9799045c81ba7da",
+          "file": "ux-reflection.spec.ts",
+          "line": 78,
+          "column": 77
+        },
+        {
+          "title": "Simulator footer safe area and actual focus iphone true",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9740,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:08:21.698Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Simulator-fo-bad9c-nd-actual-focus-iphone-true\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-bb5a2bdbf3acfdcee3a8",
+          "file": "ux-reflection.spec.ts",
+          "line": 78,
+          "column": 77
+        },
+        {
+          "title": "Simulator footer safe area and actual focus pixel-10 false",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8555,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:08:39.222Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Simulator-fo-e7e22-actual-focus-pixel-10-false\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-dee4d22a5b1367f69bcc",
+          "file": "ux-reflection.spec.ts",
+          "line": 78,
+          "column": 77
+        },
+        {
+          "title": "Simulator footer safe area and actual focus pixel-10 true",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10413,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                      "column": 397,
+                      "line": 74
+                    },
+                    "snippet": "  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                        "column": 397,
+                        "line": 74
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m6\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}\n  73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);\n> 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}\n     |                                                                                                                                                                                                                                                                                                                                                                                                             ^\n  75 |  return g;\n  76 | }\n  77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});\n    at footerBounds (D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:74:397)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts:78:228"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T05:08:52.097Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\test-results\\ux-reflection-Simulator-fo-cc410--actual-focus-pixel-10-true\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts",
+                    "column": 397,
+                    "line": 74
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "57a2bd0a22517992c557-e53dd31ff357359a046f",
+          "file": "ux-reflection.spec.ts",
+          "line": 78,
+          "column": 77
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T05:00:43.114Z",
+    "duration": 504268.996,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 12,
+    "flaky": 0
+  }
+}

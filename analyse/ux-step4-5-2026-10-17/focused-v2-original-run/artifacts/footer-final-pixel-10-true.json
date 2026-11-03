@@ -1,0 +1,65 @@
+{
+  "footer": {
+    "top": 874,
+    "bottom": 978,
+    "left": 337,
+    "right": 764,
+    "width": 427,
+    "height": 104,
+    "client": 427,
+    "scroll": 427
+  },
+  "viewport": {
+    "top": 74,
+    "bottom": 978,
+    "left": 337,
+    "right": 764,
+    "width": 427,
+    "height": 904,
+    "client": 427,
+    "scroll": 427
+  },
+  "safe": 0,
+  "buttons": [
+    {
+      "top": 881,
+      "bottom": 929,
+      "left": 353,
+      "right": 469.09375,
+      "width": 116.09375,
+      "height": 48,
+      "client": 116,
+      "scroll": 116,
+      "text": [
+        {
+          "left": 382.703125,
+          "right": 439.375,
+          "top": 886,
+          "bottom": 923
+        }
+      ],
+      "font": 28,
+      "ring": 3
+    },
+    {
+      "top": 881,
+      "bottom": 932,
+      "left": 477.09375,
+      "right": 748,
+      "width": 270.90625,
+      "height": 51,
+      "client": 271,
+      "scroll": 271,
+      "text": [
+        {
+          "left": 491.265625,
+          "right": 707.8125,
+          "top": 889.5,
+          "bottom": 923.5
+        }
+      ],
+      "font": 28,
+      "ring": 3
+    }
+  ]
+}

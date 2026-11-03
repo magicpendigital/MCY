@@ -1,0 +1,43 @@
+{
+  "viewport": 320,
+  "footer": {
+    "x": 0,
+    "y": 464,
+    "right": 320,
+    "bottom": 568,
+    "width": 320,
+    "height": 104,
+    "client": 320,
+    "scroll": 320
+  },
+  "container": {
+    "x": 0,
+    "y": 464,
+    "right": 320,
+    "bottom": 568,
+    "width": 320,
+    "height": 104,
+    "client": 320,
+    "scroll": 320
+  },
+  "primary": {
+    "x": 108,
+    "y": 469,
+    "right": 304,
+    "bottom": 520,
+    "width": 196,
+    "height": 51,
+    "client": 196,
+    "scroll": 196
+  },
+  "skip": {
+    "x": 16,
+    "y": 469,
+    "right": 100,
+    "bottom": 513,
+    "width": 84,
+    "height": 44,
+    "client": 84,
+    "scroll": 84
+  }
+}

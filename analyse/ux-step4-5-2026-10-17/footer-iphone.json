@@ -1,0 +1,31 @@
+{
+  "viewport": {
+    "top": 124,
+    "bottom": 976,
+    "left": 353.5,
+    "right": 746.5,
+    "height": 852
+  },
+  "safe": "34px",
+  "footer": {
+    "top": 838,
+    "bottom": 942,
+    "left": 353.5,
+    "right": 746.5,
+    "height": 104
+  },
+  "primary": {
+    "top": 843,
+    "bottom": 935,
+    "left": 483.390625,
+    "right": 730.5,
+    "height": 92
+  },
+  "skip": {
+    "top": 843,
+    "bottom": 893,
+    "left": 369.5,
+    "right": 475.390625,
+    "height": 50
+  }
+}

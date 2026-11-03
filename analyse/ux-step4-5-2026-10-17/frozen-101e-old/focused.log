@@ -1,0 +1,312 @@
+
+Running 36 tests using 1 worker
+
+320 core geometry {
+  footer: 464,
+  scopeBottom: 378.796875,
+  choices: [ 250.421875, 250.421875, 318.421875, 318.421875 ]
+}
+  ok  1 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 320 (10.3s)
+  ok  2 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 360 (6.8s)
+  ok  3 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope 390 (6.5s)
+  ok  4 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope baseline390 (11.2s)
+  ok  5 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope landscape (8.8s)
+  ok  6 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope desktop (6.8s)
+  ok  7 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope iphone (7.3s)
+  ok  8 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:32:428 › Reflection hierarchy and scope pixel (7.0s)
+  ok  9 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region none (6.8s)
+  ok 10 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region unknown (7.4s)
+  ok 11 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region skip (6.5s)
+  ok 12 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:40:231 › Before status without region undefined (8.9s)
+  ok 13 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Dễ chịu hơn (8.0s)
+  ok 14 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Như cũ (8.3s)
+  ok 15 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Khó chịu hơn (8.5s)
+  ok 16 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Chưa rõ (8.5s)
+  ok 17 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off undefined (7.4s)
+  ok 18 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:46:1 › Explicit skip stays distinct from blank despite chosen worse (6.7s)
+  ok 19 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:47:1 › New post areas stay visible editable and do not invent before levels (13.8s)
+  ok 20 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:51:1 › Paired comparisons preserve unequal sides, explicit keep and unsure (13.6s)
+  ok 21 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:52:1 › Existing guest opt-in records an honest session reflection and clears on reload (15.2s)
+  ok 22 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:55:1 › Reflection return does not leak styles into retained course or Home routes (9.8s)
+  ok 23 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea false (12.7s)
+  ok 24 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:58:35 › Actual keyboard, large text and optional textarea true (12.3s)
+  x  25 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 320 (7.5s)
+  x  26 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 390 (10.2s)
+  x  27 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 320 (12.3s)
+  x  28 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 390 (12.8s)
+  x  29 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 320 (9.9s)
+  x  30 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 390 (13.3s)
+  x  31 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 320 (8.9s)
+  x  32 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 390 (9.0s)
+  x  33 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone false (8.0s)
+  x  34 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone true (9.7s)
+  x  35 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 false (8.6s)
+  x  36 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 true (10.4s)
+
+
+  1) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 320 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-false-false-320\error-context.md
+
+  2) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 390 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-false-false-390\error-context.md
+
+  3) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 320 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-false-true-320\error-context.md
+
+  4) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 390 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-false-true-390\error-context.md
+
+  5) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 320 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-true-false-320\error-context.md
+
+  6) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 390 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-true-false-390\error-context.md
+
+  7) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 320 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-true-true-320\error-context.md
+
+  8) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 390 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:389
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Footer-bounds-and-actual-focus-true-true-390\error-context.md
+
+  9) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone false 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:228
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Simulator-fo-def3b-d-actual-focus-iphone-false\error-context.md
+
+  10) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone true 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:228
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Simulator-fo-bad9c-nd-actual-focus-iphone-true\error-context.md
+
+  11) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 false 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:228
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Simulator-fo-e7e22-actual-focus-pixel-10-false\error-context.md
+
+  12) .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 true 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 6
+    Received: 0
+
+      72 |  for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
+      73 |  expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
+    > 74 |  for(const b of await page.locator('.mcy-reflection-footer button').all()){await b.focus();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);}
+         |                                                                                                                                                                                                                                                                                                                                                                                                             ^
+      75 |  return g;
+      76 | }
+      77 | for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
+        at footerBounds (D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:74:397)
+        at D:\Projects\MCY\.vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:228
+
+    Error Context: analyse\ux-step4-5-2026-10-17\test-results\ux-reflection-Simulator-fo-cc410--actual-focus-pixel-10-true\error-context.md
+
+  12 failed
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 320 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false false 390 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 320 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus false true 390 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 320 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true false 390 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 320 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:77:96 › Footer bounds and actual focus true true 390 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone false 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus iphone true 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 false 
+    .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:78:77 › Simulator footer safe area and actual focus pixel-10 true 
+  24 passed (8.4m)
+(node:25496) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:25544) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17732) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:24752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
