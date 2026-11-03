@@ -1,0 +1,29 @@
+# MCY — kiểm thử luồng learner và khôi phục native, 13/10/2026
+
+**Matrix nguồn cô lập29/29 PASS. Mở lại app bằng icon thật giữ được đăng nhập theo Owner; DOM và giao diện Cá nhân được đối chiếu sau đó.** Phần ghi dữ liệu native staging đang ở bước chuẩn bị [gói riêng](MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.md), chưa chạy. Không build/cài APK mới hoặc đổi source app trong lượt này.
+
+## Đã kiểm
+
+[Receipt UI](MCY_NATIVE_LEARNER_UI_EVIDENCE_2026-10-13.json) ghi final one-worker Edge exit0:4regression mới về reload/consent hiện hành không ghi lại, check-in→Journey→reload, A→B→A/history isolation và revoked wellbeing không phát RPC/không tăng row;15learner-write cases cũ và10callback cases cùng PASS. `npm run test:playwright-environment`1/1, `npm run check:runtime`28protected files PASS. Đây là web fixtures với `mcy-playwright.invalid`, không native HTTP hoặc staging actor evidence. Các lỗi locator/transition/back-navigation trung gian giữ là FAIL trước sửa, không dùng làm final acceptance.
+
+[Review R3 bổ sung](MCY_NATIVE_LEARNER_QA_REVIEW_2026-10-13.md) độc lập rerun4new cases PASS4/4/exit0,25.0s và đối chiếu25hash records của manifest mới, không mismatch. Không còn P1/P2 trong current checker/fixtures/manual preparation scope; không biến source review thành native live data acceptance hoặc kết quả PASS cho phép force-stop thất bại. Cấu hình cloud, source app và APK không đổi trong lượt này.
+
+Trạng thái app thực sau bước mở icon: [read-only inspection](MCY_NATIVE_SESSION_UNCERTAIN_INSPECTION_2026-10-13.json)02:11:15Z có đúng foreground .mcydebug, Android native, document complete/root1/home/no alert và cờ session storage; sau đó account precheck có nút Đăng xuất thiết bị này/phiên đã lưu, exit0. Không xuất email, UID, token, free text hoặc screenshot riêng. Không xác minh độc lập server identity từ các tín hiệu này.
+
+[Fresh SQL preflight](MCY_NATIVE_LEARNER_TRIAL_PREFLIGHT_2026-10-13.json)02:14:41Z và metadata project đúng MagicpenDigital/mcy-staging ACTIVE_HEALTHY: ledger21, Owner definitionMD5 `5ad67fe52caf79bd07c51caa0c30db92`, new writer **body**MD5 `ba61a962de9c9fdfc364ad6fe83837e6` khớp frozen receipt12/10. DefinitionMD5 `56bb448ca2dcb1af60d01e097ef974f1` là digest toàn declaration, không phải bodyMD5/không suy ra drift vì khác chuỗi. AIoff/version1/model unset. A/B confirmed,0active staff/teacher, counts8/1/1 và4/1/0, current terms/privacy, wellbeing revoked;12frozen source inputs và manifest12/10 giữ nguyên.
+
+## Phép mở lại qua ADB thất bại và khôi phục
+
+Parent đã chọn một `force-stop` rồi clean MAIN/LAUNCHER shell start để thử khôi phục phiên. Script được R3 review guards trước chạy; [intent độc quyền](../.vercel/mcy-native-session-restoration-20261013.intent.json) bắt đầu01:59:53Z/kết thúc02:00:20Z, giữ `UNCERTAIN_AFTER_RESTART`, không PASS receipt và không chạy lại. Owner xác nhận **“Màn hình trắng hoặc đứng”**. Package còn process/foreground/awake nhưng CDP không reply; [package readback](MCY_NATIVE_WHITE_PACKAGE_STATE_2026-10-13.json)02:08:02Z cho `stopped=true`.
+
+Đây là lựa chọn kiểm thử không phù hợp với lỗi đường mở đã được ghi trong [checkpoint03/10](MCY_ANDROID_WHITE_SCREEN_CHECKPOINT_2026-10-03.md). Dated03/10 đã phân biệt shell/force-stop FAIL và icon thật PASS trên APK cũ; parent lẽ ra cần đối chiếu điểm này trước chọn phép thử. [Counters log bounded](MCY_NATIVE_WHITE_DIAGNOSTICS_2026-10-13.json) hiện không có match lỗi trong window; sample app-process và system warnings trống không loại trừ nguyên nhân. Tương quan stopped/đường mở không chứng minh sâu lỗi ROM/framework hay app code đã sửa.
+
+Parent yêu cầu đóng Recent/chạm icon thật; Owner trả lời **“Giao diện hiện và vẫn đăng nhập”**. [Phiếu khôi phục riêng](MCY_NATIVE_LAUNCHER_RECOVERY_2026-10-13.json) giữ USER_REPORTED_UI_AND_SIGNIN_RECOVERY; không nâng phép ADB thất bại hoặc original cached-actor comparison thành PASS. Không clear data, sign-out, email mới hay cài lại để khôi phục. Source failed script SHA `b758c902a3d510dd9bc872811bcf64bc26f947eeaa639b8cf6c7fc41f710b89c` được archive nguyên bytes; current script **từ chối `--restore` trước truy cập device**, default chỉ guarded account precheck. Các lần thử tiếp dùng thao tác Recent/icon thật do người dùng khởi tạo, không giả định history03/10 là regression trên APK hiện tại.
+
+## Việc còn lại và quyết định cần có
+
+Native A/B account-switch, onboarding/profile, consent grant/revoke, check-in save/readback/Journey chưa chạy. Readback đã phát hiện A/B thiếu profile, nên gói mới phải tính **2profile upserts +2cosmetic Auth locale updates +4wellbeing events +2check-ins +0new observations**, thay vì chỉ consent/check-in. Terms/privacy hiện tại không ghi thêm; hồ sơ/dữ liệu giả giữ lại, wellbeing bị thu hồi cả hai khi kết thúc. Nếu consent/profile/counts/actor/target/source đổi, dừng và lập lại preflight/phạm vi trước ghi. Token/Auth phải được xác minh fresh ở thời điểm thực hiện.
+
+`locale=vi-VN` trong gói/manifest là locale của profile giả. Native `persistProfile()` giữ Auth email locale hợp lệ đã lưu trong initiating session, hoặc dùng profile locale khi metadata chưa hợp lệ; không ép metadata thành tiếng Việt và không đổi khóa/role khác. Các bản ghi Hành trình có trước vẫn hiển thị sau revoked; “không lưu lượt này” chỉ nghĩa không có RPC/row mới, không phải xóa hoặc làm rỗng toàn bộ lịch sử.
+
+Ngân sách12consent/2check-ins/1observation của operation12/10 đã dùng đủ và không được lặp lại/mở rộng ngầm theo [AGENTS.md](../AGENTS.md). [Gói manual native mới](MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.md) và manifest chỉ là chuẩn bị; cần Owner duyệt riêng trước các side effects mới. Native sign-in, real-icon recovery và UI fixtures không đóng toàn bộ native/data hoặc release gate. iOS Xcode/iPhone, full accessibility/playback/startup SLA, chuyên môn/rights/catalog,4pending migrations, AI và Production vẫn riêng.

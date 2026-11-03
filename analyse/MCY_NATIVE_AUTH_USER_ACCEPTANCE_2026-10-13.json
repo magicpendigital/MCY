@@ -1,0 +1,35 @@
+{
+  "kind": "NativeAuthHumanAcceptance",
+  "recordedAt": "2026-10-13T00:10:11Z",
+  "localDate": "2026-10-13",
+  "timezone": "Asia/Bangkok",
+  "source": "Direct Owner reply in this chat to the requested fresh native email retest",
+  "promptContext": {
+    "device": "Air1 Ultra",
+    "app": "Một chút yoga (Debug song song)",
+    "package": "com.nilaza.motchutyoga.mcydebug",
+    "requestedTrial": "Request a new sign-in email inside the updated parallel app and open the newest link on the same phone after callback repair"
+  },
+  "exactReply": "Đã về đúng app và đăng nhập",
+  "nativeEmailReturnAndSignIn": "USER_REPORTED_PASS",
+  "actualTrialTimestamp": null,
+  "independentSessionInstrumentation": false,
+  "userUidVerifiedByAgent": false,
+  "emailLinkCodeTokenOrPrivateDataReadByAgent": false,
+  "fullNativeAuthMatrix": "NOT_COMPLETE",
+  "remainingDeviceAcceptance": [
+    "Session restoration after reopening the app",
+    "Account switching",
+    "Consent revocation",
+    "Actor-bound check-in save and readback"
+  ],
+  "additionalActionsForThisRecording": {
+    "emailTriggeredByAgent": false,
+    "learnerDataWrittenByAgent": false,
+    "deploymentOrConfigMutation": false,
+    "roleGrantOrExpiryExtension": false,
+    "aiInferenceOrEnablement": false,
+    "productionPromotion": false
+  },
+  "limits": "Human confirmation closes only the requested fresh email return to the correct app and sign-in trial. Recording time is not an independently measured trial time. Frozen technical receipts and reviews remain unchanged; this does not establish the remaining native learner matrix, iOS acceptance, or release readiness."
+}

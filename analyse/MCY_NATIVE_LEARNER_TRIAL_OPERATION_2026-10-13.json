@@ -1,0 +1,218 @@
+{
+  "kind": "ManualNativeLearnerTrialPreparation",
+  "schemaVersion": 1,
+  "releaseId": "mcy-native-learner-trial-20261013",
+  "preparedAt": "2026-10-13T02:19:53.905Z",
+  "status": "PREPARED_AWAITING_OWNER_DECISION",
+  "cloudWritePerformed": false,
+  "target": {
+    "kind": "staging",
+    "projectRef": "mhumbczqrzutdnraafhs",
+    "organizationId": "rzbpjfrndhrtxagpgdre"
+  },
+  "method": "User-driven parallel Android UI with agent read-only verification; no automated auth/email/session injection/write executor",
+  "device": {
+    "model": "Air1 Ultra",
+    "serial": "Q88549EEXCUOONGA",
+    "package": "com.nilaza.motchutyoga.mcydebug",
+    "apkSha256": "5bf4104b019fbe31597c479ef2511e947803d056d42202b5c007843b5e9f74bc"
+  },
+  "actors": [
+    {
+      "label": "LEARNER_A",
+      "identitySha256": "995e6d265987a1c5cd6c831d6b2dda54998092aa769082cc72bf93fa209ece68",
+      "baseline": {
+        "consents": 8,
+        "checkins": 1,
+        "observations": 1,
+        "profiles": 0
+      },
+      "expectedFinal": {
+        "consents": 10,
+        "checkins": 2,
+        "observations": 1,
+        "profiles": 1
+      },
+      "requiresFreshAuthAndAuthority": true
+    },
+    {
+      "label": "LEARNER_B",
+      "identitySha256": "1dce191e95a843797bb7e8ebb9c63e5f0a5e20aa7ee98720be3df467421bebd3",
+      "baseline": {
+        "consents": 4,
+        "checkins": 1,
+        "observations": 0,
+        "profiles": 0
+      },
+      "expectedFinal": {
+        "consents": 6,
+        "checkins": 2,
+        "observations": 0,
+        "profiles": 1
+      },
+      "requiresFreshAuthAndAuthority": true
+    }
+  ],
+  "maxEffects": {
+    "newProfiles": 2,
+    "profileUpsertRequests": 2,
+    "authLocaleMetadataUpdates": 2,
+    "consentEvents": 4,
+    "checkins": 2,
+    "newObservations": 0,
+    "deletions": 0,
+    "roleGrantsOrExpiryExtensions": 0,
+    "aiInferencesOrEnablement": 0,
+    "migrationOrDeployment": 0
+  },
+  "metadataAllowedFields": [
+    "user_metadata.locale"
+  ],
+  "profile": {
+    "displayNames": [
+      "MCY Native QA A",
+      "MCY Native QA B"
+    ],
+    "locale": "vi-VN",
+    "bodyDisplayPreference": "neutral",
+    "timezone": "actual device timezone"
+  },
+  "checkin": {
+    "bodyStatus": "none_now",
+    "energyLevel": 2,
+    "captureType": "standalone",
+    "note": null,
+    "observations": []
+  },
+  "consent": {
+    "purpose": "wellbeing_data",
+    "policyVersion": "wellbeing-data-review-0.1",
+    "perActor": [
+      "granted",
+      "revoked"
+    ],
+    "requiredTermsPrivacyRegrant": false,
+    "channel": "android",
+    "retainAppendOnlyHistory": true
+  },
+  "permissions": {
+    "ownerDecision": "PENDING",
+    "independentReviewRequired": "analyse/MCY_NATIVE_LEARNER_QA_REVIEW_2026-10-13.md",
+    "generalReleaseCheckerCleared": false
+  },
+  "executionRules": [
+    "Fresh target/APK/source/actor/role/consent/profile/count/metadata baseline before writes",
+    "Exclusive intent with nonce and baseline before any sign-out/write; uncertain outcome requires stored readback, never automatic rerun",
+    "User initiates local sign-out and new Auth email A/B/return account only; agent never sends email or reads login secrets",
+    "No force-stop/shell-launch, data clear, instrumentation or reinstallation",
+    "One save per actor; no automatic retries after uncertain commit",
+    "Final wellbeing revoked A/B; prior history retained, no real wellbeing notes"
+  ],
+  "originalOperation": {
+    "path": "analyse/MCY_LEARNER_WRITE_OPERATION_2026-10-11.json",
+    "sha256": "13521cea066fa99467d23cca987533e03339efd019bbd4a09dc287b890ae2143",
+    "budgetAlreadySpent": true,
+    "doNotRerun": true
+  },
+  "frozenApplicationSource": [
+    {
+      "path": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "sha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "sha256": "58b8845cf5790c251e85554a27a74b9cf6d41f1c1568330868a205a4bbb84bd0"
+    },
+    {
+      "path": "src/backend/supabase.ts",
+      "sha256": "e4c5f2b7fb84f69dff28b4af13e09b12ee7338dfbd7789ca760e8cc22ba108c9"
+    },
+    {
+      "path": "src/backend/consentPersistence.ts",
+      "sha256": "141f4ec40f12d4c14be1384b4883e104dbd7be38168c0faf3fe184f4e37da181"
+    },
+    {
+      "path": "src/backend/learnerSession.ts",
+      "sha256": "3286c118eac57cc1a83d85144a22b6787b3b146cdba7df290cca6ac66a48ece1"
+    },
+    {
+      "path": "tests/learner-write-clean-rehearsal.cjs",
+      "sha256": "217a950c8003c5a72630e5cbded5ded5c85dfffc0624a876536b368e1f171887"
+    },
+    {
+      "path": "tests/learner-write-review.spec.ts",
+      "sha256": "151fd957ae1639e4ed07a7f03421c7f7c8adfd5082a50baa0f9f35bea08bf0a8"
+    },
+    {
+      "path": "tests/checkin-consent-migration.test.mjs",
+      "sha256": "2f0c6b79eaf18c0fdfc4091b4aac5d7bc03d433cca7bce4e4a6f371ac068f1ab"
+    },
+    {
+      "path": "scripts/rehearse-learner-writes-docker.mjs",
+      "sha256": "97b32e509bac0f204825d490bcb37a8529e55290ed465b490b14f72cbff7e903"
+    },
+    {
+      "path": "scripts/prepare-learner-write-operation.mjs",
+      "sha256": "373fabb63c19211fb219fad62ef383bc2458dd8c3fea94695a8d0e1ddc218909"
+    },
+    {
+      "path": "docs/release/MCY_LEARNER_WRITE_STOP_2026-10-11.sql",
+      "sha256": "fc558996a3f789b4b4c0691c584916edf22f7d49e68ebe2dc0230d03e171f25e"
+    },
+    {
+      "path": "docs/release/MCY_LEARNER_WRITE_RESUME_2026-10-11.sql",
+      "sha256": "b8064b0f8f031036ed85a7e5b041cdd4e429c83e0f5d4201703afdf3df396c0f"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "analyse/MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.md",
+      "sha256": "77da21cab918bd2c2147027d84237ef3856d9783ff2de70509fff27a1e72be66"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LEARNER_TRIAL_PREFLIGHT_2026-10-13.json",
+      "sha256": "87b222518473df771eae913ff0e712c9d8cc73c30fa9ae2ed568931d521a51df"
+    },
+    {
+      "path": "scripts/sql/native-learner-trial-readback.sql",
+      "sha256": "fd61f48c59ec9b3a60ae8f9e9a7b229048afd8ba42f00cd951387401e9d77347"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_ARTIFACT_2026-10-13.json",
+      "sha256": "cc8ad85020b3bffe78a0278a41f49ded209311dc4534d6d52bc19cd61b418a94"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LEARNER_UI_EVIDENCE_2026-10-13.json",
+      "sha256": "38be469c3eb37359f7dce57cc10904565ec9f7fb0964930503469735399ddda0"
+    },
+    {
+      "path": "tests/learner-device-acceptance.spec.ts",
+      "sha256": "6dfc474e63da334045d6294f4812b18f43d86390d228b8ad7076d4c4ca586571"
+    },
+    {
+      "path": "tests/learner-write-review.spec.ts",
+      "sha256": "151fd957ae1639e4ed07a7f03421c7f7c8adfd5082a50baa0f9f35bea08bf0a8"
+    },
+    {
+      "path": "tests/auth-callback.spec.ts",
+      "sha256": "fe90a9b105a41ad783ca5be1b42e563d2064135e47eca4622ad0265a3dfc2a3c"
+    },
+    {
+      "path": "scripts/playwright-test-environment.mjs",
+      "sha256": "f475bbd3e419259f043e4dd3c603b6733a33ece980cbc4df4f1de22c3406b4c0"
+    },
+    {
+      "path": "scripts/playwright-global-setup.mjs",
+      "sha256": "6cb18bae67a2cb2fdc35fa6925886cb1b54ce659b657fc9740ed1f21314660d1"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "f90b40a2e2a57a5a39b84680d2474dadfe6e348edc9ebeef60a1d9d46f6d44ba"
+    },
+    {
+      "path": "src/backend/authEmailMetadata.ts",
+      "sha256": "1aa385a2792330930d18e5051a1e3330bacc7571723efc4b64fff378185c5067"
+    }
+  ],
+  "limits": "Preparation and fixture/Owner recovery evidence do not authorize effects or establish full native/API/AI/content/Production acceptance. Manifest prepared status remains historical if later approved; use a separate decision/execution receipt."
+}

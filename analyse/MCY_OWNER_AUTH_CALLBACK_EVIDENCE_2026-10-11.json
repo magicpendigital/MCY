@@ -1,0 +1,146 @@
+{
+  "kind": "OwnerAuthCallbackFinalAcceptance",
+  "capturedAt": "2026-10-11T07:17:43.831Z",
+  "status": "CODE_URL_CONFIG_PREVIEW_PASS_LIVE_EMAIL_PENDING",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "domain": "https://motchutyoga.magicpendigital.com",
+  "deploymentId": "dpl_HHpJXfSUdoiVyywUKCFeW6pDu1Tu",
+  "artifactSha256": "c34b3192e3fe7b6ac71eb1c12ccd86c0a5cb7fcb67e93c1b75bd142c19b32099",
+  "artifactFiles": 58,
+  "tests": {
+    "canonicalBuild": "PASS",
+    "runtimeIntegrity": 28,
+    "fullUi": {
+      "passed": 113,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "callbackAndContentReviewSubset": 21,
+    "bundleSecretScannerTextFiles": 23,
+    "sites": 4,
+    "isolation": 1,
+    "standaloneEmailErrorTests": {
+      "passed": 2,
+      "exitCode": 0
+    },
+    "initialSourceFocused": {
+      "passed": 19,
+      "historical": true
+    },
+    "independentR3": {
+      "noP1P2": true,
+      "initialHelper": 1,
+      "followupChecks": 14,
+      "reviewerBrowserBodiesNotRun": 7
+    }
+  },
+  "resolvedTestDiagnostics": [
+    {
+      "run": "initial follow-up full113",
+      "passed": 111,
+      "failed": 2,
+      "reason": "Modern Auth mock did not expose API version; one teacher fixture selectOption timed out20s"
+    },
+    {
+      "run": "intermediate focused28",
+      "passed": 27,
+      "failed": 1,
+      "reason": "Cross-origin Auth version header not exposed to SDK; teacher timeout case passed unchanged"
+    },
+    {
+      "correction": "Mock added API-version and CORS expose headers; assertions/timeouts unchanged, final full run one worker"
+    }
+  ],
+  "hosted": {
+    "httpsValidated": true,
+    "publicSsoStatus": 302,
+    "callbackStatus": 200,
+    "byteHashMatches": 4,
+    "domainReadyPreviewBindingVerified": true,
+    "protectionRetained": true
+  },
+  "authConfig": {
+    "changedProperties": [
+      "auth.site_url",
+      "auth.additional_redirect_urls"
+    ],
+    "retainedCallbacks": 4,
+    "addedExactCallbacks": 3,
+    "declaredDiffAfter": 0,
+    "unmanagedRemoteValuesPreservedAtPush": 10
+  },
+  "emailIssue": {
+    "httpStatus": 429,
+    "code": "over_email_send_rate_limit",
+    "builtInServiceObserved": true,
+    "userHasResend": true,
+    "smtpSaved": "NOT_CONFIRMED",
+    "secretEntryHandedToUser": true,
+    "liveCallbackOrOwnerLogin": "NOT_CONFIRMED"
+  },
+  "thisTurnSideEffects": {
+    "authUrlConfig": true,
+    "staticPreviewDeploy": true,
+    "successfulOwnerConfigSave": false,
+    "databaseMigration": false,
+    "edgeDeploy": false,
+    "roleGrantOrExpiryExtension": false,
+    "aiInferenceOrEnablement": false,
+    "productionPromotion": false,
+    "agentSentEmail": false,
+    "agentCreatedResendKey": false,
+    "agentSavedSmtp": false
+  },
+  "evidenceFileHashes": [
+    {
+      "path": "analyse/MCY_OWNER_AUTH_CALLBACK_WEB_ARTIFACT_2026-10-11.json",
+      "bytes": 13253,
+      "sha256": "65ee62360e65b1808f151b5e63c7247cc062db0f3b9c169302163ad296fae58e"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_CALLBACK_DEPLOYMENT_2026-10-11.json",
+      "bytes": 934,
+      "sha256": "97c0a0083a26462e7a5802300eef98fb8b7f1f3c48bb50e41ed8ba613a292025"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_CALLBACK_HOSTED_2026-10-11.json",
+      "bytes": 1303,
+      "sha256": "6d120c640d1443bc3b95843804118d70f0d87ef4e01aed86e883f4c7909769c1"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_REDIRECT_CONFIG_PREFLIGHT_2026-10-11.json",
+      "bytes": 3437,
+      "sha256": "4f23d2cac68095ac4bd8dc30a6c4ec1a774fdebb10215b4eb25f7cb94ae54673"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_REDIRECT_CONFIG_APPLY_2026-10-11.json",
+      "bytes": 3639,
+      "sha256": "f59898550e0ae5f02a7c9b31bc7869719852e97164c34ed7d5fc3dc3a4a3c7fe"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_EMAIL_LIMIT_2026-10-11.json",
+      "bytes": 1128,
+      "sha256": "ea190ebf096ccc8a6d3b513505d01a25a2cbade9269989b885c6d2d2d67e69a1"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_CALLBACK_REVIEW_2026-10-11.md",
+      "bytes": 3122,
+      "sha256": "a5d5dca454f06ca9bbaf369d16bea77aa0441e0c7573644191fcf3c645b34484"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_CALLBACK_FIX_2026-10-11.md",
+      "bytes": 9833,
+      "sha256": "0afd24ca8fe3a0e5468404890195a9e13396b730b2987c94276493e090dd332f"
+    },
+    {
+      "path": "analyse/MCY_OWNER_AUTH_URL_CONFIG_2026-10-11.jpg",
+      "bytes": 78818,
+      "sha256": "9b09374e021e439e9bc141b1c0aad62ba395d9332d8d22bed0539112914b43c7"
+    },
+    {
+      "path": "docs/release/MCY_AUTH_SMTP_RESEND_SETUP_2026-10-11.md",
+      "bytes": 4381,
+      "sha256": "9dedc34d7b37ef3e9d28bfea4c98b4e0839763716ec0e1d36e85f6d67bf8e658"
+    }
+  ]
+}

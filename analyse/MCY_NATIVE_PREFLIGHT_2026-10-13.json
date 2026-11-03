@@ -1,0 +1,39 @@
+{
+  "kind": "NativePackageReadOnlyPreflight",
+  "capturedAt": "2026-10-12T17:35:12.073Z",
+  "device": "Air1 Ultra",
+  "serial": "Q88549EEXCUOONGA",
+  "packages": {
+    "com.nilaza.motchutyoga": {
+      "installed": true,
+      "versionCode": "1",
+      "versionName": "1.0",
+      "lastUpdateTime": "2026-09-29 12:55:05",
+      "firstInstallTime": "2026-09-27 00:20:50",
+      "stopped": "false",
+      "apkSha256": "7bee45a1274886a15799629cfcccfd61a9bad26bcdf62f0cb32b15d3945f03c6"
+    },
+    "com.nilaza.motchutyoga.debug": {
+      "installed": true,
+      "versionCode": "1",
+      "versionName": "1.0",
+      "lastUpdateTime": "2026-10-02 03:50:01",
+      "firstInstallTime": "2026-10-01 13:32:28",
+      "stopped": "false",
+      "apkSha256": "017465b588b1b29a1ff9fa184ca66866cc477e0dbc667db4db1d66e78457f0c7"
+    },
+    "com.nilaza.motchutyoga.mcydebug": {
+      "installed": true,
+      "versionCode": "1",
+      "versionName": "1.0-mcydebug",
+      "lastUpdateTime": "2026-10-03 14:43:46",
+      "firstInstallTime": "2026-10-03 14:43:46",
+      "stopped": "false",
+      "apkSha256": "c7da29637bd638035c3488689db72a94b391ddcc1cf88960ff3264bc7b8ed56f"
+    }
+  },
+  "awake": true,
+  "keyguardShowing": "false",
+  "inputRestricted": "false",
+  "mutations": false
+}

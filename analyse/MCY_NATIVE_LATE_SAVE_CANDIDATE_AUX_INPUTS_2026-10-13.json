@@ -1,0 +1,22 @@
+{
+  "kind": "IsolatedLateSaveCandidateAuxiliaryInputs",
+  "scope": "Exact unchanged bootstrap, strict noEmit tsconfig and shared token stylesheet; source snapshot68 remains historical and unchanged.",
+  "records": [
+    {
+      "path": "index.html",
+      "originalSha256": "5531697191a079b68e136b8f04a3670a7964d7253bb34c49a8c679ac6b897c34",
+      "candidateSha256": "5531697191a079b68e136b8f04a3670a7964d7253bb34c49a8c679ac6b897c34"
+    },
+    {
+      "path": "tsconfig.json",
+      "originalSha256": "8fa7705f43c4cd96071fdef3a707eaf599d7af04f82950cb5f876eef3187d9dc",
+      "candidateSha256": "8fa7705f43c4cd96071fdef3a707eaf599d7af04f82950cb5f876eef3187d9dc"
+    },
+    {
+      "path": "design-system/tokens.css",
+      "originalSha256": "31bc508bcfa0246053579a1794971cfcb6ebb031026c319090ace3ba97ffc038",
+      "candidateSha256": "31bc508bcfa0246053579a1794971cfcb6ebb031026c319090ace3ba97ffc038"
+    }
+  ],
+  "credentialOrEnvironmentFilesCopied": false
+}

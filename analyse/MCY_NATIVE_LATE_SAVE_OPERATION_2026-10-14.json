@@ -1,0 +1,655 @@
+{
+  "kind": "ManualNativeLateSaveOperation",
+  "schemaVersion": 2,
+  "releaseId": "mcy-native-late-save-20261014",
+  "preparedAt": "2026-10-13T18:37:03.299Z",
+  "clientDate": "2026-10-14",
+  "status": "PREPARED_AWAITING_OWNER_DECISION_WEB_GATE_BLOCKED",
+  "target": {
+    "kind": "staging",
+    "projectRef": "mhumbczqrzutdnraafhs",
+    "organizationId": "rzbpjfrndhrtxagpgdre"
+  },
+  "method": "Exact parallel APK update then user-driven fictional A/B native trial; agent read-only Auth/SQL verification. Conditional web Preview gated separately before upload.",
+  "native": {
+    "model": "Air1 Ultra",
+    "serial": "Q88549EEXCUOONGA",
+    "package": "com.nilaza.motchutyoga.mcydebug",
+    "apkPath": ".vercel/mcy-native-20261014-late-save/app-parallel.apk",
+    "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e",
+    "apkBytes": 12016725,
+    "artifactReceiptPath": "analyse/MCY_NATIVE_LATE_SAVE_ARTIFACT_2026-10-14.json",
+    "versionCode": 1,
+    "versionName": "1.0-mcydebug",
+    "certificateSha256": "dd3c8ee6d7ab263842a4dcce514efd398efa45ab54ca19c1c3d83456e54033c2",
+    "expectedPreviouslyInstalledApkSha256": "5bf4104b019fbe31597c479ef2511e947803d056d42202b5c007843b5e9f74bc",
+    "candidateInstallMax": 1,
+    "restoreOldApkMax": 1,
+    "restoreRequiresBothRevokedAndNoActiveWriter": true,
+    "launch": "user actual icon only",
+    "uninstallClearDataForceStopAdbLaunch": false,
+    "currentDeviceAvailabilityInspected": false
+  },
+  "web": {
+    "target": "preview",
+    "projectId": "prj_gTioLZWajGyQMkaPS1qapwoBOUnA",
+    "teamId": "team_BGXDJYYYe7LSDoGDjWRBFlJH",
+    "branch": "codex-mcy-p1-preview",
+    "domain": "motchutyoga.magicpendigital.com",
+    "artifactReceiptPath": "analyse/MCY_NATIVE_LATE_SAVE_WEB_ARTIFACT_2026-10-14.json",
+    "artifactSha256": "e160c60e497d74fc1ebb49a6419af3b67add7dd41518d858c7f8d489f9acd670",
+    "previewCreationMax": 1,
+    "reviewDomainRebindingMax": 1,
+    "restoreExistingPreviewAliasMax": 1,
+    "priorDeploymentId": "dpl_2zYC7QQJKMRLGsKgWPpWQqnPkaT4",
+    "releaseGate": {
+      "status": "BLOCKED_PROTECTION_NOT_VERIFIED",
+      "nativePassRequired": true,
+      "preUploadExplicitProtectionVerificationRequired": true,
+      "currentUnauthenticatedDomainStatus": 200,
+      "currentUnauthenticatedPreviewStatus": 200,
+      "nullOrUnknownProtectionMeansNoUploadNoAlias": true,
+      "protectionChangeAuthorized": false,
+      "publicNewPreviewExposureAuthorized": false
+    },
+    "productionPromotion": false
+  },
+  "actors": [
+    {
+      "label": "LEARNER_A",
+      "identitySha256": "995e6d265987a1c5cd6c831d6b2dda54998092aa769082cc72bf93fa209ece68",
+      "baseline": {
+        "consents": 10,
+        "checkins": 2,
+        "observations": 1,
+        "profiles": 1
+      },
+      "expectedFinal": {
+        "consents": 12,
+        "checkins": 3,
+        "observations": 1,
+        "profiles": 1
+      },
+      "profileRowSha256": "eb37945498058af5d8adad65628fde304b6b27696b8585eeab32878793924884",
+      "authMetadataDigests": {
+        "locale": "vi-VN",
+        "nonLocaleSha256": "3ed6c16263baea6c6ac58030045f476a4dbc370f8acf0b23e9838cf19697cd28",
+        "appMetadataSha256": "eae7fa83cc6590319d0d25ea5d752ae152e83a1626902b7974b2b8001b3bdd7d"
+      },
+      "preserveProfileAsObserved": true,
+      "requiresFreshActualAuthAndAuthorityBeforeWrites": true
+    },
+    {
+      "label": "LEARNER_B",
+      "identitySha256": "1dce191e95a843797bb7e8ebb9c63e5f0a5e20aa7ee98720be3df467421bebd3",
+      "baseline": {
+        "consents": 6,
+        "checkins": 3,
+        "observations": 0,
+        "profiles": 1
+      },
+      "expectedFinal": {
+        "consents": 8,
+        "checkins": 4,
+        "observations": 0,
+        "profiles": 1
+      },
+      "profileRowSha256": "dfe17e37b0ca558e69fe975a3b0b2811d79369df2a4b1044083a8a8e6eef1b23",
+      "authMetadataDigests": {
+        "locale": "vi-VN",
+        "nonLocaleSha256": "3ed6c16263baea6c6ac58030045f476a4dbc370f8acf0b23e9838cf19697cd28",
+        "appMetadataSha256": "eae7fa83cc6590319d0d25ea5d752ae152e83a1626902b7974b2b8001b3bdd7d"
+      },
+      "preserveProfileAsObserved": true,
+      "requiresFreshActualAuthAndAuthorityBeforeWrites": true
+    }
+  ],
+  "maxEffects": {
+    "newProfiles": 0,
+    "profileUpsertRequests": 0,
+    "authLocaleMetadataUpdates": 0,
+    "consentEvents": 4,
+    "checkins": 2,
+    "newObservations": 0
+  },
+  "checkin": {
+    "bodyStatus": "none_now",
+    "energyLevel": 2,
+    "captureType": "standalone",
+    "overallNote": null,
+    "observations": [],
+    "perActor": 1,
+    "noRetryWhenCommitUncertain": true
+  },
+  "consent": {
+    "purpose": "wellbeing_data",
+    "policyVersion": "wellbeing-data-review-0.1",
+    "channel": "android",
+    "grantAndRevokePerActor": 1,
+    "requiredPurposeEvents": 0,
+    "finalRevokedBoth": true,
+    "stopCleanupOnlyRemainingReservedRevoke": true
+  },
+  "baseline": {
+    "path": "analyse/MCY_NATIVE_LATE_SAVE_OPERATION_BASELINE_2026-10-14.json",
+    "capturedAt": "2026-10-13T18:23:33.914848+00:00",
+    "readbackCutoff": "2026-10-13T17:48:30.54829+00:00",
+    "freshBeforeExecutionRequired": true,
+    "ai": {
+      "enabled": false,
+      "version": 1,
+      "modelUnset": true
+    },
+    "ledgerApplied": 21,
+    "ownerDefinitionMd5": "5ad67fe52caf79bd07c51caa0c30db92",
+    "writerBodyMd5": "ba61a962de9c9fdfc364ad6fe83837e6",
+    "writerDefinitionMd5": "56bb448ca2dcb1af60d01e097ef974f1"
+  },
+  "permissions": {
+    "independentReviewRequired": "analyse/MCY_NATIVE_INTEGRATION_R3_2026-10-14.md",
+    "releaseAuthorized": false,
+    "ownerDecision": "PENDING",
+    "newApprovalFileMustBindManifestSha256": true,
+    "exclusiveNewIntentRequired": true,
+    "noAgentEmailOrSessionInjection": true,
+    "noSqlMigrationEdgeAuthSmtpDnsRoleExpiryConfigSave": true,
+    "noAiEnableInferenceOrProduction": true,
+    "noOldBudgetReuse": true,
+    "noProtectionOrBypassChanges": true
+  },
+  "closedTrial": {
+    "releaseId": "mcy-native-learner-trial-20261013",
+    "manifestSha256": "71bf0aa806e92d792bd55ad23592af22a78d76733a97af5f6ffa4f97ac19865d",
+    "status": "FAIL_EXCESS_CHECKIN_REVOKED_BOTH",
+    "remainingPermittedWrites": 0,
+    "archiveReceipt": "analyse/MCY_NATIVE_FROZEN_SOURCE_ARCHIVE_2026-10-14.json",
+    "keepHistory": true,
+    "nativeCauseEstablished": false
+  },
+  "inputs": [
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_OPERATION_2026-10-14.md",
+      "sha256": "23b35cb1b2c87f474535b7346f0f0b0c04c735fac9c76beaf9c3b363c04da5ae"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_INTEGRATION_R3_2026-10-14.md",
+      "sha256": "9f79c259b5f8aaded73ba9d046bf6b77f152bffbdc2d77c1189d41286a1c4c42"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_PREPARATION_2026-10-14.json",
+      "sha256": "2508e5ef025475823a0ee33c30b12ccb3bcd63726e23884fe2ffd14f2b515bea"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_SOURCE_2026-10-14.json",
+      "sha256": "42aaafbc644d5c12a2de8ba6400f427a96842948b3eecfe25c4810ecbf7e51f9"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_FROZEN_SOURCE_ARCHIVE_2026-10-14.json",
+      "sha256": "1af0e9a660a4f89178bef5fa62d2c840a6ea6c83f52b1b61fd6b6ce29f8c7fd8"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_ARTIFACT_2026-10-14.json",
+      "sha256": "5ce545dbf619b261b73507c8cf13c09ce9e75547d72ce38e904917d7baacd8df"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_WEB_ARTIFACT_2026-10-14.json",
+      "sha256": "53bf63dfdd00fd9e8b6657d947e9dd797ae69e69298591ebb9cb90bad1b63ac8"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_COMPILED_2026-10-14.json",
+      "sha256": "56699b3c3f99b10e15e258cfd485c50aadf86d7afc6f884c56c478f8e24e7bb7"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_OPERATION_BASELINE_2026-10-14.json",
+      "sha256": "de1f4927400a5601e7e3855cedfe8e246a435586d4e4d7547a5fb9aa26d0a9a8"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_HOSTING_BASELINE_2026-10-14.json",
+      "sha256": "924f95272ddae21454788ebf2afad881e1fb0dc9c77da61ed87172eb3e5027ea"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_HOSTED_PROBE_2026-10-14.json",
+      "sha256": "6535e17c6998bee92e31f9518915aa9f72bc9a7af6919f058915b976ef358851"
+    },
+    {
+      "path": "analyse/native-checkin-diagnostics/.vercel/native-integrated-20261014-results.json",
+      "sha256": "9def843b58ba0d47a98cc10ff2703e0bbef71dd3993cc8a5ed9e356c9bc4ccfe"
+    },
+    {
+      "path": "analyse/native-checkin-diagnostics/integrated-20261014.playwright.config.mjs",
+      "sha256": "854917eea751629bddce9fedede0a5cea5ec99fda806ee649f8120ca27057c9d"
+    },
+    {
+      "path": "analyse/native-checkin-diagnostics/late-save.spec.ts",
+      "sha256": "a0aa6f329862bfcdbce24276c044a1a85e4ece235d942d833cd275616e78c07b"
+    },
+    {
+      "path": "analyse/native-checkin-diagnostics/observer-gates-20261014.test.mjs",
+      "sha256": "5461566ac66221dcb9ad31795c6a0abc3a23c5785ed89114943eae9eacbb2ce6"
+    },
+    {
+      "path": "scripts/observe-native-late-save-20261014.mjs",
+      "sha256": "ae02f74745d38648c64fe564c426fe09ed717c09bdf844b7d586ffe4e91c61be"
+    },
+    {
+      "path": "scripts/sql/native-late-save-readback-20261014.sql",
+      "sha256": "0a23d9aca2dcc09d2094bd70f810b8d6f6c6528674e393fe032ea9cd04f1fbe8"
+    },
+    {
+      "path": "scripts/archive-native-late-save-artifact-20261014.ps1",
+      "sha256": "5260e9bcfb278969953f1d768911ad6e6fbb0ca97f7a36f467bccd636ec53e94"
+    },
+    {
+      "path": "scripts/verify-native-late-save-build-20261014.mjs",
+      "sha256": "5499e68e080ac8018ea5a3a56f76fe79f97af364b3aef523bae659ebdbd80e02"
+    },
+    {
+      "path": "scripts/check-native-late-save-packet-20261014.mjs",
+      "sha256": "951246a141f315e19ddf044990495b5b4b3c1b4d6f4e2ba2c309cb3fae676fb1"
+    },
+    {
+      "path": "scripts/playwright-global-setup.mjs",
+      "sha256": "6cb18bae67a2cb2fdc35fa6925886cb1b54ce659b657fc9740ed1f21314660d1"
+    },
+    {
+      "path": "scripts/playwright-test-environment.mjs",
+      "sha256": "f475bbd3e419259f043e4dd3c603b6733a33ece980cbc4df4f1de22c3406b4c0"
+    },
+    {
+      "path": "tests/checkin-consent-migration.test.mjs",
+      "sha256": "2f0c6b79eaf18c0fdfc4091b4aac5d7bc03d433cca7bce4e4a6f371ac068f1ab"
+    },
+    {
+      "path": "tests/playwright-test-environment.test.mjs",
+      "sha256": "8fd303dda54d3c3ed273d082e77ec14840dcbe6a038beff18c2c213a8f7829fc"
+    },
+    {
+      "path": "tests/sites-worker.test.mjs",
+      "sha256": "8ca10b7bda5d29d05cbed90fc0c63ee11091c8b197d7e6828cfb2ac8bd99b7ab"
+    },
+    {
+      "path": "tests/auth-callback.spec.ts",
+      "sha256": "fe90a9b105a41ad783ca5be1b42e563d2064135e47eca4622ad0265a3dfc2a3c"
+    },
+    {
+      "path": "tests/auth-email.spec.ts",
+      "sha256": "9d99bf0b427f7ec0628063a0a9f212277cc5f13289891f50ac7befa1bd1921c5"
+    },
+    {
+      "path": "tests/consent-policy.spec.ts",
+      "sha256": "2cf7230ab0ab879376f0183c52b15195ece7ba1fc4ce4042119fd62c88d138c3"
+    },
+    {
+      "path": "tests/content-review.spec.ts",
+      "sha256": "92cb8024d70ff6300df9514ab49bf3ce498632be9f1dc44f91a2d72db223af12"
+    },
+    {
+      "path": "tests/free-courses-contract.spec.ts",
+      "sha256": "81bfe13ed3117dc2997383cfd87c6f3b5e9924b2db82292cbe955e8b2eb50171"
+    },
+    {
+      "path": "tests/learner-device-acceptance.spec.ts",
+      "sha256": "6dfc474e63da334045d6294f4812b18f43d86390d228b8ad7076d4c4ca586571"
+    },
+    {
+      "path": "tests/learner-ux.spec.ts",
+      "sha256": "1015a060c76cbded938d217ee9370e15cc27f2f3ecd41b109bbc10802a3ec01e"
+    },
+    {
+      "path": "tests/learner-write-review.spec.ts",
+      "sha256": "151fd957ae1639e4ed07a7f03421c7f7c8adfd5082a50baa0f9f35bea08bf0a8"
+    },
+    {
+      "path": "tests/mobile-runtime.spec.ts",
+      "sha256": "523017a0bee1acd534c1e53d98e18a912bf96d89526d01223567cd3005b6737f"
+    },
+    {
+      "path": "tests/practice-flow.spec.ts",
+      "sha256": "6466712afc3971b6fc0705d1cf60a755b26adf0237ff0902c4b11983341b3498"
+    },
+    {
+      "path": "tests/staff-request-isolation.spec.ts",
+      "sha256": "b2829b57dfef019ef000aa073b1978585eb01e300358b521412523b2fa64d939"
+    },
+    {
+      "path": "tests/teacher-collaboration.spec.ts",
+      "sha256": "c256c5bac7fbdf21ed21142277d910284c3454aedbc89e5c22ca3da2d758e52d"
+    },
+    {
+      "path": "tests/teacher-workspace.spec.ts",
+      "sha256": "1e6ee0885ed9cb58455ec99ca436b697e2202407d51bdde91ba454e024d2eaad"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_MANIFEST_CONTRACT_2026-10-14.json",
+      "sha256": "d090ed6148ebab974bcd55be348ef980c47823c68adaa6514b2a1fbb554f04d4"
+    }
+  ],
+  "frozenApplicationSource": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "7054b4e14304ab33153d3a2e860aa43d2a4f69e8a69630b4a37a2cbcd4ad2f16"
+    },
+    {
+      "path": "src/backend/AuthCallback.tsx",
+      "sha256": "5dc40e88ddb53d89c255430d6694224d634024c328d26ad0830a64c412cdf120"
+    },
+    {
+      "path": "src/backend/authEmailMetadata.ts",
+      "sha256": "1aa385a2792330930d18e5051a1e3330bacc7571723efc4b64fff378185c5067"
+    },
+    {
+      "path": "src/backend/authRouting.ts",
+      "sha256": "1cfc700e45adf6535c270d9810f97a0afb5178e1f771a0e36ef4e4f0992ae02b"
+    },
+    {
+      "path": "src/backend/authStartup.ts",
+      "sha256": "dd69251009f7d04f6bbe5930925fbcde4f2901a575ccde49e356469fccb666c5"
+    },
+    {
+      "path": "src/backend/consentPersistence.ts",
+      "sha256": "141f4ec40f12d4c14be1384b4883e104dbd7be38168c0faf3fe184f4e37da181"
+    },
+    {
+      "path": "src/backend/database.types.ts",
+      "sha256": "ebb18fa8c13d560bf058ba4052596ee44a0b4233b8fb33c1c57af452555b4e0f"
+    },
+    {
+      "path": "src/backend/EmailLanguageSelect.tsx",
+      "sha256": "2c780deb7cb90a03b22cae741fc3985281d545b94758303bd49c542635a8e148"
+    },
+    {
+      "path": "src/backend/emailLocale.ts",
+      "sha256": "09bb5afd406e8ca1af791e0dbb819e6e26e8d2e76222fae5393e42d6f9f7ba02"
+    },
+    {
+      "path": "src/backend/learnerData.ts",
+      "sha256": "7e007bde10cda2d45e1c187e1a2e1f9d1d6f0999d3e185945dd68a6077019776"
+    },
+    {
+      "path": "src/backend/learnerSession.ts",
+      "sha256": "3286c118eac57cc1a83d85144a22b6787b3b146cdba7df290cca6ac66a48ece1"
+    },
+    {
+      "path": "src/backend/nativeAuth.ts",
+      "sha256": "bece108aecf68e042a55696be215d36b99950d78290649a83b5f8f244d15770f"
+    },
+    {
+      "path": "src/backend/supabase.ts",
+      "sha256": "e4c5f2b7fb84f69dff28b4af13e09b12ee7338dfbd7789ca760e8cc22ba108c9"
+    },
+    {
+      "path": "src/bodyRegions.ts",
+      "sha256": "7091d7a09cb1cb6437261ec0f5c71d017e64da8ea4e573aefad773cee395369c"
+    },
+    {
+      "path": "src/courses/CourseDetailScreen.tsx",
+      "sha256": "aafbe8b588b1e351b31813c66c438feedddf34a4774526a763c741ae01ef2cf6"
+    },
+    {
+      "path": "src/courses/DiscoverScreen.tsx",
+      "sha256": "ed1b3577bad084dafcf8a65b09a5e4f4a85f4820376ea472332b94660af52391"
+    },
+    {
+      "path": "src/courses/freeCourses.ts",
+      "sha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436"
+    },
+    {
+      "path": "src/i18n.ts",
+      "sha256": "64e09bd6a89101038de9cff2544962909a6b26e3822686abb8e295c7a1e82a1e"
+    },
+    {
+      "path": "src/JourneyScreen.tsx",
+      "sha256": "9857c1129184c26a6068c465628afac16c7890d3dc42db0e7b6120946f191255"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "01b7049715148ab645637905ccbbc91fc3f87659198a309541c2d1f03bb537d0"
+    },
+    {
+      "path": "src/mobile/assets.ts",
+      "sha256": "d40cb8e5390fd2b54618266e7694e40349006dfe480f65d60559316ca8c9c234"
+    },
+    {
+      "path": "src/mobile/BottomSheet.tsx",
+      "sha256": "f9c376dc78b8b5feb1c8752aa23414993ab66013d11e81b2ebb8342c570032ac"
+    },
+    {
+      "path": "src/mobile/Carousel.tsx",
+      "sha256": "242f4a7488e18c35e9b43651c9d5877288655a6f9f1734e03e56108f17526bf7"
+    },
+    {
+      "path": "src/mobile/COMPONENTS.md",
+      "sha256": "1a68bfa54f5a2e3c5a2f0c13a332524c42e2094ca15f097a9fa99dd58f58adb3"
+    },
+    {
+      "path": "src/mobile/components.tsx",
+      "sha256": "20b02f6c6de4cfd08aa6a49bf9bc261c0ea000864b37e1001afdcd892afe4bc8"
+    },
+    {
+      "path": "src/mobile/Device.tsx",
+      "sha256": "ab31ad7221852a09c285c582f37e0ea19b6a7c1f2ea540916640b4c65487ed95"
+    },
+    {
+      "path": "src/mobile/DevicePicker.tsx",
+      "sha256": "d2da661a444113549268daa44054a0ed25a53b8e36257c89259464d947d93cbc"
+    },
+    {
+      "path": "src/mobile/FlowStack.tsx",
+      "sha256": "d069635260df8db94fde6e458b801ed4d9f77de833d8725bd09bcc2fa2159afb"
+    },
+    {
+      "path": "src/mobile/geometry.ts",
+      "sha256": "f1382e5d6cc9adfd7ac142304f2f9a5a2330db1d74b3f0848adbaf311676bf16"
+    },
+    {
+      "path": "src/mobile/index.ts",
+      "sha256": "ee69d9341571db5dee84dd2d7452a62eef09085a84a85f198a3edc48047e0412"
+    },
+    {
+      "path": "src/mobile/Keyboard.tsx",
+      "sha256": "3bfb5dccb1f2ad180f043fc758a5c49b5348dffbe26102abff259bc23dd2ba23"
+    },
+    {
+      "path": "src/mobile/MobileCursor.tsx",
+      "sha256": "be2353205e05d823bc23ecae88179d712781ee9ede8fa317057c194c7c23ee7d"
+    },
+    {
+      "path": "src/mobile/MobileRuntime.tsx",
+      "sha256": "c22b4adf35a9c324f41117de01c63d3e70a69065a5b2403307390ada91043955"
+    },
+    {
+      "path": "src/mobile/MobileScroll.tsx",
+      "sha256": "ea3e3691f587ea13753162b9e64c1981263e5b9beddebea21a6a1551dce76430"
+    },
+    {
+      "path": "src/mobile/PhoneFrame.tsx",
+      "sha256": "20b0d85a7594455b4ba879469c50cd3606173ad4853a3c1f74af4bfa28448fdd"
+    },
+    {
+      "path": "src/practice/ContentReviewWorkspace.tsx",
+      "sha256": "9e05679afc6f957d00a220fa6f76dd91e48fdeeb0cb827757b2e50835fe87dd2"
+    },
+    {
+      "path": "src/practice/draftLesson.ts",
+      "sha256": "0c3df7a1f60faa89b4b0b76a780bbb65fa21e6cb0aa27f14dad3f2d598cb4016"
+    },
+    {
+      "path": "src/practice/feedbackMemory.ts",
+      "sha256": "254ea67d5d6453fbc7675055af73950e909ad9017938bd2f8ab239cd1346c271"
+    },
+    {
+      "path": "src/practice/LessonReader.tsx",
+      "sha256": "cc5d2b0010c333b9abc59d8221ff19c9a4e299c81e2f32dc500bdd127867a398"
+    },
+    {
+      "path": "src/practice/practice.css",
+      "sha256": "f59a6088d3119028799c99fbaa3b38e871b97fc7450f0005815bdce06fd846b1"
+    },
+    {
+      "path": "src/practice/PracticeFlowScreen.tsx",
+      "sha256": "922e5b56832f7cf9b86d917f7df016c0dff78a6bb48ce0c9726031039a34b5b5"
+    },
+    {
+      "path": "src/prototype.css",
+      "sha256": "47aee021e26e73a5596dce27ecbaa0238377b9e0a85c0b6830381030859be904"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "sha256": "32c100fbcd7433f6db2c6c299556adb22633d5cd8ecd9da01ca5420515287482"
+    },
+    {
+      "path": "src/staff/ContentReviewPanel.tsx",
+      "sha256": "57f502f2bc3f69d812612ac3689b40e265a69230831dd6e5901b638e46dde979"
+    },
+    {
+      "path": "src/staff/owner.css",
+      "sha256": "a1f527ae2990a2c8e7cec5483f60b58bcb477597fbae3f7ef47662dbf32558d7"
+    },
+    {
+      "path": "src/staff/owner.tsx",
+      "sha256": "ad99fc4a17812a7249784c42281b6579bfe49ece26d997c613feb099f1cb5a8f"
+    },
+    {
+      "path": "src/staff/teacher-collaboration.css",
+      "sha256": "7495496e5e76f53b5bd6ab26ef34a2bcdc25998499ce06cfca15501a30e12ca2"
+    },
+    {
+      "path": "src/staff/teacher.css",
+      "sha256": "0fe9b9da1608fa73c22b10a07ec2f13db13a7a65e824e90eede80cd57b18ccf2"
+    },
+    {
+      "path": "src/staff/teacher.tsx",
+      "sha256": "4968b18cbe0b988c04d1d2240a6bc47deb926660084af4aac87d707c9841ab73"
+    },
+    {
+      "path": "src/staff/TeacherCollaborationPanel.tsx",
+      "sha256": "05368c306954f332a81e510271987025ddbb4a8f47617aa3931e2eb665230613"
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "42403d864cda681681022ae80768efde9bde2ed2956baa3bfbe23c90469e38ef"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "sha256": "3bf8204502ae4982565c982a098bedba6d4c1056637dc6a90b36cd99c006a4ed"
+    },
+    {
+      "path": "supabase/functions/_shared/aiAssistant.ts",
+      "sha256": "5b55b191e0839a9cffc3e00f94bd06479810be952057f4224e05c4d66a60439b"
+    },
+    {
+      "path": "supabase/functions/_shared/aiGates.ts",
+      "sha256": "c99168e27e89f7f4c41579b848da384730c67d1aeb6f8ed78cccc70c745650d5"
+    },
+    {
+      "path": "supabase/functions/_shared/aiGateway.ts",
+      "sha256": "11506d9df9a78c0f6293ab2f2121413935bc7e5564707b89981602900a002745"
+    },
+    {
+      "path": "supabase/functions/_shared/aiPrivacy.ts",
+      "sha256": "b52f3472ef782af9a53a199ca03b352797b18757fc25e8aa9e0a3fb924b2757c"
+    },
+    {
+      "path": "supabase/functions/_shared/aiSafety.ts",
+      "sha256": "286238416fe5f634ee44f9c8102fadd1e7f3ce88edc1d2a1d67b2779ab2f2ab3"
+    },
+    {
+      "path": "supabase/functions/_shared/boundedRequest.ts",
+      "sha256": "fa4fb7fbdd23486b764b5a87ccc705904e6abaa6e0e1068ebe717893f1a15cff"
+    },
+    {
+      "path": "supabase/functions/_shared/contentReview.ts",
+      "sha256": "6da2fc1c3552842ceb478e8470beaaaeb6662fd5c5e62f906fb417ed54eaf89d"
+    },
+    {
+      "path": "supabase/functions/_shared/contentReviewCandidates.ts",
+      "sha256": "97b1cf85050861da17f21282a57f773f854e1d53a185cf7d5fdcbed93e680ffe"
+    },
+    {
+      "path": "supabase/functions/_shared/contentReviewContract.ts",
+      "sha256": "9e565321bee8c27d082550d3ce82816ec27602f0bcb9c8f1141b423840701781"
+    },
+    {
+      "path": "supabase/functions/_shared/openRouter.ts",
+      "sha256": "762065b26eb06eae3c425bd30074863c7c8a09c4977d9ca17b1f5a2a1b5d4d77"
+    },
+    {
+      "path": "supabase/functions/_shared/ownerControlPlane.ts",
+      "sha256": "0c6eab36a9fbb488ba02436bc063131c96981a160fbedf2b68858dafabe6c6b2"
+    },
+    {
+      "path": "supabase/functions/_shared/practiceAssistant.ts",
+      "sha256": "da7b2829f55273059fa1b37ef661a74389bff2bf15fa4e2eb51fc4725dfc0279"
+    },
+    {
+      "path": "supabase/functions/_shared/practiceContract.ts",
+      "sha256": "e52debcc8dd088e249a3b90f049ddc59d786582dadc1f88f96e54caf24eb0e17"
+    },
+    {
+      "path": "supabase/functions/_shared/reviewedPracticeCatalog.ts",
+      "sha256": "119d31e0aca5854d47c8bb0992b0aed68a9a24224fa76646053350c34d911f1e"
+    },
+    {
+      "path": "supabase/functions/_shared/teacherCollaboration.ts",
+      "sha256": "9715039324507b9fc4de551971f7e8e7b243cfb5ae703ba4f461ab56d2339155"
+    },
+    {
+      "path": "supabase/functions/_shared/teacherControlPlane.ts",
+      "sha256": "7e8fbce1e841a779df63e524289d4094f9f592161d547c963b7af90061d037c8"
+    },
+    {
+      "path": "index.html",
+      "sha256": "5531697191a079b68e136b8f04a3670a7964d7253bb34c49a8c679ac6b897c34"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8fa7705f43c4cd96071fdef3a707eaf599d7af04f82950cb5f876eef3187d9dc"
+    },
+    {
+      "path": "design-system/tokens.css",
+      "sha256": "31bc508bcfa0246053579a1794971cfcb6ebb031026c319090ace3ba97ffc038"
+    },
+    {
+      "path": "package.json",
+      "sha256": "29f4b35bb7ead83c72ecbbc97b3d664d77cd204cb0c6c8ca752d76b4e7c639f9"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "f983447a10aaeb56091f43bf99ac5f9a01040e6c8a4b95bedf2f98d29cfd3fc6"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "da36eba05b845c3b0d69d823a515f6f7d9612992126ed2fe32c2809815ec73ba"
+    },
+    {
+      "path": "capacitor.config.ts",
+      "sha256": "e60bed34795177dfd8eb24cb35ad89b6c63905a924880589657cd80c295f85ec"
+    },
+    {
+      "path": "android/app/build.gradle",
+      "sha256": "8c041d55b98c022564b5d7892ae1cd91ab4fa5586213457404a7c9dff741a8bd"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "sha256": "2fd86858d5c9d6a69b03b57b9665555a74cfebdc2e79832d5ca10ed30bba5d43"
+    },
+    {
+      "path": "scripts/build-android-debug.mjs",
+      "sha256": "0920fa062ce063e12d2a161372b62bb9da89bfeca1ee3bfd7b8f51b7281a642e"
+    },
+    {
+      "path": "scripts/check-mobile-runtime.mjs",
+      "sha256": "ee85738cc2ef889c0b457d8ccac61e017b8c5d16f393e766ec9fb7d11c9aff7f"
+    },
+    {
+      "path": "scripts/check-client-bundle-secrets.mjs",
+      "sha256": "ef5c0ae608e91ed55c68dba2950a760731b3af5f8e1ef209773c556225c11138"
+    }
+  ],
+  "device": {
+    "model": "Air1 Ultra",
+    "serial": "Q88549EEXCUOONGA",
+    "package": "com.nilaza.motchutyoga.mcydebug",
+    "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "NativeLateSaveExplicitOwnerDecision",
+  "recordedAt": "2026-10-14 02:13:19 UTC",
+  "decision": "APPROVED",
+  "releaseId": "mcy-native-late-save-20261014",
+  "manifestPath": "analyse/MCY_NATIVE_LATE_SAVE_OPERATION_2026-10-14.json",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "reviewSha256": "9f79c259b5f8aaded73ba9d046bf6b77f152bffbdc2d77c1189d41286a1c4c42",
+  "target": {
+    "kind": "staging",
+    "projectRef": "mhumbczqrzutdnraafhs",
+    "organizationId": "rzbpjfrndhrtxagpgdre"
+  },
+  "maxEffects": {
+    "newProfiles": 0,
+    "profileUpsertRequests": 0,
+    "authLocaleMetadataUpdates": 0,
+    "consentEvents": 4,
+    "checkins": 2,
+    "newObservations": 0
+  },
+  "humanDecision": "Duyệt gói mcy-native-late-save-20261014 và giới hạn đã nêu. Hãy cài bản Android mới trên Air1 Ultra và tiếp tục kiểm thử native; chưa cập nhật web staging khi gate protection chưa đạt.",
+  "method": "Exact parallel APK replacement, user-driven A/B native UI, agent read-only verification",
+  "webGate": "BLOCKED_NO_UPLOAD_OR_ALIAS",
+  "noSqlAuthRoleAiProductionChanges": true
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "HumanNativeProfileCompletionReconciliation",
+  "recordedAt": "2026-10-13T04:18:26Z",
+  "manifestSha256": "71bf0aa806e92d792bd55ad23592af22a78d76733a97af5f6ffa4f97ac19865d",
+  "trialNonce": "2d8afaa2-fac3-45c4-8b7c-c41e10dd0184",
+  "actor": "LEARNER_A",
+  "humanReplies": {
+    "nativeActionLocation": "Trong app Debug song song trên Air1 Ultra",
+    "fictionalData": "Dữ liệu giả để kiểm thử",
+    "completionClickCount": "Chỉ một lần"
+  },
+  "evidenceClassification": "SOURCE_PLUS_USER_REPORTED_SINGLE_COMPLETION",
+  "independentHttpRequestCountObserved": false,
+  "profileRowChangeObserved": 1,
+  "localeChangeObserved": 1,
+  "reservedProfileUpsertRequests": 1,
+  "reservedAuthLocaleUpdates": 1,
+  "preparedExactProfileFixtureMatch": false,
+  "freshAuthBeforeProfileWasObserved": false,
+  "profileAcceptance": "PARTIAL_WITH_DOCUMENTED_LIMITS",
+  "repeatProfileOrLocaleSaveAllowed": false,
+  "budgetExpansion": false,
+  "healthEffectsUnchangedFromApprovedOperation": true,
+  "remainingGlobalMaxEffects": {
+    "profileUpsertRequests": 1,
+    "authLocaleUpdates": 1,
+    "newProfiles": 1,
+    "wellbeingConsentEvents": 4,
+    "fictionalCheckins": 2,
+    "newObservations": 0
+  },
+  "continueCondition": "Independent delta review and fresh native actor plus SQL authority/count/consent checks before remaining already approved manual steps; no writes by agent"
+}

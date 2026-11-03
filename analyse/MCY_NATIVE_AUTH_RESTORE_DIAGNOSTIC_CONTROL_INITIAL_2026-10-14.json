@@ -1,0 +1,10 @@
+{
+  "kind": "NativeAuthRestoreControlIntermediateParserFailure",
+  "command": "node .vercel/native-auth-restore-control-20261014.mjs",
+  "retainedSourcePath": ".vercel/native-auth-restore-control-ts-parser-20261014.mjs",
+  "exitCode": 1,
+  "status": "FAIL_TOOLING_BEFORE_FIXTURE_EXECUTION",
+  "reason": "Installed TypeScript 7.0.2 does not expose ScriptTarget.Latest used by this legacy AST API.",
+  "fixtureCasesRun": 0,
+  "deviceOrNetworkOrCredentialsUsed": false
+}

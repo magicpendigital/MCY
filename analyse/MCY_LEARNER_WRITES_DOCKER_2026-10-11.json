@@ -1,0 +1,96 @@
+{
+  "kind": "LearnerWriteDockerRehearsal",
+  "capturedAt": "2026-10-11T10:06:46.426Z",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Historical candidate reproduced real revoke-before-INSERT race in two independent sessions",
+      "status": "PASS"
+    },
+    {
+      "name": "Historical ID-only retry reproduced changed payload returning a different stored health state",
+      "status": "PASS"
+    },
+    {
+      "name": "service_role existing public.checkins INSERT",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "service_role existing public.checkins UPDATE",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "service_role existing public.checkins DELETE",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "service_role existing public.checkins TRUNCATE",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "service_role existing public.checkin_observations INSERT",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "service_role existing public.checkin_observations UPDATE",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "service_role existing public.checkin_observations DELETE",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "service_role existing public.checkin_observations TRUNCATE",
+      "value": "t",
+      "status": "OBSERVED"
+    },
+    {
+      "name": "Client INSERT/UPDATE/DELETE/TRUNCATE/helper denied; private service access denied; existing public service ACL observed; Owner definition unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Valid exact retry returns one row; changed payload, cross-user read, stale consent and higher snapshot isolation fail closed",
+      "status": "PASS"
+    },
+    {
+      "name": "Concurrent exact retry serializes across real sessions and creates one check-in",
+      "status": "PASS"
+    },
+    {
+      "name": "Revoke holds actor lock first: waiting check-in refreshes consent after commit and writes no row",
+      "status": "PASS"
+    },
+    {
+      "name": "Check-in holds lock first: revocation waits until save commits; every later write denied",
+      "status": "PASS"
+    },
+    {
+      "name": "Consent retry preserves original event; reused key with different action rejected without quota migration",
+      "status": "PASS"
+    },
+    {
+      "name": "Real PostgREST authenticated HTTP 200 under current consent and actor-bound payload",
+      "status": "PASS"
+    }
+  ],
+  "migrationPath": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+  "migrationSha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a",
+  "baselineSha256": "6a8c5c6459bb3c1a9ca3166b242780dfb3ef9ef031ded2d5d57e637c7dc94cee",
+  "schemaSha256": "3f20dbbf4e5f78a12d50c54e8ddfbde31d561aa3fa857c6406430f2909337291",
+  "authFunctionsSha256": "7f7814f52e16dca3a582d8d7b520230135c3624ccb9dea591dbf7453cc0d5722",
+  "harnessSha256": "97b32e509bac0f204825d490bcb37a8529e55290ed465b490b14f72cbff7e903",
+  "images": {
+    "image": "public.ecr.aws/supabase/postgres:17.6.1.139",
+    "restImage": "public.ecr.aws/supabase/postgrest:v14.13"
+  },
+  "cloudRequests": false,
+  "realActorTests": false,
+  "cleanupVerified": true
+}

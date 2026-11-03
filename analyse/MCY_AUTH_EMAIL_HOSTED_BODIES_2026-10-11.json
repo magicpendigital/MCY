@@ -1,0 +1,108 @@
+{
+  "kind": "SupabaseDashboardEmailBodyReadback",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "capturedAt": "2026-10-11T11:58:34.969Z",
+  "checks": [
+    {
+      "id": "password_changed",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "notificationOff": true,
+      "sha256": "a87368edcef6d954c6e2914a9891275d2a6bfdd334ca8963a253a14e1a4d01d7",
+      "capturedAt": "2026-10-11T11:45:58.295Z"
+    },
+    {
+      "id": "email_changed",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "notificationOff": true,
+      "sha256": "340f78dec6423106ba1242d30f3f5af0a5f24d09a79490fd15192e5cfa1763d1",
+      "capturedAt": "2026-10-11T11:47:05.480Z"
+    },
+    {
+      "id": "phone_changed",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "notificationOff": true,
+      "sha256": "9a36fc160f3c9dbd890ff6ba1f498c20e9344845d4df9492904e77f3f8f42a83",
+      "capturedAt": "2026-10-11T11:47:59.942Z"
+    },
+    {
+      "id": "identity_linked",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "notificationOff": true,
+      "sha256": "81704f8227edbb699e3ecd5e488dffd9270ef74560ea76207fbf5cd881cac5e8",
+      "capturedAt": "2026-10-11T11:49:29.958Z"
+    },
+    {
+      "id": "identity_unlinked",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "notificationOff": true,
+      "sha256": "a9002870ca775f4cb213087de11095943cfbed243d44080e3cf2d37aaf1b4e4b",
+      "capturedAt": "2026-10-11T11:50:22.183Z"
+    },
+    {
+      "id": "mfa_factor_enrolled",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "notificationOff": true,
+      "sha256": "45a23135e519f65dcaadc32ea9aa89f1f0ac533113815af30d749ffc5bc8ff53",
+      "capturedAt": "2026-10-11T11:50:57.820Z"
+    },
+    {
+      "id": "mfa_factor_unenrolled",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "notificationOff": true,
+      "sha256": "ffa13f09b27e830f77eb7e10ba639e306e967885869ea81369ba1e5be5462a61",
+      "capturedAt": "2026-10-11T11:51:29.628Z"
+    },
+    {
+      "id": "confirmation",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "sha256": "aa9f8c0cd05d83659c71a4e9a44f8884ee4dc849cc8b8c5e30d045ab893ca1fe",
+      "capturedAt": "2026-10-11T11:56:07.170Z"
+    },
+    {
+      "id": "magic_link",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "sha256": "14239c96dcee919d5dd5e24cdf99c1be168a803731f692eb8b3d174290207208",
+      "capturedAt": "2026-10-11T11:56:26.971Z"
+    },
+    {
+      "id": "invite",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "sha256": "e139ddd2ba7b4c58832290b8625672a9cd2c07561f0f60a2d2e60efd69d4d30e",
+      "capturedAt": "2026-10-11T11:56:56.005Z"
+    },
+    {
+      "id": "recovery",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "sha256": "7587bfe6221c03852d572244851a9c74f4443475623c466642cd9c076fa6ce8b",
+      "capturedAt": "2026-10-11T11:57:43.225Z"
+    },
+    {
+      "id": "email_change",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "sha256": "d55c5f7d1a5ba9dbaabde8b991a7bfc4eab4462a8d7791599174a9a4d3183a77",
+      "capturedAt": "2026-10-11T11:58:00.444Z"
+    },
+    {
+      "id": "reauthentication",
+      "freshReload": true,
+      "bodyMatchesManifest": true,
+      "sha256": "fa378340dc74af96227633fd60989f896179bd7763f11b815861f3b62720c0ef",
+      "capturedAt": "2026-10-11T11:58:34.968Z"
+    }
+  ],
+  "bodyCount": 13,
+  "notificationSwitchesChanged": false,
+  "authSubjectEditorSaved": false
+}

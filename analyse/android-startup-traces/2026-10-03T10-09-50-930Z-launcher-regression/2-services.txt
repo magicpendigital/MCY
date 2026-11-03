@@ -1,0 +1,38 @@
+ACTIVITY MANAGER SERVICES (dumpsys activity services)
+  User 0 active services:
+  * ServiceRecord{c2d3234 u0 com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+    intent={cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+    packageName=com.nilaza.motchutyoga.mcydebug
+    processName=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0
+    baseDir=/data/app/~~iMrPnqTpxJb7vwlL4Jeg_Q==/com.google.android.webview-Y0-xaFCw-6764-b4Qbri6A==/base.apk
+    dataDir=/data/user/0/com.google.android.webview
+    app=ProcessRecord{812d870 31104:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a274i328}
+    isolationHostProc=ProcessRecord{812d870 31104:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a274i328}
+    allowWhileInUsePermissionInFgs=true
+    recentCallingPackage=com.nilaza.motchutyoga.mcydebug
+    recentCallingUid=10274
+    allowStartForeground=PROC_STATE_TOP
+    startForegroundCount=0
+    infoAllowStartForeground=[callingPackage: com.nilaza.motchutyoga.mcydebug; callingUid: 10274; uidState: TOP ; intent: Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0 (has extras) }; code:PROC_STATE_TOP; tempAllowListReason:<null>; targetSdkVersion:36; callerTargetSdkVersion:36; startForegroundCount:0; bindFromPackage:null]
+    createTime=-11s460ms startingBgTimeout=--
+    lastActivity=-11s19ms restartTime=-11s391ms createdFromFg=true
+    Bindings:
+    * IntentBindRecord{4a0054c CREATE}:
+      intent={cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+      binder=android.os.BinderProxy@e879995
+      requested=true received=true hasBound=true doRebind=false
+      * Client AppBindRecord{ec5faaa ProcessRecord{4145f75 31070:com.nilaza.motchutyoga.mcydebug/u0a274}}
+        Per-process Connections:
+          ConnectionRecord{aa3c6e u0 CR WPRI com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:@49877e9}
+          ConnectionRecord{ee7dee2 u0 CR IMP com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:@4de0bad}
+    All Connections:
+      ConnectionRecord{aa3c6e u0 CR WPRI com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:@49877e9}
+      ConnectionRecord{ee7dee2 u0 CR IMP com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:@4de0bad}
+
+  Connection bindings to services:
+  * ConnectionRecord{aa3c6e u0 CR WPRI com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:@49877e9}
+    binding=AppBindRecord{ec5faaa com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:com.nilaza.motchutyoga.mcydebug}
+    conn=android.os.BinderProxy@49877e9 flags=0x80000021
+  * ConnectionRecord{ee7dee2 u0 CR IMP com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:@4de0bad}
+    binding=AppBindRecord{ec5faaa com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0:com.nilaza.motchutyoga.mcydebug}
+    conn=android.os.BinderProxy@4de0bad flags=0x80000041

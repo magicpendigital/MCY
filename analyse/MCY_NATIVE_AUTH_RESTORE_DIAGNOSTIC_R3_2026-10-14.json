@@ -1,0 +1,113 @@
+{
+  "kind": "IndependentNativeAuthRestoreDiagnosticR3",
+  "capturedAt": "2026-10-14T06:38:01.027Z",
+  "reviewer": "/root/auth_restore_diagnostic_review_20261014",
+  "tier": "R3",
+  "status": "APPROVED_READ_ONLY_DIAGNOSTIC",
+  "probeSha256": "f446802629cd64ed502ae44662b31a0e902eb18f2a3e58f00e009be1288a9158",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "intentSha256": "ee9515e08b81f268cd960764b635c71c53f45d539e2051393084a8f21fb2f2a0",
+  "noRemainingP1P2": true,
+  "approvalSha256": "8e6e6adedd18779fc5ae4d458418de576f768ce680670d9b92aa4f8e11eccbd7",
+  "reviewNarrative": {
+    "path": "analyse/MCY_NATIVE_AUTH_RESTORE_DIAGNOSTIC_R3_2026-10-14.md",
+    "sha256": "e1f970c4b9e2df4cf9d96891f19b0d2d9c268091737f2ced58fdc62fe9b925b7"
+  },
+  "frozenPinsMatched": 119,
+  "pins": [
+    {
+      "path": "scripts/observe-native-auth-restore-failure-20261014.mjs",
+      "sha256": "f446802629cd64ed502ae44662b31a0e902eb18f2a3e58f00e009be1288a9158"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_OPERATION_2026-10-14.json",
+      "sha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_APPROVAL_2026-10-14.json",
+      "sha256": "8e6e6adedd18779fc5ae4d458418de576f768ce680670d9b92aa4f8e11eccbd7"
+    },
+    {
+      "path": ".vercel/mcy-native-late-save-20261014.intent.json",
+      "sha256": "ee9515e08b81f268cd960764b635c71c53f45d539e2051393084a8f21fb2f2a0"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_LEARNER_A_BEFORE_GRANT_2026-10-14.json",
+      "sha256": "7fbda8e506bcdd336e0028561767067e1556f4d47e74d43c65120947a2500f23"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_REOPEN_AUTH_FAILURE_RECONCILIATION_2026-10-14.json",
+      "sha256": "6fac92b76e0e48ad8dffd5127af51367ba8a81f0c71df0ac162eb5891b6e7715"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_REOPEN_AUTH_FAILURE_SQL_2026-10-14.json",
+      "sha256": "d5d6be0359f657e3e60862e37e154c1aff60eb7ab62fba2bc0b53cf9d38e70da"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_EXECUTION_BASELINE_2026-10-14.json",
+      "sha256": "43190ed9d82345019bbd0168e9ae9d4e5cf5cba6ecc8e517a064ebee3dd799c6"
+    },
+    {
+      "path": "analyse/MCY_NATIVE_AUTH_RESTORE_DIAGNOSTIC_CONTROL_2026-10-14.json",
+      "sha256": "96d91113f67e165c08b274231b0665ba661e51ee5e62932f8307ffc496e4e841"
+    },
+    {
+      "path": ".vercel/native-auth-restore-control-20261014.mjs",
+      "sha256": "97bfc5147fd1ee9f12bbf47df5c81ef0614ac24906f2d69b740a9a4478e83615"
+    },
+    {
+      "path": "src/backend/authStartup.ts",
+      "sha256": "dd69251009f7d04f6bbe5930925fbcde4f2901a575ccde49e356469fccb666c5"
+    },
+    {
+      "path": "src/backend/supabase.ts",
+      "sha256": "e4c5f2b7fb84f69dff28b4af13e09b12ee7338dfbd7789ca760e8cc22ba108c9"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "sha256": "32c100fbcd7433f6db2c6c299556adb22633d5cd8ecd9da01ca5420515287482"
+    },
+    {
+      "path": "skills/mcy-change-review/SKILL.md",
+      "sha256": "125f8c765136bd92e76efa70c6304d43423aed57dc2ab782d63f7d4dd7c90ea7"
+    },
+    {
+      "path": "skills/mcy-change-review/references/review-matrix.md",
+      "sha256": "40e53c3408b51e263aaa849371273c041f128d822bc2c50f4ca3dc2e7df9e707"
+    }
+  ],
+  "checks": {
+    "syntax": {
+      "status": "PASS",
+      "exitCode": 0
+    },
+    "independentOfflinePreflight": {
+      "status": "PASS",
+      "cases": 8,
+      "exitCode": 0
+    },
+    "independentOfflineExpression": {
+      "status": "PASS",
+      "cases": 16,
+      "exitCode": 0
+    },
+    "parentAcornActualExpression": {
+      "status": "PASS_REVIEWED_STORED_RECEIPT",
+      "cases": 13
+    },
+    "storedSqlBaselineComparison": {
+      "status": "PASS",
+      "allFieldsExceptCapturedAtUnchanged": true
+    }
+  },
+  "liveProbeInvokedByReviewer": false,
+  "liveDeviceNetworkAuthSqlCallsByReviewer": 0,
+  "appOrFrozenSourceModified": false,
+  "intentOrExistingReceiptModified": false,
+  "allowedScope": "ONE_BOUNDED_READ_ONLY_DIAGNOSTIC_ONLY",
+  "nativeTrialStatus": "HALTED_SESSION_RESTORE_FAILURE",
+  "nativeSessionRestoration": "FAIL_USER_REPORTED_CURRENT_CAUSE_UNKNOWN",
+  "webRelease": "BLOCKED_NO_UPLOAD_OR_ALIAS",
+  "resumeWritesOrDeploymentAuthorized": false,
+  "causalLinkToWellbeingOrLateSavePatchEstablished": false
+}

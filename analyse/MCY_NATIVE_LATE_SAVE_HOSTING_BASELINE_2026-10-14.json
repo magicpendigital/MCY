@@ -1,0 +1,20 @@
+{
+  "kind": "NativeLateSaveHostingReadOnlyBaseline",
+  "capturedAt": "2026-10-13T18:18:12.485Z",
+  "projectId": "prj_gTioLZWajGyQMkaPS1qapwoBOUnA",
+  "teamId": "team_BGXDJYYYe7LSDoGDjWRBFlJH",
+  "domain": "motchutyoga.magicpendigital.com",
+  "branch": "codex-mcy-p1-preview",
+  "verified": true,
+  "deploymentId": "dpl_2zYC7QQJKMRLGsKgWPpWQqnPkaT4",
+  "deploymentUrl": "mcy-dyamgi4w9-magicpens-projects.vercel.app",
+  "deploymentTarget": null,
+  "deploymentPublic": false,
+  "ssoProtectionMode": null,
+  "retainedArtifactSha256": "3197f3ebf8805a04e97bc5350f2d18bbc96fa443ed71b2cd273a327a4d04c662",
+  "mcpInspectionStatus": "403_SCOPE_FORBIDDEN",
+  "cliInspectionStatus": "PASS",
+  "credentialsOrEnvValuesExported": false,
+  "mutations": 0,
+  "freshDriftAndProtectionCheckRequiredBeforeRelease": true
+}

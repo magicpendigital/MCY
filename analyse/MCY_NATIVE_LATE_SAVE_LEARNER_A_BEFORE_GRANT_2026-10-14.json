@@ -1,0 +1,31 @@
+{
+  "kind": "NativeTrialFreshActorReadOnlyObservation",
+  "startedAt": "2026-10-14T03:22:30.367Z",
+  "capturedAt": "2026-10-14T03:22:44.512Z",
+  "label": "LEARNER_A",
+  "phase": "before-grant",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "approvalSha256": "8e6e6adedd18779fc5ae4d458418de576f768ce680670d9b92aa4f8e11eccbd7",
+  "trialNonce": "9c4e4983-694e-453d-9903-132c0235c3bd",
+  "sourceSha256": "ae02f74745d38648c64fe564c426fe09ed717c09bdf844b7d586ffe4e91c61be",
+  "intentSha256AtStart": "07b3a1a833bb7aa813da0966868956b0b3ffb3310713f628edcfac4167e74633",
+  "package": "com.nilaza.motchutyoga.mcydebug",
+  "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e",
+  "expectedLocalPageCount": 1,
+  "result": {
+    "status": "PASS",
+    "httpStatus": 200,
+    "approvedCachedAndServerActorMatch": true,
+    "confirmed": true,
+    "authRoleAuthenticated": true,
+    "nonLocaleUserMetadataSha256": "6aed121bf6318faa70c0b2c909d9cbad788a348eaa475e6277d760116871f49a",
+    "appMetadataSha256": "5b0bfedb37484704aa0240dc706cc13b4d6c47f967a417f4babd5dc4bc10ad65",
+    "locale": "vi-VN",
+    "activeRoute": "home"
+  },
+  "authGetOnly": true,
+  "sessionInjectedOrRefreshedByProbe": false,
+  "uiNavigation": false,
+  "emailOrDataWritesByProbe": false,
+  "tokenIdentityOrRawMetadataExported": false
+}

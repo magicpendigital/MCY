@@ -1,0 +1,45 @@
+{
+  "app": "com.nilaza.motchutyoga.mcydebug",
+  "serial": "Q88549EEXCUOONGA",
+  "apkSha256": "c7da29637bd638035c3488689db72a94b391ddcc1cf88960ff3264bc7b8ed56f",
+  "output": "D:\\Projects\\MCY\\analyse\\android-startup-traces\\2026-10-03T08-28-32-612Z",
+  "screenshots": [
+    {
+      "second": 1,
+      "captureStartedMs": 1013,
+      "completedMs": 1654,
+      "path": "D:\\Projects\\MCY\\analyse\\android-startup-traces\\2026-10-03T08-28-32-612Z\\1s.png",
+      "bytes": 66330,
+      "sha256": "cb77acff4af13e919dea8078b88e5ef8f47389f0099f95fbc296e7e6a6ba3f3d"
+    },
+    {
+      "second": 5,
+      "captureStartedMs": 5010,
+      "completedMs": 5402,
+      "path": "D:\\Projects\\MCY\\analyse\\android-startup-traces\\2026-10-03T08-28-32-612Z\\5s.png",
+      "bytes": 31236,
+      "sha256": "1b34d9d59f75e0e36850d2355177eb57bf8a687c54ed42b4e0f688511d3fad33"
+    },
+    {
+      "second": 10,
+      "captureStartedMs": 10012,
+      "completedMs": 10402,
+      "path": "D:\\Projects\\MCY\\analyse\\android-startup-traces\\2026-10-03T08-28-32-612Z\\10s.png",
+      "bytes": 31236,
+      "sha256": "1b34d9d59f75e0e36850d2355177eb57bf8a687c54ed42b4e0f688511d3fad33"
+    }
+  ],
+  "errors": [],
+  "previousPid": "10600",
+  "launchHostUtc": "2026-10-03T08:28:33.143Z",
+  "launchOutput": "Starting: Intent { cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity }",
+  "pid": "13686",
+  "pidFoundMs": 581,
+  "observationMs": 20000,
+  "finalPid": "13686",
+  "logLines": 24,
+  "logsTruncated": false,
+  "logError": "",
+  "hasBridgeStartup": true,
+  "hasDocumentLoad": true
+}

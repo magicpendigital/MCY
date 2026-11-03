@@ -1,0 +1,364 @@
+{
+  "kind": "BoundedApprovedLearnerWriteStagingMatrix",
+  "manifestSha256": "13521cea066fa99467d23cca987533e03339efd019bbd4a09dc287b890ae2143",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "startedAt": "2026-10-11T18:52:25.402Z",
+  "runId": "mcy-lw-9ebef4ed-cccd-4a19-a7e1-c585de11da0a",
+  "status": "API_PASS_DATABASE_AND_LOG_READBACK_REQUIRED",
+  "limits": {
+    "consents": 12,
+    "checkins": 2,
+    "observations": 1
+  },
+  "reservedPositiveWrites": {
+    "consents": 12,
+    "checkins": 2,
+    "observations": 1
+  },
+  "checks": [
+    {
+      "name": "Two fresh confirmed identities match independently verified disposable authority",
+      "status": "PASS"
+    },
+    {
+      "name": "Anonymous, cross-actor and null expected actor cannot save",
+      "status": "PASS"
+    },
+    {
+      "name": "Six required grants; exact consent retry stable; changed payload with same key denied",
+      "status": "PASS"
+    },
+    {
+      "name": "Stale latest privacy version denies save; current version re-established",
+      "status": "PASS"
+    },
+    {
+      "name": "Latest revoked wellbeing consent denies save; required current grant re-established",
+      "status": "PASS"
+    },
+    {
+      "name": "Legacy client writer and unexposed private helper denied",
+      "status": "PASS"
+    },
+    {
+      "name": "A saves once; exact full-payload retry stable; changed energy or observation rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Exactly owned fictional stored fields, one A observation, no B observation; cross-user reads empty",
+      "status": "PASS"
+    },
+    {
+      "name": "Authenticated direct INSERT and anonymous table SELECT denied",
+      "status": "PASS"
+    },
+    {
+      "name": "Final wellbeing revocations stop both writers including retries; retained fixture history",
+      "status": "PASS"
+    }
+  ],
+  "calls": [
+    {
+      "stage": "verified Auth preflight",
+      "method": "GET",
+      "endpoint": "/auth/v1/user",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "verified Auth preflight",
+      "method": "GET",
+      "endpoint": "/auth/v1/user",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "anonymous and actor mismatch",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 401,
+      "code": "42501"
+    },
+    {
+      "stage": "anonymous and actor mismatch",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 403,
+      "code": "28000"
+    },
+    {
+      "stage": "anonymous and actor mismatch",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 403,
+      "code": "28000"
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 400,
+      "code": "22023"
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "six required consent fixtures",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stale privacy version",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stale privacy version",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 403,
+      "code": "42501"
+    },
+    {
+      "stage": "stale privacy version",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "revoked wellbeing",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "revoked wellbeing",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 403,
+      "code": "42501"
+    },
+    {
+      "stage": "revoked wellbeing",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "legacy and direct helper denied",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_with_current_consent",
+      "status": 403,
+      "code": "42501"
+    },
+    {
+      "stage": "legacy and direct helper denied",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_expanded",
+      "status": 404,
+      "code": "PGRST202"
+    },
+    {
+      "stage": "one A checkin and one observation",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "one A checkin and one observation",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "one A checkin and one observation",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 400,
+      "code": "22023"
+    },
+    {
+      "stage": "one A checkin and one observation",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 400,
+      "code": "22023"
+    },
+    {
+      "stage": "one B checkin",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stored payload and RLS",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkins",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stored payload and RLS",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkins",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stored payload and RLS",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkins",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stored payload and RLS",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkins",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stored payload and RLS",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkin_observations",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stored payload and RLS",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkin_observations",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "stored payload and RLS",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkin_observations",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "direct table and anonymous reads denied",
+      "method": "POST",
+      "endpoint": "/rest/v1/checkins",
+      "status": 403,
+      "code": "42501"
+    },
+    {
+      "stage": "direct table and anonymous reads denied",
+      "method": "GET",
+      "endpoint": "/rest/v1/checkins",
+      "status": 401,
+      "code": "42501"
+    },
+    {
+      "stage": "final append-only wellbeing revocations",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "final append-only wellbeing revocations",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 403,
+      "code": "42501"
+    },
+    {
+      "stage": "final append-only wellbeing revocations",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/get_my_consent_state",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "final append-only wellbeing revocations",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/record_my_consent",
+      "status": 200,
+      "code": null
+    },
+    {
+      "stage": "final append-only wellbeing revocations",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/save_my_checkin_for_current_user_with_current_consent",
+      "status": 403,
+      "code": "42501"
+    },
+    {
+      "stage": "final append-only wellbeing revocations",
+      "method": "POST",
+      "endpoint": "/rest/v1/rpc/get_my_consent_state",
+      "status": 200,
+      "code": null
+    }
+  ],
+  "baselineGateSha256": "9ea82b222bad582bf6fefcf4e15a04e495a04f74947c74223cd109b38f0aa626",
+  "harnessSha256": "eaf13785b86da79b56759ff8a19183a935d7a643142bc0e2565fcf5f0a556b5f",
+  "historyRetained": true,
+  "externalMail": false,
+  "aiInference": false,
+  "automaticRetry": false,
+  "savedCheckinDigests": [
+    "c21cc876e5e88f2022091ac23e340f6cf0f8f482049aab9485f08e5ad9379ff1",
+    "9645e918bf656f8213d905f0de5ca8c56167cc582f96c7ec61e7301efbf2e5eb"
+  ],
+  "actorDigests": {
+    "LEARNER_A": "995e6d265987a1c5cd6c831d6b2dda54998092aa769082cc72bf93fa209ece68",
+    "LEARNER_B": "1dce191e95a843797bb7e8ebb9c63e5f0a5e20aa7ee98720be3df467421bebd3"
+  },
+  "completedAt": "2026-10-11T18:52:32.538Z"
+}

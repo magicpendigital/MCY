@@ -1,0 +1,291 @@
+{
+  "kind": "ExactPreviewBuildOutput",
+  "target": "preview",
+  "projectId": "prj_gTioLZWajGyQMkaPS1qapwoBOUnA",
+  "teamId": "team_BGXDJYYYe7LSDoGDjWRBFlJH",
+  "sourceBuildReceipt": "analyse/MCY_CONTENT_REVIEW_IMPLEMENTATION_EVIDENCE_2026-10-10.json",
+  "unchangedBuiltFiles": 137,
+  "files": [
+    {
+      "path": ".vercel/output/config.json",
+      "bytes": 153,
+      "sha256": "9f24bc912ab51508ea4bc48c1d09991f85d03f09f4f8e73a9bcd5ee6dbe8c968"
+    },
+    {
+      "path": ".vercel/output/static/assets/android/Keyboard.png",
+      "bytes": 42695,
+      "sha256": "6085e50be17ca2705b4351283187be2c5b01b58262c70b90d74b3376efb4adfe"
+    },
+    {
+      "path": ".vercel/output/static/assets/android/navigation-bar.svg",
+      "bytes": 542,
+      "sha256": "077a782a3b6c2915fc518dfb4bba825c8c5861b2572f9522a7024902b9cb2850"
+    },
+    {
+      "path": ".vercel/output/static/assets/android/Pixel10.png",
+      "bytes": 214337,
+      "sha256": "a87c1250ba20756f5d020b5351a7ae71d663dcfc64aca3a1cd56452e8a05233e"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-feminine-full-1024.webp",
+      "bytes": 174416,
+      "sha256": "e4a7e3917533079f52cdd731031f3a3fc5b776eeb7faf553866abf479978de62"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-feminine-full-512.webp",
+      "bytes": 51330,
+      "sha256": "f38e4e09cac103d8c17715f25bb542c9ac15c55cb3feb77539c06294d46b7af0"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-masculine-full-1024.webp",
+      "bytes": 201084,
+      "sha256": "f54af039b83197847f157ee042162979ee3853b0f71c9c4b8f8b339a211958a0"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-masculine-full-512.webp",
+      "bytes": 56400,
+      "sha256": "fbdcaefb9b7b3cefd7afb960d51ef78b5762ff8360883bd7b746b3412fc72614"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-neutral-full-1024.webp",
+      "bytes": 168836,
+      "sha256": "529dc4ab170647b01bac9c51a18eddafe4ae7d53035b60af12dd7e23858a8927"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-neutral-full-512.webp",
+      "bytes": 50876,
+      "sha256": "f164856ab73549b891a0e1f224c4dd8e71ecb27fbc8a9f48e72cb1f5d57dd894"
+    },
+    {
+      "path": ".vercel/output/static/assets/contentReviewCandidates-FWo7P7-p.js",
+      "bytes": 1942,
+      "sha256": "787809c9c9bfe972d37a0b261dd41afb54d64c95b66a2c11170f9b6ca5b49e55"
+    },
+    {
+      "path": ".vercel/output/static/assets/ContentReviewPanel-Ch-PG7_x.js",
+      "bytes": 10616,
+      "sha256": "dc081aef99c9a9b2597c481822f2e2d3faecbb8fc13f1c86b36227376d6c9d96"
+    },
+    {
+      "path": ".vercel/output/static/assets/ContentReviewWorkspace-Dp-mHe5m.js",
+      "bytes": 1235,
+      "sha256": "bcbd069c483455cd1919350bfada57fd3b96aa6b45a29d23d68c7797bfda8195"
+    },
+    {
+      "path": ".vercel/output/static/assets/CourseDetailScreen-BMcI3Wmg.js",
+      "bytes": 8277,
+      "sha256": "a37f54a4619b9ad45ecc49a3575f2a10ef7bf2ef88d58d318ba7875711852da0"
+    },
+    {
+      "path": ".vercel/output/static/assets/DevicePicker-PYnRB2q3.js",
+      "bytes": 49624,
+      "sha256": "50eb09f7e7d58043bf94f4c73a2e831d36ce448220e4cb8f9f09e455181974ce"
+    },
+    {
+      "path": ".vercel/output/static/assets/DiscoverScreen-BDz_f1tT.js",
+      "bytes": 3792,
+      "sha256": "a6a4bea8661fa31ffbb1695a351e92af307156613f62c06c1b1577ac3f0b3844"
+    },
+    {
+      "path": ".vercel/output/static/assets/dist-qfyiQEbQ.js",
+      "bytes": 213600,
+      "sha256": "67b8f0885b8b3140b48786f49bdfe657eb48008021af95ac8717aacd7cc26873"
+    },
+    {
+      "path": ".vercel/output/static/assets/freeCourses-C_KZyTb-.js",
+      "bytes": 3334,
+      "sha256": "143cfa838004e759d7c30e413cb4afde267657cc48ea04a618d0c570a7bd73a2"
+    },
+    {
+      "path": ".vercel/output/static/assets/index-DMhvvEqn.js",
+      "bytes": 546206,
+      "sha256": "aa2aa56e6eb1c54b0d498a1d3e3be2c987283670d9fc3c046719209bfa0ba72d"
+    },
+    {
+      "path": ".vercel/output/static/assets/index-wdpOvt4t.css",
+      "bytes": 92115,
+      "sha256": "4fe5f9981d363b8219a4b5ec302c6e941e3cd4925f34a91894eaa1fae0263211"
+    },
+    {
+      "path": ".vercel/output/static/assets/iphone/Bezel.png",
+      "bytes": 353980,
+      "sha256": "ee2514d74d2f75f3541405fa2f20811f159879a66586778cfd8c9c84c44959df"
+    },
+    {
+      "path": ".vercel/output/static/assets/iphone/Keyboard.png",
+      "bytes": 53341,
+      "sha256": "292e2d83d69adaeb663d6a840ce8db8d0a5257710b472c20713e03f56b08ea88"
+    },
+    {
+      "path": ".vercel/output/static/assets/JourneyScreen-C-EKYBMx.js",
+      "bytes": 11991,
+      "sha256": "f0a2e10a254bc690b47c8a8211dd050c8d5a7f43373bcb9022b6e356dd2d6247"
+    },
+    {
+      "path": ".vercel/output/static/assets/jsx-runtime-CB_p5Kcx.js",
+      "bytes": 8742,
+      "sha256": "25b47d9ef7c5d280b9be6d1a0c5928b5bcc6eb68e6ae0aa0078afd7dcd09202f"
+    },
+    {
+      "path": ".vercel/output/static/assets/LessonReader-DIuFVfDc.css",
+      "bytes": 2774,
+      "sha256": "3680ceab6bfce1d52b246f563db609059e373a1981c4edd119d0bcc324eca698"
+    },
+    {
+      "path": ".vercel/output/static/assets/LessonReader-izn_yFqT.js",
+      "bytes": 1576,
+      "sha256": "3ad7543e9e6f0048be48c3b6fd9e3afbc0d4ac1fcf70cf3a1fa86a63faf1ef83"
+    },
+    {
+      "path": ".vercel/output/static/assets/owner-BrUZlmxv.js",
+      "bytes": 17495,
+      "sha256": "077c0f8dce4913f087fed16418a00e9a3c92a8c09dd118420cd77fdeea8a5bda"
+    },
+    {
+      "path": ".vercel/output/static/assets/owner-CtnPG3i0.css",
+      "bytes": 13878,
+      "sha256": "29ffe10f67f9b7c5e3c3f7955c7d8d6f8541d3378634f821aaf24edd2266f8a1"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/choice.wav",
+      "bytes": 1099052,
+      "sha256": "2f75a005ed7d5774b4b0c82f825217ed31a550d249acb56d981c839eb8c79906"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/room.png",
+      "bytes": 2502940,
+      "sha256": "7e1a324171b280389cc3bc1d49753136c76f08fea987f3e38235dda50c90f251"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/space.wav",
+      "bytes": 783984,
+      "sha256": "64fb7b4447815289198a944d7be87eeedbdd206e8c27f88ec636f772e41db887"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/welcome.wav",
+      "bytes": 826334,
+      "sha256": "0531b1425413f19da0952393ba7c98f9373f9e6d7ffce2f1ba92b14816baddbd"
+    },
+    {
+      "path": ".vercel/output/static/assets/PracticeFlowScreen-CufTNme_.js",
+      "bytes": 12578,
+      "sha256": "4c020b71721e30529b49ac378cff5fd27f623bb24c91661e59570a77343b323e"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-400-normal-BqEyEoaF.woff2",
+      "bytes": 21884,
+      "sha256": "425c0713a8176f92273d378599c7eac57de7fafabd4bd0ed457b70eb8f80d371"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-400-normal-DyYNIH4P.woff",
+      "bytes": 21776,
+      "sha256": "050cd689ba150e71c4ae131021474f48d97f367d94634654c8c06a5310279f3c"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-500-normal-7RbcRiD8.woff2",
+      "bytes": 22200,
+      "sha256": "5bcc3aa180e7f26f643cd5b2621cd7c2de193d0661d913a94afd3d4881a7a34b"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-500-normal-DQZyH_nt.woff",
+      "bytes": 21920,
+      "sha256": "b9c3346f0ae869eee449c94a182d90b100f253d916827785577887d03eff51db"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-700-normal-BZpUvMxY.woff2",
+      "bytes": 22240,
+      "sha256": "b9d66d1708156f765ada51939bc24ed259dafa69eb631b36e443680fe9e15879"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-700-normal-DLgJJpmK.woff",
+      "bytes": 21924,
+      "sha256": "a2238b3178ba89b791fb7ced9e118f720b7ef43386b452ab8ce9198d119cf32a"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-400-normal-D2PTxGxD.woff2",
+      "bytes": 8368,
+      "sha256": "76afb0e482ab569c50a1ca35dfd052daa3d0f6d54d1b30865f6fea4c35c2b350"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-400-normal-DnpnVwnf.woff",
+      "bytes": 6344,
+      "sha256": "a7ece9e36309c1eac204bcaa7006b76d17b66ee673c4dbf7f8aa62fb9dc9ef2e"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-500-normal-B3ncpOoB.woff2",
+      "bytes": 8540,
+      "sha256": "15c77aed355b2ca99b34986268c33c67107613a2987c71dd9e12e79bbd6f9e63"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-500-normal-D380IkQ8.woff",
+      "bytes": 6412,
+      "sha256": "9ed919194333df14907c7e02e99a5e73278a6538c8539c0500246ab86391c6dc"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-700-normal-BEVeWqJt.woff2",
+      "bytes": 8416,
+      "sha256": "bec340ec8c7ec4940533eeceadddb00ac2da872c57c67b0c55e772c7c32dad4e"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-700-normal-DsFyXAL4.woff",
+      "bytes": 6384,
+      "sha256": "532acd9d5e13d343d56e3cedbe9c3354b857971dd3be09482365ed6c9690fa1c"
+    },
+    {
+      "path": ".vercel/output/static/assets/status/ios-status-icons.svg",
+      "bytes": 2765,
+      "sha256": "40e218b274d0973d519b50f42884e6e05ef0f2b6a0e46e102fda54218784466d"
+    },
+    {
+      "path": ".vercel/output/static/assets/status/status-icons.svg",
+      "bytes": 824,
+      "sha256": "1a8bd4207cf34532ae514bdcdca693acc9a2b8ebc9d3182dc163c3e9ddcc4823"
+    },
+    {
+      "path": ".vercel/output/static/assets/teacher-B-YpDWbK.js",
+      "bytes": 41463,
+      "sha256": "9b5f69bc927827ffde6b8790d8613ccff02efc2bfc1a3c0eefb8f046f778e78b"
+    },
+    {
+      "path": ".vercel/output/static/assets/teacher-BK9tkuIO.css",
+      "bytes": 13909,
+      "sha256": "54d941b5b6a00bfd06abf4218215263f51e7b184a7a6fd71cfd655a89a31595e"
+    },
+    {
+      "path": ".vercel/output/static/assets/today-neck-stretch-1200.webp",
+      "bytes": 92690,
+      "sha256": "83af3f60f06fe862dc9cd980646756b5b194e62d9ebdf80ea4970a067997900a"
+    },
+    {
+      "path": ".vercel/output/static/assets/today-neck-stretch-600.webp",
+      "bytes": 27498,
+      "sha256": "bfbf4e4670672ec5d2df4aacf9616907998a3f110f36e2d4eb26ecefc922a7a0"
+    },
+    {
+      "path": ".vercel/output/static/assets/web-DLJxBPVb.js",
+      "bytes": 844,
+      "sha256": "4e49373aadc394e8378e020f7eb666ba352019280f95dc888ebca1e760576434"
+    },
+    {
+      "path": ".vercel/output/static/assets/welcome-portrait-1024.webp",
+      "bytes": 210456,
+      "sha256": "c6ae8b8b5d8ba39dbb117b3864d6092f493e1df85c853ddb96637ce2c2bed1a1"
+    },
+    {
+      "path": ".vercel/output/static/assets/welcome-portrait-512.webp",
+      "bytes": 53060,
+      "sha256": "0c89d95d41fc80a754fb019a271ffa3117c60316c2cc09ef33a17fa8caccf1af"
+    },
+    {
+      "path": ".vercel/output/static/favicon.svg",
+      "bytes": 420,
+      "sha256": "ea6990d5d9541fb66e5d630400581258c09f8a6b011e9e2ffd9b7ca8c5ad16e0"
+    },
+    {
+      "path": ".vercel/output/static/index.html",
+      "bytes": 1067,
+      "sha256": "0d9dea5d67787dbebedd6b9c49733fac46af01d5aea86cca2e431ba97b1fb61b"
+    }
+  ],
+  "artifactSha256": "e823d02822d6f935b875d357419024f054b7fe7683882d343d39c2536c1d2794"
+}

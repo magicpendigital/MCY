@@ -1,0 +1,40 @@
+{
+  "kind": "NativeLateSaveSingleInstallReadback",
+  "recordedAt": "2026-10-14T02:16:01.411Z",
+  "status": "PASS_INSTALLED_HASH_AND_PACKAGE_PRESERVATION",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "approvalSha256": "8e6e6adedd18779fc5ae4d458418de576f768ce680670d9b92aa4f8e11eccbd7",
+  "nonce": "9c4e4983-694e-453d-9903-132c0235c3bd",
+  "serial": "Q88549EEXCUOONGA",
+  "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e",
+  "apkBytes": 12016725,
+  "installAttempts": 1,
+  "packages": {
+    "com.nilaza.motchutyoga": {
+      "versionName": "1.0",
+      "firstInstallTime": "2026-09-27 00:20:50",
+      "lastUpdateTime": "2026-09-29 12:55:05",
+      "apkSha256": "7bee45a1274886a15799629cfcccfd61a9bad26bcdf62f0cb32b15d3945f03c6"
+    },
+    "com.nilaza.motchutyoga.debug": {
+      "versionName": "1.0",
+      "firstInstallTime": "2026-10-01 13:32:28",
+      "lastUpdateTime": "2026-10-02 03:50:01",
+      "apkSha256": "017465b588b1b29a1ff9fa184ca66866cc477e0dbc667db4db1d66e78457f0c7"
+    },
+    "com.nilaza.motchutyoga.mcydebug": {
+      "versionName": "1.0-mcydebug",
+      "firstInstallTime": "2026-10-03 14:43:46",
+      "lastUpdateTime": "2026-10-14 09:15:58",
+      "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e"
+    }
+  },
+  "firstInstallTimesPreserved": true,
+  "otherPackagesUnchanged": true,
+  "remoteTemporaryApkRemoved": true,
+  "appLaunchedOrForceStopped": false,
+  "dataClearedOrUninstalled": false,
+  "appPrivateDataRead": false,
+  "physicalUiAcceptance": "CHUA_CHAY",
+  "cloudDeploymentOrHealthWrites": false
+}

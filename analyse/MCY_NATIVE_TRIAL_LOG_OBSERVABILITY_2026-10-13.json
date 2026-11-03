@@ -1,0 +1,32 @@
+{
+  "kind": "NativeTrialBoundedLogObservability",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "status": "INSUFFICIENT_REQUEST_COUNT_EVIDENCE",
+  "routeEqualityAlternative": {
+    "start": "2026-10-13T03:31:52.615701Z",
+    "end": "2026-10-13T04:02:50Z",
+    "outcome": "Empty aggregate; not evidence of zero writes"
+  },
+  "routeSubstringAlternative": {
+    "start": "2026-10-13T03:31:52.615701Z",
+    "end": "2026-10-13T04:03:41Z",
+    "outcome": "Empty aggregate; not evidence of zero writes"
+  },
+  "fieldObservability": {
+    "start": "2026-10-13T03:50:00Z",
+    "end": "2026-10-13T03:51:30Z",
+    "entries": 28,
+    "methodKeyCount": 28,
+    "methodCharacterCount": 148,
+    "pathCharacterCount": 670,
+    "methods": [
+      "OPTIONS",
+      "POST",
+      "GET"
+    ],
+    "outcome": "Fields present in this bounded stream; target profile/Auth write requests not reconciled"
+  },
+  "acceptedRequestCountEvidence": false,
+  "rawPathOrSubjectOrHeaderValuesExported": false,
+  "continuousPolling": false
+}

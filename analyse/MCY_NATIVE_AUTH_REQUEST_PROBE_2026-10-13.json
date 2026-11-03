@@ -1,0 +1,20 @@
+{
+  "kind": "NativeOtpRedirectSanitizedReadOnlyProbe",
+  "capturedAt": "2026-10-12T17:59:52.372Z",
+  "package": "com.nilaza.motchutyoga.mcydebug",
+  "state": {
+    "native": true,
+    "platform": "android",
+    "otpRedirects": [
+      {
+        "scheme": "motchutyoga-mcydebug:",
+        "host": "auth",
+        "path": "/callback",
+        "parameterNames": []
+      }
+    ]
+  },
+  "emailRead": false,
+  "codeOrTokenRead": false,
+  "apiCalled": false
+}

@@ -1,0 +1,107 @@
+{
+  "kind": "NativeLateSavePreparationVerification",
+  "clientDate": "2026-10-14",
+  "recordedAt": "2026-10-13T18:27:58.669Z",
+  "status": "PASS_LOCAL_NATIVE_PREPARATION_WEB_RELEASE_BLOCKED",
+  "baseCommit": "82458fc219a2231ccac279112dfc0db5447b0edd",
+  "branch": "codex-mcy-p1-preview",
+  "workingTreeDirty": true,
+  "sourceChange": "Only src/Prototype.tsx; exact reviewed continuation guard integrated",
+  "prototypeSha256": "32c100fbcd7433f6db2c6c299556adb22633d5cd8ecd9da01ca5420515287482",
+  "sourceSnapshotPath": "analyse/MCY_NATIVE_LATE_SAVE_SOURCE_2026-10-14.json",
+  "sourceSnapshotSha256": "42aaafbc644d5c12a2de8ba6400f427a96842948b3eecfe25c4810ecbf7e51f9",
+  "sourceInputs": 80,
+  "archivedClosedTrialInputs": 91,
+  "checks": {
+    "canonicalBuild": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "typeScript": "PASS",
+      "runtimePinnedFiles": 28,
+      "catalogueSessions": 0
+    },
+    "androidBuild": {
+      "command": "npm run android:parallel:build",
+      "exitCode": 0,
+      "variant": "parallel",
+      "gradleDurationSeconds": 81,
+      "installed": false
+    },
+    "ui": {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/native-checkin-diagnostics/integrated-20261014.playwright.config.mjs --max-failures=1",
+      "exitCode": 0,
+      "passed": 142,
+      "total": 142,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "durationMs": 416526.804,
+      "reportPath": "analyse/native-checkin-diagnostics/.vercel/native-integrated-20261014-results.json",
+      "reportSha256": "9def843b58ba0d47a98cc10ff2703e0bbef71dd3993cc8a5ed9e356c9bc4ccfe",
+      "workers": 1,
+      "browser": "msedge",
+      "port": 4298,
+      "realSupabaseBlocked": true,
+      "profile": "isolated ephemeral outside AppContainer"
+    },
+    "observerGuards": {
+      "command": "node --test analyse/native-checkin-diagnostics/observer-gates-20261014.test.mjs",
+      "passed": 7,
+      "exitCode": 0,
+      "realDeviceOrAuthCommands": 0
+    },
+    "contract": {
+      "command": "node --test tests/checkin-consent-migration.test.mjs",
+      "passed": 4,
+      "exitCode": 0
+    },
+    "sitesAndIsolation": {
+      "passed": 5,
+      "exitCode": 0
+    },
+    "bundleScanners": {
+      "nativeTextFiles": 25,
+      "webTextFiles": 23,
+      "exitCode": 0
+    },
+    "compiledBuild": {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_COMPILED_2026-10-14.json",
+      "sha256": "56699b3c3f99b10e15e258cfd485c50aadf86d7afc6f884c56c478f8e24e7bb7",
+      "status": "PASS"
+    },
+    "signing": {
+      "oldAndNewCertSha256": "dd3c8ee6d7ab263842a4dcce514efd398efa45ab54ca19c1c3d83456e54033c2",
+      "verified": true
+    },
+    "newSqlRead": {
+      "path": "analyse/MCY_NATIVE_LATE_SAVE_OPERATION_BASELINE_2026-10-14.json",
+      "sha256": "de1f4927400a5601e7e3855cedfe8e246a435586d4e4d7547a5fb9aa26d0a9a8",
+      "mutations": 0
+    }
+  },
+  "intermediate": {
+    "gradleSandbox": "FAIL_ACCESS_DENIED_CACHE_LOCK; escalated same build PASS",
+    "uiSandbox": "STOPPED_AFTER_EDGE_LAUNCH_FAILURE; owned runner11848 stopped, partial fixture folder retained",
+    "singleBrowserProbe": "FAIL_EDGE_APPCONTAINER_TEMP_DIRECTORY; no app behavior acceptance",
+    "archiveWindowsPowerShell5": "NOT_COMPLETED_SHA256_HASHDATA_UNAVAILABLE; same archiver completed under PowerShell7",
+    "compiledChecker": "NOT_COMPLETED_TypeScript7_has_no_legacy_parser_API_then_supported_static_template_literals; final Acorn checks PASS"
+  },
+  "artifacts": {
+    "nativePath": "analyse/MCY_NATIVE_LATE_SAVE_ARTIFACT_2026-10-14.json",
+    "nativeReceiptSha256": "5ce545dbf619b261b73507c8cf13c09ce9e75547d72ce38e904917d7baacd8df",
+    "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e",
+    "webPath": "analyse/MCY_NATIVE_LATE_SAVE_WEB_ARTIFACT_2026-10-14.json",
+    "webReceiptSha256": "53bf63dfdd00fd9e8b6657d947e9dd797ae69e69298591ebb9cb90bad1b63ac8",
+    "webDigest": "e160c60e497d74fc1ebb49a6419af3b67add7dd41518d858c7f8d489f9acd670"
+  },
+  "newHealthProfileLocaleWrites": 0,
+  "deviceInstalledOrLaunched": false,
+  "cloudDeployment": false,
+  "aiEnabledOrInferred": false,
+  "productionChanged": false,
+  "nativeIncidentCause": "NOT_ESTABLISHED",
+  "oldTrialStatus": "FAIL_EXCESS_CHECKIN_REVOKED_BOTH",
+  "physicalAcceptance": "CHUA_CHAY",
+  "webReleaseGate": "BLOCKED_PROTECTION_NOT_VERIFIED_CURRENT_UNAUTHENTICATED_200",
+  "generalReleaseClearance": false
+}

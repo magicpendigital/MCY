@@ -1,0 +1,29 @@
+{
+  "kind": "NativeLateSaveFailedReopenBaselineReconciliation",
+  "capturedAt": "2026-10-14T06:29:45.032Z",
+  "status": "PASS_ZERO_NEW_DATABASE_EFFECTS_RESTORE_UI_FAIL",
+  "userClarification": "Trong app Debug song song, vẫn ở Đăng nhập",
+  "sqlCapturedAt": "2026-10-14T06:27:39.037585+00:00",
+  "allReadbackFieldsExceptCapturedAtUnchanged": true,
+  "counts": [
+    {
+      "label": "LEARNER_A",
+      "consents": 10,
+      "checkins": 2,
+      "observations": 1
+    },
+    {
+      "label": "LEARNER_B",
+      "consents": 6,
+      "checkins": 3,
+      "observations": 0
+    }
+  ],
+  "wellbeingRevokedBoth": true,
+  "sourceManifestPinsMatched": 119,
+  "newApplicationEffects": 0,
+  "nativeSessionRestoration": "FAIL_USER_REPORTED",
+  "currentNativeAuthIndependentlyVerified": false,
+  "causalLinkToWellbeingToggleEstablished": false,
+  "next": "DISTINCT_INDEPENDENTLY_REVIEWED_READ_ONLY_NATIVE_DIAGNOSTIC"
+}

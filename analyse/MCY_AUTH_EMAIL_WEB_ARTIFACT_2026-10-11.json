@@ -1,0 +1,654 @@
+{
+  "kind": "AuthEmailLearnerPreviewArtifact",
+  "capturedAt": "2026-10-11T11:36:09.509Z",
+  "target": "preview",
+  "projectId": "prj_gTioLZWajGyQMkaPS1qapwoBOUnA",
+  "teamId": "team_BGXDJYYYe7LSDoGDjWRBFlJH",
+  "branch": "codex-mcy-p1-preview",
+  "files": [
+    {
+      "path": ".vercel/output/config.json",
+      "bytes": 153,
+      "sha256": "9f24bc912ab51508ea4bc48c1d09991f85d03f09f4f8e73a9bcd5ee6dbe8c968"
+    },
+    {
+      "path": ".vercel/output/static/assets/AuthCallback-DhdKiTl0.js",
+      "bytes": 2912,
+      "sha256": "3ca9c6446cda62a84e3a6daa6549457cd1c3a7ee4429b21026a49577f884b8bd"
+    },
+    {
+      "path": ".vercel/output/static/assets/ContentReviewPanel-NrvDGFKP.js",
+      "bytes": 10616,
+      "sha256": "23fce4deeaaea5dc1ef5165899b59e46ddb1047fd223f436c293887584f35606"
+    },
+    {
+      "path": ".vercel/output/static/assets/ContentReviewWorkspace-Dp-mHe5m.js",
+      "bytes": 1235,
+      "sha256": "bcbd069c483455cd1919350bfada57fd3b96aa6b45a29d23d68c7797bfda8195"
+    },
+    {
+      "path": ".vercel/output/static/assets/CourseDetailScreen-DTvjKgn6.js",
+      "bytes": 8282,
+      "sha256": "215d19fe90ae7df19a72833ed76d8e3f8320e1b5175208bf2d771cefbcd0e1f4"
+    },
+    {
+      "path": ".vercel/output/static/assets/DevicePicker-5q8KH2gS.js",
+      "bytes": 49629,
+      "sha256": "16c440357d383aedc338c1d65d342a1b53816668121697e1109344322f784763"
+    },
+    {
+      "path": ".vercel/output/static/assets/DiscoverScreen-C6-XqoAE.js",
+      "bytes": 3792,
+      "sha256": "a39f0563d6c5f9b2a9d31623d152f504cc79e3c357fbb9d24272dee6edc15469"
+    },
+    {
+      "path": ".vercel/output/static/assets/JourneyScreen-C8slHo5H.js",
+      "bytes": 11992,
+      "sha256": "b4119101478ca6bc3b09f2831ceaf5a8c50552316bae874dc8043bbfa51c1c14"
+    },
+    {
+      "path": ".vercel/output/static/assets/LessonReader-DIuFVfDc.css",
+      "bytes": 2774,
+      "sha256": "3680ceab6bfce1d52b246f563db609059e373a1981c4edd119d0bcc324eca698"
+    },
+    {
+      "path": ".vercel/output/static/assets/LessonReader-izn_yFqT.js",
+      "bytes": 1576,
+      "sha256": "3ad7543e9e6f0048be48c3b6fd9e3afbc0d4ac1fcf70cf3a1fa86a63faf1ef83"
+    },
+    {
+      "path": ".vercel/output/static/assets/PracticeFlowScreen-xRP0Kdi6.js",
+      "bytes": 12578,
+      "sha256": "c8c9ff0aca97492e479697dc31fcefa44a4c8d8c6c2ccf2e6fa08d63e6d3b19b"
+    },
+    {
+      "path": ".vercel/output/static/assets/android/Keyboard.png",
+      "bytes": 42695,
+      "sha256": "6085e50be17ca2705b4351283187be2c5b01b58262c70b90d74b3376efb4adfe"
+    },
+    {
+      "path": ".vercel/output/static/assets/android/Pixel10.png",
+      "bytes": 214337,
+      "sha256": "a87c1250ba20756f5d020b5351a7ae71d663dcfc64aca3a1cd56452e8a05233e"
+    },
+    {
+      "path": ".vercel/output/static/assets/android/navigation-bar.svg",
+      "bytes": 542,
+      "sha256": "077a782a3b6c2915fc518dfb4bba825c8c5861b2572f9522a7024902b9cb2850"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-feminine-full-1024.webp",
+      "bytes": 174416,
+      "sha256": "e4a7e3917533079f52cdd731031f3a3fc5b776eeb7faf553866abf479978de62"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-feminine-full-512.webp",
+      "bytes": 51330,
+      "sha256": "f38e4e09cac103d8c17715f25bb542c9ac15c55cb3feb77539c06294d46b7af0"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-masculine-full-1024.webp",
+      "bytes": 201084,
+      "sha256": "f54af039b83197847f157ee042162979ee3853b0f71c9c4b8f8b339a211958a0"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-masculine-full-512.webp",
+      "bytes": 56400,
+      "sha256": "fbdcaefb9b7b3cefd7afb960d51ef78b5762ff8360883bd7b746b3412fc72614"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-neutral-full-1024.webp",
+      "bytes": 168836,
+      "sha256": "529dc4ab170647b01bac9c51a18eddafe4ae7d53035b60af12dd7e23858a8927"
+    },
+    {
+      "path": ".vercel/output/static/assets/body-map-neutral-full-512.webp",
+      "bytes": 50876,
+      "sha256": "f164856ab73549b891a0e1f224c4dd8e71ecb27fbc8a9f48e72cb1f5d57dd894"
+    },
+    {
+      "path": ".vercel/output/static/assets/contentReviewCandidates-FWo7P7-p.js",
+      "bytes": 1942,
+      "sha256": "787809c9c9bfe972d37a0b261dd41afb54d64c95b66a2c11170f9b6ca5b49e55"
+    },
+    {
+      "path": ".vercel/output/static/assets/dist-n9KQ0lcp.js",
+      "bytes": 213600,
+      "sha256": "45c5e7c5b9f484c2f066eec459297698bfeba4cb4a6352b1fd750c7fd1d1e1a9"
+    },
+    {
+      "path": ".vercel/output/static/assets/freeCourses-C_KZyTb-.js",
+      "bytes": 3334,
+      "sha256": "143cfa838004e759d7c30e413cb4afde267657cc48ea04a618d0c570a7bd73a2"
+    },
+    {
+      "path": ".vercel/output/static/assets/index-CLgWYXPw.js",
+      "bytes": 555255,
+      "sha256": "f9287129c8bbb084d1ed7fd21a6623674b8baf87d848b9f5c1b266c801b5cb7b"
+    },
+    {
+      "path": ".vercel/output/static/assets/index-wdpOvt4t.css",
+      "bytes": 92115,
+      "sha256": "4fe5f9981d363b8219a4b5ec302c6e941e3cd4925f34a91894eaa1fae0263211"
+    },
+    {
+      "path": ".vercel/output/static/assets/iphone/Bezel.png",
+      "bytes": 353980,
+      "sha256": "ee2514d74d2f75f3541405fa2f20811f159879a66586778cfd8c9c84c44959df"
+    },
+    {
+      "path": ".vercel/output/static/assets/iphone/Keyboard.png",
+      "bytes": 53341,
+      "sha256": "292e2d83d69adaeb663d6a840ce8db8d0a5257710b472c20713e03f56b08ea88"
+    },
+    {
+      "path": ".vercel/output/static/assets/jsx-runtime-CB_p5Kcx.js",
+      "bytes": 8742,
+      "sha256": "25b47d9ef7c5d280b9be6d1a0c5928b5bcc6eb68e6ae0aa0078afd7dcd09202f"
+    },
+    {
+      "path": ".vercel/output/static/assets/mark-forest-BqMZe9Gf.js",
+      "bytes": 558,
+      "sha256": "d94dc2e07a30dde929b22573f7886544e40c6a0cbf49853ec14e8e6c04051fe7"
+    },
+    {
+      "path": ".vercel/output/static/assets/owner-BDXflMbH.js",
+      "bytes": 17479,
+      "sha256": "9231fe7ca8a9e8b335f33c642a4c2a8871d4438329dffa758937d17f7aa5e1cb"
+    },
+    {
+      "path": ".vercel/output/static/assets/owner-CtnPG3i0.css",
+      "bytes": 13878,
+      "sha256": "29ffe10f67f9b7c5e3c3f7955c7d8d6f8541d3378634f821aaf24edd2266f8a1"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/choice.wav",
+      "bytes": 1099052,
+      "sha256": "2f75a005ed7d5774b4b0c82f825217ed31a550d249acb56d981c839eb8c79906"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/room.png",
+      "bytes": 2502940,
+      "sha256": "7e1a324171b280389cc3bc1d49753136c76f08fea987f3e38235dda50c90f251"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/space.wav",
+      "bytes": 783984,
+      "sha256": "64fb7b4447815289198a944d7be87eeedbdd206e8c27f88ec636f772e41db887"
+    },
+    {
+      "path": ".vercel/output/static/assets/practice/preparation-draft/welcome.wav",
+      "bytes": 826334,
+      "sha256": "0531b1425413f19da0952393ba7c98f9373f9e6d7ffce2f1ba92b14816baddbd"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-400-normal-BqEyEoaF.woff2",
+      "bytes": 21884,
+      "sha256": "425c0713a8176f92273d378599c7eac57de7fafabd4bd0ed457b70eb8f80d371"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-400-normal-DyYNIH4P.woff",
+      "bytes": 21776,
+      "sha256": "050cd689ba150e71c4ae131021474f48d97f367d94634654c8c06a5310279f3c"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-500-normal-7RbcRiD8.woff2",
+      "bytes": 22200,
+      "sha256": "5bcc3aa180e7f26f643cd5b2621cd7c2de193d0661d913a94afd3d4881a7a34b"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-500-normal-DQZyH_nt.woff",
+      "bytes": 21920,
+      "sha256": "b9c3346f0ae869eee449c94a182d90b100f253d916827785577887d03eff51db"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-700-normal-BZpUvMxY.woff2",
+      "bytes": 22240,
+      "sha256": "b9d66d1708156f765ada51939bc24ed259dafa69eb631b36e443680fe9e15879"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-latin-700-normal-DLgJJpmK.woff",
+      "bytes": 21924,
+      "sha256": "a2238b3178ba89b791fb7ced9e118f720b7ef43386b452ab8ce9198d119cf32a"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-400-normal-D2PTxGxD.woff2",
+      "bytes": 8368,
+      "sha256": "76afb0e482ab569c50a1ca35dfd052daa3d0f6d54d1b30865f6fea4c35c2b350"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-400-normal-DnpnVwnf.woff",
+      "bytes": 6344,
+      "sha256": "a7ece9e36309c1eac204bcaa7006b76d17b66ee673c4dbf7f8aa62fb9dc9ef2e"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-500-normal-B3ncpOoB.woff2",
+      "bytes": 8540,
+      "sha256": "15c77aed355b2ca99b34986268c33c67107613a2987c71dd9e12e79bbd6f9e63"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-500-normal-D380IkQ8.woff",
+      "bytes": 6412,
+      "sha256": "9ed919194333df14907c7e02e99a5e73278a6538c8539c0500246ab86391c6dc"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-700-normal-BEVeWqJt.woff2",
+      "bytes": 8416,
+      "sha256": "bec340ec8c7ec4940533eeceadddb00ac2da872c57c67b0c55e772c7c32dad4e"
+    },
+    {
+      "path": ".vercel/output/static/assets/roboto-vietnamese-700-normal-DsFyXAL4.woff",
+      "bytes": 6384,
+      "sha256": "532acd9d5e13d343d56e3cedbe9c3354b857971dd3be09482365ed6c9690fa1c"
+    },
+    {
+      "path": ".vercel/output/static/assets/status/ios-status-icons.svg",
+      "bytes": 2765,
+      "sha256": "40e218b274d0973d519b50f42884e6e05ef0f2b6a0e46e102fda54218784466d"
+    },
+    {
+      "path": ".vercel/output/static/assets/status/status-icons.svg",
+      "bytes": 824,
+      "sha256": "1a8bd4207cf34532ae514bdcdca693acc9a2b8ebc9d3182dc163c3e9ddcc4823"
+    },
+    {
+      "path": ".vercel/output/static/assets/teacher-BK9tkuIO.css",
+      "bytes": 13909,
+      "sha256": "54d941b5b6a00bfd06abf4218215263f51e7b184a7a6fd71cfd655a89a31595e"
+    },
+    {
+      "path": ".vercel/output/static/assets/teacher-DUqWfLJx.js",
+      "bytes": 41028,
+      "sha256": "526e32caed7a36e49ecc7eb4ade4df7cfe160aff45f4501f6792a6a6ce15bb29"
+    },
+    {
+      "path": ".vercel/output/static/assets/today-neck-stretch-1200.webp",
+      "bytes": 92690,
+      "sha256": "83af3f60f06fe862dc9cd980646756b5b194e62d9ebdf80ea4970a067997900a"
+    },
+    {
+      "path": ".vercel/output/static/assets/today-neck-stretch-600.webp",
+      "bytes": 27498,
+      "sha256": "bfbf4e4670672ec5d2df4aacf9616907998a3f110f36e2d4eb26ecefc922a7a0"
+    },
+    {
+      "path": ".vercel/output/static/assets/web-CzafrDKQ.js",
+      "bytes": 844,
+      "sha256": "6d19e09a98edc25ecf5d091eaa74ba813dd5025600ee7a376b873523aba8ccf3"
+    },
+    {
+      "path": ".vercel/output/static/assets/welcome-portrait-1024.webp",
+      "bytes": 210456,
+      "sha256": "c6ae8b8b5d8ba39dbb117b3864d6092f493e1df85c853ddb96637ce2c2bed1a1"
+    },
+    {
+      "path": ".vercel/output/static/assets/welcome-portrait-512.webp",
+      "bytes": 53060,
+      "sha256": "0c89d95d41fc80a754fb019a271ffa3117c60316c2cc09ef33a17fa8caccf1af"
+    },
+    {
+      "path": ".vercel/output/static/favicon.svg",
+      "bytes": 420,
+      "sha256": "ea6990d5d9541fb66e5d630400581258c09f8a6b011e9e2ffd9b7ca8c5ad16e0"
+    },
+    {
+      "path": ".vercel/output/static/index.html",
+      "bytes": 1067,
+      "sha256": "e54c979a94030028fdc6e128a337bd70d15c5e18ba7c1a176597e6e6ee657ba6"
+    }
+  ],
+  "artifactSha256": "3197f3ebf8805a04e97bc5350f2d18bbc96fa443ed71b2cd273a327a4d04c662",
+  "totalBytes": 8213558,
+  "testedSource": [
+    {
+      "path": "src/App.tsx",
+      "bytes": 191,
+      "sha256": "7054b4e14304ab33153d3a2e860aa43d2a4f69e8a69630b4a37a2cbcd4ad2f16"
+    },
+    {
+      "path": "src/JourneyScreen.tsx",
+      "bytes": 18826,
+      "sha256": "9857c1129184c26a6068c465628afac16c7890d3dc42db0e7b6120946f191255"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "bytes": 144485,
+      "sha256": "58b8845cf5790c251e85554a27a74b9cf6d41f1c1568330868a205a4bbb84bd0"
+    },
+    {
+      "path": "src/backend/AuthCallback.tsx",
+      "bytes": 4382,
+      "sha256": "5dc40e88ddb53d89c255430d6694224d634024c328d26ad0830a64c412cdf120"
+    },
+    {
+      "path": "src/backend/EmailLanguageSelect.tsx",
+      "bytes": 1064,
+      "sha256": "2c780deb7cb90a03b22cae741fc3985281d545b94758303bd49c542635a8e148"
+    },
+    {
+      "path": "src/backend/authEmailMetadata.ts",
+      "bytes": 1035,
+      "sha256": "1aa385a2792330930d18e5051a1e3330bacc7571723efc4b64fff378185c5067"
+    },
+    {
+      "path": "src/backend/authRouting.ts",
+      "bytes": 2387,
+      "sha256": "1cfc700e45adf6535c270d9810f97a0afb5178e1f771a0e36ef4e4f0992ae02b"
+    },
+    {
+      "path": "src/backend/authStartup.ts",
+      "bytes": 1108,
+      "sha256": "dd69251009f7d04f6bbe5930925fbcde4f2901a575ccde49e356469fccb666c5"
+    },
+    {
+      "path": "src/backend/consentPersistence.ts",
+      "bytes": 3636,
+      "sha256": "141f4ec40f12d4c14be1384b4883e104dbd7be38168c0faf3fe184f4e37da181"
+    },
+    {
+      "path": "src/backend/database.types.ts",
+      "bytes": 2965,
+      "sha256": "ebb18fa8c13d560bf058ba4052596ee44a0b4233b8fb33c1c57af452555b4e0f"
+    },
+    {
+      "path": "src/backend/emailLocale.ts",
+      "bytes": 1150,
+      "sha256": "09bb5afd406e8ca1af791e0dbb819e6e26e8d2e76222fae5393e42d6f9f7ba02"
+    },
+    {
+      "path": "src/backend/learnerData.ts",
+      "bytes": 6522,
+      "sha256": "7e007bde10cda2d45e1c187e1a2e1f9d1d6f0999d3e185945dd68a6077019776"
+    },
+    {
+      "path": "src/backend/learnerSession.ts",
+      "bytes": 324,
+      "sha256": "3286c118eac57cc1a83d85144a22b6787b3b146cdba7df290cca6ac66a48ece1"
+    },
+    {
+      "path": "src/backend/nativeAuth.ts",
+      "bytes": 1510,
+      "sha256": "bece108aecf68e042a55696be215d36b99950d78290649a83b5f8f244d15770f"
+    },
+    {
+      "path": "src/backend/supabase.ts",
+      "bytes": 3991,
+      "sha256": "e4c5f2b7fb84f69dff28b4af13e09b12ee7338dfbd7789ca760e8cc22ba108c9"
+    },
+    {
+      "path": "src/bodyRegions.ts",
+      "bytes": 3135,
+      "sha256": "7091d7a09cb1cb6437261ec0f5c71d017e64da8ea4e573aefad773cee395369c"
+    },
+    {
+      "path": "src/courses/CourseDetailScreen.tsx",
+      "bytes": 10903,
+      "sha256": "aafbe8b588b1e351b31813c66c438feedddf34a4774526a763c741ae01ef2cf6"
+    },
+    {
+      "path": "src/courses/DiscoverScreen.tsx",
+      "bytes": 5024,
+      "sha256": "ed1b3577bad084dafcf8a65b09a5e4f4a85f4820376ea472332b94660af52391"
+    },
+    {
+      "path": "src/courses/freeCourses.ts",
+      "bytes": 5186,
+      "sha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436"
+    },
+    {
+      "path": "src/i18n.ts",
+      "bytes": 31099,
+      "sha256": "64e09bd6a89101038de9cff2544962909a6b26e3822686abb8e295c7a1e82a1e"
+    },
+    {
+      "path": "src/main.tsx",
+      "bytes": 307,
+      "sha256": "01b7049715148ab645637905ccbbc91fc3f87659198a309541c2d1f03bb537d0"
+    },
+    {
+      "path": "src/mobile/BottomSheet.tsx",
+      "bytes": 4316,
+      "sha256": "f9c376dc78b8b5feb1c8752aa23414993ab66013d11e81b2ebb8342c570032ac"
+    },
+    {
+      "path": "src/mobile/COMPONENTS.md",
+      "bytes": 2013,
+      "sha256": "1a68bfa54f5a2e3c5a2f0c13a332524c42e2094ca15f097a9fa99dd58f58adb3"
+    },
+    {
+      "path": "src/mobile/Carousel.tsx",
+      "bytes": 10162,
+      "sha256": "242f4a7488e18c35e9b43651c9d5877288655a6f9f1734e03e56108f17526bf7"
+    },
+    {
+      "path": "src/mobile/Device.tsx",
+      "bytes": 6024,
+      "sha256": "ab31ad7221852a09c285c582f37e0ea19b6a7c1f2ea540916640b4c65487ed95"
+    },
+    {
+      "path": "src/mobile/DevicePicker.tsx",
+      "bytes": 1847,
+      "sha256": "d2da661a444113549268daa44054a0ed25a53b8e36257c89259464d947d93cbc"
+    },
+    {
+      "path": "src/mobile/FlowStack.tsx",
+      "bytes": 7295,
+      "sha256": "d069635260df8db94fde6e458b801ed4d9f77de833d8725bd09bcc2fa2159afb"
+    },
+    {
+      "path": "src/mobile/Keyboard.tsx",
+      "bytes": 7573,
+      "sha256": "3bfb5dccb1f2ad180f043fc758a5c49b5348dffbe26102abff259bc23dd2ba23"
+    },
+    {
+      "path": "src/mobile/MobileCursor.tsx",
+      "bytes": 2171,
+      "sha256": "be2353205e05d823bc23ecae88179d712781ee9ede8fa317057c194c7c23ee7d"
+    },
+    {
+      "path": "src/mobile/MobileRuntime.tsx",
+      "bytes": 2416,
+      "sha256": "c22b4adf35a9c324f41117de01c63d3e70a69065a5b2403307390ada91043955"
+    },
+    {
+      "path": "src/mobile/MobileScroll.tsx",
+      "bytes": 14325,
+      "sha256": "ea3e3691f587ea13753162b9e64c1981263e5b9beddebea21a6a1551dce76430"
+    },
+    {
+      "path": "src/mobile/PhoneFrame.tsx",
+      "bytes": 6301,
+      "sha256": "20b0d85a7594455b4ba879469c50cd3606173ad4853a3c1f74af4bfa28448fdd"
+    },
+    {
+      "path": "src/mobile/assets.ts",
+      "bytes": 232,
+      "sha256": "d40cb8e5390fd2b54618266e7694e40349006dfe480f65d60559316ca8c9c234"
+    },
+    {
+      "path": "src/mobile/components.tsx",
+      "bytes": 2691,
+      "sha256": "20b02f6c6de4cfd08aa6a49bf9bc261c0ea000864b37e1001afdcd892afe4bc8"
+    },
+    {
+      "path": "src/mobile/geometry.ts",
+      "bytes": 1244,
+      "sha256": "f1382e5d6cc9adfd7ac142304f2f9a5a2330db1d74b3f0848adbaf311676bf16"
+    },
+    {
+      "path": "src/mobile/index.ts",
+      "bytes": 802,
+      "sha256": "ee69d9341571db5dee84dd2d7452a62eef09085a84a85f198a3edc48047e0412"
+    },
+    {
+      "path": "src/practice/ContentReviewWorkspace.tsx",
+      "bytes": 1047,
+      "sha256": "9e05679afc6f957d00a220fa6f76dd91e48fdeeb0cb827757b2e50835fe87dd2"
+    },
+    {
+      "path": "src/practice/LessonReader.tsx",
+      "bytes": 1928,
+      "sha256": "cc5d2b0010c333b9abc59d8221ff19c9a4e299c81e2f32dc500bdd127867a398"
+    },
+    {
+      "path": "src/practice/PracticeFlowScreen.tsx",
+      "bytes": 11345,
+      "sha256": "922e5b56832f7cf9b86d917f7df016c0dff78a6bb48ce0c9726031039a34b5b5"
+    },
+    {
+      "path": "src/practice/draftLesson.ts",
+      "bytes": 93,
+      "sha256": "0c3df7a1f60faa89b4b0b76a780bbb65fa21e6cb0aa27f14dad3f2d598cb4016"
+    },
+    {
+      "path": "src/practice/feedbackMemory.ts",
+      "bytes": 657,
+      "sha256": "254ea67d5d6453fbc7675055af73950e909ad9017938bd2f8ab239cd1346c271"
+    },
+    {
+      "path": "src/practice/practice.css",
+      "bytes": 3130,
+      "sha256": "f59a6088d3119028799c99fbaa3b38e871b97fc7450f0005815bdce06fd846b1"
+    },
+    {
+      "path": "src/prototype.css",
+      "bytes": 86892,
+      "sha256": "47aee021e26e73a5596dce27ecbaa0238377b9e0a85c0b6830381030859be904"
+    },
+    {
+      "path": "src/staff/ContentReviewPanel.tsx",
+      "bytes": 13467,
+      "sha256": "57f502f2bc3f69d812612ac3689b40e265a69230831dd6e5901b638e46dde979"
+    },
+    {
+      "path": "src/staff/TeacherCollaborationPanel.tsx",
+      "bytes": 20957,
+      "sha256": "05368c306954f332a81e510271987025ddbb4a8f47617aa3931e2eb665230613"
+    },
+    {
+      "path": "src/staff/owner.css",
+      "bytes": 12420,
+      "sha256": "a1f527ae2990a2c8e7cec5483f60b58bcb477597fbae3f7ef47662dbf32558d7"
+    },
+    {
+      "path": "src/staff/owner.tsx",
+      "bytes": 23256,
+      "sha256": "ad99fc4a17812a7249784c42281b6579bfe49ece26d997c613feb099f1cb5a8f"
+    },
+    {
+      "path": "src/staff/teacher-collaboration.css",
+      "bytes": 1451,
+      "sha256": "7495496e5e76f53b5bd6ab26ef34a2bcdc25998499ce06cfca15501a30e12ca2"
+    },
+    {
+      "path": "src/staff/teacher.css",
+      "bytes": 12236,
+      "sha256": "0fe9b9da1608fa73c22b10a07ec2f13db13a7a65e824e90eede80cd57b18ccf2"
+    },
+    {
+      "path": "src/staff/teacher.tsx",
+      "bytes": 34833,
+      "sha256": "4968b18cbe0b988c04d1d2240a6bc47deb926660084af4aac87d707c9841ab73"
+    },
+    {
+      "path": "src/styles.css",
+      "bytes": 16172,
+      "sha256": "42403d864cda681681022ae80768efde9bde2ed2956baa3bfbe23c90469e38ef"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "bytes": 202,
+      "sha256": "3bf8204502ae4982565c982a098bedba6d4c1056637dc6a90b36cd99c006a4ed"
+    },
+    {
+      "path": "package.json",
+      "bytes": 5097,
+      "sha256": "29f4b35bb7ead83c72ecbbc97b3d664d77cd204cb0c6c8ca752d76b4e7c639f9"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 122208,
+      "sha256": "f983447a10aaeb56091f43bf99ac5f9a01040e6c8a4b95bedf2f98d29cfd3fc6"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 255,
+      "sha256": "da36eba05b845c3b0d69d823a515f6f7d9612992126ed2fe32c2809815ec73ba"
+    },
+    {
+      "path": "mobile-runtime.lock.json",
+      "bytes": 2800,
+      "sha256": "7801d2a6e634f251344692a415e6b6bb79a20dfe69080992c88b4f4dd4d32dbf"
+    },
+    {
+      "path": "scripts/prepare-sites-build.mjs",
+      "bytes": 910,
+      "sha256": "b6a6adaa4fab3234676116dd1c9cb6611275ab9d92dd26f5bf402393e3744bf6"
+    },
+    {
+      "path": "scripts/check-client-bundle-secrets.mjs",
+      "bytes": 2004,
+      "sha256": "ef5c0ae608e91ed55c68dba2950a760731b3af5f8e1ef209773c556225c11138"
+    },
+    {
+      "path": "scripts/playwright-global-setup.mjs",
+      "bytes": 805,
+      "sha256": "6cb18bae67a2cb2fdc35fa6925886cb1b54ce659b657fc9740ed1f21314660d1"
+    },
+    {
+      "path": "scripts/playwright-test-environment.mjs",
+      "bytes": 1088,
+      "sha256": "f475bbd3e419259f043e4dd3c603b6733a33ece980cbc4df4f1de22c3406b4c0"
+    },
+    {
+      "path": "tests/auth-email.spec.ts",
+      "bytes": 6757,
+      "sha256": "9d99bf0b427f7ec0628063a0a9f212277cc5f13289891f50ac7befa1bd1921c5"
+    },
+    {
+      "path": "tests/auth-callback.spec.ts",
+      "bytes": 10481,
+      "sha256": "fe90a9b105a41ad783ca5be1b42e563d2064135e47eca4622ad0265a3dfc2a3c"
+    },
+    {
+      "path": "tests/learner-write-review.spec.ts",
+      "bytes": 24042,
+      "sha256": "151fd957ae1639e4ed07a7f03421c7f7c8adfd5082a50baa0f9f35bea08bf0a8"
+    },
+    {
+      "path": "tests/learner-ux.spec.ts",
+      "bytes": 97923,
+      "sha256": "1015a060c76cbded938d217ee9370e15cc27f2f3ecd41b109bbc10802a3ec01e"
+    }
+  ],
+  "unchangedBuiltFiles": 57,
+  "fullUiTests": {
+    "status": "PASS",
+    "passed": 136,
+    "exitCode": 0,
+    "evidence": "test-results/auth-email-final/results.json"
+  },
+  "r3Review": {
+    "path": "analyse/MCY_AUTH_LEARNER_FINAL_REVIEW_2026-10-11.md",
+    "sha256": "a16c6e7c82d6192d02e35486a92de02f327f9d715b75e6e30c6cbbe4f91abc92"
+  },
+  "secretScanner": {
+    "status": "PASS",
+    "textFiles": 23
+  },
+  "sitesTests": {
+    "status": "PASS",
+    "passed": 4
+  },
+  "runtimeIntegrity": {
+    "status": "PASS",
+    "checks": 28
+  },
+  "playwrightIsolation": {
+    "status": "PASS",
+    "checks": 1
+  },
+  "databaseMigrationApplied": false,
+  "aiEnabled": false,
+  "productionPromotion": false
+}

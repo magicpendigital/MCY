@@ -35,6 +35,10 @@ jobs:
       - run: npm run test:consent-event-migration-contract
       - run: npm run test:ai-gateway
       - run: npm run test:owner-control-plane
+      - run: npm run test:practice-assistant
+      - run: npm run test:practice-catalog
+      - run: npm run test:content-review
+      - run: npm run test:owner-conflict-migration-contract
       - run: npm run test:teacher-control-plane
       - run: npm run test:teacher-migration-contract
       - run: npm run test:sites

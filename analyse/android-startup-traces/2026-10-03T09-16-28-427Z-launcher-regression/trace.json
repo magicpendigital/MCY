@@ -1,0 +1,14 @@
+{
+  "app": "com.nilaza.motchutyoga.mcydebug",
+  "serial": "Q88549EEXCUOONGA",
+  "apkSha256": "c7da29637bd638035c3488689db72a94b391ddcc1cf88960ff3264bc7b8ed56f",
+  "startedHostUtc": "2026-10-03T09:16:28.439Z",
+  "method": "Observe externally initiated starts; screenshots need visual review. No automatic UI PASS.",
+  "initialPid": "19159",
+  "cycles": [],
+  "errors": [
+    "Fewer than three new-process starts observed within 180 seconds."
+  ],
+  "endedHostUtc": "2026-10-03T09:19:29.089Z",
+  "logsTruncated": false
+}

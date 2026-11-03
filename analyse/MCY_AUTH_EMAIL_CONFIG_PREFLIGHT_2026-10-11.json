@@ -1,0 +1,276 @@
+{
+  "kind": "AuthEmailConfigPreflight",
+  "capturedAt": "2026-10-11T11:03:16.459Z",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "configSha256": "6180cbc6962cff9ad14a76f9bba5e17b97cce713ddb2faa64002e3c2de0afda8",
+  "manifestSha256": "63012a11e03a7c37ad3b1eff1ed548048f14ad7e23baab14ad84697f59dbc8bd",
+  "bodyUploads": [
+    {
+      "id": "confirmation",
+      "path": "./supabase/templates/confirmation.html",
+      "bytes": 4250,
+      "sha256": "aa9f8c0cd05d83659c71a4e9a44f8884ee4dc849cc8b8c5e30d045ab893ca1fe"
+    },
+    {
+      "id": "magic_link",
+      "path": "./supabase/templates/magic_link.html",
+      "bytes": 4426,
+      "sha256": "14239c96dcee919d5dd5e24cdf99c1be168a803731f692eb8b3d174290207208"
+    },
+    {
+      "id": "invite",
+      "path": "./supabase/templates/invite.html",
+      "bytes": 4205,
+      "sha256": "e139ddd2ba7b4c58832290b8625672a9cd2c07561f0f60a2d2e60efd69d4d30e"
+    },
+    {
+      "id": "recovery",
+      "path": "./supabase/templates/recovery.html",
+      "bytes": 4207,
+      "sha256": "7587bfe6221c03852d572244851a9c74f4443475623c466642cd9c076fa6ce8b"
+    },
+    {
+      "id": "email_change",
+      "path": "./supabase/templates/email_change.html",
+      "bytes": 4268,
+      "sha256": "d55c5f7d1a5ba9dbaabde8b991a7bfc4eab4462a8d7791599174a9a4d3183a77"
+    },
+    {
+      "id": "reauthentication",
+      "path": "./supabase/templates/reauthentication.html",
+      "bytes": 4143,
+      "sha256": "fa378340dc74af96227633fd60989f896179bd7763f11b815861f3b62720c0ef"
+    },
+    {
+      "id": "password_changed",
+      "path": "./supabase/templates/password_changed_notification.html",
+      "bytes": 2028,
+      "sha256": "a87368edcef6d954c6e2914a9891275d2a6bfdd334ca8963a253a14e1a4d01d7"
+    },
+    {
+      "id": "email_changed",
+      "path": "./supabase/templates/email_changed_notification.html",
+      "bytes": 2061,
+      "sha256": "340f78dec6423106ba1242d30f3f5af0a5f24d09a79490fd15192e5cfa1763d1"
+    },
+    {
+      "id": "phone_changed",
+      "path": "./supabase/templates/phone_changed_notification.html",
+      "bytes": 2064,
+      "sha256": "9a36fc160f3c9dbd890ff6ba1f498c20e9344845d4df9492904e77f3f8f42a83"
+    },
+    {
+      "id": "identity_linked",
+      "path": "./supabase/templates/identity_linked_notification.html",
+      "bytes": 2065,
+      "sha256": "81704f8227edbb699e3ecd5e488dffd9270ef74560ea76207fbf5cd881cac5e8"
+    },
+    {
+      "id": "identity_unlinked",
+      "path": "./supabase/templates/identity_unlinked_notification.html",
+      "bytes": 2064,
+      "sha256": "a9002870ca775f4cb213087de11095943cfbed243d44080e3cf2d37aaf1b4e4b"
+    },
+    {
+      "id": "mfa_factor_enrolled",
+      "path": "./supabase/templates/mfa_factor_enrolled_notification.html",
+      "bytes": 2060,
+      "sha256": "45a23135e519f65dcaadc32ea9aa89f1f0ac533113815af30d749ffc5bc8ff53"
+    },
+    {
+      "id": "mfa_factor_unenrolled",
+      "path": "./supabase/templates/mfa_factor_unenrolled_notification.html",
+      "bytes": 2067,
+      "sha256": "ffa13f09b27e830f77eb7e10ba639e306e967885869ea81369ba1e5be5462a61"
+    }
+  ],
+  "declaredChanges": [
+    {
+      "path": [
+        "auth",
+        "email",
+        "notification",
+        "email_changed",
+        "subject"
+      ],
+      "class": "update",
+      "declared": true,
+      "local": "{{- $en := eq (printf \"%v\" .Data.locale) \"en-US\" \"en\" -}}{{ if $en }}Your account email was changed · A Little Yoga{{ else }}Email tài khoản đã được thay đổi · Một chút yoga{{ end }}",
+      "remote": "{{- $saved := printf \"%v\" .Data.locale -}}{{- $en := or (eq $saved \"en-US\") (eq $saved \"en\") -}}{{- $redirect := printf \"%v\" .RedirectTo -}}{{- if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US\" \"http://localhost:5174/auth/callback?email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=en-US\" -}}{{- $en = true -}}{{- else if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" -}}{{- $en = false -}}{{- end -}}{{ if $en }}Your account email was changed · A Little Yoga{{ else }}Email tài khoản đã được thay đổi · Một chút yoga{{ end }}"
+    },
+    {
+      "path": [
+        "auth",
+        "email",
+        "notification",
+        "identity_linked",
+        "subject"
+      ],
+      "class": "update",
+      "declared": true,
+      "local": "{{- $en := eq (printf \"%v\" .Data.locale) \"en-US\" \"en\" -}}{{ if $en }}A sign-in method was added · A Little Yoga{{ else }}Đã thêm phương thức đăng nhập · Một chút yoga{{ end }}",
+      "remote": "{{- $saved := printf \"%v\" .Data.locale -}}{{- $en := or (eq $saved \"en-US\") (eq $saved \"en\") -}}{{- $redirect := printf \"%v\" .RedirectTo -}}{{- if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US\" \"http://localhost:5174/auth/callback?email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=en-US\" -}}{{- $en = true -}}{{- else if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" -}}{{- $en = false -}}{{- end -}}{{ if $en }}A sign-in method was added · A Little Yoga{{ else }}Đã thêm phương thức đăng nhập · Một chút yoga{{ end }}"
+    },
+    {
+      "path": [
+        "auth",
+        "email",
+        "notification",
+        "identity_unlinked",
+        "subject"
+      ],
+      "class": "update",
+      "declared": true,
+      "local": "{{- $en := eq (printf \"%v\" .Data.locale) \"en-US\" \"en\" -}}{{ if $en }}A sign-in method was removed · A Little Yoga{{ else }}Đã gỡ phương thức đăng nhập · Một chút yoga{{ end }}",
+      "remote": "{{- $saved := printf \"%v\" .Data.locale -}}{{- $en := or (eq $saved \"en-US\") (eq $saved \"en\") -}}{{- $redirect := printf \"%v\" .RedirectTo -}}{{- if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US\" \"http://localhost:5174/auth/callback?email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=en-US\" -}}{{- $en = true -}}{{- else if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" -}}{{- $en = false -}}{{- end -}}{{ if $en }}A sign-in method was removed · A Little Yoga{{ else }}Đã gỡ phương thức đăng nhập · Một chút yoga{{ end }}"
+    },
+    {
+      "path": [
+        "auth",
+        "email",
+        "notification",
+        "mfa_factor_enrolled",
+        "subject"
+      ],
+      "class": "update",
+      "declared": true,
+      "local": "{{- $en := eq (printf \"%v\" .Data.locale) \"en-US\" \"en\" -}}{{ if $en }}A verification method was added · A Little Yoga{{ else }}Đã thêm phương thức xác minh · Một chút yoga{{ end }}",
+      "remote": "{{- $saved := printf \"%v\" .Data.locale -}}{{- $en := or (eq $saved \"en-US\") (eq $saved \"en\") -}}{{- $redirect := printf \"%v\" .RedirectTo -}}{{- if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US\" \"http://localhost:5174/auth/callback?email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=en-US\" -}}{{- $en = true -}}{{- else if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" -}}{{- $en = false -}}{{- end -}}{{ if $en }}A verification method was added · A Little Yoga{{ else }}Đã thêm phương thức xác minh · Một chút yoga{{ end }}"
+    },
+    {
+      "path": [
+        "auth",
+        "email",
+        "notification",
+        "mfa_factor_unenrolled",
+        "subject"
+      ],
+      "class": "update",
+      "declared": true,
+      "local": "{{- $en := eq (printf \"%v\" .Data.locale) \"en-US\" \"en\" -}}{{ if $en }}A verification method was removed · A Little Yoga{{ else }}Đã gỡ phương thức xác minh · Một chút yoga{{ end }}",
+      "remote": "{{- $saved := printf \"%v\" .Data.locale -}}{{- $en := or (eq $saved \"en-US\") (eq $saved \"en\") -}}{{- $redirect := printf \"%v\" .RedirectTo -}}{{- if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US\" \"http://localhost:5174/auth/callback?email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=en-US\" -}}{{- $en = true -}}{{- else if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" -}}{{- $en = false -}}{{- end -}}{{ if $en }}A verification method was removed · A Little Yoga{{ else }}Đã gỡ phương thức xác minh · Một chút yoga{{ end }}"
+    },
+    {
+      "path": [
+        "auth",
+        "email",
+        "notification",
+        "password_changed",
+        "subject"
+      ],
+      "class": "update",
+      "declared": true,
+      "local": "{{- $en := eq (printf \"%v\" .Data.locale) \"en-US\" \"en\" -}}{{ if $en }}Your password was changed · A Little Yoga{{ else }}Mật khẩu đã được thay đổi · Một chút yoga{{ end }}",
+      "remote": "{{- $saved := printf \"%v\" .Data.locale -}}{{- $en := or (eq $saved \"en-US\") (eq $saved \"en\") -}}{{- $redirect := printf \"%v\" .RedirectTo -}}{{- if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US\" \"http://localhost:5174/auth/callback?email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=en-US\" -}}{{- $en = true -}}{{- else if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" -}}{{- $en = false -}}{{- end -}}{{ if $en }}Your password was changed · A Little Yoga{{ else }}Mật khẩu đã được thay đổi · Một chút yoga{{ end }}"
+    },
+    {
+      "path": [
+        "auth",
+        "email",
+        "notification",
+        "phone_changed",
+        "subject"
+      ],
+      "class": "update",
+      "declared": true,
+      "local": "{{- $en := eq (printf \"%v\" .Data.locale) \"en-US\" \"en\" -}}{{ if $en }}Your phone number was changed · A Little Yoga{{ else }}Số điện thoại đã được thay đổi · Một chút yoga{{ end }}",
+      "remote": "{{- $saved := printf \"%v\" .Data.locale -}}{{- $en := or (eq $saved \"en-US\") (eq $saved \"en\") -}}{{- $redirect := printf \"%v\" .RedirectTo -}}{{- if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US\" \"http://localhost:5174/auth/callback?email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=en-US\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=en-US\" -}}{{- $en = true -}}{{- else if eq $redirect \"https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN\" \"https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://localhost:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=owner&email_locale=vi-VN\" \"http://127.0.0.1:5174/auth/callback?workspace=teacher&email_locale=vi-VN\" -}}{{- $en = false -}}{{- end -}}{{ if $en }}Your phone number was changed · A Little Yoga{{ else }}Số điện thoại đã được thay đổi · Một chút yoga{{ end }}"
+    }
+  ],
+  "otpLength": 8,
+  "unmanagedDifferencePaths": [
+    "auth.email.enable_confirmations",
+    "auth.email.max_frequency",
+    "auth.email.otp_length",
+    "auth.email.smtp.admin_email",
+    "auth.email.smtp.enabled",
+    "auth.email.smtp.host",
+    "auth.email.smtp.port",
+    "auth.email.smtp.sender_name",
+    "auth.email.smtp.user",
+    "auth.mfa.totp.enroll_enabled",
+    "auth.mfa.totp.verify_enabled",
+    "auth.rate_limit.email_sent",
+    "auth.site_url",
+    "db.pooler.default_pool_size",
+    "db.pooler.max_client_conn",
+    "storage.analytics.enabled",
+    "storage.analytics.max_namespaces",
+    "storage.image_transformation.enabled"
+  ],
+  "unmanagedDifferenceHashes": [
+    {
+      "path": "auth.email.enable_confirmations",
+      "hash": "8b77571943fcdda3626960daef64712820e9bc29672260ab3b59a3cefe54e7b2"
+    },
+    {
+      "path": "auth.email.max_frequency",
+      "hash": "f240c1f45df32ac0fc8e37ec1214b5ae1585db0bf0c74a141273a61144976196"
+    },
+    {
+      "path": "auth.email.otp_length",
+      "hash": "b2044f5343eb8dccb7bfa9344f4e3470d64b2f9082d02b33208450db56a4c416"
+    },
+    {
+      "path": "auth.email.smtp.admin_email",
+      "hash": "4a8c83fd4bbea1273a4945068e9292865212b7cbc703f5eca0bd7a93db90c70a"
+    },
+    {
+      "path": "auth.email.smtp.enabled",
+      "hash": "dd40f7f4ae95b2974ed8b1dc29d61302ca44c9cef6c96f61d6e5800b9c8af5f9"
+    },
+    {
+      "path": "auth.email.smtp.host",
+      "hash": "2b92a890152b2d4aa07694822928f7580f43c03d9ad055c8ea578cde0f888d7d"
+    },
+    {
+      "path": "auth.email.smtp.port",
+      "hash": "fc3bf98bb8e4b008b1f19442bdcc7ab5ebed468a77d99e80fee1740c014fe93e"
+    },
+    {
+      "path": "auth.email.smtp.sender_name",
+      "hash": "00dd8d2238fb9e3a39476a28f4fe44e8b6dce9bb66022aec64affc93c43a7310"
+    },
+    {
+      "path": "auth.email.smtp.user",
+      "hash": "14e4f1512d6b16794c9294989bc78ce25cecf3bf74ebc3e9eafc617a9e6eeecf"
+    },
+    {
+      "path": "auth.mfa.totp.enroll_enabled",
+      "hash": "07f54f15cf9eff9252f95d26e403d04875bf3da38ceb30b51b4f2620d8592e76"
+    },
+    {
+      "path": "auth.mfa.totp.verify_enabled",
+      "hash": "23537c538324fdf9a952ba708ebcacf81efc68f34f0b58d20f78610b69407d58"
+    },
+    {
+      "path": "auth.rate_limit.email_sent",
+      "hash": "910c995e8c4371ed3ae52106f5bf2edc7ab5e53c91bfd9bd838b1928d0866aeb"
+    },
+    {
+      "path": "auth.site_url",
+      "hash": "821edcadac23fef9c503a4dbfca20bb1265cd31ecce9e7f071a3ba073fc68056"
+    },
+    {
+      "path": "db.pooler.default_pool_size",
+      "hash": "8d6e43bea2c0d38fe1f3e538d3288eb956d422b808443ab34ddd5e6ac5968600"
+    },
+    {
+      "path": "db.pooler.max_client_conn",
+      "hash": "63172238a4aef2a809fbd08d304395e375d6edbfbecf4c740be35b9d1edf4b67"
+    },
+    {
+      "path": "storage.analytics.enabled",
+      "hash": "54ac2ae48a9aaca0188feb8867a9206351641e72d1a2a0a16fc18915af4ce3cd"
+    },
+    {
+      "path": "storage.analytics.max_namespaces",
+      "hash": "f00d98d47f516044d765f1bc95e7cc8552bacf9d9f615f7ad9faac5de00238de"
+    },
+    {
+      "path": "storage.image_transformation.enabled",
+      "hash": "1033afd92af69efc754d1158261397b06e6382cbb08fa43f36c487dcbfa06858"
+    }
+  ],
+  "readOnly": true
+}

@@ -1,0 +1,516 @@
+{
+  "ai": {
+    "enabled": false,
+    "version": 1,
+    "modelUnset": true
+  },
+  "owner": {
+    "acl": "{postgres=X/postgres,service_role=X/postgres}",
+    "oid": "19270",
+    "owner": "postgres",
+    "searchPath": [
+      "search_path=\"\""
+    ],
+    "definitionMd5": "5ad67fe52caf79bd07c51caa0c30db92"
+  },
+  "ledger": [
+    "20260925160352",
+    "20260925160615",
+    "20260925182506",
+    "20260925182822",
+    "20260926064515",
+    "20260927033720",
+    "20260927200654",
+    "20260928063009",
+    "20260929173001",
+    "20260930035823",
+    "20260930040857",
+    "20260930041541",
+    "20260930042413",
+    "20260930064345",
+    "20260930065400",
+    "20260930160616",
+    "20260930161936",
+    "20261001043554",
+    "20261002120000",
+    "20261007174155",
+    "20261010113419"
+  ],
+  "functions": [
+    {
+      "acl": "{postgres=X/postgres}",
+      "oid": "19204",
+      "name": "save_my_checkin_expanded",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "schema": "private",
+      "bodyMd5": "053832f4c0a837155c9d84b348936e36",
+      "anonExecute": false,
+      "publicExecute": false,
+      "serviceExecute": false,
+      "securityDefiner": true,
+      "authenticatedExecute": false
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "oid": "19184",
+      "name": "record_my_consent",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "schema": "public",
+      "bodyMd5": "6a7534352bc89b5069536a0781652dda",
+      "anonExecute": false,
+      "publicExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "authenticatedExecute": true
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+      "oid": "19547",
+      "name": "save_my_checkin_for_current_user_with_current_consent",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "schema": "public",
+      "bodyMd5": "ba61a962de9c9fdfc364ad6fe83837e6",
+      "anonExecute": false,
+      "publicExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "authenticatedExecute": true
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "oid": "19199",
+      "name": "save_my_checkin_with_current_consent",
+      "owner": "postgres",
+      "config": [
+        "search_path=\"\""
+      ],
+      "schema": "public",
+      "bodyMd5": "cd2531b703fd1f588b0469a55e67f8ef",
+      "anonExecute": false,
+      "publicExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "authenticatedExecute": false
+    }
+  ],
+  "capturedAt": "2026-10-11T18:49:04.642744+00:00",
+  "privateUsage": {
+    "anon": false,
+    "service_role": false,
+    "authenticated": false
+  },
+  "tableMetadata": [
+    {
+      "acl": null,
+      "rls": true,
+      "name": "consent_events",
+      "schema": "private"
+    },
+    {
+      "acl": null,
+      "rls": true,
+      "name": "role_assignments",
+      "schema": "private"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "rls": true,
+      "name": "checkins",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "rls": true,
+      "name": "checkin_observations",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "rls": true,
+      "name": "user_consents",
+      "schema": "public"
+    }
+  ],
+  "effectivePrivileges": [
+    {
+      "role": "anon",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkins",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkin_observations",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkins",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkin_observations",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "public.user_consents",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkins",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkin_observations",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "public.user_consents",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkins",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkin_observations",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.user_consents",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkins",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkin_observations",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.user_consents",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkins",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.checkin_observations",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "public.user_consents",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkins",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.checkin_observations",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "public.user_consents",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "private.consent_events",
+      "allowed": false,
+      "privilege": "TRUNCATE"
+    }
+  ],
+  "kind": "DeployedLearnerWriteExactCatalogReadback",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "manifestSha256": "13521cea066fa99467d23cca987533e03339efd019bbd4a09dc287b890ae2143",
+  "status": "PASS",
+  "failures": [],
+  "expectedBodies": {
+    "public.save_my_checkin_for_current_user_with_current_consent": "ba61a962de9c9fdfc364ad6fe83837e6",
+    "public.record_my_consent": "6a7534352bc89b5069536a0781652dda",
+    "private.save_my_checkin_expanded": "053832f4c0a837155c9d84b348936e36",
+    "public.save_my_checkin_with_current_consent": "cd2531b703fd1f588b0469a55e67f8ef"
+  }
+}

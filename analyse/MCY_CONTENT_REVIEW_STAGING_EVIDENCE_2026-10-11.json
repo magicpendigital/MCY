@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "kind": "MCYSelectiveContentReviewStagingAcceptance",
+  "dateBangkok": "2026-10-11",
+  "capturedAtUtc": "2026-10-10T18:45:21.845Z",
+  "status": "PASS",
+  "acceptedSelectiveStaging": true,
+  "fullProductionCertification": false,
+  "authorization": "Owner requested database tests after reopening Docker and deployment of the new staging build when checks pass",
+  "scope": "Only exact content-review migration, Owner Edge v5 and tested static Preview; other pending backend candidates remain closed",
+  "head": "82458fc219a2231ccac279112dfc0db5447b0edd",
+  "workingTreeDirty": true,
+  "target": {
+    "supabaseProject": "mhumbczqrzutdnraafhs",
+    "supabaseName": "mcy-staging",
+    "organization": "rzbpjfrndhrtxagpgdre",
+    "organizationName": "MagicpenDigital",
+    "region": "ap-southeast-1",
+    "status": "ACTIVE_HEALTHY",
+    "vercelProject": "prj_gTioLZWajGyQMkaPS1qapwoBOUnA",
+    "vercelTeam": "team_BGXDJYYYe7LSDoGDjWRBFlJH",
+    "previewBranch": "codex-mcy-p1-preview"
+  },
+  "migration": {
+    "version": "20261010113419",
+    "path": "supabase/migrations/20261010113419_owner_content_review.sql",
+    "sha256": "a206a63d3daa86747d8e3447193235ad88534775676a3582ac3ccd92472191c1",
+    "supersededUnappliedSha256": "ff225000c9bd3175462b17c58a8059486ba9bc49374311736a32cd55abefa8c3",
+    "officialCli": "2.119.0",
+    "operation": "migration up --linked --project-ref, isolated 19-applied-plus-one-candidate workdir",
+    "exitCode": 0,
+    "appliedCount": 1,
+    "dbPush": false,
+    "ledgerBefore": {
+      "aligned": 19,
+      "remoteOnly": 0,
+      "pending": 6
+    },
+    "ledgerAfter": {
+      "aligned": 20,
+      "remoteOnly": 0,
+      "pending": 5
+    }
+  },
+  "pendingMigrations": [
+    "20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+    "20261002204228_teacher_control_plane_rpcs.sql",
+    "20261003031137_limit_my_consent_events.sql",
+    "20261005004000_private_teacher_collaboration.sql",
+    "20261009181735_ai_read_admission_state.sql"
+  ],
+  "postApplyReadback": {
+    "ai": {
+      "enabled": false,
+      "version": 1,
+      "model_set": false
+    },
+    "owner": {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "md5": "5ad67fe52caf79bd07c51caa0c30db92",
+      "oid": "19270",
+      "owner": "postgres",
+      "search_path": [
+        "search_path=\"\""
+      ]
+    },
+    "counts": {
+      "audit": 4,
+      "assignments": 0,
+      "review_events": 0,
+      "review_states": 0
+    },
+    "migrations": 20,
+    "new_tables": [
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "mcy_content_review_events",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "mcy_content_review_states",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "mcy_content_reviewer_assignments",
+        "owner": "postgres"
+      }
+    ],
+    "observed_at": "2026-10-10T18:30:51.643894+00:00",
+    "new_functions": [
+      {
+        "acl": "{postgres=X/postgres}",
+        "md5": "a1be659e2f6702fd48ff251d28600fdf",
+        "name": "mcy_content_review_actor",
+        "owner": "postgres",
+        "schema": "private",
+        "definer": false,
+        "search_path": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "md5": "d1296d8f8da7d9279199672196fe6bd1",
+        "name": "mcy_content_review_lock",
+        "owner": "postgres",
+        "schema": "private",
+        "definer": false,
+        "search_path": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "md5": "724033f2ff310e8ac59145bf0d148faf",
+        "name": "mcy_content_review_validate",
+        "owner": "postgres",
+        "schema": "private",
+        "definer": false,
+        "search_path": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "md5": "3af66a6b67942aecdd31a689231c9f5c",
+        "name": "mcy_content_review_read",
+        "owner": "postgres",
+        "schema": "public",
+        "definer": true,
+        "search_path": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "md5": "80b531a6b728799d13557839bffe4968",
+        "name": "mcy_content_review_save",
+        "owner": "postgres",
+        "schema": "public",
+        "definer": true,
+        "search_path": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "md5": "5607e6b592960fbd372e523dd45bd8dc",
+        "name": "mcy_content_reviewer_assign",
+        "owner": "postgres",
+        "schema": "public",
+        "definer": true,
+        "search_path": [
+          "search_path=\"\""
+        ]
+      }
+    ],
+    "helpers_denied": true,
+    "private_table_denied": true,
+    "private_schema_denied": true,
+    "public_rpc_service_only": true
+  },
+  "independentReview": {
+    "agent": "/root/owner_repair_review",
+    "scope": "Exact final migration and harness; independent local reruns and direct deployed SQL/owner/ACL/ledger readback",
+    "remainingP1P2": [],
+    "independentPglitePassed": 9,
+    "independentOwnerContentCatalogPassed": 20,
+    "deployedFunctionBodiesExactlyMatched": 6,
+    "allSevenTablePrivilegesDeniedForClientAndServiceRoles": true,
+    "cloudMutationsByReviewer": false,
+    "qualifiedExpertApproval": false,
+    "rightsApproval": false
+  },
+  "edge": {
+    "name": "owner-control-plane",
+    "version": 5,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "uploadedFiles": 9,
+    "sourceArtifactSha256": "3785edf7e762a9b84130016d6effc0b7ff503718e70209a3012865148dc824cc",
+    "ezbrSha256": "bd281c257ecced69f9bed45f97e1eb57b166d36481f60789c1742bb2c146a685",
+    "deployedSourceReadback": {
+      "checks": [
+        {
+          "name": "owner-control-plane/index.ts",
+          "exact": true
+        },
+        {
+          "name": "_shared/openRouter.ts",
+          "exact": true
+        },
+        {
+          "name": "_shared/boundedRequest.ts",
+          "exact": true
+        },
+        {
+          "name": "_shared/ownerControlPlane.ts",
+          "exact": true
+        },
+        {
+          "name": "_shared/aiGates.ts",
+          "exact": true
+        },
+        {
+          "name": "_shared/contentReview.ts",
+          "exact": true
+        },
+        {
+          "name": "_shared/contentReviewCandidates.ts",
+          "exact": true
+        },
+        {
+          "name": "_shared/contentReviewContract.ts",
+          "exact": true
+        }
+      ],
+      "omittedTypeOnly": [
+        "_shared/practiceContract.ts"
+      ]
+    },
+    "otherFunctionsDeployed": false
+  },
+  "web": {
+    "kind": "Build Output API v3 prebuilt static",
+    "cliVersion": "59.23.2",
+    "target": "preview",
+    "deploymentId": "dpl_5sy3BCxPvGg1ZXZzJVM8dKUJ2Waj",
+    "deploymentUrl": "https://mcy-6xp1yff78-magicpens-projects.vercel.app",
+    "reviewUrl": "https://motchutyoga.magicpendigital.com/?workspace=owner",
+    "status": "READY",
+    "artifactFiles": 56,
+    "artifactBytes": 8201479,
+    "artifactSha256": "e823d02822d6f935b875d357419024f054b7fe7683882d343d39c2536c1d2794",
+    "servedFileHashesMatched": 3,
+    "httpsCertificateVerified": true,
+    "unauthenticatedHttp": 302,
+    "authenticatedHttp": 200,
+    "deploymentProtectionRetained": true,
+    "cliAutoProvisionedProtectionBypassCredential": true,
+    "credentialValuePrinted": false,
+    "productionPromoted": false,
+    "dnsChangedThisTurn": false,
+    "hostedBrowserVisualAcceptance": "CHUA_CHAY: in-app browser attach timed out"
+  },
+  "verification": {
+    "dockerPostgrest": {
+      "passed": 11,
+      "exitCode": 0,
+      "cleanupPassed": true
+    },
+    "primaryPgliteOwnerContentCatalog": {
+      "passed": 29,
+      "exitCode": 0
+    },
+    "focusedIsolatedUi": {
+      "passed": 11,
+      "exitCode": 0
+    },
+    "liveStagingReadNegativeApi": {
+      "passed": 14,
+      "exitCode": 0
+    },
+    "runtime": {
+      "passed": 28,
+      "exitCode": 0
+    },
+    "bundleScanner": {
+      "textFiles": 21,
+      "exitCode": 0
+    },
+    "historicalBuild": {
+      "receipt": "analyse/MCY_CONTENT_REVIEW_IMPLEMENTATION_EVIDENCE_2026-10-10.json",
+      "unchangedBuiltFiles": 137,
+      "notRebuiltThisTurn": true
+    },
+    "historicalUi": {
+      "passed": 103,
+      "unchangedFrontendSource": true,
+      "notRerunThisTurn": true
+    },
+    "historicalFailures": [
+      "Old unapplied SQL failed actual unchanged-row role-expiry lock-wait regression; fixed final SHA passes",
+      "Initial focused UI run:10/11, one cold page.goto20s timeout; complete rerun11/11 with unchanged timeout/assertions"
+    ]
+  },
+  "retainedState": {
+    "aiEnabled": false,
+    "aiConfigVersion": 1,
+    "modelSet": false,
+    "auditRows": 4,
+    "reviewStates": 0,
+    "reviewEvents": 0,
+    "reviewAssignments": 0,
+    "activeTeacherProfiles": 0,
+    "reviewedPracticeSessions": 0,
+    "publicNonExerciseDrafts": 1,
+    "temporaryActorRoleExpiryUtc": "2026-10-11T10:47:49.876065Z"
+  },
+  "sideEffects": {
+    "applicationRoleGrants": false,
+    "expiryExtensions": false,
+    "successfulOwnerAiConfigSave": false,
+    "successfulLiveReviewOrAssignmentWrite": false,
+    "aiInference": false,
+    "contentPublished": false,
+    "providerModelMetadataRead": true,
+    "generalReleaseProfileChanged": false,
+    "vercelProtectionCredentialProvisioning": "Official CLI curl authentication only; no value logged"
+  },
+  "securityAdvisor": {
+    "newReviewWarningsOrErrors": 0,
+    "intentionalRlsNoPolicyInfo": 43,
+    "preexistingAuthenticatedSecurityDefinerWarnings": 5,
+    "preexistingLeakedPasswordProtectionDisabledWarnings": 1,
+    "notGlobalSecurityCertification": true
+  },
+  "limitations": [
+    "Cached Docker PostgreSQL17.6.1.139/PostgREST14.13 differ from hosted PostgreSQL17.6.1.166; app-schema rehearsal with fictional Auth scaffold, not full hosted-stack certification",
+    "Positive review/assignment writes and assigned-teacher positive paths tested in isolated fixtures; no active real teacher profile for live positive delegation",
+    "No clinical/expertise/media-rights approval; empty catalog and absent AI/admission/check-in rollout keep learner inference unavailable",
+    "Hosted browser visual review, physical Android/iOS and full protected Production release not certified",
+    "Specific previous automatic approval rejection of successful live Owner AI configuration save remains in force"
+  ],
+  "receipts": [
+    "analyse/MCY_CONTENT_REVIEW_DOCKER_EXPIRY_REGRESSION_2026-10-11.json",
+    "analyse/MCY_CONTENT_REVIEW_DOCKER_2026-10-11.json",
+    "analyse/MCY_CONTENT_REVIEW_EDGE_ARTIFACT_2026-10-11.json",
+    "analyse/MCY_CONTENT_REVIEW_WEB_ARTIFACT_2026-10-11.json",
+    "analyse/MCY_CONTENT_REVIEW_POST_APPLY_2026-10-11.json",
+    "analyse/MCY_CONTENT_REVIEW_STAGING_SMOKE_2026-10-11.json",
+    "analyse/MCY_CONTENT_REVIEW_HOSTED_ARTIFACT_2026-10-11.json",
+    "analyse/MCY_CONTENT_REVIEW_STAGING_TECHNICAL_REVIEW_2026-10-11.md"
+  ],
+  "evidenceFileHashes": [
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_DOCKER_EXPIRY_REGRESSION_2026-10-11.json",
+      "bytes": 2254,
+      "sha256": "a053ecad9fc4895a91ac76b2e9e8fc0d5c48cc51bbd471c26d7fa49cd3f4f282"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_DOCKER_2026-10-11.json",
+      "bytes": 3006,
+      "sha256": "5234cbf192f78da765dcf513bfb80c159ecb0526a956e11daaea5311bb5d13f0"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_EDGE_ARTIFACT_2026-10-11.json",
+      "bytes": 1934,
+      "sha256": "a039cc1252cd6fa74aceb3455840a7b341ff3af65efd43c49c0d142c888c55cc"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_WEB_ARTIFACT_2026-10-11.json",
+      "bytes": 11160,
+      "sha256": "1c6a0bf30522cfd47954dee216ec6ad4d2137c5933454c59a123364554900a4b"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_POST_APPLY_2026-10-11.json",
+      "bytes": 2835,
+      "sha256": "5bf5962c521fdb7fadfdc83914da9d85a22161266eda6e9ffdccc8c5f4aeb1bc"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_STAGING_SMOKE_2026-10-11.json",
+      "bytes": 2196,
+      "sha256": "12ec77afd048520e95242ca024233f2c29c0ad99d9c5392a243a43280f55e413"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_HOSTED_ARTIFACT_2026-10-11.json",
+      "bytes": 1197,
+      "sha256": "20f6cda379a6ed778a3bb1a90386c75baad5a99a1685bab8f1f59d2d7906fcef"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_STAGING_TECHNICAL_REVIEW_2026-10-11.md",
+      "bytes": 2417,
+      "sha256": "94a0312573344e314f7e6dc2b89c68be9d2da93969f55360c242f8531c249804"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_STAGING_ACCEPTANCE_2026-10-11.md",
+      "bytes": 8227,
+      "sha256": "6679cf854a8ae384e795a36d78024a3ea98d2ad6ce29899c5d31c7b256c8a07e"
+    },
+    {
+      "path": "analyse/MCY_CONTENT_REVIEW_STAGING_PLAN_2026-10-11.md",
+      "bytes": 6472,
+      "sha256": "39bdcc484d75acfd57e814d78b3f1d78043bbd0c2cb64e0c7543b77c039a2c40"
+    },
+    {
+      "path": "scripts/test-content-review-staging.mjs",
+      "bytes": 6690,
+      "sha256": "bebce9bbc676f6b320ac32c58b36066d42ff940ed74a0f27dee59749b45445bf"
+    },
+    {
+      "path": "scripts/rehearse-content-review-docker.mjs",
+      "bytes": 24342,
+      "sha256": "e1819bdeb71534bb07bece597b63c550eea47dbe5d75cd76b65f949866fada5d"
+    },
+    {
+      "path": "supabase/migrations/20261010113419_owner_content_review.sql",
+      "bytes": 17633,
+      "sha256": "a206a63d3daa86747d8e3447193235ad88534775676a3582ac3ccd92472191c1"
+    }
+  ],
+  "finalLocalConsistency": {
+    "executedAt": "2026-10-10T18:47:56.927Z",
+    "status": "PASS",
+    "edgeSourceFiles": 9,
+    "previewArtifactFiles": 56,
+    "unchangedBuiltFiles": 137,
+    "selectiveMigrationFiles": 20,
+    "hostedFileHashesMatched": 3,
+    "sqlAndHarnessPinned": true,
+    "gitDiffCheck": {
+      "status": "PASS",
+      "exitCode": 0,
+      "windowsCrAtEol": true
+    }
+  }
+}

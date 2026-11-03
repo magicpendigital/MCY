@@ -1,0 +1,50 @@
+{
+  "kind": "NativeInstallPreservationAndDomReadback",
+  "capturedAt": "2026-10-12T17:51:48.800Z",
+  "serial": "Q88549EEXCUOONGA",
+  "package": "com.nilaza.motchutyoga.mcydebug",
+  "status": "PASS",
+  "apkSha256": "5bf4104b019fbe31597c479ef2511e947803d056d42202b5c007843b5e9f74bc",
+  "packages": {
+    "com.nilaza.motchutyoga": {
+      "lastUpdateTime": "2026-09-29 12:55:05",
+      "firstInstallTime": "2026-09-27 00:20:50",
+      "versionName": "1.0",
+      "apkSha256": "7bee45a1274886a15799629cfcccfd61a9bad26bcdf62f0cb32b15d3945f03c6"
+    },
+    "com.nilaza.motchutyoga.debug": {
+      "lastUpdateTime": "2026-10-02 03:50:01",
+      "firstInstallTime": "2026-10-01 13:32:28",
+      "versionName": "1.0",
+      "apkSha256": "017465b588b1b29a1ff9fa184ca66866cc477e0dbc667db4db1d66e78457f0c7"
+    },
+    "com.nilaza.motchutyoga.mcydebug": {
+      "lastUpdateTime": "2026-10-13 00:46:24",
+      "firstInstallTime": "2026-10-03 14:43:46",
+      "versionName": "1.0-mcydebug",
+      "apkSha256": "5bf4104b019fbe31597c479ef2511e947803d056d42202b5c007843b5e9f74bc"
+    }
+  },
+  "dom": {
+    "ready": "complete",
+    "platform": "android",
+    "native": true,
+    "hasWelcome": true,
+    "renderedChildren": 1,
+    "hasSimulator": false,
+    "imagesReady": true
+  },
+  "productionAndStandardDebugPreserved": true,
+  "packageDataCleared": false,
+  "physicalAuthenticatedFlow": "NOT_RUN_USER_TRIAL_PENDING",
+  "signInRequestedByAgent": false,
+  "healthWritesByAgent": false,
+  "aiInference": false,
+  "screenshotStatus": "CAPTURED_EXPECTED_FOREGROUND_PIXELS_REQUIRE_REVIEW",
+  "foregroundBeforeScreenshot": "com.nilaza.motchutyoga.mcydebug",
+  "foregroundAfterScreenshot": "com.nilaza.motchutyoga.mcydebug",
+  "publicWelcomeScreenshot": {
+    "path": "C:/Users/Admin/.codex/visualizations/2026/10/07/01a11751-6855-7892-82a3-79f901f16a45/mcy-native-welcome-verified-2026-10-13.png",
+    "sha256": "e359a34339e74fff569cd5fc6034a99dbe68efebc2af8cc0eae4a90be537b305"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "IsolatedLateSaveCandidateSourceClearanceBeforeTests",
+  "status": "INDEPENDENT_SOURCE_CLEARANCE_BY_REVIEWER_MESSAGE",
+  "reviewer": "/root/auth_learner_final_review",
+  "clearance": "No remaining P1/P2 in narrow source candidate/control scope; exact isolated two diagnostics then nineteen regressions, one worker, managed Vite and Edge, no cloud/device/main-app edits.",
+  "reviewFileAtThisCapture": "PENDING_FILE_FINALIZATION; clearance message received before invocation, not claiming final file existed",
+  "candidatePrototypeSha256": "32c100fbcd7433f6db2c6c299556adb22633d5cd8ecd9da01ca5420515287482",
+  "sourceSnapshotSha256": "eca27da324ecb5cbf11540c0f53b952a678d7f72a3e084a7bca68c16e8320821",
+  "patchSha256": "5bd79171df95513b81123bb0525b61afef8a4cedb3e4a5d3377fa77d5dd5f2cd",
+  "setupSha256": "14d951a4362789e52d82b553022445d48916365526c62851bbdf95fdf096e718",
+  "diagnosticConfigSha256": "e64340bab660dfbccee635d46e95d846be9753729ede5df3d485cea0f9383ea6",
+  "regressionConfigSha256": "89313720eb291e42abc1049807f70e40e2a0478f325cad97cea457a5aa2317d7",
+  "scopeLimits": [
+    "Does not cancel dispatched SDK/in-flight RPC",
+    "Does not solve same-route overlap by itself",
+    "Does not identify native B incident cause",
+    "No staging writes or install/deployment"
+  ],
+  "executionAtCapture": "NOT_RUN"
+}

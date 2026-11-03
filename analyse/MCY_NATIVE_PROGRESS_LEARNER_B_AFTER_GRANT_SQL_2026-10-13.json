@@ -1,0 +1,210 @@
+{
+  "kind": "NativeTrialSingleWellbeingGrantAcceptance",
+  "status": "PASS_SINGLE_B_GRANT_SCOPE",
+  "manifestSha256": "71bf0aa806e92d792bd55ad23592af22a78d76733a97af5f6ffa4f97ac19865d",
+  "trialNonce": "2d8afaa2-fac3-45c4-8b7c-c41e10dd0184",
+  "progressReviewSha256": "341e56383cb5a03c891caf3e52d1597fd2682ed8ad6f903a939a2c31bea58bc3",
+  "nativeAuthReceipt": "analyse/MCY_NATIVE_PROGRESS_LEARNER_B_AFTER_GRANT_2026-10-13.json",
+  "beforeGrantSqlReceipt": "analyse/MCY_NATIVE_PROGRESS_LEARNER_B_AFTER_PROFILE_SQL_2026-10-13.json",
+  "querySha256": "7ad159192c6cad8a6567161db258169f959cbb4808f26e0bcda6462b61046204",
+  "userReport": "Đã chuyển từ Tắt sang Bật",
+  "stagingReadback": {
+    "ai": {
+      "enabled": false,
+      "version": 1,
+      "modelUnset": true
+    },
+    "kind": "ManualNativeTrialProgressReadback",
+    "actors": [
+      {
+        "found": true,
+        "label": "LEARNER_A",
+        "confirmed": true,
+        "hasProfile": true,
+        "authMetadata": {
+          "locale": "vi-VN",
+          "nonLocaleSha256": "3ed6c16263baea6c6ac58030045f476a4dbc370f8acf0b23e9838cf19697cd28",
+          "appMetadataSha256": "eae7fa83cc6590319d0d25ea5d752ae152e83a1626902b7974b2b8001b3bdd7d"
+        },
+        "checkinCount": 2,
+        "consentCount": 10,
+        "latestConsent": [
+          {
+            "action": "granted",
+            "purpose": "privacy",
+            "policy_version": "privacy-review-0.1"
+          },
+          {
+            "action": "granted",
+            "purpose": "terms",
+            "policy_version": "terms-review-0.1"
+          },
+          {
+            "action": "revoked",
+            "purpose": "wellbeing_data",
+            "policy_version": "wellbeing-data-review-0.1"
+          }
+        ],
+        "historyDigests": {
+          "checkins": "d3beecc24da115d60e662aace2908a4add19901a42a5a8f1e0f3f4ccb9d54da1",
+          "observations": "8a8727fe28fee71fca3a8328c2ba6619f2cf0446b4b3e5cc2d7327ad10c51e44"
+        },
+        "identitySha256": "995e6d265987a1c5cd6c831d6b2dda54998092aa769082cc72bf93fa209ece68",
+        "newCheckinRows": [
+          {
+            "timezone": "Asia/Saigon",
+            "createdAt": "2026-10-13T04:40:43.576933+00:00",
+            "localDate": "2026-10-13",
+            "rowSha256": "9180d981e2f6e543e10db088568c6665a25d6f6653b3456737f14c9313d894d2",
+            "bodyStatus": "none_now",
+            "noteAbsent": true,
+            "captureType": "standalone",
+            "energyLevel": 2,
+            "observationCount": 0
+          }
+        ],
+        "newConsentRows": [
+          {
+            "action": "granted",
+            "source": "settings",
+            "channel": "android",
+            "purpose": "wellbeing_data",
+            "createdAt": "2026-10-13T04:33:49.32454+00:00",
+            "rowSha256": "0d0f74624860072e4fd7d69f5260cab47a208a65a09175183c9e6f66e0dbbfe3",
+            "occurredAt": "2026-10-13T04:33:49.398909+00:00",
+            "policyVersion": "wellbeing-data-review-0.1",
+            "idempotencyKeyPresent": true
+          },
+          {
+            "action": "revoked",
+            "source": "settings",
+            "channel": "android",
+            "purpose": "wellbeing_data",
+            "createdAt": "2026-10-13T06:07:38.869987+00:00",
+            "rowSha256": "2f5f53afde473e6e9cdea327ca95111494283a947d1e4bc2b4c265c64bc81122",
+            "occurredAt": "2026-10-13T06:07:38.914827+00:00",
+            "policyVersion": "wellbeing-data-review-0.1",
+            "idempotencyKeyPresent": true
+          }
+        ],
+        "profileSummary": {
+          "locale": "vi-VN",
+          "createdAt": "2026-10-13T03:50:39.456896+00:00",
+          "rowSha256": "eb37945498058af5d8adad65628fde304b6b27696b8585eeab32878793924884",
+          "updatedAt": "2026-10-13T03:50:39.456896+00:00",
+          "bodyDisplayPreference": "masculine",
+          "preparedDisplayNameMatches": false
+        },
+        "activeStaffRoles": 0,
+        "observationCount": 1,
+        "oldHistoryDigests": {
+          "checkins": "42d35092633adae1d691451e34ca626373602bc09a92ca22ae7b9293e927be4b",
+          "consents": "f3508c7afa0ba1f5a90936bb021526258c37ed7ffa004cf41c4e40353c139d27",
+          "observations": "8a8727fe28fee71fca3a8328c2ba6619f2cf0446b4b3e5cc2d7327ad10c51e44"
+        },
+        "newObservationCount": 0,
+        "activeTeacherProfile": false
+      },
+      {
+        "found": true,
+        "label": "LEARNER_B",
+        "confirmed": true,
+        "hasProfile": true,
+        "authMetadata": {
+          "locale": "vi-VN",
+          "nonLocaleSha256": "3ed6c16263baea6c6ac58030045f476a4dbc370f8acf0b23e9838cf19697cd28",
+          "appMetadataSha256": "eae7fa83cc6590319d0d25ea5d752ae152e83a1626902b7974b2b8001b3bdd7d"
+        },
+        "checkinCount": 1,
+        "consentCount": 5,
+        "latestConsent": [
+          {
+            "action": "granted",
+            "purpose": "privacy",
+            "policy_version": "privacy-review-0.1"
+          },
+          {
+            "action": "granted",
+            "purpose": "terms",
+            "policy_version": "terms-review-0.1"
+          },
+          {
+            "action": "granted",
+            "purpose": "wellbeing_data",
+            "policy_version": "wellbeing-data-review-0.1"
+          }
+        ],
+        "historyDigests": {
+          "checkins": "d0cf2a1732ea208869ec6a76b528d883beea38b143055cff65472a9a110bcf84",
+          "observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "identitySha256": "1dce191e95a843797bb7e8ebb9c63e5f0a5e20aa7ee98720be3df467421bebd3",
+        "newCheckinRows": [],
+        "newConsentRows": [
+          {
+            "action": "granted",
+            "source": "settings",
+            "channel": "android",
+            "purpose": "wellbeing_data",
+            "createdAt": "2026-10-13T06:44:54.424+00:00",
+            "rowSha256": "1b6b8125ca523b71d356a51d6b1f8aeacd6e7293d79168776889705b61feaa62",
+            "occurredAt": "2026-10-13T06:44:54.477104+00:00",
+            "policyVersion": "wellbeing-data-review-0.1",
+            "idempotencyKeyPresent": true
+          }
+        ],
+        "profileSummary": {
+          "locale": "vi-VN",
+          "createdAt": "2026-10-13T06:40:56.990116+00:00",
+          "rowSha256": "dfe17e37b0ca558e69fe975a3b0b2811d79369df2a4b1044083a8a8e6eef1b23",
+          "updatedAt": "2026-10-13T06:40:56.990116+00:00",
+          "bodyDisplayPreference": "neutral",
+          "preparedDisplayNameMatches": true
+        },
+        "activeStaffRoles": 0,
+        "observationCount": 0,
+        "oldHistoryDigests": {
+          "checkins": "d0cf2a1732ea208869ec6a76b528d883beea38b143055cff65472a9a110bcf84",
+          "consents": "2553f96b0480227c9fa274c13abc670b17281fd329b384083197bc44a21fd01e",
+          "observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "newObservationCount": 0,
+        "activeTeacherProfile": false
+      }
+    ],
+    "capturedAt": "2026-10-13T06:45:37.831637+00:00",
+    "projectRef": "mhumbczqrzutdnraafhs",
+    "ledgerApplied": 21,
+    "writerBodyMd5": "ba61a962de9c9fdfc364ad6fe83837e6",
+    "ownerDefinitionMd5": "5ad67fe52caf79bd07c51caa0c30db92",
+    "writerDefinitionMd5": "56bb448ca2dcb1af60d01e097ef974f1"
+  },
+  "exactlyOneCurrentWellbeingGrantForB": true,
+  "unchangedOutsideSingleBGrant": true,
+  "newHealthEffectsThisStep": {
+    "consentEvents": 1,
+    "checkins": 0,
+    "observations": 0
+  },
+  "accountedTotalEffects": {
+    "profiles": 2,
+    "authLocaleUpdates": 2,
+    "consentEvents": 3,
+    "checkins": 1,
+    "observations": 0
+  },
+  "remainingEffects": {
+    "profileUpsertRequests": 0,
+    "authLocaleMetadataUpdates": 0,
+    "consentEvents": 1,
+    "checkins": 1,
+    "newObservations": 0
+  },
+  "aWellbeingRemainsRevoked": true,
+  "bWellbeingCurrentlyGranted": true,
+  "finalBRevocationRequired": true,
+  "agentWrites": 0,
+  "wholeTrialComplete": false,
+  "aProfileExactFixtureAndPreProfileAuth": "PARTIAL",
+  "next": "One fictional standalone B check-in none_now/energy2/no note/zero observations; stop after Journey, never retry if prior-draft/retry/error appears."
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "NativeLateSaveLearnerAFreshAuthAndBaselineReconciliation",
+  "capturedAt": "2026-10-14T03:23:55.724Z",
+  "status": "PASS_CURRENT_A_AUTH_AND_UNCHANGED_BEFORE_GRANT_SCOPE",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "approvalSha256": "8e6e6adedd18779fc5ae4d458418de576f768ce680670d9b92aa4f8e11eccbd7",
+  "trialNonce": "9c4e4983-694e-453d-9903-132c0235c3bd",
+  "nativeReceiptPath": "analyse/MCY_NATIVE_LATE_SAVE_LEARNER_A_BEFORE_GRANT_2026-10-14.json",
+  "nativeReceiptSha256": "7fbda8e506bcdd336e0028561767067e1556f4d47e74d43c65120947a2500f23",
+  "sqlReceiptPath": "analyse/MCY_NATIVE_LATE_SAVE_LEARNER_A_BEFORE_GRANT_SQL_2026-10-14.json",
+  "sqlReceiptSha256": "d4e6630be0b4d0bb4cde954a85aa1f8875acfbb9e8936f8f4ac35e0a1c8a58f2",
+  "auth": {
+    "actualCachedAndServerA": true,
+    "confirmed": true,
+    "sameSessionDuringObservation": true,
+    "httpStatus": 200,
+    "route": "home",
+    "locale": "vi-VN"
+  },
+  "sqlComparison": "ALL_FIELDS_UNCHANGED_EXCEPT_CAPTURED_AT",
+  "newApplicationRowOrMetadataEffects": 0,
+  "wellbeingRevokedBoth": true,
+  "counts": [
+    {
+      "label": "LEARNER_A",
+      "consents": 10,
+      "checkins": 2,
+      "observations": 1
+    },
+    {
+      "label": "LEARNER_B",
+      "consents": 6,
+      "checkins": 3,
+      "observations": 0
+    }
+  ],
+  "nativeAndSqlMetadataDigestAlgorithmsCompared": false,
+  "independentWriteRequestCountsObserved": false,
+  "agentDataWrites": false,
+  "next": "USER_A_READONLY_HOME_JOURNEY_RECENT_REOPEN_NO_GRANT_OR_SAVE"
+}

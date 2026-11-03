@@ -1,0 +1,30 @@
+{
+  "kind": "AuthEmailLearnerPreviewDeployment",
+  "capturedAt": "2026-10-11T11:37:01.915Z",
+  "projectId": "prj_gTioLZWajGyQMkaPS1qapwoBOUnA",
+  "teamId": "team_BGXDJYYYe7LSDoGDjWRBFlJH",
+  "branch": "codex-mcy-p1-preview",
+  "target": "preview",
+  "artifactSha256": "3197f3ebf8805a04e97bc5350f2d18bbc96fa443ed71b2cd273a327a4d04c662",
+  "deploymentId": "dpl_2zYC7QQJKMRLGsKgWPpWQqnPkaT4",
+  "url": "https://mcy-dyamgi4w9-magicpens-projects.vercel.app",
+  "readyState": "READY",
+  "protectionRetained": true,
+  "productionPromotion": false,
+  "domain": "https://motchutyoga.magicpendigital.com",
+  "domainReadbackAt": "2026-10-11T11:38:07.788Z",
+  "domainVerifiedDeploymentId": "dpl_2zYC7QQJKMRLGsKgWPpWQqnPkaT4",
+  "aliases": [
+    "motchutyoga.magicpendigital.com"
+  ],
+  "effectiveHostedRoutes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/auth/callback$",
+      "dest": "/",
+      "check": true
+    }
+  ]
+}

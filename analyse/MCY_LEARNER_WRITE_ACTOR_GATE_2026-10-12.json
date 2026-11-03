@@ -1,0 +1,39 @@
+{
+  "kind": "IndependentDisposableActorAuthorityPreflight",
+  "status": "PASS",
+  "capturedAt": "2026-10-11T18:46:57.092468Z",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "manifestSha256": "13521cea066fa99467d23cca987533e03339efd019bbd4a09dc287b890ae2143",
+  "humanDisposableScope": "Owner approved helper Learner A/B for bounded fictional staging writes",
+  "actors": {
+    "LEARNER_A": {
+      "identitySha256": "995e6d265987a1c5cd6c831d6b2dda54998092aa769082cc72bf93fa209ece68",
+      "authHttpStatus": 200,
+      "expiresAt": "2026-10-11T19:44:03.000Z",
+      "confirmed": true,
+      "activeStaffRoles": 0,
+      "activeTeacherProfile": false,
+      "disposableDecision": true,
+      "baselineConsentCount": 0,
+      "baselineCheckinCount": 0,
+      "baselineObservationCount": 0,
+      "latestRequiredConsents": []
+    },
+    "LEARNER_B": {
+      "identitySha256": "1dce191e95a843797bb7e8ebb9c63e5f0a5e20aa7ee98720be3df467421bebd3",
+      "authHttpStatus": 200,
+      "expiresAt": "2026-10-11T19:44:16.000Z",
+      "confirmed": true,
+      "activeStaffRoles": 0,
+      "activeTeacherProfile": false,
+      "disposableDecision": true,
+      "baselineConsentCount": 0,
+      "baselineCheckinCount": 0,
+      "baselineObservationCount": 0,
+      "latestRequiredConsents": []
+    }
+  },
+  "authWrites": false,
+  "databaseWrites": false,
+  "roleChanges": false
+}

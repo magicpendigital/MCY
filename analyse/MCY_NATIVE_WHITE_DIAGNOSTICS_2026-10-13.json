@@ -1,0 +1,26 @@
+{
+  "kind": "NativeWhiteStartupBoundedDiagnostics",
+  "capturedAt": "2026-10-13T02:07:29.271Z",
+  "package": "com.nilaza.motchutyoga.mcydebug",
+  "processRunning": true,
+  "logScope": "Last 250 lines of this app process only; raw logs not retained/exported",
+  "codes": [],
+  "indicators": {
+    "Loading app at": 0,
+    "Starting BridgeActivity": 0,
+    "App started": 0,
+    "App resumed": 0,
+    "Unable to open asset URL": 0,
+    "BridgeWebViewClient": 0,
+    "Uncaught": 0,
+    "DeadObjectException": 0,
+    "File: https://localhost": 0,
+    "Local request:": 0,
+    "getLaunchUrl": 0,
+    "FATAL EXCEPTION": 0,
+    "renderer": 0,
+    "Not allowed to load local resource": 0
+  },
+  "webviewVersion": "154.0.8037.57",
+  "consoleMessagesRetained": false
+}

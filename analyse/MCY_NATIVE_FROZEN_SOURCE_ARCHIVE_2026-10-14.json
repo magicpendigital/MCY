@@ -1,0 +1,469 @@
+{
+  "kind": "ClosedNativeTrialFrozenSourceArchive",
+  "capturedAt": "2026-10-13T17:47:07.153Z",
+  "oldManifestPath": "analyse/MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.json",
+  "oldManifestSha256": "71bf0aa806e92d792bd55ad23592af22a78d76733a97af5f6ffa4f97ac19865d",
+  "oldApkPath": ".vercel/mcy-native-20261013/app-parallel.apk",
+  "oldApkSha256": "5bf4104b019fbe31597c479ef2511e947803d056d42202b5c007843b5e9f74bc",
+  "records": [
+    {
+      "originalPath": "analyse/MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.md",
+      "archivePath": ".vercel/native-closed-trial-20261013/analyse/MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.md",
+      "sha256": "77da21cab918bd2c2147027d84237ef3856d9783ff2de70509fff27a1e72be66"
+    },
+    {
+      "originalPath": "analyse/MCY_NATIVE_LEARNER_TRIAL_PREFLIGHT_2026-10-13.json",
+      "archivePath": ".vercel/native-closed-trial-20261013/analyse/MCY_NATIVE_LEARNER_TRIAL_PREFLIGHT_2026-10-13.json",
+      "sha256": "87b222518473df771eae913ff0e712c9d8cc73c30fa9ae2ed568931d521a51df"
+    },
+    {
+      "originalPath": "scripts/sql/native-learner-trial-readback.sql",
+      "archivePath": ".vercel/native-closed-trial-20261013/scripts/sql/native-learner-trial-readback.sql",
+      "sha256": "fd61f48c59ec9b3a60ae8f9e9a7b229048afd8ba42f00cd951387401e9d77347"
+    },
+    {
+      "originalPath": "analyse/MCY_NATIVE_ARTIFACT_2026-10-13.json",
+      "archivePath": ".vercel/native-closed-trial-20261013/analyse/MCY_NATIVE_ARTIFACT_2026-10-13.json",
+      "sha256": "cc8ad85020b3bffe78a0278a41f49ded209311dc4534d6d52bc19cd61b418a94"
+    },
+    {
+      "originalPath": "analyse/MCY_NATIVE_LEARNER_UI_EVIDENCE_2026-10-13.json",
+      "archivePath": ".vercel/native-closed-trial-20261013/analyse/MCY_NATIVE_LEARNER_UI_EVIDENCE_2026-10-13.json",
+      "sha256": "38be469c3eb37359f7dce57cc10904565ec9f7fb0964930503469735399ddda0"
+    },
+    {
+      "originalPath": "tests/learner-device-acceptance.spec.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/tests/learner-device-acceptance.spec.ts",
+      "sha256": "6dfc474e63da334045d6294f4812b18f43d86390d228b8ad7076d4c4ca586571"
+    },
+    {
+      "originalPath": "tests/learner-write-review.spec.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/tests/learner-write-review.spec.ts",
+      "sha256": "151fd957ae1639e4ed07a7f03421c7f7c8adfd5082a50baa0f9f35bea08bf0a8"
+    },
+    {
+      "originalPath": "tests/auth-callback.spec.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/tests/auth-callback.spec.ts",
+      "sha256": "fe90a9b105a41ad783ca5be1b42e563d2064135e47eca4622ad0265a3dfc2a3c"
+    },
+    {
+      "originalPath": "scripts/playwright-test-environment.mjs",
+      "archivePath": ".vercel/native-closed-trial-20261013/scripts/playwright-test-environment.mjs",
+      "sha256": "f475bbd3e419259f043e4dd3c603b6733a33ece980cbc4df4f1de22c3406b4c0"
+    },
+    {
+      "originalPath": "scripts/playwright-global-setup.mjs",
+      "archivePath": ".vercel/native-closed-trial-20261013/scripts/playwright-global-setup.mjs",
+      "sha256": "6cb18bae67a2cb2fdc35fa6925886cb1b54ce659b657fc9740ed1f21314660d1"
+    },
+    {
+      "originalPath": "playwright.config.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/playwright.config.ts",
+      "sha256": "f90b40a2e2a57a5a39b84680d2474dadfe6e348edc9ebeef60a1d9d46f6d44ba"
+    },
+    {
+      "originalPath": "src/backend/authEmailMetadata.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/authEmailMetadata.ts",
+      "sha256": "1aa385a2792330930d18e5051a1e3330bacc7571723efc4b64fff378185c5067"
+    },
+    {
+      "originalPath": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "sha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a"
+    },
+    {
+      "originalPath": "src/Prototype.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/Prototype.tsx",
+      "sha256": "58b8845cf5790c251e85554a27a74b9cf6d41f1c1568330868a205a4bbb84bd0"
+    },
+    {
+      "originalPath": "src/backend/supabase.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/supabase.ts",
+      "sha256": "e4c5f2b7fb84f69dff28b4af13e09b12ee7338dfbd7789ca760e8cc22ba108c9"
+    },
+    {
+      "originalPath": "src/backend/consentPersistence.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/consentPersistence.ts",
+      "sha256": "141f4ec40f12d4c14be1384b4883e104dbd7be38168c0faf3fe184f4e37da181"
+    },
+    {
+      "originalPath": "src/backend/learnerSession.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/learnerSession.ts",
+      "sha256": "3286c118eac57cc1a83d85144a22b6787b3b146cdba7df290cca6ac66a48ece1"
+    },
+    {
+      "originalPath": "tests/learner-write-clean-rehearsal.cjs",
+      "archivePath": ".vercel/native-closed-trial-20261013/tests/learner-write-clean-rehearsal.cjs",
+      "sha256": "217a950c8003c5a72630e5cbded5ded5c85dfffc0624a876536b368e1f171887"
+    },
+    {
+      "originalPath": "tests/checkin-consent-migration.test.mjs",
+      "archivePath": ".vercel/native-closed-trial-20261013/tests/checkin-consent-migration.test.mjs",
+      "sha256": "2f0c6b79eaf18c0fdfc4091b4aac5d7bc03d433cca7bce4e4a6f371ac068f1ab"
+    },
+    {
+      "originalPath": "scripts/rehearse-learner-writes-docker.mjs",
+      "archivePath": ".vercel/native-closed-trial-20261013/scripts/rehearse-learner-writes-docker.mjs",
+      "sha256": "97b32e509bac0f204825d490bcb37a8529e55290ed465b490b14f72cbff7e903"
+    },
+    {
+      "originalPath": "scripts/prepare-learner-write-operation.mjs",
+      "archivePath": ".vercel/native-closed-trial-20261013/scripts/prepare-learner-write-operation.mjs",
+      "sha256": "373fabb63c19211fb219fad62ef383bc2458dd8c3fea94695a8d0e1ddc218909"
+    },
+    {
+      "originalPath": "docs/release/MCY_LEARNER_WRITE_STOP_2026-10-11.sql",
+      "archivePath": ".vercel/native-closed-trial-20261013/docs/release/MCY_LEARNER_WRITE_STOP_2026-10-11.sql",
+      "sha256": "fc558996a3f789b4b4c0691c584916edf22f7d49e68ebe2dc0230d03e171f25e"
+    },
+    {
+      "originalPath": "docs/release/MCY_LEARNER_WRITE_RESUME_2026-10-11.sql",
+      "archivePath": ".vercel/native-closed-trial-20261013/docs/release/MCY_LEARNER_WRITE_RESUME_2026-10-11.sql",
+      "sha256": "b8064b0f8f031036ed85a7e5b041cdd4e429c83e0f5d4201703afdf3df396c0f"
+    },
+    {
+      "originalPath": "analyse/MCY_LEARNER_WRITE_OPERATION_2026-10-11.json",
+      "archivePath": ".vercel/native-closed-trial-20261013/analyse/MCY_LEARNER_WRITE_OPERATION_2026-10-11.json",
+      "sha256": "13521cea066fa99467d23cca987533e03339efd019bbd4a09dc287b890ae2143"
+    },
+    {
+      "originalPath": "src/App.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/App.tsx",
+      "sha256": "7054b4e14304ab33153d3a2e860aa43d2a4f69e8a69630b4a37a2cbcd4ad2f16"
+    },
+    {
+      "originalPath": "src/backend/AuthCallback.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/AuthCallback.tsx",
+      "sha256": "5dc40e88ddb53d89c255430d6694224d634024c328d26ad0830a64c412cdf120"
+    },
+    {
+      "originalPath": "src/backend/authRouting.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/authRouting.ts",
+      "sha256": "1cfc700e45adf6535c270d9810f97a0afb5178e1f771a0e36ef4e4f0992ae02b"
+    },
+    {
+      "originalPath": "src/backend/authStartup.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/authStartup.ts",
+      "sha256": "dd69251009f7d04f6bbe5930925fbcde4f2901a575ccde49e356469fccb666c5"
+    },
+    {
+      "originalPath": "src/backend/database.types.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/database.types.ts",
+      "sha256": "ebb18fa8c13d560bf058ba4052596ee44a0b4233b8fb33c1c57af452555b4e0f"
+    },
+    {
+      "originalPath": "src/backend/EmailLanguageSelect.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/EmailLanguageSelect.tsx",
+      "sha256": "2c780deb7cb90a03b22cae741fc3985281d545b94758303bd49c542635a8e148"
+    },
+    {
+      "originalPath": "src/backend/emailLocale.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/emailLocale.ts",
+      "sha256": "09bb5afd406e8ca1af791e0dbb819e6e26e8d2e76222fae5393e42d6f9f7ba02"
+    },
+    {
+      "originalPath": "src/backend/learnerData.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/learnerData.ts",
+      "sha256": "7e007bde10cda2d45e1c187e1a2e1f9d1d6f0999d3e185945dd68a6077019776"
+    },
+    {
+      "originalPath": "src/backend/nativeAuth.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/backend/nativeAuth.ts",
+      "sha256": "bece108aecf68e042a55696be215d36b99950d78290649a83b5f8f244d15770f"
+    },
+    {
+      "originalPath": "src/bodyRegions.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/bodyRegions.ts",
+      "sha256": "7091d7a09cb1cb6437261ec0f5c71d017e64da8ea4e573aefad773cee395369c"
+    },
+    {
+      "originalPath": "src/courses/CourseDetailScreen.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/courses/CourseDetailScreen.tsx",
+      "sha256": "aafbe8b588b1e351b31813c66c438feedddf34a4774526a763c741ae01ef2cf6"
+    },
+    {
+      "originalPath": "src/courses/DiscoverScreen.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/courses/DiscoverScreen.tsx",
+      "sha256": "ed1b3577bad084dafcf8a65b09a5e4f4a85f4820376ea472332b94660af52391"
+    },
+    {
+      "originalPath": "src/courses/freeCourses.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/courses/freeCourses.ts",
+      "sha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436"
+    },
+    {
+      "originalPath": "src/i18n.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/i18n.ts",
+      "sha256": "64e09bd6a89101038de9cff2544962909a6b26e3822686abb8e295c7a1e82a1e"
+    },
+    {
+      "originalPath": "src/JourneyScreen.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/JourneyScreen.tsx",
+      "sha256": "9857c1129184c26a6068c465628afac16c7890d3dc42db0e7b6120946f191255"
+    },
+    {
+      "originalPath": "src/main.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/main.tsx",
+      "sha256": "01b7049715148ab645637905ccbbc91fc3f87659198a309541c2d1f03bb537d0"
+    },
+    {
+      "originalPath": "src/mobile/assets.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/assets.ts",
+      "sha256": "d40cb8e5390fd2b54618266e7694e40349006dfe480f65d60559316ca8c9c234"
+    },
+    {
+      "originalPath": "src/mobile/BottomSheet.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/BottomSheet.tsx",
+      "sha256": "f9c376dc78b8b5feb1c8752aa23414993ab66013d11e81b2ebb8342c570032ac"
+    },
+    {
+      "originalPath": "src/mobile/Carousel.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/Carousel.tsx",
+      "sha256": "242f4a7488e18c35e9b43651c9d5877288655a6f9f1734e03e56108f17526bf7"
+    },
+    {
+      "originalPath": "src/mobile/COMPONENTS.md",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/COMPONENTS.md",
+      "sha256": "1a68bfa54f5a2e3c5a2f0c13a332524c42e2094ca15f097a9fa99dd58f58adb3"
+    },
+    {
+      "originalPath": "src/mobile/components.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/components.tsx",
+      "sha256": "20b02f6c6de4cfd08aa6a49bf9bc261c0ea000864b37e1001afdcd892afe4bc8"
+    },
+    {
+      "originalPath": "src/mobile/Device.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/Device.tsx",
+      "sha256": "ab31ad7221852a09c285c582f37e0ea19b6a7c1f2ea540916640b4c65487ed95"
+    },
+    {
+      "originalPath": "src/mobile/DevicePicker.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/DevicePicker.tsx",
+      "sha256": "d2da661a444113549268daa44054a0ed25a53b8e36257c89259464d947d93cbc"
+    },
+    {
+      "originalPath": "src/mobile/FlowStack.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/FlowStack.tsx",
+      "sha256": "d069635260df8db94fde6e458b801ed4d9f77de833d8725bd09bcc2fa2159afb"
+    },
+    {
+      "originalPath": "src/mobile/geometry.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/geometry.ts",
+      "sha256": "f1382e5d6cc9adfd7ac142304f2f9a5a2330db1d74b3f0848adbaf311676bf16"
+    },
+    {
+      "originalPath": "src/mobile/index.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/index.ts",
+      "sha256": "ee69d9341571db5dee84dd2d7452a62eef09085a84a85f198a3edc48047e0412"
+    },
+    {
+      "originalPath": "src/mobile/Keyboard.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/Keyboard.tsx",
+      "sha256": "3bfb5dccb1f2ad180f043fc758a5c49b5348dffbe26102abff259bc23dd2ba23"
+    },
+    {
+      "originalPath": "src/mobile/MobileCursor.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/MobileCursor.tsx",
+      "sha256": "be2353205e05d823bc23ecae88179d712781ee9ede8fa317057c194c7c23ee7d"
+    },
+    {
+      "originalPath": "src/mobile/MobileRuntime.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/MobileRuntime.tsx",
+      "sha256": "c22b4adf35a9c324f41117de01c63d3e70a69065a5b2403307390ada91043955"
+    },
+    {
+      "originalPath": "src/mobile/MobileScroll.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/MobileScroll.tsx",
+      "sha256": "ea3e3691f587ea13753162b9e64c1981263e5b9beddebea21a6a1551dce76430"
+    },
+    {
+      "originalPath": "src/mobile/PhoneFrame.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/mobile/PhoneFrame.tsx",
+      "sha256": "20b0d85a7594455b4ba879469c50cd3606173ad4853a3c1f74af4bfa28448fdd"
+    },
+    {
+      "originalPath": "src/practice/ContentReviewWorkspace.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/practice/ContentReviewWorkspace.tsx",
+      "sha256": "9e05679afc6f957d00a220fa6f76dd91e48fdeeb0cb827757b2e50835fe87dd2"
+    },
+    {
+      "originalPath": "src/practice/draftLesson.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/practice/draftLesson.ts",
+      "sha256": "0c3df7a1f60faa89b4b0b76a780bbb65fa21e6cb0aa27f14dad3f2d598cb4016"
+    },
+    {
+      "originalPath": "src/practice/feedbackMemory.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/practice/feedbackMemory.ts",
+      "sha256": "254ea67d5d6453fbc7675055af73950e909ad9017938bd2f8ab239cd1346c271"
+    },
+    {
+      "originalPath": "src/practice/LessonReader.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/practice/LessonReader.tsx",
+      "sha256": "cc5d2b0010c333b9abc59d8221ff19c9a4e299c81e2f32dc500bdd127867a398"
+    },
+    {
+      "originalPath": "src/practice/practice.css",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/practice/practice.css",
+      "sha256": "f59a6088d3119028799c99fbaa3b38e871b97fc7450f0005815bdce06fd846b1"
+    },
+    {
+      "originalPath": "src/practice/PracticeFlowScreen.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/practice/PracticeFlowScreen.tsx",
+      "sha256": "922e5b56832f7cf9b86d917f7df016c0dff78a6bb48ce0c9726031039a34b5b5"
+    },
+    {
+      "originalPath": "src/prototype.css",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/prototype.css",
+      "sha256": "47aee021e26e73a5596dce27ecbaa0238377b9e0a85c0b6830381030859be904"
+    },
+    {
+      "originalPath": "src/staff/ContentReviewPanel.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/staff/ContentReviewPanel.tsx",
+      "sha256": "57f502f2bc3f69d812612ac3689b40e265a69230831dd6e5901b638e46dde979"
+    },
+    {
+      "originalPath": "src/staff/owner.css",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/staff/owner.css",
+      "sha256": "a1f527ae2990a2c8e7cec5483f60b58bcb477597fbae3f7ef47662dbf32558d7"
+    },
+    {
+      "originalPath": "src/staff/owner.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/staff/owner.tsx",
+      "sha256": "ad99fc4a17812a7249784c42281b6579bfe49ece26d997c613feb099f1cb5a8f"
+    },
+    {
+      "originalPath": "src/staff/teacher-collaboration.css",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/staff/teacher-collaboration.css",
+      "sha256": "7495496e5e76f53b5bd6ab26ef34a2bcdc25998499ce06cfca15501a30e12ca2"
+    },
+    {
+      "originalPath": "src/staff/teacher.css",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/staff/teacher.css",
+      "sha256": "0fe9b9da1608fa73c22b10a07ec2f13db13a7a65e824e90eede80cd57b18ccf2"
+    },
+    {
+      "originalPath": "src/staff/teacher.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/staff/teacher.tsx",
+      "sha256": "4968b18cbe0b988c04d1d2240a6bc47deb926660084af4aac87d707c9841ab73"
+    },
+    {
+      "originalPath": "src/staff/TeacherCollaborationPanel.tsx",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/staff/TeacherCollaborationPanel.tsx",
+      "sha256": "05368c306954f332a81e510271987025ddbb4a8f47617aa3931e2eb665230613"
+    },
+    {
+      "originalPath": "src/styles.css",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/styles.css",
+      "sha256": "42403d864cda681681022ae80768efde9bde2ed2956baa3bfbe23c90469e38ef"
+    },
+    {
+      "originalPath": "src/vite-env.d.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/src/vite-env.d.ts",
+      "sha256": "3bf8204502ae4982565c982a098bedba6d4c1056637dc6a90b36cd99c006a4ed"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/aiAssistant.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/aiAssistant.ts",
+      "sha256": "5b55b191e0839a9cffc3e00f94bd06479810be952057f4224e05c4d66a60439b"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/aiGates.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/aiGates.ts",
+      "sha256": "c99168e27e89f7f4c41579b848da384730c67d1aeb6f8ed78cccc70c745650d5"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/aiGateway.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/aiGateway.ts",
+      "sha256": "11506d9df9a78c0f6293ab2f2121413935bc7e5564707b89981602900a002745"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/aiPrivacy.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/aiPrivacy.ts",
+      "sha256": "b52f3472ef782af9a53a199ca03b352797b18757fc25e8aa9e0a3fb924b2757c"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/aiSafety.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/aiSafety.ts",
+      "sha256": "286238416fe5f634ee44f9c8102fadd1e7f3ce88edc1d2a1d67b2779ab2f2ab3"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/boundedRequest.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/boundedRequest.ts",
+      "sha256": "fa4fb7fbdd23486b764b5a87ccc705904e6abaa6e0e1068ebe717893f1a15cff"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/contentReview.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/contentReview.ts",
+      "sha256": "6da2fc1c3552842ceb478e8470beaaaeb6662fd5c5e62f906fb417ed54eaf89d"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/contentReviewCandidates.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/contentReviewCandidates.ts",
+      "sha256": "97b1cf85050861da17f21282a57f773f854e1d53a185cf7d5fdcbed93e680ffe"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/contentReviewContract.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/contentReviewContract.ts",
+      "sha256": "9e565321bee8c27d082550d3ce82816ec27602f0bcb9c8f1141b423840701781"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/openRouter.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/openRouter.ts",
+      "sha256": "762065b26eb06eae3c425bd30074863c7c8a09c4977d9ca17b1f5a2a1b5d4d77"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/ownerControlPlane.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/ownerControlPlane.ts",
+      "sha256": "0c6eab36a9fbb488ba02436bc063131c96981a160fbedf2b68858dafabe6c6b2"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/practiceAssistant.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/practiceAssistant.ts",
+      "sha256": "da7b2829f55273059fa1b37ef661a74389bff2bf15fa4e2eb51fc4725dfc0279"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/practiceContract.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/practiceContract.ts",
+      "sha256": "e52debcc8dd088e249a3b90f049ddc59d786582dadc1f88f96e54caf24eb0e17"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/reviewedPracticeCatalog.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/reviewedPracticeCatalog.ts",
+      "sha256": "119d31e0aca5854d47c8bb0992b0aed68a9a24224fa76646053350c34d911f1e"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/teacherCollaboration.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/teacherCollaboration.ts",
+      "sha256": "9715039324507b9fc4de551971f7e8e7b243cfb5ae703ba4f461ab56d2339155"
+    },
+    {
+      "originalPath": "supabase/functions/_shared/teacherControlPlane.ts",
+      "archivePath": ".vercel/native-closed-trial-20261013/supabase/functions/_shared/teacherControlPlane.ts",
+      "sha256": "7e8fbce1e841a779df63e524289d4094f9f592161d547c963b7af90061d037c8"
+    },
+    {
+      "originalPath": "index.html",
+      "archivePath": ".vercel/native-closed-trial-20261013/index.html",
+      "sha256": "5531697191a079b68e136b8f04a3670a7964d7253bb34c49a8c679ac6b897c34"
+    },
+    {
+      "originalPath": "tsconfig.json",
+      "archivePath": ".vercel/native-closed-trial-20261013/tsconfig.json",
+      "sha256": "8fa7705f43c4cd96071fdef3a707eaf599d7af04f82950cb5f876eef3187d9dc"
+    },
+    {
+      "originalPath": "design-system/tokens.css",
+      "archivePath": ".vercel/native-closed-trial-20261013/design-system/tokens.css",
+      "sha256": "31bc508bcfa0246053579a1794971cfcb6ebb031026c319090ace3ba97ffc038"
+    },
+    {
+      "originalPath": "analyse/MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.json",
+      "archivePath": ".vercel/native-closed-trial-20261013/analyse/MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.json",
+      "sha256": "71bf0aa806e92d792bd55ad23592af22a78d76733a97af5f6ffa4f97ac19865d"
+    }
+  ],
+  "closedTrial": "FAIL_EXCESS_CHECKIN",
+  "purpose": "Preserve exact closed-trial source while authorized integration advances current checkout; do not rerun historical observers",
+  "cloudWrites": 0,
+  "deviceWrites": 0
+}

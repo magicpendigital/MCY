@@ -1,0 +1,28 @@
+{
+  "kind": "ApprovedSelectiveLearnerWriteApply",
+  "releaseId": "mcy-learner-write-20261011",
+  "manifestSha256": "13521cea066fa99467d23cca987533e03339efd019bbd4a09dc287b890ae2143",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "organizationId": "rzbpjfrndhrtxagpgdre",
+  "startedAt": "2026-10-11T18:48:22.837Z",
+  "phase": "CLI_EXIT_0_READBACK_REQUIRED",
+  "humanDecision": "Duyệt gói staging và kiểm thử giới hạn trên",
+  "operatorPath": "Official CLI 2.119.0, isolated 20-applied-plus-one workdir",
+  "baselineSha256": "757a11693a28e463f34877b252454f57bbd1fafdbd72a47d26daa49777c57f4c",
+  "arguments": [
+    "migration",
+    "up",
+    "--linked",
+    "--include-all",
+    "--project-ref",
+    "mhumbczqrzutdnraafhs",
+    "--workdir",
+    "D:\\Projects\\MCY\\.vercel\\mcy-learner-write-20261011"
+  ],
+  "automaticRetry": false,
+  "completedAt": "2026-10-11T18:48:26.845Z",
+  "exitCode": 0,
+  "spawnError": false,
+  "outputSha256": "9e8e75624aa4ace94e5f6b7a6de379aa5ff88177d39e670600a1deb97d9c341d",
+  "appliedCandidateReported": true
+}

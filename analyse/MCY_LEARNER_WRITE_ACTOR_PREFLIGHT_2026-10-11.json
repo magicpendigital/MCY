@@ -1,0 +1,26 @@
+{
+  "kind": "LearnerWriteActorReadOnlyPreflight",
+  "capturedAt": "2026-10-11T10:58:29.016Z",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "actors": [
+    {
+      "label": "LEARNER_A",
+      "present": true,
+      "expiresAt": "2026-10-11T11:56:27.000Z",
+      "authenticated": true,
+      "emailConfirmed": true,
+      "httpStatus": 200
+    },
+    {
+      "label": "LEARNER_B",
+      "present": true,
+      "expiresAt": "2026-10-11T11:56:40.000Z",
+      "authenticated": true,
+      "emailConfirmed": true,
+      "httpStatus": 200
+    }
+  ],
+  "authWrites": false,
+  "databaseWrites": false,
+  "roleChanges": false
+}

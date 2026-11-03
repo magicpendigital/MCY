@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "LearnerWriteLocalImplementationCheckpoint",
+  "capturedAt": "2026-10-11T12:04:19.362Z",
+  "status": "LOCAL_PASS_CLOUD_NOT_APPLIED",
+  "migrationSha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a",
+  "tests": {
+    "docker": {
+      "status": "PASS",
+      "passGroups": 9,
+      "serviceAclObservations": 8,
+      "executedAt": "2026-10-11T10:06:46.426Z"
+    },
+    "cleanUpgradeStopResume": {
+      "status": "PASS",
+      "passed": 1,
+      "exitCode": 0,
+      "parentToolSession": 39537,
+      "durationSeconds": 49.993,
+      "engine": "PGlite0.5.8 PostgreSQL17/WASM, fictional Auth/Storage scaffold",
+      "command": "MCY_PGLITE_MODULE_PATH=<existing local engine>; node --test tests/learner-write-clean-rehearsal.cjs"
+    },
+    "ui": {
+      "status": "PASS",
+      "passed": 136,
+      "exitCode": 0,
+      "evidence": "test-results/auth-email-final/results.json"
+    },
+    "independentR3": {
+      "passed": 34,
+      "exitCode": 0,
+      "path": "analyse/MCY_AUTH_LEARNER_FINAL_REVIEW_2026-10-11.md"
+    },
+    "migrationContract": {
+      "passed": 4,
+      "exitCode": 0,
+      "parentToolSession": 33004
+    }
+  },
+  "evidence": [
+    {
+      "path": "analyse/MCY_LEARNER_WRITES_DOCKER_2026-10-11.json",
+      "sha256": "3701fda4d097f277f513a9f0adac099a043d1807fe22c5d98585e8c2042ff707"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_LEDGER_2026-10-11.json",
+      "sha256": "5ab3151718ff95449410d26701d53c5018d816beb76f3d3b8354a5e44eab1011"
+    },
+    {
+      "path": "tests/learner-write-clean-rehearsal.cjs",
+      "sha256": "217a950c8003c5a72630e5cbded5ded5c85dfffc0624a876536b368e1f171887"
+    },
+    {
+      "path": "docs/release/MCY_LEARNER_WRITE_STOP_2026-10-11.sql",
+      "sha256": "fc558996a3f789b4b4c0691c584916edf22f7d49e68ebe2dc0230d03e171f25e"
+    },
+    {
+      "path": "docs/release/MCY_LEARNER_WRITE_RESUME_2026-10-11.sql",
+      "sha256": "b8064b0f8f031036ed85a7e5b041cdd4e429c83e0f5d4201703afdf3df396c0f"
+    },
+    {
+      "path": "analyse/MCY_AUTH_LEARNER_FINAL_REVIEW_2026-10-11.md",
+      "sha256": "a16c6e7c82d6192d02e35486a92de02f327f9d715b75e6e30c6cbbe4f91abc92"
+    },
+    {
+      "path": "test-results/auth-email-final/results.json",
+      "sha256": "d0441de37134036a8d244f7e726c8253b738ae3df97073fbdb9c54570dffd8c2"
+    }
+  ],
+  "cloud": {
+    "migrationApplied": false,
+    "liveConsentOrCheckinWrites": false,
+    "rolesChanged": false,
+    "aiEnabled": false
+  },
+  "limits": [
+    "STOP does not cancel in-flight transactions or trusted service-role direct-table writes",
+    "Live disposable actor matrix not run",
+    "Old native/debug writer will fail closed after application",
+    "General Production profile/checker not cleared"
+  ]
+}

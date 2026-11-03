@@ -1,0 +1,38 @@
+{
+  "kind": "NativeTrialBoundedUnexpectedCheckinLogRead",
+  "status": "ONE_CURRENT_WRITER_POST_WITH_DECLARED_NATIVE_HINTS_OBSERVED",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "window": {
+    "start": "2026-10-13T07:26:30Z",
+    "end": "2026-10-13T07:27:40Z"
+  },
+  "queryPath": "scripts/sql/native-trial-unexpected-checkin-log-aggregate.sql",
+  "querySha256": "f236d793783b9a6c687f750af623a3967bb46d9cb10e93c909e116c4e8f3d2fb",
+  "preInvocationReviewPath": "analyse/MCY_NATIVE_TRIAL_UNEXPECTED_B_CHECKIN_REVIEW_2026-10-13.md",
+  "reviewAtInvocationSha256": "4761697d8b4ed327beb0ec742ec9b62cbcba3b8c9a86d04af141dc4563eb67e0",
+  "sourceClearanceBeforeInvocation": true,
+  "invocations": 1,
+  "retry": false,
+  "polling": false,
+  "readOnly": true,
+  "aggregateCounts": {
+    "edge_entries": 1,
+    "path_fields_present": 1,
+    "method_fields_present": 1,
+    "current_writer_path_mentions": 1,
+    "current_writer_post_entries": 1,
+    "declared_native_writer_posts": 1,
+    "android_agent_writer_posts": 1,
+    "native_origin_referer_writer_posts": 1
+  },
+  "rawIdentifierHeaderUrlPathBodyNoteOrTokenExported": false,
+  "authenticatedActorOrApkIdentified": false,
+  "initiatingUiCallsiteIdentified": false,
+  "automaticSaveProven": false,
+  "interpretation": "One POST to current writer in incident window has declared mcy-learner/android, Android UA and localhost referrer hints. It supports a request in this window; does not identify an authenticated actor/APK, establish automatic save or overrule the user-only-view report.",
+  "trialAcceptance": "FAIL_EXCESS_CHECKIN",
+  "finalWellbeing": "REVOKED_BOTH",
+  "cause": "NOT_DETERMINED",
+  "remainingCloudWrites": 0,
+  "cloudDataWrites": 0
+}

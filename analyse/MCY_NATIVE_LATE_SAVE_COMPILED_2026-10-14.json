@@ -1,0 +1,26 @@
+{
+  "kind": "NativeLateSaveCompiledBuildVerification",
+  "status": "PASS_COMPILED_ARTIFACT_SCOPE",
+  "capturedAt": "2026-10-13T18:09:33.519Z",
+  "sourceSha256": "32c100fbcd7433f6db2c6c299556adb22633d5cd8ecd9da01ca5420515287482",
+  "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e",
+  "parserVersion": "8.18.0",
+  "parserSha256": "fc3ed7b81e58464715d0291402892f22c3d86ea75302645a330390f85d8015c9",
+  "native": {
+    "entryPath": "assets/index-BQg4boVK.js",
+    "entrySha256": "69180ee62af8e6f740182c7853e0a746f120dbac132ce14e9c27e6f4ccf9d2e7",
+    "writerBodySha256": "f0f06fb28a12d060e652c293356fde5f47ab590e406a2ef05a0474b3168741fc",
+    "guardCalls": 2,
+    "callerCount": 3
+  },
+  "web": {
+    "entryPath": "static/assets/index-Bw83unph.js",
+    "entrySha256": "8499c7f9f597bebe1de16988c1849fc9612c3ec576a125f7b85ee87a072ad465",
+    "writerBodySha256": "f0f06fb28a12d060e652c293356fde5f47ab590e406a2ef05a0474b3168741fc",
+    "guardCalls": 2,
+    "callerCount": 3
+  },
+  "nativeSchemePresent": true,
+  "physicalDeviceTested": false,
+  "installedOrDeployed": false
+}

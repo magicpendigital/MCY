@@ -1,0 +1,164 @@
+{
+  "kind": "OfficialCliMigrationLedgerReadback",
+  "capturedAt": "2026-10-11T11:31:44.588Z",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "cliVersion": "2.119.0",
+  "command": "supabase migration list --project-ref mhumbczqrzutdnraafhs --output-format json",
+  "exitCode": 0,
+  "sharedAligned": 20,
+  "remoteOnly": 0,
+  "pending": 5,
+  "entries": [
+    {
+      "version": "20260925160352",
+      "path": "supabase/migrations/20260925160352_initial_mcy_schema.sql",
+      "sha256": "2200fbae80ce069a9a6225569eb72d4c10e74f284a1727ace694e26846cc900f",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260925160615",
+      "path": "supabase/migrations/20260925160615_harden_mcy_schema.sql",
+      "sha256": "cff285b48fe3487fee480a532291661b8ae66960f5e1b97998dba16bb954ea14",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260925182506",
+      "path": "supabase/migrations/20260925182506_operational_controls.sql",
+      "sha256": "dbb7e36e18d88ef808e6354da36fddfa550cfb4815f0e896a6460b06ab1565aa",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260925182822",
+      "path": "supabase/migrations/20260925182822_operational_fk_indexes.sql",
+      "sha256": "9044e997229ab9b9cbb72ca86287b3a71cb85f708cd759cf2633a298de02f65b",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260926064515",
+      "path": "supabase/migrations/20260926064515_learner_app_backend.sql",
+      "sha256": "4c8c638fb31b032aba77d732bf7f56509b82be950d48240ac829de76a1b373fb",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260927033720",
+      "path": "supabase/migrations/20260927033720_harden_teacher_profile_acl.sql",
+      "sha256": "fc17ef63d154949379f13eb9a9e46ebe67649c2250f5bd15289cec9d935f0e40",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260927200654",
+      "path": "supabase/migrations/20260927200654_consent_policy_versions.sql",
+      "sha256": "b53461641e81c8bc976a9a9b204290ee752c3adce9df8f48aa5f7c62e99113e1",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260928063009",
+      "path": "supabase/migrations/20260928063009_expand_body_region_checkin_support.sql",
+      "sha256": "e6b307e810fb6e1f590f7771c6fa3d1ba5e0819d095ee44c7448ab9b34a33245",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260929173001",
+      "path": "supabase/migrations/20260929173001_ai_owner_controls.sql",
+      "sha256": "b3758861e2f501940427fa9de0ffb9ddbdd8479cf082723f754131592857d1fc",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930035823",
+      "path": "supabase/migrations/20260930035823_lock_teacher_draft_direct_writes.sql",
+      "sha256": "84e31ad8f58e6aecd737313f22b27d45ce44aef135ede04e894a52d3ca9914d6",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930040857",
+      "path": "supabase/migrations/20260930040857_lock_editorial_draft_direct_writes.sql",
+      "sha256": "78c489cc3bceaf727d3db9d4fcbb265e14255cb841cbae510019a38cb6d53c70",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930041541",
+      "path": "supabase/migrations/20260930041541_disable_direct_draft_write_policies.sql",
+      "sha256": "a2e7cfe6493b759d541b5ee4c4fa4b28c98cebe51c938130ea064c5c6377e9b7",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930042413",
+      "path": "supabase/migrations/20260930042413_restrict_plan_items_client_writes.sql",
+      "sha256": "a7f8c62c1ba9bd013d5311a5b364592a97b673b466182de4855bcbcf5a3e2d34",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930064345",
+      "path": "supabase/migrations/20260930064345_lock_asset_rights_direct_client_access.sql",
+      "sha256": "f2a95be0aa16ee1f9140ce112c6dceeb381d15790ac836428738252cd9fdddb0",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930065400",
+      "path": "supabase/migrations/20260930065400_lock_asset_components_direct_client_access.sql",
+      "sha256": "6f9b46ef2c35d03a9b23d39d34aaa30a12bc52dec4631f1912405842afbe27d5",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930160616",
+      "path": "supabase/migrations/20260930160616_allow_unset_model_for_disabled_ai.sql",
+      "sha256": "f04f5003c646aa8d25a43834948fe3068c4fc58a2558ad519441ffcbb7830d61",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930161936",
+      "path": "supabase/migrations/20260930161936_index_ai_configuration_updater.sql",
+      "sha256": "47e84411f24f9aa59b00378d1c41de0a1bb4636af67da3e6449947f6d123fe8a",
+      "remoteApplied": true
+    },
+    {
+      "version": "20261001043554",
+      "path": "supabase/migrations/20261001043554_restrict_staging_public_client_table_acls.sql",
+      "sha256": "0e7b5255804a4cbb9e9f31228ba9e080689d123cebc729e8d2b2ee6ee4d4a06b",
+      "remoteApplied": true
+    },
+    {
+      "version": "20261002120000",
+      "path": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "sha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261002204228",
+      "path": "supabase/migrations/20261002204228_teacher_control_plane_rpcs.sql",
+      "sha256": "b868c0f7548f88769703284bb6cc916d5f262319918106c7edb6bc58343f3568",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261003031137",
+      "path": "supabase/migrations/20261003031137_limit_my_consent_events.sql",
+      "sha256": "def54f448088dfde32f4baccd4dbc662cb0d1e74fbe9f17d2d2ce46a601f6f39",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261005004000",
+      "path": "supabase/migrations/20261005004000_private_teacher_collaboration.sql",
+      "sha256": "9fbba7b2bffeebc795231210d57887b1a063d4f28310447c86aea923fce3edaa",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261007174155",
+      "path": "supabase/migrations/20261007174155_fix_owner_config_conflict_sqlstate.sql",
+      "sha256": "b7f8637c4568cbb138c680089214d14b308567d2ae0eb52990c22b73976d1fab",
+      "remoteApplied": true
+    },
+    {
+      "version": "20261009181735",
+      "path": "supabase/migrations/20261009181735_ai_read_admission_state.sql",
+      "sha256": "7f80c6caa053b02015877bb826d58ac980198164b99b5be907b4bfeb98cef74f",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261010113419",
+      "path": "supabase/migrations/20261010113419_owner_content_review.sql",
+      "sha256": "a206a63d3daa86747d8e3447193235ad88534775676a3582ac3ccd92472191c1",
+      "remoteApplied": true
+    }
+  ],
+  "scope": "Read-only CLI output inspected before receipt; no migration applied"
+}

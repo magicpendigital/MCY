@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "StagingOwnerAiOffSaveRoundtrip",
+  "status": "BLOCKED",
+  "executed": false,
+  "reason": "Automatic approval review rejected the successful live save because it increments version and audit; explicit permission for that test side effect is required. No workaround or write retry attempted.",
+  "expectedSideEffects": {
+    "version": "1 -> 2",
+    "auditEventsAdded": 1,
+    "existingBusinessFieldsPreserved": true,
+    "aiEnabled": false
+  },
+  "scope": "One successful authenticated Owner save of existing AI-off values, then previous-version denial and readback",
+  "ownerRepairApplied": true,
+  "negativeHttpMatrixPassed": 17,
+  "localPositiveHttpPassed": true
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "IsolatedLateSaveCandidateFinalVerification",
+  "status": "PASS_ISOLATED_SOURCE_CANDIDATE_SCOPE",
+  "candidateRoot": "D:\\Projects\\MCY\\.vercel\\native-checkin-late-save-candidate",
+  "candidatePrototypeSha256": "32c100fbcd7433f6db2c6c299556adb22633d5cd8ecd9da01ca5420515287482",
+  "originalPrototypeSha256": "58b8845cf5790c251e85554a27a74b9cf6d41f1c1568330868a205a4bbb84bd0",
+  "patchPath": "analyse/MCY_NATIVE_LATE_SAVE_CANDIDATE_2026-10-13.patch",
+  "patchSha256": "5bd79171df95513b81123bb0525b61afef8a4cedb3e4a5d3377fa77d5dd5f2cd",
+  "correctedSourceClearanceReceipt": "analyse/MCY_NATIVE_LATE_SAVE_CORRECTED_PRE_TEST_CLEARANCE_2026-10-13.json",
+  "reviewPath": "analyse/MCY_NATIVE_LATE_SAVE_CORRECTED_CONTROL_REVIEW_2026-10-13.md",
+  "finalReviewSha256": "51e229f2b92aa14b17fcade56f36689a4d17969af971cf4e5f359b1b4a5fcc08",
+  "reviewTiming": "Independent source-clearance message preceded execution; final supplemental narrative was finalized after parent-reported test outcomes. Reviewer did not rerun tests.",
+  "sourceSnapshotSha256": "eca27da324ecb5cbf11540c0f53b952a678d7f72a3e084a7bca68c16e8320821",
+  "auxiliarySnapshotSha256": "1158ed459ee49d44ee699fcc48b05c7e8c24f4d41bd2c5496b1aab738585acf1",
+  "setupSha256": "8c1e205d9e784018a0a0a36f8f02c6a054039b4655d5e9c9234481e071577279",
+  "diagnosticSpecSha256": "a0aa6f329862bfcdbce24276c044a1a85e4ece235d942d833cd275616e78c07b",
+  "diagnosticConfigSha256": "db3f59515388b3231bfcd0261e1e3badff645b4951f36f64838b463b02968f32",
+  "regressionConfigSha256": "89313720eb291e42abc1049807f70e40e2a0478f325cad97cea457a5aa2317d7",
+  "environment": {
+    "browser": "msedge",
+    "port": 4298,
+    "workers": 1,
+    "supabase": "mcy-playwright.invalid",
+    "realSupabaseHostBlocked": true,
+    "isolatedBrowserSession": true,
+    "noEnvironmentFilesCopied": true
+  },
+  "verification": {
+    "typecheck": {
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    "diagnostics": {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/native-checkin-diagnostics/candidate.playwright.config.mjs",
+      "exitCode": 0,
+      "passed": 2,
+      "total": 2,
+      "durationSeconds": 11.8,
+      "noClickDurationSeconds": 4.6,
+      "lateCancelledDurationSeconds": 5.2,
+      "observedWriterRequestsBoth": 0
+    },
+    "regressions": {
+      "command": "node node_modules/@playwright/test/cli.js test --config analyse/native-checkin-diagnostics/candidate-regression.playwright.config.mjs",
+      "exitCode": 0,
+      "passed": 19,
+      "total": 19,
+      "durationSeconds": 55.8,
+      "scope": "Existing learner-write/device fixtures: valid save/readback, exact-key retry, account epoch/switch, late acknowledgement and consent revocation"
+    },
+    "isolationCanary": {
+      "passed": 1,
+      "exitCode": 0
+    },
+    "guardedInputsBeforeAndAfterManagedClose": 71
+  },
+  "intermediateFailureReceipt": "analyse/MCY_NATIVE_LATE_SAVE_INTERMEDIATE_2026-10-13.json",
+  "originalReproductionReceipt": "analyse/MCY_NATIVE_CHECKIN_DIAGNOSTIC_ORIGINAL_2026-10-13.json",
+  "confirmedDefectCorrectedInShadow": "No RPC dispatch after asynchronous client preparation if initiating continuation is invalid; all three check-in callers pass current continuation.",
+  "limits": [
+    "Cannot cancel already dispatched/in-flight RPC",
+    "Does not establish native unexpected B row cause",
+    "Does not implement global same-route single-flight",
+    "Bounded fictional web observations, not physical-native acceptance"
+  ],
+  "originalMainSourceAndApkEdited": false,
+  "realCloudOrDeviceWrites": 0,
+  "installedOrDeployed": false,
+  "nativeTrialStatus": "FAIL_EXCESS_CHECKIN",
+  "nativeFinalWellbeing": "REVOKED_BOTH",
+  "remainingPermittedLiveWrites": 0,
+  "productionAiClinicalIosClearance": false,
+  "next": "A future integration/build/rollout and physical QA must use a new reviewed operation; preserve closed trial/old packets and retained rows."
+}

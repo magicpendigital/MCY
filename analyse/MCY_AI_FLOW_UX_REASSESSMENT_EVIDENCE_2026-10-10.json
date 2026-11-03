@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-10",
+  "timezone": "Asia/Bangkok",
+  "readback_receipt_recorded_at_utc": "2026-10-09T18:00:56Z",
+  "scope": "read_only_reassessment_and_documentation_before_further_implementation",
+  "source": {
+    "head": "82458fc219a2231ccac279112dfc0db5447b0edd",
+    "working_tree_dirty": true,
+    "head_alone_reproduces_reviewed_source": false
+  },
+  "supabase": {
+    "project_ref": "mhumbczqrzutdnraafhs",
+    "project_name": "mcy-staging",
+    "organization_id": "rzbpjfrndhrtxagpgdre",
+    "status": "ACTIVE_HEALTHY",
+    "region": "ap-southeast-1",
+    "edge_functions": [
+      {"slug": "owner-control-plane", "version": 4, "status": "ACTIVE", "verify_jwt": true}
+    ],
+    "ai_assistant_deployed": false,
+    "deployed_owner_source_markers": {
+      "OPENROUTER_API_KEY": false,
+      "AI_GATEWAY_API_KEY": true,
+      "openrouter_ai_endpoint": false
+    },
+    "secret_names_present": {
+      "OPENROUTER_API_KEY": true,
+      "MCY_AI_ENABLE_STAGING": true,
+      "MCY_AI_SPEND_CONTROL_APPROVED": true
+    },
+    "secret_values_or_digests_retained": false,
+    "flag_values_inspected": false,
+    "provider_key_validated": false,
+    "ai_configuration": {"enabled": false, "version_no": 1, "model_selected": false},
+    "applied_migrations": 19,
+    "pending_local_versions": ["20261002120000", "20261002204228", "20261003031137", "20261005004000"],
+    "owner_save_rpc_md5": "5ad67fe52caf79bd07c51caa0c30db92",
+    "actor_bound_checkin_rpc_present": false,
+    "actor_bound_checkin_rpc_query_method": "pg_proc_and_pg_namespace_by_exact_proname",
+    "public_ai_rpc_names": ["mcy_ai_begin_request", "mcy_ai_finish_request", "mcy_ai_get_owner_config", "mcy_ai_save_owner_config"]
+  },
+  "domain": {
+    "name": "motchutyoga.magicpendigital.com",
+    "public_resolver": "1.1.1.1",
+    "cname": "f65143a73136a0ac.vercel-dns-017.com",
+    "cname_ttl_seconds": 300,
+    "vercel_configured_by": "CNAME",
+    "vercel_misconfigured": false,
+    "vercel_conflicts": [],
+    "verified": true,
+    "git_branch": "codex-mcy-p1-preview",
+    "redirect": null,
+    "tls_verified_from_test_environment": false,
+    "tls_status": "UNCONFIRMED_CLIENT_HANDSHAKE_FAILED",
+    "certificate_defect_proven": false,
+    "latest_deployment_relisted_this_review": false
+  },
+  "tests": [
+    {
+      "name": "independent_backend_selected_offline",
+      "executor": "owner_repair_review_agent",
+      "command": "node --test tests/ai-gateway-models.test.mjs tests/ai-safety-boundaries.test.mjs tests/ai-assistant-handler.test.mjs tests/ai-current-turn-contract.test.mjs tests/owner-control-plane.test.mjs",
+      "passed": 33,
+      "failed": 0,
+      "exit_code": 0,
+      "live_auth_or_provider_evidence": false
+    },
+    {
+      "name": "root_focused_playwright",
+      "command": "npm run test:runtime -- --workers=1 --reporter=line --grep 'review preserves check-in|guest can browse free lessons|Owner workspace stays|Owner can save an AI-off|help center opens|consent continue action'",
+      "environment": {
+        "MCY_PLAYWRIGHT_CHANNEL": "msedge",
+        "MCY_PLAYWRIGHT_VITE_CONFIG_LOADER": "runner",
+        "MOBILE_RUNTIME_TEST_PORT": "4192"
+      },
+      "passed": 7,
+      "failed": 0,
+      "exit_code": 0,
+      "protected_runtime_precheck_passed": 28,
+      "fictional_isolated_fixture": true,
+      "ai_enabled_flow_evidence": false
+    }
+  ],
+  "not_run": ["provider_inference", "live_owner_positive_save", "ai_plan_selection_e2e", "live_consent_kill_switch_races", "expert_semantic_eval", "full_app_suite_and_build", "native_device_validation"],
+  "documentation_review": {
+    "independent_reviewer": "ai_ux_reassessment_agent",
+    "blocking_overclaim_or_scope_findings": 0,
+    "no_match_and_safety_stop_clarification_applied": true,
+    "offline_client_stop_acceptance_added": true,
+    "json_parsed": true,
+    "local_links_resolve": true
+  },
+  "mutations_performed": {
+    "documentation": true,
+    "application_source": false,
+    "dns_or_domain": false,
+    "supabase_database_or_config": false,
+    "secrets_or_flags": false,
+    "edge_or_vercel_deployment": false,
+    "production_promotion": false
+  },
+  "provider_documentation": [
+    "https://openrouter.ai/docs/guides/features/structured-outputs",
+    "https://openrouter.ai/docs/guides/routing/provider-selection",
+    "https://supabase.com/docs/guides/functions/secrets"
+  ],
+  "conclusion": "design_foundations_and_concepts_exist_but_core_ai_plan_flow_requires_implementation_and_R3_evidence_before_learner_enablement"
+}

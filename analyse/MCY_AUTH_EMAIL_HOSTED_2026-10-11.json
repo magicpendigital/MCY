@@ -1,0 +1,41 @@
+{
+  "kind": "AuthEmailLearnerHostedArtifact",
+  "capturedAt": "2026-10-11T11:38:53.018Z",
+  "status": "PASS",
+  "domain": "https://motchutyoga.magicpendigital.com",
+  "deploymentId": "dpl_2zYC7QQJKMRLGsKgWPpWQqnPkaT4",
+  "artifactSha256": "3197f3ebf8805a04e97bc5350f2d18bbc96fa443ed71b2cd273a327a4d04c662",
+  "httpsValidated": true,
+  "unauthenticatedStatus": 302,
+  "protectionRetained": true,
+  "callbackRewriteAndChunkHashes": [
+    {
+      "route": "/auth/callback?workspace=owner",
+      "status": 200,
+      "bytes": 1067,
+      "sha256": "e54c979a94030028fdc6e128a337bd70d15c5e18ba7c1a176597e6e6ee657ba6"
+    },
+    {
+      "route": "/assets/index-CLgWYXPw.js",
+      "status": 200,
+      "bytes": 555255,
+      "sha256": "f9287129c8bbb084d1ed7fd21a6623674b8baf87d848b9f5c1b266c801b5cb7b"
+    },
+    {
+      "route": "/assets/AuthCallback-DhdKiTl0.js",
+      "status": 200,
+      "bytes": 2912,
+      "sha256": "3ca9c6446cda62a84e3a6daa6549457cd1c3a7ee4429b21026a49577f884b8bd"
+    },
+    {
+      "route": "/assets/owner-BDXflMbH.js",
+      "status": 200,
+      "bytes": 17479,
+      "sha256": "9231fe7ca8a9e8b335f33c642a4c2a8871d4438329dffa758937d17f7aa5e1cb"
+    }
+  ],
+  "liveLocalizedEmailCallback": "NOT_RUN_USER_TRIAL_REQUIRED",
+  "providerInference": false,
+  "successfulOwnerConfigSave": false,
+  "databaseMigrationApplied": false
+}

@@ -1,0 +1,115 @@
+{
+  "kind": "SelectiveStagingLearnerWriteAcceptance",
+  "schemaVersion": 1,
+  "status": "PASS",
+  "capturedAt": "2026-10-11T19:01:49.402Z",
+  "releaseId": "mcy-learner-write-20261011",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "organizationId": "rzbpjfrndhrtxagpgdre",
+  "approvedManifestSha256": "13521cea066fa99467d23cca987533e03339efd019bbd4a09dc287b890ae2143",
+  "candidateSha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a",
+  "approvalSource": "Direct human reply: Duyệt gói staging và kiểm thử giới hạn trên",
+  "appliedMigrationOnly": "20261002120000",
+  "officialLedger": {
+    "sharedAligned": 21,
+    "remoteOnly": 0,
+    "pending": [
+      "20261002204228",
+      "20261003031137",
+      "20261005004000",
+      "20261009181735"
+    ]
+  },
+  "live": {
+    "groups": 10,
+    "requests": 41,
+    "totals": {
+      "consents": 12,
+      "checkins": 2,
+      "observations": 1
+    },
+    "appendOnlyHistoryRetained": true,
+    "finalWellbeingRevoked": true,
+    "http5xx": 0,
+    "unexpectedSqlStates": []
+  },
+  "ai": {
+    "enabled": false,
+    "version": 1,
+    "modelUnset": true
+  },
+  "ownerDefinitionMd5": "5ad67fe52caf79bd07c51caa0c30db92",
+  "ownerOid": "19270",
+  "otherMigrationApplied": false,
+  "productionPromoted": false,
+  "roleGrants": false,
+  "roleExpiryExtension": false,
+  "providerInference": false,
+  "emailTriggered": false,
+  "newWebDeployment": false,
+  "generalReleaseCheckerCleared": false,
+  "limitations": [
+    "Old native clients fail closed; compatible native/device acceptance pending",
+    "Hosted full signed-in UI/inbox not newly accepted by this database matrix",
+    "Bounded logs and catalog/count snapshots only; no continuous monitoring",
+    "Catalog expertise/rights and four pending migrations retain separate gates"
+  ],
+  "evidence": [
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_BASELINE_2026-10-12.json",
+      "sha256": "757a11693a28e463f34877b252454f57bbd1fafdbd72a47d26daa49777c57f4c"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_APPLY_2026-10-12.json",
+      "sha256": "550c671cf5718fe02e356b1f4ea5c6eb12ed4ed1d9c1c4a5d79e85a969714e65"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_READBACK_2026-10-12.json",
+      "sha256": "a4448024d635ce5d1c26ac9664637aabd6bf83ed6d2ad1f3e0d933ae9184c0a5"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_ACTOR_GATE_2026-10-12.json",
+      "sha256": "9ea82b222bad582bf6fefcf4e15a04e495a04f74947c74223cd109b38f0aa626"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_LEDGER_2026-10-12.json",
+      "sha256": "9b338bc370e8c238d5d9aa72cfed27caae7d0771970ce5ba88c3c1a6763b17e0"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_LIVE_2026-10-12.json",
+      "sha256": "17d1e3c904e293d08657f59ff0dae1adf1f8046d642eddc36704cadd2146543f"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_FINAL_COUNTS_2026-10-12.json",
+      "sha256": "bfa67e81fd7aa063f96f01ee7300b966d6c7cc38c47cc7fbfda298ce4b8163d0"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_LOGS_2026-10-12.json",
+      "sha256": "a71542db1d4974bb25c4d6fe9074311ed8306a5eefee2cde52d4fc5deb3be0be"
+    },
+    {
+      "path": "scripts/execute-approved-learner-write.mjs",
+      "sha256": "0823f5684472812e09800dd941e830d11f3b466a3b07ff43636445f6bc9ca482"
+    },
+    {
+      "path": "scripts/test-learner-write-staging.mjs",
+      "sha256": "eaf13785b86da79b56759ff8a19183a935d7a643142bc0e2565fcf5f0a556b5f"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_EXECUTION_REVIEW_2026-10-12.md",
+      "sha256": "7bc0568b142f1c59b3e3d4223ff40868f5de28f3f2c3d4ba0c0ea553f8f1a1ef"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_STAGING_ACCEPTANCE_2026-10-12.md",
+      "sha256": "818e63e581c262db6d95b4d9c63c0df1b4f2a6b8fae3309aad01a427e680591c"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "c15fb4a4c7a215c49de4c524013356e300032d2b2f1ac2759a5a4c2f47286899"
+    },
+    {
+      "path": "supabase/README.md",
+      "sha256": "4d61f59f143a6432d01f5de4cd5a62981171febbf0158390bba4f8d415aeae42"
+    }
+  ]
+}

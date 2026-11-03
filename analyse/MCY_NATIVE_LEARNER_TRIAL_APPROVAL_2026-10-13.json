@@ -1,0 +1,19 @@
+{
+  "kind": "OwnerNativeLearnerTrialDecision",
+  "recordedAt": "2026-10-13T03:20:12Z",
+  "localDate": "2026-10-13",
+  "source": "Direct Owner reply in this chat",
+  "exactReply": "Duyệt gói native và giới hạn trên",
+  "decision": "APPROVED",
+  "releaseId": "mcy-native-learner-trial-20261013",
+  "manifestPath": "analyse/MCY_NATIVE_LEARNER_TRIAL_OPERATION_2026-10-13.json",
+  "manifestSha256": "71bf0aa806e92d792bd55ad23592af22a78d76733a97af5f6ffa4f97ac19865d",
+  "reviewSha256": "96136072eca4b1d8247c6a751133a09820af1daa6098a2763f46c0993403efc0",
+  "target": { "kind": "staging", "projectRef": "mhumbczqrzutdnraafhs", "organizationId": "rzbpjfrndhrtxagpgdre" },
+  "maxEffects": { "newProfiles": 2, "profileUpsertRequests": 2, "authLocaleMetadataUpdates": 2, "consentEvents": 4, "checkins": 2, "newObservations": 0 },
+  "method": "User-driven native UI for disposable Learner A/B; agent read-only verification. User initiates local sign-out and email login.",
+  "freshExecutionChecksRequired": true,
+  "writeExecutedAtRecording": false,
+  "preparedManifestAndPacketPreserved": true,
+  "limits": "Approval is limited to this exact manual trial; no repeat of the old learner operation, session injection, agent email, role grant/expiry extension, migration/deploy, AI or Production authorization."
+}

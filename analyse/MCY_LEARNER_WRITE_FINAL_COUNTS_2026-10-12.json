@@ -1,0 +1,80 @@
+{
+  "ai": {
+    "enabled": false,
+    "version": 1,
+    "modelUnset": true
+  },
+  "owner": {
+    "acl": "{postgres=X/postgres,service_role=X/postgres}",
+    "oid": "19270",
+    "owner": "postgres",
+    "searchPath": [
+      "search_path=\"\""
+    ],
+    "definitionMd5": "5ad67fe52caf79bd07c51caa0c30db92"
+  },
+  "actors": {
+    "LEARNER_A": {
+      "checkinCount": 1,
+      "consentCount": 8,
+      "identitySha256": "995e6d265987a1c5cd6c831d6b2dda54998092aa769082cc72bf93fa209ece68",
+      "activeStaffRoles": 0,
+      "observationCount": 1,
+      "allNotesFictional": true,
+      "activeTeacherProfile": false,
+      "allCheckinsFictional": true,
+      "latestRequiredConsents": [
+        {
+          "action": "granted",
+          "purpose": "privacy",
+          "policyVersion": "privacy-review-0.1"
+        },
+        {
+          "action": "granted",
+          "purpose": "terms",
+          "policyVersion": "terms-review-0.1"
+        },
+        {
+          "action": "revoked",
+          "purpose": "wellbeing_data",
+          "policyVersion": "wellbeing-data-review-0.1"
+        }
+      ],
+      "allConsentKeysAreThisRun": true
+    },
+    "LEARNER_B": {
+      "checkinCount": 1,
+      "consentCount": 4,
+      "identitySha256": "1dce191e95a843797bb7e8ebb9c63e5f0a5e20aa7ee98720be3df467421bebd3",
+      "activeStaffRoles": 0,
+      "observationCount": 0,
+      "allNotesFictional": true,
+      "activeTeacherProfile": false,
+      "allCheckinsFictional": true,
+      "latestRequiredConsents": [
+        {
+          "action": "granted",
+          "purpose": "privacy",
+          "policyVersion": "privacy-review-0.1"
+        },
+        {
+          "action": "granted",
+          "purpose": "terms",
+          "policyVersion": "terms-review-0.1"
+        },
+        {
+          "action": "revoked",
+          "purpose": "wellbeing_data",
+          "policyVersion": "wellbeing-data-review-0.1"
+        }
+      ],
+      "allConsentKeysAreThisRun": true
+    }
+  },
+  "capturedAt": "2026-10-11T18:53:23.607206+00:00",
+  "activeLearnerTransactions": 0,
+  "kind": "LearnerWriteFinalStoredCountReadback",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "status": "PASS",
+  "failures": []
+}

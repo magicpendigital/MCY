@@ -1,0 +1,74 @@
+{
+  "ai": {
+    "enabled": false,
+    "version": 1,
+    "modelUnset": true
+  },
+  "kind": "NativeLearnerTrialReadOnlyPreflight",
+  "actors": [
+    {
+      "found": true,
+      "label": "LEARNER_A",
+      "confirmed": true,
+      "hasProfile": false,
+      "checkinCount": 1,
+      "consentCount": 8,
+      "latestConsent": [
+        {
+          "action": "granted",
+          "purpose": "privacy",
+          "policy_version": "privacy-review-0.1"
+        },
+        {
+          "action": "granted",
+          "purpose": "terms",
+          "policy_version": "terms-review-0.1"
+        },
+        {
+          "action": "revoked",
+          "purpose": "wellbeing_data",
+          "policy_version": "wellbeing-data-review-0.1"
+        }
+      ],
+      "identitySha256": "995e6d265987a1c5cd6c831d6b2dda54998092aa769082cc72bf93fa209ece68",
+      "activeStaffRoles": 0,
+      "observationCount": 1,
+      "activeTeacherProfile": false
+    },
+    {
+      "found": true,
+      "label": "LEARNER_B",
+      "confirmed": true,
+      "hasProfile": false,
+      "checkinCount": 1,
+      "consentCount": 4,
+      "latestConsent": [
+        {
+          "action": "granted",
+          "purpose": "privacy",
+          "policy_version": "privacy-review-0.1"
+        },
+        {
+          "action": "granted",
+          "purpose": "terms",
+          "policy_version": "terms-review-0.1"
+        },
+        {
+          "action": "revoked",
+          "purpose": "wellbeing_data",
+          "policy_version": "wellbeing-data-review-0.1"
+        }
+      ],
+      "identitySha256": "1dce191e95a843797bb7e8ebb9c63e5f0a5e20aa7ee98720be3df467421bebd3",
+      "activeStaffRoles": 0,
+      "observationCount": 0,
+      "activeTeacherProfile": false
+    }
+  ],
+  "capturedAt": "2026-10-13T02:14:41.06007+00:00",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "ledgerApplied": 21,
+  "ownerDefinitionMd5": "5ad67fe52caf79bd07c51caa0c30db92",
+  "writerDefinitionMd5": "56bb448ca2dcb1af60d01e097ef974f1",
+  "writerBodyMd5": "ba61a962de9c9fdfc364ad6fe83837e6"
+}

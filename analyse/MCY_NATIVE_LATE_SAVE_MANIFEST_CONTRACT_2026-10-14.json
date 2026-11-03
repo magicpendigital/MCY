@@ -1,0 +1,20 @@
+{
+  "kind": "NativeLateSaveManifestConsumerVerification",
+  "recordedAt": "2026-10-13T18:42:07.976Z",
+  "status": "PASS_OFFLINE_CONSUMER_SCOPE",
+  "firstCorrectedManifestSha256": "1487d2f0f43b54cbddc81c11ccfe4ed19f26e1594fb5c1bc3fe2c93e3438b13c",
+  "schemaCorrection": "device alias exactly matches native model/serial/package/APK; original observer unchanged",
+  "observerSha256": "ae02f74745d38648c64fe564c426fe09ed717c09bdf844b7d586ffe4e91c61be",
+  "checkerSha256": "951246a141f315e19ddf044990495b5b4b3c1b4d6f4e2ba2c309cb3fae676fb1",
+  "testsPath": "analyse/native-checkin-diagnostics/observer-gates-20261014.test.mjs",
+  "testsSha256": "5461566ac66221dcb9ad31795c6a0abc3a23c5785ed89114943eae9eacbb2ce6",
+  "command": "node --test analyse/native-checkin-diagnostics/observer-gates-20261014.test.mjs",
+  "passed": 8,
+  "exitCode": 0,
+  "actualManifestUsedWithMockApprovalIntentAndAdb": true,
+  "realApprovalIntentOrDeviceAuthCalls": 0,
+  "packetBeforeCorrectionSha256": "f417ae914a22af34f66317d86205308e9838ebcabb07ad96dea76e98afc97fdd",
+  "beforeCorrectionStatus": "REJECTED_PRE_APPROVAL_MISSING_OBSERVER_DEVICE_SCHEMA",
+  "finalReviewAndManifestRebinding": "REQUIRED_BEFORE_OWNER_DECISION",
+  "apkOrAppCodeRebuiltOrChanged": false
+}

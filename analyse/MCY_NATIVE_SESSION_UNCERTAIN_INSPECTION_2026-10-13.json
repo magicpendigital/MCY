@@ -1,0 +1,31 @@
+{
+  "kind": "NativeSessionUncertainReadOnlyInspection",
+  "capturedAt": "2026-10-13T02:11:15.617Z",
+  "package": "com.nilaza.motchutyoga.mcydebug",
+  "intent": {
+    "path": ".vercel/mcy-native-session-restoration-20261013.intent.json",
+    "sha256": "8aac0063e8c5b10d0a1b5f96138182a1de66c030e456d70dd09027fbbb3cddfd",
+    "phase": "UNCERTAIN_AFTER_RESTART"
+  },
+  "foregroundIsExpectedPackage": true,
+  "snapshot": {
+    "ready": "complete",
+    "native": true,
+    "platform": "android",
+    "rootChildren": 1,
+    "route": "home",
+    "hasCurrent": true,
+    "hasActive": true,
+    "sessionKeyPresent": true,
+    "hasEditableFields": false,
+    "hasMediaPlayer": false,
+    "hasAlert": false,
+    "hasAccount": false,
+    "hasSignedInAccount": false,
+    "fixedNavVisible": true
+  },
+  "status": "OBSERVATION_ONLY_NO_RESTORATION_PASS",
+  "navigationOrRestart": false,
+  "sessionValuesRead": false,
+  "privateTextOrScreenshotExported": false
+}

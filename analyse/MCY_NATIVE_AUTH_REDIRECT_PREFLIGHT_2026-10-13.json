@@ -1,0 +1,125 @@
+{
+  "kind": "SelectiveNativeAuthRedirectPreflight",
+  "capturedAt": "2026-10-12T17:59:05.786Z",
+  "status": "PASS",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "organizationId": "rzbpjfrndhrtxagpgdre",
+  "configSha256": "22799858216e0ef82cf3d3f3921452b43d3a244258d25826245e4a89047a42db",
+  "scriptSha256": "4a7c3c19c7387e922c8ee7d41edeb58a6b10db4a8131edf6acac6c8c501a4802",
+  "probeSha256": "fc17c44f47c4a0ee6d2606028aca68af4a7202c88a2a21ecc848692cf9d881f7",
+  "beforeUrls": [
+    "https://mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app/auth/callback",
+    "motchutyoga://auth/callback",
+    "http://127.0.0.1:5174/auth/callback",
+    "http://localhost:5174/auth/callback",
+    "https://motchutyoga.magicpendigital.com/auth/callback",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher",
+    "https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN",
+    "http://localhost:5174/auth/callback?email_locale=vi-VN",
+    "http://127.0.0.1:5174/auth/callback?email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US",
+    "http://localhost:5174/auth/callback?email_locale=en-US",
+    "http://127.0.0.1:5174/auth/callback?email_locale=en-US"
+  ],
+  "afterUrls": [
+    "https://mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app/auth/callback",
+    "motchutyoga://auth/callback",
+    "http://127.0.0.1:5174/auth/callback",
+    "http://localhost:5174/auth/callback",
+    "https://motchutyoga.magicpendigital.com/auth/callback",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher",
+    "https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN",
+    "http://localhost:5174/auth/callback?email_locale=vi-VN",
+    "http://127.0.0.1:5174/auth/callback?email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US",
+    "http://localhost:5174/auth/callback?email_locale=en-US",
+    "http://127.0.0.1:5174/auth/callback?email_locale=en-US",
+    "motchutyoga-mcydebug://auth/callback"
+  ],
+  "changedPath": "auth.additional_redirect_urls",
+  "unrelatedHashes": [
+    {
+      "path": "auth.email.enable_confirmations",
+      "sha256": "8b77571943fcdda3626960daef64712820e9bc29672260ab3b59a3cefe54e7b2"
+    },
+    {
+      "path": "auth.email.max_frequency",
+      "sha256": "f240c1f45df32ac0fc8e37ec1214b5ae1585db0bf0c74a141273a61144976196"
+    },
+    {
+      "path": "auth.email.otp_length",
+      "sha256": "b2044f5343eb8dccb7bfa9344f4e3470d64b2f9082d02b33208450db56a4c416"
+    },
+    {
+      "path": "auth.email.smtp.admin_email",
+      "sha256": "4a8c83fd4bbea1273a4945068e9292865212b7cbc703f5eca0bd7a93db90c70a"
+    },
+    {
+      "path": "auth.email.smtp.enabled",
+      "sha256": "dd40f7f4ae95b2974ed8b1dc29d61302ca44c9cef6c96f61d6e5800b9c8af5f9"
+    },
+    {
+      "path": "auth.email.smtp.host",
+      "sha256": "2b92a890152b2d4aa07694822928f7580f43c03d9ad055c8ea578cde0f888d7d"
+    },
+    {
+      "path": "auth.email.smtp.port",
+      "sha256": "fc3bf98bb8e4b008b1f19442bdcc7ab5ebed468a77d99e80fee1740c014fe93e"
+    },
+    {
+      "path": "auth.email.smtp.sender_name",
+      "sha256": "00dd8d2238fb9e3a39476a28f4fe44e8b6dce9bb66022aec64affc93c43a7310"
+    },
+    {
+      "path": "auth.email.smtp.user",
+      "sha256": "14e4f1512d6b16794c9294989bc78ce25cecf3bf74ebc3e9eafc617a9e6eeecf"
+    },
+    {
+      "path": "auth.mfa.totp.enroll_enabled",
+      "sha256": "07f54f15cf9eff9252f95d26e403d04875bf3da38ceb30b51b4f2620d8592e76"
+    },
+    {
+      "path": "auth.mfa.totp.verify_enabled",
+      "sha256": "23537c538324fdf9a952ba708ebcacf81efc68f34f0b58d20f78610b69407d58"
+    },
+    {
+      "path": "auth.rate_limit.email_sent",
+      "sha256": "910c995e8c4371ed3ae52106f5bf2edc7ab5e53c91bfd9bd838b1928d0866aeb"
+    },
+    {
+      "path": "auth.site_url",
+      "sha256": "821edcadac23fef9c503a4dbfca20bb1265cd31ecce9e7f071a3ba073fc68056"
+    },
+    {
+      "path": "db.pooler.default_pool_size",
+      "sha256": "8d6e43bea2c0d38fe1f3e538d3288eb956d422b808443ab34ddd5e6ac5968600"
+    },
+    {
+      "path": "db.pooler.max_client_conn",
+      "sha256": "63172238a4aef2a809fbd08d304395e375d6edbfbecf4c740be35b9d1edf4b67"
+    },
+    {
+      "path": "storage.analytics.enabled",
+      "sha256": "54ac2ae48a9aaca0188feb8867a9206351641e72d1a2a0a16fc18915af4ce3cd"
+    },
+    {
+      "path": "storage.analytics.max_namespaces",
+      "sha256": "f00d98d47f516044d765f1bc95e7cc8552bacf9d9f615f7ad9faac5de00238de"
+    },
+    {
+      "path": "storage.image_transformation.enabled",
+      "sha256": "1033afd92af69efc754d1158261397b06e6382cbb08fa43f36c487dcbfa06858"
+    }
+  ],
+  "cloudMutation": false
+}

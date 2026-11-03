@@ -1,0 +1,43 @@
+{
+  "kind": "OwnerEmailSendFailure",
+  "capturedAt": "2026-10-11T07:04:56.084Z",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "readOnly": true,
+  "queryWindow": {
+    "start": "2026-10-11T06:45:00Z",
+    "end": "2026-10-11T06:53:10Z"
+  },
+  "minimalAuthLogs": [
+    {
+      "timestamp": "2026-10-11T06:51:27Z",
+      "method": "POST",
+      "path": "/otp",
+      "status": 429,
+      "errorCode": "over_email_send_rate_limit"
+    },
+    {
+      "timestamp": "2026-10-11T06:52:02Z",
+      "method": "POST",
+      "path": "/otp",
+      "status": 429,
+      "errorCode": "over_email_send_rate_limit"
+    }
+  ],
+  "dashboardObserved": {
+    "project": "mcy-staging",
+    "organization": "MagicpenDigital",
+    "emailProvider": "built-in",
+    "smtpEnabled": false
+  },
+  "builtInEmailQuota": {
+    "value": 2,
+    "unit": "per project per hour",
+    "source": "https://supabase.com/docs/guides/auth/rate-limits"
+  },
+  "userHasResend": true,
+  "smtpSaveUserReport": "NOT_SAVED_OR_ERROR",
+  "smtpCredentialsRead": false,
+  "rawLogMessagesPersisted": false,
+  "emailsSentByAgent": false,
+  "liveEmailCallback": "BLOCKED_AT_EMAIL_SEND"
+}

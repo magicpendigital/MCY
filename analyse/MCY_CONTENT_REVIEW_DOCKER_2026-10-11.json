@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "kind": "ContentReviewDockerPostgrestRehearsal",
+  "status": "PASS",
+  "exitCode": 0,
+  "executedAt": "2026-10-10T18:25:14.847Z",
+  "harnessSha256": "e1819bdeb71534bb07bece597b63c550eea47dbe5d75cd76b65f949866fada5d",
+  "migration": {
+    "path": "supabase/migrations/20261010113419_owner_content_review.sql",
+    "sha256": "a206a63d3daa86747d8e3447193235ad88534775676a3582ac3ccd92472191c1"
+  },
+  "schemaOnly": {
+    "sha256": "8b83f85adae601acc5c29ab561f0db017096028ded476b329266a181f219eb18",
+    "metadataSha256": "2425aed7596ae92cfb511554b78927edc3181c65d65e544cae7e1f8db25ac3dd"
+  },
+  "environment": {
+    "postgresImage": "public.ecr.aws/supabase/postgres:17.6.1.139",
+    "postgrestImage": "public.ecr.aws/supabase/postgrest:v14.13",
+    "fictionalRows": true,
+    "internalNetwork": true,
+    "publishedPorts": false
+  },
+  "checks": [
+    {
+      "name": "Internal network, no host mounts or published ports, fictional credentials",
+      "status": "PASS"
+    },
+    {
+      "name": "Fresh staging app-schema upgrade preserves all existing function definitions/ACL, table ACL/RLS and policies",
+      "status": "PASS"
+    },
+    {
+      "name": "Effective private SELECT/write/TRUNCATE/helper ACL and service-only RPC EXECUTE; learner/unassigned teacher denied without rows",
+      "status": "PASS"
+    },
+    {
+      "name": "Two independent actors/sessions contend: one version commit, one PT409, exactly one event",
+      "status": "PASS"
+    },
+    {
+      "name": "Assignment expires while a real teacher transaction waits: post-lock wall-clock check denies without event",
+      "status": "PASS"
+    },
+    {
+      "name": "Revocation invalidates decision and denies teacher; repeated revoke creates no new state/event",
+      "status": "PASS"
+    },
+    {
+      "name": "Read API refreshes wall-clock role expiry after actual unchanged role-row/profile-row lock waits",
+      "status": "PASS"
+    },
+    {
+      "name": "Concurrent distinct versions serialize actor quota: twentieth action succeeds, twenty-first PT429 without row",
+      "status": "PASS"
+    },
+    {
+      "name": "Real HTTP read/assign RPCs: Owner and assigned teacher allowed; learner/expired/client/cross-teacher denied; stale409 and old Owner read compatible",
+      "status": "PASS"
+    },
+    {
+      "name": "Real PostgREST HTTP403/409/429 and one normal200 write, no client grants or forbidden side effects",
+      "status": "PASS"
+    },
+    {
+      "name": "AI configuration and old application metadata untouched; no active writes or 40001 in bounded observation",
+      "status": "PASS"
+    }
+  ],
+  "cleanupPassed": true,
+  "limitations": [
+    "Cached PostgreSQL/PostgREST minor versions differ from staging; app-schema equivalence only; verified-email column added to old Auth scaffold",
+    "No hosted Edge/Auth credentials or clinical/media-rights approval",
+    "Readiness observation is bounded; clean migration replay covered separately"
+  ],
+  "releaseAuthorized": false
+}

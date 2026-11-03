@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "kind": "SelectiveStagingOwnerRepairOperation",
+  "operationDateBangkok": "2026-10-09",
+  "status": "APPLIED_AND_NEGATIVE_HTTP_ACCEPTED",
+  "target": {
+    "projectRef": "mhumbczqrzutdnraafhs",
+    "organizationId": "rzbpjfrndhrtxagpgdre",
+    "environment": "staging",
+    "region": "ap-southeast-1"
+  },
+  "applied": {
+    "version": "20261007174155",
+    "sha256": "b7f8637c4568cbb138c680089214d14b308567d2ae0eb52990c22b73976d1fab",
+    "cliVersion": "2.119.0",
+    "command": "supabase migration up --linked --project-ref mhumbczqrzutdnraafhs --workdir <isolated-19-file-workdir> --agent yes",
+    "exitCode": 0,
+    "appliedCount": 1
+  },
+  "before": {
+    "oid": 19270,
+    "owner": "postgres",
+    "proacl": "{postgres=X/postgres,service_role=X/postgres}",
+    "proconfig": [
+      "search_path=\"\""
+    ],
+    "prosecdef": true,
+    "fingerprint": "1591e77afdfc0dacb6b39200d7bbefc2",
+    "anon_execute": false,
+    "authenticated_execute": false,
+    "server_execute": true,
+    "active_owner_save": 0,
+    "config": {
+      "version": 1,
+      "enabled": false
+    }
+  },
+  "after": {
+    "oid": 19270,
+    "owner": "postgres",
+    "proacl": "{postgres=X/postgres,service_role=X/postgres}",
+    "proconfig": [
+      "search_path=\"\""
+    ],
+    "prosecdef": true,
+    "fingerprint": "5ad67fe52caf79bd07c51caa0c30db92",
+    "anon_execute": false,
+    "authenticated_execute": false,
+    "server_execute": true,
+    "business_40001": false,
+    "business_pt409": true,
+    "config": {
+      "version": 1,
+      "enabled": false
+    }
+  },
+  "remoteVersions": [
+    "20260925160352",
+    "20260925160615",
+    "20260925182506",
+    "20260925182822",
+    "20260926064515",
+    "20260927033720",
+    "20260927200654",
+    "20260928063009",
+    "20260929173001",
+    "20260930035823",
+    "20260930040857",
+    "20260930041541",
+    "20260930042413",
+    "20260930064345",
+    "20260930065400",
+    "20260930160616",
+    "20260930161936",
+    "20261001043554",
+    "20261007174155"
+  ],
+  "pendingLocalVersions": [
+    "20261002120000",
+    "20261002204228",
+    "20261003031137",
+    "20261005004000"
+  ],
+  "negativeHttp": {
+    "status": "PASS",
+    "checks": 17,
+    "receipt": "analyse/MCY_OWNER_LIVE_HTTP_2026-10-09.json"
+  },
+  "postObservation": {
+    "activityAtUtc": "2026-10-08T19:17:04.649005Z",
+    "activeOwnerSave": 0,
+    "configVersion": 1,
+    "aiEnabled": false,
+    "actualAuditAction": "ai_config.updated",
+    "configUpdateAuditCount": 0,
+    "totalAuditCount": 4,
+    "logWindowUtc": [
+      "2026-10-08T19:12:00Z",
+      "2026-10-08T19:14:00Z"
+    ],
+    "postgresLogRows": 13,
+    "serialization40001Rows": 0,
+    "ownerRetryRows": 0,
+    "limits": "Bounded snapshots/log ingestion; not permanent absence proof"
+  },
+  "positiveLiveSave": {
+    "status": "BLOCKED",
+    "executed": false,
+    "reason": "Automatic approval review rejected real configuration version/audit writes; separate human approval requested",
+    "preparedScript": "scripts/test-owner-live-save-roundtrip.mjs"
+  },
+  "edgeDeployed": false,
+  "aiEnabled": false,
+  "otherMigrationsApplied": false,
+  "productionPromoted": false,
+  "generalReleaseProfileModified": false,
+  "fullReleaseCertified": false,
+  "auditVerification": "Correct action ai_config.updated independently checked before proposed positive test: 0, total audits 4; negative probes left config version 1."
+}

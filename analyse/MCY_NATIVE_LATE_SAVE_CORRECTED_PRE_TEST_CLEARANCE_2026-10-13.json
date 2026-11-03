@@ -1,0 +1,17 @@
+{
+  "kind": "CorrectedIsolatedLateSaveCandidatePreTestClearance",
+  "status": "INDEPENDENT_SOURCE_CLEARANCE_RECEIVED",
+  "reviewer": "/root/late_save_candidate_review",
+  "clearance": "No remaining P1/P2 in corrected narrow source/control scope; independently matched 71 inputs and guard/callers. Exact two diagnostic and nineteen regression tests, one worker/msedge/port4298/managed Vite only.",
+  "candidatePrototypeSha256": "32c100fbcd7433f6db2c6c299556adb22633d5cd8ecd9da01ca5420515287482",
+  "setupSha256": "8c1e205d9e784018a0a0a36f8f02c6a054039b4655d5e9c9234481e071577279",
+  "configSha256": "db3f59515388b3231bfcd0261e1e3badff645b4951f36f64838b463b02968f32",
+  "regressionConfigSha256": "89313720eb291e42abc1049807f70e40e2a0478f325cad97cea457a5aa2317d7",
+  "sourceRecords": 68,
+  "auxiliaryRecords": 3,
+  "missingStylesheetCorrectedWithExactOriginal": true,
+  "finalReviewAtCapture": "Source clearance received by reviewer message; supplemental narrative file being finalized, not claimed frozen before tests.",
+  "noCloudDeviceMainAppMutation": true,
+  "noRolloutOrNativeCauseClearance": true,
+  "executionAtCapture": "NOT_RUN"
+}

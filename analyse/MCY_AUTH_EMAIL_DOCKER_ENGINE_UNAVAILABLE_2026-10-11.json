@@ -1,0 +1,26 @@
+{
+  "kind": "AuthEmailDockerRehearsal",
+  "capturedAt": "2026-10-11T10:58:53.391Z",
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "Owned disposable containers, volumes and network removed; unrelated Docker project untouched",
+      "status": "PASS"
+    }
+  ],
+  "images": {
+    "dbImage": "public.ecr.aws/supabase/postgres:17.6.1.139",
+    "mailImage": "public.ecr.aws/supabase/mailpit:v1.30.2",
+    "authImage": "public.ecr.aws/supabase/gotrue:v2.191.0"
+  },
+  "scenarios": 13,
+  "rendererCases": 78,
+  "notificationTriggerTests": false,
+  "renderedThrough": "Common GoTrue MagicLink subject/body renderer",
+  "harnessSha256": "0f12d2058d571fc629966ba7eb3d23e9f00770d27596cf9301ff3c9a3188e530",
+  "templateManifestSha256": "63012a11e03a7c37ad3b1eff1ed548048f14ad7e23baab14ad84697f59dbc8bd",
+  "cloudRequests": false,
+  "externalEmails": false,
+  "credentialStoreReads": false,
+  "cleanupVerified": true
+}

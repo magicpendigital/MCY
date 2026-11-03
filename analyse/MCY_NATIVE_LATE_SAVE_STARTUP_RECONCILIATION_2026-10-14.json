@@ -1,0 +1,32 @@
+{
+  "kind": "NativeLateSaveManualStartupReconciliation",
+  "capturedAt": "2026-10-14T02:23:14.401Z",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "approvalSha256": "8e6e6adedd18779fc5ae4d458418de576f768ce680670d9b92aa4f8e11eccbd7",
+  "trialNonce": "9c4e4983-694e-453d-9903-132c0235c3bd",
+  "installationStatus": "PASS_INSTALLED_HASH_AND_PACKAGE_PRESERVATION",
+  "userReported": "Giao diện hiện và vẫn đăng nhập",
+  "startupUiStatus": "USER_REPORTED_PASS",
+  "nativeAuthIndependentlyVerified": false,
+  "sqlBeforeCapturedAt": "2026-10-14T02:11:42.344556+00:00",
+  "sqlAfterCapturedAt": "2026-10-14T02:18:47.642858+00:00",
+  "sqlComparison": "PASS_ALL_FIELDS_UNCHANGED_EXCEPT_CAPTURED_AT",
+  "newEffects": {
+    "newProfiles": 0,
+    "profileUpsertRequests": 0,
+    "authLocaleMetadataUpdates": 0,
+    "consentEvents": 0,
+    "checkins": 0,
+    "newObservations": 0
+  },
+  "limitations": [
+    "No independent native current actor or session restoration proof",
+    "No cold-start or PID restart proof",
+    "Native data acceptance still pending"
+  ],
+  "vercel": {
+    "ownerReportsAuthenticationDisabled": true,
+    "directCauseOfNativeLateSaveEstablished": false,
+    "webRelease": "BLOCKED_NO_UPLOAD_OR_ALIAS"
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "kind": "SelectiveStagingLearnerWriteOperationPreparation",
+  "schemaVersion": 1,
+  "releaseId": "mcy-learner-write-20261011",
+  "capturedAt": "2026-10-11T18:32:31.069Z",
+  "target": {
+    "id": "mcy-staging-learner-write",
+    "kind": "staging",
+    "organizationId": "rzbpjfrndhrtxagpgdre",
+    "projectRef": "mhumbczqrzutdnraafhs"
+  },
+  "status": "PREPARED_AWAITING_OWNER_DECISION",
+  "releaseAuthorized": false,
+  "cloudMutationPerformed": false,
+  "source": {
+    "kind": "workingTreeReviewedInputs",
+    "existingGitCheckoutDirty": true,
+    "generalReleaseCheckerCleared": false
+  },
+  "candidate": {
+    "version": "20261002120000",
+    "path": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+    "sha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a",
+    "remoteApplied": false
+  },
+  "allLocalMigrations": [
+    {
+      "version": "20260925160352",
+      "path": "supabase/migrations/20260925160352_initial_mcy_schema.sql",
+      "sha256": "2200fbae80ce069a9a6225569eb72d4c10e74f284a1727ace694e26846cc900f",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260925160615",
+      "path": "supabase/migrations/20260925160615_harden_mcy_schema.sql",
+      "sha256": "cff285b48fe3487fee480a532291661b8ae66960f5e1b97998dba16bb954ea14",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260925182506",
+      "path": "supabase/migrations/20260925182506_operational_controls.sql",
+      "sha256": "dbb7e36e18d88ef808e6354da36fddfa550cfb4815f0e896a6460b06ab1565aa",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260925182822",
+      "path": "supabase/migrations/20260925182822_operational_fk_indexes.sql",
+      "sha256": "9044e997229ab9b9cbb72ca86287b3a71cb85f708cd759cf2633a298de02f65b",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260926064515",
+      "path": "supabase/migrations/20260926064515_learner_app_backend.sql",
+      "sha256": "4c8c638fb31b032aba77d732bf7f56509b82be950d48240ac829de76a1b373fb",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260927033720",
+      "path": "supabase/migrations/20260927033720_harden_teacher_profile_acl.sql",
+      "sha256": "fc17ef63d154949379f13eb9a9e46ebe67649c2250f5bd15289cec9d935f0e40",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260927200654",
+      "path": "supabase/migrations/20260927200654_consent_policy_versions.sql",
+      "sha256": "b53461641e81c8bc976a9a9b204290ee752c3adce9df8f48aa5f7c62e99113e1",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260928063009",
+      "path": "supabase/migrations/20260928063009_expand_body_region_checkin_support.sql",
+      "sha256": "e6b307e810fb6e1f590f7771c6fa3d1ba5e0819d095ee44c7448ab9b34a33245",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260929173001",
+      "path": "supabase/migrations/20260929173001_ai_owner_controls.sql",
+      "sha256": "b3758861e2f501940427fa9de0ffb9ddbdd8479cf082723f754131592857d1fc",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930035823",
+      "path": "supabase/migrations/20260930035823_lock_teacher_draft_direct_writes.sql",
+      "sha256": "84e31ad8f58e6aecd737313f22b27d45ce44aef135ede04e894a52d3ca9914d6",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930040857",
+      "path": "supabase/migrations/20260930040857_lock_editorial_draft_direct_writes.sql",
+      "sha256": "78c489cc3bceaf727d3db9d4fcbb265e14255cb841cbae510019a38cb6d53c70",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930041541",
+      "path": "supabase/migrations/20260930041541_disable_direct_draft_write_policies.sql",
+      "sha256": "a2e7cfe6493b759d541b5ee4c4fa4b28c98cebe51c938130ea064c5c6377e9b7",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930042413",
+      "path": "supabase/migrations/20260930042413_restrict_plan_items_client_writes.sql",
+      "sha256": "a7f8c62c1ba9bd013d5311a5b364592a97b673b466182de4855bcbcf5a3e2d34",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930064345",
+      "path": "supabase/migrations/20260930064345_lock_asset_rights_direct_client_access.sql",
+      "sha256": "f2a95be0aa16ee1f9140ce112c6dceeb381d15790ac836428738252cd9fdddb0",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930065400",
+      "path": "supabase/migrations/20260930065400_lock_asset_components_direct_client_access.sql",
+      "sha256": "6f9b46ef2c35d03a9b23d39d34aaa30a12bc52dec4631f1912405842afbe27d5",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930160616",
+      "path": "supabase/migrations/20260930160616_allow_unset_model_for_disabled_ai.sql",
+      "sha256": "f04f5003c646aa8d25a43834948fe3068c4fc58a2558ad519441ffcbb7830d61",
+      "remoteApplied": true
+    },
+    {
+      "version": "20260930161936",
+      "path": "supabase/migrations/20260930161936_index_ai_configuration_updater.sql",
+      "sha256": "47e84411f24f9aa59b00378d1c41de0a1bb4636af67da3e6449947f6d123fe8a",
+      "remoteApplied": true
+    },
+    {
+      "version": "20261001043554",
+      "path": "supabase/migrations/20261001043554_restrict_staging_public_client_table_acls.sql",
+      "sha256": "0e7b5255804a4cbb9e9f31228ba9e080689d123cebc729e8d2b2ee6ee4d4a06b",
+      "remoteApplied": true
+    },
+    {
+      "version": "20261002120000",
+      "path": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "sha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261002204228",
+      "path": "supabase/migrations/20261002204228_teacher_control_plane_rpcs.sql",
+      "sha256": "b868c0f7548f88769703284bb6cc916d5f262319918106c7edb6bc58343f3568",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261003031137",
+      "path": "supabase/migrations/20261003031137_limit_my_consent_events.sql",
+      "sha256": "def54f448088dfde32f4baccd4dbc662cb0d1e74fbe9f17d2d2ce46a601f6f39",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261005004000",
+      "path": "supabase/migrations/20261005004000_private_teacher_collaboration.sql",
+      "sha256": "9fbba7b2bffeebc795231210d57887b1a063d4f28310447c86aea923fce3edaa",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261007174155",
+      "path": "supabase/migrations/20261007174155_fix_owner_config_conflict_sqlstate.sql",
+      "sha256": "b7f8637c4568cbb138c680089214d14b308567d2ae0eb52990c22b73976d1fab",
+      "remoteApplied": true
+    },
+    {
+      "version": "20261009181735",
+      "path": "supabase/migrations/20261009181735_ai_read_admission_state.sql",
+      "sha256": "7f80c6caa053b02015877bb826d58ac980198164b99b5be907b4bfeb98cef74f",
+      "remoteApplied": false
+    },
+    {
+      "version": "20261010113419",
+      "path": "supabase/migrations/20261010113419_owner_content_review.sql",
+      "sha256": "a206a63d3daa86747d8e3447193235ad88534775676a3582ac3ccd92472191c1",
+      "remoteApplied": true
+    }
+  ],
+  "isolatedWorkdir": ".vercel/mcy-learner-write-20261011",
+  "isolatedConfigSha256": "02df76524dee2e28dae48c7d0af56acdb2a2825dfd7bc535a55aa5c120a8dd46",
+  "isolatedInputs": [
+    {
+      "path": "supabase/migrations/20260925160352_initial_mcy_schema.sql",
+      "sha256": "2200fbae80ce069a9a6225569eb72d4c10e74f284a1727ace694e26846cc900f",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260925160615_harden_mcy_schema.sql",
+      "sha256": "cff285b48fe3487fee480a532291661b8ae66960f5e1b97998dba16bb954ea14",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260925182506_operational_controls.sql",
+      "sha256": "dbb7e36e18d88ef808e6354da36fddfa550cfb4815f0e896a6460b06ab1565aa",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260925182822_operational_fk_indexes.sql",
+      "sha256": "9044e997229ab9b9cbb72ca86287b3a71cb85f708cd759cf2633a298de02f65b",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260926064515_learner_app_backend.sql",
+      "sha256": "4c8c638fb31b032aba77d732bf7f56509b82be950d48240ac829de76a1b373fb",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260927033720_harden_teacher_profile_acl.sql",
+      "sha256": "fc17ef63d154949379f13eb9a9e46ebe67649c2250f5bd15289cec9d935f0e40",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260927200654_consent_policy_versions.sql",
+      "sha256": "b53461641e81c8bc976a9a9b204290ee752c3adce9df8f48aa5f7c62e99113e1",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260928063009_expand_body_region_checkin_support.sql",
+      "sha256": "e6b307e810fb6e1f590f7771c6fa3d1ba5e0819d095ee44c7448ab9b34a33245",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260929173001_ai_owner_controls.sql",
+      "sha256": "b3758861e2f501940427fa9de0ffb9ddbdd8479cf082723f754131592857d1fc",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930035823_lock_teacher_draft_direct_writes.sql",
+      "sha256": "84e31ad8f58e6aecd737313f22b27d45ce44aef135ede04e894a52d3ca9914d6",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930040857_lock_editorial_draft_direct_writes.sql",
+      "sha256": "78c489cc3bceaf727d3db9d4fcbb265e14255cb841cbae510019a38cb6d53c70",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930041541_disable_direct_draft_write_policies.sql",
+      "sha256": "a2e7cfe6493b759d541b5ee4c4fa4b28c98cebe51c938130ea064c5c6377e9b7",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930042413_restrict_plan_items_client_writes.sql",
+      "sha256": "a7f8c62c1ba9bd013d5311a5b364592a97b673b466182de4855bcbcf5a3e2d34",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930064345_lock_asset_rights_direct_client_access.sql",
+      "sha256": "f2a95be0aa16ee1f9140ce112c6dceeb381d15790ac836428738252cd9fdddb0",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930065400_lock_asset_components_direct_client_access.sql",
+      "sha256": "6f9b46ef2c35d03a9b23d39d34aaa30a12bc52dec4631f1912405842afbe27d5",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930160616_allow_unset_model_for_disabled_ai.sql",
+      "sha256": "f04f5003c646aa8d25a43834948fe3068c4fc58a2558ad519441ffcbb7830d61",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20260930161936_index_ai_configuration_updater.sql",
+      "sha256": "47e84411f24f9aa59b00378d1c41de0a1bb4636af67da3e6449947f6d123fe8a",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20261001043554_restrict_staging_public_client_table_acls.sql",
+      "sha256": "0e7b5255804a4cbb9e9f31228ba9e080689d123cebc729e8d2b2ee6ee4d4a06b",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "sha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a",
+      "remoteApplied": false
+    },
+    {
+      "path": "supabase/migrations/20261007174155_fix_owner_config_conflict_sqlstate.sql",
+      "sha256": "b7f8637c4568cbb138c680089214d14b308567d2ae0eb52990c22b73976d1fab",
+      "remoteApplied": true
+    },
+    {
+      "path": "supabase/migrations/20261010113419_owner_content_review.sql",
+      "sha256": "a206a63d3daa86747d8e3447193235ad88534775676a3582ac3ccd92472191c1",
+      "remoteApplied": true
+    }
+  ],
+  "officialReadOnlyList": {
+    "exitCode": 0,
+    "aligned": 20,
+    "remoteOnly": 0,
+    "pending": [
+      "20261002120000"
+    ],
+    "command": "supabase migration list --project-ref mhumbczqrzutdnraafhs --workdir D:\\Projects\\MCY\\.vercel\\mcy-learner-write-20261011 --output-format json"
+  },
+  "proposedApplyArguments": [
+    "migration",
+    "up",
+    "--linked",
+    "--include-all",
+    "--project-ref",
+    "mhumbczqrzutdnraafhs",
+    "--workdir",
+    "D:\\Projects\\MCY\\.vercel\\mcy-learner-write-20261011"
+  ],
+  "includeAllReason": "Only the candidate is pending in this isolated path; its timestamp precedes two already applied migrations.",
+  "sourceInputs": [
+    {
+      "path": "supabase/migrations/20261002120000_bind_checkin_writes_to_current_actor_and_consent.sql",
+      "sha256": "439963a4be829f46661b72aad89267038033e0ce1401b404f8ef95ddd421785a"
+    },
+    {
+      "path": "src/Prototype.tsx",
+      "sha256": "58b8845cf5790c251e85554a27a74b9cf6d41f1c1568330868a205a4bbb84bd0"
+    },
+    {
+      "path": "src/backend/supabase.ts",
+      "sha256": "e4c5f2b7fb84f69dff28b4af13e09b12ee7338dfbd7789ca760e8cc22ba108c9"
+    },
+    {
+      "path": "src/backend/consentPersistence.ts",
+      "sha256": "141f4ec40f12d4c14be1384b4883e104dbd7be38168c0faf3fe184f4e37da181"
+    },
+    {
+      "path": "src/backend/learnerSession.ts",
+      "sha256": "3286c118eac57cc1a83d85144a22b6787b3b146cdba7df290cca6ac66a48ece1"
+    },
+    {
+      "path": "tests/learner-write-clean-rehearsal.cjs",
+      "sha256": "217a950c8003c5a72630e5cbded5ded5c85dfffc0624a876536b368e1f171887"
+    },
+    {
+      "path": "tests/learner-write-review.spec.ts",
+      "sha256": "151fd957ae1639e4ed07a7f03421c7f7c8adfd5082a50baa0f9f35bea08bf0a8"
+    },
+    {
+      "path": "tests/checkin-consent-migration.test.mjs",
+      "sha256": "2f0c6b79eaf18c0fdfc4091b4aac5d7bc03d433cca7bce4e4a6f371ac068f1ab"
+    },
+    {
+      "path": "scripts/rehearse-learner-writes-docker.mjs",
+      "sha256": "97b32e509bac0f204825d490bcb37a8529e55290ed465b490b14f72cbff7e903"
+    },
+    {
+      "path": "scripts/prepare-learner-write-operation.mjs",
+      "sha256": "373fabb63c19211fb219fad62ef383bc2458dd8c3fea94695a8d0e1ddc218909"
+    },
+    {
+      "path": "docs/release/MCY_LEARNER_WRITE_STOP_2026-10-11.sql",
+      "sha256": "fc558996a3f789b4b4c0691c584916edf22f7d49e68ebe2dc0230d03e171f25e"
+    },
+    {
+      "path": "docs/release/MCY_LEARNER_WRITE_RESUME_2026-10-11.sql",
+      "sha256": "b8064b0f8f031036ed85a7e5b041cdd4e429c83e0f5d4201703afdf3df396c0f"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_LEDGER_2026-10-11.json",
+      "sha256": "5ab3151718ff95449410d26701d53c5018d816beb76f3d3b8354a5e44eab1011"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITES_DOCKER_2026-10-11.json",
+      "sha256": "3701fda4d097f277f513a9f0adac099a043d1807fe22c5d98585e8c2042ff707"
+    },
+    {
+      "path": "analyse/MCY_AUTH_LEARNER_FINAL_REVIEW_2026-10-11.md",
+      "sha256": "a16c6e7c82d6192d02e35486a92de02f327f9d715b75e6e30c6cbbe4f91abc92"
+    },
+    {
+      "path": "analyse/MCY_LEARNER_WRITE_SELECTIVE_OPERATION_REVIEW_2026-10-11.md",
+      "sha256": "302124d598610780c0cfc3298cc93a2c13620a710f2348c502d87fe87910b490"
+    },
+    {
+      "path": "test-results/auth-email-final/results.json",
+      "sha256": "d0441de37134036a8d244f7e726c8253b738ae3df97073fbdb9c54570dffd8c2"
+    },
+    {
+      "path": "analyse/MCY_AUTH_EMAIL_WEB_ARTIFACT_2026-10-11.json",
+      "sha256": "9a40ba7f201a76d42ba038349164e2205542b432df74c7c923bc9b7eb15323ec"
+    },
+    {
+      "path": "analyse/MCY_AUTH_EMAIL_HOSTED_2026-10-11.json",
+      "sha256": "35dd2e5fabb74e57ee9ec83d6c690744d306fd2ce37953d48cba71a686312e3d"
+    }
+  ],
+  "liveTestSideEffects": {
+    "onlyDisposableActors": [
+      "LEARNER_A",
+      "LEARNER_B"
+    ],
+    "maxNewConsentEvents": 12,
+    "maxNewCheckins": 2,
+    "maxNewObservations": 1,
+    "fictionalPayloadOnly": true,
+    "appendOnlyEventsRemain": true,
+    "noCustomerAccountWrites": true
+  },
+  "postApplyRequired": [
+    "Verify current project/org and permissions immediately before execution; current SQL and official ledger must match baseline.",
+    "Read back ledger21, exact SQL bodies, function owners/search_path/ACL, private USAGE and denied old/client helper paths.",
+    "Verify Owner MD5/OID/ACL and AI-off/version1/model-unset unchanged.",
+    "Reauthenticate distinct confirmed disposable identities; verify authority independently of helper labels; no grant/extension.",
+    "Run bounded actor/current/stale/revoked-consent/retry/cross-user/anonymous/direct-table negative API matrix and stored-row readback.",
+    "Observe bounded errors/logs and final counts. On failure stop new client writer; do not claim in-flight transactions cancelled."
+  ],
+  "excluded": [
+    "Production",
+    "Other pending migrations",
+    "AI enablement/inference",
+    "Role grants/expiry extension",
+    "Owner AI config save",
+    "Storage/media/content approval",
+    "Auth email triggers"
+  ],
+  "ownerPacket": {
+    "path": "analyse/MCY_LEARNER_WRITE_OPERATION_2026-10-11.md",
+    "sha256": "b64d52f211b6a1bf179b2989f1683f18824903b4f88a6d956f79000969c09aa0"
+  }
+}

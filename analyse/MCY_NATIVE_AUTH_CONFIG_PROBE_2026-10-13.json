@@ -1,0 +1,28 @@
+{
+  "kind": "NativeAuthCallbackReadOnlyConfigProbe",
+  "capturedAt": "2026-10-12T17:56:38.988Z",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "siteUrl": "https://motchutyoga.magicpendigital.com",
+  "additionalRedirectUrls": [
+    "https://mcy-git-codex-mcy-p1-preview-magicpens-projects.vercel.app/auth/callback",
+    "motchutyoga://auth/callback",
+    "http://127.0.0.1:5174/auth/callback",
+    "http://localhost:5174/auth/callback",
+    "https://motchutyoga.magicpendigital.com/auth/callback",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher",
+    "https://motchutyoga.magicpendigital.com/auth/callback?email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN",
+    "http://localhost:5174/auth/callback?email_locale=vi-VN",
+    "http://127.0.0.1:5174/auth/callback?email_locale=vi-VN",
+    "https://motchutyoga.magicpendigital.com/auth/callback?email_locale=en-US",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=owner&email_locale=en-US",
+    "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=en-US",
+    "http://localhost:5174/auth/callback?email_locale=en-US",
+    "http://127.0.0.1:5174/auth/callback?email_locale=en-US"
+  ],
+  "declaredDifferencePaths": [],
+  "nativeExactAllowed": false,
+  "cloudMutation": false
+}

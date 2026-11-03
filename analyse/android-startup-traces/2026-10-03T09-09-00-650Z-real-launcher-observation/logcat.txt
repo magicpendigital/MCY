@@ -1,0 +1,98 @@
+10-03 14:13:22.069  1756  4212 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 14:15:12.151  1756  4232 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 14:32:34.809  1756  1789 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10262 user=-1: installPackageLI
+10-03 14:32:34.810  1756  1789 I ActivityManager: Killing 28347:com.nilaza.motchutyoga.mcydebug/u0a262 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to installPackageLI
+10-03 14:32:34.811  1756  1789 W ActivityTaskManager: Force removing ActivityRecord{f1b7e16 u0 com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} t745 f}}: app died, no saved state
+10-03 14:32:35.058  1756  1821 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10262 user=0: pkg removed
+10-03 14:32:40.096  1756  3852 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10262 user=0: start instr
+10-03 14:32:40.120  1756  1790 I ActivityManager: Start proc 4427:com.nilaza.motchutyoga.mcydebug/u0a262 for added application com.nilaza.motchutyoga.mcydebug
+10-03 14:32:41.659  1756  3852 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 10262
+10-03 14:32:42.519  1756  1790 I ActivityManager: Start proc 4473:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0i312 for  {com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+10-03 14:32:43.876  1756  4245 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10262
+10-03 14:32:44.026  1756  1790 I ActivityManager: Start proc 4577:com.nilaza.motchutyoga.mcydebug.test/u0a265 for next-top-activity {com.nilaza.motchutyoga.mcydebug.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity}
+10-03 14:32:45.234  1756  4245 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10262 user=0: finished inst
+10-03 14:32:45.243  1756  4245 I ActivityManager: Killing 4427:com.nilaza.motchutyoga.mcydebug/u0a262 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to finished inst
+10-03 14:32:46.915  1756  1789 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10262 user=-1: deletePackageX
+10-03 14:32:47.371  1756  1821 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10262 user=0: pkg removed
+10-03 14:32:50.965  1756  1821 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug.test appid=10265 user=0: pkg removed
+10-03 14:32:50.965  1756  1821 I ActivityManager: Killing 4577:com.nilaza.motchutyoga.mcydebug.test/u0a265 (adj 910): stop com.nilaza.motchutyoga.mcydebug.test due to pkg removed
+10-03 14:32:51.019  1756  1789 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug.test appid=10265 user=-1: deletePackageX
+10-03 14:34:29.485  1756  5138 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10266 user=0: start instr
+10-03 14:34:29.512  1756  1790 I ActivityManager: Start proc 5648:com.nilaza.motchutyoga.mcydebug/u0a266 for added application com.nilaza.motchutyoga.mcydebug
+10-03 14:34:30.820  1756  2301 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 10266
+10-03 14:34:31.627  1756  1790 I ActivityManager: Start proc 5685:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0i313 for  {com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+10-03 14:34:32.851  1756  5138 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10266
+10-03 14:34:33.058  1756  1790 I ActivityManager: Start proc 5760:com.nilaza.motchutyoga.mcydebug.test/u0a269 for next-top-activity {com.nilaza.motchutyoga.mcydebug.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity}
+10-03 14:34:34.023  1756  2636 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10266 user=0: finished inst
+10-03 14:34:34.025  1756  2636 I ActivityManager: Killing 5648:com.nilaza.motchutyoga.mcydebug/u0a266 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to finished inst
+10-03 14:34:34.854  1756  1789 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10266 user=-1: deletePackageX
+10-03 14:34:35.125  1756  1821 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10266 user=0: pkg removed
+10-03 14:34:36.545  1756  1789 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug.test appid=10269 user=-1: deletePackageX
+10-03 14:34:36.545  1756  1789 I ActivityManager: Killing 5760:com.nilaza.motchutyoga.mcydebug.test/u0a269 (adj 910): stop com.nilaza.motchutyoga.mcydebug.test due to deletePackageX
+10-03 14:34:36.609  1756  1821 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug.test appid=10269 user=0: pkg removed
+10-03 14:39:18.436  1756  2301 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10271 user=0: start instr
+10-03 14:39:18.462  1756  1790 I ActivityManager: Start proc 6725:com.nilaza.motchutyoga.mcydebug/u0a271 for added application com.nilaza.motchutyoga.mcydebug
+10-03 14:39:19.522  1756  4492 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 10271
+10-03 14:39:20.106  1756  1790 I ActivityManager: Start proc 6759:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0i314 for  {com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+10-03 14:39:29.258  1756  2301 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} from uid 10271
+10-03 14:39:29.301  1756  1790 I ActivityManager: Start proc 6869:com.nilaza.motchutyoga.mcydebug.test/u0a273 for next-top-activity {com.nilaza.motchutyoga.mcydebug.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity}
+10-03 14:39:29.933  1756  2301 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10271 user=0: finished inst
+10-03 14:39:29.938  1756  2301 I ActivityManager: Killing 6725:com.nilaza.motchutyoga.mcydebug/u0a271 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to finished inst
+10-03 14:39:31.851  1756  1789 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10271 user=-1: deletePackageX
+10-03 14:39:32.004  1756  1821 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10271 user=0: pkg removed
+10-03 14:39:33.099  1756  1789 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug.test appid=10273 user=-1: deletePackageX
+10-03 14:39:33.101  1756  1789 I ActivityManager: Killing 6869:com.nilaza.motchutyoga.mcydebug.test/u0a273 (adj 910): stop com.nilaza.motchutyoga.mcydebug.test due to deletePackageX
+10-03 14:39:33.156  1756  1821 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug.test appid=10273 user=0: pkg removed
+10-03 14:40:31.855  1756  4235 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 14:43:47.930  1756  1817 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 14:43:48.111  1756  1790 I ActivityManager: Start proc 7647:com.nilaza.motchutyoga.mcydebug/u0a274 for next-top-activity {com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity}
+10-03 14:43:49.539  1756  1790 I ActivityManager: Start proc 7764:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0i315 for  {com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+10-03 15:06:12.579  1756  2055 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10274 user=0: from pid 10559
+10-03 15:06:12.580  1756  2055 I ActivityManager: Killing 7647:com.nilaza.motchutyoga.mcydebug/u0a274 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to from pid 10559
+10-03 15:06:12.585  1756  2055 W ActivityTaskManager: Force removing ActivityRecord{42b6d80 u0 com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} t762 f}}: app died, no saved state
+10-03 15:06:12.901  1756  5136 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 15:06:12.953  1756  1790 I ActivityManager: Start proc 10600:com.nilaza.motchutyoga.mcydebug/u0a274 for next-top-activity {com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity}
+10-03 15:06:13.651  1756  2055 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0 }: process is bad
+10-03 15:06:13.655  1756  4492 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:0 }: process is bad
+10-03 15:06:13.885  1756  4492 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:1 }: process is bad
+10-03 15:06:13.890  1756  4492 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:1 }: process is bad
+10-03 15:28:32.587  1756  2918 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10274 user=0: from pid 13641
+10-03 15:28:32.589  1756  2918 I ActivityManager: Killing 10600:com.nilaza.motchutyoga.mcydebug/u0a274 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to from pid 13641
+10-03 15:28:32.592  1756  2918 W ActivityTaskManager: Force removing ActivityRecord{c54b9b2 u0 com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} t763 f}}: app died, no saved state
+10-03 15:28:32.858  1756  2636 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 15:28:32.959  1756  1790 I ActivityManager: Start proc 13686:com.nilaza.motchutyoga.mcydebug/u0a274 for next-top-activity {com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity}
+10-03 15:28:33.779  1756  4483 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0 }: process is bad
+10-03 15:28:33.783  1756  1775 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:0 }: process is bad
+10-03 15:28:34.087  1756  3852 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:1 }: process is bad
+10-03 15:28:34.093  1756  3852 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:1 }: process is bad
+10-03 15:55:28.061  1756  4270 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 15:57:25.271  1756  2723 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10274 user=0: from pid 17797
+10-03 15:57:25.272  1756  2723 I ActivityManager: Killing 13686:com.nilaza.motchutyoga.mcydebug/u0a274 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to from pid 17797
+10-03 15:57:25.274  1756  2723 W ActivityTaskManager: Force removing ActivityRecord{f355607 u0 com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} t764 f}}: app died, no saved state
+10-03 15:57:25.529  1756  4212 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 15:57:25.580  1756  1790 I ActivityManager: Start proc 17825:com.nilaza.motchutyoga.mcydebug/u0a274 for next-top-activity {com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity}
+10-03 15:57:26.082  1756  2636 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0 }: process is bad
+10-03 15:57:26.085  1756  3852 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:0 }: process is bad
+10-03 15:57:26.272  1756  2636 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:1 }: process is bad
+10-03 15:57:26.277  1756  3852 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:1 }: process is bad
+10-03 16:01:09.080  1756  1780 I ActivityManager: Killing 17825:com.nilaza.motchutyoga.mcydebug/u0a274 (adj 905): remove task
+10-03 16:01:26.179  1756  2055 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity bnds=[437,297][643,657]} from uid 10131
+10-03 16:01:26.210  1756  1790 I ActivityManager: Start proc 18803:com.nilaza.motchutyoga.mcydebug/u0a274 for next-top-activity {com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity}
+10-03 16:01:26.734  1756  1790 I ActivityManager: Start proc 18832:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0i319 for  {com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+10-03 16:02:11.720  1756  1780 I ActivityManager: Killing 18803:com.nilaza.motchutyoga.mcydebug/u0a274 (adj 900): remove task
+10-03 16:02:11.875  1756  1774 W ActivityManager: Scheduling restart of crashed service com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0 in 20955ms for connection
+10-03 16:02:58.312  1756  4496 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity bnds=[437,297][643,657]} from uid 10131
+10-03 16:02:58.337  1756  1790 I ActivityManager: Start proc 19159:com.nilaza.motchutyoga.mcydebug/u0a274 for next-top-activity {com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity}
+10-03 16:02:58.867  1756  1790 I ActivityManager: Start proc 19186:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0i320 for  {com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0}
+10-03 16:02:58.905 19159 19200 W chromium: [WARNING:net/dns/dns_config_service_android.cc:69] Failed to read DnsConfig.
+10-03 16:02:59.051 19159 19159 W Capacitor: Unable to read file at path public/plugins
+10-03 16:02:59.275  1756  1776 I ActivityTaskManager: Displayed com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity: +961ms
+10-03 16:02:59.631 19159 19159 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-03 16:02:59.632 19159 19159 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-03 16:02:59.633 19159 19159 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-03 16:02:59.794 19159 19159 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-03 16:02:59.795 19159 19159 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-03 16:02:59.795 19159 19159 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-03 16:02:59.796 19159 19159 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-03 16:02:59.797 19159 19159 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-03 16:02:59.863 19159 19159 I Capacitor/Console: File:  - Line 333 - Msg: undefined

@@ -1,0 +1,30 @@
+{
+  "kind": "NativeAuthRestoreFailureReadOnlyDiagnostic",
+  "startedAt": "2026-10-14T06:39:18.432Z",
+  "capturedAt": "2026-10-14T06:39:26.754Z",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "approvalSha256": "8e6e6adedd18779fc5ae4d458418de576f768ce680670d9b92aa4f8e11eccbd7",
+  "trialNonce": "9c4e4983-694e-453d-9903-132c0235c3bd",
+  "sourceSha256": "f446802629cd64ed502ae44662b31a0e902eb18f2a3e58f00e009be1288a9158",
+  "reviewSha256": "f0147b20616b0b8dbc47ebcaf644c755ad9f20bbe9ca6106c9df0a924680a124",
+  "intentSha256AtStart": "ee9515e08b81f268cd960764b635c71c53f45d539e2051393084a8f21fb2f2a0",
+  "package": "com.nilaza.motchutyoga.mcydebug",
+  "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e",
+  "result": {
+    "status": "APPROVED_A_AUTH_VALID",
+    "httpStatus": 200,
+    "confirmed": true,
+    "approvedServerA": true,
+    "activeRoute": "home",
+    "readyComplete": true,
+    "nativeAndroid": true,
+    "localhostOrigin": true,
+    "approvedCachedA": true,
+    "refreshTokenPresent": true
+  },
+  "sessionInjectedOrRefreshedByProbe": false,
+  "sdkInitializedByProbe": false,
+  "uiNavigation": false,
+  "emailOrDataWritesByProbe": false,
+  "tokenIdentityOrRawMetadataExported": false
+}

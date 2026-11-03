@@ -1,0 +1,82 @@
+{
+  "kind": "AuthEmailDockerRehearsal",
+  "capturedAt": "2026-10-11T09:23:06.544Z",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "GoTrue subject/body confirmation: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "Authenticated locale update is actor-bound, preserves unrelated metadata and Auth role; anonymous update denied",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body magic_link: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body invite: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body recovery: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body email_change: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body reauthentication: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body password_changed: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body email_changed: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body phone_changed: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body identity_linked: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body identity_unlinked: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body mfa_factor_enrolled: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "GoTrue subject/body mfa_factor_unenrolled: VI/EN, request override both directions, unknown/object metadata fallback; existing OTP data cannot alter metadata or roles",
+      "status": "PASS"
+    },
+    {
+      "name": "Owned disposable containers, volumes and network removed; unrelated Docker project untouched",
+      "status": "PASS"
+    }
+  ],
+  "images": {
+    "dbImage": "public.ecr.aws/supabase/postgres:17.6.1.139",
+    "mailImage": "public.ecr.aws/supabase/mailpit:v1.30.2",
+    "authImage": "public.ecr.aws/supabase/gotrue:v2.191.0"
+  },
+  "scenarios": 13,
+  "rendererCases": 78,
+  "notificationTriggerTests": false,
+  "renderedThrough": "Common GoTrue MagicLink subject/body renderer",
+  "harnessSha256": "f8448f5ace04e08c79c9a710cd6abfe22f29dcd2d456050d7a11f7473643d18e",
+  "templateManifestSha256": "2176eedb6c5788ca806774e450f59cf7b4dc039ab66aa662708506f0f4afee7c",
+  "cloudRequests": false,
+  "externalEmails": false,
+  "credentialStoreReads": false,
+  "cleanupVerified": true
+}

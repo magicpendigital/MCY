@@ -1,0 +1,49 @@
+{
+  "kind": "IsolatedNativeCheckinDiagnosticOriginalSourceRun",
+  "status": "ONE_PASS_ONE_FAIL",
+  "sourceReviewSha256": "18ffc368e55f73c6a11f3573c969aa604d2e5393959663882412cb040a981ffb",
+  "specSha256": "a0aa6f329862bfcdbce24276c044a1a85e4ece235d942d833cd275616e78c07b",
+  "configSha256": "3bd6e1f9d2c10fec9a6b6fb5ed7ef89bae223bce406747355f3813de7b89a9d7",
+  "prototypeSha256": "58b8845cf5790c251e85554a27a74b9cf6d41f1c1568330868a205a4bbb84bd0",
+  "command": "node node_modules/@playwright/test/cli.js test --config analyse/native-checkin-diagnostics/playwright.config.mjs",
+  "environment": {
+    "browser": "msedge",
+    "port": 4298,
+    "viteConfigLoader": "runner",
+    "workers": 1,
+    "supabase": "mcy-playwright.invalid",
+    "fixtureSessionOnly": true,
+    "realSupabaseHostAbort": true
+  },
+  "exitCode": 1,
+  "tests": [
+    {
+      "name": "reload/session hydration/Journey without save click",
+      "status": "PASS",
+      "durationSeconds": 8.5,
+      "writerRequests": 0
+    },
+    {
+      "name": "leave initiating route while account-bound client preparation is delayed",
+      "status": "FAIL_DESIRED_PRE_DISPATCH_CANCELLATION",
+      "durationSeconds": 5.8,
+      "expectedWriterRequests": 0,
+      "actualWriterRequests": 1,
+      "fixturePayload": {
+        "bodyStatus": "none_now",
+        "energyLevel": 2,
+        "captureType": "standalone",
+        "observations": 0
+      }
+    }
+  ],
+  "scope": "Web shared-source diagnostic: explicit save initiated, delayed session preparation, route left before dispatch. Observed after confirmed session return, two animation frames and one-second negative window.",
+  "confirmedSourceDefect": "Missing initiating route guard after asynchronous account-bound client preparation allows a late save dispatch after navigation.",
+  "nativeIncidentCauseProven": false,
+  "automaticNoClickSaveReproduced": false,
+  "liveDeviceAccess": false,
+  "realCloudWrites": 0,
+  "applicationSourceEdited": false,
+  "managedViteClosed": true,
+  "next": "Prepare isolated source candidate with initiating continuation guard before dispatch, preserve original source/APK/frozen trial and review before any rollout."
+}

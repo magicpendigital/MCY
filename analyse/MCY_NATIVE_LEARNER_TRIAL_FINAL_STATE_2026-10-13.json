@@ -1,0 +1,95 @@
+{
+  "kind": "ManualNativeLearnerTrialFinalStoredState",
+  "status": "NOT_ACCEPTED_EXCESS_CHECKIN",
+  "releaseId": "mcy-native-learner-trial-20261013",
+  "manifestSha256": "71bf0aa806e92d792bd55ad23592af22a78d76733a97af5f6ffa4f97ac19865d",
+  "trialNonce": "2d8afaa2-fac3-45c4-8b7c-c41e10dd0184",
+  "capturedAt": "2026-10-13T07:35:49.71764+00:00",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "finalRevokeReceipt": "analyse/MCY_NATIVE_PROGRESS_LEARNER_B_AFTER_REVOKE_SQL_2026-10-13.json",
+  "unexpectedRowReceipt": "analyse/MCY_NATIVE_PROGRESS_LEARNER_B_AFTER_REOPEN_SQL_2026-10-13.json",
+  "finalCounts": [
+    {
+      "label": "LEARNER_A",
+      "profiles": 1,
+      "consents": 10,
+      "checkins": 2,
+      "observations": 1,
+      "wellbeing": "revoked"
+    },
+    {
+      "label": "LEARNER_B",
+      "profiles": 1,
+      "consents": 6,
+      "checkins": 3,
+      "observations": 0,
+      "wellbeing": "revoked"
+    }
+  ],
+  "historyTotals": {
+    "profiles": 2,
+    "consents": 16,
+    "checkins": 5,
+    "observations": 1
+  },
+  "newEffects": {
+    "profiles": 2,
+    "authLocaleUpdates": 2,
+    "consentEvents": 4,
+    "checkins": 3,
+    "observations": 0
+  },
+  "approvedNewEffects": {
+    "profiles": 2,
+    "authLocaleMetadataUpdates": 2,
+    "wellbeingConsentEvents": 4,
+    "checkins": 2,
+    "observations": 0
+  },
+  "checkinBudget": {
+    "approvedMaximum": 2,
+    "observedNew": 3,
+    "excess": 1
+  },
+  "profileRequestCountEvidence": "SOURCE_PLUS_USER_REPORTED_SINGLE_COMPLETION; not independent HTTP telemetry",
+  "aAndBWellbeingFinallyRevoked": true,
+  "oldHistoryAndPreviouslyAcceptedRowsRetained": true,
+  "unexpectedRowRetained": true,
+  "agentWrites": 0,
+  "deletions": 0,
+  "remainingCloudWrites": 0,
+  "executionClosure": "TERMINATED_AFTER_FINAL_REVOCATION; no new live writes or negative UI save",
+  "acceptance": {
+    "newUserDirectedSignInA": "PASS_CURRENT_NATIVE_SERVER_ACTOR_AFTER_RECONCILIATION; pre-profile auth missing",
+    "newUserDirectedSignInB": "PASS_BEFORE_PROFILE_CURRENT_NATIVE_SERVER_ACTOR",
+    "profileA": "PARTIAL_EXACT_FIXTURE_AND_PRE_PROFILE_AUTH",
+    "profileB": "PASS_ROW_AND_LOCALE_SCOPE",
+    "singleGrantA": "PASS",
+    "singleGrantB": "PASS",
+    "singleCheckinA": "PASS",
+    "singleCheckinB": "PASS",
+    "userRecentIconReopenA": "PASS_MANUAL_SCOPE_USER_VISUAL_REPORT",
+    "userRecentIconReopenB": "CURRENT_AUTH_PASS_ZERO_EFFECT_DATA_FAIL",
+    "finalRevokeA": "PASS",
+    "finalRevokeB": "PASS",
+    "revokedUiSaveA": "PASS_ZERO_NEW_ROW_UI_SCOPE_NOT_FRESH_SERVER_DENIAL",
+    "revokedUiSaveB": "NOT_RUN_AFTER_HALT",
+    "wholeTrial": "FAIL_EXCESS_CHECKIN"
+  },
+  "control": {
+    "ai": {
+      "enabled": false,
+      "version": 1,
+      "modelUnset": true
+    },
+    "ledgerApplied": 21,
+    "ownerDefinitionMd5": "5ad67fe52caf79bd07c51caa0c30db92",
+    "writerBodyMd5": "ba61a962de9c9fdfc364ad6fe83837e6",
+    "writerDefinitionMd5": "56bb448ca2dcb1af60d01e097ef974f1"
+  },
+  "causalInvestigation": "OPEN; user reports only viewing Journey, static source review does not show startup/resume writer, bounded log diagnostic prepared but not yet invoked",
+  "independentExecutionReview": "PENDING",
+  "nativeInstalledArtifact": "Same exact approved parallel APK verified in after-revoke observer",
+  "productionAiIosOrContentClearance": false,
+  "next": "Finish source/log reconciliation and isolated tests; no repeated live write trial, no new grants, no deletion, no deployment from failed acceptance."
+}

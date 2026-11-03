@@ -1,0 +1,24 @@
+10-03 15:57:25.271  1756  2723 I ActivityManager: Force stopping com.nilaza.motchutyoga.mcydebug appid=10274 user=0: from pid 17797
+10-03 15:57:25.272  1756  2723 I ActivityManager: Killing 13686:com.nilaza.motchutyoga.mcydebug/u0a274 (adj 0): stop com.nilaza.motchutyoga.mcydebug due to from pid 17797
+10-03 15:57:25.274  1756  2723 W ActivityTaskManager: Force removing ActivityRecord{f355607 u0 com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} t764 f}}: app died, no saved state
+10-03 15:57:25.529  1756  4212 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity} from uid 2000
+10-03 15:57:25.580  1756  1790 I ActivityManager: Start proc 17825:com.nilaza.motchutyoga.mcydebug/u0a274 for next-top-activity {com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity}
+10-03 15:57:26.082  1756  2636 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:0 }: process is bad
+10-03 15:57:26.085  1756  3852 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:0 }: process is bad
+10-03 15:57:26.120 17825 17866 W chromium: [WARNING:net/dns/dns_config_service_android.cc:69] Failed to read DnsConfig.
+10-03 15:57:26.171 17825 17825 D Capacitor: Starting BridgeActivity
+10-03 15:57:26.192 17825 17825 D Capacitor: Registering plugin instance: CapacitorCookies
+10-03 15:57:26.197 17825 17825 D Capacitor: Registering plugin instance: WebView
+10-03 15:57:26.199 17825 17825 D Capacitor: Registering plugin instance: CapacitorHttp
+10-03 15:57:26.201 17825 17825 D Capacitor: Registering plugin instance: SystemBars
+10-03 15:57:26.204 17825 17825 D Capacitor: Registering plugin instance: App
+10-03 15:57:26.206 17825 17825 D Capacitor: Registering plugin instance: Keyboard
+10-03 15:57:26.208 17825 17825 D Capacitor: Registering plugin instance: StatusBar
+10-03 15:57:26.241 17825 17825 W Capacitor: Unable to read file at path public/plugins
+10-03 15:57:26.245 17825 17825 D Capacitor: Loading app at https://localhost
+10-03 15:57:26.272  1756  2636 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService0:1 }: process is bad
+10-03 15:57:26.277  1756  3852 W ActivityManager: Unable to launch app com.nilaza.motchutyoga.mcydebug/10274 for service Intent { cmp=com.nilaza.motchutyoga.mcydebug/org.chromium.content.app.SandboxedProcessService1:1 }: process is bad
+10-03 15:57:26.286 17825 17862 D Capacitor: Handling local request: https://localhost/
+10-03 15:57:26.306 17825 17825 D Capacitor: App started
+10-03 15:57:26.309 17825 17825 D Capacitor: App resumed
+10-03 15:57:26.451  1756  1776 I ActivityTaskManager: Displayed com.nilaza.motchutyoga.mcydebug/com.nilaza.motchutyoga.MainActivity: +918ms

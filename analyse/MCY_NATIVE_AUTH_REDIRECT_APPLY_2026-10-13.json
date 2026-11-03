@@ -1,0 +1,17 @@
+{
+  "kind": "SelectiveNativeAuthRedirectApply",
+  "startedAt": "2026-10-12T18:03:46.211Z",
+  "projectRef": "mhumbczqrzutdnraafhs",
+  "organizationId": "rzbpjfrndhrtxagpgdre",
+  "preflightSha256": "2c022226a96d0e7f7ee2a3ec7e4aa454afe5805a8faab73ceb84b93e4218c9f2",
+  "phase": "PASS_READBACK",
+  "requestedUserTask": "Implement next step and repair reported native email routing failure",
+  "addedOnly": "motchutyoga-mcydebug://auth/callback",
+  "unrelatedPreserved": true,
+  "emailSent": false,
+  "databaseMigration": false,
+  "roleChanges": false,
+  "aiChanges": false,
+  "automaticRetry": false,
+  "completedAt": "2026-10-12T18:03:50.662Z"
+}

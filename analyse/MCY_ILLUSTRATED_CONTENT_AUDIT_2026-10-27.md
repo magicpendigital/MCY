@@ -27,13 +27,13 @@ Mục tiêu: để Owner (và người được giao) **đọc bài có hình ng
 - **Cá nhân → "Dành cho biên tập → Xem trước nội dung"** — chỉ hiện khi máy chủ xác nhận tài khoản có bài đọc được giao (Owner hoặc reviewer). Học viên thường, khách, hoặc backend chưa có tính năng: không thấy gì (một lần thăm dò mỗi tài khoản mỗi phiên).
 - Danh sách 14 bài với nhãn **PREVIEW · CHƯA DUYỆT** hoặc **ĐÃ DUYỆT · CHƯA XUẤT BẢN**; trình đọc theo bước: dấu hiệu dừng đặt lên đầu, chuẩn bị, từng bước kèm ảnh (alt, chú thích, công bố "ảnh AI"), điểm còn chặn ở cuối. Ô ảnh chưa sản xuất/bị chặn hiển thị đúng lý do, không dùng ảnh khác thay.
 - Máy chủ: action mới `read_reading_preview` trong `owner-control-plane` (cùng kiểm danh tính, quyền Owner/được giao và đúng phiên bản như luồng duyệt). Không `candidateId` → danh sách nhẹ; có `candidateId` → nội dung một bài + **URL ký 15 phút** cho ảnh từ bucket riêng `reading-preview` (tên tệp = SHA-256). Thiếu ảnh/kho → bỏ qua, không lỗi.
-- Migration `20261027090000_reading_preview_bucket.sql`: bucket riêng, không policy → chỉ service role truy cập. Script `scripts/upload-reading-preview-media.mjs`: mặc định **dry run** (đã chạy: 55 ảnh duy nhất, hash khớp JSON); `--apply` cần Owner đồng ý và khóa server trong môi trường.
+- Migration `20261030063252_reading_preview_bucket.sql`: bucket riêng, không policy → chỉ service role truy cập. Script `scripts/upload-reading-preview-media.mjs`: mặc định **dry run** (đã chạy: 55 ảnh duy nhất, hash khớp JSON); `--apply` cần Owner đồng ý và khóa server trong môi trường.
 - Kiểm thử: handler 11/11 (3 ca mới), Playwright `tests/reading-preview.spec.ts` 4/4, build chuẩn PASS (runtime 28, bundle secret scan 29 tệp, Sites 4/4), `check:reading-candidates` vẫn khớp (14 bài). Hai fixture nghiêm ngặt (`account-deletion`, `learner-write-review`) được thêm 1 dòng trả 403 cho lần thăm dò.
 
 ## 4. Để thấy trong bản test — các bước cần Owner đồng ý (chưa làm)
 
 1. Commit nhóm thay đổi nội dung/duyệt (nay đang untracked) theo từng nhóm, để các bản build lấy được.
-2. Áp migration `20261023171220_content_review_reading_scope.sql` và `20261027090000_reading_preview_bucket.sql` lên `mcy-staging` (ghi cloud; mục tiêu/ledger xác nhận lại trước khi áp).
+2. Áp migration `20261030063241_content_review_reading_scope.sql` và `20261030063252_reading_preview_bucket.sql` lên `mcy-staging` (ghi cloud; mục tiêu/ledger xác nhận lại trước khi áp).
 3. Chạy `node scripts/upload-reading-preview-media.mjs --apply` (ghi ~100 MB vào bucket riêng; cần khóa server do Owner đặt vào môi trường, không vào chat).
 4. Triển khai lại Edge `owner-control-plane` (bản mới có `read_reading_preview` và danh sách bài đọc).
 5. Build web + AAB mới (versionCode 3) từ commit sạch; Owner cài qua Internal testing và đăng nhập bằng tài khoản Owner.

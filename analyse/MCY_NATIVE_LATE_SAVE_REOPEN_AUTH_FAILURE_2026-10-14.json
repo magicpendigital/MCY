@@ -1,0 +1,13 @@
+{
+  "kind": "NativeLateSaveUserReportedSessionRestoreFailure",
+  "capturedAt": "2026-10-14T06:27:08.541Z",
+  "manifestSha256": "02817156939cf9cfc3497396cd25f0f10042300ebea244e93742bdedb968020f",
+  "trialNonce": "9c4e4983-694e-453d-9903-132c0235c3bd",
+  "userReported": "Khi quyền lưu check-in ở Tắt, và đóng app, khi mở lại app về màn hình Đăng nhập.",
+  "status": "FAIL_USER_REPORTED_SESSION_RESTORATION",
+  "independentCurrentNativeAuthVerified": false,
+  "causationEstablished": false,
+  "sourceDrift": [],
+  "grantOrCheckinInstructed": false,
+  "agentDataWrites": false
+}

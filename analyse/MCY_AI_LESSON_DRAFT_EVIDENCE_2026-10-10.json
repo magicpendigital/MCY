@@ -1,0 +1,128 @@
+{
+  "kind": "DraftLessonEvidence",
+  "dateBangkok": "2026-10-10",
+  "status": "DRAFT_NOT_APPROVED_FOR_PRACTICE",
+  "draft": {
+    "id": "preparation-draft",
+    "status": "draft",
+    "title": "Dành một khoảng cho buổi học",
+    "purpose": "Mẫu bài giảng bằng hình, text và audio để review cách học. Chưa là một buổi tập yoga đã duyệt.",
+    "sections": [
+      {
+        "id": "welcome",
+        "title": "Bắt đầu vừa đủ",
+        "image": "/assets/practice/preparation-draft/room.png",
+        "audio": "/assets/practice/preparation-draft/welcome.wav",
+        "text": "Trước khi chọn một bài học, bạn có thể dành một chút thời gian xem mình đang có bao nhiêu phút. Không cần đặt mục tiêu hoàn thành cả khóa học hôm nay.\n\nBài mẫu này giúp bạn xem cách MCY trình bày nội dung. Hình minh họa không mô tả tư thế và audio không hướng dẫn động tác.",
+        "audioLocale": "en-US"
+      },
+      {
+        "id": "space",
+        "title": "Chọn không gian của bạn",
+        "image": "/assets/practice/preparation-draft/room.png",
+        "audio": "/assets/practice/preparation-draft/space.wav",
+        "text": "Chọn một nơi quen thuộc để xem nội dung, có thể đọc màn hình và nghe rõ nếu bạn dùng audio. Bạn có thể học bằng text nếu chưa tiện nghe.\n\nCác vật dụng trong hình chỉ minh họa không gian; chưa phải yêu cầu chuẩn bị cho một buổi tập cụ thể.",
+        "audioLocale": "en-US"
+      },
+      {
+        "id": "choice",
+        "title": "Bạn giữ quyền lựa chọn",
+        "image": "/assets/practice/preparation-draft/room.png",
+        "audio": "/assets/practice/preparation-draft/choice.wav",
+        "text": "Một kế hoạch học cần cho biết nội dung, thời lượng thật và nguồn duyệt. Bạn có thể xem lại lựa chọn, dừng hoặc bỏ qua phản hồi.\n\nKhông thay đổi, khó chịu hơn và chưa chắc đều là phản hồi hợp lệ. MCY không xem việc thiếu phản hồi là tiến bộ. Bài nháp này chưa được đưa vào gợi ý tập bằng AI.",
+        "audioLocale": "en-US"
+      }
+    ]
+  },
+  "sourceSha256": "f62dca681cb31e07fb536b5a07783b44eedd8b2d0388078fa7d140ab0d0df907",
+  "media": [
+    {
+      "path": "public/assets/practice/preparation-draft/choice.wav",
+      "bytes": 1099052,
+      "sha256": "2f75a005ed7d5774b4b0c82f825217ed31a550d249acb56d981c839eb8c79906",
+      "audio": {
+        "locale": "en-US",
+        "voice": "Microsoft Zira Desktop",
+        "durationSeconds": 24.921,
+        "format": "RIFF/WAVE"
+      }
+    },
+    {
+      "path": "public/assets/practice/preparation-draft/room.png",
+      "bytes": 2502940,
+      "sha256": "7e1a324171b280389cc3bc1d49753136c76f08fea987f3e38235dda50c90f251",
+      "dimensions": {
+        "width": 1536,
+        "height": 1024
+      }
+    },
+    {
+      "path": "public/assets/practice/preparation-draft/space.wav",
+      "bytes": 783984,
+      "sha256": "64fb7b4447815289198a944d7be87eeedbdd206e8c27f88ec636f772e41db887",
+      "audio": {
+        "locale": "en-US",
+        "voice": "Microsoft Zira Desktop",
+        "durationSeconds": 17.776,
+        "format": "RIFF/WAVE"
+      }
+    },
+    {
+      "path": "public/assets/practice/preparation-draft/welcome.wav",
+      "bytes": 826334,
+      "sha256": "0531b1425413f19da0952393ba7c98f9373f9e6d7ffce2f1ba92b14816baddbd",
+      "audio": {
+        "locale": "en-US",
+        "voice": "Microsoft Zira Desktop",
+        "durationSeconds": 18.737,
+        "format": "RIFF/WAVE"
+      }
+    }
+  ],
+  "imageGeneration": {
+    "tool": "image_gen.imagegen",
+    "mode": "text-to-image",
+    "original": "C:/Users/Admin/.codex/generated_images/01a11751-6855-7892-82a3-79f901f16a45/exec-4a4bc804-8d54-4050-9606-03b77b8a31c0.png",
+    "promptRecord": "analyse/MCY_AI_LESSON_DRAFT_2026-10-10.md"
+  },
+  "audioGeneration": {
+    "tool": "Windows System.Speech",
+    "externalProvider": false,
+    "voice": "Microsoft Zira Desktop en-US",
+    "vietnameseAudioAvailable": false
+  },
+  "clinicalApproval": false,
+  "rightsApproval": false,
+  "catalogIncluded": false,
+  "serialSnapshot": {
+    "source": "src/courses/freeCourses.ts",
+    "sourceSha256": "92cfc2e572a9aa94abdce1843609634a536d80ee29eecb55d12d21ddfa9e5436",
+    "metadataFreshness": "Local catalog recorded 2026-09-29; not fresh playback or content review",
+    "courses": [
+      {
+        "id": "gentle",
+        "title": "Một chút chuyển động nhẹ",
+        "clips": 18,
+        "totalClipSeconds": 672,
+        "minClipSeconds": 17,
+        "maxClipSeconds": 64
+      },
+      {
+        "id": "poses",
+        "title": "Làm quen với các tư thế yoga",
+        "clips": 13,
+        "totalClipSeconds": 554,
+        "minClipSeconds": 24,
+        "maxClipSeconds": 54
+      },
+      {
+        "id": "sequences",
+        "title": "Chuỗi tư thế cơ bản",
+        "clips": 7,
+        "totalClipSeconds": 143,
+        "minClipSeconds": 18,
+        "maxClipSeconds": 22
+      }
+    ]
+  }
+}

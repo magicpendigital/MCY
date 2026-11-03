@@ -1,0 +1,47 @@
+diff --git a/src/Prototype.tsx b/src/Prototype.tsx
+index 581fb6a..64849a5 100644
+--- a/src/Prototype.tsx
++++ b/src/Prototype.tsx
+@@ -400,12 +400,13 @@ async function persistCurrentCheckin(
+   state: DemoState,
+   setState: Dispatch<SetStateAction<DemoState>>,
+   captureType: CheckinPayload["captureType"],
++  canDispatch: () => boolean,
+ ) {
+-  if (!state.signedIn || !state.userId || !state.saveFeedbackConsent) return null;
++  if (!canDispatch() || !state.signedIn || !state.userId || !state.saveFeedbackConsent) return null;
+   const expectedUserId = state.userId;
+   const generation = learnerSessionGeneration();
+   const client = await getAccountBoundSupabaseClient(expectedUserId);
+-  if (generation !== learnerSessionGeneration()) return null;
++  if (generation !== learnerSessionGeneration() || !canDispatch()) return null;
+   const payload = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, captureType, state.pendingCheckinIdempotencyKey ?? crypto.randomUUID());
+   const idempotencyKey = payload.idempotencyKey;
+   const current = (previous: DemoState) => generation === learnerSessionGeneration() && isCurrentLearnerSession(previous.signedIn, previous.userId, expectedUserId);
+@@ -1214,7 +1215,7 @@ function ConsentFooter() {
+       if (!saved.matchesRequested) { setError("Quyền dữ liệu đã thay đổi. Kiểm tra và chọn lại trước khi tiếp tục."); return; }
+       if (state.onboardingComplete) {
+         if (!discardDraft && isCheckinAuthReturn(state.authReturnTo) && state.saveFeedbackConsent) {
+-          await persistCurrentCheckin({ ...state, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions, privacyAccepted: true }, setState, "practice_preparation");
++          await persistCurrentCheckin({ ...state, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions, privacyAccepted: true }, setState, "practice_preparation", current);
+         }
+         if (!current()) return;
+         const destination = discardDraft ? (isCheckinAuthReturn(state.authReturnTo) ? "discover" : "home") : normalizeAuthDestination(state.authReturnTo);
+@@ -1263,7 +1264,7 @@ function OnboardingScreen() {
+       await persistProfile(nextState, displayName, nextState.bodyStyle, nextState.locale);
+       if (!current()) return;
+       if (!discardDraft && isCheckinAuthReturn(nextState.authReturnTo) && nextState.saveFeedbackConsent) {
+-        await persistCurrentCheckin({ ...nextState, displayName, onboardingComplete: true }, setState, "practice_preparation");
++        await persistCurrentCheckin({ ...nextState, displayName, onboardingComplete: true }, setState, "practice_preparation", current);
+       }
+       if (!current()) return;
+       setState(previous => !current(previous) ? previous : ({ ...previous,
+@@ -1401,7 +1402,7 @@ function CheckinScreen() {
+     setSaveNotice("");
+     const current = captureContinuation();
+     try {
+-      const remote = await persistCurrentCheckin(state, setState, "standalone");
++      const remote = await persistCurrentCheckin(state, setState, "standalone", current);
+       if (!current()) return;
+       const original = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, "standalone", "comparison");
+       const latestDraft = toLearnerCheckinPayload(latestCheckinState.current, "standalone", original.idempotencyKey);
