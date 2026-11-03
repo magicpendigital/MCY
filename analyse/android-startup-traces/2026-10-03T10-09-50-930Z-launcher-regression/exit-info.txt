@@ -1,0 +1,68 @@
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-10-03 16:46:55.253
+  package: com.nilaza.motchutyoga.mcydebug
+    Historical Process Exit for uid=10274
+        ApplicationExitInfo #0:
+          timestamp=2026-10-03 17:11:34.996 pid=31104 realUid=99328 packageUid=10274 definingUid=10110 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=empty trace=null
+        ApplicationExitInfo #1:
+          timestamp=2026-10-03 17:11:34.995 pid=31070 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=214MB rss=352MB description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #2:
+          timestamp=2026-10-03 17:11:12.110 pid=30894 realUid=99327 packageUid=10274 definingUid=10110 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=51MB rss=163MB description=remove task state=empty trace=null
+        ApplicationExitInfo #3:
+          timestamp=2026-10-03 17:11:12.105 pid=30863 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=213MB rss=352MB description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #4:
+          timestamp=2026-10-03 17:10:38.274 pid=30509 realUid=99326 packageUid=10274 definingUid=10110 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=empty trace=null
+        ApplicationExitInfo #5:
+          timestamp=2026-10-03 17:10:38.274 pid=30470 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=214MB rss=351MB description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #6:
+          timestamp=2026-10-03 17:09:37.110 pid=30261 realUid=99324 packageUid=10274 definingUid=10110 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=empty trace=null
+        ApplicationExitInfo #7:
+          timestamp=2026-10-03 17:09:37.109 pid=30231 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #8:
+          timestamp=2026-10-03 17:09:25.381 pid=29988 realUid=99322 packageUid=10274 definingUid=10110 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=empty trace=null
+        ApplicationExitInfo #9:
+          timestamp=2026-10-03 17:09:25.378 pid=29960 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #10:
+          timestamp=2026-10-03 17:08:51.760 pid=19186 realUid=99320 packageUid=10274 definingUid=10110 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=49MB rss=157MB description=remove task state=empty trace=null
+        ApplicationExitInfo #11:
+          timestamp=2026-10-03 17:08:51.760 pid=19159 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=133MB rss=270MB description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #12:
+          timestamp=2026-10-03 16:02:11.721 pid=18832 realUid=99319 packageUid=10274 definingUid=10110 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=34MB rss=165MB description=remove task state=empty trace=null
+        ApplicationExitInfo #13:
+          timestamp=2026-10-03 16:02:11.720 pid=18803 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=89MB rss=253MB description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #14:
+          timestamp=2026-10-03 16:01:09.080 pid=17825 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=116MB rss=244MB description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #15:
+          timestamp=2026-10-03 15:57:25.272 pid=13686 realUid=10274 packageUid=10274 definingUid=10274 user=0
+          process=com.nilaza.motchutyoga.mcydebug reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=174MB rss=301MB description=stop com.nilaza.motchutyoga.mcydebug due to from pid 17797 state=71 bytes trace=null
