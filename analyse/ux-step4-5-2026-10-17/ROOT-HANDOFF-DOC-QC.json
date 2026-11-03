@@ -1,0 +1,192 @@
+{
+  "executedAt": "2026-10-17T05:34:38.110Z",
+  "reviewer": "/root/step44_independent_qc",
+  "status": "PASS_DOCUMENT_CLAIMS_LINK_PIN_REVIEW",
+  "exitCode": 0,
+  "documentFreezeSha256": "3c1c9d1dbcc8b1e6afe54c4400f5ae47d7cede51a55c0e501041e39781bc74fb",
+  "frozenFilesVerified": 13,
+  "localLinksResolved": 28,
+  "appPinsVerifiedBeforeAfter": 235,
+  "harnessIntakePinsVerifiedBeforeAfter": 20,
+  "manualClaimsReview": {
+    "workerAttribution": true,
+    "rootManualAttribution": true,
+    "latest132Only": true,
+    "own14Pass1BaselineDiagnosticFailProcess1": true,
+    "baselineControl2ScenariosExit0": true,
+    "old37of38FailureRetainedCauseUnproven": true,
+    "oldRootFalsePassInvalidPreserved": true,
+    "residualP3AndLocalLimitsExplicit": true,
+    "noZeroRegressionOrRemoteCiGuarantee": true,
+    "stopBefore46": true
+  },
+  "scope": "Documentation and pin review only; no app/UI tests, source edits, live/native/deploy actions. Root must read final docs separately.",
+  "files": [
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-VERIFICATION.vi.md",
+      "sha256": "482c349d6610a4cd2e04ea835939339a732b123323becffd1830903bfc9facc9"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\CURRENT-STATUS.vi.md",
+      "sha256": "9195cc94306a989916b8ccc5e858cb1fcead0df3d5ea03180f59556a71916e2b"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-FINAL-PINS-VALIDATED.json",
+      "sha256": "05bc5fb7bd8101e203d56b6cf1ede58583ceb99fa5a846fee5a0ed5fa311474b"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-FINAL-PINS.json",
+      "sha256": "83284bb19959fe0c235f1da3177399a64754ea6d25d58695ca6997e895edc050"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INDEPENDENT-ROOT-RECORD-QC.json",
+      "sha256": "6daca4c7537a25af61b8a0b3e5a96e0ef6605f8ff202bdc441384d98516ae346"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INDEPENDENT-APP-QC.vi.md",
+      "sha256": "edcf6c3b4b25ea5761e968e2649e348f765c8b776cd2f1c19553c092a46cbf30"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INDEPENDENT-FINAL-PINS.json",
+      "sha256": "a59ff36e87503c2552d39648b707dbd74166cafd8cd367c814af2e17c39f3d62"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\SOURCE-FREEZE-v2.json",
+      "sha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\EVIDENCE-FREEZE-v2.json",
+      "sha256": "a81bf13ee6d378600658b891c287ae3c01c59dec9b4135edb51217ed4e6b7270"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\baseline-390.png",
+      "sha256": "057ccfd54c21a8f9483e6951c1a92fc8123b5be3a774dedda4c764465a66e839"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\final-after-qc.png",
+      "sha256": "7429f8bf57591270c297558c214651285dcead3236297b8092526401bc7e192c"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\focus-320.png",
+      "sha256": "34bf19575dcee7a8b7494647f7d0a730faca77597b3f746d37889af610136eb1"
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\reflection-390.png",
+      "sha256": "eda327e40010571376253148506ae1bc4c280c683060e392febc25b99db05938"
+    }
+  ],
+  "links": [
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\SOURCE-FREEZE-v2.json"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\EVIDENCE-FREEZE-v2.json"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INDEPENDENT-APP-QC.vi.md"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INDEPENDENT-FINAL-PINS.json"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-FINAL-PINS-VALIDATED.json"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-FINAL-PINS.json"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INDEPENDENT-ROOT-RECORD-QC.json"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\HANDOFF-IMPLEMENTER.vi.md"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\EDITOR-BASELINE-DISPOSITION.vi.md"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INITIAL-APP-QC-FINDINGS.vi.md"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\REVISION2-WORKING-NOTES.vi.md"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\final-after-qc.png"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\focus-320.png"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\reflection-390.png"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\root-verification\\baseline-390.png"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\CURRENT-STATUS.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\SOURCE-FREEZE-v2.json"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\EVIDENCE-FREEZE-v2.json"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-FINAL-PINS-VALIDATED.json"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-FINAL-PINS.json"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\TASK-INTAKE.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\PLAN-CONSOLIDATED.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INTAKE-ADDENDUM.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\FOCUS-FIX-ADDENDUM.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\HANDOFF-IMPLEMENTER.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\INDEPENDENT-APP-QC.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\ROOT-VERIFICATION.vi.md"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\EDITOR-BASELINE-DISPOSITION.vi.md"
+    }
+  ]
+}

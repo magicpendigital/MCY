@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "disposition": "QC harness path-resolution error, not application mutation",
+  "originalEvidence": "initial-freeze-mismatch.json",
+  "cause": "All appInputs matched first. The generic loop then treated candidate-relative manifest.changed paths as root-relative and compared ROOT/src to the candidate hash.",
+  "actualCandidateSha256": "62d64469abe584adf0536154a1a297dee6b745327a40beecca357fef6826b5e6",
+  "expectedCandidateSha256": "62d64469abe584adf0536154a1a297dee6b745327a40beecca357fef6826b5e6",
+  "rootAndBaselineSha256": "aafbe8b588b1e351b31813c66c438feedddf34a4774526a763c741ae01ef2cf6",
+  "correction": "Validate appInputs beneath manifest.candidate and named harnessAndIntake beneath project root; no application source or freeze change required",
+  "phase": "Before any browser/server launch; root and implementer informed"
+}

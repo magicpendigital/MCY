@@ -1,0 +1,20 @@
+
+Running 11 tests using 2 workers
+
+  ok  1 .vercel\ux-step4-4-20261017\tests\free-courses-contract.spec.ts:3:1 › free-course source keeps all 38 YouTube lesson records structurally valid (2.4s)
+  ok  2 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:471:1 › guest can browse free lessons without an account and retains check-in choices (9.9s)
+  ok  3 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:503:1 › free-course screens load only when a learner opens their routes (3.5s)
+  ok  4 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:531:1 › learner app defers course and Journey route chunks until navigation (5.0s)
+  ok  5 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:680:1 › course guidance has honest scope and does not invent editorial or review metadata (5.0s)
+  ok  6 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:920:1 › English learner flow follows check-in, practice and honest reflection on mobile web (20.0s)
+  ok  7 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:1049:1 › free course detail groups the play decision before media on mobile, then uses columns on desktop (9.4s)
+  ok  8 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:1226:1 › inactive FlowStack routes are inert and keyboard focus follows the active screen (4.9s)
+  ok  9 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:1271:1 › embedded lesson offers in-app retry and an explicit YouTube fallback (8.6s)
+  ok 10 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:1322:1 › course player timeout opens recovery when the embedded frame does not respond (4.2s)
+  ok 11 .vercel\ux-step4-4-20261017\tests\learner-ux.spec.ts:1445:1 › short portrait keeps welcome, lesson and reflection actions inside the viewport (5.9s)
+
+  11 passed (1.5m)
+(node:20872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:15816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

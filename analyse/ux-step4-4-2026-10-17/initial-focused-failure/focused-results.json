@@ -1,0 +1,594 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs",
+      "ux-course-detail.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-4-20261017/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-4-2026-10-17/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-4-20261017/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-course-detail.spec.ts",
+          "free-courses-contract.spec.ts",
+          "learner-ux.spec.ts",
+          "ux-home.spec.ts",
+          "ux-checkin-layout.spec.ts",
+          "ux-energy-time.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "ux-journey-selection.spec.ts"
+        ],
+        "timeout": 25000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "ux-course-detail.spec.ts",
+      "file": "ux-course-detail.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Course decision, disclosures and explicit player reveal 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4120,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:24:44.624Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-d483a4ffb6aaa33503c7",
+          "file": "ux-course-detail.spec.ts",
+          "line": 21,
+          "column": 305
+        },
+        {
+          "title": "Course decision, disclosures and explicit player reveal 360",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:24:49.787Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-f399bdef00c4e84f099c",
+          "file": "ux-course-detail.spec.ts",
+          "line": 21,
+          "column": 305
+        },
+        {
+          "title": "Course decision, disclosures and explicit player reveal 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:24:52.367Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-71155bb5a7a3a7d849fb",
+          "file": "ux-course-detail.spec.ts",
+          "line": 21,
+          "column": 305
+        },
+        {
+          "title": "Course decision, disclosures and explicit player reveal landscape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5833,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:24:55.324Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-d05c1fa87e847cbfa9ad",
+          "file": "ux-course-detail.spec.ts",
+          "line": 21,
+          "column": 305
+        },
+        {
+          "title": "Course decision, disclosures and explicit player reveal desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6058,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:01.178Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-9063b42ad61813df6313",
+          "file": "ux-course-detail.spec.ts",
+          "line": 21,
+          "column": 305
+        },
+        {
+          "title": "Course decision, disclosures and explicit player reveal iphone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3288,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:07.272Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-6dbbecec81e743eb5c62",
+          "file": "ux-course-detail.spec.ts",
+          "line": 21,
+          "column": 305
+        },
+        {
+          "title": "Course decision, disclosures and explicit player reveal pixel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3043,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:10.574Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-496d5b0eadde1d1ce6f4",
+          "file": "ux-course-detail.spec.ts",
+          "line": 21,
+          "column": 305
+        },
+        {
+          "title": "Course actual Tab disclosure, Play and recovery continuation false",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3242,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m569\u001b[39m\nReceived:    \u001b[31m602.53125\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m569\u001b[39m\nReceived:    \u001b[31m602.53125\u001b[39m\n    at focusClearOfHeader (D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts:19:68)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts:56:61",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts",
+                      "column": 68,
+                      "line": 19
+                    },
+                    "snippet": "  17 | async function focusClearOfHeader(p:Page){\n  18 |  const b=await p.evaluate(()=>{const r=document.activeElement!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect();return{top:r.top,bottom:r.bottom,header:h.bottom,height:innerHeight};});\n> 19 |  expect(b.top).toBeGreaterThanOrEqual(b.header-1);expect(b.bottom).toBeLessThanOrEqual(b.height+1);\n     |                                                                    ^\n  20 | }\n  21 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)test('Course decision, disclosures and explicit player reveal '+label,async({page})=>{\n  22 |  await page.setViewportSize({width,height});await page.emulateMedia({reducedMotion:'reduce'});await enter(page,query);const root=active(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts",
+                        "column": 68,
+                        "line": 19
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m569\u001b[39m\nReceived:    \u001b[31m602.53125\u001b[39m\n\n  17 | async function focusClearOfHeader(p:Page){\n  18 |  const b=await p.evaluate(()=>{const r=document.activeElement!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect();return{top:r.top,bottom:r.bottom,header:h.bottom,height:innerHeight};});\n> 19 |  expect(b.top).toBeGreaterThanOrEqual(b.header-1);expect(b.bottom).toBeLessThanOrEqual(b.height+1);\n     |                                                                    ^\n  20 | }\n  21 | for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['360',360,640,'?mode=web'],['390',390,844,'?mode=web'],['landscape',844,390,'?mode=web'],['desktop',1440,1000,'?mode=web'],['iphone',1100,1100,'?mode=review&device=iphone'],['pixel',1100,1100,'?mode=review&device=pixel-10']] as const)test('Course decision, disclosures and explicit player reveal '+label,async({page})=>{\n  22 |  await page.setViewportSize({width,height});await page.emulateMedia({reducedMotion:'reduce'});await enter(page,query);const root=active(page);\n    at focusClearOfHeader (D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts:19:68)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts:56:61"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:13.633Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\test-results\\ux-course-detail-Course-ac-ba5b9-recovery-continuation-false\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts",
+                    "column": 68,
+                    "line": 19
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-ef10ab40655727bbdc7b",
+          "file": "ux-course-detail.spec.ts",
+          "line": 45,
+          "column": 35
+        },
+        {
+          "title": "Course actual Tab disclosure, Play and recovery continuation true",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:18.290Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-bee0fdea13760bd6266b",
+          "file": "ux-course-detail.spec.ts",
+          "line": 45,
+          "column": 35
+        },
+        {
+          "title": "Course true 2x text reflows and keyboard reaches Play false",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:22.710Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-40474f348abb8905d468",
+          "file": "ux-course-detail.spec.ts",
+          "line": 58,
+          "column": 35
+        },
+        {
+          "title": "Course true 2x text reflows and keyboard reaches Play true",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3734,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:26.818Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-c27ac93dc2d92ba3db51",
+          "file": "ux-course-detail.spec.ts",
+          "line": 58,
+          "column": 35
+        },
+        {
+          "title": "Course manual first/last selection and route return never auto-play or write",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9506,
+                  "error": {
+                    "message": "Error: locator.click: Error: strict mode violation: getByRole('button', { name: /Chuỗi tư thế cơ bản/ }) resolved to 9 elements:\n    1) <button class=\"mcy-course-card\">…</button> aka getByRole('button', { name: '07 Chuỗi tư thế cơ bản 7 bài' })\n    2) <button type=\"button\" class=\"mcy-course-play\" aria-label=\"Phát bài học: Chuỗi tư thế cơ bản · bài 38\">…</button> aka getByRole('button', { name: 'Phát bài học: Chuỗi tư thế c' })\n    3) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '01 · 0:22 Chuỗi tư thế cơ bản' })\n    4) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '02 · 0:21 Chuỗi tư thế cơ bản' })\n    5) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '03 · 0:21 Chuỗi tư thế cơ bản' })\n    6) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '04 · 0:19 Chuỗi tư thế cơ bản' })\n    7) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '05 · 0:21 Chuỗi tư thế cơ bản' })\n    8) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '06 · 0:21 Chuỗi tư thế cơ bản' })\n    9) <button type=\"button\" aria-pressed=\"true\" class=\"mcy-course-lesson active\">…</button> aka getByRole('button', { name: '07 · 0:18 Chuỗi tư thế cơ bản' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Chuỗi tư thế cơ bản/ })\u001b[22m\n",
+                    "stack": "Error: locator.click: Error: strict mode violation: getByRole('button', { name: /Chuỗi tư thế cơ bản/ }) resolved to 9 elements:\n    1) <button class=\"mcy-course-card\">…</button> aka getByRole('button', { name: '07 Chuỗi tư thế cơ bản 7 bài' })\n    2) <button type=\"button\" class=\"mcy-course-play\" aria-label=\"Phát bài học: Chuỗi tư thế cơ bản · bài 38\">…</button> aka getByRole('button', { name: 'Phát bài học: Chuỗi tư thế c' })\n    3) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '01 · 0:22 Chuỗi tư thế cơ bản' })\n    4) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '02 · 0:21 Chuỗi tư thế cơ bản' })\n    5) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '03 · 0:21 Chuỗi tư thế cơ bản' })\n    6) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '04 · 0:19 Chuỗi tư thế cơ bản' })\n    7) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '05 · 0:21 Chuỗi tư thế cơ bản' })\n    8) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '06 · 0:21 Chuỗi tư thế cơ bản' })\n    9) <button type=\"button\" aria-pressed=\"true\" class=\"mcy-course-lesson active\">…</button> aka getByRole('button', { name: '07 · 0:18 Chuỗi tư thế cơ bản' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Chuỗi tư thế cơ bản/ })\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts:80:130",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts",
+                      "column": 130,
+                      "line": 80
+                    },
+                    "snippet": "  78 |  }\n  79 |  await root.locator('.mcy-course-play').click();await expect.poll(()=>embeds).toBe(1);await root.locator('.mcy-course-lesson').last().click();await expect(page.locator('iframe')).toHaveCount(0);expect(embeds).toBe(1);\n> 80 |  await page.getByRole('button',{name:'Quay lại',exact:true}).click();await page.getByRole('button',{name:/Chuỗi tư thế cơ bản/}).click();await expect(page.locator('iframe')).toHaveCount(0);expect(embeds).toBe(1);expect(writes).toEqual([]);\n     |                                                                                                                                  ^\n  81 |  await expect(root.locator('.mcy-course-reflection-prompt')).toHaveCount(0);\n  82 | });\n  83 | test('Course landscape source keeps 16:9 footprint before and after explicit Play',async({page})=>{"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts",
+                        "column": 130,
+                        "line": 80
+                      },
+                      "message": "Error: locator.click: Error: strict mode violation: getByRole('button', { name: /Chuỗi tư thế cơ bản/ }) resolved to 9 elements:\n    1) <button class=\"mcy-course-card\">…</button> aka getByRole('button', { name: '07 Chuỗi tư thế cơ bản 7 bài' })\n    2) <button type=\"button\" class=\"mcy-course-play\" aria-label=\"Phát bài học: Chuỗi tư thế cơ bản · bài 38\">…</button> aka getByRole('button', { name: 'Phát bài học: Chuỗi tư thế c' })\n    3) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '01 · 0:22 Chuỗi tư thế cơ bản' })\n    4) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '02 · 0:21 Chuỗi tư thế cơ bản' })\n    5) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '03 · 0:21 Chuỗi tư thế cơ bản' })\n    6) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '04 · 0:19 Chuỗi tư thế cơ bản' })\n    7) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '05 · 0:21 Chuỗi tư thế cơ bản' })\n    8) <button type=\"button\" aria-pressed=\"false\" class=\"mcy-course-lesson\">…</button> aka getByRole('button', { name: '06 · 0:21 Chuỗi tư thế cơ bản' })\n    9) <button type=\"button\" aria-pressed=\"true\" class=\"mcy-course-lesson active\">…</button> aka getByRole('button', { name: '07 · 0:18 Chuỗi tư thế cơ bản' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Chuỗi tư thế cơ bản/ })\u001b[22m\n\n\n  78 |  }\n  79 |  await root.locator('.mcy-course-play').click();await expect.poll(()=>embeds).toBe(1);await root.locator('.mcy-course-lesson').last().click();await expect(page.locator('iframe')).toHaveCount(0);expect(embeds).toBe(1);\n> 80 |  await page.getByRole('button',{name:'Quay lại',exact:true}).click();await page.getByRole('button',{name:/Chuỗi tư thế cơ bản/}).click();await expect(page.locator('iframe')).toHaveCount(0);expect(embeds).toBe(1);expect(writes).toEqual([]);\n     |                                                                                                                                  ^\n  81 |  await expect(root.locator('.mcy-course-reflection-prompt')).toHaveCount(0);\n  82 | });\n  83 | test('Course landscape source keeps 16:9 footprint before and after explicit Play',async({page})=>{\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts:80:130"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:30.568Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\test-results\\ux-course-detail-Course-ma-b2812-rn-never-auto-play-or-write\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\tests\\ux-course-detail.spec.ts",
+                    "column": 130,
+                    "line": 80
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-af3552461b00a5f40183",
+          "file": "ux-course-detail.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "Course landscape source keeps 16:9 footprint before and after explicit Play",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 25000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3652,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T17:25:42.486Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8f09e0d1e36482187bfb-e556942f69e25e1b41fa",
+          "file": "ux-course-detail.spec.ts",
+          "line": 83,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T17:24:43.546Z",
+    "duration": 63805.168000000005,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

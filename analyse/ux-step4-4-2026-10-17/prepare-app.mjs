@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const root=process.cwd(),dir=path.join(root,'analyse/ux-step4-4-2026-10-17');
+const source=path.join(root,'.vercel/ux-step4-3-20261016'),target=path.join(root,'.vercel/ux-step4-4-20261017');
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+assert(!fs.existsSync(target));
+const manifest=path.join(root,'analyse/ux-step4-3-2026-10-16/source-freeze.json');
+assert.equal(sha(manifest),'d29bf12d5f20992139094af4f8a4facb2ca6e9af37b4865a9e9151e33956cd2f');
+const baseline=JSON.parse(fs.readFileSync(manifest));
+assert.equal(baseline.inputs.length,233);
+const inputs=baseline.inputs.map(input=>{
+ assert(!/(^|\/)(\.env[^/]*|\.git|dist|node_modules)(\/|$)/.test(input.path));
+ assert(!/^(android|ios)\//.test(input.path));
+ assert.equal(sha(path.join(source,input.path)),input.sha256,input.path);
+ const dest=path.join(target,input.path);fs.mkdirSync(path.dirname(dest),{recursive:true});
+ fs.copyFileSync(path.join(source,input.path),dest,fs.constants.COPYFILE_EXCL);
+ return {path:input.path,sourceSha256:input.sha256,rootSha256:fs.existsSync(path.join(root,input.path))?sha(path.join(root,input.path)):null};
+});
+fs.writeFileSync(path.join(dir,'app-baseline.json'),JSON.stringify({createdAt:new Date().toISOString(),source,target,sourceManifestSha256:sha(manifest),inputs},null,2)+'\n');
+console.log({copied:inputs.length,target});

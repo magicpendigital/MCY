@@ -1,0 +1,176 @@
+{
+  "sourceManifestSha256": "f11a6af114f42427cd6d758f5ac191d0af65324d5018e82524adf913fde7e243",
+  "executedAt": "2026-10-16T17:38:04.756Z",
+  "command": "node analyse/ux-step4-4-2026-10-17/independent-qc-probe.mjs",
+  "environment": "Windows / Edge headless / Vite localhost4208 / invalid backend / outbound proxy denies nonlocal; embeds fulfilled in-memory",
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "keyboard-vi-normal",
+      "status": "PASS",
+      "detail": {
+        "initialScroll": 0,
+        "before": {
+          "x": 17,
+          "y": 568.640625,
+          "width": 286,
+          "height": 508.4375
+        },
+        "after": {
+          "x": 17,
+          "y": 66.640625,
+          "width": 286,
+          "height": 508.4375
+        },
+        "scroll": {
+          "x": 0,
+          "y": 55,
+          "width": 320,
+          "height": 513
+        },
+        "tabsFromGroupThroughFixtureToRecovery": 2,
+        "font": "normal"
+      },
+      "externalRequests": [
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k",
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k"
+      ],
+      "writes": [],
+      "pageErrors": []
+    },
+    {
+      "name": "keyboard-vi-text28",
+      "status": "PASS",
+      "detail": {
+        "initialScroll": 0,
+        "before": {
+          "x": 17,
+          "y": 481.015625,
+          "width": 286,
+          "height": 508.4375
+        },
+        "after": {
+          "x": 17,
+          "y": 67.015625,
+          "width": 286,
+          "height": 508.4375
+        },
+        "scroll": {
+          "x": 0,
+          "y": 55,
+          "width": 320,
+          "height": 513
+        },
+        "tabsFromGroupThroughFixtureToRecovery": 2,
+        "font": 28
+      },
+      "externalRequests": [
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k",
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k"
+      ],
+      "writes": [],
+      "pageErrors": []
+    },
+    {
+      "name": "keyboard-en-normal",
+      "status": "PASS",
+      "detail": {
+        "initialScroll": 0,
+        "before": {
+          "x": 17,
+          "y": 569.34375,
+          "width": 286,
+          "height": 508.4375
+        },
+        "after": {
+          "x": 17,
+          "y": 67.34375,
+          "width": 286,
+          "height": 508.4375
+        },
+        "scroll": {
+          "x": 0,
+          "y": 55,
+          "width": 320,
+          "height": 513
+        },
+        "tabsFromGroupThroughFixtureToRecovery": 2,
+        "font": "normal"
+      },
+      "externalRequests": [
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k",
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k"
+      ],
+      "writes": [],
+      "pageErrors": []
+    },
+    {
+      "name": "keyboard-en-text28",
+      "status": "PASS",
+      "detail": {
+        "initialScroll": 0,
+        "before": {
+          "x": 17,
+          "y": 460.015625,
+          "width": 286,
+          "height": 508.4375
+        },
+        "after": {
+          "x": 17,
+          "y": 67.015625,
+          "width": 286,
+          "height": 508.4375
+        },
+        "scroll": {
+          "x": 0,
+          "y": 55,
+          "width": 320,
+          "height": 513
+        },
+        "tabsFromGroupThroughFixtureToRecovery": 2,
+        "font": 28
+      },
+      "externalRequests": [
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k",
+        "GET www.youtube-nocookie.com/embed/yKm7aOAWn-k"
+      ],
+      "writes": [],
+      "pageErrors": []
+    },
+    {
+      "name": "captions-unverified",
+      "status": "PASS",
+      "detail": {
+        "expected": "Captions unverified · video notes",
+        "sourceFixtureOnly": false
+      },
+      "externalRequests": [],
+      "writes": [],
+      "pageErrors": []
+    },
+    {
+      "name": "captions-verified-en",
+      "status": "PASS",
+      "detail": {
+        "expected": "Vietnamese captions not listed · video notes",
+        "sourceFixtureOnly": true
+      },
+      "externalRequests": [],
+      "writes": [],
+      "pageErrors": []
+    },
+    {
+      "name": "captions-verified-vi",
+      "status": "PASS",
+      "detail": {
+        "expected": "Video and caption notes",
+        "sourceFixtureOnly": true
+      },
+      "externalRequests": [],
+      "writes": [],
+      "pageErrors": []
+    }
+  ],
+  "beforeAfterSourcePinsMatch": true,
+  "harnessSha256": "92498de4b8b13f5bcea1240d23c72a61845435a6bc61be89e25f5179f724691f"
+}

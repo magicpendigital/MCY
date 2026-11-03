@@ -1,0 +1,6 @@
+{
+  "command": "node node_modules/@playwright/test/cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs free-courses-contract.spec.ts learner-ux.spec.ts --grep free-course source|guest can browse free|free-course screens load|learner app defers course|course guidance has honest|English learner flow|free course detail groups|inactive FlowStack|embedded lesson offers|course player timeout|short portrait keeps welcome --reporter=list,json",
+  "cwd": "D:\\Projects\\MCY",
+  "exitCode": 0,
+  "signal": null
+}

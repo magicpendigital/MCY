@@ -1,0 +1,10 @@
+{
+  "command": "node D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\qa.playwright.config.mjs ux-reflection.spec.ts --grep Honest overall, no-answer and local consent off Khó chịu hơn --trace on --output D:\\Projects\\MCY\\analyse\\ux-step4-5-2026-10-17\\case15-supplement-results --reporter=list,json",
+  "cwd": "D:\\Projects\\MCY",
+  "start": "2026-10-17T05:16:12.498Z",
+  "end": "2026-10-17T05:16:40.082Z",
+  "exitCode": 0,
+  "signal": null,
+  "sourceFreezeSha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8",
+  "runnerSha256": "66a3d61187877c225ea506cfe6b9a8510688b29f1095554ba25dbfc36603ffe3"
+}

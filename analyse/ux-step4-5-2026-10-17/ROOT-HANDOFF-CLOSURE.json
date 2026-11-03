@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-17T05:35:05.8745508Z",
+  "verifier": "/root",
+  "status": "PASS_LOCAL_4_5_WAITING_USER_STOP_BEFORE_4_6",
+  "finalDocsRead": true,
+  "docInputPinsVerified": 13,
+  "docFreezeSha256": "3c1c9d1dbcc8b1e6afe54c4400f5ae47d7cede51a55c0e501041e39781bc74fb",
+  "docQcSha256": "ed0dcfd7c044e8cd185a2b5afd5a93cdbcc4a810c1bf5654bd40e946776ddf33",
+  "sourceFreezeSha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8",
+  "evidenceFreezeSha256": "a81bf13ee6d378600658b891c287ae3c01c59dec9b4135edb51217ed4e6b7270",
+  "rootValidatedPinsSha256": "05bc5fb7bd8101e203d56b6cf1ede58583ceb99fa5a846fee5a0ed5fa311474b",
+  "remaining": "User review4.5;4.6 not started; preexisting editorP3; native/web/live release gates unchanged"
+}

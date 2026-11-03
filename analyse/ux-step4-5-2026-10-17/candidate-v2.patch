@@ -1,0 +1,236 @@
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\src\\i18n.ts" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\src\\i18n.ts"
+index af1eca2..dd23fe8 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\src\\i18n.ts"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\src\\i18n.ts"
+@@ -72,6 +72,12 @@ const vi = {
+   "dialogue.inputPlaceholder": "Ví dụ: Hôm nay muốn nhịp chậm...",
+   "dialogue.send": "Gửi câu trả lời",
+   "dialogue.fromCheckin": "Chọn nhanh theo check-in",
++  "reflection.comparison": "Ghi nhận trước và sau tập",
++  "reflection.beforeNone": "Trước tập, bạn đã chọn không thấy khó chịu; chưa ghi riêng từng vùng.",
++  "reflection.beforeUnsure": "Trước tập, bạn đã chọn chưa rõ; chưa ghi riêng từng vùng.",
++  "reflection.noRegionalBaseline": "Chưa có ghi nhận vùng trước tập để so sánh.",
++  "reflection.currentAreas": "Vùng bạn đã ghi sau tập",
++  "reflection.details": "Ghi thêm vùng, nhịp tập hoặc lời nhắn",
+   "reflection.before": "Trước tập",
+   "reflection.after": "Sau tập",
+   "reflection.hint": "Màu điểm thể hiện mức bạn tự ghi tại từng thời điểm. Chưa ghi không có nghĩa là không khó chịu.",
+@@ -281,6 +287,12 @@ const en: Record<keyof typeof vi, string> = {
+   "dialogue.fromCheckin": "Choose from your check-in",
+   "reflection.title": "How does your body feel after practice?",
+   "reflection.lead": "Record each area separately. They may feel different from one another.",
++  "reflection.comparison": "Before and after self-reports",
++  "reflection.beforeNone": "Before practice, you chose no discomfort; no individual areas were recorded.",
++  "reflection.beforeUnsure": "Before practice, you chose not sure; no individual areas were recorded.",
++  "reflection.noRegionalBaseline": "There are no before-practice area entries to compare.",
++  "reflection.currentAreas": "Areas you recorded after practice",
++  "reflection.details": "Add an area, pace or note",
+   "reflection.before": "Before practice",
+   "reflection.after": "After practice",
+   "reflection.hint": "Markers show what you chose to record at each time. No entry does not mean no discomfort.",
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\src\\prototype.css" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\src\\prototype.css"
+index fe6476a..80fdc96 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\src\\prototype.css"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\src\\prototype.css"
+@@ -1136,3 +1136,65 @@ button { cursor: pointer; }
+ .mcy-checkin-quick-choices + .mcy-status-caption { max-width:1000px; margin:8px auto 16px; }
+ #checkin-body-areas[hidden] { display:none; }
+ @container mcy-app-viewport (max-width:360px) { .mcy-checkin-page.step-1 > .mcy-lead { margin-bottom:4px; } .mcy-checkin-quick-choices { margin-top:4px; } .mcy-body-disclosure { grid-template-columns:80px minmax(0,1fr); gap:12px; padding:12px; min-height:164px; } .mcy-body-entry-art { height:140px; } .mcy-body-entry-copy > strong { font-size:22px; } .mcy-checkin-other-choices { display:flex; flex-wrap:wrap; gap:8px; } .mcy-checkin-other-choices > .mcy-choice { flex:1 1 7.5em; min-width:0; justify-content:flex-start; } .mcy-checkin-other-choices > .mcy-choice:first-child { flex-grow:1.25; } }
++
++/* Step 4.5: Reflection content only; retained routes cannot style shared chrome. */
++.mcy-reflection-page { max-width:720px; margin-inline:auto; }
++.mcy-reflection-page > h1 { font-size:clamp(27px,7vw,34px); line-height:1.16; margin-bottom:12px; }
++.mcy-reflection-page > .mcy-lead { margin-bottom:16px; }
++.mcy-reflection-page > .mcy-inline-note { margin:0 0 16px; font-size:12px; }
++.mcy-reflection-page .mcy-reflection-baseline { margin:0 0 22px; color:var(--mcy-muted); font-size:12px; line-height:1.5; }
++.mcy-reflection-page .mcy-field-section { margin:0 0 22px; }
++.mcy-reflection-page .mcy-field-section h2 { display:flex; flex-wrap:wrap; gap:5px 9px; align-items:baseline; margin-bottom:12px; font-size:22px; }
++.mcy-reflection-page .mcy-field-section h2 small { color:var(--mcy-muted); font:12px/1.5 var(--font-sans); }
++.mcy-reflection-page .mcy-reflection-grid { gap:10px; }
++.mcy-reflection-page .mcy-reflection-grid .mcy-choice { min-height:58px; padding:12px 9px; font-size:14px; font-weight:500; line-height:1.4; overflow-wrap:anywhere; }
++.mcy-reflection-page .mcy-reflection-grid .mcy-choice.selected { border-color:var(--mcy-sage); background:var(--mcy-pale); }
++.mcy-reflection-page .mcy-before-after { margin:0 0 14px; gap:8px; grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr); }
++.mcy-reflection-page .mcy-before-after figure { min-width:0; margin:0; text-align:center; }
++.mcy-reflection-page figcaption { margin-top:8px; font-size:12px; line-height:1.5; color:var(--mcy-ink); }
++.mcy-reflection-page .mcy-before-arrow { text-align:center; color:var(--mcy-muted); }
++.mcy-reflection-page .mcy-reflection-hint { color:var(--mcy-muted); font-size:12px; line-height:1.55; margin:0 0 16px; }
++.mcy-reflection-page .mcy-reflection-region-row > button:first-child { min-height:72px; grid-template-columns:minmax(0,1fr) minmax(0,1fr) 16px; padding:12px; }
++.mcy-reflection-page .mcy-reflection-region-row strong { font-size:13px; line-height:1.4; overflow-wrap:anywhere; }
++.mcy-reflection-page .mcy-reflection-region-row small { color:var(--mcy-muted); font-size:12px; line-height:1.4; }
++.mcy-reflection-page .mcy-keep-region { min-height:44px; font-size:12px; line-height:1.45; padding:9px 12px; }
++.mcy-reflection-page .mcy-post-options { flex-wrap:wrap; margin:0 0 24px; }
++.mcy-reflection-page .mcy-post-options button { flex:1 1 120px; min-height:48px; font-size:12px; line-height:1.4; }
++.mcy-reflection-page .mcy-alert { margin:0 0 22px; }
++.mcy-reflection-page .mcy-reflection-current { margin:0 0 24px; }
++.mcy-reflection-page .mcy-reflection-current h2 { font-size:20px; margin-bottom:12px; }
++.mcy-reflection-page .mcy-reflection-current-list { display:grid; gap:8px; }
++.mcy-reflection-page .mcy-reflection-current-list button { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:60px; padding:12px 14px; border:1px solid var(--mcy-border); border-radius:12px; background:var(--mcy-paper); color:var(--mcy-ink); text-align:left; }
++.mcy-reflection-page .mcy-reflection-current-list button span { display:grid; gap:5px; }
++.mcy-reflection-page .mcy-reflection-current-list strong { font-size:14px; line-height:1.4; }
++.mcy-reflection-page .mcy-reflection-current-list small { color:var(--mcy-muted); font-size:12px; }
++.mcy-reflection-page .mcy-reflection-current-list svg { flex:none; }
++.mcy-reflection-page .mcy-reflection-details { border-block:1px solid var(--mcy-border); margin:0 0 18px; }
++.mcy-reflection-page .mcy-reflection-details > summary { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:64px; padding:12px 0; color:var(--mcy-ink); font-size:14px; line-height:1.5; list-style:none; cursor:pointer; }
++.mcy-reflection-page .mcy-reflection-details > summary::-webkit-details-marker { display:none; }
++.mcy-reflection-page .mcy-reflection-details > summary > span { display:grid; gap:2px; }
++.mcy-reflection-page .mcy-reflection-details > summary small { color:var(--mcy-muted); font-size:12px; }
++.mcy-reflection-page .mcy-reflection-details > summary svg { flex:none; }
++.mcy-reflection-page .mcy-reflection-details[open] > summary svg { transform:rotate(180deg); }
++.mcy-reflection-page .mcy-reflection-details-content { padding:4px 0 20px; }
++.mcy-reflection-page .mcy-reflection-after-map { margin:0 auto 18px; max-width:180px; text-align:center; }
++.mcy-reflection-page .mcy-standalone-link { width:100%; min-height:48px; margin:0 0 22px; padding:10px 12px; border:1px solid var(--mcy-border); border-radius:12px; background:var(--mcy-paper); text-align:center; font-size:14px; }
++.mcy-reflection-page .mcy-note-label { margin-top:0; font-size:16px; }
++.mcy-reflection-page .mcy-note-label small { display:block; color:var(--mcy-muted); font-size:12px; line-height:1.5; }
++.mcy-reflection-page .mcy-note-label textarea { min-height:100px; max-width:100%; font-size:16px; }
++.mcy-reflection-page .mcy-reflection-scope { display:flex; gap:8px; align-items:flex-start; margin:0 0 12px; color:var(--mcy-muted); font-size:12px; line-height:1.6; }
++.mcy-reflection-page .mcy-reflection-scope svg { flex:none; margin-top:3px; }
++.mcy-reflection-page :is(button,summary,textarea):focus-visible { outline:3px solid var(--color-focus); outline-offset:3px; scroll-margin-block:24px; }
++@container mcy-app-viewport (max-width:340px) { .mcy-reflection-page { padding-inline:18px; } }
++
++.mcy-flow-footer.mcy-reflection-footer { display:grid; grid-template-columns:minmax(0,.3fr) minmax(0,.7fr); align-items:start; gap:8px; padding:4px 16px 6px; }
++.mcy-flow-footer.mcy-reflection-footer .mcy-quiet-link { width:100%; min-width:0; min-height:44px; padding:4px; line-height:1.5; overflow-wrap:anywhere; }
++.mcy-flow-footer.mcy-reflection-footer .mcy-action { width:100%; min-width:0; min-height:51px; max-width:none; margin:0; gap:6px; padding:4px 8px; line-height:1.5; overflow-wrap:anywhere; }
++.mcy-flow-footer.mcy-reflection-footer .mcy-action svg { flex:none; }
++.mcy-flow-footer.mcy-reflection-footer { padding-top:6px; }
++.mcy-flow-footer.mcy-reflection-footer :is(.mcy-action,.mcy-quiet-link) { padding-block:3px; }
++.mcy-reflection-page { width:100%; min-width:0; }
++.mcy-reflection-page .mcy-note-label textarea { width:100%; min-width:0; }
++.mcy-reflection-page :is(.mcy-reflection-details,.mcy-reflection-details-content,.mcy-reflection-details summary > span,.mcy-chip-grid .mcy-choice) { min-width:0; overflow-wrap:anywhere; }
++/* Reflection owns this scroll port; reserve opaque active footer during native focus scrolling. */
++.mcy-reflection-scroll > .mobile-scroll { scroll-padding-top:24px; scroll-padding-bottom:calc(var(--flow-footer-height, 104px) + 24px); }
+\ No newline at end of file
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\src\\Prototype.tsx" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\src\\Prototype.tsx"
+index 15ae196..10a45aa 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-4-20261017\\src\\Prototype.tsx"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\src\\Prototype.tsx"
+@@ -1598,19 +1598,28 @@ function ReflectionScreen() {
+   const closeEditor = () => { setEditing(null); setEditingStoredSide(undefined); setSuggestedSide(undefined); };
+   const saveRegion = (value: Observation) => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: replaceBodyObservation(previous.postObservations, value, editingStoredSide ?? value.side) }));
+   const removeRegion = () => { if (!editing || !editingStoredSide) return; setState(previous => { const postObservations = removeBodyObservation(previous.postObservations, editing, editingStoredSide); return { ...previous, postObservations, postBodyStatus: postObservations.length ? "reported" : null }; }); };
+-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-reflection-page">
+-    <h1>{msg(locale, "reflection.title")}</h1><p className="mcy-lead">{msg(locale, "reflection.lead")}</p>
+-    {state.reflectionLessonTitle && <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "course.reflectionLesson")} {state.reflectionLessonTitle}</div>}
+-    <div className="mcy-before-after"><div><BodyMap observations={beforeObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><span>{msg(locale, "reflection.before")}</span></div><span className="mcy-before-arrow"><ArrowRightIcon /></span><div><BodyMap observations={state.postObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><span>{msg(locale, "reflection.after")}</span></div></div>
++  return <MobileScroll className="mcy-scroll mcy-reflection-scroll"><main className="mcy-page mcy-reflection-page">
++    <h1>{msg(locale, "reflection.title")}</h1>
++    {beforeObservations.length > 0 && <><p className="mcy-reflection-scope"><InfoCircledIcon />{msg(locale, "reflection.noteScope")}</p><p className="mcy-lead">{msg(locale, "reflection.lead")}</p></>}
++    {beforeObservations.length > 0 ? <section className="mcy-reflection-comparison">
++    <div className="mcy-before-after" role="group" aria-label={msg(locale, "reflection.comparison")}><figure><BodyMap observations={beforeObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><figcaption>{msg(locale, "reflection.before")}</figcaption></figure><span className="mcy-before-arrow"><ArrowRightIcon /></span><figure><BodyMap observations={state.postObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><figcaption>{msg(locale, "reflection.after")}</figcaption></figure></div>
+     <p className="mcy-reflection-hint">{msg(locale, "reflection.hint")}</p>
+     <section className="mcy-field-section"><h2>{msg(locale, "reflection.preRegions")}</h2>{beforeObservations.length ? <div className="mcy-reflection-regions">{beforeObservations.map(item => { const after = state.postObservations.find(entry => entry.region === item.region && (entry.side === item.side || (entry.side === "both" && (item.side === "left" || item.side === "right")))); const area = `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""}`; return <div key={`${item.region}-${item.side}`} className="mcy-reflection-region-row"><button onClick={() => openRegion(item.region, item.side)}><span><strong>{area}</strong><small>{msg(locale, "reflection.before")}: {item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}</small></span><span><small>{msg(locale, "reflection.after")}</small><strong>{after ? after.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, after.level ?? msg(locale, "checkin.notRecorded")) : msg(locale, "reflection.tapToRecord")}</strong></span><ArrowRightIcon /></button><button className="mcy-keep-region" onClick={() => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: replaceBodyObservation(previous.postObservations, { ...item, note: "" }, item.side) }))}>{msg(locale, "reflection.keepSame")}</button></div>; })}</div> : <p className="mcy-inline-note">{msg(locale, "reflection.notCheckedIn")}</p>}</section>
+-    <button className="mcy-standalone-link" onClick={() => setChooseNewRegion(true)}>{msg(locale, "reflection.addRegion")}</button>
+     {beforeObservations.length > 0 && <div className="mcy-post-options"><button onClick={() => update({ postObservations: beforeObservations.map(item => ({ ...item, note: "" })), postBodyStatus: "reported" })}>{msg(locale, "reflection.keepAll")}</button><button onClick={() => update({ postObservations: [], postBodyStatus: "uncertain" })}>{msg(locale, "reflection.unsureAfter")}</button></div>}
++    </section> : null}
+     <section className="mcy-field-section"><h2>{msg(locale, "reflection.overall")} <small>{msg(locale, "reflection.optional")}</small></h2><div className="mcy-reflection-grid">{(["Dễ chịu hơn", "Như cũ", "Khó chịu hơn", "Chưa rõ"] as Exclude<Outcome, null>[]).map(value => <Choice key={value} selected={state.outcome === value} onClick={() => update({ outcome: value })}>{guidedChoiceLabel(locale, value)}</Choice>)}</div></section>
+-    <section className="mcy-field-section compact"><h2>{msg(locale, "reflection.pace")} <small>{msg(locale, "reflection.optional")}</small></h2><div className="mcy-chip-grid">{(["Vừa", "Hơi nhanh", "Hơi chậm"] as Exclude<Pace, null>[]).map(value => <Choice key={value} selected={state.pace === value} onClick={() => update({ pace: value })}>{guidedChoiceLabel(locale, value)}</Choice>)}</div></section>
+     {state.outcome === "Khó chịu hơn" ? <div className="mcy-alert">{msg(locale, "reflection.alert")}</div> : null}
++    {beforeObservations.length === 0 && <><p className="mcy-reflection-scope"><InfoCircledIcon />{msg(locale, "reflection.noteScope")}</p><p className="mcy-reflection-baseline">{msg(locale, state.reflectionBeforeStatus === "none_now" ? "reflection.beforeNone" : state.reflectionBeforeStatus === "uncertain" ? "reflection.beforeUnsure" : "reflection.noRegionalBaseline")}</p></>}
++    {state.postObservations.filter(item => !beforeObservations.some(before => before.region === item.region && before.side === item.side)).length > 0 && <section className="mcy-reflection-current"><h2>{msg(locale, "reflection.currentAreas")}</h2><div className="mcy-reflection-current-list">{state.postObservations.filter(item => !beforeObservations.some(before => before.region === item.region && before.side === item.side)).map(item => <button key={item.region + "-" + item.side} onClick={() => openRegion(item.region, item.side)}><span><strong>{regionLabel(locale, item.region)}{isPairedBodyRegion(item.region) && item.side !== "unspecified" ? " · " + sideLabel(locale, item.side) : ""}</strong><small>{item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}</small></span><ArrowRightIcon /></button>)}</div></section>}
++    {state.postBodyStatus === "uncertain" && <p className="mcy-reflection-hint">{msg(locale, "reflection.unsureAfter")}</p>}
++    <details className="mcy-reflection-details"><summary><span>{msg(locale, "reflection.details")}<small>{msg(locale, "reflection.optional")}</small></span><ChevronDownIcon /></summary><div className="mcy-reflection-details-content">
++    {state.reflectionLessonTitle && <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "course.reflectionLesson")} {state.reflectionLessonTitle}</div>}
++    {beforeObservations.length === 0 && <figure className="mcy-reflection-after-map"><BodyMap observations={state.postObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><figcaption>{msg(locale, "reflection.after")}</figcaption></figure>}
++    <button className="mcy-standalone-link" onClick={() => setChooseNewRegion(true)}>{msg(locale, "reflection.addRegion")}</button>
++    <section className="mcy-field-section compact"><h2>{msg(locale, "reflection.pace")} <small>{msg(locale, "reflection.optional")}</small></h2><div className="mcy-chip-grid">{(["Vừa", "Hơi nhanh", "Hơi chậm"] as Exclude<Pace, null>[]).map(value => <Choice key={value} selected={state.pace === value} onClick={() => update({ pace: value })}>{guidedChoiceLabel(locale, value)}</Choice>)}</div></section>
+     <label className="mcy-note-label">{msg(locale, "reflection.notePrompt")} <small>{msg(locale, "reflection.noteScope")}</small><KeyboardTextarea placeholder={msg(locale, "reflection.notePlaceholder")} value={state.note} onChange={event => update({ note: event.target.value })} onBlur={() => keyboard.hide()} /></label>
+     <DemoNote>{msg(locale, "reflection.note")}</DemoNote>
++    </div></details>
+     <RegionEditor region={editing} current={current} suggestedSide={suggestedSide} onSave={saveRegion} onClose={closeEditor} onDelete={removeRegion} />
+     <BottomSheet open={chooseNewRegion} onOpenChange={setChooseNewRegion} title={msg(locale, "reflection.chooseRegion")} description={msg(locale, "reflection.newRegionHelp")} snap={0.48}><div className="mcy-picker-list">{BODY_REGIONS.map(region => <button key={region} onClick={() => { setChooseNewRegion(false); openRegion(region); }}>{regionLabel(locale, region)}</button>)}</div></BottomSheet>
+   </main></MobileScroll>;
+@@ -1632,7 +1641,7 @@ function ReflectionFooter() {
+     });
+     flow.replace(ROUTES.sync);
+   };
+-  return <div className="mcy-flow-footer"><button className="mcy-quiet-link" onClick={() => save(true)}>{msg(locale, "reflection.skip")}</button><Action onClick={() => save(false)}>{msg(locale, "reflection.save")}</Action></div>;
++  return <div className="mcy-flow-footer mcy-reflection-footer"><button className="mcy-quiet-link" onClick={() => save(true)}>{msg(locale, "reflection.skip")}</button><Action onClick={() => save(false)}>{msg(locale, "reflection.save")}</Action></div>;
+ }
+ 
+ 
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts"
+new file mode 100644
+index 0000000..187d651
+--- /dev/null
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-5-20261017\\tests\\ux-reflection.spec.ts"
+@@ -0,0 +1,80 @@
++import {test,expect,type Page} from '@playwright/test';
++import fs from 'node:fs';
++const active=(p:Page)=>p.getByTestId('flow-current');
++const view=(p:Page)=>active(p).locator('.mcy-reflection-page');
++const scope='Phản hồi này chỉ được giữ trong phiên hiện tại; chưa đồng bộ vào tài khoản.';
++async function enter(p:Page,options:{query?:string;english?:boolean;before?:string;optIn?:boolean}={}){
++ const writes:string[]=[];
++ await p.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.fallback():r.abort());
++ p.on('request',r=>{if(new URL(r.url()).hostname==='mcy-playwright.invalid'&&!['GET','HEAD','OPTIONS'].includes(r.method()))writes.push(r.method()+' '+new URL(r.url()).pathname);});
++ await p.goto('/'+(options.query??'?mode=web'));if(options.english)await p.locator('.mcy-language-toggle').click();
++ await p.getByRole('button',{name:options.english?'Explore as a guest':'Thử tìm hiểu như khách',exact:true}).click();
++ if(options.before==='regions'){
++  await active(p).locator('.mcy-body-disclosure').click();await active(p).locator('.mcy-body-groups button').nth(1).click();
++  for(const [side,level] of [['Trái','Vừa'],['Phải','Nhẹ']]){
++   if(side==='Trái')await active(p).locator('.mcy-region-list button').filter({hasText:'Khuỷu tay'}).click();else await active(p).locator('.mcy-map-pin[aria-label^="Khuỷu tay phải:"]').click();
++   await p.getByRole('button',{name:side,exact:true}).click();await p.getByRole('button',{name:level,exact:true}).click();await p.getByRole('button',{name:'Lưu vùng này',exact:true}).click();
++  }
++ }else if(options.before==='none')await p.getByRole('button',{name:options.english?'No discomfort now':'Không thấy khó chịu',exact:true}).click();
++ else if(options.before==='unknown')await p.getByRole('button',{name:'Chưa xác định',exact:true}).click();
++ else if(options.before==='skip')await p.getByRole('button',{name:'Bỏ qua ghi nhận cơ thể',exact:true}).click();
++ if(options.before!=='skip')await p.getByRole('button',{name:options.english?'Next: energy and time':'Tiếp: năng lượng và thời gian',exact:true}).click();
++ await p.getByRole('button',{name:options.english?'Browse free video lessons':'Tự chọn bài học video miễn phí',exact:true}).click();
++ if(options.optIn){await p.getByRole('button',{name:'Cá nhân',exact:true}).click();await active(p).getByRole('button',{name:/Quyền riêng tư và đồng ý/}).click();await active(p).getByRole('button',{name:'Lưu check-in trong hành trình · Tắt',exact:true}).click();await p.getByRole('button',{name:'Quay lại',exact:true}).click();await p.getByRole('button',{name:'Khám phá',exact:true}).click();}
++ await p.getByRole('button',{name:/Một chút chuyển động nhẹ/}).click();
++ await p.route('https://www.youtube-nocookie.com/embed/**',r=>r.fulfill({contentType:'text/html',body:'<!doctype html><title>Fixture player</title>'}));
++ await active(p).locator('.mcy-course-play').click();await active(p).getByRole('button',{name:options.english?'I practised · record reflection':'Tôi đã thực hành · ghi cảm nhận',exact:true}).click();
++ await expect(view(p)).toBeVisible();await expect.poll(()=>active(p).evaluate(e=>Math.round(e.getBoundingClientRect().left-e.parentElement!.getBoundingClientRect().left))).toBe(0);return writes;
++}
++async function noOverflow(p:Page){const size=await active(p).locator('.mobile-scroll').evaluate(e=>({client:e.clientWidth,scroll:e.scrollWidth}));if(size.scroll>size.client)console.log('OVERFLOW',await view(p).evaluate(e=>[...e.querySelectorAll('*')].filter(x=>x.getBoundingClientRect().right>320).map(x=>({tag:x.tagName,cls:x.className,right:x.getBoundingClientRect().right,width:x.getBoundingClientRect().width,text:x.textContent?.slice(0,50)}))));expect(size.scroll).toBeLessThanOrEqual(size.client);}
++async function tabTo(p:Page,selector:string,max=35){for(let i=0;i<max;i++){await p.keyboard.press('Tab');if(await p.evaluate(s=>document.activeElement?.matches(s),selector))return;}throw Error('Tab did not reach '+selector);}
++async function clearFocus(p:Page){const b=await p.evaluate(()=>{const r=document.activeElement!.getBoundingClientRect(),h=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),f=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect();return{top:r.top,bottom:r.bottom,header:h.bottom,footer:f.top};});expect(b.top).toBeGreaterThanOrEqual(b.header-1);expect(b.bottom).toBeLessThanOrEqual(b.footer+1);}
++for(const [label,width,height,query,before] of [['320',320,568,'?mode=web',undefined],['360',360,640,'?mode=web',undefined],['390',390,844,'?mode=web',undefined],['baseline390',390,844,'?mode=web','regions'],['landscape',844,390,'?mode=web',undefined],['desktop',1440,1000,'?mode=web',undefined],['iphone',1100,1100,'?mode=review&device=iphone',undefined],['pixel',1100,1100,'?mode=review&device=pixel-10',undefined]] as const)test('Reflection hierarchy and scope '+label,async({page})=>{
++ await page.setViewportSize({width,height});await page.emulateMedia({reducedMotion:'reduce'});const writes=await enter(page,{query,before});
++ await expect(view(page).locator('.mcy-reflection-details')).not.toHaveAttribute('open','');await expect(view(page).locator('.mcy-reflection-scope')).toHaveText(scope);
++ await expect(view(page).locator('.mcy-reflection-grid .selected')).toHaveCount(0);await expect(view(page).locator('.mcy-reflection-grid button')).toHaveCount(4);
++ if(before){await expect(view(page).getByRole('group',{name:'Ghi nhận trước và sau tập'})).toBeVisible();await expect(view(page).locator('.mcy-reflection-region-row')).toHaveCount(2);await expect(view(page).locator('.mcy-reflection-region-row').first()).toContainText('Trái');await expect(view(page).locator('.mcy-reflection-region-row').last()).toContainText('Phải');}
++ else{await expect(view(page).locator('.mcy-before-after')).toHaveCount(0);await expect(view(page).locator('.mcy-reflection-baseline')).toHaveText('Chưa có ghi nhận vùng trước tập để so sánh.');}
++ await noOverflow(page);if(label==='320'){const g=await view(page).evaluate(e=>{const footer=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect().top,scope=e.querySelector('.mcy-reflection-scope')!.getBoundingClientRect(),choices=[...e.querySelectorAll('.mcy-reflection-grid button')].map(e=>e.getBoundingClientRect().bottom);return{footer,scopeBottom:scope.bottom,choices};});expect(g.scopeBottom).toBeLessThanOrEqual(g.footer);expect(Math.max(...g.choices)).toBeLessThanOrEqual(g.footer);console.log('320 core geometry',g);}await expect(page.locator('.flow-fixed-footer .mcy-action')).toBeInViewport();await page.screenshot({path:`analyse/ux-step4-5-2026-10-17/early-${label}.png`,animations:'disabled'});expect(writes).toEqual([]);
++});
++for(const [before,expected] of [['none','Trước tập, bạn đã chọn không thấy khó chịu'],['unknown','Trước tập, bạn đã chọn chưa rõ'],['skip','Chưa có ghi nhận vùng trước tập'],[undefined,'Chưa có ghi nhận vùng trước tập']] as const)test('Before status without region '+before,async({page})=>{await enter(page,{before});await expect(view(page).locator('.mcy-reflection-baseline')).toContainText(expected);await expect(view(page).locator('.mcy-before-after')).toHaveCount(0);});
++for(const [choice,expected] of [['Dễ chịu hơn','Dễ chịu hơn'],['Như cũ','Như cũ'],['Khó chịu hơn','Khó chịu hơn'],['Chưa rõ','Chưa rõ'],[undefined,'Không có phản hồi chung được cung cấp.']] as const)test('Honest overall, no-answer and local consent off '+choice,async({page})=>{
++ const writes=await enter(page);if(choice)await view(page).getByRole('button',{name:choice,exact:true}).click();
++ if(choice==='Khó chịu hơn'){await expect(view(page).locator('.mcy-alert')).toHaveText('Bạn đã chọn “Khó chịu hơn”. MCY sẽ không tự gợi bài để xử lý cảm giác này. Nếu đang không ổn, hãy dừng tập và tìm hỗ trợ phù hợp.');await expect(view(page).locator('.mcy-reflection-details')).not.toHaveAttribute('open','');}
++ await page.locator('.flow-fixed-footer .mcy-action').click();await expect(active(page).locator('.mcy-sync-card')).toContainText(expected);await active(page).getByRole('button',{name:'Mở hành trình',exact:true}).click();await expect(active(page).locator('.mcy-snapshot-card')).toHaveCount(0);expect(writes).toEqual([]);
++});
++test('Explicit skip stays distinct from blank despite chosen worse',async({page})=>{const writes=await enter(page);await view(page).getByRole('button',{name:'Khó chịu hơn',exact:true}).click();await page.locator('.flow-fixed-footer').getByRole('button',{name:'Bỏ qua',exact:true}).click();await expect(active(page).locator('.mcy-sync-card')).toContainText('Bạn đã chọn bỏ qua phản hồi');await expect(active(page).locator('.mcy-sync-card')).not.toContainText('Khó chịu hơn');expect(writes).toEqual([]);});
++test('New post areas stay visible editable and do not invent before levels',async({page})=>{
++ const writes=await enter(page);await view(page).locator('summary').click();await view(page).getByRole('button',{name:'Ghi thêm vùng khác sau tập',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Khuỷu tay',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Trái',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Vừa',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Lưu vùng này',exact:true}).click();await view(page).locator('summary').click();
++ const row=view(page).locator('.mcy-reflection-current-list button');await expect(row).toHaveText(/Khuỷu tay · TráiVừa/);await expect(row).toBeVisible();await row.click();await page.getByRole('dialog').getByRole('button',{name:'Nhẹ',exact:true}).click();await page.getByRole('dialog').getByRole('button',{name:'Lưu vùng này',exact:true}).click();await expect(row).toContainText('Nhẹ');await row.click();await page.getByRole('dialog').getByRole('button',{name:'Xóa vùng này',exact:true}).click();await expect(row).toHaveCount(0);await expect(view(page).locator('.mcy-before-after')).toHaveCount(0);expect(writes).toEqual([]);
++});
++test('Paired comparisons preserve unequal sides, explicit keep and unsure',async({page})=>{const writes=await enter(page,{before:'regions'});const rows=view(page).locator('.mcy-reflection-region-row');await expect(rows.first()).toContainText('Trước tập: Vừa');await expect(rows.last()).toContainText('Trước tập: Nhẹ');await rows.first().getByRole('button',{name:'Giữ như trước ở vùng này',exact:true}).click();await expect(rows.first()).toContainText('Sau tậpVừa');await expect(rows.last()).toContainText('Chạm để ghi');await view(page).getByRole('button',{name:'Giữ như trước cho tất cả vùng',exact:true}).click();await expect(rows.last()).toContainText('Sau tậpNhẹ');await view(page).getByRole('button',{name:'Chưa rõ sau tập',exact:true}).click();await expect(rows.first()).toContainText('Chạm để ghi');await expect(view(page).getByText('Chưa rõ sau tập',{exact:true})).toHaveCount(2);expect(writes).toEqual([]);});
++test('Existing guest opt-in records an honest session reflection and clears on reload',async({page})=>{
++ const writes=await enter(page,{optIn:true,before:'none'});await view(page).getByRole('button',{name:'Khó chịu hơn',exact:true}).click();await page.locator('.flow-fixed-footer .mcy-action').click();await active(page).getByRole('button',{name:'Mở hành trình',exact:true}).click();await expect(active(page).locator('.mcy-snapshot-card')).toContainText('Khó chịu hơn');await expect(active(page).locator('.mcy-snapshot-card')).toContainText('BẢN GHI TRONG PHIÊN');expect(writes).toEqual([]);await page.reload();await page.getByRole('button',{name:'Thử tìm hiểu như khách',exact:true}).click();await page.getByRole('button',{name:'Tự chọn bài học miễn phí',exact:true}).click();await page.getByRole('button',{name:'Hành trình',exact:true}).click();await expect(active(page).locator('.mcy-snapshot-card')).toHaveCount(0);
++});
++test('Reflection return does not leak styles into retained course or Home routes',async({page})=>{
++ const writes=await enter(page);await view(page).locator('summary').click();await page.getByRole('button',{name:'Quay lại',exact:true}).click();await expect(active(page).locator('.mcy-course-detail-page')).toBeVisible();await expect(active(page).locator('.mcy-reflection-scope')).toHaveCount(0);await expect(active(page).locator('.mcy-course-play')).toBeVisible();await expect(page.locator('iframe')).toHaveCount(0);await page.getByRole('button',{name:'Quay lại',exact:true}).click();await page.getByRole('button',{name:'Hôm nay',exact:true}).click();await expect(active(page).locator('.mcy-home-page')).toBeVisible();await expect(page.locator('.flow-fixed-footer .mcy-flow-footer')).toHaveCount(0);expect(writes).toEqual([]);
++});
++for(const english of [false,true])test('Actual keyboard, large text and optional textarea '+english,async({page})=>{
++ await page.setViewportSize({width:320,height:568});await enter(page,{english});await page.addStyleTag({content:'.mcy-reflection-page :is(p,button,summary,small,strong,textarea){font-size:28px!important;line-height:1.5!important}'});
++ await tabTo(page,'.mcy-reflection-grid button');await clearFocus(page);await page.keyboard.press('Enter');await expect(view(page).locator('.mcy-reflection-grid .selected')).toHaveCount(1);await tabTo(page,'.mcy-reflection-details > summary');await clearFocus(page);await page.keyboard.press('Enter');await expect(view(page).locator('details')).toHaveAttribute('open','');await tabTo(page,'.mcy-reflection-page textarea');await page.keyboard.type('Synthetic optional reflection');await expect(view(page).locator('textarea')).toHaveValue('Synthetic optional reflection');await page.keyboard.press('Tab');await noOverflow(page);await page.screenshot({path:`analyse/ux-step4-5-2026-10-17/large-${english}.png`,animations:'disabled'});await page.locator('.flow-fixed-footer .mcy-action').click();await expect(active(page).locator('.mcy-sync-card')).toBeVisible();
++});
++
++async function footerBounds(page:Page){
++ const g=await page.evaluate(()=>{
++  const box=(e:Element)=>{const r=e.getBoundingClientRect();return{top:r.top,bottom:r.bottom,left:r.left,right:r.right,width:r.width,height:r.height,client:e.clientWidth,scroll:e.scrollWidth};};
++  const footer=document.querySelector('.flow-fixed-footer')!,viewport=document.querySelector('.mobile-app-viewport')!;
++  const buttons=[...footer.querySelectorAll('button')].map(e=>{const walker=document.createTreeWalker(e,NodeFilter.SHOW_TEXT),text=[];let node;while(node=walker.nextNode()){if(!node.textContent?.trim())continue;const range=document.createRange();range.selectNodeContents(node);for(const r of range.getClientRects())text.push({left:r.left,right:r.right,top:r.top,bottom:r.bottom});}const style=getComputedStyle(e);return{...box(e),text,font:parseFloat(style.fontSize),ring:parseFloat(style.outlineWidth)+parseFloat(style.outlineOffset)};});
++  return{footer:box(footer),viewport:box(viewport),safe:parseFloat(getComputedStyle(document.querySelector('.mobile-page')!).getPropertyValue('--mobile-safe-area-height'))||0,buttons};
++ });
++ expect(g.buttons).toHaveLength(2);expect(g.footer.left).toBeGreaterThanOrEqual(g.viewport.left);expect(g.footer.right).toBeLessThanOrEqual(g.viewport.right);
++ expect(g.footer.bottom).toBeLessThanOrEqual(g.viewport.bottom-g.safe+.5);
++ for(const b of g.buttons){expect(b.left-g.footer.left).toBeGreaterThanOrEqual(16);expect(g.footer.right-b.right).toBeGreaterThanOrEqual(16);expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44);expect(b.top-g.footer.top).toBeGreaterThanOrEqual(6);expect(g.footer.bottom-b.bottom).toBeGreaterThanOrEqual(6);expect(b.scroll).toBeLessThanOrEqual(b.client);for(const r of b.text){expect(r.left).toBeGreaterThanOrEqual(b.left);expect(r.right).toBeLessThanOrEqual(b.right+.5);expect(r.top).toBeGreaterThanOrEqual(b.top);expect(r.bottom).toBeLessThanOrEqual(b.bottom+.5);}}
++ expect(g.buttons[1].left-g.buttons[0].right).toBeGreaterThanOrEqual(8);
++ await tabTo(page,'.mcy-reflection-footer .mcy-quiet-link');for(const b of await page.locator('.mcy-reflection-footer button').all()){await expect(b).toBeFocused();const f=await b.evaluate(e=>{const r=e.getBoundingClientRect(),f=e.closest('footer')!.getBoundingClientRect(),s=getComputedStyle(e),ring=parseFloat(s.outlineWidth)+parseFloat(s.outlineOffset);return{ring,top:r.top-f.top,bottom:f.bottom-r.bottom,left:r.left-f.left,right:f.right-r.right};});expect(f.ring).toBe(6);for(const side of ['top','bottom','left','right'] as const)expect(f[side]).toBeGreaterThanOrEqual(f.ring);await page.keyboard.press('Tab');}
++ return g;
++}
++for(const english of [false,true])for(const large of [false,true])for(const width of [320,390])test('Footer bounds and actual focus '+english+' '+large+' '+width,async({page})=>{await page.setViewportSize({width,height:568});await enter(page,{english});if(large)await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);if(large)for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+english+'-'+large+'-'+width+'.json',JSON.stringify(g,null,2));});
++for(const device of ['iphone','pixel-10'])for(const english of [false,true])test('Simulator footer safe area and actual focus '+device+' '+english,async({page})=>{await enter(page,{query:'?mode=review&device='+device,english});await footerBounds(page);await page.addStyleTag({content:'.mcy-reflection-footer button{font-size:28px!important;line-height:1.5!important}'});const g=await footerBounds(page);for(const b of g.buttons)expect(b.font).toBe(28);fs.writeFileSync('analyse/ux-step4-5-2026-10-17/footer-final-'+device+'-'+english+'.json',JSON.stringify(g,null,2));});
++
++for(const english of [false,true])test('Normal text actual Tab summary clears opaque footer '+english,async({page})=>{await page.setViewportSize({width:320,height:568});await enter(page,{english});await tabTo(page,'.mcy-reflection-details > summary');const g=await view(page).locator('summary').evaluate(e=>{const r=e.getBoundingClientRect(),scroll=e.closest('.mobile-scroll')!,style=getComputedStyle(scroll),header=document.querySelector('.flow-fixed-header')!.getBoundingClientRect(),footer=document.querySelector('.flow-fixed-footer')!.getBoundingClientRect();return{top:r.top,bottom:r.bottom,header:header.bottom,footer:footer.top,paddingTop:style.scrollPaddingTop,paddingBottom:style.scrollPaddingBottom};});expect(g.paddingTop).toBe('24px');expect(g.paddingBottom).toBe('128px');expect(g.top).toBeGreaterThanOrEqual(g.header+6);expect(g.bottom).toBeLessThanOrEqual(g.footer-6);await page.keyboard.press('Enter');await expect(view(page).locator('details')).toHaveAttribute('open','');await tabTo(page,'.mcy-reflection-page textarea');await clearFocus(page);});
+\ No newline at end of file

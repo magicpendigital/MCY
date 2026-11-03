@@ -1,0 +1,26 @@
+{
+  "executedAt": "2026-10-17T05:32:42.526Z",
+  "reviewer": "/root/step44_independent_qc",
+  "status": "PASS_ROOT_RECORD_REVIEW",
+  "exitCode": 0,
+  "rootRecordSha256": "05bc5fb7bd8101e203d56b6cf1ede58583ceb99fa5a846fee5a0ed5fa311474b",
+  "rehash": {
+    "inputs": 890,
+    "critical": 6,
+    "rootScreenshots": 4,
+    "rejectedPrior": 1
+  },
+  "counts": {
+    "candidate": 235,
+    "harness": 20,
+    "approved4.4": 234,
+    "root-preimage": 228,
+    "evidence": 33,
+    "images": 79,
+    "support": 2,
+    "build": 59
+  },
+  "failFastAttribution": "Root-reported execution mode; independent reviewer rehashed all recorded input/critical/image groups and checked explicit invalidation, not root script execution.",
+  "priorInvalidDisposition": "INVALID false PASS: wrong historical manifest filename, nonterminating PowerShell error. Preserved, not acceptance. This fresh fail-fast complete rerun supersedes it.",
+  "limitations": "No browser rerun; root manual observations remain root-attributed. Native/live/deploy acceptance unchanged; STOP before4.6."
+}
