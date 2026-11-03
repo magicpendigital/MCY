@@ -20,6 +20,9 @@ async function learner(page: Page, handle: (route: Route, body: any) => Promise<
     if (path.endsWith("/get_my_consent_policy_versions")) return route.fulfill({ json: { terms: "terms-review-0.1", privacy: "privacy-review-0.1", ai_processing: "ai-processing-review-1.0" } });
     if (path.endsWith("/checkins")) return route.fulfill({ json: [] });
     if (path.endsWith("/owner-control-plane")) return route.fulfill({ status: 403, json: { error: "content_review_access_required" } });
+    // Khám phá asks once for the public reading manifest; a missing file means "nothing published".
+    if (path.endsWith("/reading-published/manifest.json")) return route.fulfill({ status: 404, body: "" });
+    if (path.endsWith("/teacher-collaboration")) return route.fulfill({ status: 404, json: { error: "collaboration_unavailable" } });
     throw new Error(`Unmocked fixture request: ${path}`);
   });
 }

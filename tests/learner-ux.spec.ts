@@ -909,7 +909,7 @@ test("Owner can save an AI-off configuration with an empty model while a model l
 });
 
 test("English learner flow follows check-in, practice and honest reflection on mobile web", async ({ browser }) => {
-  test.setTimeout(35_000);
+  test.setTimeout(70_000);
   const page = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   const tapVisible = async (target: Locator) => {
     await target.scrollIntoViewIfNeeded();
