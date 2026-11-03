@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-10-18T03:24:57.335Z",
+  "status": "PASS_DESIGN_R1_ROOT_APP_GO_PENDING",
+  "proposalFreezeSha256": "1c939859bf4571f54e45d684da25eb9105d597e01f0ee9f781b74247bc0b2a64",
+  "proposalPins": 4,
+  "addendumFreezeSha256": "69a83d6673acbc7e2c2c841252671ea6218b96a79f563eab8b5dc704d0c5b995",
+  "addendumPins": 2,
+  "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "accepted46App": 236,
+  "accepted46Harness": 16,
+  "approved45App": 235,
+  "rootPreimagesPresent": 228,
+  "rootPreimagesAbsent": 8,
+  "rootTrackedDirtyPreserved": 35,
+  "candidate47Absent": true,
+  "report": {
+    "path": "analyse/ux-step4-7-2026-10-18/INDEPENDENT-SHARED-NAV-DESIGN-QC.vi.md",
+    "sha256": "1c2d176aa57a507db2bf7078e603eca7d3a6c176b17fc65ab7210b85de507995"
+  },
+  "supplement": {
+    "path": "analyse/ux-step4-7-2026-10-18/INDEPENDENT-SHARED-NAV-DESIGN-QC-v2a.vi.md",
+    "sha256": "4c78fecd835a40cb25810f619a7fb83f215c8083a53b2125ca97e279ec33bfd1"
+  },
+  "noBrowserOrAppInvocation": true,
+  "planningObligationsResolvedByV2a": true,
+  "remaining": "Candidate diff and actual test controls must be reviewed before browser invocation; root implementation GO remains separate"
+}

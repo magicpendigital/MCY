@@ -1,0 +1,13 @@
+{
+  "status": "STARTED_HEALTH_PENDING",
+  "startedAtUtc": "2026-10-18T06:15:10.0546514Z",
+  "pid": 5200,
+  "command": "node analyse/ux-step4-7-2026-10-18/preview-v6.mjs",
+  "sourceFreezeSha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1",
+  "helperSha256": "bb9005ebecde748e34eb68456b82930955337a74d7103785c2bd75799c398cf2",
+  "inputFreezeSha256": "dad747179e78018641f08271e0cf5679e10261ec2bafb08e79c42be7e5bdfb6f",
+  "stdoutPath": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\preview-v6-4195.stdout.log",
+  "stderrPath": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\preview-v6-4195.stderr.log",
+  "port": 4195,
+  "host": "127.0.0.1"
+}

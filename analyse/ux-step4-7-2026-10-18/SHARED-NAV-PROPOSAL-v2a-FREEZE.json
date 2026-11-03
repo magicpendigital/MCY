@@ -1,0 +1,15 @@
+{
+  "schema": "mcy-ux-4.7-shared-nav-proposal-freeze-v2a",
+  "status": "PENDING_INDEPENDENT_QC_AND_ROOT_APP_GO",
+  "pins": [
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/SHARED-NAV-PROPOSAL-v2-FREEZE.json",
+      "sha256": "1c939859bf4571f54e45d684da25eb9105d597e01f0ee9f781b74247bc0b2a64"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/SHARED-NAV-TEST-CORRECTION-v2a.vi.md",
+      "sha256": "f2ff12b40185b536d5f44889490c6587b8f4886d364c1e35ef886fae03c4aae6"
+    }
+  ],
+  "boundary": "Case 4 corrected; v2 design and accepted 4.6 source remain unchanged."
+}

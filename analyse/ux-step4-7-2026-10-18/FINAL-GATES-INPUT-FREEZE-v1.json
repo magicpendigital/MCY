@@ -1,0 +1,16 @@
+{
+  "schema": "mcy-ux-step4-7-final-gate-input-freeze-v1",
+  "sourceFreezeSha256": "45ab857d0a0d1325e8b69216b7d46fac9fb33d046d9d92f8d42afa324135a2bc",
+  "expectedGateCount": 7,
+  "files": [
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/build-fixture-v5.mjs",
+      "sha256": "492b4aa573b955838e0d083a51be51780b3b4904f39b2a523aba78c631f4dc70"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/run-final-gates-v1.mjs",
+      "sha256": "0054d24c6767d55d27ab987dd3565a9316f9c8d354ff8a5880cd0811d3bc5f79"
+    }
+  ],
+  "boundary": "Exact frozen v5 candidate, local-only invalid backend build and seven 4.6-equivalent checks. No browser, native, live credentials, cloud or deploy."
+}

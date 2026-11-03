@@ -1,0 +1,11 @@
+{
+  "status": "PASS_OWNED_PREVIEW_STOPPED",
+  "stoppedAtUtc": "2026-10-18T05:57:28.6169086Z",
+  "pid": 13720,
+  "verifiedName": "node.exe",
+  "verifiedCommandLine": "\"C:\\Program Files\\nodejs\\node.exe\" analyse/ux-step4-7-2026-10-18/preview-v5.mjs",
+  "beforeOwnedListenerCount": 1,
+  "afterAnyListenerCount": 0,
+  "startReceiptSha256": "e90de8d7604dfd0f1b3e0eff51033d7a8abc89b719ebc0ddc76cbb78757b5145",
+  "reason": "Root-authorized release of 4195 for one bounded adaptive v8 local test"
+}

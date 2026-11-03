@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-10-18T05:26:09.242Z",
+  "status": "PASS_DESIGN_R1_ROOT_APP_GO_REQUIRED",
+  "designFreezeSha256": "512b5090b8427c9f3c7c5c49a668956c7e9ffa194697fa842b64076bf76a303c",
+  "designInputPins": 8,
+  "source45abAndPriorQcFreezePreserved": true,
+  "rootDirtyHashesPreserved": 35,
+  "reportSha256": "8a89f55a2336a824df3a35464186dae1f1b08a0406e6984e809ff7818da60032",
+  "rootP2Readability": "Handoff blocked pending actual adaptive code, stronger whole-word23/5 acceptance and root visual review",
+  "noBrowserAppOrServerInvocation": true
+}

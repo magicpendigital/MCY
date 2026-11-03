@@ -1,0 +1,544 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v2.playwright.config.mjs",
+      "--list"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v2.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/analyse/ux-step4-7-2026-10-18",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-global-setup-v2.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-7-2026-10-18/responsive-v2-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/analyse/ux-step4-7-2026-10-18",
+        "testIgnore": [],
+        "testMatch": [
+          "responsive-selected-v2.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v2-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "responsive-selected-v2.spec.ts",
+      "file": "responsive-selected-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "BottomNav normal 68 and VI 28 four routes at 320: all text Ranges and focus rings clear footer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-0474d97ce50ed2b24225",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "BottomNav EN 28 labels wrap inside four equal controls at 320 without horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-872bbcfbf9b5c41e6c3b",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 138,
+          "column": 1
+        },
+        {
+          "title": "BottomNav live font and viewport resize updates measured CSS height and content end",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-edfd63acf2110f026671",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 149,
+          "column": 1
+        },
+        {
+          "title": "BottomNav Profile to edit input and back clears ownership and restores measured clearance",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-61733e28a682d9f55ee4",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 168,
+          "column": 1
+        },
+        {
+          "title": "BottomNav iPhone safe area and fitted simulator scale use layout CSS pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-cc54fa755e52da138f9d",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 210,
+          "column": 3
+        },
+        {
+          "title": "BottomNav Pixel reserved navigation and fitted simulator scale use layout CSS pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-0f39ec9a8ab48210d24f",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 210,
+          "column": 3
+        },
+        {
+          "title": "Welcome decoded image and actions remain visible at 320 short landscape and desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-a1d97a5cb247c1f2f5b4",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 240,
+          "column": 1
+        },
+        {
+          "title": "Home actions and uncropped image 360",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-3790be011e74a80f0843",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Home actions and uncropped image desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-2f4c1d27fedf2d287d34",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Visual hierarchy and optional map 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-a0ebfbad92031f0c3dcd",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map landscape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-b4eed67fa9c51784309f",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Profile hierarchy 320 guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-7ef3ce682d1d026bb62c",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy landscape guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-e11959d33e6fdd82a754",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy desktop guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-c146b3d37c8be5d44057",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy iphone guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-0e27d88ce0c0c10262ca",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy pixel guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-9b140066dc7190908db3",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Long identity and true 28px text reflow; actual Tab reaches every row clear of footer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-5d6befc40238c26fb0b9",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "Leaving Profile retains Home layout and no Profile styles in later routes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-372e012889b1a00a39ca",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "Reflection return does not leak styles into retained course or Home routes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-e2b7da2551b8387d02ff",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-reflection.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "Course manual first/last selection and route return never auto-play or write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-a875b1119ac6de72289e",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-course-detail.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "account replacement resets selection and comparison before its records arrive",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-8a3facb12777aff356e4",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-journey-selection.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "keyboard and its attached footer dismiss on the same transition",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-cfc209159a8e791a521a",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/mobile-runtime.spec.ts",
+          "line": 109,
+          "column": 1
+        },
+        {
+          "title": "switching to Pixel keeps the composer above Android navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-18c2718f39b0b081a6ad",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/mobile-runtime.spec.ts",
+          "line": 137,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-18T03:40:53.556Z",
+    "duration": 707.6470000000002,
+    "expected": 0,
+    "skipped": 23,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

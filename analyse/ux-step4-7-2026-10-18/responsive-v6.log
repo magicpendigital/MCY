@@ -1,0 +1,30 @@
+
+Running 23 tests using 1 worker
+
+(node:23040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-responsive.spec.ts:128:1 › BottomNav normal 68 and VI 28 four routes at 320: all text Ranges and focus rings clear footer (17.9s)
+  ok  2 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-responsive.spec.ts:149:1 › BottomNav EN 28 labels wrap inside four equal controls at 320 without horizontal overflow (3.7s)
+  ok  3 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-responsive.spec.ts:160:1 › BottomNav live font and viewport resize updates measured CSS height and content end (3.5s)
+  ok  4 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-responsive.spec.ts:179:1 › BottomNav Profile to edit input and back clears ownership and restores measured clearance (9.0s)
+  ok  5 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-responsive.spec.ts:234:3 › BottomNav iPhone safe area and fitted simulator scale use layout CSS pixels (5.1s)
+  ok  6 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-responsive.spec.ts:234:3 › BottomNav Pixel reserved navigation and fitted simulator scale use layout CSS pixels (4.0s)
+  ok  7 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-responsive.spec.ts:264:1 › Welcome decoded image and actions remain visible at 320 short landscape and desktop (2.4s)
+  ok  8 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-home.spec.ts:15:12 › Home actions and uncropped image 360 (3.8s)
+  ok  9 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-home.spec.ts:15:12 › Home actions and uncropped image desktop (4.0s)
+  ok 10 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map 320 (2.7s)
+  ok 11 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map landscape (2.7s)
+  ok 12 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-profile.spec.ts:31:338 › Profile hierarchy 320 guest (2.3s)
+  ok 13 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-profile.spec.ts:31:338 › Profile hierarchy landscape guest (2.4s)
+  ok 14 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-profile.spec.ts:31:338 › Profile hierarchy desktop guest (2.4s)
+  ok 15 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-profile.spec.ts:31:338 › Profile hierarchy iphone guest (2.4s)
+  ok 16 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-profile.spec.ts:31:338 › Profile hierarchy pixel guest (2.4s)
+  ok 17 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-profile.spec.ts:38:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer (3.2s)
+  ok 18 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-profile.spec.ts:42:1 › Leaving Profile retains Home layout and no Profile styles in later routes (3.1s)
+  ok 19 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-reflection.spec.ts:55:1 › Reflection return does not leak styles into retained course or Home routes (5.9s)
+  ok 20 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-course-detail.spec.ts:67:1 › Course manual first/last selection and route return never auto-play or write (9.8s)
+  ok 21 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\ux-journey-selection.spec.ts:78:1 › account replacement resets selection and comparison before its records arrive (2.4s)
+  ok 22 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\mobile-runtime.spec.ts:109:1 › keyboard and its attached footer dismiss on the same transition (2.6s)
+  ok 23 ..\..\..\.vercel\ux-step4-7-20261018-v5\tests\mobile-runtime.spec.ts:137:1 › switching to Pixel keeps the composer above Android navigation (2.8s)
+
+  23 passed (1.8m)

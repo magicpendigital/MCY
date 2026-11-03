@@ -1,0 +1,10 @@
+1:08:22 PM [vite] (client) [optimizer] scanning dependencies...
+1:08:24 PM [vite] (client) [optimizer] bundling dependencies...
+{
+  "status": "PASS",
+  "pass": 5,
+  "fail": 0,
+  "fatal": null,
+  "postPinsMatch": true,
+  "cleanupErrors": []
+}

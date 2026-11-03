@@ -1,0 +1,41 @@
+{
+  "schema": "mcy-ux-step4-7-responsive-harness-freeze-v4",
+  "status": "FROZEN_PRE_BROWSER",
+  "sourceFreezeSha256": "c6b99df0b50acc46909bd9ac75a70a2e78908c6e187d8828408ceebadb275449",
+  "previousHarnessFreezeSha256": "40f929f46134b3988ea9214ef0a5fdd8b2eb9a82d70568de9302268aea8bf716",
+  "selectedCases": 23,
+  "caseTimeoutMs": 45000,
+  "runnerBudgetMs": 900000,
+  "port": 4195,
+  "files": [
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-network-guard.mjs",
+      "sha256": "fc03510e1a9b83c3064553a89f756dec9bc3e8ae3c4b22b181743d2431d8e34e"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-global-setup-v4.mjs",
+      "sha256": "71707cf09d0d76b668bdd7398b376949a3d8e40e569154b7c1d3c1a640a7277d"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-selected-v4.spec.ts",
+      "sha256": "c5a0f68a13549f0a4a98539aa11360b4c49427207abf7a4f161316a2819dc170"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-v4.playwright.config.mjs",
+      "sha256": "616062ad5d50dee55601ed9bbd19d72d2c21c4a4c242dd6448524e49069e701b"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-runner-receipt-v4.mjs",
+      "sha256": "e4ac7348ab864a8a7a9295133cab95c38d962da247742d732d3b5afcb349fc96"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-runner-close-control-v4.mjs",
+      "sha256": "8467f3b0a0d01a639d1652ce1fb2ae7add77f4482fca06ef57b28e6102bbc233"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/run-responsive-v4.mjs",
+      "sha256": "dd87cdb45f542a6786401f8a5dffb54e781489799943ca7980ef39bf6f8b81c9"
+    }
+  ],
+  "boundary": "Candidate v3 only; exactly23 selected worker cases. Exact local-only guard/proxy/synthetic-frame CSP retained. New helper records child exit/postpin failures, with separate launch-free close-control before browser. V3 21/2 result and crashed wrapper preserved."
+}

@@ -1,0 +1,38 @@
+{
+  "createdAt": "2026-10-18T03:01:48.019Z",
+  "state": "PREPARED_FOR_INDEPENDENT_INTAKE_QC; NO_APP_OR_BROWSER_INVOCATION",
+  "files": [
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/TASK-INTAKE.vi.md",
+      "sha256": "24b03d29869a9bbd6d8009b089139a332a0ddf3912ce4ccc55ae895838d6db2b"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/TEST-SELECTION.vi.md",
+      "sha256": "aed07b098bd8210d731b2ca576684b0f117e493463e20e9ed9df41ec358ea68e"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/BASELINE-PINS-v1-invalid.json",
+      "sha256": "932b72d32674cf78e3a0516a840ede6eb547b484ce8c999e28013864b3b93438"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/BASELINE-PINS-v2.json",
+      "sha256": "a746620f8ec63f4a71f741508d67560e30b240bd3e7d02de48d17922c9e4c698"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/capture-baseline.mjs",
+      "sha256": "44bd62eee55cf82e252e04682f6fde932dd4fe296c77cb43b474975a20361751"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/capture-visual-baseline.mjs",
+      "sha256": "bb64bde11aad8450c92ff6ef8d19df3d4e602a85631699eaa65f263789b710cb"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/freeze-intake.mjs",
+      "sha256": "f9fdc9a9869e37c92f02df26e5d39ac59d5edf7b158b9cafc36cc73a6be0f5a4"
+    }
+  ],
+  "accepted46SourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "approved45SourceFreezeSha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8",
+  "candidate47Exists": false,
+  "boundary": "Only new analysis intake artifacts; 4.6 source/evidence/root checkout unchanged. Candidate/browser await independent QC and root GO."
+}

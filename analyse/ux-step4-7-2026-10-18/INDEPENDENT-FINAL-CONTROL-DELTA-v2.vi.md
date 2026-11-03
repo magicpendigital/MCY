@@ -1,0 +1,7 @@
+# Independent controls v2 — retained true end
+
+Preparation only; no browser/runner binding or execution. Preserve the v1 preparation freeze and module. This changes only independent case 3 in `independent-responsive-controls-v2.mjs` to add a separate retained-end negative control before the real Tab/Enter input-return check.
+
+Scroll Profile to its actual maximum; retain its real scroll DOM handle; capture scrollTop, scrollHeight/clientHeight, padding, final-content rectangle and current/shared-nav state. Invoke the existing personal-information row handler with an explicitly labelled DOM click so Playwright cannot first scroll that offscreen row into view. Sample that same retained scroll node during route change and after detail settlement, then return through the existing back action. Record returned position/content before any compensating scroll. The original Profile DOM node must return; scroll position may not clamp by more than 2 CSSpx during departure or remain changed by more than 2px on return, and final-content geometry must restore within 3 physical pixels at the web scale used by case 3. Write observations through the recorder before asserting, preserving failure evidence.
+
+This handler-only probe is not claimed as a user click/keyboard test. The subsequent existing Tab/Enter→actual input→back check remains separate. No app style, dataset, protected variable, route key or hidden retained-screen mutation is introduced. Final acceptance still requires source/harness review, runner binding and root release.

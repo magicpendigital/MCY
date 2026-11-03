@@ -1,0 +1,31 @@
+{
+  "status": "PASS_STRICT_LOCAL_PREVIEW",
+  "checkedAtUtc": "2026-10-18T06:15:57.7910539Z",
+  "startReceiptSha256": "19d7e8b5533899767c0a1631ad879a600753cfec536ba67e6715341fdf66e7a8",
+  "sourceFreezeSha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1",
+  "checks": {
+    "process": {
+      "pid": 5200,
+      "name": "node.exe",
+      "commandLine": "\"C:\\Program Files\\nodejs\\node.exe\" analyse/ux-step4-7-2026-10-18/preview-v6.mjs",
+      "pass": true
+    },
+    "listener": {
+      "count": 1,
+      "pid": 5200,
+      "pass": true
+    },
+    "html": {
+      "statusCode": 200,
+      "csp": "connect-src 'self' ws://127.0.0.1:*; frame-src 'none'; img-src 'self' data:; media-src 'none'",
+      "htmlPass": true,
+      "cspPass": true
+    },
+    "source": {
+      "statusCode": 200,
+      "hasAdaptiveMode": true,
+      "pass": true
+    }
+  },
+  "errors": []
+}

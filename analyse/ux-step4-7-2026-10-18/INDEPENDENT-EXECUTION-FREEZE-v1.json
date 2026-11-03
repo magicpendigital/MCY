@@ -1,0 +1,50 @@
+{
+  "schema": "mcy-independent-responsive-execution-v1",
+  "status": "FROZEN_PENDING_ROOT_RELEASE_NO_EXECUTION",
+  "sourceManifest": "analyse/ux-step4-7-2026-10-18/CANDIDATE-SOURCE-FREEZE-v5.json",
+  "sourceFreezeSha256": "45ab857d0a0d1325e8b69216b7d46fac9fb33d046d9d92f8d42afa324135a2bc",
+  "candidate": ".vercel/ux-step4-7-20261018-v5",
+  "port": 4195,
+  "caseCount": 5,
+  "caseBudgetMs": 60000,
+  "processBudgetMs": 360000,
+  "files": [
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/INDEPENDENT-EXECUTION-PLAN-v1.vi.md",
+      "sha256": "f501d885d20248fbb1313ac5204f3a78c7b338985edc0d2d720b16812d2f45d1"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/independent-responsive-controls-v3.mjs",
+      "sha256": "60b42efcef16d43480f6a9ace6ed5ed38de7a4723dc103157507423e6ebe0f09"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/independent-responsive-probe-v1.mjs",
+      "sha256": "659103c2e60fb95f8d16fcbb5c4d38bc096b96ab3d3176059305e018366b4e59"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/run-independent-responsive-v1.mjs",
+      "sha256": "8ff3dc5260af5c43eee559853a5bc2f37e0ecf2ed17bcae4538e737ad0ab808e"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/prepare-independent-execution-v1.mjs",
+      "sha256": "44ed915db1c9c07ed80125dc98cb77ca86db945010a86fbcd4d922d5ca031123"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/INDEPENDENT-EXECUTION-PREPARATION-v1.json",
+      "sha256": "1d9018feea453719c9e10b591b16004d7918d3204557b483affa6273bb18da25"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/CANDIDATE-SOURCE-FREEZE-v5.json",
+      "sha256": "45ab857d0a0d1325e8b69216b7d46fac9fb33d046d9d92f8d42afa324135a2bc"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/BASELINE-PINS-v2.json",
+      "sha256": "a746620f8ec63f4a71f741508d67560e30b240bd3e7d02de48d17922c9e4c698"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/INDEPENDENT-INTAKE-SOURCE-CHECK.json",
+      "sha256": "fd9300f747815dc5d6428b952bb73d6aaddb1ef8451bbc50dd426abbc4dd4271"
+    }
+  ],
+  "boundary": "Strict local own Vite+Edge only after root release and worker/gate browser cleanup. No candidate mutation/native/live/backend/media/release."
+}

@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-10-18T03:08:02.005Z",
+  "status": "PASS_PRE_INVOCATION_BASELINE_CAPTURE_ONLY_NOT_IMPLEMENTATION_GO",
+  "intakeFreezeSha256": "11cc157eccc803fe3bd141b4dd949eb60c8a5adadf06bfc43c1423179f648109",
+  "v3Pins": 4,
+  "v2Pins": 5,
+  "helperDeltaOnlyReviewedControls": true,
+  "negativeOriginControls": 9,
+  "syntaxChecksExit0": 2,
+  "accepted46AppPins": 236,
+  "accepted46HarnessPins": 16,
+  "ownFreshTrackedHashesUnchanged": 35,
+  "localLinksResolved": 13,
+  "candidate47Absent": true,
+  "noBrowserOrAppTestsInvoked": true,
+  "nextBoundary": "Root may release one six-capture baseline command with240s cap; concrete design/initial exact cases and independent QC/rootGO still required before4.7 candidate or edits"
+}

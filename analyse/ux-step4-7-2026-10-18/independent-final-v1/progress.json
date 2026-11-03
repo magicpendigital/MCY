@@ -1,0 +1,841 @@
+[
+  {
+    "id": "independent-vi320-normal-and28-four-routes",
+    "startedAt": "2026-10-18T04:57:08.301Z",
+    "status": "FAIL",
+    "error": "locator.evaluateAll: ReferenceError: large is not defined\n    at eval (eval at evaluate (:303:30), <anonymous>:4:46)\n    at Array.every (<anonymous>)\n    at eval (eval at evaluate (:303:30), <anonymous>:1:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:62\n    at async styleReady (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:3)\n    at async largeStyle (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:66:89)\n    at async runIndependentControl (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:132:13)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-7-2026-10-18/independent-responsive-probe-v1.mjs:21:20",
+    "geometry": {
+      "route": "discover",
+      "retainedScreens": 3,
+      "footer": {
+        "top": 399,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 169
+      },
+      "layoutHeight": 169,
+      "scale": 1,
+      "app": {
+        "top": 0,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 568
+      },
+      "header": {
+        "top": 0,
+        "bottom": 55,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 55
+      },
+      "configured": "0px",
+      "measured": "169px",
+      "inset": 0,
+      "safe": 0,
+      "pagePadding": 197,
+      "scroll": {
+        "rect": {
+          "top": 55,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 513
+        },
+        "top": 516,
+        "max": 617,
+        "width": 320,
+        "client": 320,
+        "padding": 193
+      },
+      "last": {
+        "top": 413.09375,
+        "bottom": 472.09375,
+        "left": 17,
+        "right": 303,
+        "width": 286,
+        "height": 59
+      },
+      "activeElement": {
+        "tag": "BUTTON",
+        "text": "Cá nhân"
+      },
+      "controls": [
+        {
+          "text": "Hôm nay",
+          "button": {
+            "top": 407,
+            "bottom": 562,
+            "left": 9,
+            "right": 84.5,
+            "width": 75.5,
+            "height": 155
+          },
+          "ranges": [
+            {
+              "top": 455,
+              "bottom": 492,
+              "left": 14.640625,
+              "right": 78.84375
+            },
+            {
+              "top": 497,
+              "bottom": 534,
+              "left": 23.203125,
+              "right": 70.28125
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Hành trình",
+          "button": {
+            "top": 407,
+            "bottom": 562,
+            "left": 84.5,
+            "right": 160,
+            "width": 75.5,
+            "height": 155
+          },
+          "ranges": [
+            {
+              "top": 455,
+              "bottom": 492,
+              "left": 87.078125,
+              "right": 157.40625
+            },
+            {
+              "top": 497,
+              "bottom": 534,
+              "left": 90.34375,
+              "right": 154.140625
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Khám phá",
+          "button": {
+            "top": 407,
+            "bottom": 562,
+            "left": 160,
+            "right": 235.5,
+            "width": 75.5,
+            "height": 155
+          },
+          "ranges": [
+            {
+              "top": 434,
+              "bottom": 471,
+              "left": 171.59375,
+              "right": 223.90625
+            },
+            {
+              "top": 476,
+              "bottom": 513,
+              "left": 184.4375,
+              "right": 211.046875
+            },
+            {
+              "top": 518,
+              "bottom": 555,
+              "left": 172.265625,
+              "right": 223.234375
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Cá nhân",
+          "button": {
+            "top": 407,
+            "bottom": 562,
+            "left": 235.5,
+            "right": 311,
+            "width": 75.5,
+            "height": 155
+          },
+          "ranges": [
+            {
+              "top": 455,
+              "bottom": 492,
+              "left": 256.96875,
+              "right": 289.515625
+            },
+            {
+              "top": 497,
+              "bottom": 534,
+              "left": 240.34375,
+              "right": 306.15625
+            }
+          ],
+          "font": "28px"
+        }
+      ]
+    },
+    "observations": [],
+    "ledger": {
+      "unexpected": [],
+      "capabilityReads": [],
+      "pageErrors": [],
+      "localMutations": []
+    }
+  },
+  {
+    "id": "independent-en320-28-four-routes",
+    "startedAt": "2026-10-18T04:57:12.114Z",
+    "status": "FAIL",
+    "error": "locator.evaluateAll: ReferenceError: large is not defined\n    at eval (eval at evaluate (:303:30), <anonymous>:4:46)\n    at Array.every (<anonymous>)\n    at eval (eval at evaluate (:303:30), <anonymous>:1:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:62\n    at async styleReady (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:3)\n    at async largeStyle (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:66:89)\n    at async runIndependentControl (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:132:13)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-7-2026-10-18/independent-responsive-probe-v1.mjs:21:20",
+    "geometry": {
+      "route": "discover",
+      "retainedScreens": 3,
+      "footer": {
+        "top": 500,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68
+      },
+      "layoutHeight": 68,
+      "scale": 1,
+      "app": {
+        "top": 0,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 568
+      },
+      "header": {
+        "top": 0,
+        "bottom": 55,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 55
+      },
+      "configured": "0px",
+      "measured": "68px",
+      "inset": 0,
+      "safe": 0,
+      "pagePadding": 96,
+      "scroll": {
+        "rect": {
+          "top": 55,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 513
+        },
+        "top": 0,
+        "max": 516,
+        "width": 320,
+        "client": 320,
+        "padding": 92
+      },
+      "last": {
+        "top": 929.09375,
+        "bottom": 988.09375,
+        "left": 17,
+        "right": 303,
+        "width": 286,
+        "height": 59
+      },
+      "activeElement": {
+        "tag": "H1",
+        "text": "Bài học yoga miễn phí"
+      },
+      "controls": [
+        {
+          "text": "Today",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 9,
+            "right": 84.5,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 31.328125,
+              "right": 62.171875
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Journey",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 84.5,
+            "right": 160,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 101.640625,
+              "right": 142.859375
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Explore",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 160,
+            "right": 235.5,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 177.09375,
+              "right": 218.390625
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Profile",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 235.5,
+            "right": 311,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 256.203125,
+              "right": 290.28125
+            }
+          ],
+          "font": "11px"
+        }
+      ]
+    },
+    "observations": [],
+    "ledger": {
+      "unexpected": [],
+      "capabilityReads": [],
+      "pageErrors": [],
+      "localMutations": []
+    }
+  },
+  {
+    "id": "independent-rapid-resize-edit-return",
+    "startedAt": "2026-10-18T04:57:14.494Z",
+    "status": "FAIL",
+    "error": "locator.evaluateAll: ReferenceError: large is not defined\n    at eval (eval at evaluate (:303:30), <anonymous>:4:46)\n    at Array.every (<anonymous>)\n    at eval (eval at evaluate (:303:30), <anonymous>:1:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:62\n    at async styleReady (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:3)\n    at async largeStyle (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:66:89)\n    at async runIndependentControl (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:132:13)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-7-2026-10-18/independent-responsive-probe-v1.mjs:21:20",
+    "geometry": {
+      "route": "discover",
+      "retainedScreens": 3,
+      "footer": {
+        "top": 500,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68
+      },
+      "layoutHeight": 68,
+      "scale": 1,
+      "app": {
+        "top": 0,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 568
+      },
+      "header": {
+        "top": 0,
+        "bottom": 55,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 55
+      },
+      "configured": "0px",
+      "measured": "68px",
+      "inset": 0,
+      "safe": 0,
+      "pagePadding": 96,
+      "scroll": {
+        "rect": {
+          "top": 55,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 513
+        },
+        "top": 489,
+        "max": 489,
+        "width": 320,
+        "client": 320,
+        "padding": 92
+      },
+      "last": {
+        "top": 413.296875,
+        "bottom": 472.296875,
+        "left": 17,
+        "right": 303,
+        "width": 286,
+        "height": 59
+      },
+      "activeElement": {
+        "tag": "BUTTON",
+        "text": "Cá nhân"
+      },
+      "controls": [
+        {
+          "text": "Hôm nay",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 9,
+            "right": 84.5,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 23.375,
+              "right": 70.125
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Hành trình",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 84.5,
+            "right": 160,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 94.375,
+              "right": 150.109375
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Khám phá",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 160,
+            "right": 235.5,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 170.703125,
+              "right": 224.796875
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Cá nhân",
+          "button": {
+            "top": 508,
+            "bottom": 562,
+            "left": 235.5,
+            "right": 311,
+            "width": 75.5,
+            "height": 54
+          },
+          "ranges": [
+            {
+              "top": 537.25,
+              "bottom": 552.25,
+              "left": 252.40625,
+              "right": 294.078125
+            }
+          ],
+          "font": "11px"
+        }
+      ]
+    },
+    "observations": [],
+    "ledger": {
+      "unexpected": [],
+      "capabilityReads": [],
+      "pageErrors": [],
+      "localMutations": []
+    }
+  },
+  {
+    "id": "independent-iphone-fitted-safearea",
+    "startedAt": "2026-10-18T04:57:16.618Z",
+    "status": "FAIL",
+    "error": "locator.evaluateAll: ReferenceError: large is not defined\n    at eval (eval at evaluate (:303:30), <anonymous>:4:46)\n    at Array.every (<anonymous>)\n    at eval (eval at evaluate (:303:30), <anonymous>:1:32)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:62\n    at async styleReady (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:58:3)\n    at async largeStyle (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:66:89)\n    at async runIndependentControl (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:132:13)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-7-2026-10-18/independent-responsive-probe-v1.mjs:21:20",
+    "geometry": {
+      "route": "discover",
+      "retainedScreens": 3,
+      "footer": {
+        "top": 574.9173583984375,
+        "bottom": 668.33056640625,
+        "left": 225.45919799804688,
+        "right": 514.5252685546875,
+        "width": 289.0660705566406,
+        "height": 93.4132080078125
+      },
+      "layoutHeight": 127,
+      "scale": 0.7355370752077369,
+      "app": {
+        "top": 66.6611557006836,
+        "bottom": 693.3388290405273,
+        "left": 225.45919799804688,
+        "right": 514.5252685546875,
+        "width": 289.0660705566406,
+        "height": 626.6776733398438
+      },
+      "header": {
+        "top": 66.6611557006836,
+        "bottom": 146.834716796875,
+        "left": 225.45919799804688,
+        "right": 514.5252685546875,
+        "width": 289.0660705566406,
+        "height": 80.1735610961914
+      },
+      "configured": "0px",
+      "measured": "127px",
+      "inset": 34,
+      "safe": 34,
+      "pagePadding": 189,
+      "scroll": {
+        "rect": {
+          "top": 146.834716796875,
+          "bottom": 693.3388061523438,
+          "left": 225.45919799804688,
+          "right": 514.5252685546875,
+          "width": 289.0660705566406,
+          "height": 546.5040893554688
+        },
+        "top": 235,
+        "max": 294,
+        "width": 393,
+        "client": 393,
+        "padding": 185
+      },
+      "last": {
+        "top": 554.44873046875,
+        "bottom": 597.8453979492188,
+        "left": 243.11209106445312,
+        "right": 496.8724060058594,
+        "width": 253.76031494140625,
+        "height": 43.39666748046875
+      },
+      "activeElement": {
+        "tag": "BUTTON",
+        "text": "Cá nhân"
+      },
+      "controls": [
+        {
+          "text": "Hôm nay",
+          "button": {
+            "top": 580.8016357421875,
+            "bottom": 663.9173583984375,
+            "left": 232.0790252685547,
+            "right": 301.03564453125,
+            "width": 68.95661926269531,
+            "height": 83.11572265625
+          },
+          "ranges": [
+            {
+              "top": 600.6611328125,
+              "bottom": 627.8760375976562,
+              "left": 242.939697265625,
+              "right": 290.1634826660156
+            },
+            {
+              "top": 631.5537109375,
+              "bottom": 658.7685546875,
+              "left": 249.23773193359375,
+              "right": 283.8654479980469
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Hành trình",
+          "button": {
+            "top": 580.8016357421875,
+            "bottom": 663.9173583984375,
+            "left": 301.03564453125,
+            "right": 369.99224853515625,
+            "width": 68.95660400390625,
+            "height": 83.11572265625
+          },
+          "ranges": [
+            {
+              "top": 600.6611328125,
+              "bottom": 627.8760375976562,
+              "left": 309.64373779296875,
+              "right": 361.3726806640625
+            },
+            {
+              "top": 631.5537109375,
+              "bottom": 658.7685546875,
+              "left": 312.04571533203125,
+              "right": 358.970703125
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Khám phá",
+          "button": {
+            "top": 580.8016357421875,
+            "bottom": 663.9173583984375,
+            "left": 369.99224853515625,
+            "right": 438.9488525390625,
+            "width": 68.95660400390625,
+            "height": 83.11572265625
+          },
+          "ranges": [
+            {
+              "top": 600.6611328125,
+              "bottom": 627.8760375976562,
+              "left": 375.4398193359375,
+              "right": 433.48980712890625
+            },
+            {
+              "top": 631.5537109375,
+              "bottom": 658.7685546875,
+              "left": 385.725830078125,
+              "right": 423.21527099609375
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Cá nhân",
+          "button": {
+            "top": 580.8016357421875,
+            "bottom": 663.9173583984375,
+            "left": 438.9488525390625,
+            "right": 507.90545654296875,
+            "width": 68.95660400390625,
+            "height": 83.11572265625
+          },
+          "ranges": [
+            {
+              "top": 600.6611328125,
+              "bottom": 627.8760375976562,
+              "left": 461.4516906738281,
+              "right": 485.3911437988281
+            },
+            {
+              "top": 631.5537109375,
+              "bottom": 658.7685546875,
+              "left": 449.223388671875,
+              "right": 497.63092041015625
+            }
+          ],
+          "font": "28px"
+        }
+      ]
+    },
+    "observations": [],
+    "ledger": {
+      "unexpected": [],
+      "capabilityReads": [],
+      "pageErrors": [],
+      "localMutations": []
+    }
+  },
+  {
+    "id": "independent-pixel-fitted-safearea",
+    "startedAt": "2026-10-18T04:57:19.505Z",
+    "status": "FAIL",
+    "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at captureRawStack (D:\\Projects\\MCY\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toBe (D:\\Projects\\MCY\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at focusBounds (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:90:265)\n    at fourRings (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:92:155)\n    at async runIndependentControl (D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\independent-responsive-controls-v3.mjs:131:127)\n    at async file:///D:/Projects/MCY/analyse/ux-step4-7-2026-10-18/independent-responsive-probe-v1.mjs:21:20",
+    "geometry": {
+      "route": "discover",
+      "retainedScreens": 3,
+      "footer": {
+        "top": 630.8023681640625,
+        "bottom": 678.1761474609375,
+        "left": 221.61087036132812,
+        "right": 519.09033203125,
+        "width": 297.4794616699219,
+        "height": 47.373779296875
+      },
+      "layoutHeight": 68,
+      "scale": 0.6966732123417374,
+      "app": {
+        "top": 48.38356018066406,
+        "bottom": 678.1761627197266,
+        "left": 221.61087036132812,
+        "right": 519.09033203125,
+        "width": 297.4794616699219,
+        "height": 629.7926025390625
+      },
+      "header": {
+        "top": 48.38356018066406,
+        "bottom": 131.2876739501953,
+        "left": 221.61087036132812,
+        "right": 519.09033203125,
+        "width": 297.4794616699219,
+        "height": 82.90411376953125
+      },
+      "configured": "0px",
+      "measured": "68px",
+      "inset": 0,
+      "safe": 0,
+      "pagePadding": 96,
+      "scroll": {
+        "rect": {
+          "top": 131.2876739501953,
+          "bottom": 678.1761627197266,
+          "left": 221.61087036132812,
+          "right": 519.09033203125,
+          "width": 297.4794616699219,
+          "height": 546.8884887695312
+        },
+        "top": 93,
+        "max": 93,
+        "width": 427,
+        "client": 427,
+        "padding": 92
+      },
+      "last": {
+        "top": 570.3224487304688,
+        "bottom": 611.4261474609375,
+        "left": 238.33102416992188,
+        "right": 502.37017822265625,
+        "width": 264.0391540527344,
+        "height": 41.10369873046875
+      },
+      "activeElement": {
+        "tag": "BUTTON",
+        "text": "Hôm nay"
+      },
+      "controls": [
+        {
+          "text": "Hôm nay",
+          "button": {
+            "top": 636.375732421875,
+            "bottom": 673.99609375,
+            "left": 227.8809356689453,
+            "right": 299.11578369140625,
+            "width": 71.23484802246094,
+            "height": 37.620361328125
+          },
+          "ranges": [
+            {
+              "top": 657.2759399414062,
+              "bottom": 667.72607421875,
+              "left": 247.213623046875,
+              "right": 279.7830810546875
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Hành trình",
+          "button": {
+            "top": 636.375732421875,
+            "bottom": 673.99609375,
+            "left": 299.11578369140625,
+            "right": 370.3505859375,
+            "width": 71.23480224609375,
+            "height": 37.620361328125
+          },
+          "ranges": [
+            {
+              "top": 657.2759399414062,
+              "bottom": 667.72607421875,
+              "left": 315.31341552734375,
+              "right": 354.14208984375
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Khám phá",
+          "button": {
+            "top": 636.375732421875,
+            "bottom": 673.99609375,
+            "left": 370.3505859375,
+            "right": 441.58544921875,
+            "width": 71.23486328125,
+            "height": 37.620361328125
+          },
+          "ranges": [
+            {
+              "top": 657.2759399414062,
+              "bottom": 667.72607421875,
+              "left": 387.12518310546875,
+              "right": 424.81085205078125
+            }
+          ],
+          "font": "11px"
+        },
+        {
+          "text": "Cá nhân",
+          "button": {
+            "top": 636.375732421875,
+            "bottom": 673.99609375,
+            "left": 441.58544921875,
+            "right": 512.8203125,
+            "width": 71.23486328125,
+            "height": 37.620361328125
+          },
+          "ranges": [
+            {
+              "top": 657.2759399414062,
+              "bottom": 667.72607421875,
+              "left": 462.68157958984375,
+              "right": 491.7132568359375
+            }
+          ],
+          "font": "11px"
+        }
+      ]
+    },
+    "observations": [],
+    "ledger": {
+      "unexpected": [],
+      "capabilityReads": [],
+      "pageErrors": [],
+      "localMutations": []
+    }
+  }
+]

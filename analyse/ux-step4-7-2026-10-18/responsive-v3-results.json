@@ -1,0 +1,1065 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v3.playwright.config.mjs"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v3.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/analyse/ux-step4-7-2026-10-18",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-global-setup-v2.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-7-2026-10-18/responsive-v3-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/analyse/ux-step4-7-2026-10-18",
+        "testIgnore": [],
+        "testMatch": [
+          "responsive-selected-v2.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v3-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "responsive-selected-v2.spec.ts",
+      "file": "responsive-selected-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "BottomNav normal 68 and VI 28 four routes at 320: all text Ranges and focus rings clear footer",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10898,
+                  "error": {
+                    "message": "Error: locator.evaluate: Error: strict mode violation: getByTestId('flow-current').locator('.mobile-scroll') resolved to 2 elements:\n    1) <div class=\"mobile-scroll\" data-dragging=\"false\" data-overscroll=\"0.00\" data-testid=\"mobile-scroll\">…</div> aka locator('section').filter({ hasText: 'Hành trình của bạnChưa có bản' }).getByTestId('mobile-scroll')\n    2) <div class=\"mobile-scroll\" data-dragging=\"false\" data-overscroll=\"0.00\" data-testid=\"mobile-scroll\">…</div> aka locator('section').filter({ hasText: 'KHÁM PHÁBài học yoga miễn phí' }).getByTestId('mobile-scroll')\n\nCall log:\n\u001b[2m  - waiting for getByTestId('flow-current').locator('.mobile-scroll')\u001b[22m\n",
+                    "stack": "Error: locator.evaluate: Error: strict mode violation: getByTestId('flow-current').locator('.mobile-scroll') resolved to 2 elements:\n    1) <div class=\"mobile-scroll\" data-dragging=\"false\" data-overscroll=\"0.00\" data-testid=\"mobile-scroll\">…</div> aka locator('section').filter({ hasText: 'Hành trình của bạnChưa có bản' }).getByTestId('mobile-scroll')\n    2) <div class=\"mobile-scroll\" data-dragging=\"false\" data-overscroll=\"0.00\" data-testid=\"mobile-scroll\">…</div> aka locator('section').filter({ hasText: 'KHÁM PHÁBài học yoga miễn phí' }).getByTestId('mobile-scroll')\n\nCall log:\n\u001b[2m  - waiting for getByTestId('flow-current').locator('.mobile-scroll')\u001b[22m\n\n    at lastContentClear (D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts:108:50)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts:133:27",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts",
+                      "column": 50,
+                      "line": 108
+                    },
+                    "snippet": "  106 |\n  107 | async function lastContentClear(page: Page) {\n> 108 |   return current(page).locator('.mobile-scroll').evaluate(scroll => {\n      |                                                  ^\n  109 |     scroll.scrollTop = scroll.scrollHeight;\n  110 |     const last = scroll.querySelector('main')?.lastElementChild;\n  111 |     const footer = document.querySelector('.mcy-app-navigation');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts",
+                        "column": 50,
+                        "line": 108
+                      },
+                      "message": "Error: locator.evaluate: Error: strict mode violation: getByTestId('flow-current').locator('.mobile-scroll') resolved to 2 elements:\n    1) <div class=\"mobile-scroll\" data-dragging=\"false\" data-overscroll=\"0.00\" data-testid=\"mobile-scroll\">…</div> aka locator('section').filter({ hasText: 'Hành trình của bạnChưa có bản' }).getByTestId('mobile-scroll')\n    2) <div class=\"mobile-scroll\" data-dragging=\"false\" data-overscroll=\"0.00\" data-testid=\"mobile-scroll\">…</div> aka locator('section').filter({ hasText: 'KHÁM PHÁBài học yoga miễn phí' }).getByTestId('mobile-scroll')\n\nCall log:\n\u001b[2m  - waiting for getByTestId('flow-current').locator('.mobile-scroll')\u001b[22m\n\n\n  106 |\n  107 | async function lastContentClear(page: Page) {\n> 108 |   return current(page).locator('.mobile-scroll').evaluate(scroll => {\n      |                                                  ^\n  109 |     scroll.scrollTop = scroll.scrollHeight;\n  110 |     const last = scroll.querySelector('main')?.lastElementChild;\n  111 |     const footer = document.querySelector('.mcy-app-navigation');\n    at lastContentClear (D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts:108:50)\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts:133:27"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:50:56.178Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v3-results\\responsive-selected-v2-Bot-07b30-nd-focus-rings-clear-footer\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts",
+                    "column": 50,
+                    "line": 108
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-0474d97ce50ed2b24225",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "BottomNav EN 28 labels wrap inside four equal controls at 320 without horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2687,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:12.294Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-872bbcfbf9b5c41e6c3b",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 138,
+          "column": 1
+        },
+        {
+          "title": "BottomNav live font and viewport resize updates measured CSS height and content end",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:15.796Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-edfd63acf2110f026671",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 149,
+          "column": 1
+        },
+        {
+          "title": "BottomNav Profile to edit input and back clears ownership and restores measured clearance",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1771,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m917\u001b[39m\nReceived:    \u001b[31m851\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m917\u001b[39m\nReceived:    \u001b[31m851\u001b[39m\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts:186:22",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts",
+                      "column": 22,
+                      "line": 186
+                    },
+                    "snippet": "  184 |   expect(await page.locator('.flow-stack').evaluate(stack => stack.style.getPropertyValue('--mcy-app-nav-height'))).toBe('');\n  185 |   const during = await retainedScroll.evaluate(scroll => ({ top: scroll.scrollTop, height: scroll.scrollHeight }));\n> 186 |   expect(during.top).toBeGreaterThanOrEqual(before.top - 2);\n      |                      ^\n  187 |   const input = page.getByLabel('Tên hiển thị', { exact: true });\n  188 |   await input.click();\n  189 |   await expect(page.getByTestId('keyboard-dock')).toHaveAttribute('data-visible', 'true');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts",
+                        "column": 22,
+                        "line": 186
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m917\u001b[39m\nReceived:    \u001b[31m851\u001b[39m\n\n  184 |   expect(await page.locator('.flow-stack').evaluate(stack => stack.style.getPropertyValue('--mcy-app-nav-height'))).toBe('');\n  185 |   const during = await retainedScroll.evaluate(scroll => ({ top: scroll.scrollTop, height: scroll.scrollHeight }));\n> 186 |   expect(during.top).toBeGreaterThanOrEqual(before.top - 2);\n      |                      ^\n  187 |   const input = page.getByLabel('Tên hiển thị', { exact: true });\n  188 |   await input.click();\n  189 |   await expect(page.getByTestId('keyboard-dock')).toHaveAttribute('data-visible', 'true');\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts:186:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:18.292Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v3-results\\responsive-selected-v2-Bot-de391-restores-measured-clearance\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-7-20261018-v2\\tests\\ux-responsive.spec.ts",
+                    "column": 22,
+                    "line": 186
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-61733e28a682d9f55ee4",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 168,
+          "column": 1
+        },
+        {
+          "title": "BottomNav iPhone safe area and fitted simulator scale use layout CSS pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2808,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:21.021Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-cc54fa755e52da138f9d",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 210,
+          "column": 3
+        },
+        {
+          "title": "BottomNav Pixel reserved navigation and fitted simulator scale use layout CSS pixels",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2247,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:24.242Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-0f39ec9a8ab48210d24f",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 210,
+          "column": 3
+        },
+        {
+          "title": "Welcome decoded image and actions remain visible at 320 short landscape and desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:26.514Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-a1d97a5cb247c1f2f5b4",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-responsive.spec.ts",
+          "line": 240,
+          "column": 1
+        },
+        {
+          "title": "Home actions and uncropped image 360",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3795,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:28.849Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-3790be011e74a80f0843",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Home actions and uncropped image desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:32.666Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-2f4c1d27fedf2d287d34",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-home.spec.ts",
+          "line": 15,
+          "column": 12
+        },
+        {
+          "title": "Visual hierarchy and optional map 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2932,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:36.496Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-a0ebfbad92031f0c3dcd",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map landscape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3343,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:39.449Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-b4eed67fa9c51784309f",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Profile hierarchy 320 guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3096,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:42.813Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-7ef3ce682d1d026bb62c",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy landscape guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2360,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:45.933Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-e11959d33e6fdd82a754",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy desktop guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2394,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:48.312Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-c146b3d37c8be5d44057",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy iphone guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2347,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:50.724Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-0e27d88ce0c0c10262ca",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Profile hierarchy pixel guest",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2879,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:53.090Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-9b140066dc7190908db3",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 31,
+          "column": 338
+        },
+        {
+          "title": "Long identity and true 28px text reflow; actual Tab reaches every row clear of footer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3404,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:55.989Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-5d6befc40238c26fb0b9",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "Leaving Profile retains Home layout and no Profile styles in later routes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:51:59.409Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-372e012889b1a00a39ca",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-profile.spec.ts",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "Reflection return does not leak styles into retained course or Home routes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5392,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:52:02.374Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-e2b7da2551b8387d02ff",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-reflection.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "Course manual first/last selection and route return never auto-play or write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8480,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:52:07.784Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-a875b1119ac6de72289e",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-course-detail.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "account replacement resets selection and comparison before its records arrive",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1359,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:52:16.283Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-8a3facb12777aff356e4",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/ux-journey-selection.spec.ts",
+          "line": 78,
+          "column": 1
+        },
+        {
+          "title": "keyboard and its attached footer dismiss on the same transition",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1623,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:52:17.662Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-cfc209159a8e791a521a",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/mobile-runtime.spec.ts",
+          "line": 109,
+          "column": 1
+        },
+        {
+          "title": "switching to Pixel keeps the composer above Android navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T03:52:19.307Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "network-guard.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJzdGF0dXMiOiAiUEFTUyIsCiAgInZpb2xhdGlvbnMiOiBbXSwKICAiZnJhbWVQb2xpY3kiOiAiRXhhY3Qgc3ludGhldGljIHBsYXllciBIVE1MOyBkZW55IHByb3h5IGFuZCByb3V0ZSBndWFyZCBwcmV2ZW50IHJlYWwgb3V0Ym91bmQgbWVkaWEvYmFja2VuZC4iCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ebf7451c24c6ad49a56c-18c2718f39b0b081a6ad",
+          "file": "../../.vercel/ux-step4-7-20261018-v2/tests/mobile-runtime.spec.ts",
+          "line": 137,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-18T03:50:52.002Z",
+    "duration": 90015.763,
+    "expected": 21,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

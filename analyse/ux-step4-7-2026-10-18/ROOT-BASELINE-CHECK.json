@@ -1,0 +1,14 @@
+{
+  "recordedAt": "2026-10-18T03:10:58.0325715Z",
+  "status": "PASS_READONLY_BASELINE_PIN_CHECK_NOT_APP_GO",
+  "counts": {
+    "accepted46": 236,
+    "harness46": 16,
+    "approved45": 235,
+    "rootExisting": 228,
+    "rootAbsent": 8
+  },
+  "trackedDirtyPathsUnchanged": 35,
+  "candidate47Exists": false,
+  "scope": "Current source/read-only state; baseline visual capture and concrete design remain separate gates."
+}

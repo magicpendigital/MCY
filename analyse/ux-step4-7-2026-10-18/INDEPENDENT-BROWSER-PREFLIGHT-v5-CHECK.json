@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-10-18T04:29:53.883Z",
+  "status": "PASS_PREFLIGHT_ONE_BOUNDED23_RUN_ROOT_GO_REQUIRED",
+  "sourceFreezeSha256": "9a3e0e2409ad8071cadca627a614df9422f038317ab3f0b5e756e20e1c50f3dc",
+  "harnessFreezeSha256": "1fd64bfb50770a74494fc811758e5dddf30caebfbab6c357824beac29316fe50",
+  "candidatePins": 237,
+  "harnessPins": 7,
+  "v3PinsPreserved": 237,
+  "v4OnlyDeltaFromV3": "New responsive test expected-route arguments",
+  "appAmendmentReview": "Supported scopedR1; exact singleton current/active/noninert boundary ownership; current route dependency; bounded120rAF rebind cancelled on cleanup; retained route-local CSS value; no hidden write or scrollTop compensation",
+  "strictClampAssertionsUnchanged": true,
+  "collection": {
+    "actualExit": 0,
+    "titles": 23,
+    "files": 8,
+    "initialParserZeroInvalidPreserved": true,
+    "correctedReadbackSha256": "4f60b29d036687f960225c03bb60018ca1ba2454b5a45b217b7b4c8d60506345"
+  },
+  "closeControls": {
+    "actualReportedExit": 0,
+    "cases": 3,
+    "receiptSha256": "6a1749a16a9eb4b8eb81277123a742106f817edb9b7d6133aa515a59e0b556c2",
+    "sharedReceiptFunctionReviewed": true
+  },
+  "freshOutputPathsAbsent": [
+    "responsive-v5-results.json",
+    "responsive-v5-results",
+    "responsive-v5.log",
+    "responsive-v5-command.json"
+  ],
+  "rootTrackedDirtyHashes": 35,
+  "networkAndTimeouts": "Same exact guard/invalid fixtures/synthetic frame, denyproxy, CSP, SWblock;45s/case,900s kill-request budget; forced cleanup unverified",
+  "limits": "Invocation clearance only. Retained clamp fix, route settlement and full candidate behavior require actual results. Prior21/2 plus missing child receipt remain failures; no origin/new-diff claim without baseline control.",
+  "noBrowserServerOrAppTestInvocation": true
+}

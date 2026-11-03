@@ -1,0 +1,17 @@
+# UX 4.7 Responsive — trạng thái bàn giao hiện tại
+
+**PASS_LOCAL_4_7_READY_FOR_OWNER_REVIEW; chờ người dùng duyệt trình bày. Dừng trước mọi bước UX tiếp theo.** Ứng viên tách biệt để xem là `.vercel/ux-step4-7-20261018-v7`, [source freeze](CANDIDATE-SOURCE-FREEZE-v7.json) SHA256 `7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1`. Đây chưa phải tích hợp vào checkout gốc, triển khai web hay phát hành native. Bản 4.6 đã được người dùng chấp nhận và các freeze/candidate cũ vẫn nguyên byte.
+
+Thay đổi ứng dụng chỉ ở `src/Prototype.tsx` và `src/prototype.css`: Home, Journey, Discover, Profile dùng thanh điều hướng app-wide đo chiều cao theo CSS pixel và giữ chỗ cho nội dung/focus cả khi màn hình được giữ lại trong stack. Cỡ chữ bình thường là bốn cột/68px; khi từ nguyên vẹn không vừa ô bốn cột ở màn hẹp/cỡ chữ 28px, thanh chuyển hai hàng và đo lại chiều cao. Không giảm font, ẩn đích hoặc sửa FlowStack/keyboard/Auth/consent/handler. Header giữ vị trí cuộn khi trở lại đúng entry đã giữ lại, đồng thời vẫn reset đầu trang ở push/replace mới. Năm file test cũ chỉ đổi selector điều hướng, một spec mới có bảy case responsive. Welcome 320/landscape/desktop không cần thay thiết kế; RegionEditor clipping cũ nằm ngoài phạm vi.
+
+| Cấp kiểm tra | Kết quả đã ghi | Giới hạn |
+|---|---|---|
+| Implementer | [23 case chọn lọc](responsive-v8-command.json) **23/23 PASS**, child/wrapper exit0, post-pins đúng; [7 gate](final-gates-v2.json) **7/7 exit0**, post-pins đúng; [handoff/evidence](IMPLEMENTER-READABILITY-HANDOFF-v2.vi.md) | Chọn lọc responsive và adjacent, không phải toàn bộ app/release. |
+| QC độc lập | [Báo cáo hiện tại](INDEPENDENT-APP-QC-v2.vi.md) và [freeze](INDEPENDENT-QC-EVIDENCE-FREEZE-v2.json): **5/5 PASS**, child/wrapper exit0, ảnh VI/EN320 và fitted iPhone/Pixel được xem, không cắt từ; browser/server riêng đã đóng | Chỉ local fictional guest/simulator, font28 sau khi ổn định. |
+| Root trực tiếp | [Biên bản](ROOT-VERIFICATION.vi.md), [dữ liệu quan sát](root-manual/ROOT-DIRECT-OBSERVATIONS.json), [pin cuối](ROOT-FINAL-VERIFICATION.json): **PASS_LOCAL_4_7_READY_FOR_OWNER_REVIEW** | Root kiểm tra UI thường trực tiếp và xem ảnh QC font28; không tự chạy lại browser test/font28 IAB. |
+
+Root trước đó phát hiện lỗi chữ 28px bị cắt giữa từ trong ứng viên v5 sau khi test hình học vẫn pass. [QC v5](INDEPENDENT-APP-QC.vi.md) và [handoff v5](IMPLEMENTER-HANDOFF-v1.vi.md) là bằng chứng lịch sử, không phải acceptance hiện tại; lỗi đọc được đóng **cho ma trận local đã kiểm** bởi kiểm tra Range từng từ, ảnh QC độc lập và root xem lại. Các thất bại worker v3/v5 và QC v1 vẫn giữ nguyên trong báo cáo QC hiện tại. Không suy ra chất lượng chưa kiểm ở thay đổi font tức thời/chưa ổn định.
+
+Preview đã kiểm tra [http://127.0.0.1:4195/?mode=web](http://127.0.0.1:4195/?mode=web), chỉ bind `127.0.0.1`, backend invalid, CSP `frame-src 'none'; media-src 'none'`; [start](preview-v6-4195-start.json) và [health](preview-v6-4195-health.json) xác nhận PID 5200/HTTP200/source hiện tại. Giữ mở để người dùng xem; không triển khai cloud.
+
+Ngoài phạm vi: Auth account-switch bounce P2 có sẵn cần tác vụ Auth/session riêng mức R3 theo matrix; RegionEditor note clipping P3 có sẵn; focus với body font thay đổi ngay khi chưa ổn định chưa được chấp nhận. Native restoration vẫn HALTED và web staging vẫn BLOCKED. Không có thiết bị, tài khoản thật, SQL, media thực, cloud hay deploy trong 4.7. **Chỉ sau quyết định riêng của người dùng mới bắt đầu bất kỳ bước sau 4.7.**

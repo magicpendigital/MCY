@@ -1,0 +1,33 @@
+{
+  "schema": "mcy-ux-step4-7-responsive-harness-freeze-v3",
+  "status": "PENDING_INDEPENDENT_HARNESS_QC_AND_ROOT_BROWSER_GO",
+  "sourceFreezeSha256": "844d54f21b6056f334f84e8ef3f195619559b54e89281c142fc6abeda483c7b6",
+  "previousHarnessFreezeSha256": "7faf24a12de69185f6bd227507fa1c5d0cb897d96dbaa5c27cf4a837b5c66a95",
+  "selectedCases": 23,
+  "caseTimeoutMs": 45000,
+  "runnerBudgetMs": 900000,
+  "port": 4195,
+  "files": [
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-network-guard.mjs",
+      "sha256": "fc03510e1a9b83c3064553a89f756dec9bc3e8ae3c4b22b181743d2431d8e34e"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-global-setup-v2.mjs",
+      "sha256": "6377f97b5d7a824b1480491c0824da5022854c0b5412e45a8454a423250519d9"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-selected-v2.spec.ts",
+      "sha256": "f7085c05e84ff73e6e4b7544f4da21bc78963667aba12a536190be143ecb14b0"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/responsive-v3.playwright.config.mjs",
+      "sha256": "a091d793a095039321d872156cb6a0d9fd722b7d3282034dba723039292a8ea1"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/run-responsive-v3.mjs",
+      "sha256": "6299006f841d6d24dc51b5ff0bca8ece174574ba10b46a20c008b46ca0d23681"
+    }
+  ],
+  "boundary": "Harness-only output-path correction after v2 preflight collision. Candidate/source, selected23 titles, proxy/CSP/guard, timeout/workers unchanged. Preserve v2 collection JSON and preflight failure."
+}

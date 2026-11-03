@@ -1,0 +1,10 @@
+{
+  "recordedAt": "2026-10-18T05:33:55.894Z",
+  "status": "PASS_PREPARATION_ONLY_NEW_SOURCE_BINDING_ROOT_RELEASE_PENDING",
+  "aggregateGroups": 5,
+  "serializedWordControls": 7,
+  "syntaxExit": 0,
+  "coreSha256": "1bc2ee24ce52c99efebdc49a11f285973b3bd4e27808fa98b5bc3a14a669b421",
+  "sourceBinding": null,
+  "noBrowserAppOrServerInvocation": true
+}

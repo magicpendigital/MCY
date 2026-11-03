@@ -1,0 +1,11 @@
+{
+  "command": "node node_modules/@playwright/test/cli.js test --config responsive-v7.playwright.config.mjs --list --reporter=list",
+  "actualExitCode": 0,
+  "listedTitleLines": 23,
+  "cliTotalCases": 23,
+  "cliTotalFiles": 8,
+  "runResultsJsonAbsent": true,
+  "runLogAbsent": true,
+  "logSha256": "f79e6153e425ce1a9d9752b2fb3a6bee43f1d0b2681137c07171381d8eea97e6",
+  "status": "PASS_LAUNCH_FREE_COLLECTION_ONLY"
+}

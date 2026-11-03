@@ -1,0 +1,12 @@
+{
+  "schema": "mcy-ux-step4-7-strict-preview-input-freeze-v2",
+  "status": "PREPARED_NOT_STARTED_QC_OWNS_4195_FIRST",
+  "sourceFreezeSha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1",
+  "helperSha256": "bb9005ebecde748e34eb68456b82930955337a74d7103785c2bd75799c398cf2",
+  "candidate": ".vercel/ux-step4-7-20261018-v7",
+  "host": "127.0.0.1",
+  "port": 4195,
+  "csp": "connect-src 'self' ws://127.0.0.1:*; frame-src 'none'; img-src 'self' data:; media-src 'none'",
+  "invalidBackend": true,
+  "boundary": "Loopback review only after independent QC server closes; no deployment or live accounts."
+}

@@ -1,0 +1,12 @@
+{
+  "recordedAt": "2026-10-18T03:29:42.975Z",
+  "status": "PASS_PREPARATION_ONLY_NOT_BROWSER_OR_APP_ACCEPTANCE",
+  "aggregateCases": 5,
+  "pureRequestGuardVectors": 9,
+  "guardRejectsUnexpected": true,
+  "syntaxCheckExit": 0,
+  "accepted46AppPins": 236,
+  "accepted46HarnessPins": 16,
+  "rootTrackedDirtyHashes": 35,
+  "noBrowserServerOrAppInvocation": true
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "mcy-ux-step4-7-runner-preflight-failure-v2",
+  "command": "node analyse/ux-step4-7-2026-10-18/run-responsive-v2.mjs",
+  "mode": "scoped require_escalated; no Playwright child/browser launched",
+  "actualExitCode": 1,
+  "error": "AssertionError [ERR_ASSERTION]: Never overwrite selected test evidence at run-responsive-v2.mjs:16",
+  "preexistingArtifact": {
+    "path": "analyse/ux-step4-7-2026-10-18/responsive-v2-results.json",
+    "bytes": 16776,
+    "createdUtc": "2026-10-18T03:39:55.6422078Z",
+    "modifiedUtc": "2026-10-18T03:40:54.2770431Z",
+    "sha256": "29dcdc73057a27a119e8975f80b01077468cde8ba4e875662a7646a79a45f7fe"
+  },
+  "cause": "The earlier launch-free Playwright --list used the config's JSON reporter and wrote the results path; the runner correctly refused to overwrite it.",
+  "status": "FAIL_PREFLIGHT_NO_BROWSER",
+  "sourceFreezeSha256": "844d54f21b6056f334f84e8ef3f195619559b54e89281c142fc6abeda483c7b6",
+  "harnessFreezeSha256": "7faf24a12de69185f6bd227507fa1c5d0cb897d96dbaa5c27cf4a837b5c66a95",
+  "boundary": "Preserve the existing JSON and failed attempt; use separately frozen v3 output paths only after review and a new root GO."
+}

@@ -1,0 +1,36 @@
+import { createHash } from 'node:crypto';
+import { spawn } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { selectedTitles } from './responsive-v2.playwright.config.mjs';
+
+const dir = import.meta.dirname;
+const root = path.resolve(dir, '../..');
+const logPath = path.join(dir, 'COLLECTION-v2.log');
+const receiptPath = path.join(dir, 'COLLECTION-v2-command.json');
+const sourcePath = path.join(dir, 'CANDIDATE-SOURCE-FREEZE-v2.json');
+const harnessPath = path.join(dir, 'RESPONSIVE-HARNESS-FREEZE-v2.json');
+const sha = file => createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+if (fs.existsSync(logPath) || fs.existsSync(receiptPath)) throw Error('Never overwrite collection evidence');
+const sourceSha = sha(sourcePath), harnessSha = sha(harnessPath);
+const args = [path.join(root, 'node_modules/@playwright/test/cli.js'), 'test', '--config', path.join(dir, 'responsive-v2.playwright.config.mjs'), '--list'];
+const start = new Date().toISOString();
+const child = spawn(process.execPath, args, { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] });
+let output = '', budgetExceeded = false, spawnError = null;
+const timer = setTimeout(() => { budgetExceeded = true; child.kill(); }, 60000);
+for (const stream of [child.stdout, child.stderr]) stream.on('data', chunk => { output += chunk; process.stdout.write(chunk); });
+child.on('error', error => { spawnError = String(error); output += spawnError + '\n'; });
+child.on('close', (exitCode, signal) => {
+  clearTimeout(timer);
+  fs.writeFileSync(logPath, output, { flag: 'wx' });
+  const listed = output.split(/\r?\n/).filter(line => line.includes(' › ')).map(line => line.split(' › ').at(-1));
+  const expected = [...selectedTitles].sort();
+  const actual = [...listed].sort();
+  const summary = output.match(/Total:\s*(\d+) tests in (\d+) files/);
+  const postPinsMatch = sha(sourcePath) === sourceSha && sha(harnessPath) === harnessSha;
+  const status = exitCode === 0 && !budgetExceeded && !spawnError && postPinsMatch && summary?.[1] === '23' && summary?.[2] === '8' && JSON.stringify(actual) === JSON.stringify(expected) ? 'PASS_COLLECTION_ONLY' : 'FAIL';
+  const receipt = { start, end:new Date().toISOString(), command:['node',...args], exitCode, signal, budgetExceeded, spawnError, expectedCount:23, listedCount:listed.length, files:Number(summary?.[2] ?? 0), exactTitlesMatch:JSON.stringify(actual) === JSON.stringify(expected), sourceFreezeSha256:sourceSha, harnessFreezeSha256:harnessSha, postPinsMatch, status, limit:'Launch-free --list only; no global setup, Vite server, or browser.' };
+  fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + '\n', { flag:'wx' });
+  console.log(JSON.stringify(receipt));
+  process.exitCode = status === 'PASS_COLLECTION_ONLY' ? 0 : 1;
+});

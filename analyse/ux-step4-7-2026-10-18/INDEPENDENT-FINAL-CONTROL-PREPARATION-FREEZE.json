@@ -1,0 +1,27 @@
+{
+  "schema": "mcy-independent-responsive-preparation-v1",
+  "status": "PREPARED_NOT_APPROVED_FOR_INVOCATION",
+  "recordedAt": "2026-10-18T03:29:42.975Z",
+  "accepted46SourceSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+  "candidateBinding": null,
+  "runnerBinding": null,
+  "files": [
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/INDEPENDENT-FINAL-CONTROL-PLAN.vi.md",
+      "sha256": "74e160a70c061eb0daf2deefc4de3a5c687ffa937f03ab15b80b7a0b1e1f1448"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/independent-responsive-controls.mjs",
+      "sha256": "843c51ebec53204f34f3a8cac6ce59de9e4e81269f5c0a86c2ca8bf26f6ecba1"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/check-independent-responsive-preparation.mjs",
+      "sha256": "545c865abc04d2f1d57e3509e452c4f68f20826990e5533fa9bf0a790100813b"
+    },
+    {
+      "path": "analyse/ux-step4-7-2026-10-18/INDEPENDENT-FINAL-CONTROL-PREPARATION-CHECK.json",
+      "sha256": "06d9e7ad8102434bf6df56790a48e81dca80599bcbf19478d06e9ae6b3c3623d"
+    }
+  ],
+  "boundary": "Core module only; no launch/server/top-level tests. Final source/diff/runner review, immutable binding and root release required before browser."
+}

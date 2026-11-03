@@ -1,0 +1,25 @@
+{
+  "recordedAt": "2026-10-18T04:45:01.814Z",
+  "status": "PASS_PREFLIGHT_ONE_BOUNDED23_RUN_ROOT_GO_REQUIRED",
+  "sourceFreezeSha256": "45ab857d0a0d1325e8b69216b7d46fac9fb33d046d9d92f8d42afa324135a2bc",
+  "harnessFreezeSha256": "751632dbb51e98e42d6f4fca8062b2a61a9635f019b0aa6bb6152d2ba293288a",
+  "candidatePins": 237,
+  "harnessPins": 7,
+  "priorV4PinsPreserved": 237,
+  "appDeltaOnly": "Header bounded previous-public-stack snapshot; skip only retained4nav-key returns; existing newpush/replace/nonnav resets unchanged",
+  "case4StrictBoundsUnchanged": true,
+  "newControls": "Fresh edit top, repeated retained push/pop, new Discover replacement top; existing dev StrictMode, no production remount claim",
+  "harnessOnlyVersionBindingDelta": true,
+  "collectionExit": 0,
+  "exactCollectedCases": 23,
+  "closeControlReceiptUnchanged": true,
+  "freshOutputPathsAbsent": [
+    "responsive-v6-results.json",
+    "responsive-v6-results",
+    "responsive-v6.log",
+    "responsive-v6-command.json"
+  ],
+  "trackedRootDirtyHashes": 35,
+  "noBrowserServerOrAppTestInvocation": true,
+  "limits": "Invocation clearance only. Actual Header/retained return acceptance pending; earlier22/1 failure preserved and cause source suggests preexisting. Protected runtime/Auth/native/live/release unchanged."
+}

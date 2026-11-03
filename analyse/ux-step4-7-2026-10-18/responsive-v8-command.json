@@ -1,0 +1,26 @@
+{
+  "startedAt": "2026-10-18T05:57:46.519Z",
+  "endedAt": "2026-10-18T06:00:15.727Z",
+  "command": [
+    "node",
+    "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+    "test",
+    "--config",
+    "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v8.playwright.config.mjs"
+  ],
+  "cwd": "D:\\Projects\\MCY\\analyse\\ux-step4-7-2026-10-18\\responsive-v8-run",
+  "exitCode": 0,
+  "signal": null,
+  "budgetExceeded": false,
+  "runnerBudgetMs": 900000,
+  "caseTimeoutMs": 45000,
+  "freezeSha256": "1dd275f69547cffde4b56b39e5e578ca879662278f9868866bc566ca351f1dc9",
+  "sourceFreezeSha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1",
+  "runnerSha256": "49b6cba41eeba1699fbb0ff26090649501777c04abe0dc16545a8b7f00db5d10",
+  "postPinsMatch": true,
+  "postPinError": null,
+  "spawnError": null,
+  "status": "PASS",
+  "forcedBudgetCleanup": "NOT_TRIGGERED",
+  "executionMode": "Scoped local Edge review; exact synthetic frame, deny proxy and CSP; no real outbound media/backend."
+}

@@ -1,0 +1,22 @@
+{
+  "recordedAt": "2026-10-18T06:39:24.7225766Z",
+  "status": "PASS_LOCAL_4_7_READY_FOR_OWNER_REVIEW",
+  "sourceFreezeSha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1",
+  "checked": {
+    "candidate": 237,
+    "workerHarness": 7,
+    "independentExecution": 14,
+    "accepted46": 236,
+    "accepted46Harness": 16,
+    "approved45": 235,
+    "rootExisting": 228,
+    "rootAbsent": 8,
+    "trackedDirty": 35
+  },
+  "rootManualSha256": "d38dbeeb89792d0702c5700eb4f66e49b2d9c851894b16854a1cef12237a481c",
+  "sourceAndRootUnchanged": true,
+  "rootVisualReadabilityP2": "CLOSED_FOR_LOCAL_MATRIX",
+  "ownerApproval": "PENDING",
+  "preview": "http://127.0.0.1:4195/?mode=web",
+  "limits": "No native, live Auth/data/media, deployment or release acceptance."
+}

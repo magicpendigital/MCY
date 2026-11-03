@@ -1,0 +1,825 @@
+{
+  "receipt": {
+    "startedAt": "2026-10-18T03:10:15.506Z",
+    "endedAt": "2026-10-18T03:10:33.736Z",
+    "sourceFreezeSha256": "01d45905ff401b6e127bac0bbafff03d3c66934e064f0711fcaf10deddb8db45",
+    "previewOrigin": "http://127.0.0.1:4194",
+    "previewCspRequired": "frame-src 'none'; media-src 'none'",
+    "scenarios": 4,
+    "captures": 6,
+    "violations": [],
+    "failure": null,
+    "postPinsMatch": true,
+    "status": "PASS_CAPTURE_ONLY",
+    "browser": "msedge",
+    "proxy": "127.0.0.1:9 deny; loopback bypass",
+    "noAppMutation": true
+  },
+  "records": [
+    {
+      "scenario": "web-320",
+      "state": "welcome",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "app": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "stack": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "configuredFooterHeight": "156px",
+        "keyboardHeight": "0px",
+        "safeArea": "0px",
+        "footer": {
+          "x": 0,
+          "y": 437.375,
+          "width": 320,
+          "height": 130.625,
+          "top": 437.375,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "nav": null,
+        "controls": [],
+        "scroll": {
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 320,
+            "height": 568,
+            "top": 0,
+            "right": 320,
+            "bottom": 568,
+            "left": 0
+          },
+          "top": 0,
+          "height": 568,
+          "clientHeight": 568,
+          "width": 320,
+          "clientWidth": 320,
+          "scrollPaddingBottom": "auto"
+        },
+        "page": null,
+        "pagePaddingBottom": null,
+        "welcome": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "photo": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "photoObjectPosition": "16% 50%",
+        "heading": {
+          "x": 20,
+          "y": 35,
+          "width": 156.03125,
+          "height": 69.234375,
+          "top": 35,
+          "right": 176.03125,
+          "bottom": 104.234375,
+          "left": 20
+        },
+        "benefits": {
+          "x": 20,
+          "y": 137.90625,
+          "width": 280,
+          "height": 113,
+          "top": 137.90625,
+          "right": 300,
+          "bottom": 250.90625,
+          "left": 20
+        }
+      }
+    },
+    {
+      "scenario": "web-320",
+      "state": "nav-normal",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "app": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "stack": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "configuredFooterHeight": "68px",
+        "keyboardHeight": "0px",
+        "safeArea": "0px",
+        "footer": {
+          "x": 0,
+          "y": 500,
+          "width": 320,
+          "height": 68,
+          "top": 500,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "nav": {
+          "x": 0,
+          "y": 500,
+          "width": 320,
+          "height": 68,
+          "top": 500,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "controls": [
+          {
+            "text": "Hôm nay",
+            "control": {
+              "x": 9,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 84.5,
+              "bottom": 567,
+              "left": 9
+            },
+            "label": {
+              "x": 23.375,
+              "y": 539.5,
+              "width": 46.75,
+              "height": 15,
+              "top": 539.5,
+              "right": 70.125,
+              "bottom": 554.5,
+              "left": 23.375
+            },
+            "ranges": [
+              {
+                "top": 539.5,
+                "right": 70.125,
+                "bottom": 554.5,
+                "left": 23.375
+              }
+            ],
+            "fontSize": "11px",
+            "lineHeight": "normal"
+          },
+          {
+            "text": "Hành trình",
+            "control": {
+              "x": 84.5,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 160,
+              "bottom": 567,
+              "left": 84.5
+            },
+            "label": {
+              "x": 94.375,
+              "y": 539.5,
+              "width": 55.734375,
+              "height": 15,
+              "top": 539.5,
+              "right": 150.109375,
+              "bottom": 554.5,
+              "left": 94.375
+            },
+            "ranges": [
+              {
+                "top": 539.5,
+                "right": 150.109375,
+                "bottom": 554.5,
+                "left": 94.375
+              }
+            ],
+            "fontSize": "11px",
+            "lineHeight": "normal"
+          },
+          {
+            "text": "Khám phá",
+            "control": {
+              "x": 160,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 235.5,
+              "bottom": 567,
+              "left": 160
+            },
+            "label": {
+              "x": 170.703125,
+              "y": 539.5,
+              "width": 54.09375,
+              "height": 15,
+              "top": 539.5,
+              "right": 224.796875,
+              "bottom": 554.5,
+              "left": 170.703125
+            },
+            "ranges": [
+              {
+                "top": 539.5,
+                "right": 224.796875,
+                "bottom": 554.5,
+                "left": 170.703125
+              }
+            ],
+            "fontSize": "11px",
+            "lineHeight": "normal"
+          },
+          {
+            "text": "Cá nhân",
+            "control": {
+              "x": 235.5,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 311,
+              "bottom": 567,
+              "left": 235.5
+            },
+            "label": {
+              "x": 252.40625,
+              "y": 539.5,
+              "width": 41.671875,
+              "height": 15,
+              "top": 539.5,
+              "right": 294.078125,
+              "bottom": 554.5,
+              "left": 252.40625
+            },
+            "ranges": [
+              {
+                "top": 539.5,
+                "right": 294.078125,
+                "bottom": 554.5,
+                "left": 252.40625
+              }
+            ],
+            "fontSize": "11px",
+            "lineHeight": "normal"
+          }
+        ],
+        "scroll": {
+          "rect": {
+            "x": 0,
+            "y": 55,
+            "width": 320,
+            "height": 513,
+            "top": 55,
+            "right": 320,
+            "bottom": 568,
+            "left": 0
+          },
+          "top": 0,
+          "height": 1029,
+          "clientHeight": 513,
+          "width": 320,
+          "clientWidth": 320,
+          "scrollPaddingBottom": "auto"
+        },
+        "page": {
+          "x": 0,
+          "y": 55,
+          "width": 320,
+          "height": 1029.09375,
+          "top": 55,
+          "right": 320,
+          "bottom": 1084.09375,
+          "left": 0
+        },
+        "pagePaddingBottom": "96px",
+        "welcome": null,
+        "photo": null,
+        "photoObjectPosition": null,
+        "heading": {
+          "x": 17,
+          "y": 96,
+          "width": 286,
+          "height": 74.875,
+          "top": 96,
+          "right": 303,
+          "bottom": 170.875,
+          "left": 17
+        },
+        "benefits": null
+      }
+    },
+    {
+      "scenario": "web-320",
+      "state": "nav-28-settled",
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "app": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "stack": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 568,
+          "top": 0,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "configuredFooterHeight": "68px",
+        "keyboardHeight": "0px",
+        "safeArea": "0px",
+        "footer": {
+          "x": 0,
+          "y": 500,
+          "width": 320,
+          "height": 68,
+          "top": 500,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "nav": {
+          "x": 0,
+          "y": 500,
+          "width": 320,
+          "height": 68,
+          "top": 500,
+          "right": 320,
+          "bottom": 568,
+          "left": 0
+        },
+        "controls": [
+          {
+            "text": "Hôm nay",
+            "control": {
+              "x": 9,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 84.5,
+              "bottom": 567,
+              "left": 9
+            },
+            "label": {
+              "x": 23.375,
+              "y": 538.75,
+              "width": 46.75,
+              "height": 16.5,
+              "top": 538.75,
+              "right": 70.125,
+              "bottom": 555.25,
+              "left": 23.375
+            },
+            "ranges": [
+              {
+                "top": 538.75,
+                "right": 70.125,
+                "bottom": 553.75,
+                "left": 23.375
+              }
+            ],
+            "fontSize": "28px",
+            "lineHeight": "42px"
+          },
+          {
+            "text": "Hành trình",
+            "control": {
+              "x": 84.5,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 160,
+              "bottom": 567,
+              "left": 84.5
+            },
+            "label": {
+              "x": 94.375,
+              "y": 538.75,
+              "width": 55.734375,
+              "height": 16.5,
+              "top": 538.75,
+              "right": 150.109375,
+              "bottom": 555.25,
+              "left": 94.375
+            },
+            "ranges": [
+              {
+                "top": 538.75,
+                "right": 150.109375,
+                "bottom": 553.75,
+                "left": 94.375
+              }
+            ],
+            "fontSize": "28px",
+            "lineHeight": "42px"
+          },
+          {
+            "text": "Khám phá",
+            "control": {
+              "x": 160,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 235.5,
+              "bottom": 567,
+              "left": 160
+            },
+            "label": {
+              "x": 170.703125,
+              "y": 538.75,
+              "width": 54.09375,
+              "height": 16.5,
+              "top": 538.75,
+              "right": 224.796875,
+              "bottom": 555.25,
+              "left": 170.703125
+            },
+            "ranges": [
+              {
+                "top": 538.75,
+                "right": 224.796875,
+                "bottom": 553.75,
+                "left": 170.703125
+              }
+            ],
+            "fontSize": "28px",
+            "lineHeight": "42px"
+          },
+          {
+            "text": "Cá nhân",
+            "control": {
+              "x": 235.5,
+              "y": 506,
+              "width": 75.5,
+              "height": 61,
+              "top": 506,
+              "right": 311,
+              "bottom": 567,
+              "left": 235.5
+            },
+            "label": {
+              "x": 252.40625,
+              "y": 538.75,
+              "width": 41.671875,
+              "height": 16.5,
+              "top": 538.75,
+              "right": 294.078125,
+              "bottom": 555.25,
+              "left": 252.40625
+            },
+            "ranges": [
+              {
+                "top": 538.75,
+                "right": 294.078125,
+                "bottom": 553.75,
+                "left": 252.40625
+              }
+            ],
+            "fontSize": "28px",
+            "lineHeight": "42px"
+          }
+        ],
+        "scroll": {
+          "rect": {
+            "x": 0,
+            "y": 55,
+            "width": 320,
+            "height": 513,
+            "top": 55,
+            "right": 320,
+            "bottom": 568,
+            "left": 0
+          },
+          "top": 0,
+          "height": 1029,
+          "clientHeight": 513,
+          "width": 320,
+          "clientWidth": 320,
+          "scrollPaddingBottom": "auto"
+        },
+        "page": {
+          "x": 0,
+          "y": 55,
+          "width": 320,
+          "height": 1029.09375,
+          "top": 55,
+          "right": 320,
+          "bottom": 1084.09375,
+          "left": 0
+        },
+        "pagePaddingBottom": "96px",
+        "welcome": null,
+        "photo": null,
+        "photoObjectPosition": null,
+        "heading": {
+          "x": 17,
+          "y": 96,
+          "width": 286,
+          "height": 74.875,
+          "top": 96,
+          "right": 303,
+          "bottom": 170.875,
+          "left": 17
+        },
+        "benefits": null
+      }
+    },
+    {
+      "scenario": "web-landscape",
+      "state": "welcome",
+      "geometry": {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "app": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "top": 0,
+          "right": 844,
+          "bottom": 390,
+          "left": 0
+        },
+        "stack": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390,
+          "top": 0,
+          "right": 844,
+          "bottom": 390,
+          "left": 0
+        },
+        "configuredFooterHeight": "156px",
+        "keyboardHeight": "0px",
+        "safeArea": "0px",
+        "footer": {
+          "x": 0,
+          "y": 257.40625,
+          "width": 844,
+          "height": 132.59375,
+          "top": 257.40625,
+          "right": 844,
+          "bottom": 390,
+          "left": 0
+        },
+        "nav": null,
+        "controls": [],
+        "scroll": {
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 390,
+            "top": 0,
+            "right": 844,
+            "bottom": 390,
+            "left": 0
+          },
+          "top": 0,
+          "height": 390,
+          "clientHeight": 390,
+          "width": 844,
+          "clientWidth": 844,
+          "scrollPaddingBottom": "auto"
+        },
+        "page": null,
+        "pagePaddingBottom": null,
+        "welcome": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390.46875,
+          "top": 0,
+          "right": 844,
+          "bottom": 390.46875,
+          "left": 0
+        },
+        "photo": {
+          "x": 0,
+          "y": 0,
+          "width": 844,
+          "height": 390.46875,
+          "top": 0,
+          "right": 844,
+          "bottom": 390.46875,
+          "left": 0
+        },
+        "photoObjectPosition": "16% 23%",
+        "heading": {
+          "x": 20,
+          "y": 16,
+          "width": 150.46875,
+          "height": 66.15625,
+          "top": 16,
+          "right": 170.46875,
+          "bottom": 82.15625,
+          "left": 20
+        },
+        "benefits": {
+          "x": 20,
+          "y": 111.46875,
+          "width": 361.796875,
+          "height": 105,
+          "top": 111.46875,
+          "right": 381.796875,
+          "bottom": 216.46875,
+          "left": 20
+        }
+      }
+    },
+    {
+      "scenario": "web-desktop",
+      "state": "welcome",
+      "geometry": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "app": {
+          "x": 60,
+          "y": 24,
+          "width": 1320,
+          "height": 852,
+          "top": 24,
+          "right": 1380,
+          "bottom": 876,
+          "left": 60
+        },
+        "stack": {
+          "x": 60,
+          "y": 24,
+          "width": 1320,
+          "height": 852,
+          "top": 24,
+          "right": 1380,
+          "bottom": 876,
+          "left": 60
+        },
+        "configuredFooterHeight": "156px",
+        "keyboardHeight": "0px",
+        "safeArea": "0px",
+        "footer": {
+          "x": 60,
+          "y": 720,
+          "width": 1320,
+          "height": 156,
+          "top": 720,
+          "right": 1380,
+          "bottom": 876,
+          "left": 60
+        },
+        "nav": null,
+        "controls": [],
+        "scroll": {
+          "rect": {
+            "x": 60,
+            "y": 24,
+            "width": 1320,
+            "height": 852,
+            "top": 24,
+            "right": 1380,
+            "bottom": 876,
+            "left": 60
+          },
+          "top": 0,
+          "height": 900,
+          "clientHeight": 852,
+          "width": 1320,
+          "clientWidth": 1320,
+          "scrollPaddingBottom": "auto"
+        },
+        "page": null,
+        "pagePaddingBottom": null,
+        "welcome": {
+          "x": 60,
+          "y": 24,
+          "width": 1320,
+          "height": 900,
+          "top": 24,
+          "right": 1380,
+          "bottom": 924,
+          "left": 60
+        },
+        "photo": {
+          "x": 614.390625,
+          "y": 24,
+          "width": 765.59375,
+          "height": 900,
+          "top": 24,
+          "right": 1379.984375,
+          "bottom": 924,
+          "left": 614.390625
+        },
+        "photoObjectPosition": "55% 50%",
+        "heading": {
+          "x": 172,
+          "y": 96,
+          "width": 289.78125,
+          "height": 117.15625,
+          "top": 96,
+          "right": 461.78125,
+          "bottom": 213.15625,
+          "left": 172
+        },
+        "benefits": {
+          "x": 172,
+          "y": 286.265625,
+          "width": 420,
+          "height": 160,
+          "top": 286.265625,
+          "right": 592,
+          "bottom": 446.265625,
+          "left": 172
+        }
+      }
+    },
+    {
+      "scenario": "editor-320",
+      "state": "focused-note-settled",
+      "geometry": {
+        "focused": {
+          "top": 505.859375,
+          "bottom": 575.859375,
+          "left": 38,
+          "right": 282
+        },
+        "dialog": {
+          "top": 57,
+          "bottom": 568,
+          "left": 0,
+          "right": 320
+        },
+        "sheet": {
+          "top": 156.859375,
+          "bottom": 568,
+          "left": 0,
+          "right": 320
+        },
+        "scrollTop": 0,
+        "ring": 4,
+        "note": "Fictional editor note"
+      }
+    }
+  ]
+}

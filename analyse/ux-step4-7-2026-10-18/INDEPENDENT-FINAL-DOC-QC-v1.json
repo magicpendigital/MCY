@@ -1,0 +1,176 @@
+{
+  "schema": "mcy-ux4-7-independent-final-documentation-qc-v1",
+  "recordedAt": "2026-10-18T06:45:12.345Z",
+  "status": "PASS_DOCUMENTATION_ONLY_OWNER_REVIEW_PENDING",
+  "actualCheckerExitCode": 0,
+  "reviewer": "/root/profile46_qc",
+  "implementer": "/root/profile46_finish",
+  "finalVerifier": "/root",
+  "documentationFreezeSha256": "fa6244631ea6434e3079ae96256c884aab9598ef047f6f3ffd814f8bf226d61c",
+  "frozenRecordsChecked": 34,
+  "sourceFreezeSha256": "7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1",
+  "documents": [
+    {
+      "path": "CURRENT-STATUS.vi.md",
+      "sha256": "2d7ddee6f29a69bde850808d0bdf974c9e98afcb64ee44d226c2880cfb9937b9"
+    },
+    {
+      "path": "ROOT-VERIFICATION.vi.md",
+      "sha256": "b4bddc0bbdb37fc576bdd2b32614fa4e3cad737d1f22da8e7aa0d37ffc76c459"
+    }
+  ],
+  "links": [
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "CANDIDATE-SOURCE-FREEZE-v7.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "responsive-v8-command.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "final-gates-v2.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "IMPLEMENTER-READABILITY-HANDOFF-v2.vi.md",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "INDEPENDENT-APP-QC-v2.vi.md",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "INDEPENDENT-QC-EVIDENCE-FREEZE-v2.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "ROOT-VERIFICATION.vi.md",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "root-manual/ROOT-DIRECT-OBSERVATIONS.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "ROOT-FINAL-VERIFICATION.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "INDEPENDENT-APP-QC.vi.md",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "IMPLEMENTER-HANDOFF-v1.vi.md",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "http://127.0.0.1:4195/?mode=web",
+      "kind": "recorded-preview-URL-no-network-request"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "preview-v6-4195-start.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "CURRENT-STATUS.vi.md",
+      "target": "preview-v6-4195-health.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "root-manual/ROOT-DIRECT-OBSERVATIONS.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "root-manual",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "root-manual/profile-320-end-focus.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "root-manual/profile-320-return.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "root-manual/welcome-landscape.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "root-manual/course-landscape-preplay.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "independent-final-v3/independent-vi320-normal-and28-four-routes.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "independent-final-v3/independent-en320-28-four-routes.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "independent-final-v3/independent-iphone-fitted-safearea.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "independent-final-v3/independent-pixel-fitted-safearea.png",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "ROOT-FINAL-VERIFICATION.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "responsive-v8-command.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "final-gates-v2.json",
+      "kind": "existing-local"
+    },
+    {
+      "document": "ROOT-VERIFICATION.vi.md",
+      "target": "INDEPENDENT-APP-QC-v2.vi.md",
+      "kind": "existing-local"
+    }
+  ],
+  "claimsReviewed": [
+    "Worker23/23 child0 wrapper0 and seven gate exits0; independent5/5 child0 wrapper0",
+    "Root direct normal UI versus separately viewed captured28px pixels explicitly distinguished",
+    "Root Profile1207-to1207, normal68px, preplay0nav/0iframe, ten screenshots match raw observation",
+    "Pin counts are overlapping records; current candidate and approved baselines/root dirty unchanged",
+    "Current local readability P2 closure; old geometric-only QC and failed runs remain historical",
+    "Auth account-switch P2/R3 future work, historical RegionEditorP3 and unsettled body-font focus gap retained",
+    "Correct implementer/independent/root roles referenced through frozen current QC report",
+    "Owner approval pending; isolated local candidate, no integration/deploy/native/live acceptance; stop after4.7"
+  ],
+  "findings": [],
+  "boundary": "Documentation/hash/link review only. No app edits, browser, tests, network or source acceptance rerun. Does not amend old QC/root/freeze records."
+}

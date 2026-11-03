@@ -1,0 +1,25 @@
+Listing tests:
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-responsive.spec.ts:161:1 › BottomNav normal 68 and VI 28 four routes at 320: all text Ranges and focus rings clear footer
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-responsive.spec.ts:185:1 › BottomNav EN 28 labels wrap inside four equal controls at 320 without horizontal overflow
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-responsive.spec.ts:202:1 › BottomNav live font and viewport resize updates measured CSS height and content end
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-responsive.spec.ts:233:1 › BottomNav Profile to edit input and back clears ownership and restores measured clearance
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-responsive.spec.ts:288:3 › BottomNav iPhone safe area and fitted simulator scale use layout CSS pixels
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-responsive.spec.ts:288:3 › BottomNav Pixel reserved navigation and fitted simulator scale use layout CSS pixels
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-responsive.spec.ts:323:1 › Welcome decoded image and actions remain visible at 320 short landscape and desktop
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-home.spec.ts:15:12 › Home actions and uncropped image 360
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-home.spec.ts:15:12 › Home actions and uncropped image desktop
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map 320
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map landscape
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-profile.spec.ts:31:338 › Profile hierarchy 320 guest
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-profile.spec.ts:31:338 › Profile hierarchy landscape guest
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-profile.spec.ts:31:338 › Profile hierarchy desktop guest
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-profile.spec.ts:31:338 › Profile hierarchy iphone guest
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-profile.spec.ts:31:338 › Profile hierarchy pixel guest
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-profile.spec.ts:38:1 › Long identity and true 28px text reflow; actual Tab reaches every row clear of footer
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-profile.spec.ts:42:1 › Leaving Profile retains Home layout and no Profile styles in later routes
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-reflection.spec.ts:55:1 › Reflection return does not leak styles into retained course or Home routes
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-course-detail.spec.ts:67:1 › Course manual first/last selection and route return never auto-play or write
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\ux-journey-selection.spec.ts:78:1 › account replacement resets selection and comparison before its records arrive
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\mobile-runtime.spec.ts:109:1 › keyboard and its attached footer dismiss on the same transition
+  ..\..\.vercel\ux-step4-7-20261018-v6\tests\mobile-runtime.spec.ts:137:1 › switching to Pixel keeps the composer above Android navigation
+Total: 23 tests in 8 files

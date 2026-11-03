@@ -1,0 +1,3170 @@
+[
+  {
+    "phase": "retained-end-observation",
+    "evidence": {
+      "probe": "handler-only-true-end-no-autoscroll",
+      "before": {
+        "retained": {
+          "top": 1309,
+          "height": 1822,
+          "client": 513,
+          "padding": 206,
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625
+          }
+        },
+        "current": {
+          "route": "profile",
+          "retainedScreens": 3,
+          "navLayout": "two-row",
+          "footer": {
+            "top": 398,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 170
+          },
+          "layoutHeight": 170,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "170px",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 206,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 513
+            },
+            "top": 1309,
+            "max": 1309,
+            "width": 320,
+            "client": 320,
+            "padding": 194
+          },
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625,
+            "left": 17,
+            "right": 303,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "BUTTON",
+            "text": "Cá nhân"
+          },
+          "controls": [
+            {
+              "text": "Hôm nay",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 25,
+                  "right": 144
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hôm",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 25,
+                      "right": 89.203125
+                    }
+                  ]
+                },
+                {
+                  "text": "nay",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 96.921875,
+                      "right": 144
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Hành trình",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 164.578125,
+                  "right": 306.421875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hành",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 164.578125,
+                      "right": 234.90625
+                    }
+                  ]
+                },
+                {
+                  "text": "trình",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 242.609375,
+                      "right": 306.421875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Khám phá",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 18.109375,
+                  "right": 150.875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Khám",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 18.109375,
+                      "right": 93.859375
+                    }
+                  ]
+                },
+                {
+                  "text": "phá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 101.5625,
+                      "right": 150.875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Cá nhân",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 180.90625,
+                  "right": 290.078125
+                }
+              ],
+              "words": [
+                {
+                  "text": "Cá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 180.90625,
+                      "right": 214.265625
+                    }
+                  ]
+                },
+                {
+                  "text": "nhân",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 222.03125,
+                      "right": 290.078125
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            }
+          ]
+        }
+      },
+      "during": [
+        {
+          "retained": {
+            "top": 1309,
+            "height": 1822,
+            "client": 513,
+            "padding": 206,
+            "last": {
+              "top": 269.0625,
+              "bottom": 342.5625
+            }
+          },
+          "current": {
+            "route": "edit-profile",
+            "retainedScreens": 4,
+            "navLayout": "four-column",
+            "footer": null,
+            "scale": 1,
+            "app": {
+              "top": 0,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 568
+            },
+            "header": {
+              "top": 0,
+              "bottom": 55,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 55
+            },
+            "configured": "0px",
+            "measured": "",
+            "inset": 0,
+            "safe": 0,
+            "pagePadding": 28,
+            "scroll": {
+              "rect": {
+                "top": 55,
+                "bottom": 568,
+                "left": 320,
+                "right": 640,
+                "width": 320,
+                "height": 513
+              },
+              "top": 0,
+              "max": 290,
+              "width": 320,
+              "client": 320,
+              "padding": null
+            },
+            "last": {
+              "top": 751.90625,
+              "bottom": 825.40625,
+              "left": 337,
+              "right": 623,
+              "width": 286,
+              "height": 73.5
+            },
+            "activeElement": {
+              "tag": "H1",
+              "text": "Thông tin tối thiểu, do bạn sửa."
+            },
+            "controls": []
+          }
+        },
+        {
+          "retained": {
+            "top": 1309,
+            "height": 1822,
+            "client": 513,
+            "padding": 206,
+            "last": {
+              "top": 269.0780029296875,
+              "bottom": 342.5511474609375
+            }
+          },
+          "current": {
+            "route": "edit-profile",
+            "retainedScreens": 4,
+            "navLayout": "four-column",
+            "footer": null,
+            "scale": 1,
+            "app": {
+              "top": 0,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 568
+            },
+            "header": {
+              "top": 0,
+              "bottom": 55,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 55
+            },
+            "configured": "0px",
+            "measured": "",
+            "inset": 0,
+            "safe": 0,
+            "pagePadding": 28,
+            "scroll": {
+              "rect": {
+                "top": 55,
+                "bottom": 568,
+                "left": 312.1979675292969,
+                "right": 632.197998046875,
+                "width": 320.0000305175781,
+                "height": 513
+              },
+              "top": 0,
+              "max": 290,
+              "width": 320,
+              "client": 320,
+              "padding": null
+            },
+            "last": {
+              "top": 751.90625,
+              "bottom": 825.40625,
+              "left": 329.1979675292969,
+              "right": 615.197998046875,
+              "width": 286.0000305175781,
+              "height": 73.5
+            },
+            "activeElement": {
+              "tag": "H1",
+              "text": "Thông tin tối thiểu, do bạn sửa."
+            },
+            "controls": []
+          }
+        },
+        {
+          "retained": {
+            "top": 1309,
+            "height": 1822,
+            "client": 513,
+            "padding": 206,
+            "last": {
+              "top": 269.0780029296875,
+              "bottom": 342.5511474609375
+            }
+          },
+          "current": {
+            "route": "edit-profile",
+            "retainedScreens": 4,
+            "navLayout": "four-column",
+            "footer": null,
+            "scale": 1,
+            "app": {
+              "top": 0,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 568
+            },
+            "header": {
+              "top": 0,
+              "bottom": 55,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 55
+            },
+            "configured": "0px",
+            "measured": "",
+            "inset": 0,
+            "safe": 0,
+            "pagePadding": 28,
+            "scroll": {
+              "rect": {
+                "top": 55,
+                "bottom": 568,
+                "left": 312.1979675292969,
+                "right": 632.197998046875,
+                "width": 320.0000305175781,
+                "height": 513
+              },
+              "top": 0,
+              "max": 290,
+              "width": 320,
+              "client": 320,
+              "padding": null
+            },
+            "last": {
+              "top": 751.90625,
+              "bottom": 825.40625,
+              "left": 329.1979675292969,
+              "right": 615.197998046875,
+              "width": 286.0000305175781,
+              "height": 73.5
+            },
+            "activeElement": {
+              "tag": "H1",
+              "text": "Thông tin tối thiểu, do bạn sửa."
+            },
+            "controls": []
+          }
+        }
+      ],
+      "detail": {
+        "retained": {
+          "top": 1309,
+          "height": 1822,
+          "client": 513,
+          "padding": 206,
+          "last": {
+            "top": 269.6990661621094,
+            "bottom": 342.0965576171875
+          }
+        },
+        "current": {
+          "route": "edit-profile",
+          "retainedScreens": 4,
+          "navLayout": "four-column",
+          "footer": null,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 28,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 513
+            },
+            "top": 0,
+            "max": 290,
+            "width": 320,
+            "client": 320,
+            "padding": null
+          },
+          "last": {
+            "top": 751.90625,
+            "bottom": 825.40625,
+            "left": 17,
+            "right": 303,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "H1",
+            "text": "Thông tin tối thiểu, do bạn sửa."
+          },
+          "controls": []
+        }
+      },
+      "after": {
+        "retained": {
+          "top": 1309,
+          "height": 1822,
+          "client": 513,
+          "padding": 206,
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625
+          }
+        },
+        "current": {
+          "route": "profile",
+          "retainedScreens": 3,
+          "navLayout": "two-row",
+          "footer": {
+            "top": 398,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 170
+          },
+          "layoutHeight": 170,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "170px",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 206,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 513
+            },
+            "top": 1309,
+            "max": 1309,
+            "width": 320,
+            "client": 320,
+            "padding": 194
+          },
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625,
+            "left": 17,
+            "right": 303,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "H1",
+            "text": "Lựa chọn của bạn."
+          },
+          "controls": [
+            {
+              "text": "Hôm nay",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 25,
+                  "right": 144
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hôm",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 25,
+                      "right": 89.203125
+                    }
+                  ]
+                },
+                {
+                  "text": "nay",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 96.921875,
+                      "right": 144
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Hành trình",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 164.578125,
+                  "right": 306.421875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hành",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 164.578125,
+                      "right": 234.90625
+                    }
+                  ]
+                },
+                {
+                  "text": "trình",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 242.609375,
+                      "right": 306.421875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Khám phá",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 18.109375,
+                  "right": 150.875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Khám",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 18.109375,
+                      "right": 93.859375
+                    }
+                  ]
+                },
+                {
+                  "text": "phá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 101.5625,
+                      "right": 150.875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Cá nhân",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 180.90625,
+                  "right": 290.078125
+                }
+              ],
+              "words": [
+                {
+                  "text": "Cá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 180.90625,
+                      "right": 214.265625
+                    }
+                  ]
+                },
+                {
+                  "text": "nhân",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 222.03125,
+                      "right": 290.078125
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            }
+          ]
+        },
+        "sameNode": true
+      }
+    }
+  },
+  {
+    "ordinary": {
+      "geometry": {
+        "route": "discover",
+        "retainedScreens": 3,
+        "navLayout": "four-column",
+        "footer": {
+          "top": 500,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 68
+        },
+        "layoutHeight": 68,
+        "scale": 1,
+        "app": {
+          "top": 0,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 568
+        },
+        "header": {
+          "top": 0,
+          "bottom": 55,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 55
+        },
+        "configured": "0px",
+        "measured": "68px",
+        "inset": 0,
+        "safe": 0,
+        "pagePadding": 96,
+        "scroll": {
+          "rect": {
+            "top": 55,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 513
+          },
+          "top": 0,
+          "max": 516,
+          "width": 320,
+          "client": 320,
+          "padding": 92
+        },
+        "last": {
+          "top": 929.09375,
+          "bottom": 988.09375,
+          "left": 17,
+          "right": 303,
+          "width": 286,
+          "height": 59
+        },
+        "activeElement": {
+          "tag": "H1",
+          "text": "Bài học yoga miễn phí"
+        },
+        "controls": [
+          {
+            "text": "Hôm nay",
+            "button": {
+              "top": 508,
+              "bottom": 562,
+              "left": 9,
+              "right": 84.5,
+              "width": 75.5,
+              "height": 54
+            },
+            "ranges": [
+              {
+                "top": 538,
+                "bottom": 553,
+                "left": 23.375,
+                "right": 70.125
+              }
+            ],
+            "words": [
+              {
+                "text": "Hôm",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 23.375,
+                    "right": 48.609375
+                  }
+                ]
+              },
+              {
+                "text": "nay",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 51.625,
+                    "right": 70.125
+                  }
+                ]
+              }
+            ],
+            "font": "11px"
+          },
+          {
+            "text": "Hành trình",
+            "button": {
+              "top": 508,
+              "bottom": 562,
+              "left": 84.5,
+              "right": 160,
+              "width": 75.5,
+              "height": 54
+            },
+            "ranges": [
+              {
+                "top": 538,
+                "bottom": 553,
+                "left": 94.375,
+                "right": 150.109375
+              }
+            ],
+            "words": [
+              {
+                "text": "Hành",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 94.375,
+                    "right": 122
+                  }
+                ]
+              },
+              {
+                "text": "trình",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 125.03125,
+                    "right": 150.109375
+                  }
+                ]
+              }
+            ],
+            "font": "11px"
+          },
+          {
+            "text": "Khám phá",
+            "button": {
+              "top": 508,
+              "bottom": 562,
+              "left": 160,
+              "right": 235.5,
+              "width": 75.5,
+              "height": 54
+            },
+            "ranges": [
+              {
+                "top": 538,
+                "bottom": 553,
+                "left": 170.703125,
+                "right": 224.796875
+              }
+            ],
+            "words": [
+              {
+                "text": "Khám",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 170.703125,
+                    "right": 201.71875
+                  }
+                ]
+              },
+              {
+                "text": "phá",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 204.75,
+                    "right": 224.796875
+                  }
+                ]
+              }
+            ],
+            "font": "11px"
+          },
+          {
+            "text": "Cá nhân",
+            "button": {
+              "top": 508,
+              "bottom": 562,
+              "left": 235.5,
+              "right": 311,
+              "width": 75.5,
+              "height": 54
+            },
+            "ranges": [
+              {
+                "top": 538,
+                "bottom": 553,
+                "left": 252.40625,
+                "right": 294.078125
+              }
+            ],
+            "words": [
+              {
+                "text": "Cá",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 252.40625,
+                    "right": 265.203125
+                  }
+                ]
+              },
+              {
+                "text": "nhân",
+                "ranges": [
+                  {
+                    "top": 538,
+                    "bottom": 553,
+                    "left": 268.21875,
+                    "right": 294.078125
+                  }
+                ]
+              }
+            ],
+            "font": "11px"
+          }
+        ]
+      },
+      "rings": [
+        {
+          "rect": {
+            "top": 508,
+            "bottom": 562,
+            "left": 9,
+            "right": 84.5
+          },
+          "footer": {
+            "top": 500,
+            "bottom": 568,
+            "left": 0,
+            "right": 320
+          },
+          "headerBottom": 55,
+          "ring": 6,
+          "layoutRing": 6,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "rect": {
+            "top": 508,
+            "bottom": 562,
+            "left": 84.5,
+            "right": 160
+          },
+          "footer": {
+            "top": 500,
+            "bottom": 568,
+            "left": 0,
+            "right": 320
+          },
+          "headerBottom": 55,
+          "ring": 6,
+          "layoutRing": 6,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "rect": {
+            "top": 508,
+            "bottom": 562,
+            "left": 160,
+            "right": 235.5
+          },
+          "footer": {
+            "top": 500,
+            "bottom": 568,
+            "left": 0,
+            "right": 320
+          },
+          "headerBottom": 55,
+          "ring": 6,
+          "layoutRing": 6,
+          "visible": true,
+          "inside": true
+        },
+        {
+          "rect": {
+            "top": 508,
+            "bottom": 562,
+            "left": 235.5,
+            "right": 311
+          },
+          "footer": {
+            "top": 500,
+            "bottom": 568,
+            "left": 0,
+            "right": 320
+          },
+          "headerBottom": 55,
+          "ring": 6,
+          "layoutRing": 6,
+          "visible": true,
+          "inside": true
+        }
+      ]
+    },
+    "modeCycle": [
+      "four-column",
+      "two-row",
+      "four-column"
+    ],
+    "afterRapid": {
+      "route": "profile",
+      "retainedScreens": 3,
+      "navLayout": "two-row",
+      "footer": {
+        "top": 398,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 170
+      },
+      "layoutHeight": 170,
+      "scale": 1,
+      "app": {
+        "top": 0,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 568
+      },
+      "header": {
+        "top": 0,
+        "bottom": 55,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 55
+      },
+      "configured": "0px",
+      "measured": "170px",
+      "inset": 0,
+      "safe": 0,
+      "pagePadding": 206,
+      "scroll": {
+        "rect": {
+          "top": 55,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 513
+        },
+        "top": 0,
+        "max": 1309,
+        "width": 320,
+        "client": 320,
+        "padding": 194
+      },
+      "last": {
+        "top": 1578.0625,
+        "bottom": 1651.5625,
+        "left": 17,
+        "right": 303,
+        "width": 286,
+        "height": 73.5
+      },
+      "activeElement": {
+        "tag": "BUTTON",
+        "text": "Cá nhân"
+      },
+      "controls": [
+        {
+          "text": "Hôm nay",
+          "button": {
+            "top": 406,
+            "bottom": 477,
+            "left": 9,
+            "right": 160,
+            "width": 151,
+            "height": 71
+          },
+          "ranges": [
+            {
+              "top": 433,
+              "bottom": 470,
+              "left": 25,
+              "right": 144
+            }
+          ],
+          "words": [
+            {
+              "text": "Hôm",
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 25,
+                  "right": 89.203125
+                }
+              ]
+            },
+            {
+              "text": "nay",
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 96.921875,
+                  "right": 144
+                }
+              ]
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Hành trình",
+          "button": {
+            "top": 406,
+            "bottom": 477,
+            "left": 160,
+            "right": 311,
+            "width": 151,
+            "height": 71
+          },
+          "ranges": [
+            {
+              "top": 433,
+              "bottom": 470,
+              "left": 164.578125,
+              "right": 306.421875
+            }
+          ],
+          "words": [
+            {
+              "text": "Hành",
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 164.578125,
+                  "right": 234.90625
+                }
+              ]
+            },
+            {
+              "text": "trình",
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 242.609375,
+                  "right": 306.421875
+                }
+              ]
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Khám phá",
+          "button": {
+            "top": 491,
+            "bottom": 562,
+            "left": 9,
+            "right": 160,
+            "width": 151,
+            "height": 71
+          },
+          "ranges": [
+            {
+              "top": 518,
+              "bottom": 555,
+              "left": 18.109375,
+              "right": 150.875
+            }
+          ],
+          "words": [
+            {
+              "text": "Khám",
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 18.109375,
+                  "right": 93.859375
+                }
+              ]
+            },
+            {
+              "text": "phá",
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 101.5625,
+                  "right": 150.875
+                }
+              ]
+            }
+          ],
+          "font": "28px"
+        },
+        {
+          "text": "Cá nhân",
+          "button": {
+            "top": 491,
+            "bottom": 562,
+            "left": 160,
+            "right": 311,
+            "width": 151,
+            "height": 71
+          },
+          "ranges": [
+            {
+              "top": 518,
+              "bottom": 555,
+              "left": 180.90625,
+              "right": 290.078125
+            }
+          ],
+          "words": [
+            {
+              "text": "Cá",
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 180.90625,
+                  "right": 214.265625
+                }
+              ]
+            },
+            {
+              "text": "nhân",
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 222.03125,
+                  "right": 290.078125
+                }
+              ]
+            }
+          ],
+          "font": "28px"
+        }
+      ]
+    },
+    "retainedEnd": {
+      "probe": "handler-only-true-end-no-autoscroll",
+      "before": {
+        "retained": {
+          "top": 1309,
+          "height": 1822,
+          "client": 513,
+          "padding": 206,
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625
+          }
+        },
+        "current": {
+          "route": "profile",
+          "retainedScreens": 3,
+          "navLayout": "two-row",
+          "footer": {
+            "top": 398,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 170
+          },
+          "layoutHeight": 170,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "170px",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 206,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 513
+            },
+            "top": 1309,
+            "max": 1309,
+            "width": 320,
+            "client": 320,
+            "padding": 194
+          },
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625,
+            "left": 17,
+            "right": 303,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "BUTTON",
+            "text": "Cá nhân"
+          },
+          "controls": [
+            {
+              "text": "Hôm nay",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 25,
+                  "right": 144
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hôm",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 25,
+                      "right": 89.203125
+                    }
+                  ]
+                },
+                {
+                  "text": "nay",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 96.921875,
+                      "right": 144
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Hành trình",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 164.578125,
+                  "right": 306.421875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hành",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 164.578125,
+                      "right": 234.90625
+                    }
+                  ]
+                },
+                {
+                  "text": "trình",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 242.609375,
+                      "right": 306.421875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Khám phá",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 18.109375,
+                  "right": 150.875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Khám",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 18.109375,
+                      "right": 93.859375
+                    }
+                  ]
+                },
+                {
+                  "text": "phá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 101.5625,
+                      "right": 150.875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Cá nhân",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 180.90625,
+                  "right": 290.078125
+                }
+              ],
+              "words": [
+                {
+                  "text": "Cá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 180.90625,
+                      "right": 214.265625
+                    }
+                  ]
+                },
+                {
+                  "text": "nhân",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 222.03125,
+                      "right": 290.078125
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            }
+          ]
+        }
+      },
+      "during": [
+        {
+          "retained": {
+            "top": 1309,
+            "height": 1822,
+            "client": 513,
+            "padding": 206,
+            "last": {
+              "top": 269.0625,
+              "bottom": 342.5625
+            }
+          },
+          "current": {
+            "route": "edit-profile",
+            "retainedScreens": 4,
+            "navLayout": "four-column",
+            "footer": null,
+            "scale": 1,
+            "app": {
+              "top": 0,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 568
+            },
+            "header": {
+              "top": 0,
+              "bottom": 55,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 55
+            },
+            "configured": "0px",
+            "measured": "",
+            "inset": 0,
+            "safe": 0,
+            "pagePadding": 28,
+            "scroll": {
+              "rect": {
+                "top": 55,
+                "bottom": 568,
+                "left": 320,
+                "right": 640,
+                "width": 320,
+                "height": 513
+              },
+              "top": 0,
+              "max": 290,
+              "width": 320,
+              "client": 320,
+              "padding": null
+            },
+            "last": {
+              "top": 751.90625,
+              "bottom": 825.40625,
+              "left": 337,
+              "right": 623,
+              "width": 286,
+              "height": 73.5
+            },
+            "activeElement": {
+              "tag": "H1",
+              "text": "Thông tin tối thiểu, do bạn sửa."
+            },
+            "controls": []
+          }
+        },
+        {
+          "retained": {
+            "top": 1309,
+            "height": 1822,
+            "client": 513,
+            "padding": 206,
+            "last": {
+              "top": 269.0780029296875,
+              "bottom": 342.5511474609375
+            }
+          },
+          "current": {
+            "route": "edit-profile",
+            "retainedScreens": 4,
+            "navLayout": "four-column",
+            "footer": null,
+            "scale": 1,
+            "app": {
+              "top": 0,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 568
+            },
+            "header": {
+              "top": 0,
+              "bottom": 55,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 55
+            },
+            "configured": "0px",
+            "measured": "",
+            "inset": 0,
+            "safe": 0,
+            "pagePadding": 28,
+            "scroll": {
+              "rect": {
+                "top": 55,
+                "bottom": 568,
+                "left": 312.1979675292969,
+                "right": 632.197998046875,
+                "width": 320.0000305175781,
+                "height": 513
+              },
+              "top": 0,
+              "max": 290,
+              "width": 320,
+              "client": 320,
+              "padding": null
+            },
+            "last": {
+              "top": 751.90625,
+              "bottom": 825.40625,
+              "left": 329.1979675292969,
+              "right": 615.197998046875,
+              "width": 286.0000305175781,
+              "height": 73.5
+            },
+            "activeElement": {
+              "tag": "H1",
+              "text": "Thông tin tối thiểu, do bạn sửa."
+            },
+            "controls": []
+          }
+        },
+        {
+          "retained": {
+            "top": 1309,
+            "height": 1822,
+            "client": 513,
+            "padding": 206,
+            "last": {
+              "top": 269.0780029296875,
+              "bottom": 342.5511474609375
+            }
+          },
+          "current": {
+            "route": "edit-profile",
+            "retainedScreens": 4,
+            "navLayout": "four-column",
+            "footer": null,
+            "scale": 1,
+            "app": {
+              "top": 0,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 568
+            },
+            "header": {
+              "top": 0,
+              "bottom": 55,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 55
+            },
+            "configured": "0px",
+            "measured": "",
+            "inset": 0,
+            "safe": 0,
+            "pagePadding": 28,
+            "scroll": {
+              "rect": {
+                "top": 55,
+                "bottom": 568,
+                "left": 312.1979675292969,
+                "right": 632.197998046875,
+                "width": 320.0000305175781,
+                "height": 513
+              },
+              "top": 0,
+              "max": 290,
+              "width": 320,
+              "client": 320,
+              "padding": null
+            },
+            "last": {
+              "top": 751.90625,
+              "bottom": 825.40625,
+              "left": 329.1979675292969,
+              "right": 615.197998046875,
+              "width": 286.0000305175781,
+              "height": 73.5
+            },
+            "activeElement": {
+              "tag": "H1",
+              "text": "Thông tin tối thiểu, do bạn sửa."
+            },
+            "controls": []
+          }
+        }
+      ],
+      "detail": {
+        "retained": {
+          "top": 1309,
+          "height": 1822,
+          "client": 513,
+          "padding": 206,
+          "last": {
+            "top": 269.6990661621094,
+            "bottom": 342.0965576171875
+          }
+        },
+        "current": {
+          "route": "edit-profile",
+          "retainedScreens": 4,
+          "navLayout": "four-column",
+          "footer": null,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 28,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 513
+            },
+            "top": 0,
+            "max": 290,
+            "width": 320,
+            "client": 320,
+            "padding": null
+          },
+          "last": {
+            "top": 751.90625,
+            "bottom": 825.40625,
+            "left": 17,
+            "right": 303,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "H1",
+            "text": "Thông tin tối thiểu, do bạn sửa."
+          },
+          "controls": []
+        }
+      },
+      "after": {
+        "retained": {
+          "top": 1309,
+          "height": 1822,
+          "client": 513,
+          "padding": 206,
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625
+          }
+        },
+        "current": {
+          "route": "profile",
+          "retainedScreens": 3,
+          "navLayout": "two-row",
+          "footer": {
+            "top": 398,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 170
+          },
+          "layoutHeight": 170,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "170px",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 206,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 0,
+              "right": 320,
+              "width": 320,
+              "height": 513
+            },
+            "top": 1309,
+            "max": 1309,
+            "width": 320,
+            "client": 320,
+            "padding": 194
+          },
+          "last": {
+            "top": 269.0625,
+            "bottom": 342.5625,
+            "left": 17,
+            "right": 303,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "H1",
+            "text": "Lựa chọn của bạn."
+          },
+          "controls": [
+            {
+              "text": "Hôm nay",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 25,
+                  "right": 144
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hôm",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 25,
+                      "right": 89.203125
+                    }
+                  ]
+                },
+                {
+                  "text": "nay",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 96.921875,
+                      "right": 144
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Hành trình",
+              "button": {
+                "top": 406,
+                "bottom": 477,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 433,
+                  "bottom": 470,
+                  "left": 164.578125,
+                  "right": 306.421875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Hành",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 164.578125,
+                      "right": 234.90625
+                    }
+                  ]
+                },
+                {
+                  "text": "trình",
+                  "ranges": [
+                    {
+                      "top": 433,
+                      "bottom": 470,
+                      "left": 242.609375,
+                      "right": 306.421875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Khám phá",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 9,
+                "right": 160,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 18.109375,
+                  "right": 150.875
+                }
+              ],
+              "words": [
+                {
+                  "text": "Khám",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 18.109375,
+                      "right": 93.859375
+                    }
+                  ]
+                },
+                {
+                  "text": "phá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 101.5625,
+                      "right": 150.875
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            },
+            {
+              "text": "Cá nhân",
+              "button": {
+                "top": 491,
+                "bottom": 562,
+                "left": 160,
+                "right": 311,
+                "width": 151,
+                "height": 71
+              },
+              "ranges": [
+                {
+                  "top": 518,
+                  "bottom": 555,
+                  "left": 180.90625,
+                  "right": 290.078125
+                }
+              ],
+              "words": [
+                {
+                  "text": "Cá",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 180.90625,
+                      "right": 214.265625
+                    }
+                  ]
+                },
+                {
+                  "text": "nhân",
+                  "ranges": [
+                    {
+                      "top": 518,
+                      "bottom": 555,
+                      "left": 222.03125,
+                      "right": 290.078125
+                    }
+                  ]
+                }
+              ],
+              "font": "28px"
+            }
+          ]
+        },
+        "sameNode": true
+      }
+    },
+    "restore": {
+      "before": {
+        "route": "profile",
+        "retainedScreens": 3,
+        "navLayout": "two-row",
+        "footer": {
+          "top": 398,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 170
+        },
+        "layoutHeight": 170,
+        "scale": 1,
+        "app": {
+          "top": 0,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 568
+        },
+        "header": {
+          "top": 0,
+          "bottom": 55,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 55
+        },
+        "configured": "0px",
+        "measured": "170px",
+        "inset": 0,
+        "safe": 0,
+        "pagePadding": 206,
+        "scroll": {
+          "rect": {
+            "top": 55,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 513
+          },
+          "top": 105,
+          "max": 1309,
+          "width": 320,
+          "client": 320,
+          "padding": 194
+        },
+        "last": {
+          "top": 1473.0625,
+          "bottom": 1546.5625,
+          "left": 17,
+          "right": 303,
+          "width": 286,
+          "height": 73.5
+        },
+        "activeElement": {
+          "tag": "BUTTON",
+          "text": "Thông tin cá nhânTên tùy chọn · ngôn ngữ · hình minh họa"
+        },
+        "controls": [
+          {
+            "text": "Hôm nay",
+            "button": {
+              "top": 406,
+              "bottom": 477,
+              "left": 9,
+              "right": 160,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 433,
+                "bottom": 470,
+                "left": 25,
+                "right": 144
+              }
+            ],
+            "words": [
+              {
+                "text": "Hôm",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 25,
+                    "right": 89.203125
+                  }
+                ]
+              },
+              {
+                "text": "nay",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 96.921875,
+                    "right": 144
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Hành trình",
+            "button": {
+              "top": 406,
+              "bottom": 477,
+              "left": 160,
+              "right": 311,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 433,
+                "bottom": 470,
+                "left": 164.578125,
+                "right": 306.421875
+              }
+            ],
+            "words": [
+              {
+                "text": "Hành",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 164.578125,
+                    "right": 234.90625
+                  }
+                ]
+              },
+              {
+                "text": "trình",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 242.609375,
+                    "right": 306.421875
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Khám phá",
+            "button": {
+              "top": 491,
+              "bottom": 562,
+              "left": 9,
+              "right": 160,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 518,
+                "bottom": 555,
+                "left": 18.109375,
+                "right": 150.875
+              }
+            ],
+            "words": [
+              {
+                "text": "Khám",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 18.109375,
+                    "right": 93.859375
+                  }
+                ]
+              },
+              {
+                "text": "phá",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 101.5625,
+                    "right": 150.875
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Cá nhân",
+            "button": {
+              "top": 491,
+              "bottom": 562,
+              "left": 160,
+              "right": 311,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 518,
+                "bottom": 555,
+                "left": 180.90625,
+                "right": 290.078125
+              }
+            ],
+            "words": [
+              {
+                "text": "Cá",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 180.90625,
+                    "right": 214.265625
+                  }
+                ]
+              },
+              {
+                "text": "nhân",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 222.03125,
+                    "right": 290.078125
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          }
+        ]
+      },
+      "transition": [
+        {
+          "route": "edit-profile",
+          "retainedScreens": 4,
+          "navLayout": "four-column",
+          "footer": null,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 28,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 320,
+              "right": 640,
+              "width": 320,
+              "height": 513
+            },
+            "top": 0,
+            "max": 290,
+            "width": 320,
+            "client": 320,
+            "padding": null
+          },
+          "last": {
+            "top": 751.90625,
+            "bottom": 825.40625,
+            "left": 337,
+            "right": 623,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "H1",
+            "text": "Thông tin tối thiểu, do bạn sửa."
+          },
+          "controls": []
+        },
+        {
+          "route": "edit-profile",
+          "retainedScreens": 4,
+          "navLayout": "four-column",
+          "footer": null,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 28,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 309.6666259765625,
+              "right": 629.6666259765625,
+              "width": 320,
+              "height": 513
+            },
+            "top": 0,
+            "max": 290,
+            "width": 320,
+            "client": 320,
+            "padding": null
+          },
+          "last": {
+            "top": 751.90625,
+            "bottom": 825.40625,
+            "left": 326.6666259765625,
+            "right": 612.6666259765625,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "H1",
+            "text": "Thông tin tối thiểu, do bạn sửa."
+          },
+          "controls": []
+        },
+        {
+          "route": "edit-profile",
+          "retainedScreens": 4,
+          "navLayout": "four-column",
+          "footer": null,
+          "scale": 1,
+          "app": {
+            "top": 0,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 568
+          },
+          "header": {
+            "top": 0,
+            "bottom": 55,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 55
+          },
+          "configured": "0px",
+          "measured": "",
+          "inset": 0,
+          "safe": 0,
+          "pagePadding": 28,
+          "scroll": {
+            "rect": {
+              "top": 55,
+              "bottom": 568,
+              "left": 186.9794921875,
+              "right": 506.9794921875,
+              "width": 320,
+              "height": 513
+            },
+            "top": 0,
+            "max": 290,
+            "width": 320,
+            "client": 320,
+            "padding": null
+          },
+          "last": {
+            "top": 751.90625,
+            "bottom": 825.40625,
+            "left": 203.9794921875,
+            "right": 489.9794921875,
+            "width": 286,
+            "height": 73.5
+          },
+          "activeElement": {
+            "tag": "H1",
+            "text": "Thông tin tối thiểu, do bạn sửa."
+          },
+          "controls": []
+        }
+      ],
+      "absent": {
+        "route": "edit-profile",
+        "retainedScreens": 4,
+        "navLayout": "four-column",
+        "footer": null,
+        "scale": 1,
+        "app": {
+          "top": 0,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 568
+        },
+        "header": {
+          "top": 0,
+          "bottom": 55,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 55
+        },
+        "configured": "0px",
+        "measured": "",
+        "inset": 0,
+        "safe": 0,
+        "pagePadding": 28,
+        "scroll": {
+          "rect": {
+            "top": 55,
+            "bottom": 568,
+            "left": 0.1794331967830658,
+            "right": 320.17943319678307,
+            "width": 320,
+            "height": 513
+          },
+          "top": 0,
+          "max": 290,
+          "width": 320,
+          "client": 320,
+          "padding": null
+        },
+        "last": {
+          "top": 751.90625,
+          "bottom": 825.40625,
+          "left": 17.179433822631836,
+          "right": 303.17943382263184,
+          "width": 286,
+          "height": 73.5
+        },
+        "activeElement": {
+          "tag": "H1",
+          "text": "Thông tin tối thiểu, do bạn sửa."
+        },
+        "controls": []
+      },
+      "input": {
+        "route": "edit-profile",
+        "retainedScreens": 4,
+        "navLayout": "four-column",
+        "footer": null,
+        "scale": 1,
+        "app": {
+          "top": 0,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 568
+        },
+        "header": {
+          "top": 0,
+          "bottom": 55,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 55
+        },
+        "configured": "0px",
+        "measured": "",
+        "inset": 0,
+        "safe": 0,
+        "pagePadding": 28,
+        "scroll": {
+          "rect": {
+            "top": 55,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 513
+          },
+          "top": 0,
+          "max": 290,
+          "width": 320,
+          "client": 320,
+          "padding": null
+        },
+        "last": {
+          "top": 751.90625,
+          "bottom": 825.40625,
+          "left": 17,
+          "right": 303,
+          "width": 286,
+          "height": 73.5
+        },
+        "activeElement": {
+          "tag": "INPUT",
+          "text": ""
+        },
+        "controls": []
+      },
+      "after": {
+        "route": "profile",
+        "retainedScreens": 3,
+        "navLayout": "two-row",
+        "footer": {
+          "top": 398,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 170
+        },
+        "layoutHeight": 170,
+        "scale": 1,
+        "app": {
+          "top": 0,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 568
+        },
+        "header": {
+          "top": 0,
+          "bottom": 55,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 55
+        },
+        "configured": "0px",
+        "measured": "170px",
+        "inset": 0,
+        "safe": 0,
+        "pagePadding": 206,
+        "scroll": {
+          "rect": {
+            "top": 55,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 513
+          },
+          "top": 105,
+          "max": 1309,
+          "width": 320,
+          "client": 320,
+          "padding": 194
+        },
+        "last": {
+          "top": 1473.0625,
+          "bottom": 1546.5625,
+          "left": 17,
+          "right": 303,
+          "width": 286,
+          "height": 73.5
+        },
+        "activeElement": {
+          "tag": "H1",
+          "text": "Lựa chọn của bạn."
+        },
+        "controls": [
+          {
+            "text": "Hôm nay",
+            "button": {
+              "top": 406,
+              "bottom": 477,
+              "left": 9,
+              "right": 160,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 433,
+                "bottom": 470,
+                "left": 25,
+                "right": 144
+              }
+            ],
+            "words": [
+              {
+                "text": "Hôm",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 25,
+                    "right": 89.203125
+                  }
+                ]
+              },
+              {
+                "text": "nay",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 96.921875,
+                    "right": 144
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Hành trình",
+            "button": {
+              "top": 406,
+              "bottom": 477,
+              "left": 160,
+              "right": 311,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 433,
+                "bottom": 470,
+                "left": 164.578125,
+                "right": 306.421875
+              }
+            ],
+            "words": [
+              {
+                "text": "Hành",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 164.578125,
+                    "right": 234.90625
+                  }
+                ]
+              },
+              {
+                "text": "trình",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 242.609375,
+                    "right": 306.421875
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Khám phá",
+            "button": {
+              "top": 491,
+              "bottom": 562,
+              "left": 9,
+              "right": 160,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 518,
+                "bottom": 555,
+                "left": 18.109375,
+                "right": 150.875
+              }
+            ],
+            "words": [
+              {
+                "text": "Khám",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 18.109375,
+                    "right": 93.859375
+                  }
+                ]
+              },
+              {
+                "text": "phá",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 101.5625,
+                    "right": 150.875
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Cá nhân",
+            "button": {
+              "top": 491,
+              "bottom": 562,
+              "left": 160,
+              "right": 311,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 518,
+                "bottom": 555,
+                "left": 180.90625,
+                "right": 290.078125
+              }
+            ],
+            "words": [
+              {
+                "text": "Cá",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 180.90625,
+                    "right": 214.265625
+                  }
+                ]
+              },
+              {
+                "text": "nhân",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 222.03125,
+                    "right": 290.078125
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          }
+        ]
+      },
+      "retainedRouteNodeRestored": true,
+      "ring": {
+        "rect": {
+          "top": 175.875,
+          "bottom": 278.0625,
+          "left": 34,
+          "right": 286
+        },
+        "footer": {
+          "top": 398,
+          "bottom": 568,
+          "left": 0,
+          "right": 320
+        },
+        "headerBottom": 55,
+        "ring": 6,
+        "layoutRing": 6,
+        "visible": true,
+        "inside": false
+      },
+      "end": {
+        "route": "profile",
+        "retainedScreens": 3,
+        "navLayout": "two-row",
+        "footer": {
+          "top": 398,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 170
+        },
+        "layoutHeight": 170,
+        "scale": 1,
+        "app": {
+          "top": 0,
+          "bottom": 568,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 568
+        },
+        "header": {
+          "top": 0,
+          "bottom": 55,
+          "left": 0,
+          "right": 320,
+          "width": 320,
+          "height": 55
+        },
+        "configured": "0px",
+        "measured": "170px",
+        "inset": 0,
+        "safe": 0,
+        "pagePadding": 206,
+        "scroll": {
+          "rect": {
+            "top": 55,
+            "bottom": 568,
+            "left": 0,
+            "right": 320,
+            "width": 320,
+            "height": 513
+          },
+          "top": 1309,
+          "max": 1309,
+          "width": 320,
+          "client": 320,
+          "padding": 194
+        },
+        "last": {
+          "top": 269.0625,
+          "bottom": 342.5625,
+          "left": 17,
+          "right": 303,
+          "width": 286,
+          "height": 73.5
+        },
+        "activeElement": {
+          "tag": "BUTTON",
+          "text": "Thông tin cá nhânTên tùy chọn · ngôn ngữ · hình minh họa"
+        },
+        "controls": [
+          {
+            "text": "Hôm nay",
+            "button": {
+              "top": 406,
+              "bottom": 477,
+              "left": 9,
+              "right": 160,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 433,
+                "bottom": 470,
+                "left": 25,
+                "right": 144
+              }
+            ],
+            "words": [
+              {
+                "text": "Hôm",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 25,
+                    "right": 89.203125
+                  }
+                ]
+              },
+              {
+                "text": "nay",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 96.921875,
+                    "right": 144
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Hành trình",
+            "button": {
+              "top": 406,
+              "bottom": 477,
+              "left": 160,
+              "right": 311,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 433,
+                "bottom": 470,
+                "left": 164.578125,
+                "right": 306.421875
+              }
+            ],
+            "words": [
+              {
+                "text": "Hành",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 164.578125,
+                    "right": 234.90625
+                  }
+                ]
+              },
+              {
+                "text": "trình",
+                "ranges": [
+                  {
+                    "top": 433,
+                    "bottom": 470,
+                    "left": 242.609375,
+                    "right": 306.421875
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Khám phá",
+            "button": {
+              "top": 491,
+              "bottom": 562,
+              "left": 9,
+              "right": 160,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 518,
+                "bottom": 555,
+                "left": 18.109375,
+                "right": 150.875
+              }
+            ],
+            "words": [
+              {
+                "text": "Khám",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 18.109375,
+                    "right": 93.859375
+                  }
+                ]
+              },
+              {
+                "text": "phá",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 101.5625,
+                    "right": 150.875
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          },
+          {
+            "text": "Cá nhân",
+            "button": {
+              "top": 491,
+              "bottom": 562,
+              "left": 160,
+              "right": 311,
+              "width": 151,
+              "height": 71
+            },
+            "ranges": [
+              {
+                "top": 518,
+                "bottom": 555,
+                "left": 180.90625,
+                "right": 290.078125
+              }
+            ],
+            "words": [
+              {
+                "text": "Cá",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 180.90625,
+                    "right": 214.265625
+                  }
+                ]
+              },
+              {
+                "text": "nhân",
+                "ranges": [
+                  {
+                    "top": 518,
+                    "bottom": 555,
+                    "left": 222.03125,
+                    "right": 290.078125
+                  }
+                ]
+              }
+            ],
+            "font": "28px"
+          }
+        ]
+      },
+      "scrollDelta": 0
+    }
+  }
+]
