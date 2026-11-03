@@ -1,0 +1,4 @@
+--------- beginning of main
+10-03 15:10:30.773 10600 10600 I utyoga.mcydebug: hiddenapi: Accessing hidden method Landroid/view/MotionEvent;->getEventTimeNano()J (runtime_flags=0, domain=platform, api=unsupported) from LWV/lh1; (domain=app, TargetSdkVersion=36) using reflection: allowed
+10-03 15:10:30.790 10600 10600 E utyoga.mcydebug: hiddenapi: Accessing hidden method Landroid/view/MotionEvent;->getHistoricalEventTimeNano(I)J (runtime_flags=0, domain=platform, api=max-target-o) from LWV/lh1; (domain=app, TargetSdkVersion=36) using reflection: denied
+10-03 15:10:30.872 10600 10600 I ScrollIdentify: on fling

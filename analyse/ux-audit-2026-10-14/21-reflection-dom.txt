@@ -1,0 +1,122 @@
+- banner:
+  - button "Quay lại":
+  - generic "Phản hồi của bạn": Một chút yoga
+- main:
+  - generic: KHÓA HỌC MIỄN PHÍ · YOUTUBE
+  - heading [level=1]: Một chút chuyển động nhẹ
+  - paragraph: Các bài thực hành ngắn để làm quen với nhịp tập của riêng bạn.
+  - generic: 18 bài học
+  - generic: Miễn phí
+  - generic: Kênh · Một chút yoga
+  - paragraph:
+    - text: Cuộn xuống để xem video và phát trong ứng dụng.
+  - region:
+    - note:
+      - text: Thông tin phụ đề cho video này chưa được xác minh. Khi phát, bạn có thể kiểm tra CC; phụ đề tự động (nếu có) có thể chưa chính xác.
+    - note:
+      - text: Nhấn Phát sẽ tải trình phát YouTube trong ứng dụng; việc xử lý dữ liệu tuân theo chính sách quyền riêng tư của Google.
+      - link:
+        - /url: https://policies.google.com/privacy?hl=vi
+        - text: Chính sách quyền riêng tư của Google
+    - button:
+      - generic: Một chút chuyển động nhẹ
+      - strong: 01 · Thư giãn nhẹ
+      - generic: 0:43
+      - text: Học ngay trong ứng dụng
+    - generic: BÀI HỌC 01 · 0:43
+    - heading [level=2]: 01 · Thư giãn nhẹ
+    - paragraph: Video hướng dẫn yoga từ kênh Một chút yoga. Bạn tự chọn biên độ phù hợp và dừng lại nếu thấy đau tăng hoặc không an toàn.
+    - navigation:
+      - generic: Đang chọn bài 1 / 18
+      - button [disabled]:
+        - text: Video trước
+      - button:
+        - text: Video tiếp theo
+  - region:
+    - heading [level=2]: Các bài học
+    - generic: 18 bài
+    - button [pressed]:
+      - generic: 01 · 0:43
+      - strong: 01 · Thư giãn nhẹ
+    - button:
+      - generic: 02 · 1:04
+      - strong: 02 · Kéo giãn gân kheo nhẹ
+    - button:
+      - generic: 03 · 0:53
+      - strong: 03 · Chuyển động toàn thân
+    - button:
+      - generic: 04 · 0:36
+      - strong: 04 · Chuyển động lưng dưới
+    - button:
+      - generic: 05 · 1:00
+      - strong: 05 · Chuyển động lưng dưới · bài ngắn
+    - button:
+      - generic: 06 · 0:17
+      - strong: 06 · Chuyển động cổ và lưng trên
+    - button:
+      - generic: 07 · 0:20
+      - strong: 07 · Chuyển động cổ và lưng trên · bài ngắn
+    - button:
+      - generic: 08 · 0:37
+      - strong: 08 · Nhón gót đứng · bài thực hành chân
+    - button:
+      - generic: 09 · 0:45
+      - strong: 09 · Giãn cơ nhẹ
+    - button:
+      - generic: 10 · 0:34
+      - strong: 10 · Chuyển động nhẹ toàn thân
+    - button:
+      - generic: 11 · 0:22
+      - strong: 11 · Chuyển động vùng cổ
+    - button:
+      - generic: 12 · 0:25
+      - strong: 12 · Chuyển động hông và chân
+    - button:
+      - generic: 13 · 0:30
+      - strong: 13 · Chuyển động nhẹ toàn thân
+    - button:
+      - generic: 14 · 0:58
+      - strong: 14 · Mở vai khi nằm nghiêng
+    - button:
+      - generic: 15 · 0:50
+      - strong: 15 · Chuyển động cột sống
+    - button:
+      - generic: 16 · 0:28
+      - strong: 16 · Lăn lưng với vòng
+    - button:
+      - generic: 17 · 0:23
+      - strong: 17 · Chuyển động nhẹ · bài 17
+    - button:
+      - generic: 18 · 0:27
+      - strong: 18 · Chuyển động nhẹ · bài 18
+- main:
+  - heading "Sau buổi tập, cơ thể bạn thế nào?" [active] [level=1]
+  - paragraph: Ghi lại cảm giác ở từng vùng. Một vùng có thể khác vùng còn lại.
+  - text: "Bài bạn đã thực hành: Một chút chuyển động nhẹ · 01 · Thư giãn nhẹ"
+  - img "Minh họa toàn thân nhìn từ phía sau"
+  - generic: Trước tập
+  - img "Minh họa toàn thân nhìn từ phía sau"
+  - generic: Sau tập
+  - paragraph: Màu điểm thể hiện mức bạn tự ghi tại từng thời điểm. Chưa ghi không có nghĩa là không khó chịu.
+  - heading "Vùng bạn đã chọn trước tập" [level=2]
+  - paragraph: Bạn chưa chọn vùng ở check-in. Bạn vẫn có thể ghi cảm nhận chung bên dưới.
+  - button "Ghi thêm vùng khác sau tập"
+  - heading "Cảm nhận chung không bắt buộc" [level=2]
+  - button "Dễ chịu hơn"
+  - button "Như cũ"
+  - button "Khó chịu hơn"
+  - button "Chưa rõ"
+  - heading "Nhịp buổi này không bắt buộc" [level=2]
+  - button "Vừa"
+  - button "Hơi nhanh"
+  - button "Hơi chậm"
+  - text: Muốn nói thêm?
+  - generic: Phản hồi này chỉ được giữ trong phiên hiện tại; chưa đồng bộ vào tài khoản.
+  - textbox "Muốn nói thêm? Phản hồi này chỉ được giữ trong phiên hiện tại; chưa đồng bộ vào tài khoản.":
+    - /placeholder: "Ví dụ: Mình muốn nhịp chậm hơn..."
+  - paragraph:
+    - text: Cảm nhận chung không tự điền mức cho từng vùng. Sơ đồ chỉ phản ánh những mức bạn chủ động ghi.
+- contentinfo:
+  - button "Bỏ qua"
+  - button "Ghi nhận phản hồi":
+    - text: Ghi nhận phản hồi
