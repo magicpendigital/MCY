@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "evidenceSha256": "a8e0f53bf75ab0ebb88b704d32ffaa365b6caa19625496239059a73dca4ab64f",
+  "sourceFreezeSha256": "d29bf12d5f20992139094af4f8a4facb2ca6e9af37b4865a9e9151e33956cd2f",
+  "captures": 20,
+  "built": 59,
+  "reports": [
+    {
+      "path": "ui-results.json",
+      "sha256": "03abdca7161e062404788b13fe037cdffc689ad43d9c4f7be21d8eb0638c2089",
+      "stats": {
+        "startTime": "2026-10-16T06:58:51.543Z",
+        "duration": 61060.563,
+        "expected": 18,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "regression-results.json",
+      "sha256": "0f7a3becd34fad8a5ab6affa6fbed0cff46edd7981f626fff7cb60904e9c6542",
+      "stats": {
+        "startTime": "2026-10-16T06:35:20.854Z",
+        "duration": 123076.39499999999,
+        "expected": 30,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "fit-results.json",
+      "sha256": "85bae4cf582ae50b7b9d46c8a0dddd407a97f3037ec7b567ac3a231a1726971a",
+      "stats": {
+        "startTime": "2026-10-16T06:43:43.322Z",
+        "duration": 9164.63,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "runtime",
+      "command": "node scripts/check-mobile-runtime.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "catalogue",
+      "command": "node scripts/check-reviewed-practice-catalog.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "typecheck",
+      "command": "node D:\\Projects\\MCY\\node_modules\\typescript\\bin\\tsc",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "command": "node D:\\Projects\\MCY\\node_modules\\vite\\bin\\vite.js build",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-prep",
+      "command": "node scripts/prepare-sites-build.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "bundle",
+      "command": "node scripts/check-client-bundle-secrets.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016",
+      "exitCode": 0
+    },
+    {
+      "name": "sites-isolation",
+      "command": "node --test tests/sites-worker.test.mjs tests/playwright-test-environment.test.mjs",
+      "cwd": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016",
+      "exitCode": 0
+    }
+  ],
+  "scope": "Hashes and reportprocess statuses; not independent rerun ofworker suites"
+}

@@ -1,0 +1,140 @@
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\src\\prototype.css" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\src\\prototype.css"
+index 901fff0..dd6685c 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\src\\prototype.css"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\src\\prototype.css"
+@@ -594,11 +594,27 @@ button { cursor: pointer; }
+ .mcy-checkin-page .mcy-inline-section-title { margin-top:9px !important; }
+ .mcy-checkin-page .mcy-body-status-actions { margin-top: 14px; }
+ .mcy-checkin-step-two { display: grid; gap: 15px; padding-top: 6px; }
+-.mcy-checkin-step-two .mcy-energy-card { margin: 0; padding: 17px 14px 14px; }
++.mcy-checkin-step-two .mcy-checkin-step-two-scroll-hint { margin: -5px 0; min-height: 20px; padding: 0; background: transparent; font-size: 12px; }
++.mcy-checkin-step-two .mcy-time-choice { padding: 20px 16px 16px; border-radius: 24px; background: var(--color-sage-soft); }
++.mcy-checkin-step-two .mcy-time-choice h2 { margin: 0 0 16px; font: 400 24px/1.2 var(--font-editorial); }
++.mcy-checkin-step-two .mcy-time-choice .mcy-chip-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
++.mcy-checkin-step-two .mcy-time-choice .mcy-choice { display: flex; min-width: 0; min-height: 76px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 10px 4px; border: 1px solid var(--color-border-strong); background: var(--color-canvas); }
++.mcy-checkin-step-two .mcy-time-choice .mcy-choice.selected { border: 2px solid var(--color-forest); background: var(--color-forest); color: var(--color-on-dark); }
++.mcy-checkin-step-two .mcy-time-choice .mcy-choice span { font: 400 32px/1.1 var(--font-editorial); }
++.mcy-checkin-step-two .mcy-time-choice .mcy-choice small { font: 500 14px/1.4 var(--font-sans); }
++.mcy-checkin-step-two .mcy-time-choice p, .mcy-checkin-step-two #checkin-energy-use { margin: 12px 0 0; color: var(--mcy-muted); font: 400 14px/1.5 var(--font-sans); }
++.mcy-checkin-step-two .mcy-energy-card { margin: 0; padding: 8px 0 16px; border: 0; border-bottom: 1px solid var(--mcy-border); border-radius: 0; background: transparent; }
+ .mcy-checkin-step-two .mcy-energy-card h2 { font: 700 15px/1.35 var(--font-sans); }
+-.mcy-checkin-step-two .mcy-energy-options { gap: 5px; }
++.mcy-checkin-step-two .mcy-energy-options { display: flex; flex-wrap: wrap; margin-top: 14px; gap: 5px; }
++.mcy-checkin-step-two .mcy-energy-options button { flex: 1 0 calc(20% - 4px); min-width: min(100%,3.25em); min-height: 80px; gap: 8px; color: var(--mcy-muted); font-size: 14px; }
++.mcy-checkin-step-two .mcy-energy-options button[aria-pressed="true"] { color: var(--mcy-ink); }
+ .mcy-checkin-step-two .mcy-energy-options svg { width: 38px; height: 38px; }
+-.mcy-checkin-step-two .mcy-energy-options span { font-size: 10px; }
++.mcy-checkin-step-two .mcy-energy-options span { max-width: 100%; font-size: inherit; line-height: 1.35; white-space: normal; overflow-wrap: anywhere; }
++.mcy-checkin-step-two button:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
++.mcy-checkin-step-two .mcy-checkin-summary { padding: 4px 0; border: 0; border-radius: 0; background: transparent; }
++.mcy-checkin-step-two .mcy-checkin-summary strong, .mcy-checkin-step-two .mcy-checkin-summary small { font-size: 14px; }
++.mcy-checkin-step-two .mcy-checkin-summary small { white-space: normal; overflow-wrap: anywhere; }
++.mcy-checkin-step-two .mcy-checkin-summary button { min-width: 44px; min-height: 44px; font-size: 14px; }
+ .mcy-checkin-step-two .mcy-field-section { margin: 0; }
+ .mcy-checkin-step-two .mcy-chip-grid { gap: 9px; }
+ .mcy-checkin-summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 14px; border: 1px solid var(--mcy-border); border-radius: 14px; background: var(--mcy-paper); }
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\src\\Prototype.tsx" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\src\\Prototype.tsx"
+index 518753b..15ae196 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\src\\Prototype.tsx"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\src\\Prototype.tsx"
+@@ -1471,8 +1471,8 @@ function CheckinScreen() {
+   const bodySummary = state.bodyStatus === "none_now" ? msg(locale, "checkin.noDiscomfort") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.unsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.skipBody") : state.preObservations.map(item => `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""} · ${item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(", ");
+   return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
+     <div className="mcy-step-count" aria-live="polite">{formatMessage(locale, "checkin.stepCount", { step: state.checkinStep })}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
+-    <h1>{state.checkinStep === 1 ? (locale === "en-US" ? "Your body, today." : "Cơ thể bạn hôm nay.") : msg(locale, "checkin.step2.title")}</h1>
+-    <p className="mcy-lead">{state.checkinStep === 1 ? (locale === "en-US" ? "A little space to notice how you feel." : "Một chút để lắng nghe cảm nhận.") : state.aiCapability === "ready" ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, "checkin.step2.lead")}</p>
++    <h1>{state.checkinStep === 1 ? (locale === "en-US" ? "Your body, today." : "Cơ thể bạn hôm nay.") : (locale === "en-US" ? "A little time for you." : "Một khoảng cho mình.")}</h1>
++    <p className="mcy-lead">{state.checkinStep === 1 ? (locale === "en-US" ? "A little space to notice how you feel." : "Một chút để lắng nghe cảm nhận.") : state.aiCapability === "ready" ? (locale === "en-US" ? "Choose reviewed content with AI, or browse on your own." : "Chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : (locale === "en-US" ? "Choose a practice yourself in the library." : "Bạn tự chọn bài trong thư viện.")}</p>
+     {state.checkinStep === 1 ? <>
+       <div className="mcy-checkin-quick-choices" aria-label={locale === "en-US" ? "How your body feels now" : "Cảm nhận cơ thể lúc này"}>
+         <button className="mcy-body-disclosure" aria-expanded={showBodyAreas} aria-controls="checkin-body-areas" onClick={() => setShowBodyAreas(open => !open)}>
+@@ -1507,9 +1507,19 @@ function CheckinScreen() {
+       </div>
+       {!showBodyAreas && <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>}
+     </> : <div className="mcy-checkin-step-two">
++      <section className="mcy-time-choice" aria-labelledby="checkin-time-title" aria-describedby="checkin-time-use">
++        <h2 id="checkin-time-title">{locale === "en-US" ? "How much time do you have?" : "Bạn có khoảng bao lâu?"}</h2>
++        <div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}><span>{localizedNumber(locale, time)}</span><small>{locale === "en-US" ? "min" : "phút"}</small></Choice>)}</div>
++        <p id="checkin-time-use">{state.aiCapability === "ready"
++          ? (locale === "en-US" ? "AI uses this time limit to choose from reviewed content. The library stays unfiltered." : "AI dùng giới hạn này để chọn trong nội dung đã duyệt. Thư viện vẫn không lọc theo thời gian.")
++          : (locale === "en-US" ? "A reference for your own choice. The library does not filter by this time." : "Để bạn tham khảo khi tự chọn bài. Thư viện chưa lọc theo thời gian này.")}</p>
++      </section>
+       {showStepTwoScrollHint && <div className="mcy-scroll-hint mcy-checkin-step-two-scroll-hint"><ChevronDownIcon aria-hidden="true" />{msg(locale, "checkin.step2.scrollHint")}</div>}
+-      <section className="mcy-energy-card"><h2>{msg(locale, "checkin.energy")} <small>({msg(locale, "checkin.optional")})</small></h2><div className="mcy-energy-options">{(["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"] as Energy[]).map((value, index) => <button key={value} aria-pressed={state.energy === value} onClick={() => update({ energy: value })}><EnergyFace level={index} /><span>{energyLabel(locale, value)}</span></button>)}</div></section>
+-      <section className="mcy-field-section compact"><h2>{msg(locale, "checkin.duration")}</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}>{formatMessage(locale, "checkin.minutes", { minutes: localizedNumber(locale, time) })}</Choice>)}</div></section>
++      <section className="mcy-energy-card" aria-labelledby="checkin-energy-title" aria-describedby="checkin-energy-use"><h2 id="checkin-energy-title">{msg(locale, "checkin.energy")} <small>({msg(locale, "checkin.optional")})</small></h2><p id="checkin-energy-use">{state.signedIn && state.userId && state.saveFeedbackConsent
++        ? (locale === "en-US" ? "Recorded with your check-in if you save it; not yet shown in Journey." : "Ghi cùng check-in khi bạn lưu; chưa hiển thị trong Hành trình.")
++        : state.aiCapability === "ready"
++          ? (locale === "en-US" ? "Kept in your draft. Sent with your preferences when you confirm with AI." : "Nằm trong nháp. Gửi cùng lựa chọn khi bạn xác nhận với AI.")
++          : (locale === "en-US" ? "Kept only in your current draft; not used to choose a practice yet." : "Chỉ nằm trong nháp hiện tại; chưa dùng để chọn bài.")}</p><div className="mcy-energy-options">{(["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"] as Energy[]).map((value, index) => <button key={value} aria-pressed={state.energy === value} onClick={() => update({ energy: value })}><EnergyFace level={index} /><span>{energyLabel(locale, value)}</span></button>)}</div></section>
+       <div className="mcy-checkin-summary"><span><strong>{locale === "en-US" ? "Body check-in" : "Cảm nhận cơ thể"}</strong><small>{bodySummary || (locale === "en-US" ? "Not added" : "Chưa ghi nhận")}</small></span><button onClick={() => update({ checkinStep: 1 })}>{locale === "en-US" ? "Edit" : "Sửa"}</button></div>
+       {state.pendingCheckinPayload && <p role="status">{locale === "en-US" ? "The previous save is unconfirmed. Retry that exact record first; edits remain in your draft." : "Lần lưu trước chưa được xác nhận. Hãy thử lại đúng bản ghi đó trước; phần sửa được giữ trong nháp."}</p>}
+       <p className="mcy-inline-note">{state.signedIn && state.userId && state.saveFeedbackConsent
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\tests\\practice-flow.spec.ts" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\practice-flow.spec.ts"
+index efa8cb1..677ef2a 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\tests\\practice-flow.spec.ts"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\practice-flow.spec.ts"
+@@ -44,12 +44,12 @@ for (const device of ["iphone", "pixel-10"]) test(`reviewed plan and explicit st
+   expect(calls).toHaveLength(1); expect(calls[0].context.floor).toBe("avoid"); expect(calls[0]).not.toHaveProperty("history");
+   await page.getByRole("region", { name: "Kế hoạch hôm nay" }).scrollIntoViewIfNeeded();
+   await page.mouse.move(0, 0);
+-  await page.screenshot({ path: `analyse/ux-ai-2026-10-10/plan-fixture-${device}.png`, animations: "disabled" });
++  await page.screenshot({ path: `analyse/ux-step4-3-2026-10-16/plan-fixture-${device}.png`, animations: "disabled" });
+   await page.getByRole("button", { name: "Xác nhận và mở buổi học" }).click();
+   await expect(page.getByRole("region", { name: "Nội dung buổi tập" })).toBeVisible();
+   expect(calls).toHaveLength(2); expect(calls[1]).toMatchObject({ action: "start_plan", sessionId: SESSION.id, contentVersion: SESSION.version });
+   await page.mouse.move(0, 0);
+-  await page.screenshot({ path: `analyse/ux-ai-2026-10-10/practice-fixture-${device}.png`, animations: "disabled" });
++  await page.screenshot({ path: `analyse/ux-step4-3-2026-10-16/practice-fixture-${device}.png`, animations: "disabled" });
+   await page.getByRole("button", { name: "Tôi đã thực hành · ghi cảm nhận", exact: true }).click();
+   await page.getByRole("button", { name: "Khó chịu hơn", exact: true }).click();
+   await expect(page.locator(".mcy-alert")).toContainText("không tự gợi bài");
+@@ -168,10 +168,10 @@ test("multimodal draft is readable on narrow web, preserves image ratio and paus
+   await expect(page.getByRole("heading", { name: "Chọn không gian của bạn" })).toBeVisible();
+   expect(await audio.evaluate((a: HTMLAudioElement) => a.paused)).toBe(true); expect(cloud).toEqual([]);
+   await img.scrollIntoViewIfNeeded();
+-  await page.screenshot({ path: "analyse/ux-ai-2026-10-10/draft-mobile.png" });
++  await page.screenshot({ path: "analyse/ux-step4-3-2026-10-16/draft-mobile.png" });
+   await page.setViewportSize({ width: 1440, height: 1000 });
+   await page.locator(".mcy-content-review").evaluate(el => { el.scrollTop = 0; });
+-  await page.screenshot({ path: "analyse/ux-ai-2026-10-10/draft-web.png" });
++  await page.screenshot({ path: "analyse/ux-step4-3-2026-10-16/draft-web.png" });
+ });
+ 
+ test("Owner uncertain save requires readback language and explicit reload refreshes version", async ({ page }) => {
+diff --git "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\tests\\ux-checkin-layout.spec.ts" "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\ux-checkin-layout.spec.ts"
+index 01cb20e..949007e 100644
+--- "a/D:\\Projects\\MCY\\.vercel\\ux-step4-2-visual-20261016\\tests\\ux-checkin-layout.spec.ts"
++++ "b/D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\ux-checkin-layout.spec.ts"
+@@ -7,12 +7,12 @@ for(const [label,width,height,query] of [['320',320,568,'?mode=web'],['short',39
+  await expect(opener).toBeVisible();if(height>=640)await expect(active(page).getByRole('button',{name:'Không thấy khó chịu',exact:true})).toBeInViewport();await active(page).getByRole('button',{name:'Không thấy khó chịu',exact:true}).scrollIntoViewIfNeeded();await expect(active(page).getByRole('button',{name:'Không thấy khó chịu',exact:true})).toBeInViewport();await active(page).locator('.mobile-scroll').evaluate(s=>{s.scrollTop=0;});await expect(page.locator('.flow-fixed-footer .mcy-action')).toBeInViewport();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await expect.poll(async()=>Math.abs((await active(page).boundingBox())!.x-(await page.locator('.mobile-app-viewport').boundingBox())!.x)).toBeLessThan(.2);
+- await page.screenshot({path:`analyse/ux-step4-2-visual-2026-10-16/checkin-quick-final-${label}.png`,animations:'disabled'});
++ await page.screenshot({path:`analyse/ux-step4-3-2026-10-16/checkin-quick-final-${label}.png`,animations:'disabled'});
+  await opener.click();await expect(opener).toHaveAttribute('aria-expanded','true');await expect(active(page).locator('.mcy-body-art img')).toHaveAttribute('src',/feminine-full/);await expect(active(page).locator('.mcy-region-list button')).toHaveCount(4);
+  await active(page).locator('.mcy-body-art').evaluate(map=>{const scroll=map.closest('.mobile-scroll')!;scroll.scrollTop+=map.getBoundingClientRect().top-scroll.getBoundingClientRect().top;});
+- await page.screenshot({path:`analyse/ux-step4-2-visual-2026-10-16/checkin-map-final-${label}.png`,animations:'disabled'});
++ await page.screenshot({path:`analyse/ux-step4-3-2026-10-16/checkin-map-final-${label}.png`,animations:'disabled'});
+  await active(page).locator('.mcy-region-list').scrollIntoViewIfNeeded();await expect(active(page).locator('.mcy-region-list button').last()).toBeInViewport();
+- await page.screenshot({path:`analyse/ux-step4-2-visual-2026-10-16/checkin-expanded-final-${label}.png`,animations:'disabled'});
++ await page.screenshot({path:`analyse/ux-step4-3-2026-10-16/checkin-expanded-final-${label}.png`,animations:'disabled'});
+  await page.getByRole('button',{name:'Tiếp: năng lượng và thời gian',exact:true}).click();await expect(active(page).locator('.mcy-checkin-summary')).toContainText('Chưa ghi nhận');
+ });
+ for(const [label,choice,expected] of [['none','Không thấy khó chịu','Không thấy khó chịu'],['unknown','Chưa xác định','Chưa xác định'],['noanswer',null,'Chưa ghi nhận'],['skip','Bỏ qua ghi nhận cơ thể','Bỏ qua phần cơ thể']] as const)test('Distinct body outcome '+label,async({page})=>{await enter(page);if(choice)await page.getByRole('button',{name:choice,exact:true}).click();if(label!=='skip')await page.getByRole('button',{name:'Tiếp: năng lượng và thời gian',exact:true}).click();await expect(active(page).locator('.mcy-checkin-summary')).toContainText(expected);});
+@@ -23,7 +23,7 @@ test('Regional entries survive collapse, return and cancelled replacement; confi
+  await expect(elbow()).toContainText('Trái · Vừa / Phải · Nhẹ');await active(page).locator('.mcy-body-disclosure').click();await expect(active(page).locator('.mcy-body-disclosure')).toContainText('Giữ 2 ghi nhận');await expect(active(page).locator('.mcy-body-art')).toHaveCount(0);
+  await page.getByRole('button',{name:'Tiếp: năng lượng và thời gian',exact:true}).click();await expect(active(page).locator('.mcy-checkin-summary')).toContainText('Trái · Vừa');await expect(active(page).locator('.mcy-checkin-summary')).toContainText('Phải · Nhẹ');
+  await active(page).getByRole('button',{name:'Sửa',exact:true}).click();await expect(active(page).locator('.mcy-body-disclosure')).toHaveAttribute('aria-expanded','true');await expect(elbow()).toContainText('Trái · Vừa / Phải · Nhẹ');
+- await page.getByRole('button',{name:'Không thấy khó chịu',exact:true}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.screenshot({path:'analyse/ux-step4-2-visual-2026-10-16/checkin-confirm.png',animations:'disabled'});await page.getByRole('button',{name:'Giữ các vùng đã ghi',exact:true}).click();await expect(elbow()).toContainText('Trái · Vừa / Phải · Nhẹ');
++ await page.getByRole('button',{name:'Không thấy khó chịu',exact:true}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.screenshot({path:'analyse/ux-step4-3-2026-10-16/checkin-confirm.png',animations:'disabled'});await page.getByRole('button',{name:'Giữ các vùng đã ghi',exact:true}).click();await expect(elbow()).toContainText('Trái · Vừa / Phải · Nhẹ');
+  await page.getByRole('button',{name:'Chưa xác định',exact:true}).click();await page.getByRole('button',{name:'Đổi lựa chọn',exact:true}).click();await expect(active(page).locator('.mcy-region-list button.selected')).toHaveCount(0);await page.getByRole('button',{name:'Tiếp: năng lượng và thời gian',exact:true}).click();await expect(active(page).locator('.mcy-checkin-summary')).toContainText('Chưa xác định');
+ });
+ test('English disclosure preserves partial preview and no-answer semantics',async({page})=>{await enter(page,'?mode=web',true);await expect(page.getByText('ENGLISH PREVIEW · SOME SCREENS REMAIN IN VIETNAMESE')).toBeVisible();const opener=active(page).getByRole('button',{name:/Notice each body area/});await opener.click();await expect(opener).toHaveAttribute('aria-expanded','true');await expect(active(page).locator('.mcy-region-list')).toHaveAttribute('aria-label','Choose a body area');await opener.click();await page.getByRole('button',{name:'Next: energy and time',exact:true}).click();await expect(active(page).locator('.mcy-checkin-summary')).toContainText('Not added');});
+@@ -35,5 +35,5 @@ for(const english of [false,true])test('True2x text and keyboard body choices '+
+  const none=active(page).getByRole('button',{name:english?'No discomfort now':'Không thấy khó chịu',exact:true});await expect(none).toBeFocused();await page.keyboard.press('Enter');await expect(none).toHaveAttribute('aria-pressed','true');
+  const checkBounds=async()=>{for(const button of await active(page).locator('.mcy-checkin-other-choices > button').all()){const b=await button.boundingBox();expect(b!.height).toBeGreaterThanOrEqual(44);const text=await button.evaluate(el=>{const r=el.getBoundingClientRect(),span=el.querySelector('span')!,range=document.createRange();range.selectNodeContents(span);return{fontSize:getComputedStyle(el).fontSize,client:el.clientWidth,scroll:el.scrollWidth,left:r.left,right:r.right,lines:[...range.getClientRects()].map(t=>({left:t.left,right:t.right}))};});expect(text.fontSize).toBe('28px');expect(text.scroll).toBeLessThanOrEqual(text.client);for(const line of text.lines){expect(line.left).toBeGreaterThanOrEqual(text.left);expect(line.right).toBeLessThanOrEqual(text.right);}}};
+  await checkBounds();await page.keyboard.press('Tab');const unsure=active(page).getByRole('button',{name:english?'Not sure':'Chưa xác định',exact:true});await expect(unsure).toBeFocused();await page.keyboard.press('Enter');await expect(unsure).toHaveAttribute('aria-pressed','true');await expect(none).toHaveAttribute('aria-pressed','false');await checkBounds();
+- expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:'analyse/ux-step4-2-visual-2026-10-16/checkin-large-'+english+'.png',animations:'disabled'});await opener.focus();await page.keyboard.press('Enter');await expect(opener).toHaveAttribute('aria-expanded','true');await expect(active(page).locator('.mcy-region-list')).toBeVisible();
++ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:'analyse/ux-step4-3-2026-10-16/checkin-large-'+english+'.png',animations:'disabled'});await opener.focus();await page.keyboard.press('Enter');await expect(opener).toHaveAttribute('aria-expanded','true');await expect(active(page).locator('.mcy-region-list')).toBeVisible();
+ });

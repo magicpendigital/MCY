@@ -1,0 +1,47 @@
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 601 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/index.html                                            1.06 kB │ gzip:   0.59 kB
+dist/client/assets/roboto-vietnamese-400-normal-DnpnVwnf.woff     6.34 kB
+dist/client/assets/roboto-vietnamese-700-normal-DsFyXAL4.woff     6.38 kB
+dist/client/assets/roboto-vietnamese-500-normal-D380IkQ8.woff     6.41 kB
+dist/client/assets/roboto-vietnamese-400-normal-D2PTxGxD.woff2    8.36 kB
+dist/client/assets/roboto-vietnamese-700-normal-BEVeWqJt.woff2    8.41 kB
+dist/client/assets/roboto-vietnamese-500-normal-B3ncpOoB.woff2    8.54 kB
+dist/client/assets/roboto-latin-400-normal-DyYNIH4P.woff         21.77 kB
+dist/client/assets/roboto-latin-400-normal-BqEyEoaF.woff2        21.88 kB
+dist/client/assets/roboto-latin-500-normal-DQZyH_nt.woff         21.92 kB
+dist/client/assets/roboto-latin-700-normal-DLgJJpmK.woff         21.92 kB
+dist/client/assets/roboto-latin-500-normal-7RbcRiD8.woff2        22.20 kB
+dist/client/assets/roboto-latin-700-normal-BZpUvMxY.woff2        22.24 kB
+dist/client/assets/LessonReader-DIuFVfDc.css                      2.77 kB │ gzip:   0.90 kB
+dist/client/assets/owner-CCktePmf.css                            13.87 kB │ gzip:   3.81 kB
+dist/client/assets/teacher-BBhbwVaC.css                          13.91 kB │ gzip:   3.60 kB
+dist/client/assets/index-ypqNFnWF.css                            98.61 kB │ gzip:  19.13 kB
+dist/client/assets/mark-forest-BqMZe9Gf.js                        0.55 kB │ gzip:   0.37 kB
+dist/client/assets/web-CVkRBmE0.js                                0.84 kB │ gzip:   0.40 kB
+dist/client/assets/ContentReviewWorkspace-Dp-mHe5m.js             1.23 kB │ gzip:   0.72 kB
+dist/client/assets/LessonReader-izn_yFqT.js                       1.57 kB │ gzip:   0.84 kB
+dist/client/assets/contentReviewCandidates-FWo7P7-p.js            1.94 kB │ gzip:   1.01 kB
+dist/client/assets/AuthCallback-Cwi-aTPu.js                       2.91 kB │ gzip:   1.39 kB
+dist/client/assets/freeCourses-C_KZyTb-.js                        3.33 kB │ gzip:   1.62 kB
+dist/client/assets/DiscoverScreen-DUapICeR.js                     3.79 kB │ gzip:   1.63 kB
+dist/client/assets/CourseDetailScreen-BbC4C1mu.js                 8.28 kB │ gzip:   2.93 kB
+dist/client/assets/jsx-runtime-CB_p5Kcx.js                        8.74 kB │ gzip:   3.34 kB
+dist/client/assets/ContentReviewPanel-BRqCgwr9.js                10.61 kB │ gzip:   3.85 kB
+dist/client/assets/PracticeFlowScreen-Xjbu5dFJ.js                12.57 kB │ gzip:   4.64 kB
+dist/client/assets/JourneyScreen-D_TLLJFh.js                     13.78 kB │ gzip:   4.22 kB
+dist/client/assets/owner-D7TvpZLU.js                             17.47 kB │ gzip:   5.75 kB
+dist/client/assets/teacher-C8tnGJd6.js                           41.02 kB │ gzip:  11.28 kB
+dist/client/assets/DevicePicker-DllvIjaH.js                      49.62 kB │ gzip:  16.75 kB
+dist/client/assets/dist-CcCTetUh.js                             213.60 kB │ gzip:  54.82 kB
+dist/client/assets/index-CW4fv4se.js                            560.01 kB │ gzip: 172.41 kB
+
+✓ built in 947ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

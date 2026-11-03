@@ -1,0 +1,13 @@
+✔ Playwright Vite receives only the fictional Supabase configuration (1.2845ms)
+✔ serves existing static assets without a fallback (42.4996ms)
+✔ falls back to index.html for an unknown app route (1.3227ms)
+✔ does not turn missing API or write requests into the app shell (0.6839ms)
+✔ emits the files required by Sites packaging (6.3371ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 206.1732

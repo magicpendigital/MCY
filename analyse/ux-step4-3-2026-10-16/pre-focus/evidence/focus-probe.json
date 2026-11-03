@@ -1,0 +1,322 @@
+[
+  {
+    "en": false,
+    "size": 14,
+    "label": "5phút",
+    "top": 225.796875,
+    "bottom": 306.578125,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 85.421875
+  },
+  {
+    "en": false,
+    "size": 14,
+    "label": "10phút",
+    "top": 225.796875,
+    "bottom": 306.578125,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 85.421875
+  },
+  {
+    "en": false,
+    "size": 14,
+    "label": "15phút",
+    "top": 225.796875,
+    "bottom": 306.578125,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 85.421875
+  },
+  {
+    "en": false,
+    "size": 14,
+    "label": "Rất thấp",
+    "top": 481.828125,
+    "bottom": 567.609375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.609375
+  },
+  {
+    "en": false,
+    "size": 14,
+    "label": "Thấp",
+    "top": 481.828125,
+    "bottom": 567.609375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.609375
+  },
+  {
+    "en": false,
+    "size": 14,
+    "label": "Bình thường",
+    "top": 481.828125,
+    "bottom": 567.609375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.609375
+  },
+  {
+    "en": false,
+    "size": 14,
+    "label": "Khá ổn",
+    "top": 481.828125,
+    "bottom": 567.609375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.609375
+  },
+  {
+    "en": false,
+    "size": 14,
+    "label": "Tràn đầy",
+    "top": 481.828125,
+    "bottom": 567.609375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.609375
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "5phút",
+    "top": 194.796875,
+    "bottom": 330.375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 61.625
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "10phút",
+    "top": 194.796875,
+    "bottom": 330.375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 61.625
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "15phút",
+    "top": 194.796875,
+    "bottom": 330.375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 61.625
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "Rất thấp",
+    "top": 444.625,
+    "bottom": 568.21875,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -176.21875
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "Thấp",
+    "top": 444.625,
+    "bottom": 568.21875,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -176.21875
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "Bình thường",
+    "top": 444.625,
+    "bottom": 568.21875,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -176.21875
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "Khá ổn",
+    "top": 268.21875,
+    "bottom": 354.015625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 37.984375
+  },
+  {
+    "en": false,
+    "size": 28,
+    "label": "Tràn đầy",
+    "top": 268.21875,
+    "bottom": 354.015625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 37.984375
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "5min",
+    "top": 254.59375,
+    "bottom": 335.375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 56.625
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "10min",
+    "top": 254.59375,
+    "bottom": 335.375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 56.625
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "15min",
+    "top": 254.59375,
+    "bottom": 335.375,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 56.625
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "Very low",
+    "top": 487.625,
+    "bottom": 567.625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.625
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "Low",
+    "top": 487.625,
+    "bottom": 567.625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.625
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "Okay",
+    "top": 487.625,
+    "bottom": 567.625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.625
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "Good",
+    "top": 487.625,
+    "bottom": 567.625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.625
+  },
+  {
+    "en": true,
+    "size": 14,
+    "label": "Full",
+    "top": 487.625,
+    "bottom": 567.625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -175.625
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "5min",
+    "top": 200.59375,
+    "bottom": 336.171875,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 55.828125
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "10min",
+    "top": 200.59375,
+    "bottom": 336.171875,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 55.828125
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "15min",
+    "top": 200.59375,
+    "bottom": 336.171875,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 55.828125
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "Very low",
+    "top": 444.421875,
+    "bottom": 568.015625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -176.015625
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "Low",
+    "top": 444.421875,
+    "bottom": 568.015625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -176.015625
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "Okay",
+    "top": 444.421875,
+    "bottom": 568.015625,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": -176.015625
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "Good",
+    "top": 269.015625,
+    "bottom": 354.8125,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 37.1875
+  },
+  {
+    "en": true,
+    "size": 28,
+    "label": "Full",
+    "top": 269.015625,
+    "bottom": 354.8125,
+    "footerTop": 392,
+    "scrollTop": 55,
+    "gap": 37.1875
+  }
+]

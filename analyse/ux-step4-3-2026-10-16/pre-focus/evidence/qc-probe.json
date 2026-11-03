@@ -1,0 +1,1730 @@
+{
+  "status": "PASS",
+  "pins": {
+    "app": "4301656f5e45197b421a98d63d9da8898a699cbc608449ce51ce909bc0e84bee",
+    "css": "796668db299c90cf60ae5bf4db1e07b334ef3a8abdbc44b3d027564a37c6b4aa",
+    "freeze": "b622759314ca9c71f16cb7086cfa7275c8bb889d3ae59bc70698e1526bc88626"
+  },
+  "results": [
+    {
+      "case": "default keyboard choice and Edit retain",
+      "width": 320,
+      "metrics": {
+        "viewport": 320,
+        "pageWidth": 320,
+        "footer": {
+          "rect": {
+            "x": 0,
+            "y": 392,
+            "width": 320,
+            "height": 176,
+            "top": 392,
+            "right": 320,
+            "bottom": 568,
+            "left": 0
+          },
+          "background": "rgb(255, 252, 247)"
+        },
+        "controls": [
+          {
+            "text": "5phút",
+            "rect": {
+              "x": 33,
+              "y": 225.796875,
+              "width": 79.328125,
+              "height": 80.78125,
+              "top": 225.796875,
+              "right": 112.328125,
+              "bottom": 306.578125,
+              "left": 33
+            },
+            "client": 77,
+            "scroll": 77,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 16,
+                "scroll": 16
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "10phút",
+            "rect": {
+              "x": 120.328125,
+              "y": 225.796875,
+              "width": 79.328125,
+              "height": 80.78125,
+              "top": 225.796875,
+              "right": 199.65625,
+              "bottom": 306.578125,
+              "left": 120.328125
+            },
+            "client": 75,
+            "scroll": 75,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "15phút",
+            "rect": {
+              "x": 207.65625,
+              "y": 225.796875,
+              "width": 79.34375,
+              "height": 80.78125,
+              "top": 225.796875,
+              "right": 287,
+              "bottom": 306.578125,
+              "left": 207.65625
+            },
+            "client": 77,
+            "scroll": 77,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "Rất thấp",
+            "rect": {
+              "x": 17,
+              "y": 512.828125,
+              "width": 53.1875,
+              "height": 85.78125,
+              "top": 512.828125,
+              "right": 70.1875,
+              "bottom": 598.609375,
+              "left": 17
+            },
+            "client": 53,
+            "scroll": 53,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 52,
+                "scroll": 52
+              }
+            ]
+          },
+          {
+            "text": "Thấp",
+            "rect": {
+              "x": 75.1875,
+              "y": 512.828125,
+              "width": 53.203125,
+              "height": 85.78125,
+              "top": 512.828125,
+              "right": 128.390625,
+              "bottom": 598.609375,
+              "left": 75.1875
+            },
+            "client": 53,
+            "scroll": 53,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 32,
+                "scroll": 32
+              }
+            ]
+          },
+          {
+            "text": "Bình thường",
+            "rect": {
+              "x": 133.390625,
+              "y": 512.828125,
+              "width": 53.203125,
+              "height": 85.78125,
+              "top": 512.828125,
+              "right": 186.59375,
+              "bottom": 598.609375,
+              "left": 133.390625
+            },
+            "client": 53,
+            "scroll": 53,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 53,
+                "scroll": 53
+              }
+            ]
+          },
+          {
+            "text": "Khá ổn",
+            "rect": {
+              "x": 191.59375,
+              "y": 512.828125,
+              "width": 53.203125,
+              "height": 85.78125,
+              "top": 512.828125,
+              "right": 244.796875,
+              "bottom": 598.609375,
+              "left": 191.59375
+            },
+            "client": 53,
+            "scroll": 53,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 43,
+                "scroll": 43
+              }
+            ]
+          },
+          {
+            "text": "Tràn đầy",
+            "rect": {
+              "x": 249.796875,
+              "y": 512.828125,
+              "width": 53.203125,
+              "height": 85.78125,
+              "top": 512.828125,
+              "right": 303,
+              "bottom": 598.609375,
+              "left": 249.796875
+            },
+            "client": 53,
+            "scroll": 53,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 53,
+                "scroll": 53
+              }
+            ]
+          },
+          {
+            "text": "Sửa",
+            "rect": {
+              "x": 256.390625,
+              "y": 634.609375,
+              "width": 46.609375,
+              "height": 44,
+              "top": 634.609375,
+              "right": 303,
+              "bottom": 678.609375,
+              "left": 256.390625
+            },
+            "client": 45,
+            "scroll": 45,
+            "font": "14px",
+            "spans": []
+          }
+        ]
+      },
+      "focus": {
+        "style": "solid",
+        "width": "3px",
+        "offset": "3px"
+      }
+    },
+    {
+      "case": "default keyboard choice and Edit retain",
+      "width": 360,
+      "metrics": {
+        "viewport": 360,
+        "pageWidth": 360,
+        "footer": {
+          "rect": {
+            "x": 0,
+            "y": 464,
+            "width": 360,
+            "height": 176,
+            "top": 464,
+            "right": 360,
+            "bottom": 640,
+            "left": 0
+          },
+          "background": "rgb(255, 252, 247)"
+        },
+        "controls": [
+          {
+            "text": "5phút",
+            "rect": {
+              "x": 33,
+              "y": 225.796875,
+              "width": 92.65625,
+              "height": 80.78125,
+              "top": 225.796875,
+              "right": 125.65625,
+              "bottom": 306.578125,
+              "left": 33
+            },
+            "client": 91,
+            "scroll": 91,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 16,
+                "scroll": 16
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "10phút",
+            "rect": {
+              "x": 133.65625,
+              "y": 225.796875,
+              "width": 92.671875,
+              "height": 80.78125,
+              "top": 225.796875,
+              "right": 226.328125,
+              "bottom": 306.578125,
+              "left": 133.65625
+            },
+            "client": 89,
+            "scroll": 89,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "15phút",
+            "rect": {
+              "x": 234.328125,
+              "y": 225.796875,
+              "width": 92.65625,
+              "height": 80.78125,
+              "top": 225.796875,
+              "right": 326.984375,
+              "bottom": 306.578125,
+              "left": 234.328125
+            },
+            "client": 91,
+            "scroll": 91,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "Rất thấp",
+            "rect": {
+              "x": 17,
+              "y": 491.828125,
+              "width": 61.1875,
+              "height": 85.78125,
+              "top": 491.828125,
+              "right": 78.1875,
+              "bottom": 577.609375,
+              "left": 17
+            },
+            "client": 61,
+            "scroll": 61,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 52,
+                "scroll": 52
+              }
+            ]
+          },
+          {
+            "text": "Thấp",
+            "rect": {
+              "x": 83.1875,
+              "y": 491.828125,
+              "width": 61.203125,
+              "height": 85.78125,
+              "top": 491.828125,
+              "right": 144.390625,
+              "bottom": 577.609375,
+              "left": 83.1875
+            },
+            "client": 61,
+            "scroll": 61,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 32,
+                "scroll": 32
+              }
+            ]
+          },
+          {
+            "text": "Bình thường",
+            "rect": {
+              "x": 149.390625,
+              "y": 491.828125,
+              "width": 61.203125,
+              "height": 85.78125,
+              "top": 491.828125,
+              "right": 210.59375,
+              "bottom": 577.609375,
+              "left": 149.390625
+            },
+            "client": 61,
+            "scroll": 61,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 61,
+                "scroll": 61
+              }
+            ]
+          },
+          {
+            "text": "Khá ổn",
+            "rect": {
+              "x": 215.59375,
+              "y": 491.828125,
+              "width": 61.203125,
+              "height": 85.78125,
+              "top": 491.828125,
+              "right": 276.796875,
+              "bottom": 577.609375,
+              "left": 215.59375
+            },
+            "client": 61,
+            "scroll": 61,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 43,
+                "scroll": 43
+              }
+            ]
+          },
+          {
+            "text": "Tràn đầy",
+            "rect": {
+              "x": 281.796875,
+              "y": 491.828125,
+              "width": 61.203125,
+              "height": 85.78125,
+              "top": 491.828125,
+              "right": 343,
+              "bottom": 577.609375,
+              "left": 281.796875
+            },
+            "client": 61,
+            "scroll": 61,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 54,
+                "scroll": 54
+              }
+            ]
+          },
+          {
+            "text": "Sửa",
+            "rect": {
+              "x": 296.390625,
+              "y": 613.609375,
+              "width": 46.609375,
+              "height": 44,
+              "top": 613.609375,
+              "right": 343,
+              "bottom": 657.609375,
+              "left": 296.390625
+            },
+            "client": 45,
+            "scroll": 45,
+            "font": "14px",
+            "spans": []
+          }
+        ]
+      },
+      "focus": {
+        "style": "solid",
+        "width": "3px",
+        "offset": "3px"
+      }
+    },
+    {
+      "case": "default keyboard choice and Edit retain",
+      "width": 390,
+      "metrics": {
+        "viewport": 390,
+        "pageWidth": 390,
+        "footer": {
+          "rect": {
+            "x": 0,
+            "y": 668,
+            "width": 390,
+            "height": 176,
+            "top": 668,
+            "right": 390,
+            "bottom": 844,
+            "left": 0
+          },
+          "background": "rgb(255, 252, 247)"
+        },
+        "controls": [
+          {
+            "text": "5phút",
+            "rect": {
+              "x": 40,
+              "y": 232.109375,
+              "width": 98,
+              "height": 80.78125,
+              "top": 232.109375,
+              "right": 138,
+              "bottom": 312.890625,
+              "left": 40
+            },
+            "client": 96,
+            "scroll": 96,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 16,
+                "scroll": 16
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "10phút",
+            "rect": {
+              "x": 146,
+              "y": 232.109375,
+              "width": 98,
+              "height": 80.78125,
+              "top": 232.109375,
+              "right": 244,
+              "bottom": 312.890625,
+              "left": 146
+            },
+            "client": 94,
+            "scroll": 94,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "15phút",
+            "rect": {
+              "x": 252,
+              "y": 232.109375,
+              "width": 98,
+              "height": 80.78125,
+              "top": 232.109375,
+              "right": 350,
+              "bottom": 312.890625,
+              "left": 252
+            },
+            "client": 96,
+            "scroll": 96,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "Rất thấp",
+            "rect": {
+              "x": 24,
+              "y": 498.140625,
+              "width": 64.390625,
+              "height": 85.78125,
+              "top": 498.140625,
+              "right": 88.390625,
+              "bottom": 583.921875,
+              "left": 24
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 52,
+                "scroll": 52
+              }
+            ]
+          },
+          {
+            "text": "Thấp",
+            "rect": {
+              "x": 93.390625,
+              "y": 498.140625,
+              "width": 64.40625,
+              "height": 85.78125,
+              "top": 498.140625,
+              "right": 157.796875,
+              "bottom": 583.921875,
+              "left": 93.390625
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 32,
+                "scroll": 32
+              }
+            ]
+          },
+          {
+            "text": "Bình thường",
+            "rect": {
+              "x": 162.796875,
+              "y": 498.140625,
+              "width": 64.390625,
+              "height": 85.78125,
+              "top": 498.140625,
+              "right": 227.1875,
+              "bottom": 583.921875,
+              "left": 162.796875
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 64,
+                "scroll": 64
+              }
+            ]
+          },
+          {
+            "text": "Khá ổn",
+            "rect": {
+              "x": 232.1875,
+              "y": 498.140625,
+              "width": 64.40625,
+              "height": 85.78125,
+              "top": 498.140625,
+              "right": 296.59375,
+              "bottom": 583.921875,
+              "left": 232.1875
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 43,
+                "scroll": 43
+              }
+            ]
+          },
+          {
+            "text": "Tràn đầy",
+            "rect": {
+              "x": 301.59375,
+              "y": 498.140625,
+              "width": 64.40625,
+              "height": 85.78125,
+              "top": 498.140625,
+              "right": 366,
+              "bottom": 583.921875,
+              "left": 301.59375
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 54,
+                "scroll": 54
+              }
+            ]
+          },
+          {
+            "text": "Sửa",
+            "rect": {
+              "x": 319.390625,
+              "y": 619.921875,
+              "width": 46.609375,
+              "height": 44,
+              "top": 619.921875,
+              "right": 366,
+              "bottom": 663.921875,
+              "left": 319.390625
+            },
+            "client": 45,
+            "scroll": 45,
+            "font": "14px",
+            "spans": []
+          }
+        ]
+      },
+      "focus": {
+        "style": "solid",
+        "width": "3px",
+        "offset": "3px"
+      }
+    },
+    {
+      "case": "ordinary wheel short landscape standalone and fixed footer",
+      "width": 390,
+      "height": 568,
+      "reach": {
+        "target": {
+          "x": 24,
+          "y": 264.609375,
+          "width": 342,
+          "height": 44
+        },
+        "footer": {
+          "x": 0,
+          "y": 392,
+          "width": 390,
+          "height": 176
+        }
+      },
+      "metrics": {
+        "viewport": 390,
+        "pageWidth": 390,
+        "footer": {
+          "rect": {
+            "x": 0,
+            "y": 392,
+            "width": 390,
+            "height": 176,
+            "top": 392,
+            "right": 390,
+            "bottom": 568,
+            "left": 0
+          },
+          "background": "rgb(255, 252, 247)"
+        },
+        "controls": [
+          {
+            "text": "5phút",
+            "rect": {
+              "x": 40,
+              "y": -274.203125,
+              "width": 98,
+              "height": 80.78125,
+              "top": -274.203125,
+              "right": 138,
+              "bottom": -193.421875,
+              "left": 40
+            },
+            "client": 96,
+            "scroll": 96,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 16,
+                "scroll": 16
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "10phút",
+            "rect": {
+              "x": 146,
+              "y": -274.203125,
+              "width": 98,
+              "height": 80.78125,
+              "top": -274.203125,
+              "right": 244,
+              "bottom": -193.421875,
+              "left": 146
+            },
+            "client": 94,
+            "scroll": 94,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "15phút",
+            "rect": {
+              "x": 252,
+              "y": -274.203125,
+              "width": 98,
+              "height": 80.78125,
+              "top": -274.203125,
+              "right": 350,
+              "bottom": -193.421875,
+              "left": 252
+            },
+            "client": 96,
+            "scroll": 96,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "Rất thấp",
+            "rect": {
+              "x": 24,
+              "y": -8.171875,
+              "width": 64.390625,
+              "height": 85.78125,
+              "top": -8.171875,
+              "right": 88.390625,
+              "bottom": 77.609375,
+              "left": 24
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 52,
+                "scroll": 52
+              }
+            ]
+          },
+          {
+            "text": "Thấp",
+            "rect": {
+              "x": 93.390625,
+              "y": -8.171875,
+              "width": 64.40625,
+              "height": 85.78125,
+              "top": -8.171875,
+              "right": 157.796875,
+              "bottom": 77.609375,
+              "left": 93.390625
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 32,
+                "scroll": 32
+              }
+            ]
+          },
+          {
+            "text": "Bình thường",
+            "rect": {
+              "x": 162.796875,
+              "y": -8.171875,
+              "width": 64.390625,
+              "height": 85.78125,
+              "top": -8.171875,
+              "right": 227.1875,
+              "bottom": 77.609375,
+              "left": 162.796875
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 64,
+                "scroll": 64
+              }
+            ]
+          },
+          {
+            "text": "Khá ổn",
+            "rect": {
+              "x": 232.1875,
+              "y": -8.171875,
+              "width": 64.40625,
+              "height": 85.78125,
+              "top": -8.171875,
+              "right": 296.59375,
+              "bottom": 77.609375,
+              "left": 232.1875
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 43,
+                "scroll": 43
+              }
+            ]
+          },
+          {
+            "text": "Tràn đầy",
+            "rect": {
+              "x": 301.59375,
+              "y": -8.171875,
+              "width": 64.40625,
+              "height": 85.78125,
+              "top": -8.171875,
+              "right": 366,
+              "bottom": 77.609375,
+              "left": 301.59375
+            },
+            "client": 64,
+            "scroll": 64,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 54,
+                "scroll": 54
+              }
+            ]
+          },
+          {
+            "text": "Sửa",
+            "rect": {
+              "x": 319.390625,
+              "y": 113.609375,
+              "width": 46.609375,
+              "height": 44,
+              "top": 113.609375,
+              "right": 366,
+              "bottom": 157.609375,
+              "left": 319.390625
+            },
+            "client": 45,
+            "scroll": 45,
+            "font": "14px",
+            "spans": []
+          }
+        ]
+      }
+    },
+    {
+      "case": "ordinary wheel short landscape standalone and fixed footer",
+      "width": 844,
+      "height": 390,
+      "reach": {
+        "target": {
+          "x": 20,
+          "y": 122.28125,
+          "width": 804,
+          "height": 44
+        },
+        "footer": {
+          "x": 0,
+          "y": 228,
+          "width": 844,
+          "height": 162
+        }
+      },
+      "metrics": {
+        "viewport": 844,
+        "pageWidth": 844,
+        "footer": {
+          "rect": {
+            "x": 0,
+            "y": 228,
+            "width": 844,
+            "height": 162,
+            "top": 228,
+            "right": 844,
+            "bottom": 390,
+            "left": 0
+          },
+          "background": "rgb(255, 252, 247)"
+        },
+        "controls": [
+          {
+            "text": "5phút",
+            "rect": {
+              "x": 36,
+              "y": -373.25,
+              "width": 252,
+              "height": 80.78125,
+              "top": -373.25,
+              "right": 288,
+              "bottom": -292.46875,
+              "left": 36
+            },
+            "client": 250,
+            "scroll": 250,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 16,
+                "scroll": 16
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "10phút",
+            "rect": {
+              "x": 296,
+              "y": -373.25,
+              "width": 252,
+              "height": 80.78125,
+              "top": -373.25,
+              "right": 548,
+              "bottom": -292.46875,
+              "left": 296
+            },
+            "client": 248,
+            "scroll": 248,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "15phút",
+            "rect": {
+              "x": 556,
+              "y": -373.25,
+              "width": 252,
+              "height": 80.78125,
+              "top": -373.25,
+              "right": 808,
+              "bottom": -292.46875,
+              "left": 556
+            },
+            "client": 250,
+            "scroll": 250,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "32px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "14px",
+                "client": 28,
+                "scroll": 28
+              }
+            ]
+          },
+          {
+            "text": "Rất thấp",
+            "rect": {
+              "x": 20,
+              "y": -128.21875,
+              "width": 156.796875,
+              "height": 80,
+              "top": -128.21875,
+              "right": 176.796875,
+              "bottom": -48.21875,
+              "left": 20
+            },
+            "client": 157,
+            "scroll": 157,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 52,
+                "scroll": 52
+              }
+            ]
+          },
+          {
+            "text": "Thấp",
+            "rect": {
+              "x": 181.796875,
+              "y": -128.21875,
+              "width": 156.8125,
+              "height": 80,
+              "top": -128.21875,
+              "right": 338.609375,
+              "bottom": -48.21875,
+              "left": 181.796875
+            },
+            "client": 157,
+            "scroll": 157,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 32,
+                "scroll": 32
+              }
+            ]
+          },
+          {
+            "text": "Bình thường",
+            "rect": {
+              "x": 343.609375,
+              "y": -128.21875,
+              "width": 156.796875,
+              "height": 80,
+              "top": -128.21875,
+              "right": 500.40625,
+              "bottom": -48.21875,
+              "left": 343.609375
+            },
+            "client": 157,
+            "scroll": 157,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 76,
+                "scroll": 76
+              }
+            ]
+          },
+          {
+            "text": "Khá ổn",
+            "rect": {
+              "x": 505.40625,
+              "y": -128.21875,
+              "width": 156.796875,
+              "height": 80,
+              "top": -128.21875,
+              "right": 662.203125,
+              "bottom": -48.21875,
+              "left": 505.40625
+            },
+            "client": 157,
+            "scroll": 157,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 43,
+                "scroll": 43
+              }
+            ]
+          },
+          {
+            "text": "Tràn đầy",
+            "rect": {
+              "x": 667.203125,
+              "y": -128.21875,
+              "width": 156.796875,
+              "height": 80,
+              "top": -128.21875,
+              "right": 824,
+              "bottom": -48.21875,
+              "left": 667.203125
+            },
+            "client": 157,
+            "scroll": 157,
+            "font": "14px",
+            "spans": [
+              {
+                "font": "14px",
+                "client": 54,
+                "scroll": 54
+              }
+            ]
+          },
+          {
+            "text": "Sửa",
+            "rect": {
+              "x": 777.390625,
+              "y": -12.21875,
+              "width": 46.609375,
+              "height": 44,
+              "top": -12.21875,
+              "right": 824,
+              "bottom": 31.78125,
+              "left": 777.390625
+            },
+            "client": 45,
+            "scroll": 45,
+            "font": "14px",
+            "spans": []
+          }
+        ]
+      }
+    },
+    {
+      "case": "true2x changed time energy text and keyboard",
+      "english": false,
+      "metrics": {
+        "viewport": 320,
+        "pageWidth": 320,
+        "footer": {
+          "rect": {
+            "x": 0,
+            "y": 392,
+            "width": 320,
+            "height": 176,
+            "top": 392,
+            "right": 320,
+            "bottom": 568,
+            "left": 0
+          },
+          "background": "rgb(255, 252, 247)"
+        },
+        "controls": [
+          {
+            "text": "5phút",
+            "rect": {
+              "x": 33,
+              "y": 225.796875,
+              "width": 79.328125,
+              "height": 135.578125,
+              "top": 225.796875,
+              "right": 112.328125,
+              "bottom": 361.375,
+              "left": 33
+            },
+            "client": 77,
+            "scroll": 77,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "64px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "28px",
+                "client": 56,
+                "scroll": 56
+              }
+            ]
+          },
+          {
+            "text": "10phút",
+            "rect": {
+              "x": 120.328125,
+              "y": 225.796875,
+              "width": 79.328125,
+              "height": 135.578125,
+              "top": 225.796875,
+              "right": 199.65625,
+              "bottom": 361.375,
+              "left": 120.328125
+            },
+            "client": 75,
+            "scroll": 75,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "64px",
+                "client": 64,
+                "scroll": 64
+              },
+              {
+                "font": "28px",
+                "client": 56,
+                "scroll": 56
+              }
+            ]
+          },
+          {
+            "text": "15phút",
+            "rect": {
+              "x": 207.65625,
+              "y": 225.796875,
+              "width": 79.34375,
+              "height": 135.578125,
+              "top": 225.796875,
+              "right": 287,
+              "bottom": 361.375,
+              "left": 207.65625
+            },
+            "client": 77,
+            "scroll": 77,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "64px",
+                "client": 64,
+                "scroll": 64
+              },
+              {
+                "font": "28px",
+                "client": 56,
+                "scroll": 56
+              }
+            ]
+          },
+          {
+            "text": "Rất thấp",
+            "rect": {
+              "x": 17,
+              "y": 777.625,
+              "width": 92,
+              "height": 123.59375,
+              "top": 777.625,
+              "right": 109,
+              "bottom": 901.21875,
+              "left": 17
+            },
+            "client": 92,
+            "scroll": 92,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 92,
+                "scroll": 92
+              }
+            ]
+          },
+          {
+            "text": "Thấp",
+            "rect": {
+              "x": 114,
+              "y": 777.625,
+              "width": 92,
+              "height": 123.59375,
+              "top": 777.625,
+              "right": 206,
+              "bottom": 901.21875,
+              "left": 114
+            },
+            "client": 92,
+            "scroll": 92,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 63,
+                "scroll": 63
+              }
+            ]
+          },
+          {
+            "text": "Bình thường",
+            "rect": {
+              "x": 211,
+              "y": 777.625,
+              "width": 92,
+              "height": 123.59375,
+              "top": 777.625,
+              "right": 303,
+              "bottom": 901.21875,
+              "left": 211
+            },
+            "client": 92,
+            "scroll": 92,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 92,
+                "scroll": 92
+              }
+            ]
+          },
+          {
+            "text": "Khá ổn",
+            "rect": {
+              "x": 17,
+              "y": 906.21875,
+              "width": 140.5,
+              "height": 85.796875,
+              "top": 906.21875,
+              "right": 157.5,
+              "bottom": 992.015625,
+              "left": 17
+            },
+            "client": 141,
+            "scroll": 141,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 87,
+                "scroll": 87
+              }
+            ]
+          },
+          {
+            "text": "Tràn đầy",
+            "rect": {
+              "x": 162.5,
+              "y": 906.21875,
+              "width": 140.5,
+              "height": 85.796875,
+              "top": 906.21875,
+              "right": 303,
+              "bottom": 992.015625,
+              "left": 162.5
+            },
+            "client": 141,
+            "scroll": 141,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 107,
+                "scroll": 107
+              }
+            ]
+          },
+          {
+            "text": "Sửa",
+            "rect": {
+              "x": 256.390625,
+              "y": 1028.015625,
+              "width": 46.609375,
+              "height": 44,
+              "top": 1028.015625,
+              "right": 303,
+              "bottom": 1072.015625,
+              "left": 256.390625
+            },
+            "client": 45,
+            "scroll": 45,
+            "font": "14px",
+            "spans": []
+          }
+        ]
+      }
+    },
+    {
+      "case": "true2x changed time energy text and keyboard",
+      "english": true,
+      "metrics": {
+        "viewport": 320,
+        "pageWidth": 320,
+        "footer": {
+          "rect": {
+            "x": 0,
+            "y": 392,
+            "width": 320,
+            "height": 176,
+            "top": 392,
+            "right": 320,
+            "bottom": 568,
+            "left": 0
+          },
+          "background": "rgb(255, 252, 247)"
+        },
+        "controls": [
+          {
+            "text": "5min",
+            "rect": {
+              "x": 33,
+              "y": 254.59375,
+              "width": 79.328125,
+              "height": 135.578125,
+              "top": 254.59375,
+              "right": 112.328125,
+              "bottom": 390.171875,
+              "left": 33
+            },
+            "client": 77,
+            "scroll": 77,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "64px",
+                "client": 32,
+                "scroll": 32
+              },
+              {
+                "font": "28px",
+                "client": 47,
+                "scroll": 47
+              }
+            ]
+          },
+          {
+            "text": "10min",
+            "rect": {
+              "x": 120.328125,
+              "y": 254.59375,
+              "width": 79.328125,
+              "height": 135.578125,
+              "top": 254.59375,
+              "right": 199.65625,
+              "bottom": 390.171875,
+              "left": 120.328125
+            },
+            "client": 75,
+            "scroll": 75,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "64px",
+                "client": 64,
+                "scroll": 64
+              },
+              {
+                "font": "28px",
+                "client": 47,
+                "scroll": 47
+              }
+            ]
+          },
+          {
+            "text": "15min",
+            "rect": {
+              "x": 207.65625,
+              "y": 254.59375,
+              "width": 79.34375,
+              "height": 135.578125,
+              "top": 254.59375,
+              "right": 287,
+              "bottom": 390.171875,
+              "left": 207.65625
+            },
+            "client": 77,
+            "scroll": 77,
+            "font": "12px",
+            "spans": [
+              {
+                "font": "64px",
+                "client": 64,
+                "scroll": 64
+              },
+              {
+                "font": "28px",
+                "client": 47,
+                "scroll": 47
+              }
+            ]
+          },
+          {
+            "text": "Very low",
+            "rect": {
+              "x": 17,
+              "y": 848.421875,
+              "width": 92,
+              "height": 123.59375,
+              "top": 848.421875,
+              "right": 109,
+              "bottom": 972.015625,
+              "left": 17
+            },
+            "client": 92,
+            "scroll": 92,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 92,
+                "scroll": 92
+              }
+            ]
+          },
+          {
+            "text": "Low",
+            "rect": {
+              "x": 114,
+              "y": 848.421875,
+              "width": 92,
+              "height": 123.59375,
+              "top": 848.421875,
+              "right": 206,
+              "bottom": 972.015625,
+              "left": 114
+            },
+            "client": 92,
+            "scroll": 92,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 52,
+                "scroll": 52
+              }
+            ]
+          },
+          {
+            "text": "Okay",
+            "rect": {
+              "x": 211,
+              "y": 848.421875,
+              "width": 92,
+              "height": 123.59375,
+              "top": 848.421875,
+              "right": 303,
+              "bottom": 972.015625,
+              "left": 211
+            },
+            "client": 92,
+            "scroll": 92,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 62,
+                "scroll": 62
+              }
+            ]
+          },
+          {
+            "text": "Good",
+            "rect": {
+              "x": 17,
+              "y": 977.015625,
+              "width": 140.5,
+              "height": 85.796875,
+              "top": 977.015625,
+              "right": 157.5,
+              "bottom": 1062.8125,
+              "left": 17
+            },
+            "client": 141,
+            "scroll": 141,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 67,
+                "scroll": 67
+              }
+            ]
+          },
+          {
+            "text": "Full",
+            "rect": {
+              "x": 162.5,
+              "y": 977.015625,
+              "width": 140.5,
+              "height": 85.796875,
+              "top": 977.015625,
+              "right": 303,
+              "bottom": 1062.8125,
+              "left": 162.5
+            },
+            "client": 141,
+            "scroll": 141,
+            "font": "28px",
+            "spans": [
+              {
+                "font": "28px",
+                "client": 44,
+                "scroll": 44
+              }
+            ]
+          },
+          {
+            "text": "Edit",
+            "rect": {
+              "x": 256.921875,
+              "y": 1098.8125,
+              "width": 46.078125,
+              "height": 44,
+              "top": 1098.8125,
+              "right": 303,
+              "bottom": 1142.8125,
+              "left": 256.921875
+            },
+            "client": 44,
+            "scroll": 44,
+            "font": "14px",
+            "spans": []
+          }
+        ]
+      }
+    }
+  ],
+  "externalRequests": 0,
+  "method": "Independent guest Edge4198 .invalid environment/external abort; injected text sizes only changed controls; not OS text or fullWCAG"
+}

@@ -1,0 +1,1306 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression.playwright.config.mjs"
+    ],
+    "configFile": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression.playwright.config.mjs",
+    "rootDir": "D:/Projects/MCY/.vercel/ux-step4-3-20261016/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\qa-global-setup.mjs",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/Projects/MCY/analyse/ux-step4-3-2026-10-16/regression-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/Projects/MCY/.vercel/ux-step4-3-20261016/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "ux-energy-time.spec.ts",
+          "ux-checkin-layout.spec.ts",
+          "ux-home.spec.ts",
+          "learner-ux.spec.ts",
+          "practice-flow.spec.ts",
+          "ux-save-feedback.spec.ts",
+          "ux-journey-selection.spec.ts",
+          "mobile-runtime.spec.ts"
+        ],
+        "timeout": 20000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "learner-ux.spec.ts",
+      "file": "learner-ux.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "body-region contract keeps locale-neutral regions, sides and bilateral edits distinct",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 61,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:27:22.360Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-833ab968ab43841e0ab9",
+          "file": "learner-ux.spec.ts",
+          "line": 212,
+          "column": 1
+        },
+        {
+          "title": "full-body check-in covers office-work areas and preserves distinct sides",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 20071,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                        "column": 68,
+                        "line": 368
+                      },
+                      "message": "Error: locator.click: Test timeout of 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Hai bên', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"mcy-choice\" aria-pressed=\"false\">Hai bên</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\n\n  366 |   await page.locator(\".mcy-body-groups button\").nth(2).click();\n  367 |   await page.locator(\".mcy-region-list button\").filter({ hasText: \"Đầu gối\" }).click();\n> 368 |   await page.getByRole(\"button\", { name: \"Hai bên\", exact: true }).click();\n      |                                                                    ^\n  369 |   await page.getByRole(\"button\", { name: \"Nhẹ\", exact: true }).click();\n  370 |   await page.getByRole(\"button\", { name: \"Lưu vùng này\" }).click();\n  371 |   await expect(page.locator(\".mcy-region-list button\").filter({ hasText: \"Đầu gối\" })).toContainText(\"Hai bên · Nhẹ\");\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts:368:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:27:22.587Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression-test-results\\learner-ux-full-body-check-d24e8-nd-preserves-distinct-sides\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-2c3b7ad5b1ad9b6cb2ab",
+          "file": "learner-ux.spec.ts",
+          "line": 339,
+          "column": 1
+        },
+        {
+          "title": "guest can browse free lessons without an account and retains check-in choices",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 35000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18933,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.mcy-checkin-page > .mcy-lead')\nExpected substring: \u001b[32m\"Hiện chưa có gợi ý tự động\"\u001b[39m\nReceived string:    \u001b[31m\"Bạn tự chọn bài trong thư viện.\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mcy-checkin-page > .mcy-lead')\u001b[22m\n\u001b[2m    13 × locator resolved to <p class=\"mcy-lead\">Bạn tự chọn bài trong thư viện.</p>\u001b[22m\n\u001b[2m       - unexpected value \"Bạn tự chọn bài trong thư viện.\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.mcy-checkin-page > .mcy-lead')\nExpected substring: \u001b[32m\"Hiện chưa có gợi ý tự động\"\u001b[39m\nReceived string:    \u001b[31m\"Bạn tự chọn bài trong thư viện.\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mcy-checkin-page > .mcy-lead')\u001b[22m\n\u001b[2m    13 × locator resolved to <p class=\"mcy-lead\">Bạn tự chọn bài trong thư viện.</p>\u001b[22m\n\u001b[2m       - unexpected value \"Bạn tự chọn bài trong thư viện.\"\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts:483:63",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                      "column": 63,
+                      "line": 483
+                    },
+                    "snippet": "  481 |   await page.getByRole(\"button\", { name: \"Thấp\", exact: true }).click();\n  482 |   await page.getByRole(\"button\", { name: \"5 phút\", exact: true }).click();\n> 483 |   await expect(page.locator(\".mcy-checkin-page > .mcy-lead\")).toContainText(\"Hiện chưa có gợi ý tự động\");\n      |                                                               ^\n  484 |   await expect(page.getByRole(\"button\", { name: \"Đăng nhập hoặc tạo tài khoản (tùy chọn)\" })).toBeVisible();\n  485 |   await page.screenshot({ path: testInfo.outputPath(\"mobile-06-checkin-ai-off.png\") });\n  486 |   await page.setViewportSize({ width: 1440, height: 1000 });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                        "column": 63,
+                        "line": 483
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.mcy-checkin-page > .mcy-lead')\nExpected substring: \u001b[32m\"Hiện chưa có gợi ý tự động\"\u001b[39m\nReceived string:    \u001b[31m\"Bạn tự chọn bài trong thư viện.\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mcy-checkin-page > .mcy-lead')\u001b[22m\n\u001b[2m    13 × locator resolved to <p class=\"mcy-lead\">Bạn tự chọn bài trong thư viện.</p>\u001b[22m\n\u001b[2m       - unexpected value \"Bạn tự chọn bài trong thư viện.\"\u001b[22m\n\n\n  481 |   await page.getByRole(\"button\", { name: \"Thấp\", exact: true }).click();\n  482 |   await page.getByRole(\"button\", { name: \"5 phút\", exact: true }).click();\n> 483 |   await expect(page.locator(\".mcy-checkin-page > .mcy-lead\")).toContainText(\"Hiện chưa có gợi ý tự động\");\n      |                                                               ^\n  484 |   await expect(page.getByRole(\"button\", { name: \"Đăng nhập hoặc tạo tài khoản (tùy chọn)\" })).toBeVisible();\n  485 |   await page.screenshot({ path: testInfo.outputPath(\"mobile-06-checkin-ai-off.png\") });\n  486 |   await page.setViewportSize({ width: 1440, height: 1000 });\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts:483:63"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:28:03.773Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression-test-results\\learner-ux-guest-can-brows-85544-nd-retains-check-in-choices\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                    "column": 63,
+                    "line": 483
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-7c711a3e3b6b811df5ac",
+          "file": "learner-ux.spec.ts",
+          "line": 471,
+          "column": 1
+        },
+        {
+          "title": "English learner flow follows check-in, practice and honest reflection on mobile web",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 35000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28803,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:23.941Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-891a8e3415ce23c9c7a2",
+          "file": "learner-ux.spec.ts",
+          "line": 920,
+          "column": 1
+        },
+        {
+          "title": "inactive FlowStack routes are inert and keyboard focus follows the active screen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8324,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:56.534Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-21635e0df5f32a51c515",
+          "file": "learner-ux.spec.ts",
+          "line": 1221,
+          "column": 1
+        },
+        {
+          "title": "short portrait and landscape mobile viewports keep the check-in actions reachable",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8251,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts:1368:91",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                      "column": 91,
+                      "line": 1368
+                    },
+                    "snippet": "  1366 |       if (viewport.height < 520) expect(footer.height).toBeLessThanOrEqual(162);\n  1367 |       await primary.tap();\n> 1368 |       await expect(page.getByRole(\"heading\", { name: \"Hôm nay bạn muốn dành bao lâu?\" })).toBeVisible();\n       |                                                                                           ^\n  1369 |     } finally {\n  1370 |       await page.close();\n  1371 |     }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                        "column": 91,
+                        "line": 1368
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\u001b[22m\n\n\n  1366 |       if (viewport.height < 520) expect(footer.height).toBeLessThanOrEqual(162);\n  1367 |       await primary.tap();\n> 1368 |       await expect(page.getByRole(\"heading\", { name: \"Hôm nay bạn muốn dành bao lâu?\" })).toBeVisible();\n       |                                                                                           ^\n  1369 |     } finally {\n  1370 |       await page.close();\n  1371 |     }\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts:1368:91"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:30:04.888Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression-test-results\\learner-ux-short-portrait--7b9ef--check-in-actions-reachable\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                    "column": 91,
+                    "line": 1368
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-fe51938bed05365e1977",
+          "file": "learner-ux.spec.ts",
+          "line": 1346,
+          "column": 1
+        },
+        {
+          "title": "short second check-in step signals when more choices are available by scrolling",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 8211,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\u001b[22m\n\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts:1380:87",
+                    "location": {
+                      "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                      "column": 87,
+                      "line": 1380
+                    },
+                    "snippet": "  1378 |   await openGuestCheckin(page);\n  1379 |   await page.getByRole(\"button\", { name: \"Tiếp: năng lượng và thời gian\" }).click();\n> 1380 |   await expect(page.getByRole(\"heading\", { name: \"Hôm nay bạn muốn dành bao lâu?\" })).toBeVisible();\n       |                                                                                       ^\n  1381 |\n  1382 |   const scroll = page.locator('.mcy-flow-route-accessibility[data-flow-route=\"checkin\"][data-flow-active=\"true\"] .mobile-scroll');\n  1383 |   const hint = page.locator(\".mcy-checkin-step-two-scroll-hint\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                        "column": 87,
+                        "line": 1380
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Hôm nay bạn muốn dành bao lâu?' })\u001b[22m\n\n\n  1378 |   await openGuestCheckin(page);\n  1379 |   await page.getByRole(\"button\", { name: \"Tiếp: năng lượng và thời gian\" }).click();\n> 1380 |   await expect(page.getByRole(\"heading\", { name: \"Hôm nay bạn muốn dành bao lâu?\" })).toBeVisible();\n       |                                                                                       ^\n  1381 |\n  1382 |   const scroll = page.locator('.mcy-flow-route-accessibility[data-flow-route=\"checkin\"][data-flow-active=\"true\"] .mobile-scroll');\n  1383 |   const hint = page.locator(\".mcy-checkin-step-two-scroll-hint\");\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts:1380:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:30:37.534Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression-test-results\\learner-ux-short-second-ch-f5204--are-available-by-scrolling\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\learner-ux.spec.ts",
+                    "column": 87,
+                    "line": 1380
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ed7c8fb8a3a5313908d1-d59c8afbfbce91c7a96e",
+          "file": "learner-ux.spec.ts",
+          "line": 1375,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "practice-flow.spec.ts",
+      "file": "practice-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reviewed plan and explicit start/reflection in iphone simulator",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "timedOut",
+                  "duration": 20126,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 20000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\practice-flow.spec.ts",
+                        "column": 20,
+                        "line": 51
+                      },
+                      "message": "Error: mouse.move: Test timeout of 20000ms exceeded.\n\n  49 |   await expect(page.getByRole(\"region\", { name: \"Nội dung buổi tập\" })).toBeVisible();\n  50 |   expect(calls).toHaveLength(2); expect(calls[1]).toMatchObject({ action: \"start_plan\", sessionId: SESSION.id, contentVersion: SESSION.version });\n> 51 |   await page.mouse.move(0, 0);\n     |                    ^\n  52 |   await page.screenshot({ path: `analyse/ux-step4-3-2026-10-16/practice-fixture-${device}.png`, animations: \"disabled\" });\n  53 |   await page.getByRole(\"button\", { name: \"Tôi đã thực hành · ghi cảm nhận\", exact: true }).click();\n  54 |   await page.getByRole(\"button\", { name: \"Khó chịu hơn\", exact: true }).click();\n    at D:\\Projects\\MCY\\.vercel\\ux-step4-3-20261016\\tests\\practice-flow.spec.ts:51:20"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:27:22.598Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression-test-results\\practice-flow-reviewed-pla-370bb-lection-in-iphone-simulator\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bab451c322e56adf24a2-0ba6de677ffae30b49e7",
+          "file": "practice-flow.spec.ts",
+          "line": 38,
+          "column": 46
+        },
+        {
+          "title": "reviewed plan and explicit start/reflection in pixel-10 simulator",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 20325,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:28:24.460Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bab451c322e56adf24a2-c18cb7023cffa3bf636f",
+          "file": "practice-flow.spec.ts",
+          "line": 38,
+          "column": 46
+        },
+        {
+          "title": "closed capability preserves manual entry and never exposes a sample as reviewed AI content",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4529,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:28:45.815Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "bab451c322e56adf24a2-6c86659ea906b5fd7496",
+          "file": "practice-flow.spec.ts",
+          "line": 145,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ux-checkin-layout.spec.ts",
+      "file": "ux-checkin-layout.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Visual hierarchy and optional map 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4126,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:28:50.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-903f4e1271927b914df7",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map short",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3979,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:28:54.914Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-22517601c5e1e4fdb66b",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map 360",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3058,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:28:58.911Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-997d4a060372ac31b388",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:01.991Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-5d2952a176e2c04b74b8",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map landscape",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4067,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:05.479Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-b39245278d0104b351fe",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map iphone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4248,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:09.560Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-60a057e2be494972dcf7",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Visual hierarchy and optional map pixel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:13.824Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-59a60c7cef325dbf7bfe",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 4,
+          "column": 301
+        },
+        {
+          "title": "Distinct body outcome none",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2334,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:16.749Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-80100b6671c750dc601a",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 18,
+          "column": 235
+        },
+        {
+          "title": "Distinct body outcome unknown",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2273,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:19.100Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-7aca8e3a4d34e05890e7",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 18,
+          "column": 235
+        },
+        {
+          "title": "Distinct body outcome noanswer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1305,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:21.388Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-214140d07492d7b0f72a",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 18,
+          "column": 235
+        },
+        {
+          "title": "Distinct body outcome skip",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1994,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:22.708Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-83f4f564a11a0d9d7f96",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 18,
+          "column": 235
+        },
+        {
+          "title": "Regional entries survive collapse, return and cancelled replacement; confirm clears",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 12868,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:24.721Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-d15389f07fd471b29e28",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "English disclosure preserves partial preview and no-answer semantics",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2377,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:37.608Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-c8325292ad4143b14b42",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "True2x text and keyboard body choices false",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1426,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:40.009Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-344d25f6ac838f87dc2b",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 31,
+          "column": 35
+        },
+        {
+          "title": "True2x text and keyboard body choices true",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2253,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:41.453Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f5ec127ba769712e3be6-af234fd56653e32a198e",
+          "file": "ux-checkin-layout.spec.ts",
+          "line": 31,
+          "column": 35
+        }
+      ]
+    },
+    {
+      "title": "ux-save-feedback.spec.ts",
+      "file": "ux-save-feedback.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guest session recording requires the existing explicit opt-in and makes no account write",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 11047,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:43.782Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-ac75d5305d82fa52a041",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "consented account success writes once then opens Journey with the real record",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4474,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:54.849Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-b9591aad9ffadee0a20c",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 119,
+          "column": 1
+        },
+        {
+          "title": "uncertain save retries the same key and payload while retaining edited draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 8262,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:29:59.347Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-9ced2aa52e0d7f2f76d4",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 133,
+          "column": 1
+        },
+        {
+          "title": "leaving during client preparation cancels dispatch and navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4764,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:30:07.647Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-c06982ea01f08bcf53b4",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 152,
+          "column": 1
+        },
+        {
+          "title": "response from an already dispatched save cannot navigate a switched account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 5677,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:30:12.430Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-f746863a495e8350614d",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "failed save leaves Journey ready and its pending CTA preserves the exact retry and edited draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 20000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6559,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T06:30:18.131Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3fd87db998490db0bc35-6535e26cae73e9e46ec4",
+          "file": "ux-save-feedback.spec.ts",
+          "line": 277,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T06:27:16.782Z",
+    "duration": 215355.871,
+    "expected": 26,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

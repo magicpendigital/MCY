@@ -1,0 +1,42 @@
+[
+  {
+    "name": "baseline",
+    "label": "5min",
+    "bottom": 390.171875,
+    "footerTop": 392,
+    "gap": 1.828125,
+    "topGap": 199.59375,
+    "scrollPadding": "8px 184px",
+    "scrollMargin": "0px"
+  },
+  {
+    "name": "padding16",
+    "label": "5min",
+    "bottom": 376.171875,
+    "footerTop": 392,
+    "gap": 15.828125,
+    "topGap": 185.59375,
+    "scrollPadding": "16px 192px",
+    "scrollMargin": "0px"
+  },
+  {
+    "name": "margin8",
+    "label": "5min",
+    "bottom": 376.171875,
+    "footerTop": 392,
+    "gap": 15.828125,
+    "topGap": 185.59375,
+    "scrollPadding": "8px 184px",
+    "scrollMargin": "8px"
+  },
+  {
+    "name": "both",
+    "label": "5min",
+    "bottom": 368.171875,
+    "footerTop": 392,
+    "gap": 23.828125,
+    "topGap": 177.59375,
+    "scrollPadding": "16px 192px",
+    "scrollMargin": "8px"
+  }
+]

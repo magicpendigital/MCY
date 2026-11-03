@@ -1,0 +1,64 @@
+
+Running 31 tests using 1 worker
+
+  ok  1 .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:212:1 › body-region contract keeps locale-neutral regions, sides and bilateral edits distinct (19ms)
+  ok  2 .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:339:1 › full-body check-in covers office-work areas and preserves distinct sides (9.0s)
+  ok  3 .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:471:1 › guest can browse free lessons without an account and retains check-in choices (2.8s)
+  ok  4 .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:920:1 › English learner flow follows check-in, practice and honest reflection on mobile web (16.1s)
+  ok  5 .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:1221:1 › inactive FlowStack routes are inert and keyboard focus follows the active screen (3.6s)
+  ok  6 .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:1346:1 › short portrait and landscape mobile viewports keep the check-in actions reachable (4.5s)
+  x   7 .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:1375:1 › short second check-in step signals when more choices are available by scrolling (6.2s)
+  ok  8 .vercel\ux-step4-3-20261016\tests\practice-flow.spec.ts:38:46 › reviewed plan and explicit start/reflection in iphone simulator (5.4s)
+  ok  9 .vercel\ux-step4-3-20261016\tests\practice-flow.spec.ts:38:46 › reviewed plan and explicit start/reflection in pixel-10 simulator (5.1s)
+  ok 10 .vercel\ux-step4-3-20261016\tests\practice-flow.spec.ts:145:1 › closed capability preserves manual entry and never exposes a sample as reviewed AI content (2.0s)
+  ok 11 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map 320 (2.4s)
+  ok 12 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map short (2.3s)
+  ok 13 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map 360 (2.3s)
+  ok 14 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map 390 (2.5s)
+  ok 15 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map landscape (2.4s)
+  ok 16 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map iphone (2.5s)
+  ok 17 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:4:301 › Visual hierarchy and optional map pixel (2.7s)
+  ok 18 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:18:235 › Distinct body outcome none (1.8s)
+  ok 19 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:18:235 › Distinct body outcome unknown (1.9s)
+  ok 20 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:18:235 › Distinct body outcome noanswer (896ms)
+  ok 21 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:18:235 › Distinct body outcome skip (1.0s)
+  ok 22 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:19:1 › Regional entries survive collapse, return and cancelled replacement; confirm clears (10.3s)
+  ok 23 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:29:1 › English disclosure preserves partial preview and no-answer semantics (2.0s)
+  ok 24 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:31:35 › True2x text and keyboard body choices false (1.0s)
+  ok 25 .vercel\ux-step4-3-20261016\tests\ux-checkin-layout.spec.ts:31:35 › True2x text and keyboard body choices true (1.2s)
+  ok 26 .vercel\ux-step4-3-20261016\tests\ux-save-feedback.spec.ts:86:1 › guest session recording requires the existing explicit opt-in and makes no account write (7.5s)
+  ok 27 .vercel\ux-step4-3-20261016\tests\ux-save-feedback.spec.ts:119:1 › consented account success writes once then opens Journey with the real record (3.3s)
+  ok 28 .vercel\ux-step4-3-20261016\tests\ux-save-feedback.spec.ts:133:1 › uncertain save retries the same key and payload while retaining edited draft (3.2s)
+  ok 29 .vercel\ux-step4-3-20261016\tests\ux-save-feedback.spec.ts:152:1 › leaving during client preparation cancels dispatch and navigation (3.8s)
+  ok 30 .vercel\ux-step4-3-20261016\tests\ux-save-feedback.spec.ts:174:1 › response from an already dispatched save cannot navigate a switched account (4.0s)
+  ok 31 .vercel\ux-step4-3-20261016\tests\ux-save-feedback.spec.ts:277:1 › failed save leaves Journey ready and its pending CTA preserves the exact retry and edited draft (5.3s)
+
+
+  1) .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:1375:1 › short second check-in step signals when more choices are available by scrolling 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 8
+    Received:    96
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      1402 |   await scroll.evaluate(element => element.scrollTo({ top: 0, behavior: "instant" }));
+      1403 |   await page.setViewportSize({ width: 1440, height: 1000 });
+    > 1404 |   await expect.poll(() => scroll.evaluate(element => element.scrollHeight - element.clientHeight)).toBeLessThanOrEqual(8);
+           |                                                                                                    ^
+      1405 |   await expect(hint).toHaveCount(0);
+      1406 | });
+      1407 |
+        at D:\Projects\MCY\.vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:1404:100
+
+    Error Context: analyse\ux-step4-3-2026-10-16\regression-test-results\learner-ux-short-second-ch-f5204--are-available-by-scrolling\error-context.md
+
+  1 failed
+    .vercel\ux-step4-3-20261016\tests\learner-ux.spec.ts:1375:1 › short second check-in step signals when more choices are available by scrolling 
+  30 passed (2.1m)
+(node:344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
