@@ -1,0 +1,23 @@
+{
+  "schema": "mcy.root-D0-go.v1",
+  "capturedUtc": "2026-10-20T18:16:44.9678388Z",
+  "decision": "GO_EXACT_D0_ONCE",
+  "author": "root coordination based on human-authorized local release preparation",
+  "qcSha256": "77f8170249a3195c9bf3372a929fdc7673cbea8c6f350c2c3c175a87afb78ee8",
+  "controlFreezeSha256": "564d8db2b6726853def3543a2033c730e3f6737791d260cb1b8c74623b643b1b",
+  "invokerSha256": "0c491318de856bf1b90da3e3522cda24c1660772856ab073ed084783439a5b17",
+  "rootDirectVerification": "Read full invoker/proposal/continuation helper; independently verified all9control/tool pins plus3public-provenance pins; read independent QC",
+  "executable": "C:/Program Files/nodejs/node.exe",
+  "arguments": [
+    "D:/Projects/MCY/analyse/pilot-release-2026-10-21/deps-offline-invoker-v1.mjs",
+    "--root-approved-D0"
+  ],
+  "scope": "One isolated npm offline ci ignore-scripts with frozen project config and empty user/global configs; finite owned process cleanup; expected isolated node_modules plus npm cache bookkeeping and sanitized receipts",
+  "stop": "Any fail/timeout/mismatch stops; preserve partial tree/log; no blind retry or fallback",
+  "notAuthorized": [
+    "tests/build/server/device/provider calls",
+    "commit/install/deploy/data or role mutation",
+    "reader relocation or participant backend",
+    "public config injection before later build-control QC"
+  ]
+}

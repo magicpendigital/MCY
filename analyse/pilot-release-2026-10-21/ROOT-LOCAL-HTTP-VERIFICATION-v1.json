@@ -1,0 +1,70 @@
+{
+  "schema": "mcy.root-local-HTTP-verification.v1",
+  "capturedUtc": "2026-10-20T18:49:42.1414465Z",
+  "status": "PASS_LOCAL_STATIC_GUARD_ONLY",
+  "server": "http://127.0.0.1:4288",
+  "cases": [
+    {
+      "id": "exact-index",
+      "method": "GET",
+      "status": 200,
+      "expected": 200,
+      "bytes": 1067,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "sha256": "c587c47761bf61d73f75a7025f07fb58af0a5f779e60cf8372f70a143a96b692",
+      "pass": true
+    },
+    {
+      "id": "unknown-api",
+      "method": "GET",
+      "status": 404,
+      "expected": 404,
+      "bytes": 0,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    },
+    {
+      "id": "unknown-path",
+      "method": "GET",
+      "status": 404,
+      "expected": 404,
+      "bytes": 0,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    },
+    {
+      "id": "unsupported-query",
+      "method": "GET",
+      "status": 400,
+      "expected": 400,
+      "bytes": 0,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    },
+    {
+      "id": "wrong-host",
+      "method": "GET",
+      "status": 405,
+      "expected": 405,
+      "bytes": 0,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    },
+    {
+      "id": "post-denied",
+      "method": "POST",
+      "status": 405,
+      "expected": 405,
+      "bytes": 0,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pass": true
+    }
+  ],
+  "remoteRequestsOrAuthDataWrites": 0,
+  "limitations": "Local static guard and exact index bytes only, not backend access/role/session/physical device acceptance; POST was empty denial probe to this owned static server."
+}

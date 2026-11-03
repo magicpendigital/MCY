@@ -1,0 +1,22 @@
+// SOURCE ONLY freeze. Does not build, test, probe or launch.
+import { createHash } from 'node:crypto';
+import { existsSync, lstatSync, readFileSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+const evidence='D:/Projects/MCY/analyse/pilot-release-2026-10-21';
+const tree='C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const pin=p=>({path:p,sha256:sha(readFileSync(p)),bytes:lstatSync(p).size});
+const overlayPath=path.join(evidence,'CRITICAL-FIXTURES-OVERLAY-v2.json');
+const overlay=JSON.parse(readFileSync(overlayPath));
+const names=['critical-fixtures.playwright-v2.mjs','critical-fixtures-setup-v2.mjs','critical-egress-guard-v2.mjs','CRITICAL-FIXTURES-OVERLAY-v2.json'];
+const control={schema:'mcy.critical-fixtures-inputs.v2',controls:names.map(n=>pin(path.join(evidence,n))),toolPins:[pin('C:/Program Files/nodejs/node.exe'),pin(path.join(tree,'node_modules/@playwright/test/index.mjs')),pin(path.join(tree,'node_modules/vite/dist/node/index.js')),pin(path.join(tree,'node_modules/playwright-core/browsers.json'))],overlayPins:overlay.copies.map(c=>c.copied),browserPins:overlay.browserPins,selectedOriginal:overlay.copies.filter(c=>c.relativePath.startsWith('tests/')).map(c=>c.original),ports:[4292,4293],scope:'Unchanged shared application built with invalid fixture binding, static in-memory exact-byte server, physically copied 3 suites/import closure with 2 assertion amendments only; strict denyall CONNECT with category counts; cached matching Playwright Chromium headless, no Edge/live role/native acceptance',v1FailurePreserved:'29/31; 220 denied CONNECT unknown destinations/cause; immutable FAIL',limit:'31tests,1worker,retries0,20s/test,10minchild/4MBoutput; no automaticretry'};
+const inputPath=path.join(evidence,'CRITICAL-FIXTURES-INPUTS-v2.json');writeFileSync(inputPath,JSON.stringify(control,null,2)+'\n',{flag:'wx'});
+let runner=readFileSync(path.join(evidence,'critical-fixtures-invoker-v1.mjs'),'utf8');
+runner=runner.replaceAll('critical-fixtures-v1','critical-fixtures-v2').replaceAll('CRITICAL-FIXTURES-v1','CRITICAL-FIXTURES-v2').replaceAll('critical-fixtures.playwright-v1','critical-fixtures.playwright-v2').replaceAll('CRITICAL-FIXTURES-INPUTS-v1.json','CRITICAL-FIXTURES-INPUTS-v2.json').replace('d65366121fc642ddf4ff146f69ddf20e655f28c26025d23c2f69ceb6a7224bdf',sha(readFileSync(inputPath))).replaceAll('--root-approved-critical-fixtures','--root-approved-critical-fixtures-v2').replaceAll('4290','4292').replaceAll('4291','4293');
+runner=runner.replace("for (const pin of control.controls)","for (const pin of [...control.overlayPins, ...control.browserPins, ...control.controls])");
+runner=runner.replace("const passed = outcome.exitCode", "const reportPath=path.join(evidence,'CRITICAL-FIXTURES-v2.report.json');\nlet report=null; if(existsSync(reportPath))report=JSON.parse(readFileSync(reportPath,'utf8'));\nconst selected31Passed=report?.stats?.expected===31 && report?.stats?.unexpected===0 && report?.stats?.skipped===0 && report?.stats?.flaky===0;\nconst passed = selected31Passed && outcome.exitCode");
+runner=runner.replace("sourcePreserved, ports, egressPath,", "sourcePreserved, ports, selected31Passed, reportStats:report?.stats ?? null, priorV1FailurePreserved:true, priorConnectCause:'UNKNOWN', egressPath, egressConnectCategories:egress?.connectCategories ?? null,");
+const runnerPath=path.join(evidence,'critical-fixtures-invoker-v2.mjs');writeFileSync(runnerPath,runner,{flag:'wx'});
+const freeze={schema:'mcy.critical-fixtures-control-freeze.v2',status:'PREPARED_NOT_INVOKED_REQUIRES_R3_ROOT_GO',sourceFreeze:pin(path.join(evidence,'SOURCE-FREEZE-v2.json')),effectiveDependencies:pin(path.join(evidence,'EFFECTIVE-DEPENDENCIES-v3.json')),inputs:pin(inputPath),invoker:pin(runnerPath),overlay:pin(overlayPath),controls:control.controls,priorFailure:pin(path.join(evidence,'CRITICAL-FIXTURES-v1.json')),command:`& 'C:/Program Files/nodejs/node.exe' '${runnerPath.replaceAll('\\','/')}' --root-approved-critical-fixtures-v2`,expectedOutputs:['CRITICAL-FIXTURES-v2.json','CRITICAL-FIXTURES-v2.log','CRITICAL-FIXTURES-v2.report.json',`${tree}/.vercel/critical-fixtures-v2`],noAutomaticRetry:true};
+writeFileSync(path.join(evidence,'CRITICAL-FIXTURES-CONTROL-FREEZE-v2.json'),JSON.stringify(freeze,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({freeze:pin(path.join(evidence,'CRITICAL-FIXTURES-CONTROL-FREEZE-v2.json')),runner:pin(runnerPath),inputs:pin(inputPath),overlay:pin(overlayPath)}));

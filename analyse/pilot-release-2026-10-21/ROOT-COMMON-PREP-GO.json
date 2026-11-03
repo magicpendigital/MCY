@@ -1,0 +1,32 @@
+{
+  "capturedUtc": "2026-10-20T18:01:16.4887323Z",
+  "status": "GO_ISOLATED_COMMON_SOURCE_PREPARATION_AND_ROLE_DOCS",
+  "intakeSha256": "097f216022d2f2bc751b723a8ead28631c7a7a3a2dbb7afeaae5eee0b26a94c0",
+  "baselineSha256": "2803a1263c5858d9fb35c077ba73d018a083188a17c21bf198454d9a265ce377",
+  "intakeQcSha256": "05b6351714817d6bf6cb7dc03fca77cf4fa40442edc2ba9b43410fcb18eaecf2",
+  "roleBriefSha256": "300ca1b1aff201bb4be89ecb503ad3eab7c5b3140b6140b5890a4e4a66f54fe2",
+  "rootReview": "Read completeintake/QC androlebrief/currentrelease/native scripts; actualtargets inspectedreadonly; no currentfinding for commonprep",
+  "worktree": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY",
+  "worktreeCreationOperation": "9d4a824e-d02c-4845-a46d-52b7b11583d2",
+  "baseCommit": "82458fc219a2231ccac279112dfc0db5447b0edd",
+  "allowedSource": "Prepare sourceintegration/nativeinputinventory with preimages; copy ONLY exactreviewed acceptedcandidate/root-native inputs into newmanagedtree; no root workingtree changes, no new mockedition or participant API behavior",
+  "sourceControlReviewRequiredBeforeExecution": true,
+  "commitAuthorizedNow": false,
+  "buildTestServerInstallDeployAuthorizedNow": false,
+  "sourceNext": "Freeze integration delta and actualbuild/QA invocationplan; independent R3source/controlQC then rootGO for builds/tests/cleanlocalcommit ifneeded",
+  "roleDocs": [
+    "ROLE-LEARNER.vi.md",
+    "ROLE-TEACHER.vi.md",
+    "ROLE-REVIEWER.vi.md",
+    "ROLE-MODERATOR.vi.md",
+    "ROLE-OWNER.vi.md",
+    "DELIVERY-AND-REPORTING.vi.md"
+  ],
+  "docsLimits": "Detailed operator/role draft instructions matchedcurrentcapabilities; allunverifiedURL/APK/access/roles remainPENDING; no distribution/email or inventedfunctionality",
+  "pending": "Required testscope selection andexacthumanversion/purpose/rights remainpending; preserveOwnerreporteddecisions",
+  "native": "HALTED;no device actions",
+  "web": "No upload/alias until exactnewartifact/target/protection andnewpacket",
+  "externalEffects": "0 cloud/Auth/SQL/health/profile/role/metadata/AI/email/device/deploy;no installation or network build beforeinvocationGO",
+  "preservation": "AllDroot35dirty/oldcandidates/canonical/frozenAPKs/evidence unchanged",
+  "stop": "After source+artifact/docs QC and rootreview reportconcretely; actualreleaseonly matchingnewpacket and userfacts"
+}

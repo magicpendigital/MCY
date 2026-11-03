@@ -1,0 +1,178 @@
+{
+  "operation": "mcy-task-workflow-20261017",
+  "implementedBy": "task_process_audit",
+  "independentQc": false,
+  "status": "PASS_SCOPED_LOCAL_CHECKS_FULL_SKILL_VALIDATOR_BLOCKED",
+  "localLinks": 14,
+  "checks": [
+    {
+      "name": "preimage:AGENTS.md",
+      "status": "PASS",
+      "detail": "Captured bytes unchanged"
+    },
+    {
+      "name": "preimage:skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "Captured bytes unchanged"
+    },
+    {
+      "name": "preimage:skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Captured bytes unchanged"
+    },
+    {
+      "name": "preimage:.github/pull_request_template.md",
+      "status": "PASS",
+      "detail": "Captured bytes unchanged"
+    },
+    {
+      "name": "scoped-transform:skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "Actual file equals approved transform of captured preimage"
+    },
+    {
+      "name": "scoped-transform:skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Actual file equals approved transform of captured preimage"
+    },
+    {
+      "name": "scoped-transform:.github/pull_request_template.md",
+      "status": "PASS",
+      "detail": "Actual file equals approved transform of captured preimage"
+    },
+    {
+      "name": "scoped-transform:AGENTS.md",
+      "status": "PASS",
+      "detail": "Only the inserted lifecycle pointer differs from dirty baseline"
+    },
+    {
+      "name": "whitespace:docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "No trailing whitespace; newline terminated"
+    },
+    {
+      "name": "whitespace:docs/quality/TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "No trailing whitespace; newline terminated"
+    },
+    {
+      "name": "whitespace:docs/quality/TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "No trailing whitespace; newline terminated"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md->../../docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md->references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md->references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md->../mcy-brand-ux/SKILL.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:skills/mcy-change-review/references/review-matrix.md->../../../docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:.github/pull_request_template.md->../docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md->../../AGENTS.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md->../../skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md->../../skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md->TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md->TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_INTAKE.template.md->TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_QC.template.md->TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local target exists"
+    },
+    {
+      "name": "new-link:AGENTS",
+      "status": "PASS",
+      "detail": "Pointer target exists"
+    },
+    {
+      "name": "scoped-diff:AGENTS.md",
+      "status": "PASS",
+      "detail": "Expected git diff exit 1 means changed files"
+    },
+    {
+      "name": "scoped-diff:skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "Expected git diff exit 1 means changed files"
+    },
+    {
+      "name": "scoped-diff:skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Expected git diff exit 1 means changed files"
+    },
+    {
+      "name": "scoped-diff:.github/pull_request_template.md",
+      "status": "PASS",
+      "detail": "Expected git diff exit 1 means changed files"
+    },
+    {
+      "name": "new-doc-diff:docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Expected diff exit 1 means new file"
+    },
+    {
+      "name": "new-doc-diff:docs/quality/TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "Expected diff exit 1 means new file"
+    },
+    {
+      "name": "new-doc-diff:docs/quality/TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "Expected diff exit 1 means new file"
+    }
+  ],
+  "skillValidator": {
+    "status": "BLOCKED",
+    "exitCode": 1,
+    "reason": "Bundled Python missing yaml; fallback preserves existing exact frontmatter and resolves links"
+  },
+  "appChecks": {
+    "status": "NOT_APPLICABLE",
+    "reason": "Only documentation/process-control inputs changed"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "capturedUtc": "2026-10-20T18:05:27.3773378Z",
+  "status": "PASS",
+  "scope": "Six role docs file-link existence; source claim walkthrough by implementer, not independent QC or app execution",
+  "links": [
+    {
+      "file": "ROLE-LEARNER.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-LEARNER.vi.md",
+      "target": "../ux-step6-1-2026-10-20/ROUTE-TASK-MATRIX.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-LEARNER.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md#ghi-lỗi-tối-thiểu",
+      "exists": true
+    },
+    {
+      "file": "ROLE-TEACHER.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-TEACHER.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md#ghi-lỗi-tối-thiểu",
+      "exists": true
+    },
+    {
+      "file": "ROLE-REVIEWER.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-REVIEWER.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md#ghi-lỗi-tối-thiểu",
+      "exists": true
+    },
+    {
+      "file": "ROLE-MODERATOR.vi.md",
+      "target": "../ux-step6-1-2026-10-20/MODERATOR-PACKET.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-MODERATOR.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-MODERATOR.vi.md",
+      "target": "../ux-step6-1-2026-10-20/PILOT-RESULTS.template.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-MODERATOR.vi.md",
+      "target": "../ux-step6-1-2026-10-20/ROUTE-TASK-MATRIX.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-MODERATOR.vi.md",
+      "target": "ROLE-LEARNER.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-MODERATOR.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md#ghi-lỗi-tối-thiểu",
+      "exists": true
+    },
+    {
+      "file": "ROLE-OWNER.vi.md",
+      "target": "ROOT-COMMON-PREP-GO.json",
+      "exists": true
+    },
+    {
+      "file": "ROLE-OWNER.vi.md",
+      "target": "DELIVERY-AND-REPORTING.vi.md",
+      "exists": true
+    },
+    {
+      "file": "ROLE-OWNER.vi.md",
+      "target": "../ux-step6-1-2026-10-20/PILOT-RESULTS.template.md",
+      "exists": true
+    },
+    {
+      "file": "DELIVERY-AND-REPORTING.vi.md",
+      "target": "ROOT-COMMON-PREP-GO.json",
+      "exists": true
+    },
+    {
+      "file": "DELIVERY-AND-REPORTING.vi.md",
+      "target": "ROLE-LEARNER.vi.md",
+      "exists": true
+    },
+    {
+      "file": "DELIVERY-AND-REPORTING.vi.md",
+      "target": "ROLE-TEACHER.vi.md",
+      "exists": true
+    },
+    {
+      "file": "DELIVERY-AND-REPORTING.vi.md",
+      "target": "ROLE-REVIEWER.vi.md",
+      "exists": true
+    },
+    {
+      "file": "DELIVERY-AND-REPORTING.vi.md",
+      "target": "ROLE-MODERATOR.vi.md",
+      "exists": true
+    },
+    {
+      "file": "DELIVERY-AND-REPORTING.vi.md",
+      "target": "ROLE-OWNER.vi.md",
+      "exists": true
+    }
+  ],
+  "walkthrough": [
+    "Learner UX vs approved read vs real account pending separated",
+    "Teacher fictional draft vs real backend conditional separated",
+    "Reviewer fictional outcomes vs canonical human decision vs intro panel separated",
+    "Owner local notes volatile, lease15m/bootstrap5m, no participant sharing",
+    "Moderator reuses6.1; participant refusal/missingnotes/accessstop respected",
+    "Native HALTED/no force-stop-clear-relogin; current web protection unknown; no invented URL/APK/account"
+  ],
+  "unrun": [
+    "app/browser/device/liveAPI checks not run for docs",
+    "anchor rendering not exercised in app"
+  ]
+}

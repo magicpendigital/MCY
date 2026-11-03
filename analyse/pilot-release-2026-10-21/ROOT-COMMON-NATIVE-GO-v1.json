@@ -1,0 +1,19 @@
+{
+  "schema": "mcy.root-common-native-go.v1",
+  "capturedUtc": "2026-10-20T18:38:06.3123908Z",
+  "decision": "GO_EXACT_N1_N2_N3_PACKAGE_BUILD_ONCE",
+  "qcSha256": "12bec5a61634c33d5145886946cd70b0e87d245acdf20403371cfc5632f17269",
+  "controlFreezeSha256": "177932ae922b52ba07e4704a46e3381903287f2c59351093f0423a3f803b3e05",
+  "runnerSha256": "b4495d5717682982a24f54d44fcb1c2679c89c58e3b38ccdfa5d9a933b5f56c4",
+  "inspectorSha256": "9c205384b13f81a8e0093625afb0ecdc0ce4e971b6a715f01cb098d93b3152bf",
+  "sourceFreezeSha256": "9e9c5c88d7721c4986bf61396dac9dd8a17586377c493971895e70ae77f9d256",
+  "rootDirectVerification": "Read full actual runner/inspector/freeze/QC; independently matched8control+317toolpins and4absentglobalGradleconfigs; prior479sourcepins/2identitydelta validation",
+  "executable": "C:/Program Files/nodejs/node.exe",
+  "arguments": [
+    "D:/Projects/MCY/analyse/pilot-release-2026-10-21/native-common-invoker-v1.mjs",
+    "--root-approved-common-native"
+  ],
+  "scope": "One exact isolated offline parallel package build/publicbyteparity/scanner/badging/signature/archive only, existingpublicstagingbinding andcallback, directcachedGradle/JDK/SDK, boundedownedprocesscleanup",
+  "stop": "Anyfailure or source/tool/cert/package drift preserves evidence andstops, no automaticretry/networkfallback",
+  "notAuthorized": "No device/adb/install/launch/instrumentation/Authlogin/provider/role/datawrites/email/deploy/AI/commit; nativeHALTED and newPreviewprotection remain blocked; fullrealtestscope is humanselected but notyetaccepted"
+}

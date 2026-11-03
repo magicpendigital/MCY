@@ -1,0 +1,18 @@
+{
+  "schema": "mcy.root-critical-fixtures-go.v1",
+  "capturedUtc": "2026-10-20T18:51:56.1147665Z",
+  "decision": "GO_EXACT_THREE_EXISTING_FIXTURE_SUITES_ONCE",
+  "qcSha256": "f6879dad72cf8ebce6de29a5abe343f28ed7a416140e4e5106bdf231e6f1a597",
+  "freezeSha256": "d12dc111af49da22360086c2c9bdea1c555a50dfbd1817e3090e634a41cf2096",
+  "invokerSha256": "5a3ca91d39480cd195eb072046201ad19fe0deefdef05e0bc7083d6c5af71785",
+  "rootDirectVerification": "Read full invoker/setup/config/QC; independently verified nested controlfreeze pins; prior sourcev2/package provenance validated",
+  "verifiedFreezePins": 6,
+  "executable": "C:/Program Files/nodejs/node.exe",
+  "arguments": [
+    "D:/Projects/MCY/analyse/pilot-release-2026-10-21/critical-fixtures-invoker-v1.mjs",
+    "--root-approved-critical-fixtures"
+  ],
+  "scope": "Only ux-save-feedback/learner-device-acceptance/auth-callback existing fixtures on separateVite4290 +denyproxy4291, invalidbackend andfakeactors;1worker/retries0/finiteownedprocess cleanup/no download",
+  "stop": "Nonzero/failure/egress/source drift/uncertaincleanup preserve andstop, no automaticretry/guardweakening",
+  "notAuthorized": "No realaccounts/provider/email/role/Auth/cloudwrites/native/device/deploy/commit or claim of fullrealparticipant acceptance"
+}

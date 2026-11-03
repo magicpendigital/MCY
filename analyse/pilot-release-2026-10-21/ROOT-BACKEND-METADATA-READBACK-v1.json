@@ -1,0 +1,12 @@
+{
+  "schema": "mcy.root-backend-metadata-readback.v1",
+  "capturedUtc": "2026-10-20T18:22:27.9173462Z",
+  "status": "BLOCKED_UNAVAILABLE_CURRENT_METADATA",
+  "tool": "supabase_get_project",
+  "requestedId": "mhumbczqrzutdnraafhs",
+  "observedErrorCode": "INVALID_ARGUMENT",
+  "projectMetadataVerified": false,
+  "liveSqlAuthOrDataRequests": 0,
+  "mutations": 0,
+  "interpretation": "Tool returned no project metadata; this does not establish absence, outage, authorization denial, organization, role or key usability. Archived public-config provenance remains separate build-only evidence."
+}

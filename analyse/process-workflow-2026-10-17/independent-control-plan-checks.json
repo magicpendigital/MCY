@@ -1,0 +1,425 @@
+{
+  "operation": "mcy-task-workflow-and-step44-intake-independent-qc",
+  "executedAt": "2026-10-16T17:13:24.998Z",
+  "reviewer": "/root/step44_independent_qc",
+  "independentOfImplementers": true,
+  "command": "node analyse/process-workflow-2026-10-17/independent-control-plan-checks.cjs",
+  "environment": "Windows / Node / D:/Projects/MCY; local read-only checks; writes this QC evidence only",
+  "status": "PASS",
+  "exitCode": 0,
+  "links": 25,
+  "checks": [
+    {
+      "name": "manifest:analyse/process-workflow-2026-10-17/source-freeze.json",
+      "status": "PASS",
+      "detail": "f59ba2fd1fee43361c607f715d3348820acd950386b2d105f83feda909b6490e"
+    },
+    {
+      "name": "pin:AGENTS.md",
+      "status": "PASS",
+      "detail": "f0afdff7cb51b5f8e7e6a10690a840af7c606f4fb64b04658bbff15bda95bf96"
+    },
+    {
+      "name": "pin:skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "ecc59a91d6f4d1b7bda365652f60d27a88c1813f81423a03efb528e2258a6d12"
+    },
+    {
+      "name": "pin:skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "ba5081bee4b80106867124c1f1f1cd4039dff06cacc21a28c3896a6fef52c82f"
+    },
+    {
+      "name": "pin:.github/pull_request_template.md",
+      "status": "PASS",
+      "detail": "1fa5d072acb842b292b2cabc4cef7c6dc7b6829ec965c4a8b1fae914c1bf07b3"
+    },
+    {
+      "name": "pin:docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "addf9d7330e9ecc78b87d7933d60900fa438a10ac58fe3cf3a9baf29701c2dc0"
+    },
+    {
+      "name": "pin:docs/quality/TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "5ef2a269cf60f49c367e27738673943ea9a892b40f6bfd19fae1b094aa9b70a9"
+    },
+    {
+      "name": "pin:docs/quality/TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "e044ff32aa6abae4a276e2d02f493bf417264a0a26369b89fb1e009079f941e4"
+    },
+    {
+      "name": "pin:analyse/process-workflow-2026-10-17/pre-change.json",
+      "status": "PASS",
+      "detail": "a43c762f466498725dd6b98febadd12a34c0400f16f9e3e219890e024697f909"
+    },
+    {
+      "name": "pin:analyse/process-workflow-2026-10-17/pre-change-status.txt",
+      "status": "PASS",
+      "detail": "0996ceafed4254aaa8179cee2ef8cc12a6a8571f3e5d12b1aec4fe2831368bcc"
+    },
+    {
+      "name": "pin:analyse/process-workflow-2026-10-17/AUDIT-AND-VALIDATION.md",
+      "status": "PASS",
+      "detail": "6c09b4b2d52cd9e1481262794436a977ba8a791c00310002c7d259020d86aa5c"
+    },
+    {
+      "name": "pin:analyse/process-workflow-2026-10-17/validation.json",
+      "status": "PASS",
+      "detail": "72a265f660b231c2f2c9bf786bfa9dec66e132a53d2e9a1ff5ec0f6046c24a8c"
+    },
+    {
+      "name": "pin:analyse/process-workflow-2026-10-17/scoped-change.patch",
+      "status": "PASS",
+      "detail": "68c088aee7d8e074f72fae698fd3ae725b3a7b57b4d85323be95dac6ee6b733d"
+    },
+    {
+      "name": "pin:analyse/process-workflow-2026-10-17/apply-scoped-controls.cjs",
+      "status": "PASS",
+      "detail": "f987acd533d84f4d4fbe5dc5a8b20dc998fbbcc91964e84ea4aff3c3c18b314e"
+    },
+    {
+      "name": "manifest:analyse/ux-step4-4-2026-10-17/PLAN-INTAKE-FREEZE.json",
+      "status": "PASS",
+      "detail": "647348c686f30f56d22bac547ac93c0e0c8414063967cfee57fe76c0a8e31750"
+    },
+    {
+      "name": "pin:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md",
+      "status": "PASS",
+      "detail": "71870e85a7913fb85174a26222820c09b5d5ba00716847c8e21c077863da9f1e"
+    },
+    {
+      "name": "pin:analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md",
+      "status": "PASS",
+      "detail": "e6a8655e921abba9aec090762c35213ff5e526d1cc299dc2af86cfd8d10adc2c"
+    },
+    {
+      "name": "pin:analyse/ux-step4-4-2026-10-17/OLD-PLAN.pre-pointer.vi.md",
+      "status": "PASS",
+      "detail": "0b4a368e15a3c32bad29ed79c8ca386c3fb33b6d1be16805564dbd38374b18a2"
+    },
+    {
+      "name": "pin:analyse/ux-implementation-2026-10-14/PLAN.vi.md",
+      "status": "PASS",
+      "detail": "243235956968c4cf2060f6805455a91a55f40047d0f101879ea3dbcc6fd278b1"
+    },
+    {
+      "name": "baseline:.vercel/ux-step4-3-20261016/src/Prototype.tsx",
+      "status": "PASS",
+      "detail": "4301656f5e45197b421a98d63d9da8898a699cbc608449ce51ce909bc0e84bee"
+    },
+    {
+      "name": "baseline:.vercel/ux-step4-3-20261016/src/prototype.css",
+      "status": "PASS",
+      "detail": "4a4a251b4ab64b5ea6b94813f24175d36fdbe3161b0a23bd1d5841027a5067a1"
+    },
+    {
+      "name": "preimage:AGENTS.md",
+      "status": "PASS",
+      "detail": "d808c1700ce5786ad1670b8041debc448ba3f87167c6a3b48f77931d40f4103c"
+    },
+    {
+      "name": "preimage:skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "125f8c765136bd92e76efa70c6304d43423aed57dc2ab782d63f7d4dd7c90ea7"
+    },
+    {
+      "name": "preimage:skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "40e53c3408b51e263aaa849371273c041f128d822bc2c50f4ca3dc2e7df9e707"
+    },
+    {
+      "name": "preimage:.github/pull_request_template.md",
+      "status": "PASS",
+      "detail": "6dedca559549a41c139e93ecb86372f9ded2dc641fdff4fcc02e69a5d336af77"
+    },
+    {
+      "name": "AGENTS narrow insertion",
+      "status": "PASS",
+      "detail": "All prior native/web and other dirty baseline text preserved byte-for-byte"
+    },
+    {
+      "name": "skill frontmatter unchanged",
+      "status": "PASS",
+      "detail": "Narrow syntax fallback; not the unavailable PyYAML validator"
+    },
+    {
+      "name": "format:skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md:../../docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md:references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md:references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:skills/mcy-change-review/SKILL.md:../mcy-brand-ux/SKILL.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "format:skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:skills/mcy-change-review/references/review-matrix.md:../../../docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "format:.github/pull_request_template.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:.github/pull_request_template.md:../docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "format:docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md:../../AGENTS.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md:../../skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md:../../skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md:TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:docs/quality/TASK_LIFECYCLE.md:TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "format:docs/quality/TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:docs/quality/TASK_INTAKE.template.md:TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "format:docs/quality/TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:docs/quality/TASK_QC.template.md:TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "format:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:../ux-implementation-2026-10-14/PLAN.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:../foundation-series-2026-10-16/CONTENT-PROPOSAL.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:../foundation-series-2026-10-16/CONTENT-PROPOSAL.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:../foundation-series-2026-10-16/UI-UX-AUDIT.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:../foundation-series-2026-10-16/PHOTO-ADMIN-HANDOFF.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:../foundation-series-2026-10-16/CONTENT-ADMIN-CURRENT.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:../foundation-series-2026-10-16/CONTENT-ADMIN-PROPOSAL.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md:TASK-INTAKE.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "format:analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md",
+      "status": "PASS",
+      "detail": "UTF-8 replacement char absent, final newline, paired code fences"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md:../../docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md:../../docs/quality/TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md:../../docs/quality/TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "link:analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md:PLAN-CONSOLIDATED.vi.md",
+      "status": "PASS",
+      "detail": "Local link target exists"
+    },
+    {
+      "name": "final-pin:analyse/process-workflow-2026-10-17/source-freeze.json",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:AGENTS.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:skills/mcy-change-review/SKILL.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:skills/mcy-change-review/references/review-matrix.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:.github/pull_request_template.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:docs/quality/TASK_LIFECYCLE.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:docs/quality/TASK_INTAKE.template.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:docs/quality/TASK_QC.template.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/process-workflow-2026-10-17/pre-change.json",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/process-workflow-2026-10-17/pre-change-status.txt",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/process-workflow-2026-10-17/AUDIT-AND-VALIDATION.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/process-workflow-2026-10-17/validation.json",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/process-workflow-2026-10-17/scoped-change.patch",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/process-workflow-2026-10-17/apply-scoped-controls.cjs",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/ux-step4-4-2026-10-17/PLAN-INTAKE-FREEZE.json",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/ux-step4-4-2026-10-17/PLAN-CONSOLIDATED.vi.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/ux-step4-4-2026-10-17/TASK-INTAKE.vi.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/ux-step4-4-2026-10-17/OLD-PLAN.pre-pointer.vi.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:analyse/ux-implementation-2026-10-14/PLAN.vi.md",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:.vercel/ux-step4-3-20261016/src/Prototype.tsx",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    },
+    {
+      "name": "final-pin:.vercel/ux-step4-3-20261016/src/prototype.css",
+      "status": "PASS",
+      "detail": "Rechecked after all reads"
+    }
+  ],
+  "harnessSha256": "01115f8e971884d9f17cd2523151a21dc63c5a43d64538c2a0f589f5be36ddab",
+  "limits": [
+    "No app execution, live/provider/native/media/release action",
+    "Full PyYAML skill validator remains BLOCKED as reported by implementer",
+    "Manual independent protocol walkthrough and semantic review recorded separately; not app test results",
+    "Root final verification remains pending"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "mcy.root-preservation-verification.v1",
+  "capturedUtc": "2026-10-20T18:59:51.5195545Z",
+  "status": "PASS_PRESERVATION_ONLY",
+  "baselineSha256": "2803a1263c5858d9fb35c077ba73d018a083188a17c21bf198454d9a265ce377",
+  "verifiedPinOccurrences": 620,
+  "uniquePaths": 540,
+  "mismatches": [],
+  "rootDirtyTrackedCount": 35,
+  "dirtyPathDelta": [],
+  "rootApkMetadataChecks": [
+    {
+      "path": "D:\\Projects\\MCY\\android\\app\\build\\outputs\\apk\\androidTest\\parallel\\app-parallel-androidTest.apk",
+      "bytesHashMatch": true,
+      "timeMatch": true
+    },
+    {
+      "path": "D:\\Projects\\MCY\\android\\app\\build\\outputs\\apk\\androidTest\\parallel\\output-metadata.json",
+      "bytesHashMatch": true,
+      "timeMatch": true
+    },
+    {
+      "path": "D:\\Projects\\MCY\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytesHashMatch": true,
+      "timeMatch": true
+    },
+    {
+      "path": "D:\\Projects\\MCY\\android\\app\\build\\outputs\\apk\\debug\\output-metadata.json",
+      "bytesHashMatch": true,
+      "timeMatch": true
+    },
+    {
+      "path": "D:\\Projects\\MCY\\android\\app\\build\\outputs\\apk\\parallel\\app-parallel.apk",
+      "bytesHashMatch": true,
+      "timeMatch": true
+    },
+    {
+      "path": "D:\\Projects\\MCY\\android\\app\\build\\outputs\\apk\\parallel\\output-metadata.json",
+      "bytesHashMatch": true,
+      "timeMatch": true
+    }
+  ],
+  "method": "Root directly hashed every baseline pin, compared all bytes, read current tracked dirtypaths and oldAPKtimestamps; no reset/globalconfig/delete/move",
+  "limitations": "Does not verify cloud state or change scope, newlycreatedtaskevidence intentionally outsidehistoricalbaseline"
+}

@@ -1,0 +1,35 @@
+{
+  "capturedUtc": "2026-10-20T18:31:05.9799439Z",
+  "status": "PASS",
+  "unitRows": 14,
+  "unitMetadataHashComparedToManifest": 14,
+  "presentAssetRefsMatchedToManifest": 55,
+  "assetMismatch": 0,
+  "blockedSlots": 25,
+  "links": [
+    {
+      "target": "../../content/yoga-library/manifest.json",
+      "exists": true
+    },
+    {
+      "target": "../../content/yoga-library/inventory.json",
+      "exists": true
+    },
+    {
+      "target": "OWNER-DECISIONS-METADATA-v1.json",
+      "exists": true
+    },
+    {
+      "target": "ROOT-HOSTING-PROJECT-READBACK.json",
+      "exists": true
+    }
+  ],
+  "canonicalManifestSha256": "0fa137d5ea658fadfdb8a1ab97e5fd86550a03b82fbed972530b338e65d114b1",
+  "humanStatus": "OWNER_REPORTED_DECISIONS_EXIST_DETAILS_PENDING",
+  "limits": "Metadata only; no approvalRecords mutation, content/images/contact export, actual human judgment or app/provider/device action",
+  "walkthrough": [
+    "Ownerselects Uxx andlinks existingdecision without computinghash",
+    "Readpurpose cannot substitute practicesession approval",
+    "Humanfacts can arrive before technicaldelivery; no grant/install/deploy implied"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "mcy.public-build-config-reuse-proposal.v1",
+  "capturedUtc": "2026-10-20T18:11:15.3132338Z",
+  "status": "BLOCKED_CONFIG_AMBIGUOUS",
+  "source": {
+    "receiptPath": "analyse/MCY_NATIVE_LATE_SAVE_ARTIFACT_2026-10-14.json",
+    "receiptSha256": "5ce545dbf619b261b73507c8cf13c09ce9e75547d72ce38e904917d7baacd8df",
+    "apkPath": ".vercel/mcy-native-20261014-late-save/app-parallel.apk",
+    "apkSha256": "4b6620d6ae63fde5e7525f4a7beb318a01b4ad99859b68b7cd336b2c7a2a413e",
+    "publicEntryPath": ".vercel\\mcy-native-20261014-late-save\\public\\assets\\index-BQg4boVK.js",
+    "publicEntrySha256": "69180ee62af8e6f740182c7853e0a746f120dbac132ce14e9c27e6f4ccf9d2e7"
+  },
+  "publicOrigins": [
+    "https://mhumbczqrzutdnraafhs.supabase.co"
+  ],
+  "publicKeyMetadata": [],
+  "proposal": "After independentQC/rootGO read only this exactpinned PUBLIC builtJS, verify singlematchingpublicanon role/projectref/hash, inject publicURL/key ephemerally into sanitized buildchild env VITE_SUPABASE_URL/VITE_SUPABASE_PUBLISHABLE_KEY. Never log raw key or persist envfile; source remains unchanged. Bind build outputs to this publicconfigprovenance.",
+  "scope": "Same existing staging publictarget only, not production/newrole/newgrant/newlivewrite or distribution approval",
+  "notPerformed": [
+    "No config copied to candidate/files/env",
+    "No build/test/provider request",
+    "No credential/session/token privatefile read",
+    "No APK extraction; used alreadyarchived publicJS"
+  ],
+  "limits": [
+    "Public anon projectref claims and archived provenance do not validate current server ACL/current key usability or role assignments.",
+    "SDK compiledpublicconfig is public client config, never service_role or secret key.",
+    "Future realaccess remains pending protectedPreview/nativeHALTED/manifest/scope/humanfacts."
+  ],
+  "step": "Await QC/rootGO before extraction into ephemeral buildenv"
+}

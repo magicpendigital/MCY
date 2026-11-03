@@ -1,0 +1,18 @@
+{
+  "schema": "mcy.root-common-web-go.v1",
+  "capturedUtc": "2026-10-20T18:30:32.6322883Z",
+  "decision": "GO_EXACT_C1_W1_ONCE",
+  "qcSha256": "9b70e03b5adfade0e5adf54335c36dbc6423bc54352dba411c17658b471c5a37",
+  "controlFreezeSha256": "34fb191b11a33ecc7293c96c318c91e80c04655e9a15f420cf1dc6fa6a15b470",
+  "invokerSha256": "6d435a1260dbb9db178ef0d8e2f1eb31c2514f4ff31fb4e9ad769aa2e87007c3",
+  "sourceFreezeSha256": "9e9c5c88d7721c4986bf61396dac9dd8a17586377c493971895e70ae77f9d256",
+  "rootDirectVerification": "Read full final web invoker/control/QC; independently479sourcepins and2exactnativeidentitydeltas, all6controlpins; source/provenance/deps priorchecks",
+  "executable": "C:/Program Files/nodejs/node.exe",
+  "arguments": [
+    "D:/Projects/MCY/analyse/pilot-release-2026-10-21/web-common-invoker-v1.mjs",
+    "--root-approved-common-web"
+  ],
+  "scope": "Frozen runtime/catalog/tsc/Vite/Sitespackage/secretscan/Sitesfixtures and exactartifactarchive once; approvedexistingpublicstagingconfig ephemeralenvonly",
+  "stop": "Anyfail/mismatch/leak/processuncertainty preserveandstop, no automaticretry",
+  "notAuthorized": "No UIserver/browser/nativebuild/install/device/provider/data/role/AI/commit/deploy actions; Previewprotection/nativeHALTED/contentfacts remain gates"
+}

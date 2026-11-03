@@ -1,0 +1,70 @@
+{
+  "operation": "mcy-task-workflow-20261017",
+  "scope": "Seven documentation/process-control files",
+  "status": "FROZEN_FOR_INDEPENDENT_CONTROL_QC_ROOT_PENDING",
+  "head": "82458fc219a2231ccac279112dfc0db5447b0edd",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "f0afdff7cb51b5f8e7e6a10690a840af7c606f4fb64b04658bbff15bda95bf96",
+      "bytes": 129666
+    },
+    {
+      "path": "skills/mcy-change-review/SKILL.md",
+      "sha256": "ecc59a91d6f4d1b7bda365652f60d27a88c1813f81423a03efb528e2258a6d12",
+      "bytes": 7138
+    },
+    {
+      "path": "skills/mcy-change-review/references/review-matrix.md",
+      "sha256": "ba5081bee4b80106867124c1f1f1cd4039dff06cacc21a28c3896a6fef52c82f",
+      "bytes": 5935
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "sha256": "1fa5d072acb842b292b2cabc4cef7c6dc7b6829ec965c4a8b1fae914c1bf07b3",
+      "bytes": 1240
+    },
+    {
+      "path": "docs/quality/TASK_LIFECYCLE.md",
+      "sha256": "addf9d7330e9ecc78b87d7933d60900fa438a10ac58fe3cf3a9baf29701c2dc0",
+      "bytes": 7513
+    },
+    {
+      "path": "docs/quality/TASK_INTAKE.template.md",
+      "sha256": "5ef2a269cf60f49c367e27738673943ea9a892b40f6bfd19fae1b094aa9b70a9",
+      "bytes": 1835
+    },
+    {
+      "path": "docs/quality/TASK_QC.template.md",
+      "sha256": "e044ff32aa6abae4a276e2d02f493bf417264a0a26369b89fb1e009079f941e4",
+      "bytes": 1765
+    }
+  ],
+  "evidence": [
+    {
+      "path": "analyse/process-workflow-2026-10-17/pre-change.json",
+      "sha256": "a43c762f466498725dd6b98febadd12a34c0400f16f9e3e219890e024697f909"
+    },
+    {
+      "path": "analyse/process-workflow-2026-10-17/pre-change-status.txt",
+      "sha256": "0996ceafed4254aaa8179cee2ef8cc12a6a8571f3e5d12b1aec4fe2831368bcc"
+    },
+    {
+      "path": "analyse/process-workflow-2026-10-17/AUDIT-AND-VALIDATION.md",
+      "sha256": "6c09b4b2d52cd9e1481262794436a977ba8a791c00310002c7d259020d86aa5c"
+    },
+    {
+      "path": "analyse/process-workflow-2026-10-17/validation.json",
+      "sha256": "72a265f660b231c2f2c9bf786bfa9dec66e132a53d2e9a1ff5ec0f6046c24a8c"
+    },
+    {
+      "path": "analyse/process-workflow-2026-10-17/scoped-change.patch",
+      "sha256": "68c088aee7d8e074f72fae698fd3ae725b3a7b57b4d85323be95dac6ee6b733d"
+    },
+    {
+      "path": "analyse/process-workflow-2026-10-17/apply-scoped-controls.cjs",
+      "sha256": "f987acd533d84f4d4fbe5dc5a8b20dc998fbbcc91964e84ea4aff3c3c18b314e"
+    }
+  ],
+  "limits": "Guidance only; no runtime/CI/permissions enforcement, no app/live/native/release acceptance; full skill validator blocked by missing PyYAML"
+}

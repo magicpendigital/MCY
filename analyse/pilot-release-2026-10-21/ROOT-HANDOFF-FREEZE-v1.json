@@ -1,0 +1,241 @@
+{
+  "schema": "mcy.root-handoff-freeze.v1",
+  "capturedAtUtc": "2026-10-20T19:26:23.8657023Z",
+  "status": "FROZEN_PREPARATION_HANDOFF_NOT_RELEASE",
+  "scope": "FULL_REAL_ACCOUNTS_ALL_PREPARED_CONTENT_PRACTICE_AND_FEATURES_REQUEST_RETAINED",
+  "inputs": [
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-REPORT.vi.md",
+      "sha256": "5186c37840a783c69b461af44f412b1f2ba624510040d91d44cfad41a6c736a4",
+      "bytes": 18679
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-FINAL-VERIFICATION-v1.json",
+      "sha256": "b67713fe1ca695e055e3cfd6ab47f0b525648024d57fc6d3128cbb9c7df983e5",
+      "bytes": 2268
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-ROLE-GUIDES-VERIFICATION-v2.json",
+      "sha256": "2003edbb8bce8e0792a46124087e9c83f8293c12561327083011a8fc36962d50",
+      "bytes": 881
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-PRESERVATION-VERIFICATION-v1.json",
+      "sha256": "a3a81a1e5297468fe41db62e596845f12b64035dff638a10dbf41eea6c48a1e5",
+      "bytes": 1764
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-GUEST-UI-VERIFICATION-v1.json",
+      "sha256": "740d751a3e15d84ce58dcca99176fc1febd0a6b0bd0d07816bd62a6440e7f9d9",
+      "bytes": 2490
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-LOCAL-HTTP-VERIFICATION-v1.json",
+      "sha256": "9963406528843882d75e3090b2bb6c4636b3f5ae22e2fb670d4a1130ba6fb2d4",
+      "bytes": 3456
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-APK-MANIFEST-VERIFICATION-v1.json",
+      "sha256": "694582a9c8c9a6d4488265eef0e1c366f34b23bd7c929a0248b9fa75a3fb3dde",
+      "bytes": 1594
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-HOSTING-PROJECT-READBACK.json",
+      "sha256": "d9a1030ffb2e5a39c2f2d0f7f94a3658262d308fe8ec368758a426c5ce123730",
+      "bytes": 584
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-BACKEND-PROJECT-CLI-READBACK-v2.json",
+      "sha256": "3d96925794169625c69547d1510a767027ed502b4d3c988851fb6cffd492f67f",
+      "bytes": 830
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-CHECKIN-WEB.png",
+      "sha256": "c2c636c0b5a485113aa1dd8f5267944fbf6a3b3fc805bd7e6443eaa69c4aeea3",
+      "bytes": 41045
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-PROFILE-WEB.png",
+      "sha256": "ac80f6744eb196fb77f1d1885fc7ae3f537b092cfd610671ceebcf7bddf274cb",
+      "bytes": 43435
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\COMMON-WEB-v1.json",
+      "sha256": "682b13d0c525402bdc3a04e1530a76db1185a68650406741682183ae6e74906d",
+      "bytes": 13971
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\COMMON-WEB-ARTIFACT-QC-v1.vi.md",
+      "sha256": "69079449cf8a07ba7a95e31f5b31d5e8d624b1c4c96714aeca681aa34e9d530a",
+      "bytes": 3225
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\COMMON-NATIVE-v1.json",
+      "sha256": "881df4463829f6f93a8173faec8ecd4e58a99f4f5ccd9d07e1698a8e38e61471",
+      "bytes": 6517
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\COMMON-NATIVE-ARTIFACT-QC-v1.vi.md",
+      "sha256": "d04bfc6e3131da8850ba5ea010e5ef1adc3ef52ab6617b8870deb940e9a5e8da",
+      "bytes": 3590
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\SOURCE-FREEZE-v2.json",
+      "sha256": "9e9c5c88d7721c4986bf61396dac9dd8a17586377c493971895e70ae77f9d256",
+      "bytes": 177073
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-v1.json",
+      "sha256": "ab1f7698ebc4f8019df5d62b24be8584125847e1016f37361fa00755250e06dd",
+      "bytes": 1025
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-v2.json",
+      "sha256": "44c5d4d3cfab65daa9596b78f828d4f532edbee605cc918c0f34908b1e77275e",
+      "bytes": 1403
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-v3b.json",
+      "sha256": "983497ddf1b7cc900cc0fa3cb91e84fe6b072fad9b1d2e167aa696126a35aec6",
+      "bytes": 1443
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-v3b.report.json",
+      "sha256": "14b9dd39d8bd6ba9a235a76ec0b2d2920115cb4a3fc767fe30bce6cfd94643e6",
+      "bytes": 36110
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-v3b.log",
+      "sha256": "b82c1bd63ee78d1d5dc17acb588f580071b1411d5f76080f15a126abe8d809d9",
+      "bytes": 5514
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-RESULT-QC-v1.vi.md",
+      "sha256": "51a1e25cdeeaba1d038c00a202f524a7fb980ce8a1d7561f6dff1807761ee0aa",
+      "bytes": 5283
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-RESULT-QC-v2.vi.md",
+      "sha256": "34aa439408453189dd294282d35ca6ab04f9c0fd38126bfc00951665fdbbd637",
+      "bytes": 2763
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-RESULT-QC-v3b.vi.md",
+      "sha256": "24c6a94ef60b397ac753b9ae86f1daeb959e9fc9861255cc577c85086dc0a5cf",
+      "bytes": 2787
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-CONTROL-FREEZE-v3b.json",
+      "sha256": "5519fe5509001deddca8845fcaa964cd444718613d552cdf5ea261d3bd018e09",
+      "bytes": 3048
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\CRITICAL-FIXTURES-CONTROL-QC-v3b.vi.md",
+      "sha256": "d770275ed99915d3c262dcb70160cfe54994ba83aa2cfa218dc40d6d7016d094",
+      "bytes": 3520
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROOT-CRITICAL-FIXTURES-GO-v3b.json",
+      "sha256": "45871efa2c73a034445702adec022605cd63b44ce93ec8ebc30df71ad8d2126f",
+      "bytes": 1114
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\RETAINED-ROUTE-A11Y-FINDING-v1.vi.md",
+      "sha256": "b6b8d7cd3b43b8dde6a3d73939358a418dd3b14daf1620d0e11799958069c91c",
+      "bytes": 3029
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROLE-GUIDES-FREEZE-v4.json",
+      "sha256": "e7af93fe7fc4220ed42e4cd0b86ca308e1f503183feddc2d46370ff8ec327b8c",
+      "bytes": 13266
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\OWNER-DECISIONS-FREEZE-v3.json",
+      "sha256": "5a08dad09c749cb1921db3c2ff6b7f7e54a4e57c41defbd650e3b39066603abe",
+      "bytes": 10588
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\FINAL-ROLE-DOC-QC-v1.vi.md",
+      "sha256": "bdd5e6dcb5eca8a0de8b86a2cd9c8bf28b0796965968bde8b09dd8cf6e5f2d8e",
+      "bytes": 4749
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROLE-LEARNER.vi.md",
+      "sha256": "96704acc80fcec1055149967d8ceef917cd33abc465d056d14f2af840492bb12",
+      "bytes": 4424
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROLE-TEACHER.vi.md",
+      "sha256": "813dccbdc10dcd756d5ac1a3efa529b8f638e0ea90b3021396254c39fedc5fc3",
+      "bytes": 4688
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROLE-REVIEWER.vi.md",
+      "sha256": "4300afdfb3385871a5f97e532b9edaab53b91e31804b158e7fd2481d4f396e96",
+      "bytes": 4729
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROLE-MODERATOR.vi.md",
+      "sha256": "b25eb647e9ab2046c56b599b54dd1713409d320949b5d46f2d62703eecdfe359",
+      "bytes": 4541
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\ROLE-OWNER.vi.md",
+      "sha256": "bf9c1fc0c3b68290844bc5e9dbfea378b56a921593681df324d9078599781f77",
+      "bytes": 6276
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\DELIVERY-AND-REPORTING.vi.md",
+      "sha256": "dfbd97db6c733634c62e5d61abb2a18d491e7c78e6a9c31ed4d25adc9a1b4e19",
+      "bytes": 8088
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\OWNER-DECISIONS-TO-COMPLETE.vi.md",
+      "sha256": "7322f4c18a81a7102ec78743236bf7adba9513d78f0f8d14445c33037ce6fc57",
+      "bytes": 12465
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\OWNER-DECISIONS-METADATA-v2.json",
+      "sha256": "56925b85c5e158566560d47a45839cb9fd558ed85b34c8cd7d22b92df0177026",
+      "bytes": 41204
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\FULL-SCOPE-ROLLOUT-DELTA.vi.md",
+      "sha256": "8b474df5b3273355b7192dd575419499af514dffe0ef4a9fb85be1c7a07ebc26",
+      "bytes": 11127
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\FULL-SCOPE-FREEZE-v1.json",
+      "sha256": "204119137336268f07033aff77a3885f56f8e517fabd5b11951bd28e48e79d55",
+      "bytes": 1946
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\FULL-SCOPE-ROLLOUT-QC-v1.vi.md",
+      "sha256": "e1471561bba1d26c2d0416e33f3776f8904c5c0d02f4706d6a290a4e2d03dc49",
+      "bytes": 3822
+    },
+    {
+      "path": "D:\\Projects\\MCY\\analyse\\pilot-release-2026-10-21\\GUEST-CLEANUP-v1.json",
+      "sha256": "6a9306837fa6cbd8a187ccfb81b4ecf1f40ed485619a5ff30fbf0f813277f43d",
+      "bytes": 555
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\pilot-artifacts\\native-common-v1\\app-parallel.apk",
+      "sha256": "e1b036765affce158e05d699239a4f0b36e8ce8bf317dd6b6bd7a0d142897da7",
+      "bytes": 11585235
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\.vercel\\critical-fixtures-v3b\\egress.json",
+      "sha256": "328ba1b30612515f3167628b62d4cef5f05fe4849197a4fa1287ec06027ab376",
+      "bytes": 656
+    }
+  ],
+  "reportLocalLinks": 30,
+  "reportMissingLinks": 0,
+  "releaseAuthorized": false,
+  "participantReady": false,
+  "openP2RetainedRouteAccessibility": true,
+  "nativeRestore": "HALTED_CURRENT_ACTOR_UNVERIFIED",
+  "web": "BLOCKED_NO_UPLOAD_OR_ALIAS",
+  "nextStep": "PROPOSED_SCOPED_P2_FIX_AFTER_OWNER_REVIEW_NOT_STARTED"
+}

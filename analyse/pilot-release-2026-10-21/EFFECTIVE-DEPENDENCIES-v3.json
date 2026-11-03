@@ -1,0 +1,2085 @@
+{
+  "schema": "mcy.pilot-effective-dependencies.v3",
+  "capturedUtc": "2026-10-20T18:28:02.2178719Z",
+  "status": "PASS_READ_ONLY_INSTALLED_PACKAGE_LOCK_COMPARISON",
+  "sourceFreezeSha256": "5cd254ae1bd366e67ef763279c8db207cc061e67f10c39693cbb2a89e809fec5",
+  "sourceLockSha256": "f983447a10aaeb56091f43bf99ac5f9a01040e6c8a4b95bedf2f98d29cfd3fc6",
+  "provisioningReceipt": {
+    "path": "D0-REGISTRY-DEPS-v2.json",
+    "sha256": "da2a8070f246001948a81aa7692b284266008ef0a2f6396e6a38b126549da8a8"
+  },
+  "counts": {
+    "locked": 229,
+    "installed": 184,
+    "optionalAbsent": 45
+  },
+  "packages": [
+    {
+      "path": "node_modules/@capacitor/android",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@capacitor/android",
+      "version": "8.5.2",
+      "packageJsonSha256": "0f2a47b835f900bef22b1f40e369e33669bf112df89455a3164d5146aa2e7127",
+      "integrity": "sha512-rtiaz78egCcS+vs29wkWCL3C+RhazKMSygXcjutwWP8NmO6r5UBxOvGf3Wjz5+ahobyQ723tn9gCePwRwcNDZQ=="
+    },
+    {
+      "path": "node_modules/@capacitor/app",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@capacitor/app",
+      "version": "8.1.1",
+      "packageJsonSha256": "1682e621c3efdc11ddcc7b48f7386bd3d6ec63987510d89c280c6c0ccd75ef82",
+      "integrity": "sha512-xM2ZTX5jK60tFtmjsmJv+Cdj1Qsb6NcavkqmdEnCPQBeya9oKhamZJxYOnQNj1ZvcJM7sWfG6BEtSLx42pisbA=="
+    },
+    {
+      "path": "node_modules/@capacitor/cli",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@capacitor/cli",
+      "version": "8.5.2",
+      "packageJsonSha256": "bad0fbf5d81a6e677cc98d64bc5c59872e8a77f6966d13e38392ffedda345504",
+      "integrity": "sha512-O2kpA5ZPJUAmliDCcmpMf8xnJwMezxlFPUrlyOAjbL3U9MFNY3l4ZpPI/UXwvyPmR8ETcVF9pFr+VdWq61rqTQ=="
+    },
+    {
+      "path": "node_modules/@capacitor/core",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@capacitor/core",
+      "version": "8.5.2",
+      "packageJsonSha256": "11d1fd06941f61fe4bb8425ee08f53d573c899334ad9165501c029a5b3600646",
+      "integrity": "sha512-agnQbGdhGw/KZFuLf7H9SY2o+oE7upkr/WPQsYaokXP6f9chaE8iVmbKkfN6SVl4w3pmz7oZ3Ur1hbkmy1hx+w=="
+    },
+    {
+      "path": "node_modules/@capacitor/ios",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@capacitor/ios",
+      "version": "8.5.2",
+      "packageJsonSha256": "1f919db40a10e10216b94ad91a21271b58906b33159e55d18dec0af700742540",
+      "integrity": "sha512-eOT2S67AfTFG7KN0T3oxwAajrJz4rSye+ODfvChiwrk0F/+kWufFM1qU6cDjGJUOfwdAoeuEpZyWHSwZlu4GFg=="
+    },
+    {
+      "path": "node_modules/@capacitor/keyboard",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@capacitor/keyboard",
+      "version": "8.0.5",
+      "packageJsonSha256": "8a09e012d9dacd9c15e14391278c056d08ce8d71fe7febce3a668687e7398e13",
+      "integrity": "sha512-oFXygC4eKYA5l2MdpTR06L2M/4x6e2SLD5yS1T9+UBDKTkzyvhWKEhbYLUaTIBPpLKqlfGudJw1X73S1H9eUzQ=="
+    },
+    {
+      "path": "node_modules/@capacitor/status-bar",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@capacitor/status-bar",
+      "version": "8.0.3",
+      "packageJsonSha256": "35f95e665c1f9be8744e2ae11c6b96850cc29bf6a839066ba1ecb09d1f576209",
+      "integrity": "sha512-csSpfNeN49Hx9JaQBSJEIiEbOLtXg3kcc2IpScq2fu5L520h3AWEvsxoH8Srk1jxfRKepaJ4S4sqSC3foI4AgA=="
+    },
+    {
+      "path": "node_modules/@floating-ui/core",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@floating-ui/core",
+      "version": "1.7.5",
+      "packageJsonSha256": "ec5c5a43811aa416f16993f0ffe41bd2394f8df9f96e3310e45e48bfd45d4076",
+      "integrity": "sha512-1Ih4WTWyw0+lKyFMcBHGbb5U5FtuHJuujoyyr5zTaWS5EYMeT6Jb2AuDeftsCsEuchO+mM2ij5+q9crhydzLhQ=="
+    },
+    {
+      "path": "node_modules/@floating-ui/dom",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@floating-ui/dom",
+      "version": "1.7.6",
+      "packageJsonSha256": "a4e0f2ca9b1d9da984d5797ca63900fa62c1c0b9122244fe12dbfa4cd560d5d3",
+      "integrity": "sha512-9gZSAI5XM36880PPMm//9dfiEngYoC6Am2izES1FF406YFsjvyBMmeJ2g4SAju3xWwtuynNRFL2s9hgxpLI5SQ=="
+    },
+    {
+      "path": "node_modules/@floating-ui/react-dom",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@floating-ui/react-dom",
+      "version": "2.1.8",
+      "packageJsonSha256": "c1785d0992ad658cc5e5ef2e03c26f4d484c80d56e4ca88f5a0e8b5e88e03a65",
+      "integrity": "sha512-cC52bHwM/n/CxS87FH0yWdngEZrjdtLW/qVruo68qg+prK7ZQ4YGdut2GyDVpoGeAYe/h899rVeOVm6Oi40k2A=="
+    },
+    {
+      "path": "node_modules/@floating-ui/utils",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@floating-ui/utils",
+      "version": "0.2.11",
+      "packageJsonSha256": "eafb7da610cc3694a26048c290db1a078a9dc6359a4bafaf2f8e067d69f9c847",
+      "integrity": "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="
+    },
+    {
+      "path": "node_modules/@fontsource/roboto",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@fontsource/roboto",
+      "version": "5.2.10",
+      "packageJsonSha256": "225f588d35e158c34229edbb25c0f3829315cbd80ff8e7f21520cdb9f731c754",
+      "integrity": "sha512-8HlA5FtSfz//oFSr2eL7GFXAiE7eIkcGOtx7tjsLKq+as702x9+GU7K95iDeWFapHC4M2hv9RrpXKRTGGBI8Zg=="
+    },
+    {
+      "path": "node_modules/@ionic/cli-framework-output",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/cli-framework-output",
+      "version": "2.2.8",
+      "packageJsonSha256": "3c7ce6a9163657f7adb1ae6ddc6a489aa291da99dee0062116050398501875f2",
+      "integrity": "sha512-TshtaFQsovB4NWRBydbNFawql6yul7d5bMiW1WYYf17hd99V6xdDdk3vtF51bw6sLkxON3bDQpWsnUc9/hVo3g=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-array",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/utils-array",
+      "version": "2.1.6",
+      "packageJsonSha256": "28f6a7929e249a634c7e6d155a59ca46efe986e1114974b33d0a64830017e842",
+      "integrity": "sha512-0JZ1Zkp3wURnv8oq6Qt7fMPo5MpjbLoUoa9Bu2Q4PJuSDWM8H8gwF3dQO7VTeUj3/0o1IB1wGkFWZZYgUXZMUg=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-fs",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/utils-fs",
+      "version": "3.1.7",
+      "packageJsonSha256": "b05fc36c5d56f20e66723f3c1f0d73a409beeacdd3e44f10ad302299f7b5183b",
+      "integrity": "sha512-2EknRvMVfhnyhL1VhFkSLa5gOcycK91VnjfrTB0kbqkTFCOXyXgVLI5whzq7SLrgD9t1aqos3lMMQyVzaQ5gVA=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-fs/node_modules/fs-extra",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "fs-extra",
+      "version": "9.1.0",
+      "packageJsonSha256": "528b7d9a7708b1694510f752f286e7ef70f669fb604411645909252b3f99cd96",
+      "integrity": "sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-object",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/utils-object",
+      "version": "2.1.6",
+      "packageJsonSha256": "0c9581f667de35bbf6f20a74222a12216232d24502f5af5cf9c1f6090971c551",
+      "integrity": "sha512-vCl7sl6JjBHFw99CuAqHljYJpcE88YaH2ZW4ELiC/Zwxl5tiwn4kbdP/gxi2OT3MQb1vOtgAmSNRtusvgxI8ww=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-process",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/utils-process",
+      "version": "2.1.12",
+      "packageJsonSha256": "ac86d6a24eec5bbc97fa58102e0745f63c9aa3d23e4463bb5360cf22ed56da60",
+      "integrity": "sha512-Jqkgyq7zBs/v/J3YvKtQQiIcxfJyplPgECMWgdO0E1fKrrH8EF0QGHNJ9mJCn6PYe2UtHNS8JJf5G21e09DfYg=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-stream",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/utils-stream",
+      "version": "3.1.7",
+      "packageJsonSha256": "068ebcd47e8c910cf7563d4d09dea1af6a81096ad2e9280c9473c57987206a86",
+      "integrity": "sha512-eSELBE7NWNFIHTbTC2jiMvh1ABKGIpGdUIvARsNPMNQhxJB3wpwdiVnoBoTYp+5a6UUIww4Kpg7v6S7iTctH1w=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-subprocess",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/utils-subprocess",
+      "version": "3.0.1",
+      "packageJsonSha256": "c374a94789ddcb01b2696a31dc8d4060b9e2ea5ecaa7facbe7874ca2e1e20fe1",
+      "integrity": "sha512-cT4te3AQQPeIM9WCwIg8ohroJ8TjsYaMb2G4ZEgv9YzeDqHZ4JpeIKqG2SoaA3GmVQ3sOfhPM6Ox9sxphV/d1A=="
+    },
+    {
+      "path": "node_modules/@ionic/utils-terminal",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@ionic/utils-terminal",
+      "version": "2.3.5",
+      "packageJsonSha256": "f8d3f7a926ab86f941b42a3006b664e341d741aec2734eb477a536f38a01f991",
+      "integrity": "sha512-3cKScz9Jx2/Pr9ijj1OzGlBDfcmx7OMVBt4+P1uRR0SSW4cm1/y3Mo4OY3lfkuaYifMNBW8Wz6lQHbs1bihr7A=="
+    },
+    {
+      "path": "node_modules/@isaacs/fs-minipass",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@isaacs/fs-minipass",
+      "version": "4.0.1",
+      "packageJsonSha256": "ab8c1c2bce664e4c76b1937fa1a28f00ca5231a70cf0c1f78dd473101a9d2a88",
+      "integrity": "sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w=="
+    },
+    {
+      "path": "node_modules/@oxc-project/types",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@oxc-project/types",
+      "version": "0.152.0",
+      "packageJsonSha256": "78ba8a6b8cf8c037c6e4eb2b9857402c0b51164dadbe9ccf18696a9b5e0bb681",
+      "integrity": "sha512-oM/5rLBm2tPkg0iBgkH/FOeR3PCDpY19GTgAZjMFM8h9WI9VW7cLgzp6nwtarYKmovavIQZ+Fe/RKX/8C8O/Rw=="
+    },
+    {
+      "path": "node_modules/@playwright/test",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@playwright/test",
+      "version": "1.61.1",
+      "packageJsonSha256": "9d8556509e073169efec663b7f71c13f17d7002b307d00d48bf88ee91c387f3e",
+      "integrity": "sha512-8nKv6+0RJSL9FE4jYOEGXnPeM/Hg12qZpmqzZjRh3qM0Y7c3z1mrOTfFLids72RDQYVh9WpLEfR5WdpNX4fkig=="
+    },
+    {
+      "path": "node_modules/@radix-ui/primitive",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/primitive",
+      "version": "1.1.5",
+      "packageJsonSha256": "6c7d659bd9e8776f7bdd1a30fa323c530a481998d75c30440baf223fccf0a194",
+      "integrity": "sha512-d86WIWFYNtGA0H/d8exstrTRTp7eWJYlYJbtNofxr/3ljupZYn6EFDG/Qgu/0Kc8v7yMUxySagqJsL1+PdYjWg=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-arrow",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-arrow",
+      "version": "1.1.11",
+      "packageJsonSha256": "dc345c9632d29ad5ef3c38ec5b79d76fce51ac1c5577920067303f6c67ddd536",
+      "integrity": "sha512-Kdil9BB1rIFC/khmf4hC35bn8701AJcizTU7G7cUbEbk5XqqbjDuHW60uUfKqO5WojjZcbAW51Q7P0hRmMLw8A=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-collection",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-collection",
+      "version": "1.1.12",
+      "packageJsonSha256": "1e32b0a30efb9b6d03701c22b65ad4e1fde6bdf987fd511899f335818e4cf374",
+      "integrity": "sha512-nb67INpE0IahJKN7EYPp9m9YGwYeKlnzxT3MwXVkgCskaSJia97kG4T0ywpjNUSSnoJk/uvk12V8vbrEHEj+/Q=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-compose-refs",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-compose-refs",
+      "version": "1.1.3",
+      "packageJsonSha256": "c547ffbe7eeea8231c26127580da2b19a1237f4e9441d7e7070437531f8bea0e",
+      "integrity": "sha512-rYOP8OMnuuPMQF1uhPVlGNcCDlkokKqGFE3JcxFViIkAXP7EvFWUliJAstrapypaBLJNHbZL6jGhbVDGTwmVhA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-context",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-context",
+      "version": "1.2.0",
+      "packageJsonSha256": "7f66bbb862a4522479ed8c653f5a6921e9970114763d599618d0341ce90515f4",
+      "integrity": "sha512-fOE+JtN9rygNZkCnHRBEP0TAvLldlhyOxMsbwFvTP4nAs+nBmfnna+o/Zski2wkmY1YMrFC0aSzsHoLY47iLrg=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-dialog",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-dialog",
+      "version": "1.1.19",
+      "packageJsonSha256": "66c1438b4332c8b6ec90273ba0ce7f8c93e78761055b7468646122dc03ebbacc",
+      "integrity": "sha512-+HhbN2+YtkRgVirjZ2afMeutQRuGOrdkWR5+EFC58SJojGmtyNQwYzgi6tHBpOxvFHefMtPeHdgtjz0BOGxFQg=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-direction",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-direction",
+      "version": "1.1.2",
+      "packageJsonSha256": "f5ae1919bfb2b1aae5831af836fef93f82e39b32028ee9dd260818dd815a4b4a",
+      "integrity": "sha512-C3vFhbyi4SW3PmbAi6Awpu4OzJtd0MxGurvSsYtr7p7nM8RNB3VAF3CUmnp2j50knpkrRcB7+ycVXzgLgF6yNA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-dismissable-layer",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-dismissable-layer",
+      "version": "1.1.15",
+      "packageJsonSha256": "638e459ff4a2d26377144fa9db3d72857a18136b59fad2e46e60be63819f812b",
+      "integrity": "sha512-b0XaRlzn2QKuo10XyNgi2DAJDf5XC9d1nD3FJcuvCjbR7+4Ad28zmZsLsqx+hvDEzMnRuZaZxZm9gYObV6RmRA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-dropdown-menu",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-dropdown-menu",
+      "version": "2.1.20",
+      "packageJsonSha256": "4a0115c99bcba3193130958d365e99dd50c36aa48493c84f3d2042d393223a4f",
+      "integrity": "sha512-slfm+rRaZRuQBvHq60lXvSVUPhid0IPtjSZzIuUlWZMUs01iYZNlGS3mJgRD3ChLQVBAYlKiL/tFyWGX+dz8Xw=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-focus-guards",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-focus-guards",
+      "version": "1.1.4",
+      "packageJsonSha256": "713d33c3624ed8addfccb45c9c1dc9115cd32f1e98dc2da9a0397f3d1184f333",
+      "integrity": "sha512-cot/aB/mOm0IYVYTTmQcEEK1M48lZWi8FlYe5nDPQQ8NYZUlXEFgncJ9p2Kzer3RKSrY7cTTpEMLZKNo9QoP5Q=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-focus-scope",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-focus-scope",
+      "version": "1.1.12",
+      "packageJsonSha256": "74da94bcfc32660b92c17e2f058ac436a7a349d4d3bf22c18a07a24383d168f5",
+      "integrity": "sha512-jjk/lqTeNL0azUx5ZYzVrl4NgaDIrdzTNE4mABV9yBFI7FQqN7pIgzV1bTleUezP2QiTGA1BFTqY8MegDgWX9A=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-icons",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-icons",
+      "version": "1.3.2",
+      "packageJsonSha256": "95761ba6179b42e330566d9535a55d9a74f469a476043730f80384078f683ae2",
+      "integrity": "sha512-fyQIhGDhzfc9pK2kH6Pl9c4BDJGfMkPqkyIgYDthyNYoNg3wVhoJMMh19WS4Up/1KMPFVpNsT2q3WmXn2N1m6g=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-id",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-id",
+      "version": "1.1.2",
+      "packageJsonSha256": "46a302aa9f470db6f5d797d59985bbc6c885fd0682d55a0e5629053abfe00915",
+      "integrity": "sha512-orBC88futVpqCmhX1p4cvquNHsELQ+w+vBJnuj3ftETI5bJb0bZn3Tqu3SWN2IOcPycTnMGnhwoermvISt72sA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-menu",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-menu",
+      "version": "2.1.20",
+      "packageJsonSha256": "d0f12f565682fe4c246296cb27e43010eaaed7d089dc90bb55d29c956dfdad49",
+      "integrity": "sha512-VsUrXxFe9d2ScbZF0fR/oPR1+qjyeLs5p0jzG8h90puMoA9bq4SirYlXbE+USRg9Q2qTeJSFNqjw2nts8jJe4w=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-popper",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-popper",
+      "version": "1.3.3",
+      "packageJsonSha256": "b81f386d3ff75887c98f559c87302bd91df81f890aa5fee8e300691e4b761196",
+      "integrity": "sha512-mS7dGpyjv6b+gsDjLF7e0ia1W4Im1B1hSCy2yuXlHuvnZxHKagfDaobt/KAKt27EpZMit2pss8eJBVyVjEWM+g=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-portal",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-portal",
+      "version": "1.1.13",
+      "packageJsonSha256": "a545a4fd121a18bda57c5c04005ee30d7433f0371c99e5f5cf9f3c27ce4f5f89",
+      "integrity": "sha512-z3oXfmaHLJTF1wktbjgD6cn9jiEbq3WSondB10LIuIt2m2Ym4iJlrW04/euMwENDdWDdE7z+OuY7Qyp1YpRSwA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-presence",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-presence",
+      "version": "1.1.7",
+      "packageJsonSha256": "f300c9174acc89678c2d8e03aa3ca6e91238deb06ab895698cd2aee5538cd99b",
+      "integrity": "sha512-zBZ4QM5XG3JRanDmqXYf3MD6th4AFXFmgU6KNMFzUaV6F3uw9I5/zjMUvFriSEn5ewo1nxuibvyxJdmLlDcslA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-primitive",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-primitive",
+      "version": "2.1.7",
+      "packageJsonSha256": "48e0690a70d34769325d07c6864a2ade8b3294db7b3ad2339e1013b2142f5b3b",
+      "integrity": "sha512-bC3NiwsprbxKjuon9l7X6BUTw7FPVzEYaL92MPEY5SCd/9hUTPXVFtVwRix7778wtRsVao+zE062gL79FZleeQ=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-roving-focus",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-roving-focus",
+      "version": "1.1.15",
+      "packageJsonSha256": "e28f5d490ee9e36d25478f00c2b58af3d408e4facee7b7288d1081ff7e6a7189",
+      "integrity": "sha512-40svmmugfM3mUN7VUDGVE1tQGOhyi8enlGD0CNJEcMM36C1f71PKM21DFgNHUfem0XnA+d8H8oN3Z9ZpJjSslg=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-slot",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-slot",
+      "version": "1.3.0",
+      "packageJsonSha256": "d7fe61692472a3147fa9c42707ddcc547a296ea2faeb7eee47961d82755b11d0",
+      "integrity": "sha512-MojKku4U/miO8Av4Dkb+ctMAQx7JmY96LmtDQlAarCRtd7rN52QCSzBF+XAvr5S6coSVj9HEPBgHAHKEJVk/WA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-use-callback-ref",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-use-callback-ref",
+      "version": "1.1.2",
+      "packageJsonSha256": "b02ff173569081cf01e05e7db68ccc6bfadde0b3c7e13173fe3a841019445565",
+      "integrity": "sha512-xCso9j1/u8sEgP1RNHjFrXJLApL8LiqOkI1R4ywuN00rxWdYg4oQXuwKLS3i0j5NWLromUD27/4nlxj2UFVvIw=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-use-controllable-state",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-use-controllable-state",
+      "version": "1.2.3",
+      "packageJsonSha256": "e55c37fce9f3b587c608d6904d2cfe00ba2da3bb563169f7d56e821fb2bc3743",
+      "integrity": "sha512-PLzC90MS+ReootmjC597dvopoelpZ8Q61HJkDXZSExitIq7PL55vHNnesAHwguHK0aPfBnpdNzQtv1uliaqQrA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-use-effect-event",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-use-effect-event",
+      "version": "0.0.3",
+      "packageJsonSha256": "5ee1f59021f0cf8ea18b47800506a817271d5a205585c31e98cb818895fc3f69",
+      "integrity": "sha512-6c8ZqvPTWILEKnyVkP53EGRCcpnJiKTC21sS/6R1GF5xKyHJJWQEPfkqlcgUkdRQivd6tb23abUwe4ngWmY0JA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-use-is-hydrated",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-use-is-hydrated",
+      "version": "0.1.1",
+      "packageJsonSha256": "2aff8a1cc1435c5202ecf2a4374fae557f7aaf4f7196ec63415e7cbab2a748af",
+      "integrity": "sha512-qwOiz4Tjo8CNnrOLAYUMXeZwDzXgXpvK4TKQPmWLECM9XoWvA6+0Z2/7Ag3A4ivjS4ovbLJPbskkxioFyBhr8A=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-use-layout-effect",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-use-layout-effect",
+      "version": "1.1.2",
+      "packageJsonSha256": "62dee5c2c667a4be3f7a899164226f11858f5ece0ffcbe6c421a6a24205d8c4a",
+      "integrity": "sha512-jrBWOxZITuGcnjRCM2t2U5ZPkCLxD+Ym6DjfssS5haTj2iiak/DOb64JeN6OdLfLgptb6/e2kKR+ZuTrGoZTPA=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-use-rect",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-use-rect",
+      "version": "1.1.2",
+      "packageJsonSha256": "36ed97824c60e0ebeb5e1a2b2fa89c99a7ca4a60a51466fbae4039c54d612253",
+      "integrity": "sha512-d8a+bBY/FxikNPlgJJoaBHZX+zKVbWHYJGTLnLvveQgFSTntkGdEKv3JDtHrMS0DNYpllz2nRsTLGLKYttbpmw=="
+    },
+    {
+      "path": "node_modules/@radix-ui/react-use-size",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/react-use-size",
+      "version": "1.1.2",
+      "packageJsonSha256": "efff8fea52abf025b4e76cf4a9fabedbf41b5595546d2df10e94b4ebd4ed70ba",
+      "integrity": "sha512-giWQp+4mxjBPt4KZ0MmyuykFNWfbDxKt4x+fPkRYmgRFJSbCZFzUglvMb/Kjn38tm10YP4ufiQZDx3zna4LU6w=="
+    },
+    {
+      "path": "node_modules/@radix-ui/rect",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@radix-ui/rect",
+      "version": "1.1.2",
+      "packageJsonSha256": "605d663d7cdfcd5bda919aa2a6b513acde1aabf6a8bc3b2f0cc95afe8643b26c",
+      "integrity": "sha512-xnXE7wG13PI+cxieVssYXlQJuYVRhH9NBoxt3KNwzghDIA69GMm7d4wXRouHIYjE+KvS6U/MsMO73NdS2MH9ZA=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm-eabi",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "android"
+      ],
+      "cpu": [
+        "arm"
+      ],
+      "integrity": "sha512-dB/a1214qKfHMXCpgqR4OZT+jS4kTyEXbQGJPqzobt5EwH5rX080pxE37alt3RzvR1bf1Yz/yGqRfrYAxuPw0A=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "android"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-7KHFgQ5VJxIHcLlrwrc3Xbds7oTNQT7Pgi9gQCJKrd2VGab/UksIOYp6VD8MzCstGxOKMgNamPwUCfxPdP1OHg=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-3YIhqHD96nA5SaYNRBR16HnGv4oavZvXfD/ayHM+oYZ0WD/8lBAtf6zQua4kEyAvpqrluKXl0lnOBoiNby7x9w=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-UuuJ35MFw4gmFOrE9pEqIV+K3syIKveph+Qc1/ljHZVdoDW4pz/JHR/eMVom+TZGl/5OOvGJOWaOCVt3ZfqhxA=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-freebsd-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "freebsd"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-uMvssit0a4W+/7D8CbHUvG719mH3R2jwXAlh/XcPvuHTE0g++LymF88DCGNX0HM2rBOn0xrzgXktIB6fLSJBTQ=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm-gnueabihf",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm"
+      ],
+      "integrity": "sha512-XcFu0R0xWnwzSf4IQgFH1rJIckPN1pLy2R+4r9IDB7Yfu/ys9cVqfa4pBrMHj7a3gl8mIR4nRNPg0e5IvEVs6g=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-gnu",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-260UrKgn8tz39ak+SMDOirKzr7V04M9dWPw5llW00SwBivCZoWcRBKV1d8cXnRkUmSZA3BdiUmBHWk7734Ulpw=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-musl",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-5YK1I9SqDkbPgc1IA8BgDl34suqUS2q0KWnBrirm0E51YjOs6eo6dV6jbQfNE/argHRSvd0QUGgtpIoYx+WWpw=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-ppc64-gnu",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "ppc64"
+      ],
+      "integrity": "sha512-Rkcrmp7eFRg74yL5fXEU91JEWbdEPLevWwGtXpmhbjlD1StScbWTmO94Bhly+Mo+ketKYkdmM1vNUKeWSlx8cQ=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-s390x-gnu",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "s390x"
+      ],
+      "integrity": "sha512-qvK4DuAsQc2BSjlx+Xr+IzOIvvxbGZqxFwdWfG6F518Erj0GGISyQbJ6pIappnOxlNPzNHvo/L0BwB30GZ+zVw=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-gnu",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-Q9uLBO53Xd4QIq1WOycVQyPP1O4HhraEV2qqb3uTrnVw6QZih9duY4vNXOivL1xoUS1/z+W8eF4NMfl2a8Sdjw=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-musl",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-3IBxWFMjbOZskDPKv8Lf9BCnahlKuHthWkYnyIxOH/QcJrFcS4EmcenthApkwr/5+nEqZlLzeYbxeMaX7A5u4g=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-openharmony-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "openharmony"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-xtX61xg4LKPkPWilZU1ynKClz5Gj4bf74LML4r3eVLWumKnGjoEr1OSHQhMdbBDoYTi+yjrujvpZe2pUnqCrrA=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-arm64-msvc",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.2.12",
+      "os": [
+        "win32"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-At7fPB6PCaIjzgIhEZFxuT+BBFqiQibJDT4d3PhiR3f4E7bbMZF4aKblbFfEM3sETRDd1YiQx/+U/g/B/ou5Ew=="
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-x64-msvc",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@rolldown/binding-win32-x64-msvc",
+      "version": "1.2.12",
+      "packageJsonSha256": "9d95cd401cb9fd69e437f82c5fff1de091d49d79c658dc045c6b086e7fc3aa4c",
+      "integrity": "sha512-WIw2haVKwjuYdXkHaoC0mF8Le71TuCBxjrdKqLbJGctbBABj+ClfmNvtbOnzpq3RokNo5+V1qhtSzJyXorsklQ=="
+    },
+    {
+      "path": "node_modules/@rolldown/pluginutils",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@rolldown/pluginutils",
+      "version": "1.0.1",
+      "packageJsonSha256": "c3d2bfe0ff94de71fd5b82e6f3a01b12ee4d99b8f1b34cc00b984b9acde61cfa",
+      "integrity": "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw=="
+    },
+    {
+      "path": "node_modules/@supabase/auth-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@supabase/auth-js",
+      "version": "2.117.2",
+      "packageJsonSha256": "2d8af4e0afe00199a6c7b0e22c182f33749470c530af433271fbab0ee5b36c0e",
+      "integrity": "sha512-Z3WnGwrphYZubrLbxp5Iv0tLA9A5GhvKzJ/ZXglxqwd2QEH2R4dXRltjVJ8sIn4xEW2BSFIGT0yALVJIgZeDYw=="
+    },
+    {
+      "path": "node_modules/@supabase/functions-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@supabase/functions-js",
+      "version": "2.117.2",
+      "packageJsonSha256": "586736a9d447f2fcba079fc772307800bbd352922b2dfffc898cf4bdff3359b5",
+      "integrity": "sha512-6DT4ZIjmZxa9ANKaBIrjc86AyKrX8M376ynvNeOBBVad3eP7x3UHqWfDR2ynFkHGzCuOpr1A+kObmnahxuwuog=="
+    },
+    {
+      "path": "node_modules/@supabase/phoenix",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@supabase/phoenix",
+      "version": "0.4.5",
+      "packageJsonSha256": "eaf685038bf1a69bf37ddd7c32fa5b7a55b5f8455de7590b01e77a353c185269",
+      "integrity": "sha512-aAn9H9ovVyeApKy11OWOrrOGq8DV68yWeH4ud2lN9fzn4aO8Zb5GLL9m1pUg9nLqIcT+ZDfAcsZe0E/nqdv2lw=="
+    },
+    {
+      "path": "node_modules/@supabase/postgrest-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@supabase/postgrest-js",
+      "version": "2.117.2",
+      "packageJsonSha256": "f19d1a0875168fc68fbbd07f84f05fa461c71daa9dfcd26e4d2bb9aad341d224",
+      "integrity": "sha512-V1Qhn+M8xzJqCasOxHZ2KG19Fj39PxU7weEAmOK65/KTsWCRXboB4hcQwFvxRvM7ZikeP9IZWNvQkfjvSxzYFw=="
+    },
+    {
+      "path": "node_modules/@supabase/realtime-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@supabase/realtime-js",
+      "version": "2.117.2",
+      "packageJsonSha256": "e98c80dc2ccfec972be66b354199d1a87f094db53768e5ec1549a22226f56f98",
+      "integrity": "sha512-lYXSAIg3eAKA58riUED6Vb+TCzF8jtx18uOoiCaVJ7ZMre6FWBpwB1MPeW+B6vykJT/hPdiuqwcSB7ILMS21ew=="
+    },
+    {
+      "path": "node_modules/@supabase/storage-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@supabase/storage-js",
+      "version": "2.117.2",
+      "packageJsonSha256": "1af48fb23d12440f14743421f4c06e50b329f22f40b18558c7f17a47720e4daf",
+      "integrity": "sha512-8gAJoVaxZa/War2kFRfJMxGk4M190Q7lJ70BofwGlRxU/u9pIodd6XyTvmXkxOKXWuIYtkDaYPZrIAUt1T/7FQ=="
+    },
+    {
+      "path": "node_modules/@supabase/supabase-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@supabase/supabase-js",
+      "version": "2.117.2",
+      "packageJsonSha256": "02e42e8011329ed38c1f774fc7b3c0b9329a93a26d39deb79e5ad31ffccb16d8",
+      "integrity": "sha512-eSG2VKnHR+Clp1PmidZ1/weJ8PJwoybjva3L2GgKqFG4YDS1Iqmc61psKGZP5xw6OMT2O7ZorPR42PY6q1BOXg=="
+    },
+    {
+      "path": "node_modules/@types/fs-extra",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@types/fs-extra",
+      "version": "8.1.5",
+      "packageJsonSha256": "eb1b112e548fda825fe1a786f8900aa1d015fe70a2426263dc9ff0301e25df08",
+      "integrity": "sha512-0dzKcwO+S8s2kuF5Z9oUWatQJj5Uq/iqphEtE3GQJVRRYm/tD1LglU2UnXi2A8jLq5umkGouOXOR9y0n613ZwQ=="
+    },
+    {
+      "path": "node_modules/@types/node",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@types/node",
+      "version": "26.6.3",
+      "packageJsonSha256": "af05d508de862beca300b00ba7e5ea155c2784bd3583c2d887320cd962b10498",
+      "integrity": "sha512-dsqMQQoeTLqu9wynDD00q573mNzso3IdQOAfHRJqLCcmCFPoGo9A1bDpUcv/9tnKpErQWv9uKeGfl37EIS02Yg=="
+    },
+    {
+      "path": "node_modules/@types/react",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@types/react",
+      "version": "19.2.17",
+      "packageJsonSha256": "36496fc09a9dcf31b0ca969ce5677c9ce9ebb5c89da9bd6212e0c89b6fae3f88",
+      "integrity": "sha512-MXfmqaVPEVgkBT/aY0aGCkRWWtByiYQXo3xdQ8r5RzuFrPiRn8Gar2tQdXSUQ2GKV3bkXckek89V8wQBY2Q/Aw=="
+    },
+    {
+      "path": "node_modules/@types/react-dom",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@types/react-dom",
+      "version": "19.2.3",
+      "packageJsonSha256": "bf90986beaec5f757c164bf1d374f3038dc41b0b06673de4a55fd975d1e5deca",
+      "integrity": "sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ=="
+    },
+    {
+      "path": "node_modules/@types/slice-ansi",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@types/slice-ansi",
+      "version": "4.0.0",
+      "packageJsonSha256": "808ab1df95e373c9a2a74693bc57b199fd554eb4baabc6ad0e4a399b5356bf8c",
+      "integrity": "sha512-+OpjSaq85gvlZAYINyzKpLeiFkSC4EsC6IIiT6v6TLSU5k5U83fHGj9Lel8oKEXM0HqgrMVCjXPDPVICtxF7EQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-aix-ppc64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "aix"
+      ],
+      "cpu": [
+        "ppc64"
+      ],
+      "integrity": "sha512-MTKKkWB7p/0E9xi1d1tHtZ5PiLkGEMIq88pK2CubZjOsLtYTLqhgIgi6zepFa+9GHZ6h05NMCkQxGKiPXMxXtQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-darwin-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-gowzar9MwS/aRWp6f3a4KUqzRjAZjOsmGNCM6LcTgXum+dBfgsBVMN+AgvOCCbguXyick6LJhpBszxMebJ8syA=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-darwin-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-SZ9xZInqApNlNGc9s0W1VSsktYSOe9cFqNOIqmN1Gs8SmkjKZYFt017G4VwPxASInODuAdbTW7sXiFUf893RgA=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-freebsd-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "freebsd"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-W5NH4y/J0plIIS5b2xvTEkU7JFxyqdMAOgf+Ilhl0vHQXKO5dZoxd+C/jEtq56c4F3wk71RB4BMRQ2XdI+bwYQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-freebsd-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "freebsd"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-UMGDx5sTpzNw3WiPebH7l90IWfJggEd+egHt/q6p7/Cm3zqoV7VxkGXt+3DxPIw8CcmvAB0j3sVVfbhX+M4Tpw=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-arm",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm"
+      ],
+      "integrity": "sha512-gffT3xPz9sR7j/YJExkyPntrI0P2EP9XbOyWzth2/Gs0RstK+90RBcO0ncXoXy/beYll1SXw846Nf2zdnEz0QQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-Qh4eU4/y3yDjnfjjyPYihMj5/ODIlmt+Bzu17OI+fiSRDW57QmU5SiN63exPRNJPKUzcc1INa1NXdrJ+MqHjUQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-loong64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "loong64"
+      ],
+      "integrity": "sha512-uEHck9i8hoAzXPiYRib1O7miOnz23SxIeVl6F4LXox+qov1K35jHcEW6VHKvZI+pyvl7fZEP4MCU5LYvIq1GuQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-mips64el",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "mips64el"
+      ],
+      "integrity": "sha512-R4KvAMnE43W5Qeqb0Ly56O3mWMWIAgsMyz36DCaycd5nbg/9kzm0liw3JocfRqyJY0KPmzFjbswozXyW0DnIYA=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-ppc64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "ppc64"
+      ],
+      "integrity": "sha512-DORx5b3sd/4S7eayxm4FQv+A7CrkUIGRaHiwI8oiHTAI1fAPWhF4J0vAlkC8biAlHSVVwxMQ3tjZ2/DVbnQiiA=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-riscv64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "riscv64"
+      ],
+      "integrity": "sha512-wf0jqEDOjrPRnKwYRyyJDRo11KMbvMFrU+q4zqKyChODBzvlkbhNQfKvLxQCcwTpdDaXSHZTVuh0JoCrKCUMHQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-s390x",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "s390x"
+      ],
+      "integrity": "sha512-IkwJc3L7yhytWd/ewjyxNDfOmswCm9GWMJT/ue/dU4aZNbwZeYAetq42VyLmsmSjvoX7z74X6ZaYCtzAr0EuGw=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-EYdf2cNg7rgCWJnxCdJ+F3V39O8ihb37eHAu1LK8oAFizgTQbPOK7zHHXbPt8rX24COqODXeI3sIf0fCXG7H/A=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-netbsd-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "netbsd"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-+polYF4MF04aPpO5FTkHran9yUQDSXqy5GiSDKpsll5jy3l3+g9QLhpf39T+ePtefhXLOGrLl0QIjkQP6VnelA=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-netbsd-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "netbsd"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-8YIT0EHM/3dq10ZOVF/A7pc/YSMtbcecct4rWtexrnSCHOPcpC2KTLXfTCR6vDpnSiY12heNb1GiN/wu+T/FyA=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-openbsd-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "openbsd"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-APT8+ClYnuYm1u9+kgGXoMj2VzWzcymwh2gNSQVySHfkRDGOTVkoWLjCmOQSaO+PoqQ57B0flRp9SA+7GnnkzQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-openbsd-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "openbsd"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-yX7s+Q0Dln0Dt9tEzZsAjXXR/+ytBM7AlglaqyeMPxQszJ1JhlJdZ6jLA+IzldHtflX81em7lDao1xXu+aRRkg=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-sunos-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "sunos"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-dLJDGaLZ1D4HPQn62u1n8mBDkJREwMsAkCdkwd4Ieqw+x3TUyTsqY0YiBCtE6H6OzzgGk3iuZ3vFWRS+E8/d1g=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-win32-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "7.0.2",
+      "os": [
+        "win32"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-Gyl1Vy6OsWesLzmq+EP0Fb7b4Nid5232AvcA2SFcdYreldpNtYFFofPjnt62y9hQy7VTaZp65ICJjuAQRaVcIQ=="
+    },
+    {
+      "path": "node_modules/@typescript/typescript-win32-x64",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@typescript/typescript-win32-x64",
+      "version": "7.0.2",
+      "packageJsonSha256": "6d8ec7623880a902bb225c53571112e2bbf0273412b2c534070b1193d2be0f6b",
+      "integrity": "sha512-0BQ3HkAHHlKLSp1qRvf3SUhGpGsDuhB/jgFw75guyqbxJqEaS0Cw/VFO8i2nHglJUzQCRtMMR/IBAKE3ETMC4g=="
+    },
+    {
+      "path": "node_modules/@use-gesture/core",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@use-gesture/core",
+      "version": "10.3.1",
+      "packageJsonSha256": "4298a6e5921b8d1db4ce6bfbefd6cc7a8e9268c6d5b9c356002cad2ffdd78f84",
+      "integrity": "sha512-WcINiDt8WjqBdUXye25anHiNxPc0VOrlT8F6LLkU6cycrOGUDyY/yyFmsg3k8i5OLvv25llc0QC45GhR/C8llw=="
+    },
+    {
+      "path": "node_modules/@use-gesture/react",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@use-gesture/react",
+      "version": "10.3.1",
+      "packageJsonSha256": "8e0d5294282e1d3adc8f5362bc430888aec7de1fb609504cda20e79b63e278c5",
+      "integrity": "sha512-Yy19y6O2GJq8f7CHf7L0nxL8bf4PZCPaVOCgJrusOeFHY1LvHgYXnmnXg6N5iwAnbgbZCDjo60SiM6IPJi9C5g=="
+    },
+    {
+      "path": "node_modules/@vitejs/plugin-react",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@vitejs/plugin-react",
+      "version": "6.0.3",
+      "packageJsonSha256": "744483e15597dba4505ff19c7af5d75ddb7280db9c894d8133f8a0edffe93c30",
+      "integrity": "sha512-vmFvco5/QuC2f9Oj+wTk0+9XeDFkHxSamwZKYc7MxYwKICfvUvlMhqKI0VuICPltGqh1neqBKDvO4kes1ya8vg=="
+    },
+    {
+      "path": "node_modules/@xmldom/xmldom",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "@xmldom/xmldom",
+      "version": "0.9.12",
+      "packageJsonSha256": "b61c2dd342e0e1abb800302ec62c0b06ae7a07cd9b907c88428ff80100f64c6a",
+      "integrity": "sha512-5AXjrcMClTryPe9LgZrygpB1lj7s0S9E0+W+AHaVKAVyHanafK86iPSvG5xHVSp/jC+VH1UXu0TAEmY279xH7A=="
+    },
+    {
+      "path": "node_modules/ansi-regex",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "ansi-regex",
+      "version": "5.0.1",
+      "packageJsonSha256": "8b2dc166f2b74d5098bad38bdd3dd2f4d4775c626199872f5e36dbb48c40931d",
+      "integrity": "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ=="
+    },
+    {
+      "path": "node_modules/ansi-styles",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "ansi-styles",
+      "version": "4.3.0",
+      "packageJsonSha256": "d405f010681d53f77691015e98461f8484b2afe6a9edfdd2ddb27b1e8a8e883d",
+      "integrity": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg=="
+    },
+    {
+      "path": "node_modules/aria-hidden",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "aria-hidden",
+      "version": "1.2.6",
+      "packageJsonSha256": "46d066afef535db19d7ba05d8e38ac50662b17a515845deb3ca70613f9623933",
+      "integrity": "sha512-ik3ZgC9dY/lYVVM++OISsaYDeg1tb0VtP5uL3ouh1koGOaUMDPpbFIei4JkFimWUFPn90sbMNMXQAIVOlnYKJA=="
+    },
+    {
+      "path": "node_modules/astral-regex",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "astral-regex",
+      "version": "2.0.0",
+      "packageJsonSha256": "de7b6f37998064125df71291045a95b97f7371f04fba6cce336302bb6fbf01aa",
+      "integrity": "sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ=="
+    },
+    {
+      "path": "node_modules/at-least-node",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "at-least-node",
+      "version": "1.0.0",
+      "packageJsonSha256": "cf26ac7a79b89eed8c70f7ee8b5195ed925f535b7c52577b9034702e7117fbc5",
+      "integrity": "sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg=="
+    },
+    {
+      "path": "node_modules/balanced-match",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "balanced-match",
+      "version": "4.0.4",
+      "packageJsonSha256": "c984e6ae5c41fac085a07a732b665b22e0a26f28b61c692ba18ff458a8ecc95a",
+      "integrity": "sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA=="
+    },
+    {
+      "path": "node_modules/base64-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "base64-js",
+      "version": "1.5.1",
+      "packageJsonSha256": "9758f3ab8c45e07bb9a368e32f9a8b3729623bbf47cbbb205b32d674ab2a91f0",
+      "integrity": "sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA=="
+    },
+    {
+      "path": "node_modules/big-integer",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "big-integer",
+      "version": "1.6.52",
+      "packageJsonSha256": "720c9966ac00b6e579aed1c8927f9d9a98dcd4a0cf738276e83899e023595266",
+      "integrity": "sha512-QxD8cf2eVqJOOz63z6JIN9BzvVs/dlySa5HGSBH5xtR8dPteIRQnBxxKqkNTiT6jbDTF6jAfrd4oMcND9RGbQg=="
+    },
+    {
+      "path": "node_modules/bplist-creator",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "bplist-creator",
+      "version": "0.1.0",
+      "packageJsonSha256": "2c4936c25b5122b6cdd5794a4162abe14210e62a6a840b0154577a70a1a2c4df",
+      "integrity": "sha512-sXaHZicyEEmY86WyueLTQesbeoH/mquvarJaQNbjuOQO+7gbFcDEWqKmcWA4cOTLzFlfgvkiVxolk1k5bBIpmg=="
+    },
+    {
+      "path": "node_modules/bplist-parser",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "bplist-parser",
+      "version": "0.3.2",
+      "packageJsonSha256": "8083920e5e7c37fb58d849681f4dcd1effb40c27af4d84865b2800c2fd481388",
+      "integrity": "sha512-apC2+fspHGI3mMKj+dGevkGo/tCqVB8jMb6i+OX+E29p0Iposz07fABkRIfVUPNd5A5VbuOz1bZbnmkKLYF+wQ=="
+    },
+    {
+      "path": "node_modules/brace-expansion",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "brace-expansion",
+      "version": "5.0.12",
+      "packageJsonSha256": "8af7dc0916002266f3b01459ef691d9f834d8ecdb0e021263280a50b913d85fa",
+      "integrity": "sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ=="
+    },
+    {
+      "path": "node_modules/buffer-crc32",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "buffer-crc32",
+      "version": "0.2.13",
+      "packageJsonSha256": "f94d0f0c1be8f8714670c5fee03899bdb6485d430236d81726e24012a3696e6e",
+      "integrity": "sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ=="
+    },
+    {
+      "path": "node_modules/chownr",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "chownr",
+      "version": "3.0.0",
+      "packageJsonSha256": "4300e90fdd91ec7035047473c60f880251a9801bd786302729d4277751d3b948",
+      "integrity": "sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g=="
+    },
+    {
+      "path": "node_modules/color-convert",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "color-convert",
+      "version": "2.0.1",
+      "packageJsonSha256": "9471d21744ca3137410448da6b3bd7b30ee91d42edce3b82ebcbf84faef74fb4",
+      "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ=="
+    },
+    {
+      "path": "node_modules/color-name",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "color-name",
+      "version": "1.1.4",
+      "packageJsonSha256": "4a557ea373907e4643badb89ff21b3f4b969d20631086d78eab2e03d05c2efa4",
+      "integrity": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA=="
+    },
+    {
+      "path": "node_modules/commander",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "commander",
+      "version": "12.1.0",
+      "packageJsonSha256": "4ee3239971f47b1be752b2a9510184a5ece7c2d888890772b6ab69443ce089de",
+      "integrity": "sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA=="
+    },
+    {
+      "path": "node_modules/cross-spawn",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "packageJsonSha256": "2e106cd9b4ae4e34ead35218371a0d4e172da72515a4f8f97d69a2e1fe3dee82",
+      "integrity": "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="
+    },
+    {
+      "path": "node_modules/csstype",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "csstype",
+      "version": "3.2.3",
+      "packageJsonSha256": "c818b74a9bc1556488b7ec2a65399224738f6619228f9a6491c5c02ca91f849e",
+      "integrity": "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ=="
+    },
+    {
+      "path": "node_modules/debug",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "debug",
+      "version": "4.4.3",
+      "packageJsonSha256": "ea8e33d63fe5f3a4c36609b6c3df8e2ef1f8b8ba2fc3a2e1e53cb27291f384af",
+      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA=="
+    },
+    {
+      "path": "node_modules/define-lazy-prop",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "define-lazy-prop",
+      "version": "2.0.0",
+      "packageJsonSha256": "876e0632db9e33098103edc0123a325dc51ce38cbb643a72c52a900966375c52",
+      "integrity": "sha512-Ds09qNh8yw3khSjiJjiUInaGX9xlqZDY7JVryGxdxV7NPeuqQfplOpQ66yJFZut3jLa5zOwkXw1g9EI2uKh4Og=="
+    },
+    {
+      "path": "node_modules/detect-libc",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "detect-libc",
+      "version": "2.1.2",
+      "packageJsonSha256": "ee88e5b954fdf3a8480b1d01ef767d68d8ca2c6da269f58c5cf1c5550e9aa2a7",
+      "integrity": "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ=="
+    },
+    {
+      "path": "node_modules/detect-node-es",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "detect-node-es",
+      "version": "1.1.0",
+      "packageJsonSha256": "06f9cfd73b6c401019dfa5cbdf4b4a5b346b1b15c4fca2d6f3ecc1a830528b06",
+      "integrity": "sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ=="
+    },
+    {
+      "path": "node_modules/elementtree",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "elementtree",
+      "version": "0.1.7",
+      "packageJsonSha256": "22b3a3391377e93d1454372aeb4e4fc6711a3bfc4e11025a18f80090d833a22c",
+      "integrity": "sha512-wkgGT6kugeQk/P6VZ/f4T+4HB41BVgNBq5CDIZVbQ02nvTVqAiVTbskxxu3eA/X96lMlfYOwnLQpN2v5E1zDEg=="
+    },
+    {
+      "path": "node_modules/emoji-regex",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "emoji-regex",
+      "version": "8.0.0",
+      "packageJsonSha256": "7bec29b9ca68f2c4becc60e866c2f9342ecdc89fab39841a818ccd9eda15c148",
+      "integrity": "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="
+    },
+    {
+      "path": "node_modules/env-paths",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "env-paths",
+      "version": "2.2.1",
+      "packageJsonSha256": "b92833e5851ec53bd4cd8093f6099d0c6e6818c4374ec1d09aa25d4f9ba91ec4",
+      "integrity": "sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A=="
+    },
+    {
+      "path": "node_modules/fd-slicer",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "fd-slicer",
+      "version": "1.1.0",
+      "packageJsonSha256": "c765386ed427fcadd9ffd7ae1c7748d7127685098fdb85cde3d98df7e931ed2d",
+      "integrity": "sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g=="
+    },
+    {
+      "path": "node_modules/fdir",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "fdir",
+      "version": "6.5.0",
+      "packageJsonSha256": "aca49395d61ef383a09f74555c66ed45817ca2b5724e710a4dc9e0471b83d8f5",
+      "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg=="
+    },
+    {
+      "path": "node_modules/framer-motion",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "framer-motion",
+      "version": "12.42.2",
+      "packageJsonSha256": "7b9b3cea450e595cb694e65a3dbb11527bfa75349294326bb4b33ec3c4eb78b0",
+      "integrity": "sha512-5XY9luDiu0oHfHBjpDthFMh0ES+122w6p/papSJBweMkO8Sn+PW2QaEgRblQBpWFnuvZS5qvarpt/hO2pjGmnw=="
+    },
+    {
+      "path": "node_modules/fs-extra",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "fs-extra",
+      "version": "11.4.1",
+      "packageJsonSha256": "055187bd80bb237e437a1e9aac19ea36a59e768a939f73516df9ba1e1d67baff",
+      "integrity": "sha512-KYAb4c9BJQI6QqGKthV68OHe0badztdXJWKo0WtBA9IuCFPTKvE5ZdUBglP833aMjhaSPNO4A5j/EkzZtGlKjA=="
+    },
+    {
+      "path": "node_modules/fsevents",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "2.3.2",
+      "os": [
+        "darwin"
+      ],
+      "cpu": null,
+      "integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+    },
+    {
+      "path": "node_modules/get-nonce",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "get-nonce",
+      "version": "1.0.1",
+      "packageJsonSha256": "cd0262ed52e44beb166ba0ed31081587074d48602bd057d1d438103ec169ef8b",
+      "integrity": "sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q=="
+    },
+    {
+      "path": "node_modules/glob",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "glob",
+      "version": "13.0.6",
+      "packageJsonSha256": "5a28ef9a1f5252feb47ffe288a6350fe99b18311462e6a9cdacbdd0bb4be6be9",
+      "integrity": "sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw=="
+    },
+    {
+      "path": "node_modules/graceful-fs",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "graceful-fs",
+      "version": "4.2.11",
+      "packageJsonSha256": "5747d4ba6b17165c6ecac30ab3a331715f41c7ad546e1f1574dab1bdcb116181",
+      "integrity": "sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ=="
+    },
+    {
+      "path": "node_modules/iceberg-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "iceberg-js",
+      "version": "0.8.1",
+      "packageJsonSha256": "0976ea84c41c49a5d853da05066c343ac735329301cf9c9c81c01848e0988c35",
+      "integrity": "sha512-1dhVQZXhcHje7798IVM+xoo/1ZdVfzOMIc8/rgVSijRK38EDqOJoGula9N/8ZI5RD8QTxNQtK/Gozpr+qUqRRA=="
+    },
+    {
+      "path": "node_modules/inherits",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "inherits",
+      "version": "2.0.4",
+      "packageJsonSha256": "be645800bc94fd8de29c8ae91690549b316cc437100108aeea7b2f347693cc80",
+      "integrity": "sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ=="
+    },
+    {
+      "path": "node_modules/ini",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "ini",
+      "version": "4.1.3",
+      "packageJsonSha256": "2ee5266dba2338e901f29fd7069930441c4d59721ee6f6dee6e2fc03c9da9a27",
+      "integrity": "sha512-X7rqawQBvfdjS10YU1y1YVreA3SsLrW9dX2CewP2EbBJM4ypVNLDkO5y04gejPwKIY9lR+7r9gn3rFPt/kmWFg=="
+    },
+    {
+      "path": "node_modules/is-docker",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "is-docker",
+      "version": "2.2.1",
+      "packageJsonSha256": "3c3ab0ac757c5ea751b47f0ee860b311860ae1e6921fecb3c62d07640a52441a",
+      "integrity": "sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ=="
+    },
+    {
+      "path": "node_modules/is-fullwidth-code-point",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "is-fullwidth-code-point",
+      "version": "3.0.0",
+      "packageJsonSha256": "5b48496ca129073ed44a677b777ea3b91366c8bc228bc75fe858749a78ac1a32",
+      "integrity": "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg=="
+    },
+    {
+      "path": "node_modules/is-wsl",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "is-wsl",
+      "version": "2.2.0",
+      "packageJsonSha256": "b23cae273d6cf809eaaca3c3197ff7ebddf3374e0f5db1bce75c93cdf1ce989f",
+      "integrity": "sha512-fKzAra0rGJUUBwGBgNkHZuToZcn+TtXHpeCgmkMJMMYx1sQDYaCSyjJBSCa2nH1DGm7s3n1oBnohoVTBaN7Lww=="
+    },
+    {
+      "path": "node_modules/isexe",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "isexe",
+      "version": "2.0.0",
+      "packageJsonSha256": "395c2af9abeeaafe7391974c1eacfb2a2bdeef187f21c3f5582c49e0368e59bf",
+      "integrity": "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw=="
+    },
+    {
+      "path": "node_modules/jsonfile",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "jsonfile",
+      "version": "6.2.1",
+      "packageJsonSha256": "df710d3401289ba32728b5459ac334bf99b18259900ca22b2401f48d92892613",
+      "integrity": "sha512-zwOTdL3rFQ/lRdBnntKVOX6k5cKJwEc1HdilT71BWEu7J41gXIB2MRp+vxduPSwZJPWBxEzv4yH1wYLJGUHX4Q=="
+    },
+    {
+      "path": "node_modules/kleur",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "kleur",
+      "version": "4.1.5",
+      "packageJsonSha256": "cc1c864fe6dc0eabc980a74b4af4fee8b8491319de2d48a34cb6f4959dad9ef0",
+      "integrity": "sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ=="
+    },
+    {
+      "path": "node_modules/lightningcss",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "lightningcss",
+      "version": "1.33.0",
+      "packageJsonSha256": "b26fa1b188f90ec672206326e9a1de793f0403a263be9c3797c2e2d56aa48b3c",
+      "integrity": "sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA=="
+    },
+    {
+      "path": "node_modules/lightningcss-android-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "android"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-gEpRTalKdosp4Bb8qWtc2iOgE5SeIHlpS1up9bFq2wAyYhl1UdTObYiHe98zEM9SQvSoqQZ1IQD0JNpg3Ml5pg=="
+    },
+    {
+      "path": "node_modules/lightningcss-darwin-arm64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-Sciaz8eenNTKn9b3t7+xr0ipTp9YxKQY4npwQ3mrRuL0BAVHBLyZxofhaKBAVtzmtRZ/zTyo0/to4B1uWG/Djg=="
+    },
+    {
+      "path": "node_modules/lightningcss-darwin-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "darwin"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-Z5UPAxzrjlWNNyGy6i65cJzzvgJ5D3T6wMvs+gWpY9d7qRhANrxqAp6LhxIgZhWEw18RfJTGcRxjuLIBr+m8XQ=="
+    },
+    {
+      "path": "node_modules/lightningcss-freebsd-x64",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "freebsd"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-QQM/Ti/hQajJwCY+RiWuCZ9sdtI/XQk7nDK5vC8kkdwixezOlDgvDx7+RT+QjK6FcFT4MpsuoBnHIo/O3StRRg=="
+    },
+    {
+      "path": "node_modules/lightningcss-linux-arm-gnueabihf",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm"
+      ],
+      "integrity": "sha512-N7FVBe6iS24MlM6R/4RBTxGhQheZGs7tiQ9U32UtF75NzP5Q7xWPRqLBCKxlRQRk3rY1jCIPLzx7WzOhuUIRLQ=="
+    },
+    {
+      "path": "node_modules/lightningcss-linux-arm64-gnu",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-j2v/itmy4HlNxlc6voKXYgBqNi0Ng2LShg4z7GufpEgs05P+2suBVyi9I6YHq5uoVFx9ETin3eCEhLVyXGQnKg=="
+    },
+    {
+      "path": "node_modules/lightningcss-linux-arm64-musl",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-yiO5ROMuYQgXbC60yjZU5CYSFZGKXL0HFATXt9mHJn1+zW55oCtMI9NfcVhYLMFDL7gV7oBPon/EmMMGg2OvtQ=="
+    },
+    {
+      "path": "node_modules/lightningcss-linux-x64-gnu",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-ar+Ju7LmcN0Jo4FpL4hpFybwNG9/3A/Br5KW2n2jyODg3MEZXaDYADdemoNS+BDNfMgKvylJLj4S5tyRActuAg=="
+    },
+    {
+      "path": "node_modules/lightningcss-linux-x64-musl",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "linux"
+      ],
+      "cpu": [
+        "x64"
+      ],
+      "integrity": "sha512-RYiYbkokw0trfKqqzfF55lginwEPrD3OJDfTuJzFs1MK6iFnDenaz1fqLLtX4ITG3OktJQXOeTaw1awrBAlZPw=="
+    },
+    {
+      "path": "node_modules/lightningcss-win32-arm64-msvc",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "1.33.0",
+      "os": [
+        "win32"
+      ],
+      "cpu": [
+        "arm64"
+      ],
+      "integrity": "sha512-1K+MPfLSFVpphzpdbfkhlWk6wBrTObBzS2T6db10PNOZgR9GoVsAWzwNyuhUYYbTp23j+4RrncfujZ4uAzXvwA=="
+    },
+    {
+      "path": "node_modules/lightningcss-win32-x64-msvc",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "lightningcss-win32-x64-msvc",
+      "version": "1.33.0",
+      "packageJsonSha256": "b5ebddf44be90f0f82899482f512de5c2937fee0892dd001041cd17b35bc7699",
+      "integrity": "sha512-OlEICDx/Xl0FqSp4bry8zFnCvGpig3Gl4gCquvYwHuqJKEC1+n9NgDniFvqHGmMv1ZkqDJrDqKKSykTDX+ehuA=="
+    },
+    {
+      "path": "node_modules/lru-cache",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "lru-cache",
+      "version": "11.5.3",
+      "packageJsonSha256": "c085d38560434a8915fd1817cd17cee316118078b07f40302b32ef4d8bc760f4",
+      "integrity": "sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg=="
+    },
+    {
+      "path": "node_modules/minimatch",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "minimatch",
+      "version": "10.2.6",
+      "packageJsonSha256": "bb847ba240909c9a36d4eaeb4e0efdc3e31182aeef208c1611259a48f282ea75",
+      "integrity": "sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A=="
+    },
+    {
+      "path": "node_modules/minipass",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "minipass",
+      "version": "7.1.3",
+      "packageJsonSha256": "b8ab116187d5e9375d494f17437eb862cbee4b329c21f15412c6a5170ec2f55c",
+      "integrity": "sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A=="
+    },
+    {
+      "path": "node_modules/minizlib",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "minizlib",
+      "version": "3.1.0",
+      "packageJsonSha256": "3e3b206f94f3bd444f18fed847d8caeacb84925c628ae3d87805bc1dd6c4c470",
+      "integrity": "sha512-KZxYo1BUkWD2TVFLr0MQoM8vUUigWD3LlD83a/75BqC+4qE0Hb1Vo5v1FgcfaNXvfXzr+5EhQ6ing/CaBijTlw=="
+    },
+    {
+      "path": "node_modules/motion",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "motion",
+      "version": "12.42.2",
+      "packageJsonSha256": "ccf3ba15ff32dec43a6906d4f8f7bb22c7f6b891e62bf5eae4c332fbb3853a58",
+      "integrity": "sha512-Atvv11yUKIid41cVrRBDVX5m8tF8kNpExRSlbpt6APClhDjtwQssgFHhQzejxw7/7YYbjHSPKBVbHo05BuJT5Q=="
+    },
+    {
+      "path": "node_modules/motion-dom",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "motion-dom",
+      "version": "12.42.2",
+      "packageJsonSha256": "0f1c84f4600ee5bdd9f9c6cd8f728d561ade1394b4926cf09dc83cb17bfcdea0",
+      "integrity": "sha512-5gIMWLp/PycBtJRJWRgjxke5n8dlvkSn2DrYW+tr3XcqAZY1xZh6BJyooJXCM8wdfM7wfMjkBJNLge1CKPUIRA=="
+    },
+    {
+      "path": "node_modules/motion-utils",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "motion-utils",
+      "version": "12.39.0",
+      "packageJsonSha256": "5ca73f94536ed2f8c5361391923bdd791cc8aba861815f394a0b9f67ce930ef2",
+      "integrity": "sha512-8nadJAJjTtqRkmRF36FoJTrywK9nnFmnPwnSMyxaOCU7GDjN9RTMJIxx9De8ErM+vpPhMccr/6fo5WciyQLnMQ=="
+    },
+    {
+      "path": "node_modules/ms",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "ms",
+      "version": "2.1.3",
+      "packageJsonSha256": "1a6b4d9739790c0b94ab96c8cc0507e281c164c311ff4fbf5e57fb8d26290b40",
+      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
+    },
+    {
+      "path": "node_modules/nanoid",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "nanoid",
+      "version": "3.3.19",
+      "packageJsonSha256": "9085b3737c98a71e5cca3fe9f6469a974534a6a9afa384cebabf2c0a6e5f6fae",
+      "integrity": "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug=="
+    },
+    {
+      "path": "node_modules/native-run",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "native-run",
+      "version": "2.0.3",
+      "packageJsonSha256": "ba52e71aed5a251625d351a6bfdf69d7f810d962e3bff9d2a154ac69c4643a62",
+      "integrity": "sha512-U1PllBuzW5d1gfan+88L+Hky2eZx+9gv3Pf6rNBxKbORxi7boHzqiA6QFGSnqMem4j0A9tZ08NMIs5+0m/VS1Q=="
+    },
+    {
+      "path": "node_modules/open",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "open",
+      "version": "8.4.2",
+      "packageJsonSha256": "4e00d6ce130010aef59b5dc6cc81aa5b0bb45b559277561bab92be4fa92a66f8",
+      "integrity": "sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ=="
+    },
+    {
+      "path": "node_modules/package-json-from-dist",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "package-json-from-dist",
+      "version": "1.0.1",
+      "packageJsonSha256": "38fdaf168bc63a6422a7dbe7e41a7b52b02326edef8b14019e0333ef60b37b47",
+      "integrity": "sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw=="
+    },
+    {
+      "path": "node_modules/path-key",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "path-key",
+      "version": "3.1.1",
+      "packageJsonSha256": "25594dab72681c910d9cc919263a4daf27d77a75e0d2c26a4d958d6d6b798f86",
+      "integrity": "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="
+    },
+    {
+      "path": "node_modules/path-scurry",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "path-scurry",
+      "version": "2.0.2",
+      "packageJsonSha256": "fb54fe908dbe5f288bd1c5d7429f033c4f527f435c3d3a583ee0ce9e78992087",
+      "integrity": "sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg=="
+    },
+    {
+      "path": "node_modules/pend",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "pend",
+      "version": "1.2.0",
+      "packageJsonSha256": "1e4f01d39cc13c261f7ab81d0509d36bd98d8eceaf9ed75f2ab274286f3c3920",
+      "integrity": "sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg=="
+    },
+    {
+      "path": "node_modules/picocolors",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "picocolors",
+      "version": "1.1.1",
+      "packageJsonSha256": "ef2ac226c4811d312e12c64214c453878653e834482125ae475f27cea60de737",
+      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
+    },
+    {
+      "path": "node_modules/picomatch",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "picomatch",
+      "version": "4.0.7",
+      "packageJsonSha256": "479b70b87aa7b44344d62c8a459ae7e53dd2bca6c61f1396bd55e63e9de73fc6",
+      "integrity": "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA=="
+    },
+    {
+      "path": "node_modules/playwright",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "playwright",
+      "version": "1.61.1",
+      "packageJsonSha256": "6b840268612656f0639fb7d68782e8353bdf11518589d30ddf66f283c2670ed5",
+      "integrity": "sha512-DWnY5o3YbLWK4GovuAVwpqL+1VwGNdUGrRr++8j8PtQQzvAVZUIMjKQ90fY689sEJZJBbZVw1rXaOKSTitkzPQ=="
+    },
+    {
+      "path": "node_modules/playwright-core",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "playwright-core",
+      "version": "1.61.1",
+      "packageJsonSha256": "759e376f995bf39edd4810d699b99469bab1d7428b6fbc78d41912f367df7ba9",
+      "integrity": "sha512-h7Qlt6m4REp25qvIdvbDtVmD4LqVXfpRxhORv9L0jzETM05p4fuPJ3dKyuSXQxDSbXnmS79HAgi9589lGSpLkg=="
+    },
+    {
+      "path": "node_modules/plist",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "plist",
+      "version": "3.1.1",
+      "packageJsonSha256": "6a07914d8275bc531d255902c5f8d63d07979c3b3cfbbc92bec90444365871c3",
+      "integrity": "sha512-ZIfcLJC+7E7FBFnDxm9MPmt7D+DidyQ26lewieO75AdhA2ayMtsJSES0iWzqJQbcVRSrTufQoy0DR94xHue0oA=="
+    },
+    {
+      "path": "node_modules/postcss",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "postcss",
+      "version": "8.5.28",
+      "packageJsonSha256": "f5c32824e407aadf9d306cb36370330109f017a7590e4f10c4fe0ff61831e436",
+      "integrity": "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A=="
+    },
+    {
+      "path": "node_modules/prompts",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "prompts",
+      "version": "2.4.2",
+      "packageJsonSha256": "b202c7dc77601bd31d38f3e999baf2e74a863041cd635b8860ddf0f657acf53b",
+      "integrity": "sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q=="
+    },
+    {
+      "path": "node_modules/prompts/node_modules/kleur",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "kleur",
+      "version": "3.0.3",
+      "packageJsonSha256": "5c7939426d07a99f10f9c8786d5db4d8bcdaf2098cf8a1a9dbb20e69cd4940e8",
+      "integrity": "sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w=="
+    },
+    {
+      "path": "node_modules/react",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "react",
+      "version": "19.2.7",
+      "packageJsonSha256": "51966ae9c8c377ff592b5d69c980966992101bc6791bf83a1e5c7ad9bcefa7f4",
+      "integrity": "sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ=="
+    },
+    {
+      "path": "node_modules/react-dom",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "react-dom",
+      "version": "19.2.7",
+      "packageJsonSha256": "447acd72cdb6a966d9db967729e286e7cbb4a09ea61fddd45e12c2a97fd4cfb6",
+      "integrity": "sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ=="
+    },
+    {
+      "path": "node_modules/react-remove-scroll",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "react-remove-scroll",
+      "version": "2.7.2",
+      "packageJsonSha256": "35db8a2ffa5161d98795cff1b1f56dc775c94fea5f80eda128f083db59b40ab2",
+      "integrity": "sha512-Iqb9NjCCTt6Hf+vOdNIZGdTiH1QSqr27H/Ek9sv/a97gfueI/5h1s3yRi1nngzMUaOOToin5dI1dXKdXiF+u0Q=="
+    },
+    {
+      "path": "node_modules/react-remove-scroll-bar",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "react-remove-scroll-bar",
+      "version": "2.3.8",
+      "packageJsonSha256": "e372f857ce05f266137c65293436b5380fec42ac311e6acb9378ed78b98d75d0",
+      "integrity": "sha512-9r+yi9+mgU33AKcj6IbT9oRCO78WriSj6t/cF8DWBZJ9aOGPOTEDvdUDz1FwKim7QXWwmHqtdHnRJfhAxEG46Q=="
+    },
+    {
+      "path": "node_modules/react-style-singleton",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "react-style-singleton",
+      "version": "2.2.3",
+      "packageJsonSha256": "c6d832faf8d9d54cd854d47f23b5b747928fe7554f548b093a7faaf239185d08",
+      "integrity": "sha512-b6jSvxvVnyptAiLjbkWLE/lOnR4lfTtDAl+eUC7RZy+QQWc6wRzIV2CE6xBuMmDxc2qIihtDCZD5NPOFl7fRBQ=="
+    },
+    {
+      "path": "node_modules/readable-stream",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "readable-stream",
+      "version": "3.6.2",
+      "packageJsonSha256": "469ea81f64037d1f179bcd46412217903a2924dd2e7d7d9b728659b6f12c3e69",
+      "integrity": "sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA=="
+    },
+    {
+      "path": "node_modules/rimraf",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "rimraf",
+      "version": "6.1.3",
+      "packageJsonSha256": "76521a33ba05c5a62f0f7f4900000e9827d9d7b0786a92a748f126ba33e4c806",
+      "integrity": "sha512-LKg+Cr2ZF61fkcaK1UdkH2yEBBKnYjTyWzTJT6KNPcSPaiT7HSdhtMXQuN5wkTX0Xu72KQ1l8S42rlmexS2hSA=="
+    },
+    {
+      "path": "node_modules/rolldown",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "rolldown",
+      "version": "1.2.12",
+      "packageJsonSha256": "6cbb247d5ff8ae3d45cba6af71ab424aa887835d917573ad1bb54ef6b2ff3b0f",
+      "integrity": "sha512-8wafseiaG80xmXSfqidUNqZcylTlhmPZZt+za2m+js2sFZ8dTNlhIOV2WcbIPx2hgwPBJpEUGFAMZ9bgBBLTSQ=="
+    },
+    {
+      "path": "node_modules/safe-buffer",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "safe-buffer",
+      "version": "5.2.1",
+      "packageJsonSha256": "e4018fdbfe625433371f48274fee26f520bbe865e0d8c85bf3aa07424134b90c",
+      "integrity": "sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ=="
+    },
+    {
+      "path": "node_modules/sax",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "sax",
+      "version": "1.1.4",
+      "packageJsonSha256": "3c9edae02c01f049695745a6834939aa989c130e1efb88840a31aa0e55f16b7f",
+      "integrity": "sha512-5f3k2PbGGp+YtKJjOItpg3P99IMD84E4HOvcfleTb5joCHNXYLsR9yWFPOYGgaeMPDubQILTCMdsFb2OMeOjtg=="
+    },
+    {
+      "path": "node_modules/scheduler",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "scheduler",
+      "version": "0.27.0",
+      "packageJsonSha256": "393bb96b7e481bf50189a1a02c7e0e7f4d01acba5abc6fbe7d214638624462fc",
+      "integrity": "sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q=="
+    },
+    {
+      "path": "node_modules/semver",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "semver",
+      "version": "7.8.5",
+      "packageJsonSha256": "7c94cb7f2a53c27b20d76386ec144c062894dbcc909cfabd0f728c37874b1776",
+      "integrity": "sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA=="
+    },
+    {
+      "path": "node_modules/shebang-command",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "packageJsonSha256": "44de390ae5ed6c5f9758b8b9c90b93fa53977d5361731600429f1de08f4b3f30",
+      "integrity": "sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA=="
+    },
+    {
+      "path": "node_modules/shebang-regex",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "packageJsonSha256": "b8018c6b8cc9900dfd1ac18a54956ba34c453fdc2da5e5fe555ee8f04133a1c5",
+      "integrity": "sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A=="
+    },
+    {
+      "path": "node_modules/signal-exit",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "signal-exit",
+      "version": "3.0.7",
+      "packageJsonSha256": "cec1bba4c97e0cf653c13c8c79f745aac2232131ee718c93c4236c1b9577a201",
+      "integrity": "sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ=="
+    },
+    {
+      "path": "node_modules/simple-plist",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "simple-plist",
+      "version": "1.3.1",
+      "packageJsonSha256": "fc1cf6ccc15bce79c1d76a4940c346fb080f253a680479e670de51246c2503b8",
+      "integrity": "sha512-iMSw5i0XseMnrhtIzRb7XpQEXepa9xhWxGUojHBL43SIpQuDQkh3Wpy67ZbDzZVr6EKxvwVChnVpdl8hEVLDiw=="
+    },
+    {
+      "path": "node_modules/simple-plist/node_modules/bplist-parser",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "bplist-parser",
+      "version": "0.3.1",
+      "packageJsonSha256": "5188760925e2b1fb943b7596b1023646d0a4ffef209dd0a90fe8b0cd98c24049",
+      "integrity": "sha512-PyJxiNtA5T2PlLIeBot4lbp7rj4OadzjnMZD/G5zuBNt8ei/yCU7+wW0h2bag9vr8c+/WuRWmSxbqAl9hL1rBA=="
+    },
+    {
+      "path": "node_modules/sisteransi",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "sisteransi",
+      "version": "1.0.5",
+      "packageJsonSha256": "4a17bc5c93db1b8f01d84708031339f3a22f39e60e1a92e089cde82f0bb48633",
+      "integrity": "sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg=="
+    },
+    {
+      "path": "node_modules/slice-ansi",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "slice-ansi",
+      "version": "4.0.0",
+      "packageJsonSha256": "8fee60d99666f7ae72760b9fef37539ff6ecd22a9104efc6c302e25f75b9d165",
+      "integrity": "sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ=="
+    },
+    {
+      "path": "node_modules/source-map-js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "source-map-js",
+      "version": "1.2.2",
+      "packageJsonSha256": "9f1ea63b1661d0f6e5fcd50b625d86cddd77de870a0019b23262360987b487f5",
+      "integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw=="
+    },
+    {
+      "path": "node_modules/split2",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "split2",
+      "version": "4.2.0",
+      "packageJsonSha256": "87b734c3087c8d9ed5d76d1bff00db30f960831ba8705dd18d73b180d08d2140",
+      "integrity": "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg=="
+    },
+    {
+      "path": "node_modules/stream-buffers",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "stream-buffers",
+      "version": "2.2.0",
+      "packageJsonSha256": "7f6be66ac31f7dc6351d5737aa3d1cf016209b737c1b36b763cf6d5f15d112df",
+      "integrity": "sha512-uyQK/mx5QjHun80FLJTfaWE7JtwfRMKBLkMne6udYOmvH0CawotVa7TfgYHzAnpphn4+TweIx1QKMnRIbipmUg=="
+    },
+    {
+      "path": "node_modules/string_decoder",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "string_decoder",
+      "version": "1.3.0",
+      "packageJsonSha256": "31984c85cd4f3df0aa75075acdec98c25961496897d1f46d04ed4a701f129c54",
+      "integrity": "sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA=="
+    },
+    {
+      "path": "node_modules/string-width",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "string-width",
+      "version": "4.2.3",
+      "packageJsonSha256": "6457a02418f004fe5d3fbbb19c7cbcc1450a8b887ff9a471dc6985ac83a48d36",
+      "integrity": "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g=="
+    },
+    {
+      "path": "node_modules/strip-ansi",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "strip-ansi",
+      "version": "6.0.1",
+      "packageJsonSha256": "0130850b9da0584f54cc20d3dab6365c807e9436ac78e016d5009efa99bd0530",
+      "integrity": "sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A=="
+    },
+    {
+      "path": "node_modules/tar",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "tar",
+      "version": "7.5.22",
+      "packageJsonSha256": "31b18f4fb83ba7183f54fa9e2cdca610897108c37ba80570c2c6fa7ccf112d97",
+      "integrity": "sha512-MFO/QzvtAOmJbkhOaCTvbGcFN9L9b+JunIsDwaKljSOdcLMea3NJ1k9Usz/rjdfSXTq4dfzfeS7W4p4YOAAHeA=="
+    },
+    {
+      "path": "node_modules/through2",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "through2",
+      "version": "4.0.2",
+      "packageJsonSha256": "ac3f4911840bce0c94126d3d77d46a5422eed47d871ddff8753e894f85e0c99f",
+      "integrity": "sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw=="
+    },
+    {
+      "path": "node_modules/tinyglobby",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "tinyglobby",
+      "version": "0.2.17",
+      "packageJsonSha256": "bd2b2af3c9ba0580f1acfb22c55d0b6d29abf683af5cac8a2efe82fa7c943f23",
+      "integrity": "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g=="
+    },
+    {
+      "path": "node_modules/tree-kill",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "tree-kill",
+      "version": "1.2.2",
+      "packageJsonSha256": "085e475aa81fe90a8e42d92c7348f259e370e0fc74b5d1982c6e80fc21c1f12d",
+      "integrity": "sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A=="
+    },
+    {
+      "path": "node_modules/tslib",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "tslib",
+      "version": "2.8.1",
+      "packageJsonSha256": "f02b4851df316f29bdfcd404aa1eb41e4e216b5859015f81fcd3e91caf8be931",
+      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
+    },
+    {
+      "path": "node_modules/typescript",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "typescript",
+      "version": "7.0.2",
+      "packageJsonSha256": "3722b30210616a13a3213ded11575ba6b2dbab10c32a5ef67afca8513e27017e",
+      "integrity": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="
+    },
+    {
+      "path": "node_modules/undici-types",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "undici-types",
+      "version": "8.9.0",
+      "packageJsonSha256": "7f3c1a0498b1b7f74402f76d2958bf5a35fc89403036188dc5f8ede1b4e0638b",
+      "integrity": "sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg=="
+    },
+    {
+      "path": "node_modules/universalify",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "universalify",
+      "version": "2.0.1",
+      "packageJsonSha256": "10e53f10939bb8a4a73af6e06829b670bbf9da66a36edcc644441852806b87ee",
+      "integrity": "sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw=="
+    },
+    {
+      "path": "node_modules/untildify",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "untildify",
+      "version": "4.0.0",
+      "packageJsonSha256": "1ff149c459356af00f4d61d0955f6ed319b4b87a7acc1af1085022f118e013a9",
+      "integrity": "sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw=="
+    },
+    {
+      "path": "node_modules/use-callback-ref",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "use-callback-ref",
+      "version": "1.3.3",
+      "packageJsonSha256": "1fb8f0b34573d1d4057710e559488dbfdff0436cd01d318e20bf66e4cd165318",
+      "integrity": "sha512-jQL3lRnocaFtu3V00JToYz/4QkNWswxijDaCVNZRiRTO3HQDLsdu1ZtmIUvV4yPp+rvWm5j0y0TG/S61cuijTg=="
+    },
+    {
+      "path": "node_modules/use-sidecar",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "use-sidecar",
+      "version": "1.1.3",
+      "packageJsonSha256": "a8703897c0caeb8ddfa35ef4b622bd7ebd677ea3fc6c97a0264574552e9404e1",
+      "integrity": "sha512-Fedw0aZvkhynoPYlA5WXrMCAMm+nSWdZt6lzJQ7Ok8S6Q+VsHmHpRWndVRJ8Be0ZbkfPc5LRYH+5XrzXcEeLRQ=="
+    },
+    {
+      "path": "node_modules/util-deprecate",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "util-deprecate",
+      "version": "1.0.2",
+      "packageJsonSha256": "7bba467f049074957e693fc06672848b040c38fa071b6eed8690f5fbe090a8b2",
+      "integrity": "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="
+    },
+    {
+      "path": "node_modules/uuid",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "uuid",
+      "version": "11.1.1",
+      "packageJsonSha256": "e5ebc4600db1bfcb5c00d8cc3430d869bdbe229c8d46b4bfac06ab2dfc180c39",
+      "integrity": "sha512-vIYxrBCC/N/K+Js3qSN88go7kIfNPssr/hHCesKCQNAjmgvYS2oqr69kIufEG+O4+PfezOH4EbIeHCfFov8ZgQ=="
+    },
+    {
+      "path": "node_modules/vite",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "vite",
+      "version": "8.3.1",
+      "packageJsonSha256": "fd3af4eaf4eecb2069f3e2715d6aaa2137d084a8a95097389523f52213c08094",
+      "integrity": "sha512-/bvH9E9tmCXRGp2uXY3WbOldqpTwFkbha/8ANaEQ6VkxhH60KyqLwgZq6lG2y+4uT55x9+9eUHMpQ7uGnOCKjA=="
+    },
+    {
+      "path": "node_modules/vite/node_modules/fsevents",
+      "status": "OPTIONAL_NOT_INSTALLED",
+      "version": "2.3.3",
+      "os": [
+        "darwin"
+      ],
+      "cpu": null,
+      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw=="
+    },
+    {
+      "path": "node_modules/which",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "which",
+      "version": "2.0.2",
+      "packageJsonSha256": "43010039ed5e89f7186960be682b3cb5cda5ab6cdfb06cbfd4f081cf0e7b4260",
+      "integrity": "sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA=="
+    },
+    {
+      "path": "node_modules/wrap-ansi",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "wrap-ansi",
+      "version": "7.0.0",
+      "packageJsonSha256": "0b0cf0bf62bd0cc71da2128e3269e63edd566feffdd501aa3692acd6db93c3c9",
+      "integrity": "sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q=="
+    },
+    {
+      "path": "node_modules/xcode",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "xcode",
+      "version": "3.0.1",
+      "packageJsonSha256": "08fbaddadb95a76b1ef0ae26f510f22aa1006465ce7a323ac9e8012e77de880b",
+      "integrity": "sha512-kCz5k7J7XbJtjABOvkc5lJmkiDh8VhjVCGNiqdKCscmVpdVUpEAyXv1xmCLkQJ5dsHqx3IPO4XW+NTDhU/fatA=="
+    },
+    {
+      "path": "node_modules/xml2js",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "xml2js",
+      "version": "0.6.2",
+      "packageJsonSha256": "1e52a9f8db5d8912672e190d8bf47e7a42826f5c76646a4f1ce303dbf30bbdc6",
+      "integrity": "sha512-T4rieHaC1EXcES0Kxxj4JWgaUQHDk+qwHcYOCFHfiwKz7tOVPLq7Hjq9dM1WCMhylqMEfP7hMcOIChvotiZegA=="
+    },
+    {
+      "path": "node_modules/xml2js/node_modules/xmlbuilder",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "xmlbuilder",
+      "version": "11.0.1",
+      "packageJsonSha256": "7e2f254e4004b5ea5f6ee351541afe893f8dfc66f8b527774c5a57860a8778d8",
+      "integrity": "sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA=="
+    },
+    {
+      "path": "node_modules/xmlbuilder",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "xmlbuilder",
+      "version": "15.1.1",
+      "packageJsonSha256": "8a34e6b05d7b47fc7105969b7600e8c39346f196c9abb898910b56ce359a8885",
+      "integrity": "sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg=="
+    },
+    {
+      "path": "node_modules/yallist",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "yallist",
+      "version": "5.0.0",
+      "packageJsonSha256": "1b9d47057ce39814531ff93f668823b4fa03e7d23945449c274a1ff6d4cc297f",
+      "integrity": "sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw=="
+    },
+    {
+      "path": "node_modules/yauzl",
+      "status": "INSTALLED_MATCH_LOCK",
+      "name": "yauzl",
+      "version": "2.10.0",
+      "packageJsonSha256": "9119ac0c70d33b16e3c69dbc5cdeab71eb513124a04d961f2c9e7402c9fec8eb",
+      "integrity": "sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g=="
+    }
+  ],
+  "toolPins": [
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\typescript\\bin\\tsc",
+      "sha256": "2219f428a7e55aaf1f7ad85b9b0f0cf5078aeb76ccc9a7c6036c92d48f492ffd",
+      "bytes": 44
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\typescript\\lib\\tsc.js",
+      "sha256": "cbdfbf11c26ed00dfc073155e316a42d6d6d8a387be61006b82fa9aa93ac572e",
+      "bytes": 609
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\vite\\bin\\vite.js",
+      "sha256": "de5833362e640673962f16e255bf8738d4380a68601b9af26217eee4e1bac36d",
+      "bytes": 2995
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\vite\\dist\\node\\cli.js",
+      "sha256": "74ad623b5e5a1fb012ff4caaf324733c19aa69cc79d95297232769598a065eec",
+      "bytes": 30099
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\@capacitor\\cli\\bin\\capacitor",
+      "sha256": "a8f55d22a109d7b125e4caaea7ca88843e4e28fbd1ccdf623bd02cd7362afad7",
+      "bytes": 523
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\@playwright\\test\\cli.js",
+      "sha256": "79e23e6a249176295b8490567daa7717448a75866d6ea6f6b296ff3d23305c69",
+      "bytes": 707
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\.package-lock.json",
+      "sha256": "c042319f11df631f3d5ac733eb07b54d054c604c8e102995d00116be80ec8ff4",
+      "bytes": 95822
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\@rolldown\\binding-win32-x64-msvc\\rolldown-binding.win32-x64-msvc.node",
+      "sha256": "f1c811c0c78a92be8bf81311407fa2d4f440c58371a125c75b50fd4d81a4aeec",
+      "bytes": 21176832
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\@typescript\\typescript-win32-x64\\lib\\tsc.exe",
+      "sha256": "f9ecfbdc93753d2c972d66a8d0d75f5bd737fd4a5f88b422d9091ea282bcb2c7",
+      "bytes": 24520544
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\lightningcss-win32-x64-msvc\\lightningcss.win32-x64-msvc.node",
+      "sha256": "d043df0f0675e7fffed4cf8b8c33e28639ec9f21d445c21e7fe4985e4a9b5a91",
+      "bytes": 9484800
+    },
+    {
+      "path": "C:\\Users\\Admin\\.codex\\worktrees\\pilot-web-android-20261021\\MCY\\node_modules\\typescript\\lib\\getExePath.js",
+      "sha256": "96c10fd3a18e165d7323de8e314ac8d755ad96811f9fbc304a5b3ba4e05285cc",
+      "bytes": 3051
+    }
+  ],
+  "limits": "Packageversion+manifest+criticaltoolpins and npmSHA512provisioning provenance, not exhaustivehashofeverydependencyfile or audit. No dependency/test/app code executed in this inventory.",
+  "supersedes": "v2manifestcomparisonunchanged; v3addsactualTypeScriptgetExePath/nativecompiler andinstalledEXE/NODEbinaryhashes as criticaltoolinputs"
+}
