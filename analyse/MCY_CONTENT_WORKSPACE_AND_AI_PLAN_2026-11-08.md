@@ -99,3 +99,7 @@ Ký hiệu cỡ việc: S nhỏ (vài giờ), M vừa (1–3 ngày làm việc),
 5. **Ưu tiên nội dung trước AI:** thứ tự 0 → 1 → 2 → 3 → 4, giai đoạn 5 (AI) làm sau; chỉ phần dữ liệu danh mục AI làm song song khi nội dung đã có bản duyệt.
 6. **Phát hành đợt 6** gồm các sửa trong mã đã cam kết cục bộ (083673d, d042132).
 7. Việc còn mở: bật Chó ba chân và nhờ chuyên gia xem hình; đồng ý AI có cần thêm “dữ liệu sức khỏe” (mục 3 cũ) chưa được trả lời.
+
+## 9. Quyết định bổ sung của Owner (2026-11-08, sau đợt 6)
+- **Chưa cần thêm đồng ý “dữ liệu sức khỏe” cho trợ lý AI.** Chỉ khi có tính năng kết nối thiết bị theo dõi sức khỏe (vòng đeo tay, đồng hồ thông minh) mới cần đồng ý riêng loại dữ liệu này. Mục 7.3 đóng lại; đồng ý AI hiện có giữ nguyên.
+- Yêu cầu: **triển khai giai đoạn tiếp theo (giai đoạn 1: nền nội dung có phiên bản)**. Phạm vi làm trong mã cục bộ và kiểm thử; áp migration, triển khai Edge và phát hành app vẫn cần yêu cầu riêng của Owner.

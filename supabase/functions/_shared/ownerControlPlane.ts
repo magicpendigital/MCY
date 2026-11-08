@@ -1,5 +1,6 @@
 import { aiSpendGateOpen } from "./aiGates.ts";
 import { handleContentReview } from "./contentReview.ts";
+import { handleContentWorkspace } from "./contentWorkspace.ts";
 
 export type OwnerControlPlaneClients = {
   user: {
@@ -84,6 +85,10 @@ export function createOwnerControlPlaneHandler(dependencies: OwnerControlPlaneDe
         return json(400, { error: "invalid_request" });
       }
       const payload = parsedPayload as Record<string, unknown>;
+
+      // Versioned content store: actors are verified inside the RPCs (Owner or an active teacher), so this runs before the review queue read.
+      const workspace = await handleContentWorkspace(payload, identity.user.id, server);
+      if (workspace) return json(workspace.status, workspace.body);
 
       const review = await handleContentReview(payload, identity.user.id, server);
       if (review) return json(review.status, review.body);
