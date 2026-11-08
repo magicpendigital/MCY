@@ -72,8 +72,10 @@ async function backend(page: Page) {
 const nav = (page:Page,name:string)=>page.locator('[data-testid="flow-fixed-footer"]').getByRole('button',{name,exact:true});
 async function account(page:Page,name='Device Fixture A') {
   await nav(page,'Cá nhân').click();
-  await expect(page.locator('.mcy-account-home h1').last()).toHaveText('Chào, '+name+'.');
-  await expect(page.getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeEnabled();
+  // Clicking Cá nhân again can leave the previous account page mounted for a moment on a slow runner: look at the newest one.
+  const home=page.locator('.mcy-account-home').last();
+  await expect(home.locator('h1')).toHaveText('Chào, '+name+'.');
+  await expect(home.getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeEnabled();
 }
 async function beginCheckin(page:Page) {
   await nav(page,'Hôm nay').click();
