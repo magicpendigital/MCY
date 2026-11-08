@@ -33,7 +33,7 @@ export type PracticeResult =
   | { status: "clarification"; contextRevision: string; question: "pace" | "guidance" }
   | { status: "no_match" | "safety_stop"; contextRevision: string };
 
-const REGION = /^(?:neck|upper_back|lower_back|(?:shoulder|upper_arm|elbow|forearm_wrist|hand|knee|foot)_(?:left|right|unspecified))$/;
+const REGION = /^(?:neck|upper_back|lower_back|(?:shoulder|upper_arm|elbow|forearm_wrist|hand|knee|foot|glute)_(?:left|right|unspecified))$/;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const object = (v: unknown): v is Record<string, unknown> => Boolean(v) && typeof v === "object" && !Array.isArray(v);
 export function isPracticeContext(v: unknown): v is PracticeContext {

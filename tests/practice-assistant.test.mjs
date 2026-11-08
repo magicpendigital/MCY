@@ -70,3 +70,11 @@ test("memory uses latest actual feedback, never absent/worse/uncertain/skipped/e
   for (const patch of [{ pace: "Vừa" }, { pace: null }, { outcome: null }, { outcome: "Khó chịu hơn" }, { outcome: "Chưa rõ" }, { feedbackSkipped: true }, { endedEarly: true }]) assert.equal(rememberedPace([valid, { ...valid, ...patch }], true), undefined);
   assert.equal(rememberedPace([valid], false), undefined); assert.equal(rememberedPace([], true), undefined);
 });
+
+test("the Mông (glute) check-in regions are valid in a practice context and in session eligibility", () => {
+  for (const code of ["glute_left", "glute_right", "glute_unspecified"]) {
+    assert.equal(isPracticeContext({ ...CONTEXT, regions: [code] }), true, code);
+    assert.equal(isReviewedSession({ ...SESSION, eligibility: { ...SESSION.eligibility, regionCodes: [code] } }, Date.parse("2026-10-10")), true, code);
+  }
+  assert.equal(isPracticeContext({ ...CONTEXT, regions: ["glute"] }), false, "an unsided code is not stored");
+});
