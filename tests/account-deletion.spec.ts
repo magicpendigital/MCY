@@ -32,6 +32,7 @@ async function backend(page: Page, deleteResponse: { status: number; json?: unkn
       deletes.push(request.postDataJSON());
       return route.fulfill(deleteResponse.json === undefined ? { status: deleteResponse.status, body: "" } : { status: deleteResponse.status, json: deleteResponse.json });
     }
+    if (pathname.endsWith("/content-published/manifest.json")) return route.fulfill({ status: 404, body: "" });
     unexpected.push(pathname);
     return route.fulfill({ status: 500, json: { message: "Unexpected fixture request" } });
   });

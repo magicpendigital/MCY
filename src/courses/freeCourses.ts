@@ -1,4 +1,5 @@
-export type FreeCourseId = "gentle" | "poses" | "sequences";
+// Ids of the bundled groups are gentle, poses and sequences; groups published from the content store use their own ids.
+export type FreeCourseId = string;
 
 export type CourseLesson = {
   id: string;
@@ -10,6 +11,8 @@ export type CourseLesson = {
   orientation: "portrait" | "landscape";
   channelCaptionsVerified: boolean;
   channelCaptionLanguages: string[];
+  /** Author label decided by the server at publish time (teacher name or the Editor's choice label); absent for bundled content. */
+  byline?: string | null;
 };
 
 /** Benefits and cautions shown under a course. `reviewed: false` means a draft that a qualified person has not approved yet; the screen says so. */

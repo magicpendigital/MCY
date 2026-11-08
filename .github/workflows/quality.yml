@@ -42,6 +42,7 @@ jobs:
       - run: npm run test:content-review
       - run: npm run test:reading-publication
       - run: npm run test:content-workspace
+      - run: npm run test:content-publication
       - run: npm run check:video-catalog
       - run: npm run test:owner-conflict-migration-contract
       - run: npm run test:teacher-control-plane

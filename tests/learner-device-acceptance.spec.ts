@@ -33,6 +33,7 @@ async function backend(page: Page) {
   await page.route('https://*.supabase.co/**',route=>{unexpected.push('forbidden-staging-host');return route.abort('blockedbyclient');});
   await page.route(origin+'/**',async route=>{
     const request=route.request(), pathname=new URL(request.url()).pathname;
+    if(pathname.endsWith('/content-published/manifest.json')) return route.fulfill({status:404,body:''});
     const authorization=request.headers().authorization;
     const actor=authorization==='Bearer fictional-device-a'?A:authorization==='Bearer fictional-device-b'?B:null;
     if(!actor){unexpected.push('missing-fictional-actor');return route.fulfill({status:401,json:{message:'Fixture actor required'}});}
@@ -65,6 +66,7 @@ async function backend(page: Page) {
     if(pathname.endsWith('/owner-control-plane')) return route.fulfill({status:403,json:{error:'content_review_access_required'}});
     if(pathname.endsWith('/teacher-collaboration')) return route.fulfill({status:404,json:{error:'collaboration_unavailable'}});
     if(pathname.endsWith('/mcy-ai-assistant')) return route.fulfill({json:{available:false,contractVersion:'reviewed-practice-1'}});
+    if (pathname.endsWith("/content-published/manifest.json")) return route.fulfill({ status: 404, body: "" });
     unexpected.push(pathname);return route.fulfill({status:500,json:{message:'Unexpected fixture request'}});
   });
   return {consent,rows,consentWrites,saves,reads,unexpected};

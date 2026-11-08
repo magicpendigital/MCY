@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { ArrowRightIcon, ChevronDownIcon, InfoCircledIcon } from "@radix-ui/react-icons";
 import { formatMessage, msg, type AppLocale } from "../i18n";
 import { MobileScroll } from "../mobile";
 import type { FreeCourse, FreeCourseId } from "./freeCourses";
+import { loadCatalog, type Catalog, type EditorsPick } from "./contentSnapshot";
 import { areasForRegions, findLessons, formatLessonDuration, LESSON_AREAS, LESSON_LENGTHS, type LessonArea, type LessonLength } from "./lessonFinder";
 import { clearLessonMemory, useLessonMemory, type LessonRef } from "./lessonMemory";
 import { readReadingManifest, type ManifestUnit } from "../library/readingLibraryApi";
@@ -18,21 +19,23 @@ type DiscoverScreenProps = {
   checkinRegions?: readonly string[];
 };
 
+const bundledDisplay: Catalog["display"] = { order: ["quick_find", "video_groups", "reading"], picks: [], showTeacherNames: true, aiImageLabel: true };
 function useFreeCourseCatalog() {
   const [courses, setCourses] = useState<FreeCourse[] | null>(null);
+  const [display, setDisplay] = useState<Catalog["display"]>(bundledDisplay);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let active = true;
     setFailed(false);
-    void import("./freeCourses").then(({ FREE_COURSES }) => {
-      if (active) setCourses(FREE_COURSES);
+    void loadCatalog().then(result => {
+      if (active) { setCourses(result.courses); setDisplay(result.display); }
     }).catch(() => {
       if (active) setFailed(true);
     });
     return () => { active = false; };
   }, [attempt]);
-  return { courses, failed, retry: () => setAttempt(value => value + 1) };
+  return { courses, display, failed, retry: () => setAttempt(value => value + 1) };
 }
 
 // Illustrated reading units a reviewer has switched on. Nothing shows until the public manifest lists at least one.
@@ -52,6 +55,16 @@ function ReadingEntry({ onOpen }: { onOpen: (entry: ManifestUnit | null) => void
     <div className="mcy-rl-list">
       {shown.map(entry => <button key={entry.id} type="button" className="mcy-rl-row" onClick={() => onOpen(entry)}><span><span className={`mcy-rl-badge ${entry.images === "none" ? "text" : "image"}`}>{entry.images === "none" ? "CHỈ CHỮ" : entry.images === "partial" ? "MỘT PHẦN CÓ HÌNH" : "CÓ HÌNH"}</span><strong>{entry.title}</strong><small>{entry.steps} bước</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
       {units.length > shown.length && <button type="button" className="mcy-rl-row" onClick={() => onOpen(null)}><span><strong>Xem tất cả {units.length} bài đọc</strong></span><ArrowRightIcon aria-hidden="true" /></button>}
+    </div>
+  </section>;
+}
+
+function EditorsChoice({ picks, onOpenCourse }: { picks: EditorsPick[]; onOpenCourse: DiscoverScreenProps["onOpenCourse"] }) {
+  return <section className="mcy-editors-choice" aria-labelledby="mcy-editors-heading" data-testid="editors-choice">
+    <Eyebrow>LỰA CHỌN CỦA BIÊN TẬP</Eyebrow>
+    <h2 id="mcy-editors-heading">Gợi ý từ biên tập</h2>
+    <div className="mcy-rl-list">
+      {picks.map(pick => <button key={`${pick.courseId}:${pick.lessonId ?? ""}`} type="button" className="mcy-rl-row" onClick={() => onOpenCourse(pick.courseId, pick.lessonId)}><span><strong>{pick.title}</strong><small>{pick.byline ?? pick.subtitle}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
     </div>
   </section>;
 }
@@ -108,7 +121,7 @@ function MyLessons({ courses, onOpenCourse }: { courses: FreeCourse[]; onOpenCou
 }
 
 export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, onOpenReading, checkinRegions }: DiscoverScreenProps) {
-  const { courses, failed, retry } = useFreeCourseCatalog();
+  const { courses, display, failed, retry } = useFreeCourseCatalog();
   const catalogMainRef = useRef<HTMLElement | null>(null);
   const [showCatalogScrollCue, setShowCatalogScrollCue] = useState(false);
   const lessonCount = courses?.reduce((total, course) => total + course.lessons.length, 0) ?? 0;
@@ -136,10 +149,13 @@ export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, onOp
     };
   }, [courses?.length, failed]);
 
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-page" ref={catalogMainRef}>
-    <Eyebrow>KHÁM PHÁ</Eyebrow><h1>Bài học yoga miễn phí</h1><p className="mcy-lead">Chọn một nhóm video từ kênh Một chút yoga. Mỗi bài được phát trong ứng dụng; bạn tự chọn thứ tự và nhịp tập phù hợp với mình.</p>
+  const blocks: Record<string, React.ReactNode> = {
+    editors_choice: display.picks.length > 0 ? <EditorsChoice picks={display.picks} onOpenCourse={onOpenCourse} /> : null,
+    quick_find: <>
     {courses && <MyLessons courses={courses} onOpenCourse={onOpenCourse} />}
     {courses && <LessonFinder courses={courses} onOpenCourse={onOpenCourse} checkinRegions={checkinRegions} />}
+    </>,
+    video_groups: <>
     <section className="mcy-course-section" aria-labelledby="free-course-heading">
       <div className="mcy-course-heading"><div><Eyebrow>{msg(locale, "discover.freeCourses")}</Eyebrow><h2 id="free-course-heading">Chọn một nhóm để bắt đầu</h2></div><span className="mcy-state-pill">{locale === "en-US" ? `${lessonCount} VIDEOS` : `${lessonCount} BÀI HỌC`}</span></div>
       <p className="mcy-course-lead">{msg(locale, "discover.freeCoursesLead")}</p>
@@ -151,7 +167,13 @@ export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, onOp
       {failed && <button className="mcy-quiet-link" onClick={retry}>{locale === "en-US" ? "Try again" : "Thử tải lại"}</button>}
       <InfoNote>{msg(locale, "discover.courseNote")}</InfoNote>
     </section>
-    {onOpenReading && <ReadingEntry onOpen={onOpenReading} />}
+    </>,
+    reading: <>{onOpenReading && <ReadingEntry onOpen={onOpenReading} />}</>,
+  };
+
+  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-page" ref={catalogMainRef}>
+    <Eyebrow>KHÁM PHÁ</Eyebrow><h1>Bài học yoga miễn phí</h1><p className="mcy-lead">Chọn một nhóm video từ kênh Một chút yoga. Mỗi bài được phát trong ứng dụng; bạn tự chọn thứ tự và nhịp tập phù hợp với mình.</p>
+    {display.order.map(id => <Fragment key={id}>{blocks[id]}</Fragment>)}
     <button className="mcy-account-row" onClick={onOpenGuide}><span><strong>Cách chọn bài học video</strong><small>Duyệt bài miễn phí và ghi lại cảm nhận</small></span><ArrowRightIcon /></button>
   </main></MobileScroll>;
 }

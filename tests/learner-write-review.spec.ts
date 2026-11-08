@@ -208,7 +208,7 @@ async function browserBackend(page: Page, handle: (route: Route, path: string) =
     // The Profile screen asks once whether this account has reading units to preview; a learner has none.
     if (path.endsWith('/owner-control-plane')) return route.fulfill({ status: 403, json: { error: 'content_review_access_required' } });
     if (path.endsWith('/teacher-collaboration')) return route.fulfill({ status: 404, json: { error: 'collaboration_unavailable' } });
-    if (path.endsWith('/reading-published/manifest.json')) return route.fulfill({ status: 404, body: '' });
+    if (path.endsWith('/reading-published/manifest.json') || path.endsWith('/content-published/manifest.json')) return route.fulfill({ status: 404, body: '' });
     throw Error('Unexpected synthetic browser request: ' + path);
   });
   return profileReads;

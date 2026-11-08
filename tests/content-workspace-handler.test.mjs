@@ -98,14 +98,14 @@ test('save_display validates the whole configuration before any call, including 
   for (const body of [{ action: 'save_display', config: config() }, { action: 'save_display', expectedVersion: 0, config: config() }, { action: 'save_display', expectedVersion: 1, config: config(), actorId: actor }]) { const h = harness(); assert.equal((await h.run(body)).status, 400); assert.equal(h.calls.length, 0); }
   const moved = { ...config(), discover_order: ['video_groups', 'editors_choice', 'quick_find', 'reading'] };
   const ok = harness(); const r = await ok.run({ action: 'save_display', expectedVersion: 2, config: moved });
-  assert.deepEqual([r.status, r.body.published, ok.calls[0].name, ok.calls[0].args.p_actor_id, ok.calls[0].args.p_expected_version], [200, false, 'mcy_display_save', actor, 2]);
+  assert.deepEqual([r.status, r.body.snapshotSynced, ok.calls[0].name, ok.calls[0].args.p_actor_id, ok.calls[0].args.p_expected_version], [200, undefined, 'mcy_display_save', actor, 2]);
 });
 test('set_visibility validates, sends the exact version and maps refusals to stable codes', async () => {
   for (const body of [{ action: 'set_visibility', itemId: 'Bad Id', seq: 1, visible: true }, { action: 'set_visibility', itemId: 'video-x', seq: 0, visible: true }, { action: 'set_visibility', itemId: 'video-x', seq: 1, visible: 'true' }, { action: 'set_visibility', itemId: 'video-x', seq: 1 }]) {
     const h = harness(); assert.deepEqual([(await h.run(body)).status, h.calls.length], [400, 0]);
   }
   const ok = harness(); const r = await ok.run({ action: 'set_visibility', itemId: 'video-x', seq: 2, visible: true });
-  assert.deepEqual([r.status, ok.calls[0].name, ok.calls[0].args.p_seq, ok.calls[0].args.p_visible, r.body.published], [200, 'mcy_content_set_visibility', 2, true, false]);
+  assert.deepEqual([r.status, ok.calls[0].name, ok.calls[0].args.p_seq, ok.calls[0].args.p_visible, r.body.snapshotSynced], [200, 'mcy_content_set_visibility', 2, true, undefined]);
   const cases = [[{ code: '22023', message: 'content_not_approved' }, 409, 'content_not_approved'], [{ code: '22023', message: 'editors_choice_not_shown' }, 409, 'editors_choice_not_shown'], [{ code: '22023', message: 'invalid_display_config' }, 400, 'invalid_display_config'],
     [{ code: 'PT409', message: 'display_conflict' }, 409, 'display_conflict'], [{ code: 'PT409', message: 'content_conflict' }, 409, 'content_conflict'], [{ code: '42501', message: 'self_review_not_allowed' }, 403, 'self_review_not_allowed'],
     [{ code: '42501', message: 'owner_access_required' }, 403, 'owner_access_required'], [{ code: 'XX000', message: 'Private detail' }, 503, 'content_result_uncertain']];

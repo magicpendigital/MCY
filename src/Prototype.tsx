@@ -1480,8 +1480,9 @@ function HomeQuickPicks() {
   const [picks, setPicks] = useState<{ courseId: FreeCourseId; lessonId: string; title: string; courseTitle: string; time: string }[] | null>(null);
   useEffect(() => {
     let active = true;
-    void Promise.all([import("./courses/freeCourses"), import("./courses/lessonFinder")]).then(([{ FREE_COURSES }, finder]) => {
-      if (active) setPicks(finder.shortestLessons(FREE_COURSES, 3).map(item => ({ courseId: item.courseId, lessonId: item.lesson.id, title: item.lesson.title, courseTitle: item.courseTitle, time: finder.formatLessonDuration(item.seconds) })));
+    void Promise.all([import("./courses/contentSnapshot"), import("./courses/lessonFinder")]).then(async ([snapshot, finder]) => {
+      const { courses } = await snapshot.loadCatalog();
+      if (active) setPicks(finder.shortestLessons(courses, 3).map(item => ({ courseId: item.courseId, lessonId: item.lesson.id, title: item.lesson.title, courseTitle: item.courseTitle, time: finder.formatLessonDuration(item.seconds) })));
     }).catch(() => { if (active) setPicks([]); });
     return () => { active = false; };
   }, []);

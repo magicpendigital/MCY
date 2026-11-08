@@ -9,6 +9,7 @@ import {
 import { formatMessage, msg, type AppLocale } from "../i18n";
 import { MobileScroll } from "../mobile";
 import type { FreeCourse, FreeCourseId } from "./freeCourses";
+import { loadCatalog } from "./contentSnapshot";
 import { LESSON_AREAS, LESSON_LENGTHS, lessonAreas, lessonLength } from "./lessonFinder";
 import { isLessonCompleted, isLessonOpened, isLessonSaved, recordLessonOpened, recordLessonProgress, toggleSavedLesson, useLessonMemory } from "./lessonMemory";
 import { trackPlayback } from "./youtubeProgress";
@@ -59,8 +60,8 @@ export default function CourseDetailScreen({
   useEffect(() => {
     let mounted = true;
     setFailed(false);
-    void import("./freeCourses").then(({ FREE_COURSES }) => {
-      if (mounted) setCourses(FREE_COURSES);
+    void loadCatalog().then(result => {
+      if (mounted) setCourses(result.courses);
     }).catch(() => {
       if (mounted) setFailed(true);
     });
@@ -154,6 +155,7 @@ export default function CourseDetailScreen({
             <span><PlayIcon />{locale === "en-US" ? "Play in app" : "Học ngay trong ứng dụng"}</span>
           </button>}
       </div>
+      {lesson.byline && <p className="mcy-course-byline" data-testid="lesson-byline">{lesson.byline}</p>}
       <div className="mcy-course-player-feedback">
         {isLessonPlayerOpen && playerStatus !== "idle" && <p className="mcy-course-player-status" data-testid="course-player-status" data-state={playerStatus} role={playerStatus === "timeout" ? "alert" : "status"}>{msg(locale, playerStatus === "loading" ? "course.playerLoading" : playerStatus === "frame-loaded" ? "course.playerFrameLoaded" : "course.playerLoadFailed")}</p>}
         {isLessonPlayerOpen && <div className="mcy-course-player-recovery">

@@ -97,6 +97,8 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
   const [importConfirm, setImportConfirm] = useState(false);
   const [visibilityRows, setVisibilityRows] = useState<{ item_id: string; seq: number; effective: boolean }[]>([]);
   const [visConfirm, setVisConfirm] = useState(false);
+  const [authorNote, setAuthorNote] = useState("");
+  const [notes, setNotes] = useState<{ seq: number; note: string; at: string }[]>([]);
   const [busy, setBusy] = useState(false);
   const [uncertain, setUncertain] = useState(false);
   const [error, setError] = useState("");
@@ -150,7 +152,11 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
     setDraft(null);
     const data = await run({ action: "read_content", itemId, ...(seq ? { seq } : {}) }, false);
     if (data && data.version) setVersion(data.version as Version);
-    setVisConfirm(false);
+    setVisConfirm(false); setAuthorNote(""); setNotes([]);
+    if (data && data.version && (data.version as Version).author_kind === "teacher") {
+      const n = await run({ action: "read_author_notes", itemId }, false);
+      if (n && Array.isArray(n.notes)) setNotes(n.notes as typeof notes);
+    }
     // The switch state lives in the display tables; an older backend without them simply shows no switch state.
     const display = await run({ action: "read_display" }, false);
     if (display && Array.isArray(display.visibility)) setVisibilityRows(display.visibility as typeof visibilityRows);
@@ -181,9 +187,13 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
   const saveReview = async (e: FormEvent) => {
     e.preventDefault();
     if (!version || uncertain) return;
+    // For a teacher's lesson that needs changes, the author is told why; the note is required.
+    const forTeacher = version.author_kind === "teacher";
+    if (forTeacher && decision === "changes_requested" && authorNote.trim().length < 1) { setError("Ghi chú gửi tác giả là bắt buộc khi yêu cầu sửa."); return; }
     const data = await run({ action: "review_content", itemId: version.item_id, seq: version.seq, expectedRevision: version.review.revision, decision, qualification, reviewBasis: basis, rightsBasis: rights, checklist: checks }, true);
     const receipt = data?.receipt as { revision?: number } | undefined;
     if (data && receipt && Number.isInteger(receipt.revision)) {
+      if (forTeacher && authorNote.trim()) await run({ action: "save_author_note", itemId: version.item_id, seq: version.seq, note: authorNote.trim() }, true);
       setNotice("Đã ghi kết quả duyệt và lịch sử. Duyệt chưa làm nội dung hiện lên app: bước tiếp theo là bật công tắc hiển thị khi có cấu hình hiển thị.");
       await loadList(); await open(version.item_id, undefined, true);
     }
@@ -222,7 +232,7 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
     {busy && <p role="status">Đang đối chiếu với máy chủ…</p>}
     {error && <p className="owner-error" role="alert">{error}</p>}
     {notice && <p className="owner-success" role="status">{notice}</p>}
-    {uncertain && <p className="owner-inline-warning" role="alert">Cần tải lại trước khi lưu tiếp. <button type="button" onClick={() => { setUncertain(false); setError(""); void loadList(); if (version) void open(version.item_id); }}>Tải lại</button></p>}
+    {uncertain && <p className="owner-inline-warning" role="alert">Cần tải lại trước khi lưu tiếp. <button type="button" onClick={() => { setUncertain(false); setError(""); void (async () => { await loadList(); if (version) await open(version.item_id); })(); }}>Tải lại</button></p>}
 
     {rows && <>
       <div className="owner-hub-stats" aria-label="Tổng quan">
@@ -288,6 +298,7 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
         </div>}
       </section>
 
+      {version.author_kind === "teacher" && notes.length > 0 && <section aria-label="Ghi chú đã gửi tác giả"><h4>Ghi chú đã gửi tác giả</h4><ul>{notes.map((n, i) => <li key={i}>Phiên bản {n.seq}: {n.note}</li>)}</ul></section>}
       <section className="owner-hub-visibility" aria-label="Hiển thị cho học viên"><h4>Hiển thị cho học viên</h4>
         {(() => {
           const row = visibilityRows.find(r => r.item_id === version.item_id && r.seq === version.seq);
@@ -308,6 +319,7 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
           <label className="owner-field">Cơ sở duyệt nội dung<textarea required minLength={10} maxLength={2000} value={basis} onChange={e => setBasis(e.target.value)} /></label>
           <label className="owner-field">Cơ sở bản quyền<textarea required minLength={10} maxLength={2000} value={rights} onChange={e => setRights(e.target.value)} /></label>
           <div className="owner-review-checks">{reviewChecks.map(k => <label key={k}><input type="checkbox" checked={checks[k]} onChange={e => setChecks({ ...checks, [k]: e.target.checked })} /><span>{checkLabels[k]}</span></label>)}</div>
+          {version.author_kind === "teacher" && <label className="owner-field">Ghi chú gửi tác giả (bắt buộc khi yêu cầu sửa)<textarea aria-label="Ghi chú gửi tác giả" maxLength={1000} value={authorNote} onChange={e => setAuthorNote(e.target.value)} /></label>}
           <label className="owner-field">Quyết định<select aria-label="Quyết định" value={decision} onChange={e => setDecision(e.target.value as typeof decision)}>
             <option value="changes_requested">Yêu cầu tác giả sửa</option><option value="approved">Duyệt phiên bản này</option><option value="withdrawn">Rút kết quả duyệt</option></select></label>
           <button type="submit" className="owner-primary" disabled={!needsAll}>Ghi kết quả duyệt</button>

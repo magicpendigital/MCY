@@ -8,6 +8,7 @@ import markUrl from "../../brand/assets/mark-forest.svg";
 import "./teacher.css";
 import { TeacherCollaborationPanel } from "./TeacherCollaborationPanel";
 const ContentReviewPanel = lazy(() => import("./ContentReviewPanel"));
+const TeacherContentPanel = lazy(() => import("./TeacherContentPanel"));
 
 type DraftSummary = {
   session_id: string;
@@ -224,6 +225,7 @@ export function TeacherWorkspace() {
   const [accessState, setAccessState] = useState<"unknown" | "active" | "denied" | "unavailable">("unknown");
   const [collaborationReadyUserId, setCollaborationReadyUserId] = useState<string | null>(null);
   const [contentReviewOpen, setContentReviewOpen] = useState(false);
+  const [myLessonsOpen, setMyLessonsOpen] = useState(false);
   const [drafts, setDrafts] = useState<DraftSummary[]>([]);
   const [form, setForm] = useState<DraftForm | null>(null);
   const [notice, setNotice] = useState("");
@@ -496,8 +498,8 @@ export function TeacherWorkspace() {
 
     {backendConfigured && session && <main className="teacher-main">
       <section className="teacher-intro teacher-workspace-intro"><span className="teacher-kicker">KHÔNG GIAN SOẠN BÀI</span><h1>Bài học của bạn.</h1><p>Bản nháp được lưu riêng cho tài khoản có quyền. Chỉ soạn nội dung có căn cứ quyền sử dụng; mọi bản nháp cần được rà soát riêng trước khi có thể đến với học viên.</p><div className="teacher-staging-badge"><i />MÔI TRƯỜNG STAGING · KHÔNG PHẢI PRODUCTION</div></section>
-      <nav className="owner-workspace-tabs" aria-label="Chức năng giáo viên"><button type="button" className="teacher-secondary" aria-pressed={!contentReviewOpen} onClick={() => setContentReviewOpen(false)}>Soạn bài</button><button type="button" className="teacher-secondary" aria-pressed={contentReviewOpen} onClick={() => setContentReviewOpen(true)}>Duyệt nội dung được giao</button></nav>
-      {contentReviewOpen ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={session.user.id} userId={session.user.id} /></Suspense> : <>
+      <nav className="owner-workspace-tabs" aria-label="Chức năng giáo viên"><button type="button" className="teacher-secondary" aria-pressed={!contentReviewOpen && !myLessonsOpen} onClick={() => { setContentReviewOpen(false); setMyLessonsOpen(false); }}>Soạn bài</button><button type="button" className="teacher-secondary" aria-pressed={myLessonsOpen} onClick={() => { setContentReviewOpen(false); setMyLessonsOpen(true); }}>Bài video của tôi</button><button type="button" className="teacher-secondary" aria-pressed={contentReviewOpen} onClick={() => { setMyLessonsOpen(false); setContentReviewOpen(true); }}>Duyệt nội dung được giao</button></nav>
+      {myLessonsOpen ? <Suspense fallback={<p role="status">Đang mở bài video của tôi…</p>}><TeacherContentPanel key={session.user.id} userId={session.user.id} /></Suspense> : contentReviewOpen ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={session.user.id} userId={session.user.id} /></Suspense> : <>
       <TeacherCollaborationPanel userId={session.user.id} onReadyChange={setCollaborationReadyUserId} />
       {collaborationReadyUserId !== session.user.id && loadingWorkspace && <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền và tải bản nháp…</h2></section>}
       {collaborationReadyUserId !== session.user.id && !loadingWorkspace && accessState === "denied" && <section className="teacher-state-card"><span className="teacher-kicker">QUYỀN TRUY CẬP</span><h2>Chưa có lời mời giáo viên.</h2><p>{error}</p><p>Email đã xác minh không tự cấp quyền giáo viên. Nếu bạn nghĩ đây là nhầm lẫn, hãy liên hệ Owner qua kênh hỗ trợ đã được xác nhận.</p></section>}

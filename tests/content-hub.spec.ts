@@ -20,7 +20,7 @@ const rows = [teacherRow, draftRow, mcyRow];
 async function setup(page: Page, handler: (route: Route, body: Record<string, any>) => Promise<unknown> | unknown) {
   await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), auth);
   await page.route("https://*.supabase.co/**", route => route.abort("blockedbyclient"));
-  await page.route(endpoint, route => { const body = route.request().postDataJSON(); if (body.action === "read_ai") return reply(route, 200, ownerPayload); if (body.action === "read_display") return reply(route, 200, { version_no: 1, config: defaultDisplay, log: [], visibility: [] }); return handler(route, body); });
+  await page.route(endpoint, route => { const body = route.request().postDataJSON(); if (body.action === "read_ai") return reply(route, 200, ownerPayload); if (body.action === "read_display") return reply(route, 200, { version_no: 1, config: defaultDisplay, log: [], visibility: [] }); if (body.action === "read_author_notes") return reply(route, 200, { notes: [] }); return handler(route, body); });
   await page.goto("/?workspace=owner");
   await page.getByRole("button", { name: "Nội dung", exact: true }).click();
 }
@@ -147,12 +147,15 @@ test("a conflict asks for a reload; an unknown outcome of a write is never retri
   });
   await page.getByRole("button", { name: /Fictional lesson/ }).click();
   await declare(page);
+  await page.getByLabel("Ghi chú gửi tác giả", { exact: true }).fill("Ghi chú thử cho tác giả.");
   await page.getByRole("button", { name: "Ghi kết quả duyệt" }).click();
   await expect(page.getByText("Nội dung vừa thay đổi ở nơi khác.", { exact: false })).toBeVisible();
   await expect(page.getByRole("button", { name: "Tải lại" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Ghi kết quả duyệt" })).toBeDisabled();
   await page.getByRole("button", { name: "Tải lại" }).click();
+  await expect(page.getByLabel("Chuyên môn và phạm vi của người duyệt")).toHaveValue("");   // the reload finished and cleared the draft
   await declare(page);
+  await page.getByLabel("Ghi chú gửi tác giả", { exact: true }).fill("Ghi chú thử cho tác giả.");
   await page.getByRole("button", { name: "Ghi kết quả duyệt" }).click();
   await expect(page.getByText("Chưa xác định thao tác đã được lưu hay chưa", { exact: false })).toBeVisible();
   await page.waitForTimeout(500);

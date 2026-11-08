@@ -38,6 +38,8 @@
     "test:content-workspace": "node --test tests/content-workspace-handler.test.mjs",
     "test:content-foundation-rehearsal": "node --test tests/content-foundation-rehearsal.cjs",
     "test:content-display-rehearsal": "node --test tests/content-display-rehearsal.cjs",
+    "test:content-publication-rehearsal": "node --test tests/content-publication-rehearsal.cjs",
+    "test:content-publication": "node --test tests/content-publication.test.mjs",
     "check:video-catalog": "node scripts/generate-video-catalog-candidates.mjs --check",
     "test:reading-publication": "node --test tests/reading-publication.test.mjs",
     "test:browser-compat": "node --test tests/browser-compat.test.mjs",

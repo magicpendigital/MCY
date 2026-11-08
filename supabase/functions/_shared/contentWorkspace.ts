@@ -3,13 +3,14 @@ import { reviewChecks } from "./contentReviewContract.ts";
 import { authorableKinds, validDisplayConfig, validPayload } from "./contentWorkspaceContract.ts";
 import { readingUnitCandidates } from "./readingUnitCandidates.ts";
 import { videoCatalogItems } from "./videoCatalogCandidates.ts";
+import { syncContentSnapshot, type ContentStorage, type SnapshotSource } from "./contentPublication.ts";
 
 // Versioned content store (phase 1 of the content workspace). Every action is a thin, validated call to a service-only RPC
 // that re-checks the verified Owner or active-teacher actor; nothing here approves or publishes anything.
 type Server = ReturnType<OwnerControlPlaneDependencies["clients"]>["server"];
 type Result = { status: number; body: Record<string, unknown> };
 
-const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog", "read_display", "save_display", "set_visibility"];
+const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog", "read_display", "save_display", "set_visibility", "sync_content_snapshot", "read_author_notes", "save_author_note"];
 const allowedKeys: Record<string, string[]> = {
   list_content: ["action"],
   read_content: ["action", "itemId", "seq"],
@@ -20,6 +21,9 @@ const allowedKeys: Record<string, string[]> = {
   read_display: ["action"],
   save_display: ["action", "expectedVersion", "config"],
   set_visibility: ["action", "itemId", "seq", "visible"],
+  sync_content_snapshot: ["action"],
+  read_author_notes: ["action", "itemId"],
+  save_author_note: ["action", "itemId", "seq", "note"],
 };
 const itemId = /^[a-z0-9_-]{1,80}$/;
 const plain = (v: unknown): v is Record<string, unknown> => Boolean(v && typeof v === "object" && !Array.isArray(v));
@@ -44,10 +48,21 @@ function failure(error: { code?: string; message?: string } | null): Result {
     if (m === "content_item_not_found") return { status: 404, body: { error: "content_item_not_found" } };
     if (m === "review_checks_incomplete") return { status: 400, body: { error: "review_checks_incomplete" } };
     if (m === "content_not_approved" || m === "editors_choice_not_shown") return { status: 409, body: { error: m } };
-    if (m === "invalid_display_config" || m === "invalid_visibility") return { status: 400, body: { error: m } };
+    if (m === "invalid_display_config" || m === "invalid_visibility" || m === "invalid_note") return { status: 400, body: { error: m } };
     return { status: 400, body: { error: "invalid_content" } };
   }
   return { status: 503, body: { error: "content_result_uncertain" } };
+}
+
+// Rebuilds the public snapshot from the database. The action that changed what is shown has already succeeded; if publishing fails
+// the response says so (snapshotSynced: false) and the Owner can repeat it with sync_content_snapshot.
+async function publishSnapshot(actor: string, server: Server): Promise<boolean | undefined> {
+  if (!server.storage) return undefined;
+  try {
+    const { data, error } = await server.rpc("mcy_content_snapshot", { p_actor_id: actor });
+    if (error || !plain(data) || !plain(data.display) || !Array.isArray(data.items)) return false;
+    return (await syncContentSnapshot(server.storage as unknown as ContentStorage, data as unknown as SnapshotSource)).ok;
+  } catch { return false; }
 }
 
 export async function handleContentWorkspace(payload: Record<string, unknown>, actor: string, server: Server): Promise<Result | null> {
@@ -96,7 +111,9 @@ export async function handleContentWorkspace(payload: Record<string, unknown>, a
       p_qualification: payload.qualification, p_review_basis: payload.reviewBasis, p_rights_basis: payload.rightsBasis, p_checklist: checklist,
     });
     // Approval and publication stay separate: a decision here never makes anything learner-visible.
-    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data, published: false, aiEnabled: false } };
+    if (error || !plain(data)) return failure(error);
+    // A decision can hide shown content (a newer review), so the public snapshot is rebuilt. Approval alone still shows nothing new.
+    return { status: 200, body: { receipt: data, published: false, aiEnabled: false, snapshotSynced: await publishSnapshot(actor, server) } };
   }
 
   if (action === "read_display") {
@@ -110,14 +127,35 @@ export async function handleContentWorkspace(payload: Record<string, unknown>, a
   if (action === "save_display") {
     if (!natural(payload.expectedVersion, 1) || !validDisplayConfig(payload.config)) return { status: 400, body: { error: "invalid_display_config" } };
     const { data, error } = await server.rpc("mcy_display_save", { p_actor_id: actor, p_expected_version: payload.expectedVersion, p_config: payload.config });
-    // The configuration is stored for the future app snapshot; saving it publishes nothing.
-    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data, published: false } };
+    if (error || !plain(data)) return failure(error);
+    return { status: 200, body: { receipt: data, snapshotSynced: await publishSnapshot(actor, server) } };
   }
 
   if (action === "set_visibility") {
     if (typeof payload.itemId !== "string" || !itemId.test(payload.itemId) || !natural(payload.seq, 1) || typeof payload.visible !== "boolean") return { status: 400, body: { error: "invalid_visibility" } };
     const { data, error } = await server.rpc("mcy_content_set_visibility", { p_actor_id: actor, p_item_id: payload.itemId, p_seq: payload.seq, p_visible: payload.visible });
-    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data, published: false } };
+    if (error || !plain(data)) return failure(error);
+    return { status: 200, body: { receipt: data, snapshotSynced: await publishSnapshot(actor, server) } };
+  }
+
+  if (action === "sync_content_snapshot") {
+    if (!server.storage) return { status: 503, body: { error: "content_publication_not_ready" } };
+    const { data, error } = await server.rpc("mcy_content_snapshot", { p_actor_id: actor });
+    if (error || !plain(data) || !plain(data.display) || !Array.isArray(data.items)) return failure(error);
+    const result = await syncContentSnapshot(server.storage as unknown as ContentStorage, data as unknown as SnapshotSource);
+    return result.ok ? { status: 200, body: { synced: true, groups: result.groups, lessons: result.lessons } } : { status: 503, body: { error: "content_publication_not_ready" } };
+  }
+
+  if (action === "read_author_notes") {
+    if (typeof payload.itemId !== "string" || !itemId.test(payload.itemId)) return { status: 400, body: { error: "invalid_request" } };
+    const { data, error } = await server.rpc("mcy_content_notes_read", { p_actor_id: actor, p_item_id: payload.itemId });
+    return error || !plain(data) ? failure(error) : { status: 200, body: data };
+  }
+
+  if (action === "save_author_note") {
+    if (typeof payload.itemId !== "string" || !itemId.test(payload.itemId) || !natural(payload.seq, 1) || typeof payload.note !== "string" || payload.note.trim().length < 1 || payload.note.length > 1000) return { status: 400, body: { error: "invalid_note" } };
+    const { data, error } = await server.rpc("mcy_content_note_save", { p_actor_id: actor, p_item_id: payload.itemId, p_seq: payload.seq, p_note: payload.note.trim() });
+    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data } };
   }
 
   // import_catalog: record the current reading units and the free-course catalogue as submitted versions. Owner only (the RPC checks).

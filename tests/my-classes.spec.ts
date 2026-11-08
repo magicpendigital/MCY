@@ -46,6 +46,7 @@ async function backend(page: Page, handler: Handler) {
       calls.push(body);
       return handler(body, route);
     }
+    if (pathname.endsWith("/content-published/manifest.json")) return route.fulfill({ status: 404, body: "" });
     unexpected.push(pathname);
     return route.fulfill({ status: 500, json: { message: "Unexpected fixture request" } });
   });
