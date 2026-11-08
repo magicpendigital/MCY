@@ -90,3 +90,12 @@ Ký hiệu cỡ việc: S nhỏ (vài giờ), M vừa (1–3 ngày làm việc),
 4. Bật thêm **Chó ba chân** (đủ điều kiện) và khi nào nhờ chuyên gia xem hình.
 5. Ai là giảng viên đầu tiên được kích hoạt hồ sơ để dựng nhãn tác giả (tên lấy từ tài khoản, không ghi cứng).
 6. Thứ tự ưu tiên giữa giai đoạn 1–4 (nội dung) và giai đoạn 5 (AI). Đề xuất: 0 → 1 → 2 → 5 (song song phần dữ liệu danh mục) → 3 → 4.
+
+## 8. Quyết định của Owner (2026-11-08, sau khi đọc kế hoạch)
+1. **Bước năng lượng/thời gian cho khách:** giữ như hiện tại (đã bỏ ở 2874cf0). Không đảo lại.
+2. **Owner được tự duyệt nội dung do chính mình soạn** (hiển thị “MCY biên soạn”). Mỗi lần vẫn ghi nhật ký: ai duyệt, lúc nào, phiên bản nào.
+3. **Quy tắc duyệt là cấu hình trong workspace**, không cố định trong mã: do người có quyền duyệt (và, khi được bật, trợ lý AI hỗ trợ) quyết định ai duyệt loại nội dung nào, cần mấy người, bước nào AI được gợi ý. Cần thiết kế màn “Quy tắc duyệt” vào giai đoạn 2. Vẫn giữ nguyên: AI chỉ gợi ý, không tự bấm duyệt thay người; các cổng an toàn của trợ lý (danh mục đã duyệt chuyên môn và bản quyền) không bị cấu hình này gỡ bỏ. Ghi chú rủi ro: Owner tự duyệt chưa thay được duyệt chuyên môn yoga hoặc y tế cho nội dung có hướng dẫn động tác.
+4. **Giảng viên đầu tiên:** Huyền My (địa chỉ email do Owner cung cấp trong chat, không ghi vào tài liệu theo quy tắc của dự án). Tên hiển thị lấy từ hồ sơ tài khoản sau khi kích hoạt. Mời và kích hoạt vẫn cần yêu cầu riêng của Owner và các cổng (hồ sơ giảng viên, quyền, SMTP) đạt.
+5. **Ưu tiên nội dung trước AI:** thứ tự 0 → 1 → 2 → 3 → 4, giai đoạn 5 (AI) làm sau; chỉ phần dữ liệu danh mục AI làm song song khi nội dung đã có bản duyệt.
+6. **Phát hành đợt 6** gồm các sửa trong mã đã cam kết cục bộ (083673d, d042132).
+7. Việc còn mở: bật Chó ba chân và nhờ chuyên gia xem hình; đồng ý AI có cần thêm “dữ liệu sức khỏe” (mục 3 cũ) chưa được trả lời.
