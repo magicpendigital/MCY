@@ -9,6 +9,9 @@ export default defineConfig({
   testDir: "./tests",
   testMatch: "**/*.spec.ts",
   timeout: 20_000,
+  // Shared CI runners are slower than a developer machine: the first CI run (2026-11-08) failed 2 of 198 specs on a 20 s timeout that pass locally.
+  // One retry keeps the gate meaningful; a spec that only passes on retry is reported as flaky, not hidden.
+  retries: process.env.CI ? 1 : 0,
   globalSetup: "./scripts/playwright-global-setup.mjs",
   use: {
     baseURL: `http://127.0.0.1:${testPort}`,
