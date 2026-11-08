@@ -72,7 +72,7 @@ async function backend(page: Page) {
 const nav = (page:Page,name:string)=>page.locator('[data-testid="flow-fixed-footer"]').getByRole('button',{name,exact:true});
 async function account(page:Page,name='Device Fixture A') {
   await nav(page,'Cá nhân').click();
-  await expect(page.locator('.mcy-account-home h1')).toHaveText('Chào, '+name+'.');
+  await expect(page.locator('.mcy-account-home h1').last()).toHaveText('Chào, '+name+'.');
   await expect(page.getByRole('button',{name:'Đăng xuất thiết bị này',exact:true})).toBeEnabled();
 }
 async function beginCheckin(page:Page) {

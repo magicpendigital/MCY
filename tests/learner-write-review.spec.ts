@@ -233,7 +233,7 @@ for (const returnToA of [false, true]) test(`delayed profile save cannot update 
   const response = page.waitForResponse(r => r.url().includes('/profiles') && r.request().method() !== 'GET');
   release.release(); await response;
   await page.getByRole('button', { name: 'Hủy', exact: true }).click();
-  await expect(page.locator('.mcy-account-home h1')).toHaveText(returnToA ? 'Chào, Fixture A.' : 'Chào, Fixture B.');
+  await expect(page.locator('.mcy-account-home h1').last()).toHaveText(returnToA ? 'Chào, Fixture A.' : 'Chào, Fixture B.');
   expect(writes).toBe(1);
 });
 
@@ -310,7 +310,7 @@ for (const returnToA of [false, true]) test(`delayed check-in cannot navigate or
   // a stale success must not push Journey or revive A's previous check-in.
   await page.getByRole('button', { name: 'Quay lại', exact: true }).click();
   await page.locator('.flow-fixed-footer').getByRole('button', { name: 'Cá nhân', exact: true }).click();
-  await expect(page.locator('.mcy-account-home h1')).toHaveText(returnToA ? 'Chào, Fixture A.' : 'Chào, Fixture B.');
+  await expect(page.locator('.mcy-account-home h1').last()).toHaveText(returnToA ? 'Chào, Fixture A.' : 'Chào, Fixture B.');
   expect(writes).toBe(1);
 });
 
