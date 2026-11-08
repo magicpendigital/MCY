@@ -58,7 +58,7 @@ Dừng và báo Owner (không tự sửa bằng cách bỏ qua) khi: HEAD khác 
 
 ## Việc chưa có ở đây (ghi để không quên)
 
-- CI: workflow `quality.yml` từng chỉ chạy với pull request và push lên `main`, nên **chưa bao giờ chạy** trên nhánh phát hành (`gh run list` trống, 2026-11-08). Đã sửa cho chạy trên mọi push và gọi `check:ios15`; chỉ coi là bật khi thấy một lần chạy thật sau khi đẩy. CI bắt buộc trên GitHub chưa được xác minh là đang bật (kho riêng không có Pro nên không có luật nhánh bảo vệ); script `release-sync-status.mjs` là kiểm tra thủ công chỉ đọc, không phải rào cản thực thi.
+- CI: workflow `quality.yml` từng chỉ chạy với pull request và push lên `main`, nên **chưa bao giờ chạy** trên nhánh phát hành (`gh run list` trống, 2026-11-08). Đã sửa cho chạy trên mọi push và gọi `check:ios15`; **lần chạy xanh đầu tiên là 2026-11-08 (commit 716c3e7, 4 lần chạy: 3 lần đỏ vì một test nhạy với tốc độ máy chủ, đã sửa test và thời gian chờ trên CI)**. CI bắt buộc trên GitHub chưa được xác minh là đang bật (kho riêng không có Pro nên không có luật nhánh bảo vệ); script `release-sync-status.mjs` là kiểm tra thủ công chỉ đọc, không phải rào cản thực thi.
 - iOS/TestFlight, closed/production track, App Links xác minh, bản đồ mapping/deobfuscation cho Play.
 
 ## Bài học đợt 5 (2026-11-04)

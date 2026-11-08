@@ -47,6 +47,7 @@
 - **Shipped (batch 6, versionCode 6 / 1.0.4):** web Vercel Preview, Play Internal testing release 6, APK installed on the test phone. Web is now ahead with the Owner content hub and the iOS CSS fallbacks (pushed after batch 6, not yet in an APK/AAB: the next batch carries them).
 - **Staging (`mcy-staging`, org MagicpenDigital):** migrations applied through `20261108111116` (content foundation); `owner-control-plane` Edge v9 (display actions). Phase 2b migration `20261108162119` also applied. AI off. The teacher control plane, teacher collaboration and AI assistant functions are not deployed. `import_catalog` has not been run. All reading switches follow the Owner's settings.
 - **Open Owner decisions / gates:** real iPhone iOS 15 check (needs exact iOS minor and failing screen); enabling three-legged-dog and expert review of AI images; first activated teacher profile; AI catalog needs ≥5 expert- and rights-reviewed sessions; Play Data safety recheck; upload-key reset before production; protected-runtime edits for `styles.css` and `FlowStack.tsx`.
+- **CI:** `.github/workflows/quality.yml` runs on every push (first green run 2026-11-08, commit 716c3e7); a red CI means do not release. It is not a branch protection rule (the private repo has none).
 - **Verification facts that are still true:** the full Playwright suite has not had a single clean end-to-end pass since the batch-5 fixes (failing files rerun green); real devices, TalkBack, iOS 15 and YouTube fullscreen on devices are unverified.
 
 ## Prototype Instructions
