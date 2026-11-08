@@ -95,6 +95,8 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
   const [checks, setChecks] = useState<ReviewChecklist>(emptyChecks);
   const [decision, setDecision] = useState<"approved" | "changes_requested" | "withdrawn">("changes_requested");
   const [importConfirm, setImportConfirm] = useState(false);
+  const [visibilityRows, setVisibilityRows] = useState<{ item_id: string; seq: number; effective: boolean }[]>([]);
+  const [visConfirm, setVisConfirm] = useState(false);
   const [busy, setBusy] = useState(false);
   const [uncertain, setUncertain] = useState(false);
   const [error, setError] = useState("");
@@ -148,6 +150,10 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
     setDraft(null);
     const data = await run({ action: "read_content", itemId, ...(seq ? { seq } : {}) }, false);
     if (data && data.version) setVersion(data.version as Version);
+    setVisConfirm(false);
+    // The switch state lives in the display tables; an older backend without them simply shows no switch state.
+    const display = await run({ action: "read_display" }, false);
+    if (display && Array.isArray(display.visibility)) setVisibilityRows(display.visibility as typeof visibilityRows);
   };
   useEffect(() => {
     const r = version?.review;
@@ -199,6 +205,12 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
     setDraft(null); setNotice(message); await loadList(); await open(receipt.item_id, undefined, true);
   };
 
+  const setVisible = async (visible: boolean) => {
+    if (!version || uncertain) return;
+    setVisConfirm(false);
+    const data = await run({ action: "set_visibility", itemId: version.item_id, seq: version.seq, visible }, true);
+    if (data?.receipt) { setNotice(visible ? "Đã bật hiển thị cho phiên bản này và ghi nhật ký. App chưa đọc kho nội dung (giai đoạn 4), nên học viên chưa thấy thay đổi." : "Đã tắt hiển thị và ghi nhật ký."); await open(version.item_id, version.seq, true); }
+  };
   const needsAll = reviewChecks.every(k => checks[k] || exemptChecks.includes(k) || decision !== "approved");
   const canReview = Boolean(version && version.status === "submitted" && version.seq === version.latest_seq);
   const set = (patch: Partial<Draft>) => setDraft(d => d ? { ...d, ...patch } : d);
@@ -274,6 +286,19 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
               <ul>{asStrings((version.payload.guidance as Record<string, unknown>).benefits).map(t => <li key={t}>{t}</li>)}</ul><ul>{asStrings((version.payload.guidance as Record<string, unknown>).cautions).map(t => <li key={t}>{t}</li>)}</ul></>}</>}
           {version.kind === "screen_text" && <dl>{Object.entries((version.payload.entries ?? {}) as Record<string, string>).map(([k, t]) => <div key={k}><dt>{k}</dt><dd>{t}</dd></div>)}</dl>}
         </div>}
+      </section>
+
+      <section className="owner-hub-visibility" aria-label="Hiển thị cho học viên"><h4>Hiển thị cho học viên</h4>
+        {(() => {
+          const row = visibilityRows.find(r => r.item_id === version.item_id && r.seq === version.seq);
+          const canShow = version.status === "submitted" && version.review.decision === "approved" && version.seq === version.latest_seq;
+          return <>
+            <p>{row?.effective ? "Đang bật hiển thị cho phiên bản này." : row ? "Đã bật nhưng chưa có hiệu lực vì có lần duyệt mới hơn. Bật lại để áp dụng." : canShow ? "Phiên bản này đã duyệt và đang tắt." : "Cần duyệt phiên bản mới nhất trước khi bật hiển thị."}</p>
+            {row && <button type="button" disabled={busy || uncertain} onClick={() => void setVisible(false)}>Tắt hiển thị</button>}
+            {(canShow && (!row || !row.effective)) && (!visConfirm ? <button type="button" className="owner-primary" disabled={busy || uncertain} onClick={() => setVisConfirm(true)}>{row ? "Bật lại hiển thị" : "Bật hiển thị"}</button>
+              : <span role="alertdialog" aria-label="Xác nhận bật hiển thị"><strong>Bật hiển thị phiên bản {version.seq}?</strong> <button type="button" className="owner-primary" disabled={busy} onClick={() => void setVisible(true)}>Xác nhận bật</button> <button type="button" onClick={() => setVisConfirm(false)}>Hủy</button></span>)}
+            <p className="owner-hub-note">Công tắc chỉ có hiệu lực khi bật sau lần duyệt gần nhất. Mỗi nội dung chỉ có một phiên bản đang bật. App học viên đọc kho nội dung ở giai đoạn 4; hiện app vẫn dùng nội dung trong mã.</p></>;
+        })()}
       </section>
 
       <form onSubmit={saveReview} aria-label="Phiếu duyệt">

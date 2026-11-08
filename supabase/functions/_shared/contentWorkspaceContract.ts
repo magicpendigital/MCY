@@ -45,3 +45,29 @@ export function validPayload(kind: string, payload: unknown): boolean {
   }
   return false;
 }
+
+// Display configuration (phase 2b). The database validates the same rules; this mirrors them so the Owner sees an error before a call.
+export const discoverSections = ["editors_choice", "video_groups", "quick_find", "reading"] as const;
+export type DisplayConfig = {
+  discover_order: string[];
+  policies: { show_teacher_names: boolean; ai_image_label: boolean };
+  editors_choice: string[];
+  review_rules: Record<"video_lesson" | "course_group" | "reading_unit" | "screen_text", { owner_self_review: boolean }>;
+};
+export function validDisplayConfig(config: unknown): config is DisplayConfig {
+  if (!plain(config) || !onlyKeys(config, ["discover_order", "editors_choice", "policies", "review_rules"]) || Object.keys(config).length !== 4) return false;
+  const order = config.discover_order;
+  if (!Array.isArray(order) || order.length !== 4 || new Set(order).size !== 4 || !order.every(s => (discoverSections as readonly string[]).includes(s as string))) return false;
+  // Product rule: video is the focus, so the video groups always stay above reading.
+  if (order.indexOf("video_groups") > order.indexOf("reading")) return false;
+  const p = config.policies;
+  if (!plain(p) || Object.keys(p).length !== 2 || typeof p.show_teacher_names !== "boolean" || typeof p.ai_image_label !== "boolean") return false;
+  const slots = config.editors_choice;
+  if (!Array.isArray(slots) || slots.length > 3 || new Set(slots).size !== slots.length || !slots.every(s => typeof s === "string" && /^[a-z0-9_-]{1,80}$/.test(s))) return false;
+  const rules = config.review_rules;
+  if (!plain(rules) || Object.keys(rules).length !== 4) return false;
+  return ["video_lesson", "course_group", "reading_unit", "screen_text"].every(k => {
+    const r = rules[k];
+    return plain(r) && Object.keys(r).length === 1 && typeof r.owner_self_review === "boolean";
+  });
+}

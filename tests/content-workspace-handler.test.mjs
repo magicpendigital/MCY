@@ -82,3 +82,32 @@ test('the prepared video catalogue is itself valid and internally consistent',()
   for(const g of groups)for(const id of g.payload.lessonIds)assert.ok(ids.has(id),`${g.id} -> ${id}`);
   assert.equal(new Set(lessons.map(l=>l.payload.youtubeId)).size,38);
 });
+
+const config = () => ({ discover_order: ['editors_choice', 'video_groups', 'quick_find', 'reading'], policies: { show_teacher_names: true, ai_image_label: true }, editors_choice: [], review_rules: Object.fromEntries(['video_lesson', 'course_group', 'reading_unit', 'screen_text'].map(k => [k, { owner_self_review: true }])) });
+test('read_display returns the configuration, log and the shown versions; only the verified actor reaches the database', async () => {
+  const h = harness({ rpc: name => name === 'mcy_display_read' ? { data: { version_no: 3, config: config(), log: [] }, error: null } : { data: { rows: [{ item_id: 'video-x', seq: 1, visible: true, effective: true }] }, error: null } });
+  const r = await h.run({ action: 'read_display' });
+  assert.deepEqual([r.status, r.body.version_no, r.body.visibility.length, r.body.published, h.calls.map(c => c.name), h.calls.every(c => c.args.p_actor_id === actor)], [200, 3, 1, false, ['mcy_display_read', 'mcy_content_visibility_list'], true]);
+  assert.equal((await harness().run({ action: 'read_display', actorId: 'x' })).status, 400);
+});
+test('save_display validates the whole configuration before any call, including the video-first rule', async () => {
+  const bad = [{ ...config(), extra: 1 }, { ...config(), discover_order: ['reading', 'video_groups', 'quick_find', 'editors_choice'] }, { ...config(), discover_order: ['editors_choice', 'video_groups', 'reading'] },
+    { ...config(), policies: { show_teacher_names: 'yes', ai_image_label: true } }, { ...config(), editors_choice: ['a', 'b', 'c', 'd'] }, { ...config(), editors_choice: ['x', 'x'] }, { ...config(), editors_choice: ['Bad Id'] },
+    { ...config(), review_rules: { video_lesson: { owner_self_review: true } } }, { ...config(), review_rules: { ...config().review_rules, screen_text: { owner_self_review: 1 } } }];
+  for (const c of bad) { const h = harness(); const r = await h.run({ action: 'save_display', expectedVersion: 1, config: c }); assert.deepEqual([r.status, r.body.error, h.calls.length], [400, 'invalid_display_config', 0]); }
+  for (const body of [{ action: 'save_display', config: config() }, { action: 'save_display', expectedVersion: 0, config: config() }, { action: 'save_display', expectedVersion: 1, config: config(), actorId: actor }]) { const h = harness(); assert.equal((await h.run(body)).status, 400); assert.equal(h.calls.length, 0); }
+  const moved = { ...config(), discover_order: ['video_groups', 'editors_choice', 'quick_find', 'reading'] };
+  const ok = harness(); const r = await ok.run({ action: 'save_display', expectedVersion: 2, config: moved });
+  assert.deepEqual([r.status, r.body.published, ok.calls[0].name, ok.calls[0].args.p_actor_id, ok.calls[0].args.p_expected_version], [200, false, 'mcy_display_save', actor, 2]);
+});
+test('set_visibility validates, sends the exact version and maps refusals to stable codes', async () => {
+  for (const body of [{ action: 'set_visibility', itemId: 'Bad Id', seq: 1, visible: true }, { action: 'set_visibility', itemId: 'video-x', seq: 0, visible: true }, { action: 'set_visibility', itemId: 'video-x', seq: 1, visible: 'true' }, { action: 'set_visibility', itemId: 'video-x', seq: 1 }]) {
+    const h = harness(); assert.deepEqual([(await h.run(body)).status, h.calls.length], [400, 0]);
+  }
+  const ok = harness(); const r = await ok.run({ action: 'set_visibility', itemId: 'video-x', seq: 2, visible: true });
+  assert.deepEqual([r.status, ok.calls[0].name, ok.calls[0].args.p_seq, ok.calls[0].args.p_visible, r.body.published], [200, 'mcy_content_set_visibility', 2, true, false]);
+  const cases = [[{ code: '22023', message: 'content_not_approved' }, 409, 'content_not_approved'], [{ code: '22023', message: 'editors_choice_not_shown' }, 409, 'editors_choice_not_shown'], [{ code: '22023', message: 'invalid_display_config' }, 400, 'invalid_display_config'],
+    [{ code: 'PT409', message: 'display_conflict' }, 409, 'display_conflict'], [{ code: 'PT409', message: 'content_conflict' }, 409, 'content_conflict'], [{ code: '42501', message: 'self_review_not_allowed' }, 403, 'self_review_not_allowed'],
+    [{ code: '42501', message: 'owner_access_required' }, 403, 'owner_access_required'], [{ code: 'XX000', message: 'Private detail' }, 503, 'content_result_uncertain']];
+  for (const [error, status, code] of cases) { const h = harness({ rpc: { data: null, error } }); const x = await h.run({ action: 'set_visibility', itemId: 'video-x', seq: 1, visible: false }); assert.deepEqual([x.status, x.body.error], [status, code]); assert.ok(!JSON.stringify(x.body).includes('Private')); }
+});

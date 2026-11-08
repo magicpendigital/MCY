@@ -7,6 +7,7 @@ const owner = "22222222-2222-4222-8222-222222222222";
 const ownerPayload = { config: { enabled: false, model_id: "", system_prompt: "Fictional owner configuration with more than forty characters.", temperature: 0.3, max_output_tokens: 320, per_user_daily_limit: 10, global_daily_limit: 100, version_no: 1 }, models: null, provider: "openrouter", providerKeyConfigured: false, spendControlApproved: false, enableGateOpen: false, environment: "staging" };
 const auth = { access_token: `fictional-${owner}`, refresh_token: "fictional-refresh", token_type: "bearer", expires_in: 3600, expires_at: Math.floor(Date.now() / 1000) + 3600, user: { id: owner, aud: "authenticated", role: "authenticated", email: "owner@example.test", email_confirmed_at: "2026-09-01T00:00:00Z", app_metadata: { provider: "email", providers: ["email"] }, user_metadata: {}, identities: [], created_at: "2026-09-01T00:00:00Z" } };
 const reply = (route: Route, status: number, body: unknown) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
+const defaultDisplay = { discover_order: ["editors_choice", "video_groups", "quick_find", "reading"], policies: { show_teacher_names: true, ai_image_label: true }, editors_choice: [], review_rules: Object.fromEntries(["video_lesson", "course_group", "reading_unit", "screen_text"].map(k => [k, { owner_self_review: true }])) };
 const hash = (c: string) => c.repeat(64);
 const row = (patch: Record<string, unknown>) => ({ item_id: "video-aaaaaaaaaaaaaaaa", kind: "video_lesson", author_kind: "teacher", author_label: "Fictional teacher", seq: 1, content_hash: hash("a"), title: "Fictional lesson", status: "submitted", origin: "authored", updated_at: "2026-11-08T10:00:00Z", versions: 1, approved_seq: null, review: { decision: "pending", revision: 0 }, ...patch });
 const lessonPayload = { youtubeId: "AAAAAAAAAAA", summary: "Fictional lesson summary", durationLabel: "0:43", orientation: "portrait" };
@@ -19,7 +20,7 @@ const rows = [teacherRow, draftRow, mcyRow];
 async function setup(page: Page, handler: (route: Route, body: Record<string, any>) => Promise<unknown> | unknown) {
   await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), auth);
   await page.route("https://*.supabase.co/**", route => route.abort("blockedbyclient"));
-  await page.route(endpoint, route => { const body = route.request().postDataJSON(); return body.action === "read_ai" ? reply(route, 200, ownerPayload) : handler(route, body); });
+  await page.route(endpoint, route => { const body = route.request().postDataJSON(); if (body.action === "read_ai") return reply(route, 200, ownerPayload); if (body.action === "read_display") return reply(route, 200, { version_no: 1, config: defaultDisplay, log: [], visibility: [] }); return handler(route, body); });
   await page.goto("/?workspace=owner");
   await page.getByRole("button", { name: "Nội dung", exact: true }).click();
 }

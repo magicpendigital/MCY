@@ -178,3 +178,14 @@
 .owner-hub-card dl { margin: 0; } .owner-hub-card dt { color: var(--owner-muted); font-size: 11px; } .owner-hub-card dd { margin: 0 0 6px; }
 .owner-hub-lessons { display: grid; gap: 4px; max-height: 220px; overflow: auto; padding: 8px 10px; border: 1px solid var(--owner-border); border-radius: 10px; }
 @media (max-width: 640px) { .owner-hub-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* Display configuration and visibility switch (phase 2b). */
+.owner-display-group { margin: 16px 0; padding: 14px 16px; border: 1px solid var(--owner-border); border-radius: 12px; background: #fff; }
+.owner-display-group legend { padding: 0 6px; font-weight: 600; }
+.owner-display-group ol { margin: 0; padding: 0; list-style: none; }
+.owner-display-group li { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #eeede6; }
+.owner-display-group li span { flex: 1; }
+.owner-display-group label { display: block; margin: 6px 0; }
+.owner-display-log ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.6; }
+.owner-hub-visibility { margin: 16px 0; padding: 14px; border: 1px dashed var(--owner-border); border-radius: 12px; }
+.owner-hub-visibility h4 { margin: 0 0 8px; font-size: 13px; }

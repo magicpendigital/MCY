@@ -8,6 +8,7 @@ import "./owner.css";
 
 const ContentReviewPanel = lazy(() => import("./ContentReviewPanel"));
 const ContentHubPanel = lazy(() => import("./ContentHubPanel"));
+const DisplayConfigPanel = lazy(() => import("./DisplayConfigPanel"));
 
 type ModelOption = {
   id: string;
@@ -89,6 +90,7 @@ export function OwnerWorkspace() {
   const [reload, setReload] = useState(0);
   const [contentReviewOpen, setContentReviewOpen] = useState(false);
   const [contentHubOpen, setContentHubOpen] = useState(false);
+  const [displayOpen, setDisplayOpen] = useState(false);
   const sessionUserId = session?.user.id ?? null;
   const currentSessionUserId = useRef(sessionUserId);
   const requestGeneration = useRef(0);
@@ -274,8 +276,8 @@ export function OwnerWorkspace() {
       {loadingConfig && <section className="owner-state-card"><h2>Đang tải cấu hình Owner…</h2></section>}
       {!loadingConfig && error && !hasCurrentConfig && <section className="owner-state-card"><span className="owner-kicker">KHÔNG CÓ QUYỀN HOẶC DỊCH VỤ</span><h2>Không thể mở cấu hình.</h2><p>{error}</p><p>Không hiển thị vai trò, cấu hình hay dữ liệu nếu server chưa xác nhận quyền Owner.</p></section>}
       {!loadingConfig && hasCurrentConfig && config && <>
-        <nav className="owner-workspace-tabs" aria-label="Các phần quản trị"><button type="button" aria-pressed={!contentReviewOpen && !contentHubOpen} onClick={() => { setContentReviewOpen(false); setContentHubOpen(false); }}>Cấu hình AI</button><button type="button" aria-pressed={contentHubOpen} onClick={() => { setContentReviewOpen(false); setContentHubOpen(true); }}>Nội dung</button><button type="button" aria-pressed={contentReviewOpen} onClick={() => { setContentHubOpen(false); setContentReviewOpen(true); }}>Duyệt nội dung</button></nav>
-        {contentHubOpen ? <Suspense fallback={<p role="status">Đang mở nội dung…</p>}><ContentHubPanel key={sessionUserId} userId={sessionUserId!} /></Suspense> : contentReviewOpen ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={sessionUserId} userId={sessionUserId!} /></Suspense> : <>
+        <nav className="owner-workspace-tabs" aria-label="Các phần quản trị"><button type="button" aria-pressed={!contentReviewOpen && !contentHubOpen && !displayOpen} onClick={() => { setContentReviewOpen(false); setContentHubOpen(false); setDisplayOpen(false); }}>Cấu hình AI</button><button type="button" aria-pressed={contentHubOpen} onClick={() => { setContentReviewOpen(false); setDisplayOpen(false); setContentHubOpen(true); }}>Nội dung</button><button type="button" aria-pressed={displayOpen} onClick={() => { setContentReviewOpen(false); setContentHubOpen(false); setDisplayOpen(true); }}>Hiển thị</button><button type="button" aria-pressed={contentReviewOpen} onClick={() => { setContentHubOpen(false); setDisplayOpen(false); setContentReviewOpen(true); }}>Duyệt nội dung</button></nav>
+        {displayOpen ? <Suspense fallback={<p role="status">Đang mở cấu hình hiển thị…</p>}><DisplayConfigPanel key={sessionUserId} userId={sessionUserId!} /></Suspense> : contentHubOpen ? <Suspense fallback={<p role="status">Đang mở nội dung…</p>}><ContentHubPanel key={sessionUserId} userId={sessionUserId!} /></Suspense> : contentReviewOpen ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={sessionUserId} userId={sessionUserId!} /></Suspense> : <>
         <section className="owner-status-grid" aria-label="Trạng thái AI staging">
           <article className={providerKeyConfigured ? "owner-status-card is-ready" : "owner-status-card"}><span className="owner-status-dot"/><div><strong>Kết nối OpenRouter</strong><small>{providerKeyConfigured ? "Đã cấu hình khóa phía server" : "Chưa được máy chủ xác nhận"}</small></div></article>
           <article className={spendControlApproved ? "owner-status-card is-ready" : "owner-status-card"}><span className="owner-status-dot"/><div><strong>Xác nhận vận hành AI</strong><small>{spendControlApproved ? "Đã xác nhận phía server · ngân sách quản lý trên OpenRouter" : "Chưa xác nhận · không cần nhập hạn mức USD tại đây"}</small></div></article>

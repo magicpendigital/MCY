@@ -1,6 +1,6 @@
 import type { OwnerControlPlaneDependencies } from "./ownerControlPlane.ts";
 import { reviewChecks } from "./contentReviewContract.ts";
-import { authorableKinds, validPayload } from "./contentWorkspaceContract.ts";
+import { authorableKinds, validDisplayConfig, validPayload } from "./contentWorkspaceContract.ts";
 import { readingUnitCandidates } from "./readingUnitCandidates.ts";
 import { videoCatalogItems } from "./videoCatalogCandidates.ts";
 
@@ -9,7 +9,7 @@ import { videoCatalogItems } from "./videoCatalogCandidates.ts";
 type Server = ReturnType<OwnerControlPlaneDependencies["clients"]>["server"];
 type Result = { status: number; body: Record<string, unknown> };
 
-const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog"];
+const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog", "read_display", "save_display", "set_visibility"];
 const allowedKeys: Record<string, string[]> = {
   list_content: ["action"],
   read_content: ["action", "itemId", "seq"],
@@ -17,6 +17,9 @@ const allowedKeys: Record<string, string[]> = {
   submit_content: ["action", "itemId", "expectedSeq"],
   review_content: ["action", "itemId", "seq", "expectedRevision", "decision", "qualification", "reviewBasis", "rightsBasis", "checklist"],
   import_catalog: ["action"],
+  read_display: ["action"],
+  save_display: ["action", "expectedVersion", "config"],
+  set_visibility: ["action", "itemId", "seq", "visible"],
 };
 const itemId = /^[a-z0-9_-]{1,80}$/;
 const plain = (v: unknown): v is Record<string, unknown> => Boolean(v && typeof v === "object" && !Array.isArray(v));
@@ -28,10 +31,11 @@ const forbiddenMessages: Record<string, string> = {
   owner_access_required: "owner_access_required",
   content_kind_not_allowed: "content_kind_not_allowed",
   teacher_content_is_reviewed_not_edited: "teacher_content_is_reviewed_not_edited",
+  self_review_not_allowed: "self_review_not_allowed",
 };
 function failure(error: { code?: string; message?: string } | null): Result {
   const code = error?.code;
-  if (code === "PT409") return { status: 409, body: { error: "content_conflict" } };
+  if (code === "PT409") return { status: 409, body: { error: error?.message === "display_conflict" ? "display_conflict" : "content_conflict" } };
   if (code === "PT429") return { status: 429, body: { error: "content_limit_reached" } };
   if (code === "42501") return { status: 403, body: { error: forbiddenMessages[error?.message ?? ""] ?? "content_access_required" } };
   if (code === "22023") {
@@ -39,6 +43,8 @@ function failure(error: { code?: string; message?: string } | null): Result {
     if (m === "content_not_submitted") return { status: 409, body: { error: "content_not_submitted" } };
     if (m === "content_item_not_found") return { status: 404, body: { error: "content_item_not_found" } };
     if (m === "review_checks_incomplete") return { status: 400, body: { error: "review_checks_incomplete" } };
+    if (m === "content_not_approved" || m === "editors_choice_not_shown") return { status: 409, body: { error: m } };
+    if (m === "invalid_display_config" || m === "invalid_visibility") return { status: 400, body: { error: m } };
     return { status: 400, body: { error: "invalid_content" } };
   }
   return { status: 503, body: { error: "content_result_uncertain" } };
@@ -91,6 +97,27 @@ export async function handleContentWorkspace(payload: Record<string, unknown>, a
     });
     // Approval and publication stay separate: a decision here never makes anything learner-visible.
     return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data, published: false, aiEnabled: false } };
+  }
+
+  if (action === "read_display") {
+    const { data: config, error } = await server.rpc("mcy_display_read", { p_actor_id: actor });
+    if (error || !plain(config)) return failure(error);
+    const { data: shown, error: shownError } = await server.rpc("mcy_content_visibility_list", { p_actor_id: actor });
+    if (shownError || !plain(shown)) return failure(shownError);
+    return { status: 200, body: { ...config, visibility: Array.isArray(shown.rows) ? shown.rows : [], published: false } };
+  }
+
+  if (action === "save_display") {
+    if (!natural(payload.expectedVersion, 1) || !validDisplayConfig(payload.config)) return { status: 400, body: { error: "invalid_display_config" } };
+    const { data, error } = await server.rpc("mcy_display_save", { p_actor_id: actor, p_expected_version: payload.expectedVersion, p_config: payload.config });
+    // The configuration is stored for the future app snapshot; saving it publishes nothing.
+    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data, published: false } };
+  }
+
+  if (action === "set_visibility") {
+    if (typeof payload.itemId !== "string" || !itemId.test(payload.itemId) || !natural(payload.seq, 1) || typeof payload.visible !== "boolean") return { status: 400, body: { error: "invalid_visibility" } };
+    const { data, error } = await server.rpc("mcy_content_set_visibility", { p_actor_id: actor, p_item_id: payload.itemId, p_seq: payload.seq, p_visible: payload.visible });
+    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data, published: false } };
   }
 
   // import_catalog: record the current reading units and the free-course catalogue as submitted versions. Owner only (the RPC checks).
