@@ -55,11 +55,10 @@ test("home offers the three shortest lessons and a guest's empty Journey invites
   await expect(page.locator("[data-flow-active='true'] .mcy-step-count").last()).toBeVisible();
 });
 
-test("welcome states the real value: 38 short free lessons, a private body note, no account", async ({ page }) => {
+test("welcome shows the Owner-approved benefit lines (2026-10-23)", async ({ page }) => {
   await page.goto("/?mode=web");
   const benefits = page.locator(".mcy-welcome-benefits > div");
-  await expect(benefits).toHaveText(["38 bài học ngắn, xem miễn phí", "Ghi lại cơ thể hôm nay, riêng tư", "Không cần tài khoản"]);
-  await expect(page.getByText("Chọn lộ trình riêng")).toHaveCount(0);
+  await expect(benefits).toHaveText(["Khám phá cơ thể qua từng chuyển động", "Lắng nghe cơ thể, thấu hiểu chính mình", "Chọn lộ trình riêng, tập theo nhịp của bạn"]);
 });
 
 test("a guest goes from the body map straight to the finder, with a shortcut the learner can take or ignore", async ({ page }) => {

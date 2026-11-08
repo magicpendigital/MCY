@@ -136,7 +136,7 @@ test("more than three units collapse into a link to the full list", async ({ pag
   await files(page, { manifest: manifestOf(...many.map(unit => [unit, "complete"] as [typeof imageUnit, "complete"])) });
   await openDiscover(page);
   const section = page.getByTestId("reading-entry");
-  await expect(section.locator(".mcy-rl-row")).toHaveCount(4);
+  await expect(section.locator(".mcy-rl-row")).toHaveCount(3);
   await section.getByRole("button", { name: "Xem tất cả 4 bài đọc" }).click();
   await expect(page.getByRole("heading", { level: 1, name: "Bài đọc có hình" })).toBeVisible();
   await expect(page.locator("[data-testid=flow-current] .mcy-rl-list .mcy-rl-row")).toHaveCount(4);

@@ -44,10 +44,11 @@ function ReadingEntry({ onOpen }: { onOpen: (entry: ManifestUnit | null) => void
     return () => { active = false; };
   }, []);
   if (units.length === 0) return null;
-  const shown = units.slice(0, 3);
+  const shown = units.slice(0, 2);
   return <section className="mcy-rl-section" aria-labelledby="mcy-reading-heading" data-testid="reading-entry">
+    <Eyebrow>ĐỌC THÊM</Eyebrow>
     <h2 id="mcy-reading-heading">Bài đọc có hình</h2>
-    <p className="mcy-finder-lead">Đi từng bước, có hình minh hoạ khi có. Đọc để hiểu; không thay cho người hướng dẫn trực tiếp.</p>
+    <p className="mcy-finder-lead">Đọc từng bước để hiểu thêm về tư thế. Không thay cho video và người hướng dẫn trực tiếp.</p>
     <div className="mcy-rl-list">
       {shown.map(entry => <button key={entry.id} type="button" className="mcy-rl-row" onClick={() => onOpen(entry)}><span><span className={`mcy-rl-badge ${entry.images === "none" ? "text" : "image"}`}>{entry.images === "none" ? "CHỈ CHỮ" : entry.images === "partial" ? "MỘT PHẦN CÓ HÌNH" : "CÓ HÌNH"}</span><strong>{entry.title}</strong><small>{entry.steps} bước</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
       {units.length > shown.length && <button type="button" className="mcy-rl-row" onClick={() => onOpen(null)}><span><strong>Xem tất cả {units.length} bài đọc</strong></span><ArrowRightIcon aria-hidden="true" /></button>}
@@ -137,7 +138,6 @@ export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, onOp
 
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-page" ref={catalogMainRef}>
     <Eyebrow>KHÁM PHÁ</Eyebrow><h1>Bài học yoga miễn phí</h1><p className="mcy-lead">Chọn một nhóm video từ kênh Một chút yoga. Mỗi bài được phát trong ứng dụng; bạn tự chọn thứ tự và nhịp tập phù hợp với mình.</p>
-    {onOpenReading && <ReadingEntry onOpen={onOpenReading} />}
     {courses && <MyLessons courses={courses} onOpenCourse={onOpenCourse} />}
     {courses && <LessonFinder courses={courses} onOpenCourse={onOpenCourse} checkinRegions={checkinRegions} />}
     <section className="mcy-course-section" aria-labelledby="free-course-heading">
@@ -151,6 +151,7 @@ export default function DiscoverScreen({ locale, onOpenCourse, onOpenGuide, onOp
       {failed && <button className="mcy-quiet-link" onClick={retry}>{locale === "en-US" ? "Try again" : "Thử tải lại"}</button>}
       <InfoNote>{msg(locale, "discover.courseNote")}</InfoNote>
     </section>
+    {onOpenReading && <ReadingEntry onOpen={onOpenReading} />}
     <button className="mcy-account-row" onClick={onOpenGuide}><span><strong>Cách chọn bài học video</strong><small>Duyệt bài miễn phí và ghi lại cảm nhận</small></span><ArrowRightIcon /></button>
   </main></MobileScroll>;
 }
