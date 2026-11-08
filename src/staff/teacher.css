@@ -57,7 +57,7 @@
 .teacher-state-card { max-width: 760px; margin: 0 auto; }
 .teacher-state-card h1, .teacher-state-card h2 { margin: 9px 0 8px; font: 28px/1.16 var(--font-editorial); }
 .teacher-state-card p { color: var(--color-text-muted); font-size: 14px; line-height: 1.55; }
-.teacher-auth-main { display: grid; min-height: min(620px, calc(100dvh - 180px)); grid-template-columns: minmax(0, 1.15fr) minmax(300px, .75fr); align-items: center; gap: clamp(36px, 7vw, 96px); }
+.teacher-auth-main { display: grid; min-height: min(620px, calc(100vh - 180px)); min-height: min(620px, calc(100dvh - 180px)); grid-template-columns: minmax(0, 1.15fr) minmax(300px, .75fr); align-items: center; gap: clamp(36px, 7vw, 96px); }
 .teacher-auth-card h2 { margin: 0; font: 25px/1.2 var(--font-editorial); }
 .teacher-auth-card p { color: var(--color-text-muted); font-size: 13px; line-height: 1.5; }
 .teacher-auth-card label { display: block; margin: 20px 0 7px; font-size: 12px; font-weight: 750; }

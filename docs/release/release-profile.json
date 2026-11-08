@@ -30,7 +30,7 @@
     "capacitor.config.ts",
     "mobile-runtime.lock.json",
     ".github/workflows",
-    "skills/mcy-change-review",
+    ".claude/skills/mcy-change-review",
     "supabase/functions",
     "supabase/config.toml",
     "AGENTS.md",

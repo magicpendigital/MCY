@@ -2,8 +2,9 @@ name: MCY quality baseline
 
 on:
   pull_request:
+  # The branch that ships (codex-mcy-p1-preview) is never merged through a pull request, so every push must run the baseline too.
   push:
-    branches: [main]
+    branches: ['**']
 
 permissions:
   contents: read
@@ -27,10 +28,9 @@ jobs:
       - run: npm ci
       - run: npm audit --omit=dev --audit-level=high
       - run: npx playwright install --with-deps chromium
-      - run: npm run check:runtime
-      - run: npm run build
-      - run: npm run test:browser-compat
-      - run: npm run check:bundle-secrets
+      # check:ios15 = runtime integrity + production build + iOS 15 static checks (source and bundle) + bundle secret scan
+      - run: npm run check:ios15
+      - run: npm run test:skills
       - run: npm run test:dependency-security
       - run: npm run test:checkin-migration-contract
       - run: npm run test:consent-event-migration-contract

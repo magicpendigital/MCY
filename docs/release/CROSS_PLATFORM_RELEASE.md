@@ -33,7 +33,7 @@ Nguyên tắc cố định:
 
 **1. Đóng nguồn.** Commit theo nhóm (một ý một commit). Tệp dùng chung chứa việc dở của người khác: chỉ commit phần của mình (dựng từ `git show HEAD:…` + thay đổi, kiểm bằng export sạch). Không `git add -A` khi cây làm việc còn việc dở hoặc tệp riêng tư. Không đưa tệp lớn nhị phân vào lịch sử trước khi push (ảnh gốc ra thư mục lưu trữ ngoài repo; commit bản WebP).
 
-**2. Kiểm chứng trên bản export sạch của HEAD** (thư mục tạm, `node_modules` nối bằng junction): `npx tsc --noEmit`, `npm run build` (gồm `check:runtime`), `npm run check:bundle-secrets`, `npm run test:sites`, các kiểm thử Node liên quan và Playwright (`MCY_PLAYWRIGHT_CHANNEL=msedge`; thêm `--timeout=90000` cho lần khởi động lạnh). Chạy toàn bộ Playwright khi đổi giao diện/luồng. Ghi kết quả.
+**2. Kiểm chứng trên bản export sạch của HEAD** (thư mục tạm, `node_modules` nối bằng junction). **Cổng iOS 15 bắt buộc: `npm run check:ios15` phải xanh trên đúng commit sẽ phát hành, trước bước 3 (push), bước 4 (APK, AAB)**; đỏ thì dừng, không nới kiểm tra (xem [INC-001](../quality/KNOWN_INCIDENTS.md) và skill `mcy-ios-compat`). Ghi riêng "iPhone iOS 15 thật: CHƯA CHẠY" trong sổ nếu chưa kiểm. Các lệnh còn lại: `npx tsc --noEmit`, `npm run build` (gồm `check:runtime`), `npm run check:bundle-secrets`, `npm run test:sites`, các kiểm thử Node liên quan và Playwright (`MCY_PLAYWRIGHT_CHANNEL=msedge`; thêm `--timeout=90000` cho lần khởi động lạnh). Chạy toàn bộ Playwright khi đổi giao diện/luồng. Ghi kết quả.
 
 **3. Web.** `git push origin <nhánh>` (không `--force`). Chờ triển khai READY (Vercel connector: `list_deployments`/`get_deployment`; hoặc trạng thái commit trên GitHub). Kiểm không cookie: trang chủ, `/privacy.html`, `/terms.html`, `/delete-account.html` trả 200 và bundle chứa chuỗi mới. Production/DNS/bảo vệ không đổi trừ khi Owner yêu cầu riêng.
 
@@ -58,7 +58,7 @@ Dừng và báo Owner (không tự sửa bằng cách bỏ qua) khi: HEAD khác 
 
 ## Việc chưa có ở đây (ghi để không quên)
 
-- CI bắt buộc trên GitHub chưa được xác minh là đang bật; script `release-sync-status.mjs` là kiểm tra thủ công chỉ đọc, không phải rào cản thực thi.
+- CI: workflow `quality.yml` từng chỉ chạy với pull request và push lên `main`, nên **chưa bao giờ chạy** trên nhánh phát hành (`gh run list` trống, 2026-11-08). Đã sửa cho chạy trên mọi push và gọi `check:ios15`; chỉ coi là bật khi thấy một lần chạy thật sau khi đẩy. CI bắt buộc trên GitHub chưa được xác minh là đang bật (kho riêng không có Pro nên không có luật nhánh bảo vệ); script `release-sync-status.mjs` là kiểm tra thủ công chỉ đọc, không phải rào cản thực thi.
 - iOS/TestFlight, closed/production track, App Links xác minh, bản đồ mapping/deobfuscation cho Play.
 
 ## Bài học đợt 5 (2026-11-04)

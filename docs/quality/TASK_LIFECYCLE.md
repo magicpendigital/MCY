@@ -1,6 +1,6 @@
 # MCY task lifecycle
 
-This is mandatory working guidance for every MCY task, including research, documentation, fixes and feature work. Read it before implementation, together with the latest user decision, [AGENTS.md](../../AGENTS.md), the [change-review skill](../../skills/mcy-change-review/SKILL.md) and its [risk matrix](../../skills/mcy-change-review/references/review-matrix.md). Existing authorization persists; this process adds no permission to run external actions and no extra confirmation for work already authorized. Current native HALTED and web release gates remain governed by AGENTS.md.
+This is mandatory working guidance for every MCY task, including research, documentation, fixes and feature work. Read it before implementation, together with the latest user decision, [AGENTS.md](../../AGENTS.md), the [change-review skill](../../.claude/skills/mcy-change-review/SKILL.md) and its [risk matrix](../../.claude/skills/mcy-change-review/references/review-matrix.md). Existing authorization persists; this process adds no permission to run external actions and no extra confirmation for work already authorized. Current native HALTED and web release gates remain governed by AGENTS.md.
 
 The lifecycle is documented guidance, not a runtime, CI or repository permission boundary. Checklists and hashes cannot guarantee zero regression, discover every dependency or prove a reviewer's identity. Verify remote required checks and release permissions separately when relevant.
 
