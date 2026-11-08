@@ -31,6 +31,7 @@ jobs:
       # check:ios15 = runtime integrity + production build + iOS 15 static checks (source and bundle) + bundle secret scan
       - run: npm run check:ios15
       - run: npm run test:skills
+      - run: npm run test:agents-size
       - run: npm run test:dependency-security
       - run: npm run test:checkin-migration-contract
       - run: npm run test:consent-event-migration-contract

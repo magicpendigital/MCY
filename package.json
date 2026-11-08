@@ -42,6 +42,7 @@
     "test:browser-compat": "node --test tests/browser-compat.test.mjs",
     "check:ios15": "node scripts/check-ios15.mjs",
     "test:skills": "node --test tests/skills-integrity.test.mjs",
+    "test:agents-size": "node --test tests/agents-size.test.mjs",
     "test:reading-publication-rehearsal": "node --test tests/reading-publication-rehearsal.cjs tests/glute-region-rehearsal.cjs",
     "test:content-review-rehearsal": "node --test tests/content-review-rehearsal.cjs",
     "test:owner-conflict-migration-contract": "node --test tests/owner-conflict-migration-contract.test.mjs",
