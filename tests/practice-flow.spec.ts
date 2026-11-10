@@ -193,3 +193,20 @@ test("Owner uncertain save requires readback language and explicit reload refres
   page.on("dialog", dialog => dialog.accept()); await page.getByRole("button", { name: "Tải lại từ máy chủ" }).click();
   await expect(page.getByText("CẤU HÌNH AI · V2", { exact: true })).toBeVisible(); expect(reads).toBe(2); expect(saves).toBe(1);
 });
+
+test("the AI practice path is not offered when the check-in reports tiredness or discomfort, and is offered otherwise", async ({ page }) => {
+  await learner(page, async route => { await route.fulfill({ status: 500, json: {} }); });   // the assistant must not even be asked
+  await page.goto("/?mode=web");
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
+  const status = page.locator(".mcy-body-status-actions");
+  for (const label of ["Mệt", "Khó chịu"]) {
+    await status.getByRole("button", { name: label, exact: true }).click();
+    await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
+    await expect(page.getByRole("button", { name: "Chọn buổi hôm nay cùng AI" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Tự chọn bài học video miễn phí" })).toBeVisible();   // manual browsing stays
+    await page.getByRole("button", { name: "Quay lại cảm nhận cơ thể" }).click();
+  }
+  await status.getByRole("button", { name: "Bình thường", exact: true }).click();
+  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
+  await expect(page.getByRole("button", { name: "Chọn buổi hôm nay cùng AI" })).toBeVisible();
+});

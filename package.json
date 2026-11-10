@@ -30,7 +30,7 @@
     "test:ai-openrouter": "node --test tests/ai-gateway-models.test.mjs tests/ai-safety-boundaries.test.mjs tests/ai-assistant-handler.test.mjs tests/ai-current-turn-contract.test.mjs tests/client-bundle-openrouter-secret.test.mjs",
     "test:dependency-security": "node --test tests/dependency-security.test.mjs",
     "test:owner-control-plane": "node --test tests/owner-control-plane.test.mjs",
-    "test:practice-assistant": "node --test tests/practice-assistant.test.mjs tests/ai-current-turn-contract.test.mjs",
+    "test:practice-assistant": "node --test tests/practice-assistant.test.mjs tests/practice-safety-suite.test.mjs tests/ai-current-turn-contract.test.mjs",
     "check:practice-catalog": "node scripts/check-reviewed-practice-catalog.mjs",
     "test:practice-catalog": "node --test tests/reviewed-practice-catalog.test.mjs",
     "test:practice-admission-rehearsal": "node --test tests/practice-admission-rehearsal.cjs",

@@ -259,6 +259,11 @@ function isCheckinAuthReturn(destination: string) {
 function normalizeAuthDestination(destination: string) {
   return destination === "dialogue" ? "discover" : destination;
 }
+// The pilot server refuses to rank practice for reported discomfort, tiredness or an unclear body state (practiceContract.eligibleSessions), so the
+// AI path is not offered then: the learner would only get a refusal. Browsing the free lessons stays available.
+function aiPracticeOffered(state: Pick<DemoState, "aiCapability" | "bodyStatus">) {
+  return state.aiCapability === "ready" && state.bodyStatus !== "reported" && state.bodyStatus !== "uncertain" && state.bodyStatus !== "tired" && state.bodyStatus !== "uncomfortable";
+}
 function hasCheckinBaseline(state: Pick<DemoState, "bodyStatus">) {
   return state.bodyStatus !== null && state.bodyStatus !== "skipped";
 }
@@ -1616,7 +1621,7 @@ function CheckinScreen() {
   return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
     <div className="mcy-step-count" aria-live="polite">{state.signedIn ? formatMessage(locale, "checkin.stepCount", { step: state.checkinStep }) : null}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
     <h1>{msg(locale, state.checkinStep === 1 ? "checkin.step1.title" : "checkin.step2.title")}</h1>
-    <p className="mcy-lead">{state.checkinStep === 2 && state.aiCapability === "ready" ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
+    <p className="mcy-lead">{state.checkinStep === 2 && aiPracticeOffered(state) ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
     {state.checkinStep === 1 ? <div className="mcy-checkin-content checkin-step-body">
       <div className="mcy-checkin-illustration">
         <div className="mcy-scroll-hint mcy-star-hint"><span className="mcy-star" aria-hidden="true">*</span><em>{msg(locale, "checkin.scrollHint")}</em></div>
@@ -1687,7 +1692,7 @@ function CheckinFooter() {
       <Action onClick={advanceStep}>{msg(locale, "checkin.step1.next")}</Action>
       <div className="mcy-checkin-footer-options"><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button><button onClick={browseFreeLessons}>{msg(locale, "checkin.directPlan")}</button></div>
     </> : <>
-      {state.aiCapability === "ready" ? <><Action onClick={() => { update({ checkinBaselineReady: hasCheckinBaseline(state) }); flow.push(ROUTES.dailyPractice); }}>{locale === "en-US" ? "Choose today's practice with AI" : "Chọn buổi hôm nay cùng AI"}</Action><button className="mcy-quiet-link" onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</button></> : <Action onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</Action>}
+      {aiPracticeOffered(state) ? <><Action onClick={() => { update({ checkinBaselineReady: hasCheckinBaseline(state) }); flow.push(ROUTES.dailyPractice); }}>{locale === "en-US" ? "Choose today's practice with AI" : "Chọn buổi hôm nay cùng AI"}</Action><button className="mcy-quiet-link" onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</button></> : <Action onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</Action>}
       <div className="mcy-checkin-footer-options">{!state.signedIn && <button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button>}<button onClick={() => update({ checkinStep: 1 })}>{msg(locale, "checkin.backToBody")}</button></div>
     </>}
     <BottomSheet open={confirmSkip} onOpenChange={setConfirmSkip} title={locale === "en-US" ? "Skip the body check-in?" : "Bỏ ghi nhận vùng cơ thể?"} description={locale === "en-US" ? "The areas you entered will be cleared from this check-in. You can add them again later." : "Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau."} snap={0.38}>

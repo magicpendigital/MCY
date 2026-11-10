@@ -22,6 +22,9 @@ export type PracticeSession = {
   pace: "slow" | "steady";
   guidance: "more" | "less";
   floorContact: boolean;
+  // Optional signals declared with the expert review. They are data for ranking only, never a hard filter and never a health statement.
+  suitableEnergy?: NonNullable<PracticeContext["energy"]>[];
+  intents?: PracticeContext["intent"][];
   preparation: string;
   source: "teacher" | "ai_assisted";
   review: { status: "approved"; evidenceRef: string; reviewerLabel: string; reviewedAt: string; expiresAt: string };
@@ -51,13 +54,15 @@ export function isPracticeContext(v: unknown): v is PracticeContext {
 }
 function text(v: unknown, max: number) { return typeof v === "string" && v.trim().length > 0 && v.length <= max; }
 function asset(v: unknown) { return typeof v === "string" && /^\/assets\/practice\/[a-z0-9][a-z0-9/_-]*\.(?:png|webp|jpg|wav|mp3|ogg)$/.test(v) && !v.includes(".."); }
+const ENERGIES = ["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"], INTENTS = ["Thả lỏng", "Bắt nhịp", "Tập trung"];
+const optionalSet = (v: unknown, allowed: readonly string[]) => v === undefined || (Array.isArray(v) && v.length > 0 && v.length <= allowed.length && new Set(v).size === v.length && v.every(x => typeof x === "string" && allowed.includes(x)));
 export function isReviewedSession(v: unknown, now = Date.now()): v is PracticeSession {
   if (!object(v) || !object(v.review) || !object(v.eligibility)) return false;
   return text(v.id, 80) && typeof v.id === "string" && /^[a-z0-9-]+$/.test(v.id) && typeof v.version === "string" && /^[a-f0-9]{64}$/.test(v.version)
     && typeof v.locale === "string" && ["vi-VN", "en-US"].includes(v.locale) && text(v.title, 140)
     && Number.isInteger(v.durationSeconds) && Number(v.durationSeconds) > 0 && Number(v.durationSeconds) <= 3600
     && typeof v.pace === "string" && ["slow", "steady"].includes(v.pace) && typeof v.guidance === "string" && ["more", "less"].includes(v.guidance)
-    && typeof v.floorContact === "boolean" && text(v.preparation, 600) && typeof v.source === "string" && ["teacher", "ai_assisted"].includes(v.source)
+    && typeof v.floorContact === "boolean" && optionalSet(v.suitableEnergy, ENERGIES) && optionalSet(v.intents, INTENTS) && text(v.preparation, 600) && typeof v.source === "string" && ["teacher", "ai_assisted"].includes(v.source)
     && v.review.status === "approved" && text(v.review.evidenceRef, 240) && text(v.review.reviewerLabel, 100)
     && typeof v.review.reviewedAt === "string" && Number.isFinite(Date.parse(v.review.reviewedAt)) && Date.parse(v.review.reviewedAt) <= now
     && typeof v.review.expiresAt === "string" && Number.isFinite(Date.parse(v.review.expiresAt)) && Date.parse(v.review.expiresAt) > now

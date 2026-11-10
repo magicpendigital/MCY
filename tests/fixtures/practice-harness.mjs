@@ -9,12 +9,14 @@ export const SESSION = {
   eligibility: { bodyStatuses: ["none_now", "skipped", null], regionCodes: [] },
   sections: [{ id: "intro", title: "Fictional content", text: "Offline fixture, not an exercise.", image: "/assets/practice/preparation-draft/room.webp", audio: null, audioLocale: null }],
 };
+// A second eligible session, so the default catalogue still leaves a real choice for the model (one candidate is answered without a model call).
+export const SESSION_B = { ...SESSION, id: "offline-reviewed-session-b", version: "b".repeat(64), title: "Fictional reviewed session B", durationSeconds: 420 };
 export function request(body = {}, token = "fictional-token") { return new Request("https://function.invalid/mcy-ai-assistant", { method: "POST", headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) }, body: JSON.stringify({ action: "select_plan", requestId: REQUEST, context: CONTEXT, ...body }) }); }
 export function harness(options = {}) {
   const calls = [], providerCalls = [], modelCalls = []; let reads = 0;
   const env = new Map(Object.entries({ SUPABASE_URL: "https://mhumbczqrzutdnraafhs.supabase.co", MCY_AI_ENABLE_STAGING: "true", MCY_AI_SPEND_CONTROL_APPROVED: "true", OPENROUTER_API_KEY: "fictional-provider-key", MCY_AI_PILOT_ACTORS: JSON.stringify([ACTOR]), ...options.env }));
   const handler = createPracticeAssistantHandler({
-    env: k => env.get(k), now: () => Date.parse("2026-10-10T00:00:00Z"), catalog: () => options.catalog ?? [SESSION], newRequestId: () => REQUEST,
+    env: k => env.get(k), now: () => Date.parse("2026-10-10T00:00:00Z"), catalog: () => options.catalog ?? [SESSION, SESSION_B], newRequestId: () => REQUEST,
     clients: () => ({ user: { auth: { getUser: async token => ({ data: { user: token === "fictional-token" ? (options.user ?? { id: ACTOR, email_confirmed_at: "2026-01-01T00:00:00Z" }) : null }, error: null }) } }, server: { rpc: async (name, args) => {
       calls.push({ name, args });
       if (options.rpc) { const result = await options.rpc(name, args); if (result) return result; }
