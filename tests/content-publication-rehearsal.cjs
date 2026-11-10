@@ -2,7 +2,7 @@
 // Supplements, and is not, live Supabase evidence. Needs @electric-sql/pglite (MCY_PGLITE_MODULE_PATH).
 const { test } = require('node:test');
 const { assert, read, one, newDb, denied } = require('./support/pglite-chain.cjs');
-const files = ['20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql', '20261110090000_content_snapshot_screens.sql'];
+const files = ['20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql', '20261110175347_content_snapshot_screens.sql'];
 const O = '66000000-0000-4000-8000-000000000001', T = '66000000-0000-4000-8000-000000000002', U = '66000000-0000-4000-8000-000000000003', S = '66000000-0000-4000-8000-000000000004';
 const checks = Object.fromEntries(['accessibility', 'actualDurationChecked', 'audienceScope', 'contentAccuracy', 'expertiseConfirmed', 'rightsConfirmed', 'stopGuidance', 'vietnameseAudioReady'].map(k => [k, true]));
 const lesson = { youtubeId: 'AAAAAAAAAAA', summary: 'Fictional lesson summary', durationLabel: '0:43', orientation: 'portrait' };
