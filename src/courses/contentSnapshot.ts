@@ -1,6 +1,7 @@
 import { publicStorageBase } from "../backend/supabase";
 import type { ContentManifest, PublishedGroup, PublishedLesson } from "../../supabase/functions/_shared/contentManifestTypes";
 import type { CourseLesson, FreeCourse } from "./freeCourses";
+import { LESSON_AREAS } from "./lessonFinder";
 
 // The learner catalogue. When the Owner has approved and switched on content, the server writes one public snapshot file and
 // this app reads it (no sign-in). Anything wrong with that file, or no file, means the bundled catalogue is used, so a failure
@@ -18,6 +19,7 @@ const sections: readonly SectionId[] = ["editors_choice", "video_groups", "quick
 // Today's screen: the finder first, the video groups, reading last. Used until a snapshot says otherwise.
 const bundledDisplay: Catalog["display"] = { order: ["quick_find", "video_groups", "reading"], picks: [], showTeacherNames: true, aiImageLabel: true };
 const itemId = /^[a-z0-9_-]{1,80}$/;
+const areaIds: readonly string[] = LESSON_AREAS.map(a => a.id);
 const youtubeId = /^[A-Za-z0-9_-]{11}$/;
 const plain = (v: unknown): v is Record<string, unknown> => Boolean(v && typeof v === "object" && !Array.isArray(v));
 const text = (v: unknown, max: number): v is string => typeof v === "string" && v.length > 0 && v.length <= max;
@@ -27,7 +29,8 @@ function parseLesson(raw: unknown): PublishedLesson | null {
   if (!plain(raw) || !text(raw.id, 80) || !itemId.test(raw.id) || !text(raw.title, 200) || typeof raw.youtube_id !== "string" || !youtubeId.test(raw.youtube_id)
     || !text(raw.summary, 1000) || typeof raw.duration !== "string" || !/^[0-9]{1,2}:[0-9]{2}$/.test(raw.duration) || (raw.orientation !== "portrait" && raw.orientation !== "landscape")
     || typeof raw.captions_verified !== "boolean" || !textList(raw.caption_languages, 6, 12) || !(raw.byline === null || text(raw.byline, 120))
-    || !(raw.visibility === undefined || ["private", "unlisted", "public"].includes(raw.visibility as string)) || !(raw.tags === undefined || textList(raw.tags, 8, 40))) return null;
+    || !(raw.visibility === undefined || ["private", "unlisted", "public"].includes(raw.visibility as string)) || !(raw.tags === undefined || textList(raw.tags, 8, 40))
+    || !(raw.areas === undefined || (Array.isArray(raw.areas) && raw.areas.length <= 5 && new Set(raw.areas).size === raw.areas.length && raw.areas.every(a => typeof a === "string" && areaIds.includes(a))))) return null;
   return raw as unknown as PublishedLesson;
 }
 function parseGroup(raw: unknown): PublishedGroup | null {
@@ -62,7 +65,7 @@ export function catalogFromManifest(m: ContentManifest): Catalog {
     const courseId = courseIdOf(g.id);
     const lessons: CourseLesson[] = g.lesson_ids.map(id => byId.get(id)!).map(l => ({
       id: lessonIdOf(courseId, l.id), youtubeId: l.youtube_id, title: l.title, duration: l.duration, description: l.summary, visibility: l.visibility === "private" || l.visibility === "public" ? l.visibility : "unlisted",
-      orientation: l.orientation, channelCaptionsVerified: l.captions_verified, channelCaptionLanguages: l.caption_languages, byline: show ? l.byline : null,
+      orientation: l.orientation, channelCaptionsVerified: l.captions_verified, channelCaptionLanguages: l.caption_languages, ...(l.areas ? { areas: l.areas } : {}), byline: show ? l.byline : null,
     }));
     return { id: courseId, title: g.title, description: g.summary, ...(g.guidance ? { guidance: g.guidance } : {}), lessons };
   });

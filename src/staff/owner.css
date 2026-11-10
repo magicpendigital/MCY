@@ -189,3 +189,8 @@
 .owner-display-log ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.6; }
 .owner-hub-visibility { margin: 16px 0; padding: 14px; border: 1px dashed var(--owner-border); border-radius: 12px; }
 .owner-hub-visibility h4 { margin: 0 0 8px; font-size: 13px; }
+/* Browse-area checkboxes in the lesson forms: the generic field rule would stretch each checkbox like a text input. */
+.owner-area-picker { margin: 21px 0 0; padding: 0; border: 0; min-inline-size: 0; }
+.owner-area-picker > legend { padding: 0; margin-bottom: 8px; }
+.owner-area-picker label { display: flex; align-items: center; gap: 8px; min-height: 32px; font-size: 13px; font-weight: 450; }
+.owner-area-picker input[type="checkbox"] { width: 18px; min-height: 18px; height: 18px; padding: 0; }

@@ -111,3 +111,10 @@ test('set_visibility validates, sends the exact version and maps refusals to sta
     [{ code: '42501', message: 'owner_access_required' }, 403, 'owner_access_required'], [{ code: 'XX000', message: 'Private detail' }, 503, 'content_result_uncertain']];
   for (const [error, status, code] of cases) { const h = harness({ rpc: { data: null, error } }); const x = await h.run({ action: 'set_visibility', itemId: 'video-x', seq: 1, visible: false }); assert.deepEqual([x.status, x.body.error], [status, code]); assert.ok(!JSON.stringify(x.body).includes('Private')); }
 });
+test('video lesson payloads accept only known, unique browse areas',()=>{
+  const base={youtubeId:'AAAAAAAAAAA',summary:'Fictional',durationLabel:'0:43',orientation:'portrait'};
+  assert.equal(validPayload('video_lesson',{...base,areas:['back','poses']}),true);
+  assert.equal(validPayload('video_lesson',{...base,areas:[]}),true);
+  assert.equal(validPayload('video_lesson',base),true);
+  for(const bad of [['nope'],['back','back'],'back',[1],['back','neck-shoulders','hips-legs','whole-body','poses','back']])assert.equal(validPayload('video_lesson',{...base,areas:bad}),false,JSON.stringify(bad));
+});

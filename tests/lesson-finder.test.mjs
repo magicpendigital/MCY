@@ -37,3 +37,12 @@ test("shortest lessons are ordered by duration only", () => {
   assert.ok(shortest[0].seconds <= shortest[1].seconds && shortest[1].seconds <= shortest[2].seconds);
   assert.equal(shortest[0].seconds, Math.min(...all.map(item => lessonSeconds(item.lesson.duration))));
 });
+test("areas chosen by an author replace the title rules; an empty list means no area on purpose; unknown ids are ignored", () => {
+  assert.deepEqual(lessonAreas({ title: "Chuyển động cổ", areas: ["hips-legs"] }, "gentle"), ["hips-legs"]);
+  assert.deepEqual(lessonAreas({ title: "Chuyển động cổ", areas: [] }, "gentle"), []);
+  assert.deepEqual(lessonAreas({ title: "x", areas: ["back", "nonsense", "neck-shoulders"] }, "gentle"), ["neck-shoulders", "back"]);
+  assert.deepEqual(lessonAreas({ title: "Chuyển động cổ" }, "gentle"), ["neck-shoulders"]);               // bundled lessons keep the title rules
+  const courses = [{ id: "x", title: "X", description: "", lessons: [{ id: "1", youtubeId: "AAAAAAAAAAA", title: "Bài có chữ lưng", duration: "0:20", description: "", visibility: "unlisted", orientation: "portrait", channelCaptionsVerified: false, channelCaptionLanguages: [], areas: ["hips-legs"] }] }];
+  assert.equal(findLessons(courses, { area: "back" }).length, 0);
+  assert.equal(findLessons(courses, { area: "hips-legs" }).length, 1);
+});

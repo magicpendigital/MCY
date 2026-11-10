@@ -13,6 +13,8 @@ export type CourseLesson = {
   channelCaptionLanguages: string[];
   /** Author label decided by the server at publish time (teacher name or the Editor's choice label); absent for bundled content. */
   byline?: string | null;
+  /** Browse areas set by the author (ids of LessonArea). When absent the finder falls back to the title rules (bundled lessons). */
+  areas?: readonly string[];
 };
 
 /** Benefits and cautions shown under a course. `reviewed: false` means a draft that a qualified person has not approved yet; the screen says so. */

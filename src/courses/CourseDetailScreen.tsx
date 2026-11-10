@@ -191,7 +191,7 @@ export default function CourseDetailScreen({
       </div>
       <div className="mcy-course-featured-copy"><span className="mcy-course-lesson-number">{locale === "en-US" ? `LESSON ${lessonIndex + 1} OF ${course.lessons.length}` : `BÀI ${lessonIndex + 1} / ${course.lessons.length}`} · {lesson.duration}</span><h2>{lesson.title}</h2>
         <button type="button" className="mcy-course-save" aria-pressed={lessonSaved} onClick={() => toggleSavedLesson(lessonRef)}>{lessonSaved ? (locale === "en-US" ? "Saved on this device" : "Đã lưu trên máy này") : (locale === "en-US" ? "Save this lesson" : "Lưu bài này")}</button>
-        {lessonTags.length > 0 && <ul className="mcy-course-lesson-tags" aria-label="Nhãn theo tên bài">{lessonTags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
+        {lessonTags.length > 0 && <ul className="mcy-course-lesson-tags" aria-label={lesson.areas ? "Nhãn do biên tập đặt" : "Nhãn theo tên bài"}>{lessonTags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
         <p>{lesson.description}</p>
       </div>
       <p className="mcy-course-source-note" role="note"><InfoCircledIcon aria-hidden="true" focusable="false" /><span>{msg(locale, "course.sourceNote")} <a href={`https://policies.google.com/privacy?hl=${locale === "en-US" ? "en" : "vi"}`} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">{msg(locale, "course.privacyLink")}</a></span></p>

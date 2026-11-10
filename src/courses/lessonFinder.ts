@@ -44,7 +44,9 @@ export function lessonSeconds(duration: string): number {
   return parts.reduce((total, part) => total * 60 + part, 0);
 }
 
-export function lessonAreas(lesson: Pick<CourseLesson, "title">, courseId: FreeCourseId): LessonArea[] {
+export function lessonAreas(lesson: Pick<CourseLesson, "title"> & { areas?: readonly string[] }, courseId: FreeCourseId): LessonArea[] {
+  // An author's explicit choice wins; unknown ids are ignored. An empty list means "no area on purpose".
+  if (lesson.areas) return [...new Set(LESSON_AREAS.map(a => a.id).filter(id => lesson.areas!.includes(id)))];
   const found = areaRules.filter(([, pattern]) => pattern.test(lesson.title)).map(([area]) => area);
   if (courseId === "poses" || courseId === "sequences") found.push("poses");
   return [...new Set(found)];

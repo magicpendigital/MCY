@@ -82,10 +82,13 @@ test("writing a lesson validates locally, saves a version with the exact expecte
   expect(writes).toHaveLength(0);
   await form.getByLabel("Mã video YouTube (11 ký tự)").fill("BBBBBBBBBBB");
   await form.getByLabel("Bạn sẽ làm gì trong bài này (mô tả)").fill("Bạn sẽ làm ba chuyển động nhẹ cho cổ.");
+  await form.getByLabel("Lưng", { exact: true }).check();                                      // the author files the lesson under areas; nothing is guessed from the title
+  await form.getByLabel("Cổ và vai").check();
+  await form.getByLabel("Tư thế", { exact: true }).uncheck();
   await form.getByRole("button", { name: "Lưu và gửi duyệt" }).click();
   await expect(page.getByText("Đã lưu và gửi cho Owner duyệt.")).toBeVisible();
   expect(writes.map(w => w.action)).toEqual(["save_content", "submit_content"]);
-  expect(writes[0]).toMatchObject({ itemId: mine.item_id, kind: "video_lesson", expectedSeq: 1, payload: { youtubeId: "BBBBBBBBBBB", orientation: "portrait" } });
+  expect(writes[0]).toMatchObject({ itemId: mine.item_id, kind: "video_lesson", expectedSeq: 1, payload: { youtubeId: "BBBBBBBBBBB", orientation: "portrait", areas: ["neck-shoulders", "back"] } });
   expect(writes[0].actorId).toBeUndefined();
   expect(writes[1]).toMatchObject({ itemId: mine.item_id, expectedSeq: 2 });
 });

@@ -56,11 +56,29 @@ test("the teacher name is not shown when the policy is off, and a bundled lesson
   await expect(page.getByText("Giảng viên Thử", { exact: true })).toHaveCount(0);
 });
 
+test("areas set by the author drive the finder and the lesson tags; a lesson without them still uses the title rules", async ({ page }) => {
+  const explicit = manifest({
+    lessons: [lesson("video-demo-a", "Bài có chữ cổ trong tên", null, { areas: ["hips-legs"] }), lesson("video-demo-b", "Bài có chữ lưng trong tên", null, { areas: [] }), lesson("video-demo-c", "Chuyển động cổ nhẹ", null)],
+    groups: [{ id: "group-demo", title: "Nhóm thử nghiệm của biên tập", summary: "Fictional group summary", lesson_ids: ["video-demo-a", "video-demo-b", "video-demo-c"], byline: null }],
+    display: display(),
+  });
+  await serve(page, explicit);
+  await openDiscover(page);
+  await page.getByRole("button", { name: "Cổ và vai" }).first().click();
+  const results = page.getByTestId("lesson-finder");
+  await expect(results).toContainText("Chuyển động cổ nhẹ");                                   // no explicit areas: the title rule still applies
+  await expect(results).not.toContainText("Bài có chữ cổ trong tên");                         // explicit hips-legs wins over the word in the title
+  await expect(results).not.toContainText("Bài có chữ lưng trong tên");
+  await page.getByRole("button", { name: "Hông và chân" }).first().click();
+  await expect(results).toContainText("Bài có chữ cổ trong tên");
+});
+
 test("an invalid snapshot is ignored and the bundled catalogue is used", async ({ page }) => {
   const bad = [
     manifest({ display: display({ discover_order: ["reading", "video_groups", "quick_find", "editors_choice"] }) }),         // reading above the videos
     manifest({ lessons: [lesson("video-demo-a", "x", null, { youtube_id: "short" }), lesson("video-demo-b", "y", null)] }),  // bad video id
     manifest({ groups: [{ id: "group-demo", title: "t", summary: "s", lesson_ids: ["video-missing"], byline: null }] }),     // group points at a missing lesson
+    manifest({ lessons: [lesson("video-demo-a", "x", null, { areas: ["not-an-area"] }), lesson("video-demo-b", "y", null)] }), // unknown area id
     { v: 2 }, { not: "a manifest" },
   ];
   for (const body of bad) {

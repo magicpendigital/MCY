@@ -1,5 +1,5 @@
 import { internalWording } from "./readingPublication.ts";
-import { validPayload } from "./contentWorkspaceContract.ts";
+import { validPayload, validAreas } from "./contentWorkspaceContract.ts";
 import type { ContentManifest, PublishedGroup, PublishedLesson } from "./contentManifestTypes.ts";
 export type { ContentManifest, PublishedGroup, PublishedLesson };
 
@@ -32,7 +32,7 @@ export function buildManifest(source: SnapshotSource, now = new Date()): Content
     lessons.push({
       id: item.item_id, title: item.title, youtube_id: p.youtubeId as string, summary: p.summary as string, duration: p.durationLabel as string, orientation: p.orientation as "portrait" | "landscape",
       ...(typeof p.visibility === "string" ? { visibility: p.visibility } : {}), captions_verified: p.captionsVerified === true, caption_languages: strings(p.captionLanguages),
-      ...(Array.isArray(p.tags) && p.tags.length ? { tags: strings(p.tags) } : {}), byline: byline(item, show),
+      ...(Array.isArray(p.tags) && p.tags.length ? { tags: strings(p.tags) } : {}), ...(validAreas(p.areas) ? { areas: p.areas } : {}), byline: byline(item, show),
     });
   }
   const have = new Set(lessons.map(l => l.id));

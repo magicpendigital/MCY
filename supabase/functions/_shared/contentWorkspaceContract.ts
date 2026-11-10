@@ -16,11 +16,14 @@ const durationLabel = /^\d{1,2}:\d{2}$/;
 const lessonId = /^video-[a-z0-9_-]{1,74}$/;
 const languageTag = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})?$/;
 const entryKey = /^[a-z0-9_.-]{1,60}$/;
+// Browse areas a lesson can be filed under, chosen by the author (replaces guessing from the title). Must match LessonArea in src/courses/lessonFinder.ts.
+export const lessonAreaIds = ["neck-shoulders", "back", "hips-legs", "whole-body", "poses"] as const;
+export const validAreas = (v: unknown): v is string[] => Array.isArray(v) && v.length <= lessonAreaIds.length && new Set(v).size === v.length && v.every(a => (lessonAreaIds as readonly string[]).includes(a as string));
 
 export function validPayload(kind: string, payload: unknown): boolean {
   if (!plain(payload)) return false;
   if (kind === "video_lesson") {
-    return onlyKeys(payload, ["youtubeId", "summary", "durationLabel", "orientation", "visibility", "captionsVerified", "captionLanguages", "tags"])
+    return onlyKeys(payload, ["youtubeId", "summary", "durationLabel", "orientation", "visibility", "captionsVerified", "captionLanguages", "tags", "areas"])
       && typeof payload.youtubeId === "string" && youtubeId.test(payload.youtubeId)
       && str(payload.summary, 1, 1000)
       && typeof payload.durationLabel === "string" && durationLabel.test(payload.durationLabel)
@@ -28,7 +31,8 @@ export function validPayload(kind: string, payload: unknown): boolean {
       && (payload.visibility === undefined || ["private", "unlisted", "public"].includes(payload.visibility as string))
       && (payload.captionsVerified === undefined || typeof payload.captionsVerified === "boolean")
       && (payload.captionLanguages === undefined || strings(payload.captionLanguages, 6, 12, languageTag))
-      && (payload.tags === undefined || strings(payload.tags, 8, 40));
+      && (payload.tags === undefined || strings(payload.tags, 8, 40))
+      && (payload.areas === undefined || validAreas(payload.areas));
   }
   if (kind === "course_group") {
     const g = payload.guidance;

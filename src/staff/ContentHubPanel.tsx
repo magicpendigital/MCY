@@ -4,6 +4,8 @@ import { reviewChecks, type ReviewChecklist } from "../../supabase/functions/_sh
 import { validPayload } from "../../supabase/functions/_shared/contentWorkspaceContract";
 import type { ReadingUnitContent } from "../../supabase/functions/_shared/readingUnitCandidates";
 import { ReadingUnitPreview } from "./ReadingUnitPreview";
+import { AreaPicker } from "./AreaPicker";
+import { lessonAreas } from "../courses/lessonFinder";
 import "./owner.css";
 
 // Owner content hub (phase 2): every item in the versioned content store in one list, a "see it as a learner" view,
@@ -58,21 +60,21 @@ function byline(v: { author_kind: string; author_label: string | null }) {
 const asStrings = (v: unknown): string[] => Array.isArray(v) ? v.filter((s): s is string => typeof s === "string") : [];
 const lines = (s: string) => s.split(/\r?\n/).map(x => x.trim()).filter(Boolean);
 
-type Draft = { id: string | null; seq: number; kind: Exclude<Kind, "reading_unit">; title: string; youtubeId: string; summary: string; duration: string; orientation: "portrait" | "landscape"; tags: string;
+type Draft = { id: string | null; seq: number; kind: Exclude<Kind, "reading_unit">; title: string; youtubeId: string; summary: string; duration: string; orientation: "portrait" | "landscape"; tags: string; areas: string[];
   lessonIds: string[]; benefits: string; cautions: string; locale: "vi-VN" | "en-US"; entries: string };
-const blankDraft = (kind: Draft["kind"] = "video_lesson"): Draft => ({ id: null, seq: 0, kind, title: "", youtubeId: "", summary: "", duration: "", orientation: "portrait", tags: "", lessonIds: [], benefits: "", cautions: "", locale: "vi-VN", entries: "" });
+const blankDraft = (kind: Draft["kind"] = "video_lesson"): Draft => ({ id: null, seq: 0, kind, title: "", youtubeId: "", summary: "", duration: "", orientation: "portrait", tags: "", areas: [], lessonIds: [], benefits: "", cautions: "", locale: "vi-VN", entries: "" });
 function draftFrom(v: Version): Draft | null {
   if (v.kind === "reading_unit") return null;
   const p = v.payload, g = (p.guidance ?? {}) as Record<string, unknown>;
   const entries = (p.entries ?? {}) as Record<string, string>;
   return { id: v.item_id, seq: v.latest_seq, kind: v.kind, title: v.title, youtubeId: String(p.youtubeId ?? ""), summary: String(p.summary ?? ""), duration: String(p.durationLabel ?? ""),
-    orientation: p.orientation === "landscape" ? "landscape" : "portrait", tags: asStrings(p.tags).join(", "), lessonIds: asStrings(p.lessonIds), benefits: asStrings(g.benefits).join("\n"), cautions: asStrings(g.cautions).join("\n"),
+    orientation: p.orientation === "landscape" ? "landscape" : "portrait", tags: asStrings(p.tags).join(", "), areas: Array.isArray(p.areas) ? asStrings(p.areas) : lessonAreas({ title: v.title }, "gentle"), lessonIds: asStrings(p.lessonIds), benefits: asStrings(g.benefits).join("\n"), cautions: asStrings(g.cautions).join("\n"),
     locale: p.locale === "en-US" ? "en-US" : "vi-VN", entries: Object.entries(entries).map(([k, t]) => `${k}=${t}`).join("\n") };
 }
 function payloadOf(d: Draft): Record<string, unknown> {
   if (d.kind === "video_lesson") {
     const tags = d.tags.split(",").map(t => t.trim()).filter(Boolean);
-    return { youtubeId: d.youtubeId.trim(), summary: d.summary.trim(), durationLabel: d.duration.trim(), orientation: d.orientation, ...(tags.length ? { tags } : {}) };
+    return { youtubeId: d.youtubeId.trim(), summary: d.summary.trim(), durationLabel: d.duration.trim(), orientation: d.orientation, areas: d.areas, ...(tags.length ? { tags } : {}) };
   }
   if (d.kind === "course_group") {
     const benefits = lines(d.benefits), cautions = lines(d.cautions);
@@ -265,7 +267,8 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
           <label className="owner-field">Mô tả<textarea required maxLength={1000} value={draft.summary} onChange={e => set({ summary: e.target.value })} /></label>
           <label className="owner-field">Thời lượng (m:ss)<input required value={draft.duration} placeholder="0:43" onChange={e => set({ duration: e.target.value })} /></label>
           <label className="owner-field">Khung hình<select value={draft.orientation} onChange={e => set({ orientation: e.target.value as Draft["orientation"] })}><option value="portrait">Dọc</option><option value="landscape">Ngang</option></select></label>
-          <label className="owner-field">Thẻ (cách nhau bằng dấu phẩy)<input value={draft.tags} onChange={e => set({ tags: e.target.value })} /></label></>}
+          <label className="owner-field">Thẻ (cách nhau bằng dấu phẩy)<input value={draft.tags} onChange={e => set({ tags: e.target.value })} /></label>
+          <AreaPicker value={draft.areas} onChange={areas => set({ areas })} /></>}
         {draft.kind === "course_group" && <>
           <label className="owner-field">Mô tả nhóm<textarea required maxLength={1000} value={draft.summary} onChange={e => set({ summary: e.target.value })} /></label>
           <fieldset className="owner-hub-lessons"><legend>Bài video trong nhóm</legend>{(rows ?? []).filter(r => r.kind === "video_lesson").map(r => <label key={r.item_id}>

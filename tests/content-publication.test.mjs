@@ -89,3 +89,12 @@ test('author notes validate input and pass only the verified actor',async()=>{
   const w=harness();const s=await w.run({action:'save_author_note',itemId:'video-x',seq:2,note:'  Please shorten.  '});assert.deepEqual([s.status,w.calls[0].name,w.calls[0].args.p_note,w.calls[0].args.p_seq,w.calls[0].args.p_actor_id],[200,'mcy_content_note_save','Please shorten.',2,actor]);
   const forbidden=harness({rpc:()=>({data:null,error:{code:'42501',message:'Private detail'}})});const x=await forbidden.run({action:'read_author_notes',itemId:'video-x'});assert.deepEqual([x.status,x.body.error],[403,'content_access_required']);
 });
+test('explicit browse areas are published when valid and make a lesson invalid when not',()=>{
+  const m=buildManifest(source([lesson('video-a',{payload:{youtubeId:'AAAAAAAAAAA',summary:'Fictional summary',durationLabel:'0:43',orientation:'portrait',areas:['neck-shoulders','back']}}),
+    lesson('video-none',{payload:{youtubeId:'AAAAAAAAAAA',summary:'Fictional summary',durationLabel:'0:43',orientation:'portrait',areas:[]}}),
+    lesson('video-bad',{payload:{youtubeId:'AAAAAAAAAAA',summary:'Fictional summary',durationLabel:'0:43',orientation:'portrait',areas:['made-up']}}),
+    lesson('video-dup',{payload:{youtubeId:'AAAAAAAAAAA',summary:'Fictional summary',durationLabel:'0:43',orientation:'portrait',areas:['back','back']}}),
+    lesson('video-plain'),group('group-x',['video-a','video-none','video-bad','video-dup','video-plain'])]));
+  assert.deepEqual(m.lessons.map(l=>l.id),['video-a','video-none','video-plain']);
+  assert.deepEqual(Object.fromEntries(m.lessons.map(l=>[l.id,l.areas])),{'video-a':['neck-shoulders','back'],'video-none':[],'video-plain':undefined});
+});

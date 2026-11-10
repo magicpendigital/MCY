@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getAccountBoundSupabaseClient } from "../backend/supabase";
 import { validPayload } from "../../supabase/functions/_shared/contentWorkspaceContract";
+import { AreaPicker } from "./AreaPicker";
+import { lessonAreas } from "../courses/lessonFinder";
 import "./owner.css";
 
 // A teacher's own video lessons (phase 3): write, save a new version, send it to the Owner, read the Owner's notes. The teacher
@@ -9,8 +11,8 @@ import "./owner.css";
 type Row = { item_id: string; kind: string; author_label: string | null; seq: number; title: string; status: "draft" | "submitted"; review: { decision: "pending" | "approved" | "changes_requested" | "withdrawn"; revision: number } };
 type Version = { item_id: string; seq: number; latest_seq: number; title: string; payload: Record<string, unknown>; status: "draft" | "submitted"; review: { decision: string } };
 type Note = { seq: number; note: string; at: string };
-type Form = { id: string | null; seq: number; title: string; youtubeId: string; summary: string; duration: string; orientation: "portrait" | "landscape"; tags: string };
-const blank: Form = { id: null, seq: 0, title: "", youtubeId: "", summary: "", duration: "", orientation: "portrait", tags: "" };
+type Form = { id: string | null; seq: number; title: string; youtubeId: string; summary: string; duration: string; orientation: "portrait" | "landscape"; tags: string; areas: string[] };
+const blank: Form = { id: null, seq: 0, title: "", youtubeId: "", summary: "", duration: "", orientation: "portrait", tags: "", areas: [] };
 const errorText: Record<string, string> = {
   content_conflict: "Nội dung vừa thay đổi ở nơi khác. Tải lại trước khi lưu tiếp.",
   content_limit_reached: "Đã đạt giới hạn thao tác trong 24 giờ. Thử lại sau.",
@@ -77,12 +79,12 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
   };
   const edit = (v: Version) => {
     const p = v.payload;
-    setForm({ id: v.item_id, seq: v.latest_seq, title: v.title, youtubeId: String(p.youtubeId ?? ""), summary: String(p.summary ?? ""), duration: String(p.durationLabel ?? ""), orientation: p.orientation === "landscape" ? "landscape" : "portrait", tags: Array.isArray(p.tags) ? (p.tags as string[]).join(", ") : "" });
+    setForm({ id: v.item_id, seq: v.latest_seq, title: v.title, youtubeId: String(p.youtubeId ?? ""), summary: String(p.summary ?? ""), duration: String(p.durationLabel ?? ""), orientation: p.orientation === "landscape" ? "landscape" : "portrait", tags: Array.isArray(p.tags) ? (p.tags as string[]).join(", ") : "", areas: Array.isArray(p.areas) ? (p.areas as string[]) : lessonAreas({ title: v.title }, "gentle") });
   };
   const save = async (andSubmit: boolean) => {
     if (!form || stale) return;
     const tags = form.tags.split(",").map(t => t.trim()).filter(Boolean);
-    const payload = { youtubeId: form.youtubeId.trim(), summary: form.summary.trim(), durationLabel: form.duration.trim(), orientation: form.orientation, ...(tags.length ? { tags } : {}) };
+    const payload = { youtubeId: form.youtubeId.trim(), summary: form.summary.trim(), durationLabel: form.duration.trim(), orientation: form.orientation, areas: form.areas, ...(tags.length ? { tags } : {}) };
     if (!form.title.trim() || !validPayload("video_lesson", payload)) { setError(errorText.invalid_content); return; }
     const saved = await call({ action: "save_content", itemId: form.id, kind: "video_lesson", title: form.title.trim(), payload, expectedSeq: form.seq }, true);
     const receipt = saved?.receipt as { item_id?: string; seq?: number } | undefined;
@@ -125,6 +127,7 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
         <label className="owner-field">Thời lượng (m:ss)<input required value={form.duration} placeholder="0:43" onChange={e => set({ duration: e.target.value })} /></label>
         <label className="owner-field">Khung hình<select value={form.orientation} onChange={e => set({ orientation: e.target.value as Form["orientation"] })}><option value="portrait">Dọc</option><option value="landscape">Ngang</option></select></label>
         <label className="owner-field">Thẻ (cách nhau bằng dấu phẩy)<input value={form.tags} onChange={e => set({ tags: e.target.value })} /></label>
+        <AreaPicker value={form.areas} onChange={areas => set({ areas })} />
         <div className="owner-form-footer"><span>Mỗi lần lưu tạo một phiên bản mới; phiên bản cũ giữ nguyên.</span>
           <button type="submit" className="owner-primary">Lưu nháp</button> <button type="button" className="owner-primary" onClick={() => void save(true)}>Lưu và gửi duyệt</button> <button type="button" onClick={() => setForm(null)}>Đóng</button></div>
       </fieldset></form>}
