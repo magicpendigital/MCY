@@ -15,6 +15,7 @@ ios/App/DerivedData/
 
 # Play upload bundles and signing material
 *.aab
+*.apk
 *.p12
 *.jks
 *.keystore
