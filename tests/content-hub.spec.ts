@@ -167,7 +167,7 @@ test("screen text offers only the unlocked keys, shows the current wording, and 
   const writes: Record<string, any>[] = [];
   await setup(page, (r, body) => {
     if (body.action === "list_content") return reply(r, 200, { role: "owner", items: [], published: false });
-    writes.push(body);
+    if (body.action === "save_content") writes.push(body);                              // only writes are counted; a read after saving is not one
     return reply(r, 200, { receipt: { item_id: "text-eeeeeeeeeeeeeeee", seq: 1, status: "draft" }, published: false });
   });
   await page.getByRole("button", { name: "Soạn nội dung MCY" }).click();
