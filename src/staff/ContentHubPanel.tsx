@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { getAccountBoundSupabaseClient } from "../backend/supabase";
 import { reviewChecks, type ReviewChecklist } from "../../supabase/functions/_shared/contentReviewContract";
-import { validPayload } from "../../supabase/functions/_shared/contentWorkspaceContract";
+import { validPayload, screenTextKeys } from "../../supabase/functions/_shared/contentWorkspaceContract";
+import { msg, type MessageKey } from "../i18n";
 import type { ReadingUnitContent } from "../../supabase/functions/_shared/readingUnitCandidates";
 import { ReadingUnitPreview } from "./ReadingUnitPreview";
 import { AreaPicker } from "./AreaPicker";
@@ -58,6 +59,9 @@ function byline(v: { author_kind: string; author_label: string | null }) {
   return v.author_label ?? "Giảng viên (chưa có tên hiển thị: hồ sơ chưa kích hoạt)";
 }
 const asStrings = (v: unknown): string[] => Array.isArray(v) ? v.filter((s): s is string => typeof s === "string") : [];
+// Screen text entries are kept as `key=text` lines in the draft; the form edits only the unlocked keys, one field each.
+const entryMap = (s: string): Record<string, string> => { const out: Record<string, string> = {}; for (const line of s.split(/\r?\n/)) { const i = line.indexOf("="); if (i > 0) out[line.slice(0, i).trim()] = line.slice(i + 1).trim(); } return out; };
+const entryLines = (m: Record<string, string>) => screenTextKeys.filter(k => (m[k] ?? "").trim() !== "").map(k => `${k}=${m[k].trim()}`).join("\n");
 const lines = (s: string) => s.split(/\r?\n/).map(x => x.trim()).filter(Boolean);
 
 type Draft = { id: string | null; seq: number; kind: Exclude<Kind, "reading_unit">; title: string; youtubeId: string; summary: string; duration: string; orientation: "portrait" | "landscape"; tags: string; areas: string[];
@@ -277,7 +281,10 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
           <label className="owner-field">Lưu ý an toàn (mỗi dòng một ý)<textarea value={draft.cautions} onChange={e => set({ cautions: e.target.value })} /></label></>}
         {draft.kind === "screen_text" && <>
           <label className="owner-field">Ngôn ngữ<select value={draft.locale} onChange={e => set({ locale: e.target.value as Draft["locale"] })}><option value="vi-VN">Tiếng Việt</option><option value="en-US">English</option></select></label>
-          <label className="owner-field">Các dòng chữ (mỗi dòng dạng khóa=nội dung)<textarea required rows={5} value={draft.entries} onChange={e => set({ entries: e.target.value })} /></label></>}
+          <fieldset className="owner-field owner-screen-keys"><legend>Chữ được phép thay (để trống thì app giữ chữ hiện có)</legend>
+            {screenTextKeys.map(key => <label key={key}><span>{key}</span><small>Hiện tại: {msg(draft.locale, key as MessageKey)}</small>
+              <input aria-label={`Chữ thay cho ${key}`} maxLength={500} value={entryMap(draft.entries)[key] ?? ""} onChange={e => set({ entries: entryLines({ ...entryMap(draft.entries), [key]: e.target.value }) })} /></label>)}
+            <small>Mọi chữ khác (đồng ý, quyền riêng tư, an toàn, thương hiệu, check-in…) đã chốt trong app và không đổi được ở đây. Chữ mới hiện cho học viên khi được duyệt và bật hiển thị.</small></fieldset></>}
         <div className="owner-form-footer"><span>Mỗi lần lưu tạo một phiên bản mới; phiên bản cũ giữ nguyên.</span>
           <button type="submit" className="owner-primary">Lưu nháp</button> <button type="button" className="owner-primary" onClick={() => void saveDraft(true)}>Lưu và gửi duyệt</button> <button type="button" onClick={() => setDraft(null)}>Đóng</button></div>
       </fieldset></form>}

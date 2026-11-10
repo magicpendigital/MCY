@@ -64,7 +64,7 @@ function EditorsChoice({ picks, onOpenCourse }: { picks: EditorsPick[]; onOpenCo
     <Eyebrow>LỰA CHỌN CỦA BIÊN TẬP</Eyebrow>
     <h2 id="mcy-editors-heading">Gợi ý từ biên tập</h2>
     <div className="mcy-rl-list">
-      {picks.map(pick => <button key={`${pick.courseId}:${pick.lessonId ?? ""}`} type="button" className="mcy-rl-row" onClick={() => onOpenCourse(pick.courseId, pick.lessonId)}><span><strong>{pick.title}</strong><small>{pick.byline ?? pick.subtitle}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
+      {picks.map((pick, position) => <button key={`${position}:${pick.courseId}:${pick.lessonId ?? ""}`} type="button" className="mcy-rl-row" onClick={() => onOpenCourse(pick.courseId, pick.lessonId)}><span><strong>{pick.title}</strong><small>{pick.byline ?? pick.subtitle}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
     </div>
   </section>;
 }

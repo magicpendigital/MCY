@@ -5,6 +5,22 @@ export type ContentKind = typeof contentKinds[number];
 // Kinds a person can write through save_content; a teacher may write video lessons only (the database enforces this too).
 export const authorableKinds: readonly ContentKind[] = ["video_lesson", "course_group", "screen_text"];
 
+// Screen texts an author may replace through the content workspace (also read by the learner app and the Edge publisher, which is why
+// it lives in this import-free file). Everything NOT listed is locked ("đã chốt"): Owner-approved copy, consent and privacy notes,
+// safety and body-check wording stay in the app code and change only with the Owner's sign-off and a release. Add a key only when the
+// Owner agrees the text may change without a release; it must exist in src/i18n.ts (a test checks), carry no {placeholder}, and not be
+// a privacy, consent, safety or medical statement.
+export const screenTextKeys = [
+  "discover.freeCourses",
+  "discover.freeCoursesLead",
+  "discover.courseStatus",
+  "course.lessonsHeading",
+] as const;
+export type ScreenTextKey = typeof screenTextKeys[number];
+export const isScreenTextKey = (key: string): key is ScreenTextKey => (screenTextKeys as readonly string[]).includes(key);
+// A replacement is plain text only: no placeholder braces (the app code decides where values go) and a bounded length.
+export const validScreenValue = (v: unknown): v is string => typeof v === "string" && v.trim().length >= 1 && v.length <= 500 && !/[{}<>]/.test(v);
+
 const plain = (v: unknown): v is Record<string, unknown> => Boolean(v && typeof v === "object" && !Array.isArray(v));
 const onlyKeys = (v: Record<string, unknown>, keys: string[]) => Object.keys(v).every(k => keys.includes(k));
 const str = (v: unknown, min: number, max: number) => typeof v === "string" && v.trim().length >= min && v.length <= max;
@@ -15,7 +31,6 @@ const youtubeId = /^[A-Za-z0-9_-]{11}$/;
 const durationLabel = /^\d{1,2}:\d{2}$/;
 const lessonId = /^video-[a-z0-9_-]{1,74}$/;
 const languageTag = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})?$/;
-const entryKey = /^[a-z0-9_.-]{1,60}$/;
 // Browse areas a lesson can be filed under, chosen by the author (replaces guessing from the title). Must match LessonArea in src/courses/lessonFinder.ts.
 export const lessonAreaIds = ["neck-shoulders", "back", "hips-legs", "whole-body", "poses"] as const;
 export const validAreas = (v: unknown): v is string[] => Array.isArray(v) && v.length <= lessonAreaIds.length && new Set(v).size === v.length && v.every(a => (lessonAreaIds as readonly string[]).includes(a as string));
@@ -44,8 +59,9 @@ export function validPayload(kind: string, payload: unknown): boolean {
   }
   if (kind === "screen_text") {
     if (!onlyKeys(payload, ["locale", "entries"]) || (payload.locale !== "vi-VN" && payload.locale !== "en-US") || !plain(payload.entries)) return false;
+    // Only keys on the allow-list can be replaced; every other key is locked ("đã chốt") and is refused, not ignored.
     const keys = Object.keys(payload.entries);
-    return keys.length >= 1 && keys.length <= 40 && keys.every(k => entryKey.test(k) && str((payload.entries as Record<string, unknown>)[k], 1, 500));
+    return keys.length >= 1 && keys.every(k => isScreenTextKey(k) && validScreenValue((payload.entries as Record<string, unknown>)[k]));
   }
   return false;
 }

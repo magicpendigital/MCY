@@ -2,7 +2,7 @@
 // Supplements, and is not, live Supabase evidence. Needs @electric-sql/pglite (MCY_PGLITE_MODULE_PATH).
 const { test } = require('node:test');
 const { assert, read, one, newDb, denied } = require('./support/pglite-chain.cjs');
-const files = ['20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql'];
+const files = ['20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql', '20261110090000_content_snapshot_screens.sql'];
 const O = '66000000-0000-4000-8000-000000000001', T = '66000000-0000-4000-8000-000000000002', U = '66000000-0000-4000-8000-000000000003', S = '66000000-0000-4000-8000-000000000004';
 const checks = Object.fromEntries(['accessibility', 'actualDurationChecked', 'audienceScope', 'contentAccuracy', 'expertiseConfirmed', 'rightsConfirmed', 'stopGuidance', 'vietnameseAudioReady'].map(k => [k, true]));
 const lesson = { youtubeId: 'AAAAAAAAAAA', summary: 'Fictional lesson summary', durationLabel: '0:43', orientation: 'portrait' };
@@ -25,7 +25,7 @@ async function fixture() {
   return db;
 }
 
-test('the snapshot holds only effectively shown video lessons and groups, with a byline only from an active teacher profile', async () => {
+test('the snapshot holds only effectively shown lessons, groups and screen texts, with a byline only from an active teacher profile', async () => {
   const db = await fixture();
   try {
     await asService(db);
@@ -53,10 +53,13 @@ test('the snapshot holds only effectively shown video lessons and groups, with a
     assert.equal((await snapshot(db, O)).items.find(i => i.item_id === a.item_id).author_label, null);
     await review(db, O, a.item_id, 1, 1);
     assert.equal((await snapshot(db, O)).items.some(i => i.item_id === a.item_id), false);
-    // Other kinds never appear in this snapshot
+    // Screen texts appear once approved and switched on (the Edge allow-list decides which keys are published); reading units never do
     const t = await save(db, O, null, 'screen_text', 'Text', { locale: 'vi-VN', entries: { a: 'b' } }, 0);
-    await submit(db, O, t.item_id, 1); await review(db, O, t.item_id, 1, 0); await show(db, t.item_id);
-    assert.equal((await snapshot(db, O)).items.some(i => i.kind === 'screen_text'), false);
+    assert.equal((await snapshot(db, O)).items.some(i => i.kind === 'screen_text'), false, 'a draft screen text is not in the snapshot');
+    await submit(db, O, t.item_id, 1); await review(db, O, t.item_id, 1, 0);
+    assert.equal((await snapshot(db, O)).items.some(i => i.kind === 'screen_text'), false, 'approved but not switched on: not in the snapshot');
+    await show(db, t.item_id);
+    assert.equal((await snapshot(db, O)).items.some(i => i.kind === 'screen_text'), true);
   } finally { await db.close(); }
 });
 
@@ -103,5 +106,14 @@ test('the public bucket is exactly as intended and the new objects are closed to
     await db.exec(`update storage.buckets set public=false where id='content-published'`);
     const guard = read(files[2]).slice(read(files[2]).indexOf('do $$'), read(files[2]).indexOf('-- 2. Owner notes'));
     await assert.rejects(() => db.exec(guard), error => error.code === '42501' && /must be a public bucket/.test(error.message));
+  } finally { await db.close(); }
+});
+
+test('the snapshot-screens migration refuses to patch a function that drifted from what it expects', async () => {
+  const db = await newDb();
+  try {
+    for (const f of files.slice(0, 3)) await db.exec(read(f));
+    await db.exec(`create or replace function public.mcy_content_snapshot(p_actor_id uuid) returns jsonb language plpgsql security definer set search_path = '' as $$ begin return '{}'::jsonb; end $$;`);
+    await assert.rejects(() => db.exec(read(files[3])), error => error.code === '55000' && /snapshot_function_drift/.test(error.message));
   } finally { await db.close(); }
 });

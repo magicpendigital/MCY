@@ -194,3 +194,8 @@
 .owner-area-picker > legend { padding: 0; margin-bottom: 8px; }
 .owner-area-picker label { display: flex; align-items: center; gap: 8px; min-height: 32px; font-size: 13px; font-weight: 450; }
 .owner-area-picker input[type="checkbox"] { width: 18px; min-height: 18px; height: 18px; padding: 0; }
+.owner-screen-keys { margin: 21px 0 0; padding: 0; border: 0; min-inline-size: 0; }
+.owner-screen-keys > legend { padding: 0; margin-bottom: 8px; }
+.owner-screen-keys label { display: grid; gap: 4px; margin-bottom: 12px; font-size: 13px; }
+.owner-screen-keys label > span { font-weight: 650; word-break: break-all; }
+.owner-screen-keys label > small { font-weight: 450; }

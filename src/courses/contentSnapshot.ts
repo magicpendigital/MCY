@@ -2,6 +2,8 @@ import { publicStorageBase } from "../backend/supabase";
 import type { ContentManifest, PublishedGroup, PublishedLesson } from "../../supabase/functions/_shared/contentManifestTypes";
 import type { CourseLesson, FreeCourse } from "./freeCourses";
 import { LESSON_AREAS } from "./lessonFinder";
+import { setScreenOverrides } from "../i18n";
+import { isScreenTextKey, validScreenValue } from "../../supabase/functions/_shared/contentWorkspaceContract";
 
 // The learner catalogue. When the Owner has approved and switched on content, the server writes one public snapshot file and
 // this app reads it (no sign-in). Anything wrong with that file, or no file, means the bundled catalogue is used, so a failure
@@ -39,6 +41,20 @@ function parseGroup(raw: unknown): PublishedGroup | null {
   if (raw.guidance !== undefined && !(plain(raw.guidance) && typeof raw.guidance.reviewed === "boolean" && textList(raw.guidance.benefits, 8, 300) && textList(raw.guidance.cautions, 8, 300))) return null;
   return raw as unknown as PublishedGroup;
 }
+// Screen texts are cosmetic and the allow-list can grow on the server before an old app knows the key, so this is tolerant: unknown keys,
+// unknown locales and bad values are dropped one by one and never invalidate the catalogue.
+function parseScreens(raw: unknown): ContentManifest["screens"] {
+  if (!plain(raw)) return undefined;
+  const out: NonNullable<ContentManifest["screens"]> = {};
+  for (const locale of ["vi-VN", "en-US"] as const) {
+    const entries = raw[locale];
+    if (!plain(entries)) continue;
+    const kept: Record<string, string> = {};
+    for (const [key, value] of Object.entries(entries)) if (isScreenTextKey(key) && validScreenValue(value)) kept[key] = value;
+    if (Object.keys(kept).length) out[locale] = kept;
+  }
+  return Object.keys(out).length ? out : undefined;
+}
 export function parseManifest(data: unknown): ContentManifest | null {
   if (!plain(data) || data.v !== 1 || !Array.isArray(data.groups) || !Array.isArray(data.lessons) || data.groups.length > 20 || data.lessons.length > 300 || !plain(data.display)) return null;
   const d = data.display;
@@ -51,7 +67,7 @@ export function parseManifest(data: unknown): ContentManifest | null {
   const known = new Set((lessons as PublishedLesson[]).map(l => l.id));
   // Every group must only use lessons that are in the file, and ids must be unique.
   if ((groups as PublishedGroup[]).some(g => g.lesson_ids.some(id => !known.has(id))) || known.size !== lessons.length || new Set((groups as PublishedGroup[]).map(g => g.id)).size !== groups.length) return null;
-  return { v: 1, generated_at: typeof data.generated_at === "string" ? data.generated_at : "", display: d as ContentManifest["display"], groups: groups as PublishedGroup[], lessons: lessons as PublishedLesson[] };
+  return { v: 1, generated_at: typeof data.generated_at === "string" ? data.generated_at : "", display: d as ContentManifest["display"], groups: groups as PublishedGroup[], lessons: lessons as PublishedLesson[], ...(parseScreens(data.screens) ? { screens: parseScreens(data.screens) } : {}) };
 }
 
 // Ids of the imported catalogue stay what the device already remembers: group-gentle -> gentle, video-gentle-01 -> 01.
@@ -99,7 +115,9 @@ export function loadCatalog(refresh = false): Promise<Catalog> {
   if (catalogRead && !refresh) return catalogRead;
   const request = (async (): Promise<Catalog> => {
     const [bundled, manifest] = await Promise.all([import("./freeCourses"), fetchManifest()]);
-    if (manifest && manifest.groups.length > 0) return catalogFromManifest(manifest);
+    // Screen texts come from the same file and follow the same fallback: no usable snapshot means every text is the app's own.
+    if (manifest && manifest.groups.length > 0) { setScreenOverrides(manifest.screens ?? {}); return catalogFromManifest(manifest); }
+    setScreenOverrides({});
     return { courses: bundled.FREE_COURSES, source: "bundled", display: bundledDisplay };
   })();
   catalogRead = request;

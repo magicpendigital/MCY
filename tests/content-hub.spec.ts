@@ -162,3 +162,26 @@ test("a conflict asks for a reload; an unknown outcome of a write is never retri
   expect(saves).toBe(2);
   await expect(page.getByRole("button", { name: "Ghi kết quả duyệt" })).toBeDisabled();
 });
+
+test("screen text offers only the unlocked keys, shows the current wording, and saves only what was filled in", async ({ page }) => {
+  const writes: Record<string, any>[] = [];
+  await setup(page, (r, body) => {
+    if (body.action === "list_content") return reply(r, 200, { role: "owner", items: [], published: false });
+    writes.push(body);
+    return reply(r, 200, { receipt: { item_id: "text-eeeeeeeeeeeeeeee", seq: 1, status: "draft" }, published: false });
+  });
+  await page.getByRole("button", { name: "Soạn nội dung MCY" }).click();
+  const form = page.getByRole("form", { name: "Soạn nội dung MCY" });
+  await form.getByLabel("Loại nội dung").selectOption("screen_text");
+  await form.getByLabel("Tiêu đề").fill("Fictional screen wording");
+  const keys = form.locator(".owner-screen-keys input");
+  await expect(keys).toHaveCount(4);                                                  // the unlocked keys only
+  await expect(form.locator(".owner-screen-keys")).toContainText("Hiện tại: TỪ KÊNH MỘT CHÚT YOGA");
+  await expect(form).toContainText("đã chốt trong app");                                // everything else stays locked
+  await form.getByLabel("Chữ thay cho discover.freeCourses", { exact: true }).fill("TỪ KÊNH THỬ NGHIỆM");
+  await form.getByRole("button", { name: "Lưu nháp" }).click();
+  await expect(page.getByText("Đã lưu", { exact: false }).first()).toBeVisible();
+  expect(writes).toHaveLength(1);
+  expect(writes[0]).toMatchObject({ action: "save_content", kind: "screen_text", payload: { locale: "vi-VN", entries: { "discover.freeCourses": "TỪ KÊNH THỬ NGHIỆM" } } });
+  expect(Object.keys(writes[0].payload.entries)).toEqual(["discover.freeCourses"]);   // empty fields are not sent
+});

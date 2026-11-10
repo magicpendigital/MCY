@@ -105,3 +105,32 @@ test("imported groups keep the ids a device already remembers", async ({ page })
   expect(JSON.stringify(stored)).toContain('"lessonId":"01"');
   await expect(page.getByTestId("lesson-byline")).toHaveCount(0);                            // imported content is never attributed by accident
 });
+
+test("published screen texts replace only unlocked wording; locked, unknown and malformed entries are ignored without losing the catalogue", async ({ page }) => {
+  await serve(page, manifest({
+    screens: {
+      "vi-VN": {
+        "discover.freeCourses": "TỪ KÊNH THỬ NGHIỆM",
+        "discover.freeCoursesLead": "Chạm vào một nhóm để xem các bài.",
+        "welcome.quote": "Không được đổi",             // locked ("đã chốt"): ignored
+        "not.a.key": "Không có khóa này",              // unknown to this app: ignored
+        "discover.courseStatus": "{count} bài <b>",    // placeholder and markup: ignored
+      },
+      "fr-FR": { "discover.freeCourses": "Ignoré" },    // unknown language: ignored
+    },
+  }));
+  await openDiscover(page);
+  const catalog = page.getByTestId("free-course-catalog");
+  await expect(page.locator(".mcy-course-heading")).toContainText("TỪ KÊNH THỬ NGHIỆM");
+  await expect(page.locator(".mcy-course-lead")).toHaveText("Chạm vào một nhóm để xem các bài.");
+  await expect(catalog.getByRole("button", { name: /Nhóm thử nghiệm của biên tập/ })).toBeVisible();   // the catalogue still came from the snapshot
+  await expect(catalog).toContainText("Xem danh sách bài");                                              // the malformed entry fell back to the app's own text
+  await expect(page.getByText("Không được đổi")).toHaveCount(0);
+  await expect(page.getByText("Không có khóa này")).toHaveCount(0);
+});
+
+test("without a snapshot the screen texts are the app's own", async ({ page }) => {
+  await serve(page, null);
+  await openDiscover(page);
+  await expect(page.locator(".mcy-course-heading")).toContainText("TỪ KÊNH MỘT CHÚT YOGA");
+});

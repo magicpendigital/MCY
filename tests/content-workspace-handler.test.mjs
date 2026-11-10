@@ -36,12 +36,16 @@ test('save accepts only strict payloads of authorable kinds, and sends the verif
     save({kind:'reading_unit',payload:{steps:[]}}),save({kind:'bogus'}),save({title:' '}),save({title:'x'.repeat(201)}),save({expectedSeq:-1}),save({expectedSeq:'0'}),save({expectedSeq:undefined}),save({itemId:'Bad Id'}),save({actorId:actor}),
     save({kind:'course_group',payload:{summary:'s',lessonIds:['not-a-video']}}),save({kind:'course_group',payload:{summary:'s',lessonIds:['video-a','video-a']}}),
     save({kind:'screen_text',payload:{locale:'fr-FR',entries:{a:'b'}}}),save({kind:'screen_text',payload:{locale:'vi-VN',entries:{}}}),save({kind:'screen_text',payload:{locale:'vi-VN',entries:{'Bad Key':'b'}}}),
+    // Locked ("đã chốt") and unknown keys are refused, not ignored; replacement text is plain (no placeholders or markup).
+    save({kind:'screen_text',payload:{locale:'vi-VN',entries:{'welcome.quote':'x'}}}),save({kind:'screen_text',payload:{locale:'vi-VN',entries:{greeting:'Xin chào'}}}),
+    save({kind:'screen_text',payload:{locale:'vi-VN',entries:{'discover.freeCourses':'{count} bài'}}}),save({kind:'screen_text',payload:{locale:'vi-VN',entries:{'discover.freeCourses':'<b>x</b>'}}}),
+    save({kind:'screen_text',payload:{locale:'vi-VN',entries:{'discover.freeCourses':'  '}}}),
     save({payload:{...lesson,summary:'x'.repeat(21000)}})];
   for(const body of bad){const h=harness();const r=await h.run(body);assert.equal(r.status,400,JSON.stringify(body).slice(0,80));assert.equal(h.calls.length,0);}
   const good=harness();const r=await good.run(save({itemId:'video-0123456789abcdef',expectedSeq:2,title:'  Fictional lesson  '}));
   assert.deepEqual([r.status,r.body.published,good.calls[0].name,good.calls[0].args.p_actor_id,good.calls[0].args.p_title,good.calls[0].args.p_expected_seq],[200,false,'mcy_content_save_version',actor,'Fictional lesson',2]);
   const fresh=harness();await fresh.run(save());assert.equal(fresh.calls[0].args.p_item_id,null);
-  for(const kind of ['course_group','screen_text']){const payload=kind==='course_group'?{summary:'Fictional group',lessonIds:['video-a-01'],guidance:{reviewed:false,benefits:['b'],cautions:['c']}}:{locale:'vi-VN',entries:{greeting:'Xin chào'}};const h=harness();assert.equal((await h.run(save({kind,payload}))).status,200,kind);}
+  for(const kind of ['course_group','screen_text']){const payload=kind==='course_group'?{summary:'Fictional group',lessonIds:['video-a-01'],guidance:{reviewed:false,benefits:['b'],cautions:['c']}}:{locale:'vi-VN',entries:{'discover.freeCourses':'Từ kênh Một chút yoga'}};const h=harness();assert.equal((await h.run(save({kind,payload}))).status,200,kind);}
 });
 test('database refusals map to stable codes and never leak details',async()=>{
   const cases=[[{code:'PT409',message:'content_conflict'},409,'content_conflict'],[{code:'PT429',message:'content_limit_reached'},429,'content_limit_reached'],

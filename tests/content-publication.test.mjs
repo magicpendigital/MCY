@@ -98,3 +98,19 @@ test('explicit browse areas are published when valid and make a lesson invalid w
   assert.deepEqual(m.lessons.map(l=>l.id),['video-a','video-none','video-plain']);
   assert.deepEqual(Object.fromEntries(m.lessons.map(l=>[l.id,l.areas])),{'video-a':['neck-shoulders','back'],'video-none':[],'video-plain':undefined});
 });
+
+const screenText=(id,locale,entries,patch={})=>({item_id:id,kind:'screen_text',seq:1,content_hash:'d'.repeat(64),title:'Fictional screen text',payload:{locale,entries},author_kind:'mcy',origin:'authored',author_label:null,...patch});
+test('screen texts publish only unlocked keys per locale, first item wins, and never with internal wording',()=>{
+  const m=buildManifest(source([lesson('video-a'),group('group-x',['video-a']),
+    screenText('text-a','vi-VN',{'discover.freeCourses':'Từ kênh của chúng tôi','discover.courseStatus':'Xem các bài'}),
+    screenText('text-b','vi-VN',{'discover.freeCourses':'Bị bỏ vì bản đầu thắng','course.lessonsHeading':'Các bài'}),
+    screenText('text-en','en-US',{'discover.freeCoursesLead':'Open a group to see lessons'}),
+    screenText('text-locked','vi-VN',{'welcome.quote':'Không được đổi'}),
+    screenText('text-word','vi-VN',{'course.lessonsHeading':'Bản nháp chưa duyệt'})]));
+  assert.deepEqual(m.screens,{'vi-VN':{'discover.freeCourses':'Từ kênh của chúng tôi','discover.courseStatus':'Xem các bài','course.lessonsHeading':'Các bài'},'en-US':{'discover.freeCoursesLead':'Open a group to see lessons'}});
+  assert.ok(!JSON.stringify(m).includes('welcome.quote'));
+});
+test('a snapshot without screen texts has no screens field, so the app keeps its own wording',()=>{
+  assert.equal('screens' in buildManifest(source([lesson('video-a'),group('group-x',['video-a'])])),false);
+  assert.equal('screens' in buildManifest(source([lesson('video-a'),group('group-x',['video-a']),screenText('text-locked','vi-VN',{'welcome.quote':'x'})])),false);
+});

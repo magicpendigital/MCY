@@ -437,8 +437,16 @@ const en: Record<keyof typeof vi, string> = {
 const messages = { "vi-VN": vi, "en-US": en } as const;
 export type MessageKey = keyof typeof vi;
 
+// Replacement texts from the published content snapshot. Only keys on the unlocked allow-list ever get here (contentSnapshot.ts
+// checks that); every other text is locked in this file. Empty until a snapshot says otherwise, so the bundled text is the default.
+let screenOverrides: Partial<Record<AppLocale, Record<string, string>>> = {};
+export function setScreenOverrides(next: Partial<Record<AppLocale, Record<string, string>>>): void {
+  screenOverrides = next;
+}
+
 export function msg(locale: AppLocale, key: MessageKey): string {
-  return messages[locale][key];
+  const own = screenOverrides[locale];
+  return (own && Object.prototype.hasOwnProperty.call(own, key) ? own[key] : undefined) ?? messages[locale][key];
 }
 
 const regionLabels: Record<AppLocale, Record<string, string>> = {

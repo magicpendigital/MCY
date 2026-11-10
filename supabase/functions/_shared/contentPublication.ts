@@ -1,7 +1,7 @@
 import { internalWording } from "./readingPublication.ts";
-import { validPayload, validAreas } from "./contentWorkspaceContract.ts";
-import type { ContentManifest, PublishedGroup, PublishedLesson } from "./contentManifestTypes.ts";
-export type { ContentManifest, PublishedGroup, PublishedLesson };
+import { validPayload, validAreas, isScreenTextKey, validScreenValue } from "./contentWorkspaceContract.ts";
+import type { ContentManifest, PublishedGroup, PublishedLesson, PublishedScreens } from "./contentManifestTypes.ts";
+export type { ContentManifest, PublishedGroup, PublishedLesson, PublishedScreens };
 
 // The public snapshot of stored content that is effectively shown (phase 4). The database returns only versions that are approved
 // at their exact version and switched on after the latest review; this module projects them into a whitelisted file the learner app
@@ -46,12 +46,24 @@ export function buildManifest(source: SnapshotSource, now = new Date()): Content
     if (!ids.length || !clean(item.title, p.summary) || [...benefits, ...cautions].some(t => !clean(t))) continue;
     groups.push({ id: item.item_id, title: item.title, summary: p.summary as string, lesson_ids: ids, ...(g ? { guidance: { reviewed: g.reviewed === true, benefits, cautions } } : {}), byline: byline(item, show) });
   }
+  // Screen texts: unlocked keys only, plain wording only; when two shown items set the same key the first in list order wins.
+  const screens: PublishedScreens = {};
+  for (const item of source.items) {
+    if (item.kind !== "screen_text" || !validPayload("screen_text", item.payload)) continue;
+    const locale = item.payload.locale as "vi-VN" | "en-US";
+    for (const [key, value] of Object.entries(item.payload.entries as Record<string, unknown>)) {
+      if (!isScreenTextKey(key) || !validScreenValue(value) || !clean(value)) continue;
+      const bucket = (screens[locale] ??= {});
+      if (!(key in bucket)) bucket[key] = value;
+    }
+  }
   const known = new Set([...groups.map(g => g.id), ...lessons.filter(l => groups.some(g => g.lesson_ids.includes(l.id))).map(l => l.id)]);
   return {
     v: 1, generated_at: now.toISOString(),
     display: { discover_order: source.display.discover_order, policies: source.display.policies, editors_choice: source.display.editors_choice.filter(id => known.has(id)) },
     // Only groups that still hold a shown lesson, and only the lessons those groups use, are published.
     groups, lessons: lessons.filter(l => groups.some(g => g.lesson_ids.includes(l.id))),
+    ...(Object.keys(screens).length ? { screens } : {}),
   };
 }
 
