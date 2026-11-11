@@ -126,7 +126,7 @@ Ký hiệu cỡ việc: S nhỏ (vài giờ), M vừa (1–3 ngày làm việc),
 | 6 Sau thử nghiệm | Chưa bắt đầu | Phụ thuộc giai đoạn 5 |
 
 **Thứ tự ưu tiên đề xuất (thay mục 7.6 cũ):**
-1. **Vòng kiểm tra iOS 15 (chặn chất lượng):** phát hành đợt 9 mang các sửa INC-005 (và chữ màn hình), rồi Owner đo trên iPhone: ghi bản iOS, mở `?debug=viewport`, bấm ô ghi chú vùng, ô cảm nhận, ô email, gửi ảnh chụp bảng số đo. Nếu vẫn phóng to, số đo quyết định bước tiếp (cuộn vùng `overflow:hidden` hay hình học `visualViewport`); sửa nguyên nhân thứ hai cần Owner cho phép sửa runtime được bảo vệ (`src/mobile`).
+1. **Vòng kiểm tra iOS 15 (chặn chất lượng):** phát hành đợt 9 mang các sửa INC-005 (và chữ màn hình), rồi Owner đo trên iPhone: ghi bản iOS, mở `?debug=viewport`, bấm ô ghi chú vùng, ô cảm nhận, ô email, gửi ảnh chụp bảng số đo. Nếu vẫn phóng to, số đo quyết định bước tiếp (cuộn vùng `overflow:hidden` hay hình học `visualViewport`); sửa nguyên nhân thứ hai nằm ở runtime được bảo vệ (`src/mobile`): **Owner đã cho phép có điều kiện (11/11)**, chỉ làm khi số đo chỉ ra nguyên nhân ở đó.
 2. **Việc chỉ Owner làm được (phiên của Owner):** bật hiển thị/ghi `manifest.json` để app đọc nội dung từ kho; mời và kích hoạt hồ sơ giảng viên đầu tiên; quyết định Chó ba chân và chuyên gia xem ảnh AI; hai quyết định mở của giai đoạn 4.
 3. **Đường găng cho AI là nội dung, không phải mã:** tìm chuyên gia duyệt ≥ 5 buổi; đặt hạn mức OpenRouter; duyệt văn bản đồng ý AI. Mã AI đã sẵn từng phần và không nên làm thêm tính năng cho tới khi có danh mục duyệt (tránh xây trên giả định).
 4. **Làm song song, không cần cổng ngoài:** sửa nốt P2 #5, #6, #8 của trợ lý; nhóm thử đưa vào workspace; hiện lượt dùng và cảnh báo 80%.
