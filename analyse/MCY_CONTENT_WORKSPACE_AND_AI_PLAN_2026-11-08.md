@@ -103,3 +103,36 @@ Ký hiệu cỡ việc: S nhỏ (vài giờ), M vừa (1–3 ngày làm việc),
 ## 9. Quyết định bổ sung của Owner (2026-11-08, sau đợt 6)
 - **Chưa cần thêm đồng ý “dữ liệu sức khỏe” cho trợ lý AI.** Chỉ khi có tính năng kết nối thiết bị theo dõi sức khỏe (vòng đeo tay, đồng hồ thông minh) mới cần đồng ý riêng loại dữ liệu này. Mục 7.3 đóng lại; đồng ý AI hiện có giữ nguyên.
 - Yêu cầu: **triển khai giai đoạn tiếp theo (giai đoạn 1: nền nội dung có phiên bản)**. Phạm vi làm trong mã cục bộ và kiểm thử; áp migration, triển khai Edge và phát hành app vẫn cần yêu cầu riêng của Owner.
+
+## 10. Rà soát kế hoạch theo dữ liệu mới nhất (2026-11-11)
+
+**Dữ liệu mới từ 8/11:**
+- **iPhone iOS 15 thật (Owner báo 11/11, bản iOS phụ chưa biết):** lỗi hiển thị lúc mở app đã hết; còn lỗi **bấm vào ô ghi chú thì màn hình phóng to**. Đây là lần kiểm tra thiết bị thật đầu tiên có kết quả; ghi là “Owner báo”, chưa phải một lượt kiểm đủ sáu màn. Điều tra và sửa ở INC-005 (`docs/quality/KNOWN_INCIDENTS.md`): hai ô ghi chú đã 16px nên không giải thích được lỗi; tìm thấy các ô nhập khác dưới 16px (đăng nhập, mã xác minh, select, workspace) và đã nâng lên; thêm lớp bảo vệ iOS và bảng số đo `?debug=viewport`. Nguyên nhân thật của ô ghi chú **chưa chứng minh**.
+- **Đợt 8 (1.0.6) đã phát hành** trên web, máy thử và Play Internal testing (commit `aef1f47`). Web Preview hiện **đi trước** Play và máy thử vì các commit phát triển sau đó đã được đẩy.
+- **Staging:** migration tới `20261110175347` (ảnh chụp công khai có thể kèm chữ màn hình), Edge `owner-control-plane` v12. `manifest.json` vẫn chưa được ghi; chưa có chữ màn hình hay hồ sơ giảng viên nào được tạo.
+- **CI:** lần đầu toàn bộ Playwright chạy trên CI qua một lần đẩy (216 đạt, 1 lỗi do test mới của chính ta, đã sửa); CI xanh ở `9216a24`. Chưa có lần chạy toàn bộ sạch trên máy.
+- **Công cụ:** connector Supabase từng bị tắt ở cài đặt công cụ và chặn việc áp migration vài giờ; không dùng đường vòng. Bài học: kiểm tra quyền công cụ **trước** khi hứa áp migration.
+
+**Trạng thái từng giai đoạn:**
+
+| Giai đoạn | Trạng thái | Còn lại / bị chặn bởi |
+|---|---|---|
+| 0 Dọn ngay | Gần xong: video lên đầu, chữ màn bắt đầu, vùng Mông, ẩn nút AI khi trạng thái bị từ chối (mã đã đẩy, chưa vào bản) | P2 #5 (ngôn ngữ trong capability), #6 (so tên mô hình, dòng “đang xử lý” treo), #8 (mã cũ) |
+| 1 Nền nội dung | Xong, đã áp staging | Nhập danh mục (`import_catalog`) chỉ chạy trong phiên của Owner |
+| 2 Workspace Owner | Xong, đã áp staging | Owner dùng thật: bật hiển thị để ghi `manifest.json` |
+| 3 Giảng viên + nhãn tác giả | Mã và staging xong | **Chưa có hồ sơ giảng viên kích hoạt** (Huyền My): cần Owner mời và kích hoạt |
+| 4 Video và chữ màn hình | **Xong về mã và staging** (vùng bài do tác giả chọn đã phát hành; chữ màn hình 4 khóa, còn lại khóa “đã chốt”) | Chữ màn hình chưa vào Play/máy thử (đợt 9); **hai quyết định mở:** thẻ “mức” (cần thang do chuyên gia xác nhận) và nhãn “HÌNH AI” (luôn hiện, không cho ẩn) |
+| 5 Trợ lý AI | Có một phần mã: một ứng viên thì chọn luôn, tín hiệu tùy chọn, bộ kiểm tra an toàn 11 ca, ẩn nút AI; **AI vẫn tắt** | ≥ 5 buổi được chuyên gia và bản quyền duyệt; hạn mức tiền trên OpenRouter do Owner đặt; duyệt văn bản đồng ý AI; nhóm thử trong workspace; hiện lượt dùng và cảnh báo 80%; thử có kiểm soát |
+| 6 Sau thử nghiệm | Chưa bắt đầu | Phụ thuộc giai đoạn 5 |
+
+**Thứ tự ưu tiên đề xuất (thay mục 7.6 cũ):**
+1. **Vòng kiểm tra iOS 15 (chặn chất lượng):** phát hành đợt 9 mang các sửa INC-005 (và chữ màn hình), rồi Owner đo trên iPhone: ghi bản iOS, mở `?debug=viewport`, bấm ô ghi chú vùng, ô cảm nhận, ô email, gửi ảnh chụp bảng số đo. Nếu vẫn phóng to, số đo quyết định bước tiếp (cuộn vùng `overflow:hidden` hay hình học `visualViewport`); sửa nguyên nhân thứ hai cần Owner cho phép sửa runtime được bảo vệ (`src/mobile`).
+2. **Việc chỉ Owner làm được (phiên của Owner):** bật hiển thị/ghi `manifest.json` để app đọc nội dung từ kho; mời và kích hoạt hồ sơ giảng viên đầu tiên; quyết định Chó ba chân và chuyên gia xem ảnh AI; hai quyết định mở của giai đoạn 4.
+3. **Đường găng cho AI là nội dung, không phải mã:** tìm chuyên gia duyệt ≥ 5 buổi; đặt hạn mức OpenRouter; duyệt văn bản đồng ý AI. Mã AI đã sẵn từng phần và không nên làm thêm tính năng cho tới khi có danh mục duyệt (tránh xây trên giả định).
+4. **Làm song song, không cần cổng ngoài:** sửa nốt P2 #5, #6, #8 của trợ lý; nhóm thử đưa vào workspace; hiện lượt dùng và cảnh báo 80%.
+5. **Quy trình:** mỗi đợt phát hành phải ghi rõ “web đi trước” nếu đẩy trước khi phát hành Android; không đẩy mã giai đoạn mới khi chưa cần.
+
+**Rủi ro cập nhật:**
+- Lỗi phóng to là lỗi quay lại lần thứ hai (INC-005): không sửa riêng từng ô nữa mà dùng kiểm tra tự động; nhưng không có WebKit/iOS trong môi trường kiểm thử nên bằng chứng cuối cùng chỉ đến từ thiết bị thật.
+- Web đi trước Play: người thử trên Play chưa thấy các sửa mới; đợt 9 xử lý.
+- Kế hoạch giai đoạn 5 phụ thuộc người (chuyên gia) và tiền (OpenRouter), không phụ thuộc mã.

@@ -1,5 +1,6 @@
 import { RouteBoundary } from "./compat/RouteBoundary";
 import { newId, lastOf } from "./compat";
+import { installFocusGuard } from "./compat/focusGuard";
 import { createContext, lazy, Suspense, useContext, useEffect, useLayoutEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { createPortal } from "react-dom";
 import "@fontsource/roboto/latin-400.css";
@@ -891,6 +892,13 @@ export default function Prototype() {
       else learnerRoot.setAttribute("aria-hidden", previousAriaHidden);
     };
   }, [staffWorkspace]);
+  // INC-005: put stray scroll back after a text field loses focus; `?debug=viewport` shows what iOS reports (zoom, pan, scroll) for a screenshot.
+  useEffect(() => {
+    const stopGuard = installFocusGuard();
+    let stopProbe: (() => void) | undefined, cancelled = false;
+    if (new URLSearchParams(window.location.search).get("debug") === "viewport") void import("./compat/viewportProbe").then(module => { if (!cancelled) stopProbe = module.installViewportProbe(); });
+    return () => { cancelled = true; stopGuard(); stopProbe?.(); };
+  }, []);
 
   if (webAuthCallback) return createPortal(<Suspense fallback={<p role="status">Đang xác minh đăng nhập…</p>}><WebAuthCallback /></Suspense>, document.body);
   if (ownerWorkspace) {

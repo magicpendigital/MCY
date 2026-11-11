@@ -100,7 +100,7 @@
 .teacher-quiet-button { flex: 0 0 auto; min-height: 40px; padding: 0 4px; }
 .teacher-field { display: grid; min-width: 0; gap: 7px; margin: 17px 0 0; color: var(--color-ink); font-size: 12px; font-weight: 750; }
 .teacher-field small { color: var(--color-text-muted); font-size: 11px; font-weight: 450; line-height: 1.4; }
-.teacher-field input, .teacher-field textarea { width: 100%; min-height: 44px; padding: 10px 11px; border: 1px solid #d4dacf; border-radius: 10px; background: #fff; color: var(--color-ink); font-size: 15px; font-weight: 450; }
+.teacher-field input, .teacher-field textarea { width: 100%; min-height: 44px; padding: 10px 11px; border: 1px solid #d4dacf; border-radius: 10px; background: #fff; color: var(--color-ink); font-size: 16px; font-weight: 450; }
 .teacher-field textarea { min-height: 76px; resize: vertical; line-height: 1.5; }
 .teacher-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
 .teacher-segments { margin-top: 29px; padding-top: 21px; border-top: 1px solid var(--color-border); }

@@ -25,7 +25,7 @@ The Owner's iPhone runs iOS 15.x and the same display bugs came back after earli
 4. Do not add `:has()`, `@container`, `@layer`, `color-mix`, native nesting, `@property` or `inert` unless there is a fallback that still works and the budget in `tests/browser-compat.test.mjs` is raised with a note in INC-001. The budgets only go down.
 5. A new route chunk is wrapped by `RouteBoundary`; one chunk failing must not take down Welcome, check-in or Khám phá.
 6. A new dependency can bring any of the above into the bundle. After adding or upgrading one, run the gate below and read the numbers it prints.
-7. Text inputs are at least 16px (iOS zooms smaller ones). Keep browser pinch zoom.
+7. Every text input, textarea and `select` is at least 16px, in learner screens **and** the Owner/teacher workspaces (iOS zooms the page on focus otherwise; INC-005 came back because only one field was fixed). `tests/input-font-size.test.mjs` scans all CSS and inline styles and `tests/ios-input-zoom.spec.ts` measures the rendered screens; add the new screen to that spec. Keep browser pinch zoom (the iOS-only `maximum-scale=1` guard in `index.html` leaves pinch working on Safari iOS 10+).
 
 ## The gate (before every push, APK install or AAB upload)
 
@@ -38,7 +38,7 @@ A red gate stops the release. Fix the cause. Never raise a budget, add an except
 
 ## Real-device check (CHƯA CHẠY until someone actually does it)
 
-Ask the Owner for the exact iOS minor version (Settings → General → About) and the screen that fails. 15.0–15.3 lack `dvh/svh`, `:has()` and `:focus-visible`; 15.4+ have them but lack container queries (16.0). Open the Preview URL on the iPhone (or a cloud iOS 15 device) and walk these six places, noting any dropped padding, missing footer, clipped button or white screen: Welcome (footer buttons reachable), check-in step 1 and step 2, Khám phá (video list first, then "Đọc thêm"), a lesson page (poster, play, previous/next), Cá nhân, sign-in. Record the result as PASS/FAIL/CHƯA CHẠY with device and iOS version in the release ledger. Do not report iOS as tested because Edge or WebKit passed.
+Ask the Owner for the exact iOS minor version (Settings → General → About) and the screen that fails. 15.0–15.3 lack `dvh/svh`, `:has()` and `:focus-visible`; 15.4+ have them but lack container queries (16.0). Open the Preview URL on the iPhone (or a cloud iOS 15 device) and walk these six places, noting any dropped padding, missing footer, clipped button or white screen: Welcome (footer buttons reachable), check-in step 1 and step 2, Khám phá (video list first, then "Đọc thêm"), a lesson page (poster, play, previous/next), Cá nhân, sign-in. For the focus-zoom bug open the same URL with `&debug=viewport` (an overlay shows scale, visual viewport offset, container scroll and the focused field's font size) and screenshot it before and after tapping a note field. Record the result as PASS/FAIL/CHƯA CHẠY with device and iOS version in the release ledger. Do not report iOS as tested because Edge or WebKit passed.
 
 ## Handoff wording
 

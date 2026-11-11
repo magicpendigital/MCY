@@ -78,7 +78,7 @@
 .owner-ai-form > .owner-field:first-of-type { margin-top: 22px; }
 .owner-field { display: grid; gap: 8px; margin: 21px 0 0; color: var(--owner-ink); font-size: 12px; font-weight: 750; }
 .owner-field > small { color: var(--owner-muted); font-size: 10px; font-weight: 450; line-height: 1.45; }
-.owner-field input:not([type="range"]), .owner-field select, .owner-field textarea, .owner-auth-card input { width: 100%; min-height: 43px; padding: 10px 12px; border: 1px solid #d8dcd2; border-radius: 10px; background: #fff; color: var(--owner-ink); font-size: 13px; font-weight: 450; }
+.owner-field input:not([type="range"]), .owner-field select, .owner-field textarea, .owner-auth-card input { width: 100%; min-height: 43px; padding: 10px 12px; border: 1px solid #d8dcd2; border-radius: 10px; background: #fff; color: var(--owner-ink); font-size: 16px; font-weight: 450; }
 .owner-field textarea { min-height: 150px; resize: vertical; line-height: 1.5; }
 .owner-field input[type="range"] { width: 100%; accent-color: var(--owner-leaf); }
 .owner-field > strong { margin-left: 4px; color: var(--owner-leaf); font-variant-numeric: tabular-nums; }

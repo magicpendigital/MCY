@@ -74,7 +74,7 @@
 .mcy-rp2-main small.good { color: var(--color-success); font-weight: 700; }
 .mcy-rp2-main small.held { color: #5a4a35; }
 .mcy-rp2-mode { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-size: 12px; color: var(--mcy-muted); }
-.mcy-rp2-mode select { min-height: 44px; border: 1px solid var(--color-border-strong); border-radius: 12px; background: var(--mcy-paper); color: var(--mcy-ink); font: 15px var(--font-sans); padding: 0 10px; }
+.mcy-rp2-mode select { min-height: 44px; border: 1px solid var(--color-border-strong); border-radius: 12px; background: var(--mcy-paper); color: var(--mcy-ink); font: 16px var(--font-sans); padding: 0 10px; }
 .mcy-rp2-switch { position: relative; flex: none; width: 56px; height: 44px; padding: 0; border: 0; border-radius: 999px; background: transparent; }
 .mcy-rp2-switch::before { content: ""; position: absolute; inset: 6px 0; border: 2px solid var(--color-border-strong); border-radius: 999px; background: #f0ece2; }
 .mcy-rp2-switch.on::before { border-color: var(--mcy-sage); background: var(--mcy-sage); }

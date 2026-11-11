@@ -12,6 +12,19 @@
   <body>
     <div id="root"></div>
     <script>
+      // iOS Safari zooms the page when a text field gets focus. Every field is at least 16px (tests/input-font-size.test.mjs), and this adds
+      // maximum-scale=1 on iOS only as a second guard (INC-005): Safari on iOS 10+ still allows pinch zoom, and Android keeps its own zoom.
+      // Plain ES5 on purpose.
+      (function () {
+        try {
+          var ua = navigator.userAgent || "";
+          var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+          var meta = document.querySelector('meta[name="viewport"]');
+          if (ios && meta && !/maximum-scale/.test(meta.getAttribute("content") || "")) meta.setAttribute("content", meta.getAttribute("content") + ", maximum-scale=1");
+        } catch (e) { /* the page works without it */ }
+      })();
+    </script>
+    <script>
       // Plain ES5 on purpose: runs on any browser. If the app has not drawn anything after 10 s (for example the browser is too old
       // to parse it), show a readable message instead of a blank page. See docs/quality/KNOWN_INCIDENTS.md, INC-001.
       (function () {
