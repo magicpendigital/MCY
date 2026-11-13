@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // One list of check suites, shared by agents, `npm run` and CI (.github/workflows/quality.yml).
-// Usage: node scripts/run-suite.mjs <quick|unit|list>
+// Usage: node scripts/run-suite.mjs <quick|unit|all|list>
 // Runs every npm script of the suite in order, keeps going after a failure, prints a PASS/FAIL table
 // and exits 1 if any step failed. Add a new offline test to `unit` here, not as a new CI step.
 import { spawnSync } from "node:child_process";
@@ -28,9 +28,10 @@ export const suites = {
     "test:owner-conflict-migration-contract",
     "test:teacher-control-plane",
     "test:teacher-migration-contract",
-    "test:sites",
   ],
 };
+// `npm test`: everything that runs without a build, each step once (test:sites needs dist/, so it runs after check:ios15 in CI and `npm run verify`).
+suites.all = [...new Set([...suites.quick, ...suites.unit])];
 
 const name = process.argv[2];
 if (name === "list" || !suites[name]) {

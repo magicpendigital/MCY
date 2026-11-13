@@ -32,4 +32,5 @@ jobs:
       - run: npm run check:ios15
       # One list for agents and CI: scripts/run-suite.mjs (unit = plan check + every offline Node test/contract check)
       - run: npm run test:unit
+      - run: npm run test:sites
       - run: npm run test:runtime

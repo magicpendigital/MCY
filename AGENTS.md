@@ -17,7 +17,9 @@ Learner yoga app (web + Android, iOS later) with an Owner/teacher content worksp
 | Install | `npm ci` | min |
 | Quick loop (typecheck, runtime lock, plan, iOS 15 static source scan, skills, AGENTS size) | `npm run check:quick` | seconds |
 | Typecheck only | `npm run typecheck` | seconds |
+| Everything that needs no build (quick + unit; what mca runs as `npm run typecheck && npm test`) | `npm test` | ~1–2 min |
 | All offline Node tests (same list as CI, defined once in `scripts/run-suite.mjs`) | `npm run test:unit` | ~1 min |
+| Built-site worker test (after a build) | `npm run test:sites` | seconds |
 | iOS 15 hard gate (runtime + production build + bundle scan + secrets) | `npm run check:ios15` | ~1 min |
 | Browser suite (Playwright; Windows: `MCY_PLAYWRIGHT_CHANNEL=msedge`, cold start `--timeout=90000`) | `npm run test:runtime` | minutes |
 | Everything CI runs | `npm run verify` | minutes |
@@ -25,7 +27,7 @@ Learner yoga app (web + Android, iOS later) with an Owner/teacher content worksp
 
 Add a new offline test to the `unit` list in `scripts/run-suite.mjs`, not as a new CI step. Never weaken a test, checker or lock to get green.
 
-## Zone map (who owns what; parallel work splits along these lines)
+## Zone map (who owns what; parallel work splits along these lines; machine-readable copy: `.github/CODEOWNERS`)
 
 | Zone | Paths | Notes |
 |---|---|---|

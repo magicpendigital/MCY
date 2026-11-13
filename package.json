@@ -4,11 +4,12 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "test": "node scripts/run-suite.mjs all",
     "typecheck": "tsc --noEmit",
     "check:plan": "node scripts/check-plan.mjs",
     "check:quick": "node scripts/run-suite.mjs quick",
     "test:unit": "node scripts/run-suite.mjs unit",
-    "verify": "npm run check:ios15 && npm run test:unit && npm run test:runtime",
+    "verify": "npm run check:ios15 && npm run test:unit && npm run test:sites && npm run test:runtime",
     "check:runtime": "node scripts/check-mobile-runtime.mjs",
     "check:bundle-secrets": "node scripts/check-client-bundle-secrets.mjs",
     "check:legal": "node scripts/check-legal-placeholders.mjs",

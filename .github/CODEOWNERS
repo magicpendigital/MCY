@@ -1,0 +1,53 @@
+# Zone map in machine-readable form (mirrors "Zone map" in AGENTS.md).
+# One owner today; the sections are the boundaries along which parallel agent work is split.
+# When a zone gets its own owner (a teacher, a contractor), change only that section.
+
+# Default
+*                                   @magicpendigital
+
+# Learner app (hot files: one writer at a time until split; see plans/backlog/split-hot-files.md)
+/src/Prototype.tsx                  @magicpendigital
+/src/prototype.css                  @magicpendigital
+/src/i18n.ts                        @magicpendigital
+/src/journey/                       @magicpendigital
+/src/practice/                      @magicpendigital
+/src/library/                       @magicpendigital
+/src/courses/                       @magicpendigital
+/src/classes/                       @magicpendigital
+
+# Staff (Owner / teacher workspace)
+/src/staff/                         @magicpendigital
+/staff.html                         @magicpendigital
+
+# Client <-> backend and iOS 15 compatibility wrappers
+/src/backend/                       @magicpendigital
+/src/compat/                        @magicpendigital
+
+# Protected mobile runtime (change only on the Owner's explicit request; npm run check:runtime)
+/src/App.tsx                        @magicpendigital
+/src/main.tsx                       @magicpendigital
+/src/styles.css                     @magicpendigital
+/src/mobile/                        @magicpendigital
+/vite.config.ts                     @magicpendigital
+/worker/                            @magicpendigital
+/mobile-runtime.lock.json           @magicpendigital
+
+# Backend (skill mcy-supabase-rollout)
+/supabase/                          @magicpendigital
+
+# Reviewed content (unit JSON hashes are review versions)
+/content/                           @magicpendigital
+
+# Native shells
+/android/                           @magicpendigital
+/ios/                               @magicpendigital
+/capacitor.config.ts                @magicpendigital
+
+# Process, release and CI controls
+/AGENTS.md                          @magicpendigital
+/PLAN.md                            @magicpendigital
+/plans/                             @magicpendigital
+/.claude/skills/                    @magicpendigital
+/.github/                           @magicpendigital
+/docs/release/                      @magicpendigital
+/docs/quality/                      @magicpendigital
