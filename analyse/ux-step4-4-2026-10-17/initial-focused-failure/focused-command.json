@@ -1,6 +1,0 @@
-{
-  "command": "node node_modules/@playwright/test/cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs ux-course-detail.spec.ts --reporter=list,json",
-  "cwd": "D:\\Projects\\MCY",
-  "exitCode": 1,
-  "signal": null
-}

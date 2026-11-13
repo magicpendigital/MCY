@@ -1,6 +1,0 @@
-{
-  "command": "node D:\\Projects\\MCY\\node_modules\\@playwright\\test\\cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\qa.playwright.config.mjs ux-home.spec.ts ux-checkin-layout.spec.ts ux-energy-time.spec.ts ux-save-feedback.spec.ts ux-journey-selection.spec.ts --reporter=list,json",
-  "cwd": "D:\\Projects\\MCY\\analyse\\ux-step4-4-2026-10-17\\adjacent-run",
-  "exitCode": 0,
-  "signal": null
-}

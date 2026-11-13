@@ -1,8 +1,0 @@
-1:38:59 AM [vite] (client) [optimizer] scanning dependencies...
-1:39:01 AM [vite] (client) [optimizer] bundling dependencies...
-{
-  "status": "FAIL",
-  "pass": 10,
-  "fail": 3,
-  "pins": true
-}

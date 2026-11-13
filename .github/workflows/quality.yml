@@ -2,7 +2,7 @@ name: MCY quality baseline
 
 on:
   pull_request:
-  # The branch that ships (codex-mcy-p1-preview) is never merged through a pull request, so every push must run the baseline too.
+  # The branch that ships (`main`, deployed as Vercel Preview) also receives direct pushes, so every push must run the baseline too.
   push:
     branches: ['**']
 
@@ -30,22 +30,6 @@ jobs:
       - run: npx playwright install --with-deps chromium
       # check:ios15 = runtime integrity + production build + iOS 15 static checks (source and bundle) + bundle secret scan
       - run: npm run check:ios15
-      - run: npm run test:skills
-      - run: npm run test:agents-size
-      - run: npm run test:dependency-security
-      - run: npm run test:checkin-migration-contract
-      - run: npm run test:consent-event-migration-contract
-      - run: npm run test:ai-gateway
-      - run: npm run test:owner-control-plane
-      - run: npm run test:practice-assistant
-      - run: npm run test:practice-catalog
-      - run: npm run test:content-review
-      - run: npm run test:reading-publication
-      - run: npm run test:content-workspace
-      - run: npm run test:content-publication
-      - run: npm run check:video-catalog
-      - run: npm run test:owner-conflict-migration-contract
-      - run: npm run test:teacher-control-plane
-      - run: npm run test:teacher-migration-contract
-      - run: npm run test:sites
+      # One list for agents and CI: scripts/run-suite.mjs (unit = plan check + every offline Node test/contract check)
+      - run: npm run test:unit
       - run: npm run test:runtime

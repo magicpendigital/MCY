@@ -1,0 +1,43 @@
+# PLAN — bảng tiến độ sống của MCY (Một chút yoga)
+
+> **Cập nhật lần cuối: 2026-11-13** — tái cấu trúc repo theo quy trình mca (nhánh `main` thành nhánh làm việc duy nhất, gọn `analyse/`, vòng kiểm nhanh); chờ Owner làm 3 bước Vercel rồi mới push `main`.
+> Tệp đầu tiên Owner và mọi agent đọc. Trả lời: *đang ở đâu, còn gì, chờ ai*. Chi tiết việc lớn ở `plans/active/` (đang làm), `plans/done/` (đã chạy tốt), `plans/backlog/` (chưa làm). Quy tắc lâu dài ở `AGENTS.md`; lịch sử theo ngày ở `docs/status/`.
+
+## Quy tắc cập nhật
+1. Đầu phiên: đọc tệp này.
+2. Mỗi lần giao code: sửa tệp này trong **cùng nhánh** — trạng thái, commit, ngày. Thay dòng cũ, không chép thêm lịch sử.
+3. Chỉ ghi điều đã kiểm chứng; chưa thử thì ghi "CHƯA CHẠY".
+4. Giữ ≤ 200 dòng; việc xong quá 2 tuần thì xoá (lịch sử có trong git). `npm run check:plan` báo khi quá 14 ngày hoặc quá dài.
+
+Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Owner · 🔍 chờ dùng thử
+
+## 1. Mục tiêu
+- Bản 1.0: khách dùng được, tài khoản tuỳ chọn có đồng bộ, không AI, tiếng Việt; web (Vercel Preview) + Android (Play Internal testing) từ cùng một commit.
+- Nền tảng phát triển: nhiều agent làm song song an toàn, kiểm nhanh trong vài giây, không lỗi iOS 15 quay lại.
+
+## 2. Việc lớn
+| Việc | Nội dung | Trạng thái |
+|---|---|---|
+| Hợp nhất nhánh | `main` fast-forward tới `7a90a21` (toàn bộ lịch sử `codex-mcy-p1-preview`); tài liệu trỏ về `main` | 🟡 cục bộ xong, ⛔ chờ Owner đổi Vercel rồi push |
+| Quy trình mca | `AGENTS.md` gọn + bản đồ vùng + mẫu báo cáo, `CLAUDE.md`, `PLAN.md`, `plans/`, `check:plan` | 🟡 [kế hoạch](plans/active/2026-11-13-repo-restructure.md) |
+| Vòng kiểm nhanh | `npm run check:quick` (vài giây), `npm run test:unit` (một lệnh cho mọi test Node), CI dùng chung danh sách | 🟡 |
+| Gọn kho | `analyse/` 378 MB → ~79 MB (phần `content/` còn trỏ tới); toàn bộ giữ ở tag `archive/analyse-2026-11-13`; 27 script dùng một lần → `scripts/archive/` | 🟡 |
+| Tách tệp điểm nóng | `src/Prototype.tsx` (170 KB), `src/prototype.css` (97 KB), `src/i18n.ts` → mỗi màn/tính năng một tệp; giao mca từng lát | ⬜ [backlog](plans/backlog/split-hot-files.md) |
+| Bản 1.0.7 (batch 9) | INC-005 (zoom ô nhập trên iOS) đã ở web Preview, chưa lên Play/điện thoại | ⬜ chờ Owner yêu cầu phát hành |
+
+## 3. Đang chờ Owner (mỗi mục một quyết định)
+- ⛔ Vercel project `mcy` (3 bước trên dashboard, xem `plans/active/2026-11-13-repo-restructure.md` mục Hoàn tác/Các bước): đổi Production Branch khỏi `main`; gắn domain `motchutyoga.magicpendigital.com` vào nhánh `main`; thêm 2 biến `VITE_SUPABASE_*` cho Preview nhánh `main`. Sau đó mới push `main`.
+- ⛔ Supabase Auth redirect allowlist: thêm `https://mcy-git-main-magicpens-projects.vercel.app/auth/callback` nếu cần đăng nhập trên alias nhánh (domain chính không đổi).
+- iPhone iOS 15 thật: ảnh `?debug=viewport` sau bản sửa INC-005.
+- Mở cổng: ba chân chó, duyệt chuyên môn ảnh AI, hồ sơ giáo viên đầu tiên, ≥5 bài AI đã duyệt, Play Data safety, reset upload key trước production, sửa runtime bảo vệ (`styles.css`, `FlowStack.tsx`).
+
+## 4. Trạng thái hiện tại (chuyển từ AGENTS.md ngày 2026-11-13; sửa tại chỗ)
+- **Shipped (batch 8, versionCode 8 / 1.0.6, commit aef1f47, 2026-11-11):** web Vercel Preview, Play Internal testing 1.0.6, APK on the test phone; adds author-chosen lesson `areas` on top of batch 7 (Owner content hub, iOS CSS fallbacks, snapshot reader with bundled fallback). Real iPhone iOS 15 still CHƯA CHẠY.
+- **Staging (`mcy-staging`, org MagicpenDigital):** migrations applied through `20261110175347` (content publication: public `content-published` bucket, author notes, snapshot RPC incl. screen texts); `owner-control-plane` Edge v12 (lesson `areas` and screen-text allow-list). The public `manifest.json` is not written until the Owner changes visibility/display/review or runs the explicit snapshot action in their own session; until then the app uses its bundled catalogue. AI off. The teacher control plane, teacher collaboration and AI assistant functions are not deployed. `import_catalog` has not been run. All reading switches follow the Owner's settings.
+- **Open Owner decisions / gates:** real iPhone iOS 15: the Owner reported (2026-11-11) the display bug fixed but the screen zooms when a note field is focused (iOS 15.8.8; INC-005 fixes ship in batch 9; needs a `?debug=viewport` screenshot); enabling three-legged-dog and expert review of AI images; first activated teacher profile; AI catalog needs ≥5 expert- and rights-reviewed sessions; Play Data safety recheck; upload-key reset before production; protected-runtime edits for `styles.css` and `FlowStack.tsx`.
+- **CI:** `.github/workflows/quality.yml` runs on every push; a red CI means do not release. It is not a branch protection rule (the private repo has none).
+- **Verification facts that are still true:** the full Playwright suite passed on CI at 9216a24 (one retry allowed), not yet as a clean local run; TalkBack, YouTube fullscreen on devices and a full iOS 15 pass are unverified.
+
+## 5. Đã xong gần đây
+- 13/11 · Điều tra nhánh: `main` chỉ là 2 commit khởi tạo (21/09), mã thật ở `codex-mcy-p1-preview`; `main` là tổ tiên nên fast-forward không mất gì · kiểm: `git merge-base`, Vercel `list_project_domains`, `filter_project_envs`
+- 12/11 · INC-005 ghi nhận iPhone iOS 15.8.8 (commit `7a90a21`)

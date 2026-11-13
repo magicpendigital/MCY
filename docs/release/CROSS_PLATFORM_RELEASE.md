@@ -15,7 +15,7 @@ Nguyên tắc cố định:
 
 | Nền tảng | Nơi chạy | Cách cập nhật | Chứng cứ cần có |
 |---|---|---|---|
-| Web (`motchutyoga.magicpendigital.com`) | Vercel project `mcy`, nhánh Preview `codex-mcy-p1-preview` | `git push` nhánh; Vercel tự build commit đó | id triển khai READY, commit SHA khớp HEAD, GET 200 và chuỗi mới có trong bundle |
+| Web (`motchutyoga.magicpendigital.com`) | Vercel project `mcy`, nhánh Preview `main` (từ 2026-11-13; `codex-mcy-p1-preview` đã đóng băng) | `git push origin main`; Vercel tự build commit đó | id triển khai READY, commit SHA khớp HEAD, GET 200 và chuỗi mới có trong bundle |
 | Android trên máy thử | gói `…mcydebug` (APK debug song song) | `adb install -r` APK build từ export sạch của HEAD | SHA-256 APK, `versionName`, `lastUpdateTime`; không gỡ/xóa dữ liệu/force-stop |
 | Google Play | Thử nghiệm nội bộ (Internal testing) của app `com.magicpendigital.motchutyoga` | AAB ký bằng upload key, `scripts/play-release.ps1 -Build` | SHA-256 AAB, versionCode, trạng thái bản phát hành trên Console, cảnh báo của Play |
 | Backend staging (Supabase) | `mcy-staging` | migration/Edge chỉ khi bản web/app mới **cần** và Owner đồng ý | ledger migration, readback; xem mục Thứ tự phụ thuộc |

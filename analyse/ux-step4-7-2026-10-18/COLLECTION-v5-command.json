@@ -1,7 +1,0 @@
-{
-  "command": "node node_modules/@playwright/test/cli.js test --config responsive-v5.playwright.config.mjs --list --reporter=list",
-  "exitCode": 0,
-  "listedCaseCount": 0,
-  "runResultsJsonAbsent": true,
-  "logSha256": "c1ad0c923a73dfd232e4d446305e97805492e853d517c7555efc8a1a3750d817"
-}

@@ -1,7 +1,0 @@
-# Independent design QC supplement v2a
-
-**PASS_DESIGN_R1; root implementation GO remains separate.** The immutable test correction `SHARED-NAV-TEST-CORRECTION-v2a.vi.md` SHA256 `f2ff12b40185b536d5f44889490c6587b8f4886d364c1e35ef886fae03c4aae6`, bound by freeze `69a83d6673acbc7e2c2c841252671ea6218b96a79f563eab8b5dc704d0c5b995`, resolves both planning obligations in the preceding independent design report. It preserves the v2 source design and original report.
-
-Revised case 4 uses actual Profile → Edit Profile input → back and a separate course return. It correctly distinguishes shared navigation source-hook verification, the unchanged runtime fixture control, and the real non-nav input/keyboard transition. Device cases no longer claim an unreachable stable keyboard-open shared nav. Planned before/after final-content, scroll, footer and property observations cover clearance restoration and ownership; actual harness review must confirm transition observations are sufficient and do not mask a visible jump.
-
-This clears the **design/intake gate for preparing the isolated app candidate and test code only**, if root gives GO. It does not authorize browser invocation or accept any implementation. The actual frozen diff, truthful selector-only migrations, negative isolation, exact cases/config/runner and timeout still require review before browser execution. Candidate/source/root identity is recorded by the separate fresh check receipt. No app source, browser or app test was changed or invoked by independent QC.

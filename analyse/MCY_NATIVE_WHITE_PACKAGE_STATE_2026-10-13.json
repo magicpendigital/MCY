@@ -1,9 +1,0 @@
-{
-  "kind": "NativeStartupPackageAndServiceState",
-  "capturedAt": "2026-10-13T02:08:02.850Z",
-  "package": "com.nilaza.motchutyoga.mcydebug",
-  "packageStopped": "true",
-  "ownPackageSystemWarningCount": 0,
-  "sandboxServiceRejectedForStoppedPackage": false,
-  "rawLogOrPrivateDataRetained": false
-}

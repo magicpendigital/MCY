@@ -70,5 +70,5 @@ for(const preset of [{name:'iphone',width:390,height:844},{name:'pixel-10',width
   const box=await submit.boundingBox();expect(box!.height).toBeGreaterThanOrEqual(48);
   await page.getByRole('button',{name:'Duyệt nội dung',exact:true}).scrollIntoViewIfNeeded();
   // Synthetic authenticated UI screenshot, not evidence of a live Owner save.
-  await page.screenshot({path:`analyse/ux-ai-2026-10-10/content-review-fixture-${preset.name}.png`});
+  await page.screenshot({path:`test-results/screenshots/ux-ai/content-review-fixture-${preset.name}.png`});
 });

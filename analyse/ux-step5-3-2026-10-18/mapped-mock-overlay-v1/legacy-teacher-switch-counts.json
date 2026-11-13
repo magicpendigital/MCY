@@ -1,7 +1,0 @@
-{
-  "caseId": "legacy-teacher-switch",
-  "validCalls": 2,
-  "invalidCalls": 0,
-  "consumed": true,
-  "allRequestsMatchedContract": true
-}

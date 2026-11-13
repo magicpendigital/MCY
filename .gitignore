@@ -19,3 +19,7 @@ ios/App/DerivedData/
 *.p12
 *.jks
 *.keystore
+
+# analyse/ is a frozen evidence archive (see analyse/README.md); tracked files stay, new files are ignored
+analyse/**
+!analyse/README.md

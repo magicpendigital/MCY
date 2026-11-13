@@ -1,9 +1,0 @@
-# MCY — independent review addendum: Owner test harness
-
-Agent `owner_repair_review`, explicitly delegated by the Owner, reviewed the new schema exporter and Docker rehearsal. Two P2 findings (uncertain create cleanup skipping resources; exporter PASS before unverified removal) were fixed; reviewer readback confirmed both resolved and no new actionable finding.
-
-Final Docker harness SHA-256 `6ff06da14f923136cd736376af056ea2143a9db2433d2c0fac44139443fadc85`; exporter SHA-256 `068e1b9f03346b95cfd293d832d49032e4ac80c99c168e8936950305f8914ca7`. Reviewer verified the initial passing receipt; root's final rerun PASS8/8 at 02:10:12 Bangkok binds the later schema-only export `e5112a2251c43a685aa1a7ddee14616fde3b6501c1bd5ad275d36724548e69db`, with verified removal. Credentials temporarily exist in exporter Docker Config.Env; nothing is printed and absence is checked before PASS.
-
-Reviewer subsequently examined prepared, unexecuted `scripts/test-owner-live-save-roundtrip.mjs`, SHA-256 `fe40e407ee9e3f56837a7c3367688918f98d7f3d33e85128400e4ac2bf910a93`: no correctness/security finding. It requires exact target, independently supplied deployed PT409 precondition, known Owner identity, expected version and closed AI gates; submits exactly two `save_ai` requests (one identical AI-off positive save, one stale-denial probe), no retry. Audit counts need separate database readback. This source review is not authorization or live execution evidence.
-
-The positive live test was rejected by automatic approval review before execution; human permission is pending for its one version/audit increment. No workaround or alternate write path was attempted. Existing SQL review remains bound to unchanged artifact SHA b7f8637c4568cbb138c680089214d14b308567d2ae0eb52990c22b73976d1fab; new test review does not approve AI/Edge/production release.

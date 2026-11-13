@@ -1,8 +1,0 @@
-
-Running 1 test using 1 worker
-
-(node:15192) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
-(Use `node --trace-warnings ...` to show where the warning was created)
-  ok 1 .vercel\ux-step4-5-20261017\tests\ux-reflection.spec.ts:41:200 › Honest overall, no-answer and local consent off Khó chịu hơn (15.2s)
-
-  1 passed (26.2s)

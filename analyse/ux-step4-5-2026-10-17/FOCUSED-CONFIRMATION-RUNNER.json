@@ -1,7 +1,0 @@
-{
-  "path": "analyse/ux-step4-5-2026-10-17/run-focused-confirmation.mjs",
-  "sha256": "d5414cba6e1e753d65e4494f5c81fcf49f1f669232978622a842b85108270005",
-  "sourceFreezeSha256": "f57b2ba99aad152ffa52192ea40725ceab0a9ba6005a347323c11a880e7301a8",
-  "launchStatus": "BLOCKED pending adjacent exit and root relay all QC browsers ended",
-  "changes": "Output/log/JSON paths only; same full38 tests,25s timeout/assertions/source/config unchanged, hashguardall235inputs"
-}

@@ -1,5 +1,0 @@
-{
-  "command": "node node_modules/@playwright/test/cli.js test --config D:\\Projects\\MCY\\analyse\\ux-step4-3-2026-10-16\\regression.playwright.config.mjs",
-  "cwd": "D:\\Projects\\MCY",
-  "exitCode": 1
-}

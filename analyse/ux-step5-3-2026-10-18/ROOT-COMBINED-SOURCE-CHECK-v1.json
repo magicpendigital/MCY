@@ -1,9 +1,0 @@
-{
-  "capturedAt": "2026-10-18T18:30:53.0917474Z",
-  "sourceFreezeSha256": "fdfedf82b83c57f2ede7ac85bf9bb1d053604992b600fc13390b9b68375d4d6c",
-  "verifiedSourceCount": 255,
-  "mismatches": [],
-  "status": "PASS_SOURCE_PINS_ONLY",
-  "currentCanonical": "DRIFTED_7_OF_71_SEPARATE_FROM_APP_SOURCE",
-  "overallQa": "PENDING_CLEAN_BROWSER_RUNS"
-}

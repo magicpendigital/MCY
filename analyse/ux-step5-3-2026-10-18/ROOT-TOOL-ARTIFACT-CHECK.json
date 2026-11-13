@@ -1,8 +1,0 @@
-{
-  "status": "PASS",
-  "toolFilesChecked": 318,
-  "toolMismatchCount": 0,
-  "readOnly": true,
-  "priorRootDiagnostic": "Incorrect cache-relative join caused read errors; ignored result, corrected to manifest repository-relative paths and stop-on-error.",
-  "capturedAt": "2026-10-18T16:59:45.8591879Z"
-}

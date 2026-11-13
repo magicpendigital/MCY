@@ -1,7 +1,0 @@
-import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
-const root=process.cwd(),source=path.join(root,'.vercel/ux-step4-1-20261014'),target=path.join(root,'.vercel/ux-step4-2-20261014'),dir=path.join(root,'analyse/ux-step4-2-2026-10-14');
-assert(!fs.existsSync(target));const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
-const baseline=JSON.parse(fs.readFileSync('analyse/ux-step4-1-2026-10-14/baseline.json')),freeze=JSON.parse(fs.readFileSync('analyse/ux-step4-1-2026-10-14/source-freeze.json'));
-const paths=[...baseline.inputs.map(x=>x.path),freeze.addition.path];assert.equal(paths.length,231);
-const inputs=paths.map(rel=>{assert(!/(^|\/)(\.env[^/]*|\.git|dist|node_modules)(\/|$)/.test(rel));assert(!/^(android|ios)\//.test(rel));const expected=freeze.changes.find(x=>x.path===rel)?.sha256??(rel===freeze.addition.path?freeze.addition.sha256:baseline.inputs.find(x=>x.path===rel).sourceSha256);assert.equal(sha(path.join(source,rel)),expected);const dest=path.join(target,rel);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(path.join(source,rel),dest,fs.constants.COPYFILE_EXCL);return {path:rel,sourceSha256:expected,rootSha256:fs.existsSync(path.join(root,rel))?sha(path.join(root,rel)):null};});
-fs.writeFileSync(path.join(dir,'baseline.json'),JSON.stringify({createdAt:new Date().toISOString(),source,target,inputs},null,2)+'\n');console.log({copied:inputs.length});

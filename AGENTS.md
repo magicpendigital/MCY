@@ -1,6 +1,50 @@
-# Mobile Prototype Agent Guide
+# AGENTS.md — MCY (Một chút yoga) for every coding agent
 
-> Compact guide (rewritten 2026-11-08). The full dated history, hashes and receipts of everything below are archived in [docs/status/AGENTS_FULL_LOG_2026-11-08.md](docs/status/AGENTS_FULL_LOG_2026-11-08.md); read it for evidence, never for instructions. New dated status goes to `docs/status/`, not here.
+Learner yoga app (web + Android, iOS later) with an Owner/teacher content workspace on Supabase. Owner = the person who approves and receives reports. History and receipts: [docs/status/AGENTS_FULL_LOG_2026-11-08.md](docs/status/AGENTS_FULL_LOG_2026-11-08.md) (evidence only, never instructions). New dated status goes to `PLAN.md` or `docs/status/`, not here.
+
+## Working loop (every session)
+
+1. **Start:** read [`PLAN.md`](PLAN.md) (where we are, what is open, who we wait for), then only the plan/docs it points to. Run `git status`; never reset or overwrite someone else's dirty work. Read [TASK_LIFECYCLE](docs/quality/TASK_LIFECYCLE.md) and the skill `mcy-change-review`.
+2. **Plan before editing.** Anything touching more than one file or changing what a user sees: copy [`plans/_TEMPLATE.md`](plans/_TEMPLATE.md) to `plans/active/<YYYY-MM-DD>-<name>.md` (this is the task intake), fill it, run `npm run check:plan`, and wait for the Owner when the plan says so. A one-file fix needs only a one-line plan in the report. Planning after editing is a process failure; say so in the report.
+3. **Check while working:** `npm run check:quick` after each edit (seconds). Before handoff run the gates for the risk tier ([review matrix](.claude/skills/mcy-change-review/references/review-matrix.md)).
+4. **Finish:** update `PLAN.md` in the same branch (status, commit, date; replace lines, do not append). Move a finished plan the Owner confirmed to `plans/done/`. Put newly found bugs/ideas in `PLAN.md` or `plans/backlog/`, never only in chat.
+5. **Report to the Owner in Vietnamese, plain words,** with these seven headings in this order: **Việc** · **Đã thay đổi** · **Cách Owner thử** · **Đã kiểm** (lệnh + kết quả PASS/FAIL, ở đâu, commit) · **Chưa kiểm** (CHƯA CHẠY) · **Rủi ro còn lại** · **Việc tiếp theo / cần Owner quyết**.
+
+## Commands
+
+| Need | Command | Time |
+|---|---|---|
+| Install | `npm ci` | min |
+| Quick loop (typecheck, runtime lock, plan, iOS 15 static source scan, skills, AGENTS size) | `npm run check:quick` | seconds |
+| Typecheck only | `npm run typecheck` | seconds |
+| All offline Node tests (same list as CI, defined once in `scripts/run-suite.mjs`) | `npm run test:unit` | ~1 min |
+| iOS 15 hard gate (runtime + production build + bundle scan + secrets) | `npm run check:ios15` | ~1 min |
+| Browser suite (Playwright; Windows: `MCY_PLAYWRIGHT_CHANNEL=msedge`, cold start `--timeout=90000`) | `npm run test:runtime` | minutes |
+| Everything CI runs | `npm run verify` | minutes |
+| Dev server | `npm run dev` | — |
+
+Add a new offline test to the `unit` list in `scripts/run-suite.mjs`, not as a new CI step. Never weaken a test, checker or lock to get green.
+
+## Zone map (who owns what; parallel work splits along these lines)
+
+| Zone | Paths | Notes |
+|---|---|---|
+| Learner app | `src/Prototype.tsx`, `src/prototype.css`, `src/JourneyScreen.tsx`, `src/journey/`, `src/practice/`, `src/library/`, `src/courses/`, `src/classes/`, `src/bodyRegions.ts`, `src/i18n.ts` | Hot files: one writer at a time until split (see `PLAN.md`). |
+| Staff (Owner/teacher) | `src/staff/`, `staff.html` | Never reaches learner data by default. |
+| Client ↔ backend | `src/backend/`, `src/compat/` | `src/compat` = iOS 15 wrappers. |
+| Protected runtime | see **Editing Boundary** below | Change only on explicit Owner request. |
+| Backend | `supabase/migrations/`, `supabase/functions/`, `supabase/templates/` | Skill `mcy-supabase-rollout`; one migration per change. |
+| Content | `content/` (reviewed library, manifests, hashes) | Do not edit approved unit JSON: its hash is the review version. |
+| Native | `android/`, `ios/`, `capacitor.config.ts` | Builds from a clean export of HEAD only. |
+| Tests | `tests/` (`*.spec.ts` Playwright, `*.test.mjs`/`*.cjs` Node) | Screenshots go to `test-results/` (ignored). |
+| Tooling | `scripts/` (`scripts/archive/` = one-off scripts of finished operations, never rerun) | |
+| Docs / brand | `docs/`, `brand/`, `design-system/`, `.claude/skills/` | Product detail: [docs/product/PRODUCT_DECISIONS.md](docs/product/PRODUCT_DECISIONS.md). |
+| Frozen evidence | `analyse/` | Only files `content/` and docs still cite. Full archive: git tag `archive/analyse-2026-11-13`. Do not add new evidence here. |
+
+## Branches and outside actions
+
+- `main` is the only working branch (Vercel Preview → `motchutyoga.magicpendigital.com`; Vercel Production is not promoted). `codex-mcy-p1-preview` is frozen history: never push to it. Agents work on their own branch (`claude/*`, `codex/*`, `mca/*`) and merge into `main` only when the Owner asks.
+- Pushing, deploying, installing on the phone, uploading to Play, applying migrations/Edge, sending email and any live data write each need the Owner's request in that task. No `--force`.
 
 ## Hard gates — read first, every task
 
@@ -9,20 +53,16 @@
 3. **Owner-approved copy ("đã chốt") does not change without the Owner's sign-off** and a handoff note. Video lessons are the focus of Khám phá; reading is secondary. Never write approval or review records on the Owner's behalf.
 4. **Secrets and data.** No service-role key, upload-key password or token in code, docs, chat or commits; staging data stays in staging; AI stays behind its gates; no `supabase db push`.
 5. **Skills live in `.claude/skills/`** (`mcy-change-review`, `mcy-brand-ux`, `mcy-release-sync`, `mcy-ios-compat`, `mcy-supabase-rollout`) and are loaded from there only. Change the matching skill in the same change as the rule; do not copy dated status into a skill. Read [TASK_LIFECYCLE](docs/quality/TASK_LIFECYCLE.md) and `mcy-change-review` at the start of every task.
-6. **Keep this file small (compaction rule).** AGENTS.md is loaded into every session, so size is a cost. Target ≤ 26 KB (the protected-runtime contract alone is about 11 KB); `tests/agents-size.test.mjs` fails above 28 KB. When it grows past the target, compact it **in the same change**: move dated status, evidence, receipts and superseded detail to `docs/status/` (keep the text, link it), merge duplicates, state each fact once, and delete rules that a newer decision replaced. Keep only (a) hard gates, (b) current product and scope decisions, (c) security and data boundaries, (d) a short current-state snapshot with pointers, (e) the protected-runtime contract. Never drop a durable rule or an Owner decision; relocate it and link it. A new decision replaces its older version rather than being appended beside it.
+6. **Keep this file small (compaction rule).** AGENTS.md is loaded into every session, so size is a cost. Target ≤ 20 KB; `tests/agents-size.test.mjs` fails above 22 KB. When it grows past the target, compact it **in the same change**: status goes to `PLAN.md` (replaced in place), dated evidence and receipts to `docs/status/`, product detail to `docs/product/PRODUCT_DECISIONS.md`, full runtime text to `docs/runtime/RUNTIME_CONTRACT.md` (keep the text, link it); merge duplicates, state each fact once, delete rules a newer decision replaced. Keep here only (a) the working loop, commands and zone map, (b) hard gates, (c) current product and scope decisions in summary, (d) security and data boundaries, (e) the binding runtime summary. Never drop a durable rule or an Owner decision; relocate it and link it. A new decision replaces its older version rather than being appended beside it.
 
 ## Product direction and scope (confirmed by the Owner)
 
 - **Core loop:** daily check-in → AI-assisted selection of a reviewed practice (gated) → practice → honest reflection → a better-informed next choice. Courses, teacher content and human-led classes support the loop; a big library or a standalone chatbot is not the primary entry.
 - **Honesty:** every entry is the learner's own self-report. Reflection allows better, unchanged, worse, uncertain, skipped. Never present missing feedback as improvement, demo data as outcomes, or yoga as treating/curing a condition; no diagnosis or medical claims.
 - **Release 1.0 scope (2026-10-23):** guest use, optional account with cloud sync, no AI, no new practice sessions; payments out of scope. Android application ID `com.magicpendigital.motchutyoga` (permanent); domain `motchutyoga.magicpendigital.com`; public operator name Magicpen Digital; the Owner is responsible for legal/policy and support; Play developer account is Tuyên Trịnh. Production is Vietnamese-only; English is a partial internal preview.
-- **Platforms:** web on Vercel Preview (branch `codex-mcy-p1-preview`; Production not promoted), Android through Capacitor (test phone Air1 Ultra with the parallel debug app `.mcydebug`; Play Internal testing), iOS project prepared but not built or tested. Narrow mobile browsers and ≥900 px screens open the frameless web surface; `?mode=review&device=iphone|pixel-10` keeps the simulator.
+- **Platforms:** web on Vercel Preview (branch `main`, the single working branch since 2026-11-13; the old `codex-mcy-p1-preview` is frozen; Vercel Production branch is not `main` and Production is not promoted), Android through Capacitor (test phone Air1 Ultra with the parallel debug app `.mcydebug`; Play Internal testing), iOS project prepared but not built or tested. Narrow mobile browsers and ≥900 px screens open the frameless web surface; `?mode=review&device=iphone|pixel-10` keeps the simulator.
 - **Brand:** Vietnamese **Một chút yoga** / slogan **Vạn chút an yên**; English **A Little Yoga** / **A little more peace**; working mark Khoảng mở (same open arc and point everywhere). Look: warm ivory, forest green, terracotta CTA, editorial serif (bundled Source Serif 4 with Vietnamese subset), Roboto UI, soft photography, calm spacing; check Vietnamese diacritics. Read `brand/`, `design-system/`, and the skill `mcy-brand-ux` before visual or copy changes.
-- **Check-in and Journey:** the body map and a text region list are equal paths; "no discomfort", "unsure", "skip" and unselected are different. Stored region codes are locale-neutral (`neck`, `upper_back`, `lower_back`, `glute_*`, and paired `shoulder`, `upper_arm`, `elbow`, `forearm_wrist`, `hand`, `knee`, `foot` with `_left/_right/_unspecified`); never rewrite saved observations. Illustration (feminine default, masculine, neutral) is a display choice, never inferred gender or personalization. Journey shows real snapshots only, keeps gaps and multiple records per day, and never computes improvement percentages. Guests skip the energy/time step (Owner decision 2026-11-08).
-- **Free YouTube courses:** 38 unlisted Shorts from the Owner's channel in three course shells, embedded with the privacy-enhanced domain; never download, re-upload or mirror them. Decorative thumbnails come from `i.ytimg.com`; playback progress is counted on the device only. Instructor Huyền My: the public name comes from her activated account, never hard-coded; her invitation email stays out of the repo. Captions are "not recorded" until verified. Draft benefits/cautions text is labelled as awaiting expert review; rights, safety and instructional review remain release gates. Changing channel metadata is an external action needing confirmation at Save time.
-- **Reading units:** 14 server-held units, published only through the Owner's per-unit switch (public snapshot bucket) and an internal-wording guard; six were live at last check. Units with text only or draft wording stay hidden until rewritten and re-approved by a qualified editor.
-- **Content workspace (plan: [analyse/MCY_CONTENT_WORKSPACE_AND_AI_PLAN_2026-11-08.md](analyse/MCY_CONTENT_WORKSPACE_AND_AI_PLAN_2026-11-08.md); details: [docs/content-review/README.md](docs/content-review/README.md)):** one versioned store (video lesson, course group, reading unit, screen text) authored by a teacher or MCY; a version is immutable and its hash is the review version. The Owner types a declaration for every version, **including own content** (self-review allowed, audit-logged, switchable per kind). A teacher edits only own video lessons; the Owner reviews but does not edit them. AI may suggest, never approves. Owner content shows "Lựa chọn của biên tập · MCY biên soạn"; a teacher name shows only from an active profile; imported content has no byline. Order: content first, then AI. Applied to staging: phases 1, 2a, 2b, 3, 4. **Applied to staging 2026-11-09 (phases 3 and 4):** teacher tab "Bài video của tôi", Owner notes, the public snapshot `content-published/manifest.json` (rebuilt on every visibility, display or review change) and the learner app reading it with a bundled fallback (invalid or missing snapshot = today's catalogue and order). Video lessons carry author-chosen browse `areas` (shipped in batch 8; Edge v11 accepts them). **Phase 4 complete (code pushed, not in Play/phone yet):** four Khám phá screen texts (`screenTextKeys` in the workspace contract) can come from the snapshot, every other text stays locked "đã chốt"; Edge v12 deployed and migration `20261110175347_content_snapshot_screens.sql` applied to staging (2026-11-11); no screen text yet; `manifest.json` still unwritten. Web Preview is ahead of Play and the phone (aef1f47). Deliberately not built: a lesson "level" (no expert-approved scale) and hiding the AI-image disclosure (the "HÌNH AI" label always shows). No teacher profile is activated. First teacher: Huyền My.
-- **AI:** real inference is staging-only and **off**. The learner assistant only selects from an expert- and rights-reviewed catalog (empty today) and returns session IDs; it needs the server gate (`MCY_AI_ENABLE_STAGING`, `OPENROUTER_API_KEY`, spend-control acknowledgment, exact staging URL), a pilot cohort, current `ai_processing` consent, rate/token limits and a kill switch. Send minimal current-turn inputs only; never names, emails, notes or history; never log prompts or outputs. Money limits are managed by the Owner on OpenRouter (no backend budget engine, never ask for amounts). No separate "health data" consent until wearables are connected. AI code (still off): one eligible session needs no model call; optional `suitableEnergy`/`intents` signals; the AI offer is hidden for reported/tired/uncomfortable/uncertain check-ins; `tests/practice-safety-suite.test.mjs` is the pre-enable gate; open P1/P2 items are in the plan file.
+- **Detail lives in [docs/product/PRODUCT_DECISIONS.md](docs/product/PRODUCT_DECISIONS.md); read the matching section before touching it:** Check-in and Journey (region codes, illustration, no improvement percentages), free YouTube courses (never download/mirror; instructor name from the activated account), reading units (Owner per-unit switch), the content workspace (immutable versions, Owner declaration for every version, teacher edits own lessons only, AI suggests never approves), and AI (staging-only, off, its gates and data minimisation).
 
 ## Security and data boundaries
 
@@ -42,13 +82,9 @@
 - The closed native learner-write trial of 13–14/10 is never rerun; any new live data-write test needs a new reviewed operation with an explicit Owner-approved cap. Do not run a positive live Owner-config save or a stale-save probe without the Owner's explicit permission (an earlier one was rejected by automatic review).
 - Record PASS / FAIL / CHƯA CHẠY with command, environment and commit; a fixture or simulator pass never proves RLS, authenticated writes, devices, TalkBack or iOS.
 
-## Current state (2026-11-10; update this block, do not append history)
+## Current state
 
-- **Shipped (batch 8, versionCode 8 / 1.0.6, commit aef1f47, 2026-11-11):** web Vercel Preview, Play Internal testing 1.0.6, APK on the test phone; adds author-chosen lesson `areas` on top of batch 7 (Owner content hub, iOS CSS fallbacks, snapshot reader with bundled fallback). Real iPhone iOS 15 still CHƯA CHẠY.
-- **Staging (`mcy-staging`, org MagicpenDigital):** migrations applied through `20261110175347` (content publication: public `content-published` bucket, author notes, snapshot RPC incl. screen texts); `owner-control-plane` Edge v12 (lesson `areas` and screen-text allow-list). The public `manifest.json` is not written until the Owner changes visibility/display/review or runs the explicit snapshot action in their own session; until then the app uses its bundled catalogue. AI off. The teacher control plane, teacher collaboration and AI assistant functions are not deployed. `import_catalog` has not been run. All reading switches follow the Owner's settings.
-- **Open Owner decisions / gates:** real iPhone iOS 15: the Owner reported (2026-11-11) the display bug fixed but the screen zooms when a note field is focused (iOS 15.8.8; INC-005 fixes ship in batch 9; needs a `?debug=viewport` screenshot); enabling three-legged-dog and expert review of AI images; first activated teacher profile; AI catalog needs ≥5 expert- and rights-reviewed sessions; Play Data safety recheck; upload-key reset before production; protected-runtime edits for `styles.css` and `FlowStack.tsx`.
-- **CI:** `.github/workflows/quality.yml` runs on every push; a red CI means do not release. It is not a branch protection rule (the private repo has none).
-- **Verification facts that are still true:** the full Playwright suite passed on CI at 9216a24 (one retry allowed), not yet as a clean local run; TalkBack, YouTube fullscreen on devices and a full iOS 15 pass are unverified.
+Lives in [`PLAN.md`](PLAN.md) (section 4, updated in place). Do not keep status here.
 
 ## Prototype Instructions
 
@@ -63,58 +99,18 @@ Read this file in full before planning or implementing any mobile-app change. Ru
 
 ## Runtime Contract
 
-- Preserve the mobile device runtime unless the user's task explicitly asks otherwise. Do not replace it with a standalone page. Visual fidelity applies to app-owned content inside the device screen, not to template-owned device chrome.
-- Keep `App` composed around `PhoneFrame` -> `KeyboardProvider`, with `StatusBar`, app content, `HomeIndicator`, and `KeyboardDock` mounted inside the phone frame. `StatusBar` and the iOS home indicator are overlaid device chrome. When the Android keyboard is closed, the app viewport reserves the protected navigation-bar region instead of painting behind it. When the Android keyboard is open, preserve the current full-screen keyboard layout: its asset includes the IME navigation strip and the separate black navigation bar is hidden. iOS screens continue to paint behind the home-indicator area and own their safe-area content padding.
-- Preserve the `iPhone` / `Pixel 10` device picker and both calibrated device presets. The Pixel screen is `427 x 952`; its `32 x 32` camera circle and `public/assets/android/navigation-bar.svg` bottom navigation bar are protected device chrome, not app content.
-- Preserve the device picker's intentionally lightweight Codex styling in the top-right corner: its trigger wrapper is borderless and transparent, its trigger sizes to content, and its right-aligned menu uses the compact 3px inset plus the specified hairline and elevation shadow layers. Keep the prototype root and default app screen white.
-- Preserve `StatusBar` as live device chrome, including its platform-specific typography, source status-icon assets, and spacing. Pixel 10 uses Roboto, Android indicators, and 32px top, left, and right padding. iPhone uses its iOS indicators, system typography, and calibrated spacing. Do not hardcode screenshot times like `9:41` into the status bar, replace its real-time clock, or move status bar content into app markup unless the user explicitly asks for a fixed/mock device time.
-- `PhoneFrame` owns the calibrated device frame, screen portal, device picker, camera cutout, and custom cursor. Keep device assets in `public/assets/iphone/` and `public/assets/android/`; if an asset fails to load, repair the asset path or restore the asset instead of removing the frame, keyboard, or image render.
-- Use `MobileScroll` directly for simple single-screen prototypes. Use `FlowStack` for conventional multi-screen flows whose routes can own their fixed header and footer; when using it, define each route as a `FlowScreen`: `{ id, header?, headerHeight?, footer?, footerHeight?, render }`, and use `flow.push(screen)`, `flow.pop()`, and `flow.replace(screen)` from `FlowStack` render callbacks or `useFlow()` instead of introducing another router.
-- Use `Carousel` for a carousel, horizontal rail, swipeable cards, image or media strip, horizontally scrollable cards, chip rail, or other horizontal collection.
-- For a layered app shell—such as a persistent composer, independently presented sheet, pushed/peek sidebar, or app-wide transition—compose directly in `Prototype.tsx` rather than forcing it through `FlowStack`. Keep app-owned fixed chrome as sibling layers outside `MobileScroll`.
-- When using `FlowScreen`, put route-owned fixed headers or footers in `FlowScreen.header` or `FlowScreen.footer`. Set `headerHeight` to the visible app-toolbar height; `FlowStack` adds the device's top safe-area/status-bar inset automatically. Do not include `StatusBar` or its height in the header. Set `footerHeight` to the full app-footer height. `FlowScreen.footer` is an overlay, not reserved layout space; screens using it must add their own bottom content padding such as `padding-bottom: calc(var(--flow-footer-height) + var(--mobile-safe-area-height) + 24px)` so final content can scroll above the footer while still painting behind it.
-- Render only scrollable content inside `MobileScroll`; it is for content that should move with scroll and rubber-band overscroll. Keep app-owned headers, nav bars, tabs, composers, and overlays outside it. This keeps scroll physics, safe areas, keyboard insets, scrollbars, and drag click suppression active without letting content paint under fixed chrome.
-- Buttons, links, cards, and images inside `MobileScroll` should still allow drag scrolling when the pointer moves beyond tap slop. Use `data-scroll-drag="ignore"` only for rare controls that must own the drag gesture themselves.
-- Do not add `var(--keyboard-height)` to ordinary screen/content padding inside `MobileScroll`; the scroll viewport already shrinks above the simulated keyboard. For custom fixed composers, search bars, or toast chrome, use `useKeyboardInsets().bottomInset`. It is relative to the app viewport: Android returns `0` while the closed-keyboard viewport already reserves navigation, then returns the keyboard height while open; iOS continues to clear the home indicator while closed and ride directly above the keyboard while open. Do not pin custom bottom chrome to `bottom: 0` or only `keyboardHeight`.
-- Use `KeyboardInput`, `KeyboardTextarea`, or `MobileTextField` for every text-entry control. A raw `input` or `textarea` disconnects focus, keyboard animation, safe-area insets, and attached surfaces.
-- Use `BottomSheet` for phone-scoped sheets. Its props are `open`, `onOpenChange`, `title`, optional `description`, optional `snap`, and `children`; it renders through the phone screen portal and dismisses the keyboard before opening.
+Binding summary; the full contract is [docs/runtime/RUNTIME_CONTRACT.md](docs/runtime/RUNTIME_CONTRACT.md) (read it before any UI/layout/keyboard/scroll change) and the API is `src/mobile/COMPONENTS.md`.
 
-## Horizontal Carousels
-
-- Use `Carousel` for horizontally draggable cards, images, media, chips, or other horizontal collections. Do not recreate these with `overflow-x`, custom pointer handlers, or a generic div.
-- `Carousel` can be nested directly inside `MobileScroll`. It owns horizontal gestures and automatically yields vertical gestures to the parent.
-- Never put `data-scroll-drag="ignore"` on or around a `Carousel`; doing so prevents vertical parent scrolling when a gesture begins inside it.
-- Do not add CSS scroll snapping to `Carousel`; its runtime owns momentum and release motion.
-- Use `data-scroll-drag="ignore"` only when a control must prevent parent scrolling in every drag direction.
-
-See `src/mobile/COMPONENTS.md` for the full component and gesture contract.
+- Keep the device runtime: `App` = `PhoneFrame` → `KeyboardProvider` with `StatusBar`, app content, `HomeIndicator`, `KeyboardDock` inside the frame; keep the `iPhone` / `Pixel 10` picker, both calibrated presets, the live status-bar clock and all device assets. Device chrome is not app content; never replace the runtime with a standalone page.
+- Screens: `MobileScroll` for a single screen; `FlowStack` with `FlowScreen { id, header?, headerHeight?, footer?, footerHeight?, render }` and `flow.push/pop/replace` (no other router) for flows; footers are overlays, so add bottom padding with `--flow-footer-height`. Layered shells (composer, sheet, sidebar) compose in `Prototype.tsx`. Only scrollable content goes inside `MobileScroll`; fixed chrome stays outside it.
+- Any horizontal collection uses `Carousel`: no `overflow-x`, no custom pointer handlers, no CSS scroll snapping, never `data-scroll-drag="ignore"` on or around it. Use `data-scroll-drag="ignore"` only for a control that must own every drag direction.
+- Text entry only through `KeyboardInput`, `KeyboardTextarea` or `MobileTextField`; sheets through `BottomSheet` (`open`, `onOpenChange`, `title`, `description?`, `snap?`). Custom bottom chrome follows `useKeyboardInsets().bottomInset`; never add `var(--keyboard-height)` to content padding or pin chrome to `bottom: 0`.
+- Interaction: no tap after a drag, no native image drag inside the frame, fixed phone chrome never animates with screens; z-order: home indicator on top, keyboard below it and above app UI.
 
 ## Keyboard Rule
 
-The simulated keyboard is a separate top-layer component. Before presenting anything that behaves like iOS navigation or modal UI, dismiss it first.
+Call `keyboard.hide()` before pushing/popping/replacing routes, opening any sheet/dialog/menu, or a transition that must not inherit focus (`FlowStack` and `BottomSheet` already do). When a keyboard-attached surface closes, hide the keyboard in the same event; when a text field loses focus, hide it unless focus moves straight to another text field. Full rule in the runtime contract file.
 
-Call `keyboard.hide()` before:
+## Release evidence
 
-- pushing, popping, or replacing FlowStack routes
-- opening bottom sheets, action sheets, dialogs, menus, or navigation sheets
-- starting transitions where the destination should not inherit text-input focus
-
-`FlowStack` already hides the keyboard for `push`, `pop`, and `replace`. `BottomSheet` already hides it before opening. If you add new modal/sheet/navigation primitives, follow the same rule.
-
-When a composer, search surface, or other keyboard-attached component closes, call `keyboard.hide()` in the same event before changing that component's open state. Position attached surfaces from `useKeyboardInsets()` rather than a separate timer or visibility flag so both dismiss together.
-
-When any text-entry control loses focus, dismiss the simulated keyboard. If the control is custom or does not use the runtime's keyboard-aware fields, handle its blur event and call `keyboard.hide()` explicitly. Keep the keyboard open only when focus is moving directly to another text-entry control that should share the same keyboard session.
-
-## Interaction Rules
-
-- Do not trigger buttons or inputs after a pointer has become a drag. Preserve the drag suppression behavior in `MobileScroll`.
-- Do not allow native browser image/file dragging inside the phone frame. Preserve the phone-level `dragstart` suppression and non-draggable image styles so scroll drags that begin on images still scroll the prototype.
-- Use `KeyboardInput`, `KeyboardTextarea`, or `MobileTextField` for text entry so the simulated keyboard and safe-area insets stay connected.
-- Fixed phone chrome should not animate with pushed screens. Screen content can animate; the status bar, camera cutout, and preview chrome should stay put.
-- Keep the keyboard below the home indicator/safe area layer in z-index, and above ordinary app UI while visible.
-- Keep the home indicator as the topmost safe-area layer in the z-index above everything else in the prototype.
-
-
-## Release evidence workflow - 2026-10-04
-
-Read [the project release runbook](docs/release/RELEASE_RUNBOOK.md) for staging, packaging, production planning or a release handoff; use [the Vietnamese owner packet](docs/release/OWNER_PACKET.vi.md). Review docs/release/release-profile.json and run node --test scripts/release-evidence.test.mjs for changed gate code. The read-only checker uses immutable source/artifact/config/evidence hashes and exact target approval; it performs no deployment and does not enforce remote permissions. Preserve dirty work and current migration blockers. Cloud target allowlist remains empty until owner-reviewed environment mapping and actual enforcement are verified; never copy live user data into staging.
+Staging, packaging, production planning or a release handoff: [RELEASE_RUNBOOK.md](docs/release/RELEASE_RUNBOOK.md), the Vietnamese [owner packet](docs/release/OWNER_PACKET.vi.md), `docs/release/release-profile.json`, and `node --test scripts/release-evidence.test.mjs` for changed gate code. The checker is read-only; the cloud target allowlist stays empty until the Owner approves an environment mapping; never copy live user data into staging.

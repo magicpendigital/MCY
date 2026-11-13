@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title" style="color:#25372D">
-  <title id="title">Thảm mở — tấm thảm cuộn ở một đầu</title>
-  <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M24 35H69C79 35 86 42 86 51C86 60 79 67 69 67H24C16 67 11 62 11 54V48C11 40 16 35 24 35Z"/>
-    <path d="M24 35C12 35 12 67 24 67"/>
-    <path d="M28 42C20 42 20 60 28 60"/>
-    <path d="M42 51H70"/>
-  </g>
-</svg>

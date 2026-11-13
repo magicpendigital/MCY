@@ -48,12 +48,12 @@ for (const device of ["iphone", "pixel-10"]) test(`reviewed plan and explicit st
   expect(calls).toHaveLength(1); expect(calls[0].context.floor).toBe("avoid"); expect(calls[0]).not.toHaveProperty("history");
   await page.getByRole("region", { name: "Kế hoạch hôm nay" }).scrollIntoViewIfNeeded();
   await page.mouse.move(0, 0);
-  await page.screenshot({ path: `analyse/ux-ai-2026-10-10/plan-fixture-${device}.png`, animations: "disabled" });
+  await page.screenshot({ path: `test-results/screenshots/ux-ai/plan-fixture-${device}.png`, animations: "disabled" });
   await page.getByRole("button", { name: "Xác nhận và mở buổi học" }).click();
   await expect(page.getByRole("region", { name: "Nội dung buổi tập" })).toBeVisible();
   expect(calls).toHaveLength(2); expect(calls[1]).toMatchObject({ action: "start_plan", sessionId: SESSION.id, contentVersion: SESSION.version });
   await page.mouse.move(0, 0);
-  await page.screenshot({ path: `analyse/ux-ai-2026-10-10/practice-fixture-${device}.png`, animations: "disabled" });
+  await page.screenshot({ path: `test-results/screenshots/ux-ai/practice-fixture-${device}.png`, animations: "disabled" });
   await page.getByRole("button", { name: "Tôi đã thực hành · ghi cảm nhận", exact: true }).click();
   await page.getByRole("button", { name: "Khó chịu hơn", exact: true }).click();
   await expect(page.locator(".mcy-alert")).toContainText("không tự gợi bài");
@@ -172,10 +172,10 @@ test("multimodal draft is readable on narrow web, preserves image ratio and paus
   await expect(page.getByRole("heading", { name: "Chọn không gian của bạn" })).toBeVisible();
   expect(await audio.evaluate((a: HTMLAudioElement) => a.paused)).toBe(true); expect(cloud).toEqual([]);
   await img.scrollIntoViewIfNeeded();
-  await page.screenshot({ path: "analyse/ux-ai-2026-10-10/draft-mobile.png" });
+  await page.screenshot({ path: "test-results/screenshots/ux-ai/draft-mobile.png" });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.locator(".mcy-content-review").evaluate(el => { el.scrollTop = 0; });
-  await page.screenshot({ path: "analyse/ux-ai-2026-10-10/draft-web.png" });
+  await page.screenshot({ path: "test-results/screenshots/ux-ai/draft-web.png" });
 });
 
 test("Owner uncertain save requires readback language and explicit reload refreshes version", async ({ page }) => {

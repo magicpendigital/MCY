@@ -1,7 +1,0 @@
-{
-  "reason": "New streaming runner for unchanged bounded mapped/adjacent groups; frozen run-ui.mjs unchanged",
-  "path": "analyse/ux-step4-5-2026-10-17/run-ui-stream.mjs",
-  "sha256": "55e29889c5e6c30cdc75c7da5188af45a09120bf682a11963d25a87e2133cf3e",
-  "usesFrozenConfig": true,
-  "sourceFreezeSha256": "101e8b5c4d44399229d4b3e77bba281b33111889e793b1dc04abf6d5257c2c63"
-}

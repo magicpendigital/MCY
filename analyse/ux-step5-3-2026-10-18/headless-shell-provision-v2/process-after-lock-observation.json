@@ -1,8 +1,0 @@
-{
-  "capturedAt": "2026-10-18T18:38:51.4566658Z",
-  "method": "DEFAULT_GET_PROCESS_NODE_SINCE_V2_NOT_EXHAUSTIVE_OWNEDTREE_PROOF",
-  "matchingNodes": [],
-  "tempPattern": "playwright-download*",
-  "tempEntryCount": 0,
-  "killDeleteOrInstallPerformed": false
-}

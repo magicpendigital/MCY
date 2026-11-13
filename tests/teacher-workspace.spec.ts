@@ -127,7 +127,7 @@ test("teacher access remains invite-only and draft create/read/update are server
   await page.getByLabel("Chuyển động").scrollIntoViewIfNeeded();
   await expect(saveButton).toBeInViewport();
   if (process.env.MCY_CAPTURE_STICKY_TEACHER_DESKTOP_SCREENSHOT === "true") {
-    await page.screenshot({ path: "analyse/ux-audit-2026-10-02/run-05/teacher-workspace-desktop-sticky-save.png" });
+    await page.screenshot({ path: "test-results/screenshots/teacher-workspace/run-05/teacher-workspace-desktop-sticky-save.png" });
   }
 
   const layout = await page.evaluate(() => ({
@@ -141,9 +141,9 @@ test("teacher access remains invite-only and draft create/read/update are server
   expect(invocations.some(item => item.action === "upload_media" || item.action === "publish")).toBe(false);
   if (process.env.MCY_CAPTURE_TEACHER_SCREENSHOTS === "true") {
     await page.getByRole("button", { name: "Lưu bản nháp riêng" }).scrollIntoViewIfNeeded();
-    await page.screenshot({ path: "analyse/ux-audit-2026-10-02/teacher-workspace-editor-save.png", fullPage: true });
+    await page.screenshot({ path: "test-results/screenshots/teacher-workspace/teacher-workspace-editor-save.png", fullPage: true });
     await page.locator(".teacher-shell").evaluate(element => element.scrollTo({ top: 0, behavior: "instant" }));
-    await page.screenshot({ path: "analyse/ux-audit-2026-10-02/teacher-workspace-desktop.png", fullPage: true });
+    await page.screenshot({ path: "test-results/screenshots/teacher-workspace/teacher-workspace-desktop.png", fullPage: true });
   }
 });
 
@@ -169,7 +169,7 @@ test("teacher workspace denies a verified account without an invite and fits a n
   }));
   expect(layout.width).toBeLessThanOrEqual(layout.viewport);
   if (process.env.MCY_CAPTURE_TEACHER_SCREENSHOTS === "true") {
-    await page.screenshot({ path: "analyse/ux-audit-2026-10-02/teacher-workspace-mobile-denied.png", fullPage: true });
+    await page.screenshot({ path: "test-results/screenshots/teacher-workspace/teacher-workspace-mobile-denied.png", fullPage: true });
   }
 });
 
@@ -202,7 +202,7 @@ test("invited teacher can save from the long form on a short, narrow mobile view
   expect(savePosition?.y).toBeGreaterThanOrEqual(0);
   expect((savePosition?.y ?? Number.POSITIVE_INFINITY) + (savePosition?.height ?? 0)).toBeLessThanOrEqual(568);
   if (process.env.MCY_CAPTURE_STICKY_TEACHER_SCREENSHOT === "true") {
-    await page.screenshot({ path: "analyse/ux-audit-2026-10-02/run-05/teacher-workspace-mobile-sticky-save.png" });
+    await page.screenshot({ path: "test-results/screenshots/teacher-workspace/run-05/teacher-workspace-mobile-sticky-save.png" });
   }
 
   await page.setViewportSize({ width: 568, height: 320 });
@@ -381,7 +381,7 @@ test("teacher sign-in asks Auth not to create an account", async ({ page }) => {
   await page.goto("/?workspace=teacher");
   await expect(page.getByLabel("Email tài khoản")).toBeVisible();
   if (process.env.MCY_CAPTURE_TEACHER_SCREENSHOTS === "true") {
-    await page.screenshot({ path: "analyse/ux-audit-2026-10-02/teacher-workspace-sign-in.png", fullPage: true });
+    await page.screenshot({ path: "test-results/screenshots/teacher-workspace/teacher-workspace-sign-in.png", fullPage: true });
   }
   await page.getByLabel("Email tài khoản").fill(accountEmail);
   await page.getByRole("button", { name: "Gửi liên kết xác minh" }).click();

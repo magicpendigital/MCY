@@ -6,7 +6,7 @@ The lifecycle is documented guidance, not a runtime, CI or repository permission
 
 ## Before edits: intake and impact assessment
 
-Record the following before changing implementation. Use the [intake template](TASK_INTAKE.template.md); a small R0 task can record the same information briefly in the task response. Read-only discovery needed to complete intake is allowed. Mark unknowns and resolve those that affect safe implementation rather than guessing.
+Record the following before changing implementation. The intake is a plan file: copy [plans/_TEMPLATE.md](../../plans/_TEMPLATE.md) to `plans/active/<YYYY-MM-DD>-<name>.md` and check it with `npm run check:plan` ([TASK_INTAKE.template.md](TASK_INTAKE.template.md) lists the same fields in English); a small R0 task can record the same information briefly in the task response. Read-only discovery needed to complete intake is allowed. Mark unknowns and resolve those that affect safe implementation rather than guessing.
 
 1. **Decision and outcome:** latest authorized request, evidence of approved previous step, desired observable result, acceptance criteria, in-scope work, exclusions and any user-required stop before the next step. Sync relevant referenced decisions or chat evidence first; distinguish retrieved statements from current source and observed behavior.
 2. **Current baseline:** actual source/configuration, revision or scoped hashes, dirty files and ownership. List existing working behavior to preserve, relevant passing evidence with source/environment/date, preexisting failures and missing evidence. An old PASS is historical unless its inputs and environment still apply; an unrun baseline is BLOCKED, not a new failure or a claimed PASS. Do not reset or overwrite unrelated work.

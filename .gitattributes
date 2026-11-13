@@ -1,3 +1,9 @@
+# Every text file is LF in the index and in every working tree (Windows clones included), so hash checks
+# (runtime lock, applied-migration hashes, reviewed content) give the same result on every machine.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
 # Preserve the exact line endings expected by the mobile runtime lock on Windows.
 /AGENTS.md text eol=lf
 /mobile-runtime.lock.json text eol=lf

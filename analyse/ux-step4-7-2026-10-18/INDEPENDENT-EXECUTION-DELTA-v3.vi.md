@@ -1,7 +1,0 @@
-# Independent readability execution v3
-
-Prepared, not invoked. Bind the already prepared stronger `independent-responsive-controls-v5.mjs` to only `.vercel/ux-step4-7-20261018-v7`, source7614805ee74ccfa6fad506e26b8ad3dfebefec243620e4f42ab664068475bde1. Earlier source45ab/QC7547/evidence0634 remain historical pre-root-readability evidence. Prior helper failures remain preserved.
-
-Same five groups/strict own4195/invalid guest fixtures/deny proxy/frame-media none/60s control and360s process budgets. Adds per-word exactly-one-painted-rect plus containment, mode/actual-row agreement, normal VI/EN68/four columns, and observed4→2→4 in the existing resize group. All earlier label bounds, actual Tab/full6px rings, new-route top, retained true-end, safe area, real input return and pin/cleanup assertions remain. Wider fitted devices may stay four columns if whole words fit. Both VI/EN traverse all four destinations; source loading/font/whole-word readiness and resulting measured height settle before acceptance.
-
-Only core import, exact source/candidate/freeze binding and fresh `independent-final-v3*` output names change in child/launcher. Serialization stays closure-free and raw CSS ring math stays intact. Exact future command: `node analyse/ux-step4-7-2026-10-18/run-independent-responsive-v3.mjs`. Wait for actual worker23, seven gates, prior preview teardown, root input review and separate execution GO. After the run, root must inspect readable labels and complete direct review before handoff. No app source edit or extra test group.
