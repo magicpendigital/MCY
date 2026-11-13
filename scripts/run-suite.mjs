@@ -9,8 +9,8 @@ export const suites = {
   // Seconds, no build: what an agent runs after every edit.
   quick: ["typecheck", "check:runtime", "check:plan", "test:browser-compat", "test:skills", "test:agents-size"],
   // Offline Node tests and contract checks (no browser, no network writes). CI runs this after check:ios15.
+  // check:plan is deliberately not here: a stale PLAN.md must not block a release; CI runs it as a non-blocking step.
   unit: [
-    "check:plan",
     "test:skills",
     "test:agents-size",
     "test:dependency-security",

@@ -22,7 +22,7 @@ Learner yoga app (web + Android, iOS later) with an Owner/teacher content worksp
 | Built-site worker test (after a build) | `npm run test:sites` | seconds |
 | iOS 15 hard gate (runtime + production build + bundle scan + secrets) | `npm run check:ios15` | ~1 min |
 | Browser suite (Playwright; Windows: `MCY_PLAYWRIGHT_CHANNEL=msedge`, cold start `--timeout=90000`) | `npm run test:runtime` | minutes |
-| Everything CI runs | `npm run verify` | minutes |
+| Everything CI runs except `npm audit` | `npm run verify` | minutes |
 | Dev server | `npm run dev` | — |
 
 Add a new offline test to the `unit` list in `scripts/run-suite.mjs`, not as a new CI step. Never weaken a test, checker or lock to get green.
@@ -39,13 +39,13 @@ Add a new offline test to the `unit` list in `scripts/run-suite.mjs`, not as a n
 | Content | `content/` (reviewed library, manifests, hashes) | Do not edit approved unit JSON: its hash is the review version. |
 | Native | `android/`, `ios/`, `capacitor.config.ts` | Builds from a clean export of HEAD only. |
 | Tests | `tests/` (`*.spec.ts` Playwright, `*.test.mjs`/`*.cjs` Node) | Screenshots go to `test-results/` (ignored). |
-| Tooling | `scripts/` (`scripts/archive/` = one-off scripts of finished operations, never rerun) | |
+| Tooling | `scripts/` (`scripts/archive/` = one-off scripts of finished operations, never rerun) | Receipts of live checks go to `docs/status/receipts/`. |
 | Docs / brand | `docs/`, `brand/`, `design-system/`, `.claude/skills/` | Product detail: [docs/product/PRODUCT_DECISIONS.md](docs/product/PRODUCT_DECISIONS.md). |
 | Frozen evidence | `analyse/` | Only files `content/` and docs still cite. Full archive: git tag `archive/analyse-2026-11-13`. Do not add new evidence here. |
 
 ## Branches and outside actions
 
-- `main` is the only working branch (Vercel Preview → `motchutyoga.magicpendigital.com`; Vercel Production is not promoted). `codex-mcy-p1-preview` is frozen history: never push to it. Agents work on their own branch (`claude/*`, `codex/*`, `mca/*`) and merge into `main` only when the Owner asks.
+- `main` is the only working branch (target: Vercel Preview → `motchutyoga.magicpendigital.com`; Vercel Production is not promoted). **Until `PLAN.md` §3 shows the Vercel switch done, never push `main`:** Vercel still treats `main` as its Production branch (a push would build Production on `mcy-six.vercel.app` without the Supabase variables) and the domain still follows `codex-mcy-p1-preview`. Remove this sentence in the change that records the switch. `codex-mcy-p1-preview` is frozen history: never push to it. Agents work on their own branch (`claude/*`, `codex/*`, `mca/*`) and merge into `main` only when the Owner asks.
 - Pushing, deploying, installing on the phone, uploading to Play, applying migrations/Edge, sending email and any live data write each need the Owner's request in that task. No `--force`.
 
 ## Hard gates — read first, every task
@@ -90,7 +90,7 @@ Lives in [`PLAN.md`](PLAN.md) (section 4, updated in place). Do not keep status 
 
 ## Prototype Instructions
 
-Read this file in full before planning or implementing any mobile-app change. Run the app yourself for previews (never give the user server-start steps) and verify the rendered app and its primary interactions in the browser pane. Do not deploy to Sites unless the user explicitly asks to share, publish or deploy. Before substantial visual changes inspect the current brand/design files and the user's references; record durable design decisions in this file (compactly, see hard gate 6). When implementing from a selected generated mock, treat that image as the source of truth for layout, anatomy, density, spacing, colour, typography, visible content and hierarchy.
+Read this file in full before planning or implementing any mobile-app change. Run the app yourself for previews (never give the user server-start steps) and verify the rendered app and its primary interactions in the browser pane. Do not deploy to Sites unless the user explicitly asks to share, publish or deploy. Before substantial visual changes inspect the current brand/design files and the user's references; record durable design decisions compactly (product detail in `docs/product/PRODUCT_DECISIONS.md`, summary here; see hard gate 6). When implementing from a selected generated mock, treat that image as the source of truth for layout, anatomy, density, spacing, colour, typography, visible content and hierarchy.
 
 ## Editing Boundary
 
@@ -113,6 +113,6 @@ Binding summary; the full contract is [docs/runtime/RUNTIME_CONTRACT.md](docs/ru
 
 Call `keyboard.hide()` before pushing/popping/replacing routes, opening any sheet/dialog/menu, or a transition that must not inherit focus (`FlowStack` and `BottomSheet` already do). When a keyboard-attached surface closes, hide the keyboard in the same event; when a text field loses focus, hide it unless focus moves straight to another text field. Full rule in the runtime contract file.
 
-## Release evidence
+## Release evidence workflow - 2026-10-04
 
-Staging, packaging, production planning or a release handoff: [RELEASE_RUNBOOK.md](docs/release/RELEASE_RUNBOOK.md), the Vietnamese [owner packet](docs/release/OWNER_PACKET.vi.md), `docs/release/release-profile.json`, and `node --test scripts/release-evidence.test.mjs` for changed gate code. The checker is read-only; the cloud target allowlist stays empty until the Owner approves an environment mapping; never copy live user data into staging.
+Read [the project release runbook](docs/release/RELEASE_RUNBOOK.md) for staging, packaging, production planning or a release handoff; use [the Vietnamese owner packet](docs/release/OWNER_PACKET.vi.md). Review docs/release/release-profile.json and run node --test scripts/release-evidence.test.mjs for changed gate code. The read-only checker uses immutable source/artifact/config/evidence hashes and exact target approval; it performs no deployment and does not enforce remote permissions. Preserve dirty work and current migration blockers. Cloud target allowlist remains empty until owner-reviewed environment mapping and actual enforcement are verified; never copy live user data into staging.

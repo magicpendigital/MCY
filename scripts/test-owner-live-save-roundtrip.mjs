@@ -2,7 +2,7 @@
 // save (one new version/audit). This script never retries an uncertain write.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 
 const origin = 'https://mhumbczqrzutdnraafhs.supabase.co';
 const expected = Number(process.argv[2]);
@@ -72,5 +72,5 @@ try {
 } catch {
   console.error('FAIL bounded Owner roundtrip; do not retry a save. Read back outcome first; sensitive details omitted.');
 }
-writeFileSync('analyse/MCY_OWNER_LIVE_SAVE_2026-10-09.json', JSON.stringify(receipt, null, 2) + '\n');
+mkdirSync('docs/status/receipts', { recursive: true }); writeFileSync(`docs/status/receipts/MCY_OWNER_LIVE_SAVE_${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(receipt, null, 2) + '\n');
 process.exitCode = receipt.exitCode;

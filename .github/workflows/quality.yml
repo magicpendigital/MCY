@@ -30,7 +30,10 @@ jobs:
       - run: npx playwright install --with-deps chromium
       # check:ios15 = runtime integrity + production build + iOS 15 static checks (source and bundle) + bundle secret scan
       - run: npm run check:ios15
-      # One list for agents and CI: scripts/run-suite.mjs (unit = plan check + every offline Node test/contract check)
+      # One list for agents and CI: scripts/run-suite.mjs (unit = every offline Node test/contract check)
       - run: npm run test:unit
       - run: npm run test:sites
       - run: npm run test:runtime
+      # Process hygiene (PLAN.md fresh, plans complete): visible in CI, never a release blocker
+      - run: npm run check:plan
+        continue-on-error: true

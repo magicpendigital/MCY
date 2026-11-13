@@ -15,7 +15,7 @@ Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng bă
 ## 3. Phạm vi sửa
 - Quy trình: `AGENTS.md`, `CLAUDE.md`, `PLAN.md`, `plans/`, `scripts/check-plan.mjs`, `scripts/run-suite.mjs`, `package.json` (scripts), `.github/workflows/quality.yml`, `tests/agents-size.test.mjs`, `docs/quality/TASK_LIFECYCLE.md`, skill `mcy-change-review`, `mcy-release-sync`, `docs/release/CROSS_PLATFORM_RELEASE.md`.
 - Chuyển nguyên văn: `docs/product/PRODUCT_DECISIONS.md`, `docs/runtime/RUNTIME_CONTRACT.md`.
-- Gọn kho: gỡ 4.176 tệp `analyse/` (giữ ở tag `archive/analyse-2026-11-13`), 27 script dùng một lần → `scripts/archive/`, 3 spec Playwright ghi ảnh vào `test-results/screenshots/`.
+- Gọn kho: gỡ 4.176 tệp `analyse/` (giữ ở tag `archive/analyse-2026-11-13`), 23 script dùng một lần → `scripts/archive/`, 3 spec Playwright ghi ảnh vào `test-results/screenshots/`.
 - Mức rủi ro cao nhất: R3 (đổi cổng kiểm CI, quy trình phát hành và nhánh deploy).
 - Hiện trạng: commit `7a90a21`; checkout chính có 4 PNG trong `analyse/ux-ai-2026-10-10/` bị test ghi đè và `supabase/.temp/` chưa theo dõi — không đụng.
 
@@ -28,7 +28,7 @@ Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng bă
 |---|---|---|---|
 | Vercel project `mcy` | nhánh Preview `codex-mcy-p1-preview` → `main` | domain chính, biến Supabase Preview | `list_project_domains` (gitBranch), `filter_project_envs` (2 biến chỉ gắn nhánh cũ), Production branch hiện là `main` |
 | Supabase Auth redirect | alias nhánh `mcy-git-main-…` mới | đăng nhập trên domain chính không đổi | allowlist có alias nhánh cũ (tài liệu 2026-10-11) |
-| CI | 19 bước → `npm run test:unit` (thêm `check:plan`) | cùng tập lệnh | so danh sách: chỉ thêm `check:plan` |
+| CI | 17 bước → `npm run test:unit`; `test:sites` giữ bước riêng sau build; thêm `check:plan` không chặn | cùng tập lệnh | so danh sách cũ/mới (review độc lập xác nhận) |
 | Android/Play | không đổi | app đóng gói `dist/client`, không tải URL web | `capacitor.config.ts` không có `server.url` |
 | Agent | AGENTS.md nhỏ hơn, PLAN.md đầu phiên | quy tắc bền giữ nguyên văn ở `docs/` | `tests/agents-size.test.mjs` kiểm mốc và liên kết |
 
@@ -47,7 +47,7 @@ Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng bă
 | 3 | Review chéo độc lập (Codex qua mca) | mca | S |
 | 4 | Vercel → Settings → Environments → Production: đổi Branch Tracking sang `production` (nhánh chưa có); Domains: sửa `motchutyoga.magicpendigital.com` Git Branch = `main`; Environment Variables: thêm `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` cho Preview, nhánh `main` (cùng giá trị nhánh cũ) | Owner | S |
 | 5 | Fast-forward `main` tới commit bước 2, push `main` + tag lưu trữ; kiểm deploy READY và domain trả bản mới | Claude, khi Owner bảo | S |
-| 6 | Chuyển checkout chính `D:/Projects/MCY` sang `main` | Claude, khi Owner bảo | S |
+| 6 | Chuyển checkout chính `D:/Projects/MCY` sang `main`: giữ riêng việc dở (4 PNG `analyse/ux-ai-2026-10-10/` do test ghi, `supabase/.temp/`), `git switch main`, rồi chuẩn hoá xuống dòng một lần: `git ls-files --eol` lấy các tệp `w/crlf` có `attr/text eol=lf`, xoá và `git checkout --` lại (chỉ các tệp không có thay đổi thật) | Claude, khi Owner bảo | S |
 | 7 | Tách tệp điểm nóng — kế hoạch riêng `plans/backlog/split-hot-files.md` | mca | L |
 
 ## 9. Cách thử
@@ -61,7 +61,9 @@ Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng bă
 ## 11. Rủi ro còn lại
 - Push `main` trước khi Owner đổi Production Branch sẽ tạo deployment Production thiếu biến Supabase trên `mcy-six.vercel.app` — vì vậy bước 5 chỉ chạy sau bước 4.
 - Lịch sử git vẫn chứa 378 MB `analyse/` (gỡ khỏi cây không làm nhẹ bản clone đầy đủ; muốn nhẹ hẳn phải viết lại lịch sử — không làm).
-- `check:plan` trong CI sẽ đỏ nếu `PLAN.md` không được cập nhật quá 14 ngày (cố ý, để bảng tiến độ luôn đúng).
+- `check:plan` chặn ở máy (`npm test`, `check:quick`) nhưng trong CI chỉ cảnh báo (`continue-on-error`), để `PLAN.md` cũ không chặn bản vá khẩn.
+- Checkout Windows cũ (`core.autocrlf=true`) còn tệp CRLF; sau khi sang `main` có thể hiện "đã sửa" giả. Bước 6 làm lại một lần (xem dưới).
+- Tag `archive/analyse-2026-11-13` mới có ở máy này; phải push cùng `main` ở bước 5, nếu không các liên kết lịch sử trong `docs/status/` không khôi phục được ở máy khác.
 
 ## 12. Cần duyệt
 - Bước 4 (Owner tự làm trên Vercel) và lệnh push `main` + tag ở bước 5.
@@ -69,8 +71,8 @@ Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng bă
 
 ## Progress
 - [x] 1 Fast-forward cục bộ và sửa tài liệu
-- [ ] 2 Quy trình + kiểm nhanh + gọn kho
-- [ ] 3 Review chéo
+- [x] 2 Quy trình + kiểm nhanh + gọn kho (commit `fc547b8`, `3dd4b4d`, sửa sau review)
+- [x] 3 Review chéo (subagent độc lập: 2 lỗi chính đã sửa — cảnh báo push `main` trước khi đổi Vercel, khôi phục nguyên văn mục Release evidence; job mca Codex đang chờ worker)
 - [ ] 4 Owner đổi Vercel
 - [ ] 5 Push `main`
 - [ ] 6 Checkout chính sang `main`
