@@ -45,7 +45,7 @@ Add a new offline test to the `unit` list in `scripts/run-suite.mjs`, not as a n
 
 ## Branches and outside actions
 
-- `main` is the only working branch (target: Vercel Preview → `motchutyoga.magicpendigital.com`; Vercel Production is not promoted). **Until `PLAN.md` §3 shows the Vercel switch done, never push `main`:** Vercel still treats `main` as its Production branch (a push would build Production on `mcy-six.vercel.app` without the Supabase variables) and the domain still follows `codex-mcy-p1-preview`. Remove this sentence in the change that records the switch. `codex-mcy-p1-preview` is frozen history: never push to it. Agents work on their own branch (`claude/*`, `codex/*`, `mca/*`) and merge into `main` only when the Owner asks.
+- `main` is the only working branch (each push builds Vercel Preview and updates `motchutyoga.magicpendigital.com`; the Vercel Production branch is the parked branch `production` — never push to it, Production is not promoted). `codex-mcy-p1-preview` is frozen history: never push to it. Agents work on their own branch (`claude/*`, `codex/*`, `mca/*`) and merge into `main` only when the Owner asks.
 - Pushing, deploying, installing on the phone, uploading to Play, applying migrations/Edge, sending email and any live data write each need the Owner's request in that task. No `--force`.
 
 ## Hard gates — read first, every task

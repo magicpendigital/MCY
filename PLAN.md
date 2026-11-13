@@ -1,6 +1,6 @@
 # PLAN — bảng tiến độ sống của MCY (Một chút yoga)
 
-> **Cập nhật lần cuối: 2026-11-13** — tái cấu trúc repo theo quy trình mca (nhánh `main` thành nhánh làm việc duy nhất, gọn `analyse/`, vòng kiểm nhanh); chờ Owner làm 3 bước Vercel rồi mới push `main`.
+> **Cập nhật lần cuối: 2026-11-13** — `main` là nhánh làm việc duy nhất và đã deploy Preview lên domain; tái cấu trúc theo mca xong; tiếp theo: tách tệp điểm nóng qua mca.
 > Tệp đầu tiên Owner và mọi agent đọc. Trả lời: *đang ở đâu, còn gì, chờ ai*. Chi tiết việc lớn ở `plans/active/` (đang làm), `plans/done/` (đã chạy tốt), `plans/backlog/` (chưa làm). Quy tắc lâu dài ở `AGENTS.md`; lịch sử theo ngày ở `docs/status/`.
 
 ## Quy tắc cập nhật
@@ -18,7 +18,7 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 ## 2. Việc lớn
 | Việc | Nội dung | Trạng thái |
 |---|---|---|
-| Hợp nhất nhánh | `main` fast-forward tới `7a90a21` (toàn bộ lịch sử `codex-mcy-p1-preview`); tài liệu trỏ về `main` | 🟡 cục bộ xong, ⛔ chờ Owner đổi Vercel rồi push |
+| Hợp nhất nhánh | `main` fast-forward tới `7a90a21` (toàn bộ lịch sử `codex-mcy-p1-preview`); tài liệu trỏ về `main` | ✅ 13/11: push `f03b856`, Vercel Preview READY, domain theo `main`, Production theo nhánh đỗ `production` (= `992ccd8`) |
 | Quy trình mca | `AGENTS.md` gọn (27 → 20 KB) + bản đồ vùng + `.github/CODEOWNERS` + mẫu báo cáo, `CLAUDE.md`, `PLAN.md`, `plans/`, `check:plan` | ✅ cục bộ, [kế hoạch](plans/active/2026-11-13-repo-restructure.md) |
 | Vòng kiểm nhanh | `npm run check:quick` (vài giây), `npm test` (~1 phút, không cần build), `npm run verify` (như CI); CI dùng chung danh sách `scripts/run-suite.mjs` | ✅ cục bộ |
 | Gọn kho | `analyse/` 378 MB → ~79 MB (phần `content/` còn trỏ tới); toàn bộ giữ ở tag `archive/analyse-2026-11-13`; 23 script dùng một lần → `scripts/archive/` | 🟡 |
@@ -26,7 +26,7 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 | Bản 1.0.7 (batch 9) | INC-005 (zoom ô nhập trên iOS) đã ở web Preview, chưa lên Play/điện thoại | ⬜ chờ Owner yêu cầu phát hành |
 
 ## 3. Đang chờ Owner (mỗi mục một quyết định)
-- ⛔ Vercel project `mcy` (3 bước trên dashboard, xem `plans/active/2026-11-13-repo-restructure.md` mục Hoàn tác/Các bước): đổi Production Branch khỏi `main`; gắn domain `motchutyoga.magicpendigital.com` vào nhánh `main`; thêm 2 biến `VITE_SUPABASE_*` cho Preview nhánh `main`. Sau đó mới push `main`.
+- ⛔ Chuyển checkout chính `D:/Projects/MCY` sang `main` (còn 4 PNG test ghi trong `analyse/ux-ai-2026-10-10/` và `supabase/.temp/`; xem bước 6 của kế hoạch).
 - ⛔ Supabase Auth redirect allowlist: thêm `https://mcy-git-main-magicpens-projects.vercel.app/auth/callback` nếu cần đăng nhập trên alias nhánh (domain chính không đổi).
 - iPhone iOS 15 thật: ảnh `?debug=viewport` sau bản sửa INC-005.
 - Mở cổng: ba chân chó, duyệt chuyên môn ảnh AI, hồ sơ giáo viên đầu tiên, ≥5 bài AI đã duyệt, Play Data safety, reset upload key trước production, sửa runtime bảo vệ (`styles.css`, `FlowStack.tsx`).
@@ -39,5 +39,6 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 - **Verification facts that are still true:** the full Playwright suite passed on CI at 9216a24 (one retry allowed), not yet as a clean local run; TalkBack, YouTube fullscreen on devices and a full iOS 15 pass are unverified.
 
 ## 5. Đã xong gần đây
+- 13/11 · Vercel: Production Branch → `production`, 2 biến Supabase chuyển sang Preview nhánh `main` (đổi phạm vi, không chép giá trị), push `main` + tag `archive/analyse-2026-11-13`, deploy `dpl_k9pMoaXy4rvsHkt6ysPTWvRYLsBD` READY, domain → `main`; kiểm: `/`, `/privacy.html`, `/terms.html`, `/delete-account.html`, `/auth/callback` = 200, cùng bundle `index-Cet0OJh3.js` như bản trước. `mcy-six.vercel.app` (Production cũ, prototype tháng 9) vẫn 404 như trước — không đổi.
 - 13/11 · Điều tra nhánh: `main` chỉ là 2 commit khởi tạo (21/09), mã thật ở `codex-mcy-p1-preview`; `main` là tổ tiên nên fast-forward không mất gì · kiểm: `git merge-base`, Vercel `list_project_domains`, `filter_project_envs`
 - 12/11 · INC-005 ghi nhận iPhone iOS 15.8.8 (commit `7a90a21`)
