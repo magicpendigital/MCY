@@ -45,7 +45,7 @@ import {
 import type { FreeCourseId } from "./courses/freeCourses";
 import type { PracticeContext } from "../supabase/functions/_shared/practiceContract";
 import { rememberedPace } from "./practice/feedbackMemory";
-import type { BodyLevel, BodyStyle, DemoState, Energy, Observation, Outcome, Pace } from "./app/model";
+import type { DemoState, Energy, Observation, Outcome, Pace } from "./app/model";
 import { clearAccountScopedState, DemoContext, initialState, useDemo } from "./app/state";
 import { AUTH_SIGN_IN_EVENT, SESSION_RESTORE_RETRY_EVENT } from "./app/events";
 import { aiPracticeOffered, hasCheckinBaseline, hasCurrentAiConsent, isCheckinAuthReturn, latestFeedback, normalizeAuthDestination } from "./app/predicates";
@@ -53,6 +53,12 @@ import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { makeSnapshot, snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo, persistConsentChanges, persistCurrentCheckin, persistProfile, toLearnerCheckinPayload } from "./app/persistence";
 import { authErrorMessage, handleNativeAuthUrl } from "./app/auth";
+import { Brand } from "./app/ui/Brand";
+import { Action, Choice, DemoNote, Eyebrow } from "./app/ui/controls";
+import { Header } from "./app/ui/Header";
+import { BodyMap } from "./app/body/BodyMap";
+import { BodyStylePicker } from "./app/body/BodyStylePicker";
+import { RegionEditor } from "./app/body/RegionEditor";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -69,128 +75,9 @@ const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
 
-function BrandMark({ animated = false }: { animated?: boolean }) {
-  return <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false" className={animated ? "mcy-open-space-mark mcy-open-space-mark-animated" : "mcy-open-space-mark"}>
-    <path className="mcy-mark-arc" d="M67 19C53 12 36 15 25 26C13 38 12 56 21 70C29 82 44 87 58 82" fill="none" stroke="currentColor" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" pathLength="100" />
-    <circle className="mcy-mark-point" cx="74" cy="34" r="3.5" fill="currentColor" />
-  </svg>;
-}
-function Brand({ locale, compact = false, heading = false }: { locale: AppLocale; compact?: boolean; heading?: boolean }) {
-  const BrandTag = heading ? "h1" : "span";
-  return <BrandTag className={compact ? "mcy-brand compact" : "mcy-brand mcy-brand-animated"}><BrandMark animated={!compact} /><span className="mcy-brand-wordmark">{msg(locale, "brand.name")}</span></BrandTag>;
-}
-// The editor offers three levels (Bình thường · Hơi mỏi · Đau nhức); "Vừa" (stored level 2) stays readable for records saved earlier.
-const EDITOR_LEVELS: BodyLevel[] = ["Không khó chịu", "Nhẹ", "Nhiều"];
-const BODY_STYLES: { id: BodyStyle; label: string; image: string }[] = [
-  { id: "feminine", label: "Hình thể nữ", image: "/assets/body-map-feminine-full-1024.webp" },
-  { id: "masculine", label: "Hình thể nam", image: "/assets/body-map-masculine-full-1024.webp" },
-  { id: "neutral", label: "Trung tính", image: "/assets/body-map-neutral-full-1024.webp" },
-];
-const REGION_POSITION: Record<BodyRegion, { x: number; y: number }> = {
-  neck: { x: 50, y: 18 }, shoulder: { x: 50, y: 24 },
-  upper_back: { x: 50, y: 32 }, lower_back: { x: 50, y: 43 }, glute: { x: 50, y: 51 },
-  upper_arm: { x: 50, y: 30 }, elbow: { x: 50, y: 41 },
-  forearm_wrist: { x: 50, y: 52 }, hand: { x: 50, y: 62 },
-  knee: { x: 50, y: 73 }, foot: { x: 50, y: 94 },
-};
-const REGION_SIDE_OFFSET: Partial<Record<BodyRegion, number>> = {
-  shoulder: 16, glute: 7, upper_arm: 20, elbow: 25, forearm_wrist: 29, hand: 27, knee: 8, foot: 7,
-};
-function regionSidePosition(region: BodyRegion, side: BodySide) {
-  if (side === "unspecified" || side === "both" || !isPairedBodyRegion(region)) return REGION_POSITION[region];
-  const offset = REGION_SIDE_OFFSET[region] ?? 14;
-  return { x: 50 + (side === "left" ? -offset : offset), y: REGION_POSITION[region].y };
-}
-function BodyMap({ observations, bodyStyle, compact = false, onSelect, showAll = true, locale = "vi-VN", group }: { observations: Observation[]; bodyStyle: BodyStyle; compact?: boolean; onSelect?: (region: BodyRegion, side?: BodySide) => void; showAll?: boolean; locale?: AppLocale; group?: BodyRegionGroup }) {
-  const [imageFailed, setImageFailed] = useState(false);
-  const image = BODY_STYLES.find(item => item.id === bodyStyle)?.image ?? BODY_STYLES[0].image;
-  useEffect(() => setImageFailed(false), [image]);
-  const regions = group ? BODY_REGION_GROUPS[group] : BODY_REGIONS;
-  const points: { key: string; region: BodyRegion; item?: Observation; side?: BodySide; x: number; y: number }[] = [];
-  regions.forEach(region => {
-    const entries = observations.filter(entry => entry.region === region);
-    if (!isPairedBodyRegion(region)) {
-      const item = entries[0];
-      if (item || (onSelect && showAll)) points.push({ key: region, region, item, ...REGION_POSITION[region] });
-      return;
-    }
-    const left = entries.find(item => item.side === "left" || item.side === "both");
-    const right = entries.find(item => item.side === "right" || item.side === "both");
-    const unspecified = entries.find(item => item.side === "unspecified");
-    if (left || (onSelect && showAll)) points.push({ key: `${region}-left`, region, item: left, side: "left", ...regionSidePosition(region, "left") });
-    if (right || (onSelect && showAll)) points.push({ key: `${region}-right`, region, item: right, side: "right", ...regionSidePosition(region, "right") });
-    if (unspecified) points.push({ key: `${region}-unspecified`, region, item: unspecified, side: "unspecified", ...regionSidePosition(region, "unspecified") });
-  });
-  return <div className={`mcy-body-map-v2${compact ? " compact" : ""}`}>
-    <div className="mcy-body-art">
-      {imageFailed ? <p className="mcy-body-fallback">{locale === "en-US" ? "The illustration did not load. You can still choose an area from the list." : "Hình minh họa chưa tải. Bạn vẫn có thể chọn vùng trong danh sách."}</p> : <img src={image} srcSet={`${image.replace("-1024.webp", "-512.webp")} 512w, ${image} 1024w`} sizes={compact ? "128px" : "(max-width: 380px) 190px, (max-width: 700px) 230px, 280px"} alt={locale === "en-US" ? "Full body illustration, viewed from behind" : "Minh họa toàn thân nhìn từ phía sau"} loading="eager" decoding="async" onError={() => setImageFailed(true)} />}
-      {!imageFailed && points.map(({ key, region, item, side, x, y }) => {
-        const className = `mcy-map-pin${item ? ` is-${item.status === "uncertain" ? "uncertain" : item.level === "Không khó chịu" ? "clear" : item.level === "Nhiều" ? "high" : "reported"}` : ""}`;
-        const style = { left: `${x}%`, top: `${y}%` };
-        const label = side && side !== "unspecified" ? `${regionLabel(locale, region)} ${sideLabel(locale, side).toLowerCase()}` : regionLabel(locale, region);
-        const marker = item?.status === "uncertain" ? "?" : item?.level === "Không khó chịu" ? "✓" : item ? "•" : "+";
-        const itemLabel = item ? item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded")) : msg(locale, "checkin.tapToRecord");
-        return onSelect ? <button key={key} type="button" className={className} style={style} aria-label={`${label}: ${itemLabel}`} onClick={() => onSelect(region, side)}><span aria-hidden="true">{marker}</span></button> : <span key={key} className={className} style={style} aria-label={`${label}: ${itemLabel}`}><span aria-hidden="true">{marker}</span></span>;
-      })}
-    </div>
-    {!compact && <small className="mcy-body-orientation" data-testid="body-orientation">{msg(locale, "checkin.orientation")}</small>}
-  </div>;
-}
-function BodyStylePicker({ value, onChange }: { value: BodyStyle; onChange: (style: BodyStyle) => void }) {
-  const { state } = useDemo();
-  const locale = state.locale;
-  const styleLabel = (style: BodyStyle) => locale === "en-US" ? style === "neutral" ? "Neutral" : style === "feminine" ? "Feminine" : "Masculine" : BODY_STYLES.find(item => item.id === style)?.label ?? "Trung tính";
-  const [open, setOpen] = useState(false);
-  return <><button className="mcy-style-link" onClick={() => setOpen(true)}>{locale === "en-US" ? "Change illustration" : "Đổi hình minh họa"} <ArrowRightIcon /></button>
-    <BottomSheet open={open} onOpenChange={setOpen} title={locale === "en-US" ? "Choose an illustration" : "Chọn hình minh họa"} description={locale === "en-US" ? "Choose the figure that helps you identify areas. You can change it any time." : "Chọn hình giúp bạn dễ xác định vùng cơ thể hơn. Có thể đổi bất cứ lúc nào."} snap={0.57}>
-      <div className="mcy-style-options">{BODY_STYLES.map(style => <button key={style.id} className={value === style.id ? "selected" : ""} onClick={() => { onChange(style.id); setOpen(false); }} aria-pressed={value === style.id}><img src={style.image} srcSet={`${style.image.replace("-1024.webp", "-512.webp")} 512w, ${style.image} 1024w`} sizes="112px" alt="" loading="lazy" decoding="async" /><strong>{styleLabel(style.id)}</strong>{value === style.id && <CheckIcon />}</button>)}</div>
-      <p className="mcy-sheet-footnote">{locale === "en-US" ? "This illustration is a display preference. It does not infer gender or select a practice." : "Đây chỉ là hình hiển thị; không dùng để suy ra giới tính hoặc chọn bài tập."}</p>
-    </BottomSheet></>;
-}
-function RegionEditor({ region, current, suggestedSide, onSave, onDelete, onClose }: { region: BodyRegion | null; current?: Observation; suggestedSide?: BodySide; onSave: (value: Observation) => void; onDelete?: () => void; onClose: () => void }) {
-  const { state } = useDemo();
-  const locale = state.locale;
-  const keyboard = useKeyboard();
-  const [level, setLevel] = useState<BodyLevel | "Chưa rõ" | null>(current?.status === "uncertain" ? "Chưa rõ" : current?.level ?? null);
-  const [side, setSide] = useState<BodySide>(suggestedSide ?? current?.side ?? "unspecified");
-  const [note, setNote] = useState(current?.note ?? "");
-  useEffect(() => { setLevel(current?.status === "uncertain" ? "Chưa rõ" : current?.level ?? null); setSide(suggestedSide ?? current?.side ?? "unspecified"); setNote(current?.note ?? ""); }, [region, current?.level, current?.side, current?.note, current?.status, suggestedSide]);
-  const close = () => { keyboard.hide(); onClose(); };
-  return <BottomSheet open={Boolean(region)} onOpenChange={open => { if (!open) close(); }} title={region ? locale === "en-US" ? `Check in on your ${regionLabel(locale, region).toLowerCase()}` : `Ghi nhận vùng ${regionLabel(locale, region).toLowerCase()}` : locale === "en-US" ? "Check in on an area" : "Ghi nhận vùng"} description={msg(locale, "regionEditor.prompt")} snap={0.9}>
-    {region && <div className="mcy-region-editor">
-      <div className="mcy-editor-options">{([...EDITOR_LEVELS, ...(level === "Vừa" ? ["Vừa" as const] : []), "Chưa rõ" as const]).map(value => <Choice key={value} selected={level === value} onClick={() => setLevel(value)}>{bodyLevelLabel(locale, value)}</Choice>)}</div>
-      {isPairedBodyRegion(region) && <><strong>{msg(locale, "regionEditor.side")}</strong><div className="mcy-editor-options side">{(["unspecified", "left", "right", "both"] as BodySide[]).map(value => <Choice key={value} selected={side === value} onClick={() => setSide(value)}>{sideLabel(locale, value)}</Choice>)}</div></>}
-      <label className="mcy-editor-note">{msg(locale, "regionEditor.note")} <small>{msg(locale, "regionEditor.optional")}</small><KeyboardTextarea placeholder={locale === "en-US" ? `For example: my ${regionLabel(locale, region).toLowerCase()} feels tired after sitting...` : `Ví dụ: ${regionLabel(locale, region).toLowerCase()} mỏi khi ngồi lâu...`} value={note} onChange={event => setNote(event.target.value)} onBlur={() => keyboard.hide()} /></label>
-      <button className="mcy-action" disabled={!level} onClick={() => { if (!level) return; keyboard.hide(); onSave({ region, side: isPairedBodyRegion(region) ? side : "unspecified", level: level === "Chưa rõ" ? null : level, status: level === "Chưa rõ" ? "uncertain" : "reported", note: note.trim() }); onClose(); }}>{msg(locale, "regionEditor.save")} <ArrowRightIcon /></button>
-      {current && onDelete && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); onDelete(); onClose(); }}>{msg(locale, "regionEditor.delete")}</button>}
-    </div>}
-  </BottomSheet>;
-}
 function EnergyFace({ level }: { level: number }) {
   return <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="currentColor" opacity=".14" /><circle cx="12" cy="15" r="1.2" fill="currentColor" /><circle cx="24" cy="15" r="1.2" fill="currentColor" /><path d={level < 2 ? "M12 25 Q18 20 24 25" : level === 2 ? "M13 23 Q18 25 23 23" : "M11 21 Q18 29 25 21"} stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" /></svg>;
 }
-function Header({ title, back = false }: { title?: string; back?: boolean }) {
-  const flow = useFlow();
-  const { state } = useDemo();
-  const locale = state.locale;
-  const localizedTitle = title === "AI và điều được nhớ" && state.aiCapability !== "ready" ? "Điều được nhớ" : locale === "en-US"
-    ? ({ "Check-in hôm nay": "Today's check-in", "Phản hồi của bạn": "Your reflection" } as Record<string, string>)[title ?? ""] ?? title
-    : title;
-  useLayoutEffect(() => {
-    const scroll = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mobile-scroll");
-    if (scroll) scroll.scrollTop = 0;
-  }, [flow.current.key]);
-  const brandName = msg(locale, "brand.name");
-  return <div className="mcy-header">{back ? <button className="mcy-icon-button" aria-label={locale === "en-US" ? "Back" : "Quay lại"} onClick={() => flow.pop()}><ArrowLeftIcon /></button> : <span />}<span className="mcy-header-title" aria-label={localizedTitle ?? brandName}>{brandName}</span><span /></div>;
-}
-function Action({ children, onClick, disabled = false, secondary = false }: { children: React.ReactNode; onClick: () => void; disabled?: boolean; secondary?: boolean }) {
-  return <button className={secondary ? "mcy-action secondary" : "mcy-action"} onClick={event => { event.currentTarget.blur(); onClick(); }} disabled={disabled}>{children}<ArrowRightIcon /></button>;
-}
-function Choice({ selected, onClick, disabled = false, children }: { selected: boolean; onClick?: () => void; disabled?: boolean; children: React.ReactNode }) {
-  return <button className={selected ? "mcy-choice selected" : "mcy-choice"} aria-pressed={selected} disabled={disabled} onClick={() => onClick?.()}>{children}</button>;
-}
-function Eyebrow({ children }: { children: React.ReactNode }) { return <div className="mcy-eyebrow">{children}</div>; }
-function DemoNote({ children }: { children: React.ReactNode }) { return <p className="mcy-info-note"><InfoCircledIcon />{children}</p>; }
 type HelpArticleId = "body-map" | "pause-video" | "journey-record" | "ai-scope";
 const AI_OFF_PRIVACY_DETAIL = "Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng và bạn đồng ý riêng. AI nhận lựa chọn được xác nhận của lượt hiện tại; không gửi hội thoại trước đó, tên/email, ghi chú tự do hay feedback lịch sử. AI chỉ chọn nội dung đã duyệt, không tạo động tác hoặc chẩn đoán. Khi tắt, không gửi yêu cầu mô hình.";
 const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; lead: string; paragraphs: string[] }> = [
