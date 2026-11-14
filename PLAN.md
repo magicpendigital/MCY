@@ -1,6 +1,6 @@
 # PLAN — bảng tiến độ sống của MCY (Một chút yoga)
 
-> **Cập nhật lần cuối: 2026-11-14** — `main` là nhánh làm việc duy nhất (cả checkout chính `D:/Projects/MCY`) và đã deploy Preview lên domain; tái cấu trúc theo mca xong; tiếp theo: tách tệp điểm nóng qua mca.
+> **Cập nhật lần cuối: 2026-11-14** — `main` là nhánh làm việc duy nhất (cả checkout chính `D:/Projects/MCY`) và đã deploy Preview lên domain; tái cấu trúc theo mca xong; Owner duyệt roadmap A–E (14/11) thay lịch G0–G8; tiếp theo: giai đoạn A (đóng 1.0) và tách tệp điểm nóng qua mca.
 > Tệp đầu tiên Owner và mọi agent đọc. Trả lời: *đang ở đâu, còn gì, chờ ai*. Chi tiết việc lớn ở `plans/active/` (đang làm), `plans/done/` (đã chạy tốt), `plans/backlog/` (chưa làm). Quy tắc lâu dài ở `AGENTS.md`; lịch sử theo ngày ở `docs/status/`.
 
 ## Quy tắc cập nhật
@@ -24,10 +24,12 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 | Gọn kho | `analyse/` 378 MB → ~79 MB (phần `content/` còn trỏ tới); toàn bộ giữ ở tag `archive/analyse-2026-11-13`; 23 script dùng một lần → `scripts/archive/` | 🟡 |
 | Tách tệp điểm nóng | `src/Prototype.tsx` (170 KB), `src/prototype.css` (97 KB), `src/i18n.ts` → mỗi màn/tính năng một tệp; giao mca từng lát | 🟡 bản đồ xong 14/11 ([18 lát TSX + 8 lát CSS](plans/backlog/split-hot-files-map.md)); lát 1 ở `main` 14/11 (163 KB, Playwright 223/223); lát 2 đang làm qua mca |
 | Bản 1.0.7 (batch 9) | INC-005 (zoom ô nhập trên iOS) đã ở web Preview, chưa lên Play/điện thoại | ⬜ chờ Owner yêu cầu phát hành |
+| Roadmap A–E (thay G0–G8) | A đóng 1.0 → B vá vòng lặp + đo lường → C Closed testing 12 người/14 ngày, nhắc tập, nhịp tuần → D tăng trưởng hữu cơ + Production (~1/2027) → E hiện diện (có điều kiện, ≥ Q1/2027); avatar hoãn. Đã duyệt Q1–Q8; mốc ngày là ước tính. [Kế hoạch](plans/active/2026-11-14-roadmap-retention-loop.md) | 🟡 đã duyệt hướng; mỗi giai đoạn B–E cần kế hoạch riêng trước khi sửa code; A ⬜ chờ Owner yêu cầu 1.0.7 |
 
 ## 3. Đang chờ Owner (mỗi mục một quyết định)
 - ⛔ Supabase Auth redirect allowlist: thêm `https://mcy-git-main-magicpens-projects.vercel.app/auth/callback` nếu cần đăng nhập trên alias nhánh (domain chính không đổi).
 - iPhone iOS 15 thật: ảnh `?debug=viewport` sau bản sửa INC-005.
+- Cho roadmap: xác nhận hiện trạng Closed testing (đã mở chưa, bao nhiêu tester) trước khi lập kế hoạch giai đoạn C; chữ màn chào mới, chữ và nhóm clip cho gợi ý, chữ đồng ý đo lường (giai đoạn B); tên người duyệt chuyên môn.
 - Mở cổng: ba chân chó, duyệt chuyên môn ảnh AI, hồ sơ giáo viên đầu tiên, ≥5 bài AI đã duyệt, Play Data safety, reset upload key trước production, sửa runtime bảo vệ (`styles.css`, `FlowStack.tsx`).
 
 ## 4. Trạng thái hiện tại (chuyển từ AGENTS.md ngày 2026-11-13; sửa tại chỗ)
