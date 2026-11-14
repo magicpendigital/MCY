@@ -15,7 +15,7 @@ Learner yoga app (web + Android, iOS later) with an Owner/teacher content worksp
 | Need | Command | Time |
 |---|---|---|
 | Install | `npm ci` | min |
-| Quick loop (typecheck, runtime lock, plan, iOS 15 static source scan, skills, AGENTS size) | `npm run check:quick` | seconds |
+| Quick loop (typecheck, runtime lock, plan, iOS 15 static source scan and input font size, skills, AGENTS size) | `npm run check:quick` | seconds |
 | Typecheck only | `npm run typecheck` | seconds |
 | Everything that needs no build (quick + unit; what mca runs as `npm run typecheck && npm test`) | `npm test` | ~1–2 min |
 | All offline Node tests (same list as CI, defined once in `scripts/run-suite.mjs`) | `npm run test:unit` | ~1 min |

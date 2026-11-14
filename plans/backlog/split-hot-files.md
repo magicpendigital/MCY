@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — Tách tệp điểm nóng (Prototype.tsx, prototype.css, i18n.ts)
 
-Trạng thái: chờ duyệt từng lát (Owner đã chọn ngày 2026-11-13: giao mca từng bước, nối đuôi, review chéo).
+Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); chờ Owner duyệt lát 1.
 
 ## 1. Mục tiêu
 `src/Prototype.tsx` (170 KB) bị 25% commit chạm, `src/prototype.css` (97 KB) 21%, `src/i18n.ts` 14%. Hai việc song song gần như luôn đụng nhau. Tách thành mỗi màn/tính năng một tệp để agent làm song song theo vùng và đọc ít ngữ cảnh hơn.
@@ -12,8 +12,8 @@ Trạng thái: chờ duyệt từng lát (Owner đã chọn ngày 2026-11-13: gi
 - Không màn nào import ngược từ `Prototype.tsx`.
 
 ## 3. Phạm vi sửa
-- `src/Prototype.tsx`, `src/prototype.css`, `src/i18n.ts`, tệp mới trong `src/screens/`, `src/app/`, `src/i18n/`; `.gitattributes` (eol=lf cho tệp mới nếu cần); `tests/browser-compat.test.mjs` chỉ khi phải quét thêm thư mục mới.
-- Mức rủi ro: R1 (UI trong hợp đồng sẵn có, không đổi dữ liệu) nhưng diện rộng.
+- `src/Prototype.tsx`, `src/prototype.css`, `src/i18n.ts`, tệp mới trong `src/screens/`, `src/app/`, `src/i18n/`; `src/JourneyScreen.tsx` (chỉ đổi `import type` sang `app/model`); `.gitattributes` (eol=lf cho tệp mới nếu cần); `tests/browser-compat.test.mjs` chỉ khi phải quét thêm thư mục mới.
+- Mức rủi ro: R1 (UI trong hợp đồng sẵn có, không đổi dữ liệu) nhưng diện rộng; các lát consent, auth, persistence (2, 6, 7, 8, 14) review guard như R2.
 
 ## 4. Cố ý không đụng
 - Runtime bảo vệ (`src/App.tsx`, `src/main.tsx`, `src/styles.css`, `src/mobile/`), `src/staff/`, backend, chữ "đã chốt".
@@ -43,7 +43,7 @@ Trạng thái: chờ duyệt từng lát (Owner đã chọn ngày 2026-11-13: gi
 1. Sau mỗi lát, mở app cục bộ và đi luồng chính: Chào → Check-in → Bài tập → Ghi nhận → Hành trình.
 
 ## 10. Lệnh kiểm
-- `npm run check:quick && npm run test:unit && npm run check:ios15 && npm run test:runtime`
+- `npm test && npm run check:ios15 && npm run test:runtime && npm run test:sites` + so ảnh trước/sau
 
 ## 11. Rủi ro còn lại
 - Thứ tự CSS thay đổi có thể đổi giao diện mà test không bắt; cần so ảnh chụp trước/sau.
@@ -52,4 +52,5 @@ Trạng thái: chờ duyệt từng lát (Owner đã chọn ngày 2026-11-13: gi
 - Owner duyệt từng lát trước khi gộp vào `main`.
 
 ## Progress
-- [ ] 1 Bản đồ phụ thuộc
+- [x] 1 Bản đồ phụ thuộc (job mca `job-20261113-65611dce`, Codex, chỉ đọc)
+- [ ] 2 Lát 1: `app/model.ts`, `state.tsx`, `events.ts`, `predicates.ts`
