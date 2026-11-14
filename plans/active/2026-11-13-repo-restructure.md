@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — Tái cấu trúc repo và hợp nhất nhánh về `main`
 
-Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng băng nhánh cũ, lưu trữ rồi gỡ `analyse/`, giao mca tách tệp điểm nóng từng bước). Bước 1–5 xong ngày 2026-11-13; còn bước 6 (checkout chính).
+Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng băng nhánh cũ, lưu trữ rồi gỡ `analyse/`, giao mca tách tệp điểm nóng từng bước). Bước 1–5 xong ngày 2026-11-13; bước 6 xong ngày 2026-11-14. Còn bước 7 (kế hoạch riêng).
 
 ## 1. Mục tiêu
 `main` chỉ có 2 commit khởi tạo (21/09); 118 commit thật nằm ở `codex-mcy-p1-preview`. Owner yêu cầu đưa mã thật về `main`, chuẩn hoá tên nhánh chính, không làm hỏng chức năng hay bản đã deploy, và tái cấu trúc repo theo quy trình mca để nhiều agent làm song song, kiểm nhanh, ít lỗi.
@@ -75,4 +75,4 @@ Trạng thái: đã duyệt (2026-11-13, Owner chọn: giữ Preview, đóng bă
 - [x] 3 Review chéo (subagent độc lập: 2 lỗi chính đã sửa — cảnh báo push `main` trước khi đổi Vercel, khôi phục nguyên văn mục Release evidence; job mca Codex đang chờ worker)
 - [x] 4 Vercel: Production Branch → `production` (Owner tạo nhánh tại `992ccd8`), biến Supabase → nhánh `main`, domain → `main`
 - [x] 5 Push `main` (`f03b856`) + tag; deploy Preview READY; domain 200 và cùng bundle
-- [ ] 6 Checkout chính sang `main`
+- [x] 6 Checkout chính sang `main` (14/11: 4 PNG giữ dạng tệp bỏ qua, 84 tệp CRLF → LF, `check:quick` PASS)
