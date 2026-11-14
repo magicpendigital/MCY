@@ -1,7 +1,7 @@
 import { RouteBoundary } from "./compat/RouteBoundary";
 import { newId, lastOf } from "./compat";
 import { installFocusGuard } from "./compat/focusGuard";
-import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "@fontsource/roboto/latin-400.css";
 import "@fontsource/roboto/latin-700.css";
@@ -23,14 +23,13 @@ import {
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
 import { authRedirectUrl, backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, hasStoredAuthSession, shouldInitializeAuthForCurrentLaunch, syncAuthEmailLocale } from "./backend/supabase";
-import { normalizeEmailLocale, readEmailLocale, rememberEmailLocale } from "./backend/emailLocale";
+import { readEmailLocale, rememberEmailLocale } from "./backend/emailLocale";
 import { EmailLanguageSelect } from "./backend/EmailLanguageSelect";
 import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage, passwordSignInMessage } from "./backend/passwordAuth";
-import { learnerSessionGeneration, observeLearnerSession } from "./backend/learnerSession";
-import { persistConsentChoices } from "./backend/consentPersistence";
-import { NATIVE_AUTH_PENDING_KEY, nativeAuthCodeFromCallback, rememberNativeAuthUrl } from "./backend/nativeAuth";
+import { observeLearnerSession } from "./backend/learnerSession";
+import { NATIVE_AUTH_PENDING_KEY, rememberNativeAuthUrl } from "./backend/nativeAuth";
 import { isWebAuthCallback } from "./backend/authRouting";
-import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, decodeBodyRegionCode, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
+import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
 import {
   deleteLearnerCheckin,
   CONSENT_POLICY_VERSIONS,
@@ -38,24 +37,22 @@ import {
   hasCurrentConsentForPurpose,
   loadLearnerSnapshot,
   hasCurrentRequiredConsent,
-  isCurrentLearnerSession,
   REQUIRED_CONSENT_POLICY_VERSIONS,
   deleteMyAccount,
   saveConsentEvent,
-  saveLearnerCheckin,
   type ConsentPurpose,
-  type ConsentState,
-  type CheckinPayload,
-  type LearnerCheckin,
-  type LearnerObservation,
 } from "./backend/learnerData";
 import type { FreeCourseId } from "./courses/freeCourses";
 import type { PracticeContext } from "../supabase/functions/_shared/practiceContract";
 import { rememberedPace } from "./practice/feedbackMemory";
-import { BODY_LEVELS, type BodyLevel, type BodyStatus, type BodyStyle, type DemoState, type Energy, type Observation, type Outcome, type Pace, type Snapshot } from "./app/model";
+import type { BodyLevel, BodyStyle, DemoState, Energy, Observation, Outcome, Pace } from "./app/model";
 import { clearAccountScopedState, DemoContext, initialState, useDemo } from "./app/state";
 import { AUTH_SIGN_IN_EVENT, SESSION_RESTORE_RETRY_EVENT } from "./app/events";
 import { aiPracticeOffered, hasCheckinBaseline, hasCurrentAiConsent, isCheckinAuthReturn, latestFeedback, normalizeAuthDestination } from "./app/predicates";
+import { useLearnerContinuation } from "./app/useLearnerContinuation";
+import { makeSnapshot, snapshotFromDatabase } from "./app/snapshots";
+import { consentStateForDemo, persistConsentChanges, persistCurrentCheckin, persistProfile, toLearnerCheckinPayload } from "./app/persistence";
+import { authErrorMessage, handleNativeAuthUrl } from "./app/auth";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -72,21 +69,6 @@ const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
 
-function useLearnerContinuation() {
-  const { state } = useDemo();
-  const flow = useFlow();
-  const latest = useRef(state); latest.current = state;
-  const route = useRef({ key: flow.current.key, generation: 0 });
-  if (route.current.key !== flow.current.key) route.current = { key: flow.current.key, generation: route.current.generation + 1 };
-  const mounted = useRef(true);
-  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
-  return () => {
-    const expected = latest.current, generation = learnerSessionGeneration(), routeGeneration = route.current.generation;
-    return (value = latest.current) => mounted.current && generation === learnerSessionGeneration()
-      && routeGeneration === route.current.generation
-      && value.userId === expected.userId && value.signedIn === expected.signedIn;
-  };
-}
 function BrandMark({ animated = false }: { animated?: boolean }) {
   return <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false" className={animated ? "mcy-open-space-mark mcy-open-space-mark-animated" : "mcy-open-space-mark"}>
     <path className="mcy-mark-arc" d="M67 19C53 12 36 15 25 26C13 38 12 56 21 70C29 82 44 87 58 82" fill="none" stroke="currentColor" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" pathLength="100" />
@@ -118,192 +100,6 @@ function regionSidePosition(region: BodyRegion, side: BodySide) {
   if (side === "unspecified" || side === "both" || !isPairedBodyRegion(region)) return REGION_POSITION[region];
   const offset = REGION_SIDE_OFFSET[region] ?? 14;
   return { x: 50 + (side === "left" ? -offset : offset), y: REGION_POSITION[region].y };
-}
-function currentAppLocale(): AppLocale { return typeof document !== "undefined" && document.documentElement.lang === "en" ? "en-US" : "vi-VN"; }
-function makeSnapshot(kind: Snapshot["kind"], status: BodyStatus, observations: Observation[], extra: Partial<Snapshot> = {}, recordedAt = new Date()): Snapshot {
-  const date = `${recordedAt.getFullYear()}-${String(recordedAt.getMonth() + 1).padStart(2, "0")}-${String(recordedAt.getDate()).padStart(2, "0")}`;
-  return { id: newId(), day: localDateOrdinal(date), date, time: recordedAt.toLocaleTimeString(currentAppLocale(), { hour: "2-digit", minute: "2-digit" }), kind, status, observations: observations.map(item => ({ ...item })), ...extra };
-}
-function localDateOrdinal(isoDate: string) { return Math.floor(Date.parse(`${isoDate}T00:00:00Z`) / 86_400_000); }
-function todayLocalDate() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-}
-function mapDatabaseObservation(row: LearnerObservation): Observation {
-  const decoded = decodeBodyRegionCode(row.region_code);
-  if (!decoded) throw new Error(`Unsupported body region from database: ${row.region_code}`);
-  const level: BodyLevel | null = row.state === "no_discomfort" ? "Không khó chịu" : row.level === 1 ? "Nhẹ" : row.level === 2 ? "Vừa" : row.level !== null && row.level >= 3 ? "Nhiều" : null;
-  return { ...decoded, level, status: row.state === "uncertain" || row.state === "skipped" ? "uncertain" : "reported", note: row.note ?? "" };
-}
-function observationsFromDatabase(rows: LearnerObservation[]) {
-  const values = rows.map(mapDatabaseObservation);
-  const consumed = new Set<number>();
-  const result: Observation[] = [];
-  values.forEach((item, index) => {
-    if (consumed.has(index)) return;
-    const partnerIndex = item.side === "left" ? values.findIndex((candidate, candidateIndex) =>
-      candidateIndex !== index && !consumed.has(candidateIndex) && candidate.region === item.region
-      && candidate.side === "right" && candidate.level === item.level && candidate.status === item.status && candidate.note === item.note,
-    ) : -1;
-    if (partnerIndex >= 0) {
-      consumed.add(partnerIndex);
-      result.push({ ...item, side: "both" });
-    } else result.push(item);
-    consumed.add(index);
-  });
-  return result;
-}
-function snapshotFromDatabase(row: LearnerCheckin, rows: LearnerObservation[]): Snapshot {
-  const date = row.local_date;
-  return {
-    id: row.id,
-    remoteId: row.id,
-    day: localDateOrdinal(date),
-    date,
-    time: new Date(row.created_at).toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }),
-    kind: row.capture_type === "standalone" ? "Ghi riêng" : "Trước tập",
-    status: (row.body_status as BodyStatus) ?? null,
-    observations: observationsFromDatabase(rows.filter(item => item.checkin_id === row.id)),
-  };
-}
-function consentStateForDemo(state: DemoState): ConsentState {
-  return {
-    terms: state.termsAccepted,
-    privacy: state.privacyAccepted,
-    wellbeing_data: state.saveFeedbackConsent,
-    ai_processing: state.aiConsent,
-    teacher_sharing: state.teacherShareConsent,
-    notifications: state.notificationEnabled,
-    marketing: state.marketingConsent,
-  };
-}
-async function persistConsentChanges(state: DemoState, source: "onboarding" | "settings", retryKeys: Map<string,string>) {
-  // The development-only layout preview has no Auth identity or database writes.
-  if (import.meta.env.DEV && !state.userId && new URLSearchParams(window.location.search).get("review-screen") === "consent") {
-    return { consents: consentStateForDemo(state), policyVersions: state.consentPolicyVersions, matchesRequested: true, hasUnsettledWrites: false };
-  }
-  if (!state.userId) throw new Error("account_changed");
-  const generation = learnerSessionGeneration();
-  const client = await getAccountBoundSupabaseClient(state.userId);
-  return persistConsentChoices(client, state.userId, consentStateForDemo(state), source, retryKeys, clientChannel(), () => generation === learnerSessionGeneration());
-}
-async function persistProfile(state: DemoState, displayName: string, bodyStyle: BodyStyle, locale: AppLocale = state.locale) {
-  if (!state.userId) return;
-  const generation = learnerSessionGeneration();
-  const shared = await getSupabaseClient();
-  if (!shared) return;
-  const { data: auth } = await shared.auth.getSession();
-  if (auth.session?.user.id !== state.userId) throw new Error("account_changed");
-  const session = auth.session;
-  const client = await getAccountBoundSupabaseClient(state.userId);
-  if (generation !== learnerSessionGeneration()) return false;
-  const { error } = await client.from("profiles").upsert({
-    user_id: state.userId,
-    display_name: displayName.trim() || null,
-    locale,
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Ho_Chi_Minh",
-    body_display_preference: bodyStyle,
-  }, { onConflict: "user_id" });
-  if (error) throw new Error(error.message);
-  if (generation !== learnerSessionGeneration()) return false;
-  const emailLocale = Capacitor.isNativePlatform()
-    ? normalizeEmailLocale(session.user.user_metadata.locale) ?? locale
-    : locale !== state.locale ? locale : readEmailLocale(state.locale);
-  rememberEmailLocale(emailLocale);
-  return syncAuthEmailLocale(session, emailLocale);
-}
-function toLearnerCheckinPayload(state: DemoState, captureType: CheckinPayload["captureType"], idempotencyKey: string): CheckinPayload {
-  const observations: CheckinPayload["observations"] = [];
-  for (const item of state.preObservations) {
-    for (const regionCode of bodyRegionCodes(item.region, item.side)) {
-      const clear = item.level === "Không khó chịu";
-      const state = item.status === "uncertain" || (!clear && !item.level) ? "uncertain" : clear ? "no_discomfort" : "discomfort";
-      observations.push({
-        regionCode,
-        state,
-        level: state === "discomfort" ? Math.max(1, BODY_LEVELS.indexOf(item.level!)) : null,
-        note: item.note.trim() || null,
-      });
-    }
-  }
-  const energyValues: Energy[] = ["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"];
-  return {
-    localDate: todayLocalDate(),
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Ho_Chi_Minh",
-    energyLevel: state.energy ? energyValues.indexOf(state.energy) : null,
-    bodyStatus: state.bodyStatus,
-    captureType,
-    observations,
-    idempotencyKey,
-  };
-}
-async function persistCurrentCheckin(
-  state: DemoState,
-  setState: Dispatch<SetStateAction<DemoState>>,
-  captureType: CheckinPayload["captureType"],
-  canDispatch: () => boolean,
-) {
-  if (!canDispatch() || !state.signedIn || !state.userId || !state.saveFeedbackConsent) return null;
-  const expectedUserId = state.userId;
-  const generation = learnerSessionGeneration();
-  const client = await getAccountBoundSupabaseClient(expectedUserId);
-  if (generation !== learnerSessionGeneration() || !canDispatch()) return null;
-  const payload = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, captureType, state.pendingCheckinIdempotencyKey ?? newId());
-  const idempotencyKey = payload.idempotencyKey;
-  const current = (previous: DemoState) => generation === learnerSessionGeneration() && isCurrentLearnerSession(previous.signedIn, previous.userId, expectedUserId);
-  setState(previous => current(previous)
-    ? { ...previous, pendingCheckinIdempotencyKey: idempotencyKey, pendingCheckinPayload: payload, backendStatus: "loading", backendError: "" }
-    : previous);
-  const saved = await saveLearnerCheckin(client, payload, expectedUserId);
-  if (generation !== learnerSessionGeneration()) return null;
-  const row: LearnerCheckin = {
-    id: saved.checkin_id,
-    user_id: state.userId,
-    local_date: payload.localDate,
-    local_timezone: payload.timezone,
-    energy_level: payload.energyLevel,
-    overall_note: null,
-    body_status: payload.bodyStatus,
-    capture_type: payload.captureType,
-    idempotency_key: idempotencyKey,
-    created_at: saved.created_at,
-    updated_at: saved.created_at,
-  };
-  const snapshot = snapshotFromDatabase(row, payload.observations.map((item, index) => ({
-    id: `${saved.checkin_id}-${index}`,
-    checkin_id: saved.checkin_id,
-    user_id: state.userId!,
-    region_code: item.regionCode,
-    state: item.state,
-    level: item.level,
-    note: item.note,
-    created_at: saved.created_at,
-    updated_at: saved.created_at,
-  })));
-  setState(previous => current(previous)
-    ? {
-        ...previous,
-        remoteCheckins: [...previous.remoteCheckins.filter(item => item.remoteId !== saved.checkin_id), snapshot],
-        ...(previous.pendingCheckinIdempotencyKey === idempotencyKey ? {
-          currentRemoteCheckinId: saved.checkin_id, pendingCheckinIdempotencyKey: null, pendingCheckinPayload: null, backendStatus: "ready" as const,
-        } : {}),
-        backendError: "",
-      }
-    : previous);
-  return snapshot;
-}
-async function handleNativeAuthUrl(url: string) {
-  const client = await getSupabaseClient();
-  if (!client) return;
-  const code = nativeAuthCodeFromCallback(
-    url,
-    authRedirectUrl(),
-    window.localStorage.getItem(NATIVE_AUTH_PENDING_KEY),
-  );
-  if (!code) return;
-  const { error } = await client.auth.exchangeCodeForSession(code);
-  if (error) throw error;
-  window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
 }
 function BodyMap({ observations, bodyStyle, compact = false, onSelect, showAll = true, locale = "vi-VN", group }: { observations: Observation[]; bodyStyle: BodyStyle; compact?: boolean; onSelect?: (region: BodyRegion, side?: BodySide) => void; showAll?: boolean; locale?: AppLocale; group?: BodyRegionGroup }) {
   const [imageFailed, setImageFailed] = useState(false);
@@ -395,16 +191,6 @@ function Choice({ selected, onClick, disabled = false, children }: { selected: b
 }
 function Eyebrow({ children }: { children: React.ReactNode }) { return <div className="mcy-eyebrow">{children}</div>; }
 function DemoNote({ children }: { children: React.ReactNode }) { return <p className="mcy-info-note"><InfoCircledIcon />{children}</p>; }
-function authErrorMessage(cause: unknown, fallback: string) {
-  const message = cause && typeof cause === "object" && "message" in cause && typeof cause.message === "string"
-    ? cause.message
-    : "";
-  if (/rate.?limit|too many requests|over_email_send_rate_limit/i.test(message)) {
-    return "Dịch vụ email đang tạm giới hạn yêu cầu. Hãy dùng email mới nhất đã gửi và tránh bấm gửi lại liên tục. Nếu liên kết hết hạn, chờ giới hạn hồi hoặc cấu hình SMTP riêng để tiếp tục kiểm thử.";
-  }
-  return message || fallback;
-}
-
 type HelpArticleId = "body-map" | "pause-video" | "journey-record" | "ai-scope";
 const AI_OFF_PRIVACY_DETAIL = "Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng và bạn đồng ý riêng. AI nhận lựa chọn được xác nhận của lượt hiện tại; không gửi hội thoại trước đó, tên/email, ghi chú tự do hay feedback lịch sử. AI chỉ chọn nội dung đã duyệt, không tạo động tác hoặc chẩn đoán. Khi tắt, không gửi yêu cầu mô hình.";
 const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; lead: string; paragraphs: string[] }> = [
