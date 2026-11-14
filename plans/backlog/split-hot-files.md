@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — Tách tệp điểm nóng (Prototype.tsx, prototype.css, i18n.ts)
 
-Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); chờ Owner duyệt lát 1.
+Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); lát 1 xong trên nhánh làm việc 2026-11-14, chờ Owner duyệt gộp vào `main`.
 
 ## 1. Mục tiêu
 `src/Prototype.tsx` (170 KB) bị 25% commit chạm, `src/prototype.css` (97 KB) 21%, `src/i18n.ts` 14%. Hai việc song song gần như luôn đụng nhau. Tách thành mỗi màn/tính năng một tệp để agent làm song song theo vùng và đọc ít ngữ cảnh hơn.
@@ -53,4 +53,5 @@ Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md)
 
 ## Progress
 - [x] 1 Bản đồ phụ thuộc (job mca `job-20261113-65611dce`, Codex, chỉ đọc)
-- [ ] 2 Lát 1: `app/model.ts`, `state.tsx`, `events.ts`, `predicates.ts`
+- [x] 2 Lát 1: `app/model.ts`, `state.tsx`, `events.ts`, `predicates.ts` (mca `20261114-1315-5fe8`; chuyển nguyên văn; `Prototype.tsx` 170 → 163 KB; `npm test` 22/22, `check:ios15`, Playwright 223/223 PASS)
+- [ ] 3 Lát 2: `useLearnerContinuation`, `snapshots`, `persistence`, `auth`
