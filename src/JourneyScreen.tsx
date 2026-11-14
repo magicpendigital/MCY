@@ -6,7 +6,7 @@ import { BODY_REGIONS, isPairedBodyRegion, removeBodyObservation, replaceBodyObs
 import { BottomSheet, Carousel, MobileScroll } from "./mobile";
 import { deleteLearnerCheckin } from "./backend/learnerData";
 import { getSupabaseClient } from "./backend/supabase";
-import type { BodyStyle, DemoState, Observation, Snapshot } from "./Prototype";
+import type { BodyStyle, DemoState, Observation, Snapshot } from "./app/model";
 
 type BodyMapComponentProps = {
   observations: Observation[];

@@ -1,7 +1,7 @@
 import { RouteBoundary } from "./compat/RouteBoundary";
 import { newId, lastOf } from "./compat";
 import { installFocusGuard } from "./compat/focusGuard";
-import { createContext, lazy, Suspense, useContext, useEffect, useLayoutEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { createPortal } from "react-dom";
 import "@fontsource/roboto/latin-400.css";
 import "@fontsource/roboto/latin-700.css";
@@ -44,7 +44,6 @@ import {
   saveConsentEvent,
   saveLearnerCheckin,
   type ConsentPurpose,
-  type ConsentPolicyVersions,
   type ConsentState,
   type CheckinPayload,
   type LearnerCheckin,
@@ -53,108 +52,11 @@ import {
 import type { FreeCourseId } from "./courses/freeCourses";
 import type { PracticeContext } from "../supabase/functions/_shared/practiceContract";
 import { rememberedPace } from "./practice/feedbackMemory";
+import { BODY_LEVELS, type BodyLevel, type BodyStatus, type BodyStyle, type DemoState, type Energy, type Observation, type Outcome, type Pace, type Snapshot } from "./app/model";
+import { clearAccountScopedState, DemoContext, initialState, useDemo } from "./app/state";
+import { AUTH_SIGN_IN_EVENT, SESSION_RESTORE_RETRY_EVENT } from "./app/events";
+import { aiPracticeOffered, hasCheckinBaseline, hasCurrentAiConsent, isCheckinAuthReturn, latestFeedback, normalizeAuthDestination } from "./app/predicates";
 
-type Energy = "Rất thấp" | "Thấp" | "Bình thường" | "Khá ổn" | "Tràn đầy";
-export type BodyStyle = "neutral" | "feminine" | "masculine";
-type BodyLevel = "Không khó chịu" | "Nhẹ" | "Vừa" | "Nhiều";
-type BodyStatus = "reported" | "none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable" | null;
-export type Observation = { region: BodyRegion; side: BodySide; level: BodyLevel | null; status: "reported" | "uncertain"; note: string };
-type Intent = "Thả lỏng" | "Bắt nhịp" | "Tập trung";
-type DialogueChoice = "Nhiều hướng dẫn" | "Nhịp chậm" | "Ít lời" | "Không nằm sàn" | null;
-type DialogueMessage = { role: "user" | "assistant"; content: string };
-type Outcome = "Dễ chịu hơn" | "Như cũ" | "Khó chịu hơn" | "Chưa rõ" | null;
-type Pace = "Vừa" | "Hơi nhanh" | "Hơi chậm" | null;
-type CheckinStep = 1 | 2;
-
-export type Snapshot = {
-  id: string; day: number; date: string; time: string; kind: "Trước tập" | "Sau tập" | "Ghi riêng";
-  status: BodyStatus; observations: Observation[]; remoteId?: string;
-  lessonTitle?: string;
-  outcome?: Outcome; pace?: Pace; note?: string; endedEarly?: boolean; feedbackSkipped?: boolean;
-};
-
-export type DemoState = {
-  locale: AppLocale;
-  checkinStep: CheckinStep;
-  minutes: number;
-  energy: Energy | null;
-  regions: BodyRegion[];
-  bodyStyle: BodyStyle;
-  bodyStatus: BodyStatus;
-  preObservations: Observation[];
-  postObservations: Observation[];
-  postBodyStatus: BodyStatus;
-  intent: Intent;
-  dialogueChoice: DialogueChoice;
-  dialogueText: string;
-  unrecognizedText: string;
-  aiConversation: DialogueMessage[];
-  aiPending: boolean;
-  aiError: string;
-  aiCapability: "checking" | "ready" | "disabled" | "not_ready";
-  selectedCourseId: FreeCourseId | null;
-  selectedLessonId: string | null;
-  checkinBaselineReady: boolean;
-  reflectionHasCheckinBaseline: boolean;
-  reflectionBeforeStatus: BodyStatus;
-  reflectionBeforeObservations: Observation[];
-  reflectionLessonTitle: string;
-  outcome: Outcome;
-  pace: Pace;
-  note: string;
-  endedEarly: boolean;
-  rememberPace: boolean;
-  usePreviousFeedback: boolean;
-  history: Snapshot[];
-  signedIn: boolean;
-  userId: string | null;
-  backendStatus: "loading" | "ready" | "error";
-  backendError: string;
-  remoteCheckins: Snapshot[];
-  currentRemoteCheckinId: string | null;
-  pendingCheckinIdempotencyKey: string | null;
-  pendingCheckinPayload?: CheckinPayload | null;
-  accountEmail: string;
-  authReturnTo: string;
-  authMode: "create" | "login";
-  authCode: string;
-  displayName: string;
-  onboardingComplete: boolean;
-  termsAccepted: boolean;
-  privacyAccepted: boolean;
-  consentBaseline: ConsentState;
-  consentPolicyVersions: ConsentPolicyVersions;
-  aiConsent: boolean;
-  saveFeedbackConsent: boolean;
-  teacherShareConsent: boolean;
-  marketingConsent: boolean;
-  shareActive: boolean;
-  notificationEnabled: boolean;
-  emailUpdates: boolean;
-  lastReflection: Snapshot | null;
-};
-
-const initialState: DemoState = {
-  locale: "vi-VN", checkinStep: 1,
-  minutes: 10, energy: null, regions: [], bodyStyle: "feminine", bodyStatus: null, preObservations: [], postObservations: [], postBodyStatus: null, intent: "Bắt nhịp",
-  dialogueChoice: null, dialogueText: "", unrecognizedText: "", aiConversation: [], aiPending: false, aiError: "",
-  aiCapability: "disabled",
-  outcome: null, pace: null, note: "",
-  selectedCourseId: null,
-  selectedLessonId: null,
-  checkinBaselineReady: false,
-  reflectionHasCheckinBaseline: false,
-  reflectionBeforeStatus: null,
-  reflectionBeforeObservations: [],
-  reflectionLessonTitle: "",
-  endedEarly: false, rememberPace: true, usePreviousFeedback: false, history: [],
-  signedIn: false, userId: null, backendStatus: backendConfigured ? "loading" : "ready", backendError: "", remoteCheckins: [], currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null,
-  accountEmail: "", authReturnTo: "home", authMode: "create", authCode: "", displayName: "",
-  onboardingComplete: false, termsAccepted: false, privacyAccepted: false, consentBaseline: emptyConsentState, consentPolicyVersions: {}, aiConsent: false, saveFeedbackConsent: false, teacherShareConsent: false,
-  marketingConsent: false, shareActive: false, notificationEnabled: false, emailUpdates: false, lastReflection: null,
-};
-
-const DemoContext = createContext<{ state: DemoState; setState: Dispatch<SetStateAction<DemoState>> } | null>(null);
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
 const CourseDetailScreen = lazy(() => import("./courses/CourseDetailScreen"));
@@ -170,12 +72,6 @@ const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
 
-function useDemo() {
-  const context = useContext(DemoContext);
-  if (!context) throw new Error("Prototype state missing");
-  const update = (patch: Partial<DemoState>) => context.setState(previous => ({ ...previous, ...patch }));
-  return { ...context, update };
-}
 function useLearnerContinuation() {
   const { state } = useDemo();
   const flow = useFlow();
@@ -191,83 +87,6 @@ function useLearnerContinuation() {
       && value.userId === expected.userId && value.signedIn === expected.signedIn;
   };
 }
-function latestFeedback(state: DemoState) {
-  return rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace && state.usePreviousFeedback);
-}
-function clearAccountScopedState(previous: DemoState): DemoState {
-  return {
-    ...previous,
-    signedIn: false,
-    userId: null,
-    accountEmail: "",
-    displayName: "",
-    bodyStyle: "feminine",
-    checkinStep: 1,
-    minutes: 10,
-    energy: null,
-    regions: [],
-    bodyStatus: null,
-    preObservations: [],
-    postObservations: [],
-    postBodyStatus: null,
-    dialogueChoice: null,
-    dialogueText: "",
-    unrecognizedText: "",
-    aiConversation: [],
-    aiPending: false,
-    aiError: "",
-    aiCapability: "disabled",
-    selectedCourseId: null,
-    selectedLessonId: null,
-    checkinBaselineReady: false,
-    reflectionHasCheckinBaseline: false,
-    reflectionBeforeStatus: null,
-    reflectionBeforeObservations: [],
-    reflectionLessonTitle: "",
-    outcome: null,
-    pace: null,
-    note: "",
-    endedEarly: false,
-    usePreviousFeedback: false,
-    history: [],
-    termsAccepted: false,
-    privacyAccepted: false,
-    consentBaseline: emptyConsentState,
-    consentPolicyVersions: {},
-    aiConsent: false,
-    saveFeedbackConsent: false,
-    teacherShareConsent: false,
-    marketingConsent: false,
-    shareActive: false,
-    notificationEnabled: false,
-    emailUpdates: false,
-    remoteCheckins: [],
-    currentRemoteCheckinId: null,
-    pendingCheckinIdempotencyKey: null,
-    pendingCheckinPayload: null,
-    backendError: "",
-    lastReflection: null,
-  };
-}
-
-function hasCurrentAiConsent(state: DemoState) {
-  return state.aiConsent
-    && state.consentPolicyVersions.ai_processing === CONSENT_POLICY_VERSIONS.ai_processing;
-}
-function isCheckinAuthReturn(destination: string) {
-  return destination === "discover" || destination === "dialogue";
-}
-function normalizeAuthDestination(destination: string) {
-  return destination === "dialogue" ? "discover" : destination;
-}
-// The pilot server refuses to rank practice for reported discomfort, tiredness or an unclear body state (practiceContract.eligibleSessions), so the
-// AI path is not offered then: the learner would only get a refusal. Browsing the free lessons stays available.
-function aiPracticeOffered(state: Pick<DemoState, "aiCapability" | "bodyStatus">) {
-  return state.aiCapability === "ready" && state.bodyStatus !== "reported" && state.bodyStatus !== "uncertain" && state.bodyStatus !== "tired" && state.bodyStatus !== "uncomfortable";
-}
-function hasCheckinBaseline(state: Pick<DemoState, "bodyStatus">) {
-  return state.bodyStatus !== null && state.bodyStatus !== "skipped";
-}
 function BrandMark({ animated = false }: { animated?: boolean }) {
   return <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false" className={animated ? "mcy-open-space-mark mcy-open-space-mark-animated" : "mcy-open-space-mark"}>
     <path className="mcy-mark-arc" d="M67 19C53 12 36 15 25 26C13 38 12 56 21 70C29 82 44 87 58 82" fill="none" stroke="currentColor" strokeWidth="5.2" strokeLinecap="round" strokeLinejoin="round" pathLength="100" />
@@ -278,7 +97,6 @@ function Brand({ locale, compact = false, heading = false }: { locale: AppLocale
   const BrandTag = heading ? "h1" : "span";
   return <BrandTag className={compact ? "mcy-brand compact" : "mcy-brand mcy-brand-animated"}><BrandMark animated={!compact} /><span className="mcy-brand-wordmark">{msg(locale, "brand.name")}</span></BrandTag>;
 }
-const BODY_LEVELS: BodyLevel[] = ["Không khó chịu", "Nhẹ", "Vừa", "Nhiều"];
 // The editor offers three levels (Bình thường · Hơi mỏi · Đau nhức); "Vừa" (stored level 2) stays readable for records saved earlier.
 const EDITOR_LEVELS: BodyLevel[] = ["Không khó chịu", "Nhẹ", "Nhiều"];
 const BODY_STYLES: { id: BodyStyle; label: string; image: string }[] = [
@@ -1850,9 +1668,6 @@ function AccountRow({ title, detail, onClick, danger = false }: { title: string;
 }
 
 type AccountPanel = "edit" | "privacy" | "memory" | "sharing" | "security" | "notifications" | "access" | "help";
-export const SESSION_RESTORE_RETRY_EVENT = "mcy:retry-session-restore";
-// A guest launch skips auth start-up; signing in on the same page announces itself so hydration starts.
-export const AUTH_SIGN_IN_EVENT = "mcy:auth-signed-in";
 const LEGAL_WEB_ORIGIN = "https://motchutyoga.magicpendigital.com";
 const ACCOUNT_DELETION_WEB_URL = `${LEGAL_WEB_ORIGIN}/delete-account.html`;
 const PRIVACY_POLICY_WEB_URL = `${LEGAL_WEB_ORIGIN}/privacy.html`;
