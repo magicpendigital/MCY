@@ -22,8 +22,11 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 | Quy trình mca | `AGENTS.md` gọn (27 → 20 KB) + bản đồ vùng + `.github/CODEOWNERS` + mẫu báo cáo, `CLAUDE.md`, `PLAN.md`, `plans/`, `check:plan` | ✅ cục bộ, [kế hoạch](plans/active/2026-11-13-repo-restructure.md) |
 | Vòng kiểm nhanh | `npm run check:quick` (vài giây), `npm test` (~1 phút, không cần build), `npm run verify` (như CI); CI dùng chung danh sách `scripts/run-suite.mjs` | ✅ cục bộ |
 | Gọn kho | `analyse/` 378 MB → ~79 MB (phần `content/` còn trỏ tới); toàn bộ giữ ở tag `archive/analyse-2026-11-13`; 23 script dùng một lần → `scripts/archive/` | 🟡 |
-| Tách tệp điểm nóng | `src/Prototype.tsx` (170 KB), `src/prototype.css` (97 KB), `src/i18n.ts` → mỗi màn/tính năng một tệp; giao mca từng lát | 🟡 bản đồ xong 14/11 ([18 lát TSX + 8 lát CSS](plans/backlog/split-hot-files-map.md)); lát 1 ở `main` 14/11 (163 KB, Playwright 223/223); lát 2 (continuation/snapshots/persistence/auth → `src/app/`) xong trên nhánh mca 14/11, 152 KB, chờ gộp |
+| Tách tệp điểm nóng | `src/Prototype.tsx` (170 KB), `src/prototype.css` (97 KB), `src/i18n.ts` → mỗi màn/tính năng một tệp; giao mca từng lát | 🟡 bản đồ xong 14/11 ([18 lát TSX + 8 lát CSS](plans/backlog/split-hot-files-map.md)); lát 1 ở `main` 14/11 (163 KB, Playwright 223/223); lát 2 (continuation/snapshots/persistence/auth → `src/app/`) xong trên nhánh làm việc 14/11, 152 KB; ⛔ chờ duyệt gộp vào `main` |
 | Bản 1.0.7 (batch 9) | INC-005 (zoom ô nhập trên iOS) đã ở web Preview, chưa lên Play/điện thoại | ⬜ chờ Owner yêu cầu phát hành |
+
+## Lỗi đã thấy, chưa sửa
+- `tests/mobile-runtime.spec.ts` › "Carousel preserves momentum and edge rubber-banding" chập chờn trên Windows/Edge khi máy tải nặng (14/11: 1/5 lần lặp, `scrollLeft` dừng đúng 60 sau khi thả). Fixture chỉ nạp `src/mobile` (runtime bảo vệ) nên không do việc tách `Prototype.tsx`; sửa cần Owner cho phép đụng runtime hoặc nới thời gian chờ trong test (không được làm yếu test).
 
 ## 3. Đang chờ Owner (mỗi mục một quyết định)
 - ⛔ Supabase Auth redirect allowlist: thêm `https://mcy-git-main-magicpens-projects.vercel.app/auth/callback` nếu cần đăng nhập trên alias nhánh (domain chính không đổi).
