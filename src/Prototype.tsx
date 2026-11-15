@@ -1,4 +1,3 @@
-import { RouteBoundary } from "./compat/RouteBoundary";
 import { newId, lastOf } from "./compat";
 import { installFocusGuard } from "./compat/focusGuard";
 import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -17,8 +16,8 @@ import { App as CapacitorApp } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
 import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, energyLabel, sideLabel, type AppLocale } from "./i18n";
 import {
-  ArrowLeftIcon, ArrowRightIcon, ExclamationTriangleIcon, ReloadIcon, BarChartIcon, CheckIcon, ChevronDownIcon,
-  HeartIcon, HomeIcon, InfoCircledIcon, LockClosedIcon, MagicWandIcon,
+  ArrowLeftIcon, ArrowRightIcon, ExclamationTriangleIcon, ReloadIcon, CheckIcon, ChevronDownIcon,
+  HeartIcon, InfoCircledIcon, LockClosedIcon, MagicWandIcon,
   PersonIcon, PlayIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
@@ -59,6 +58,10 @@ import { Header } from "./app/ui/Header";
 import { BodyMap } from "./app/body/BodyMap";
 import { BodyStylePicker } from "./app/body/BodyStylePicker";
 import { RegionEditor } from "./app/body/RegionEditor";
+import { finishAtAuthDestination, RoutesContext } from "./app/navigation";
+import { FlowRouteFocusManager, withFlowScreenAccessibility } from "./app/accessibility";
+import { RouteSuspense } from "./app/RouteSuspense";
+import { BottomNav } from "./app/BottomNav";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -123,58 +126,6 @@ const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; l
   },
 ];
 
-function FlowScreenAccessibilityBoundary({ routeId, active, children }: { routeId: string; active: boolean; children: React.ReactNode }) {
-  return <div className="mcy-flow-route-accessibility" data-flow-route={routeId} data-flow-active={active ? "true" : "false"} aria-hidden={active ? undefined : true} inert={!active}>{children}</div>;
-}
-
-function withFlowScreenAccessibility(screens: Record<string, FlowScreen>): Record<string, FlowScreen> {
-  return Object.fromEntries(Object.entries(screens).map(([key, screen]) => {
-    const render = screen.render;
-    return [key, {
-      ...screen,
-      render: controls => <FlowScreenAccessibilityBoundary routeId={screen.id} active={controls.current.id === screen.id}>{render(controls)}</FlowScreenAccessibilityBoundary>,
-    }];
-  })) as Record<string, FlowScreen>;
-}
-
-function FlowRouteFocusManager() {
-  const { current } = useFlow();
-  const lastRouteKey = useRef(current.key);
-  useLayoutEffect(() => {
-    if (lastRouteKey.current === current.key) return;
-    lastRouteKey.current = current.key;
-    let frame = 0;
-    let attempts = 0;
-    let cancelled = false;
-    const focusCurrentRoute = () => {
-      if (cancelled) return;
-      const activeRoute = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mcy-flow-route-accessibility[data-flow-active='true']");
-      const heading = activeRoute?.querySelector<HTMLElement>("h1");
-      const activeElement = document.activeElement as HTMLElement | null;
-      const activeElementRoute = activeElement?.closest<HTMLElement>(".mcy-flow-route-accessibility");
-      if (activeElement && activeElement !== document.body && activeElement !== document.documentElement && activeElementRoute?.dataset.flowActive !== "false") return;
-      if (heading) {
-        if (!heading.hasAttribute("tabindex")) heading.tabIndex = -1;
-        heading.focus({ preventScroll: true });
-        return;
-      }
-      attempts += 1;
-      if (attempts < 60) {
-        frame = requestAnimationFrame(focusCurrentRoute);
-        return;
-      }
-      const firstControl = activeRoute?.querySelector<HTMLElement>("button:not(:disabled), a[href], input:not(:disabled), textarea:not(:disabled), select:not(:disabled), [tabindex]:not([tabindex='-1'])");
-      firstControl?.focus({ preventScroll: true });
-    };
-    frame = requestAnimationFrame(focusCurrentRoute);
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(frame);
-    };
-  }, [current.key]);
-  return null;
-}
-
 const HELP_ARTICLE_ROUTES: Record<HelpArticleId, FlowScreen> = withFlowScreenAccessibility({
   "body-map": { id: "help-body-map", header: () => <Header title="Hướng dẫn check-in" back />, headerHeight: 55, render: () => <HelpArticleScreen articleId="body-map" /> },
   "pause-video": { id: "help-pause-video", header: () => <Header title="Dừng giữa buổi" back />, headerHeight: 55, render: () => <HelpArticleScreen articleId="pause-video" /> },
@@ -214,10 +165,6 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
 
-// A route that loads a lazy chunk: a failed chunk or render error shows a message instead of a blank screen (INC-001).
-function RouteSuspense({ fallback, children }: { fallback: React.ReactNode; children: React.ReactNode }) {
-  return <RouteBoundary><Suspense fallback={fallback}>{children}</Suspense></RouteBoundary>;
-}
 const readingFallback = <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở bài đọc…</div></main></MobileScroll>;
 function ReadingLibraryRoute() {
   const flow = useFlow();
@@ -351,15 +298,6 @@ function JourneyRoute() {
       }}
     />
   </RouteSuspense>;
-}
-
-function finishAtAuthDestination(flow: ReturnType<typeof useFlow>, destination: string) {
-  const target = ROUTES[destination] ?? ROUTES.home;
-  let targetIndex = -1;
-  flow.stack.forEach((entry, index) => { if (entry.id === target.id) targetIndex = index; });
-  const stepsToPop = targetIndex >= 0 ? flow.stack.length - targetIndex - 1 : flow.stack.length - 1;
-  for (let index = 0; index < stepsToPop; index += 1) flow.pop();
-  if (targetIndex < 0) flow.replace(target);
 }
 
 export default function Prototype() {
@@ -614,7 +552,7 @@ function LearnerPrototype() {
       void appUrlListener?.remove();
     };
   }, [reviewConsentScreen, authInitNonce]);
-  return <DemoContext.Provider value={{ state, setState }}><FlowStack initial={reviewConsentScreen ? ROUTES.consent : ROUTES.welcome}><AuthSessionRouter /><FlowRouteFocusManager /><PracticeCapabilityObserver /></FlowStack></DemoContext.Provider>;
+  return <DemoContext.Provider value={{ state, setState }}><RoutesContext.Provider value={ROUTES}><FlowStack initial={reviewConsentScreen ? ROUTES.consent : ROUTES.welcome}><AuthSessionRouter /><FlowRouteFocusManager /><PracticeCapabilityObserver /></FlowStack></RoutesContext.Provider></DemoContext.Provider>;
 }
 
 function AuthSessionRouter() {
@@ -625,7 +563,7 @@ function AuthSessionRouter() {
     if (![ROUTES.welcome.id, ROUTES.authEmail.id, ROUTES.authCode.id].includes(flow.current.id)) return;
     if (!hasCurrentRequiredConsent(consentStateForDemo(state), state.consentPolicyVersions)) flow.replace(ROUTES.consent);
     else if (!state.onboardingComplete) flow.replace(ROUTES.onboarding);
-    else finishAtAuthDestination(flow, normalizeAuthDestination(state.authReturnTo));
+    else finishAtAuthDestination(flow, ROUTES, normalizeAuthDestination(state.authReturnTo));
   }, [flow, state.authReturnTo, state.backendStatus, state.consentPolicyVersions, state.onboardingComplete, state.privacyAccepted, state.signedIn, state.termsAccepted]);
   return null;
 }
@@ -883,7 +821,7 @@ function ConsentFooter() {
         }
         if (!current()) return;
         const destination = discardDraft ? (isCheckinAuthReturn(state.authReturnTo) ? "discover" : "home") : normalizeAuthDestination(state.authReturnTo);
-        finishAtAuthDestination(flow, destination);
+        finishAtAuthDestination(flow, ROUTES, destination);
       } else flow.replace(ROUTES.onboarding);
     } catch (cause) {
       if (!current()) return;
@@ -943,7 +881,7 @@ function OnboardingScreen() {
         } : {}),
       }));
       const destination = discardDraft ? (isCheckinAuthReturn(state.authReturnTo) ? "discover" : "home") : normalizeAuthDestination(state.authReturnTo);
-      finishAtAuthDestination(flow, destination);
+      finishAtAuthDestination(flow, ROUTES, destination);
     } catch (cause) {
       if (!current()) return;
       setError(cause instanceof Error ? cause.message : "Chưa hoàn tất được thiết lập tài khoản.");
@@ -1549,18 +1487,4 @@ function HelpArticleScreen({ articleId }: { articleId: HelpArticleId }) {
 
 function DiscoverDetailScreen() {
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-detail"><Eyebrow>HƯỚNG DẪN</Eyebrow><h1>Tự chọn nội dung theo điều bạn cần hôm nay.</h1><p className="mcy-lead">Check-in, duyệt bài học miễn phí và ghi lại cảm nhận nếu bạn muốn.</p><section className="mcy-article-body"><p>Check-in là điều bạn tự ghi nhận ở thời điểm hiện tại. Bạn có thể chọn từng vùng cơ thể, chọn mức phù hợp hoặc bỏ qua vùng chưa muốn ghi. Check-in không thay cho chẩn đoán.</p><p>MCY chưa tự ghép video thành buổi tập hoặc chọn bài dựa trên check-in. Quay lại Khám phá để tự duyệt danh mục; mỗi video là một bài riêng và chưa được đánh giá theo nhu cầu sức khỏe cá nhân.</p><p>Trong lúc thực hành, hãy theo nhịp của mình và dừng nếu bài tập không phù hợp. Sau đó, bạn có thể ghi riêng từng vùng là dễ chịu hơn, như cũ, khó chịu hơn, chưa rõ hoặc bỏ qua.</p></section><DemoNote>Đây là hướng dẫn sử dụng chung, không phải tư vấn y tế. Nếu cần chăm sóc, hãy tìm hỗ trợ phù hợp tại nơi bạn đang ở.</DemoNote></main></MobileScroll>;
-}
-
-function BottomNav() {
-  const flow = useFlow();
-  const { state } = useDemo();
-  const current = flow.current.id;
-  const locale = state.locale;
-  const items = [
-    { id: "home", label: msg(locale, "journey.nav.today"), icon: <HomeIcon /> },
-    { id: "journey", label: msg(locale, "journey.nav.journey"), icon: <BarChartIcon /> },
-    { id: "discover", label: msg(locale, "journey.nav.discover"), icon: <PlayIcon /> },
-    { id: "profile", label: msg(locale, "journey.nav.profile"), icon: <PersonIcon /> },
-  ];
-  return <nav className="mcy-bottom-nav" aria-label={msg(locale, "journey.navLabel")}>{items.map(item => <button key={item.id} aria-current={current === item.id ? "page" : undefined} onClick={() => { if (current !== item.id) flow.replace(ROUTES[item.id]); }}>{item.icon}<span>{item.label}</span></button>)}</nav>;
 }
