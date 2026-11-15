@@ -1,6 +1,6 @@
 # PLAN — bảng tiến độ sống của MCY (Một chút yoga)
 
-> **Cập nhật lần cuối: 2026-11-14** — `main` là nhánh làm việc duy nhất (cả checkout chính `D:/Projects/MCY`) và đã deploy Preview lên domain; tái cấu trúc theo mca xong; Owner duyệt roadmap A–E (14/11) thay lịch G0–G8; tiếp theo: giai đoạn A (đóng 1.0) và tách tệp điểm nóng qua mca.
+> **Cập nhật lần cuối: 2026-11-15** — `main` là nhánh dữ liệu chính duy nhất (cả checkout chính `D:/Projects/MCY`), việc xong phải commit + merge vào `main` rồi xoá nhánh ([BRANCH_HYGIENE](docs/quality/BRANCH_HYGIENE.md)); đã dọn 9 nhánh đã merge; Owner duyệt roadmap A–E (14/11); tiếp theo: giai đoạn A (đóng 1.0) và tách tệp điểm nóng qua mca (lát 4 đang làm).
 > Tệp đầu tiên Owner và mọi agent đọc. Trả lời: *đang ở đâu, còn gì, chờ ai*. Chi tiết việc lớn ở `plans/active/` (đang làm), `plans/done/` (đã chạy tốt), `plans/backlog/` (chưa làm). Quy tắc lâu dài ở `AGENTS.md`; lịch sử theo ngày ở `docs/status/`.
 
 ## Quy tắc cập nhật
@@ -22,6 +22,7 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 | Quy trình mca | `AGENTS.md` gọn (27 → 20 KB) + bản đồ vùng + `.github/CODEOWNERS` + mẫu báo cáo, `CLAUDE.md`, `PLAN.md`, `plans/`, `check:plan` | ✅ cục bộ, [kế hoạch](plans/active/2026-11-13-repo-restructure.md) |
 | Vòng kiểm nhanh | `npm run check:quick` (vài giây), `npm test` (~1 phút, không cần build), `npm run verify` (như CI); CI dùng chung danh sách `scripts/run-suite.mjs` | ✅ cục bộ |
 | Gọn kho | `analyse/` 378 MB → ~79 MB (phần `content/` còn trỏ tới); toàn bộ giữ ở tag `archive/analyse-2026-11-13`; 23 script dùng một lần → `scripts/archive/` | 🟡 |
+| Dọn nhánh (15/11) | Xoá 9 nhánh local đã merge + 2 worktree sạch; còn lại có lý do: `mca/run-20261114-1845-cd90` + `mca/20261114-1845-cd90/mcy-lat-4-…` (lát 4 đang làm, worktree chưa commit ở `C:/Users/Admin/.mca/wt/20261114-1845-cd90/`); `backup/pre-png-strip-20261028`, `backup/pre-slice-20261104` (chưa merge theo git nhưng nội dung đã ở `main`/tag, chờ Owner cho đổi thành tag `archive/…` rồi xoá); worktree cũ `C:/Users/Admin/.codex/worktrees/pilot-web-android-20261021/MCY` (HEAD `82458fc` đã ở `main`, còn 34 tệp sửa + tệp mới chưa commit, chờ Owner quyết định giữ hay bỏ) | 🟡 chờ Owner |
 | Tách tệp điểm nóng | `src/Prototype.tsx` (170 KB), `src/prototype.css` (97 KB), `src/i18n.ts` → mỗi màn/tính năng một tệp; giao mca từng lát | 🟡 bản đồ xong 14/11 ([18 lát TSX + 8 lát CSS](plans/backlog/split-hot-files-map.md)); lát 1 ở `main` 14/11 (163 KB, Playwright 223/223); lát 2 ở `main` 14/11 (152 KB); lát 3 ở `main` 14/11 (139 KB); lát 4 đang làm qua mca |
 | Bản 1.0.7 (batch 9) | INC-005 (zoom ô nhập trên iOS) đã ở web Preview, chưa lên Play/điện thoại | ⬜ chờ Owner yêu cầu phát hành |
 | Roadmap A–E (thay G0–G8) | A đóng 1.0 → B vá vòng lặp + đo lường → C Closed testing 12 người/14 ngày, nhắc tập, nhịp tuần → D tăng trưởng hữu cơ + Production (~1/2027) → E hiện diện (có điều kiện, ≥ Q1/2027); avatar hoãn. Đã duyệt Q1–Q8; mốc ngày là ước tính. [Kế hoạch](plans/active/2026-11-14-roadmap-retention-loop.md) | 🟡 đã duyệt hướng; mỗi giai đoạn B–E cần kế hoạch riêng trước khi sửa code; A ⬜ chờ Owner yêu cầu 1.0.7 |

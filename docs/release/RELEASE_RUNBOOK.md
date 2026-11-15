@@ -85,3 +85,7 @@ Compute testedBundleSha256(manifest) with the exported helper in scripts/release
 - Separate approval JSON: {decision: APPROVE, owner: decision author, releaseId, targetId, manifestSha256, approvedAt: ISO UTC timestamp, expiresAt: later ISO UTC timestamp, revoked: false}. The approval timestamp must be parseable and not future; expiry is mandatory and must not have elapsed. Missing revocation state or revoked=true blocks. The release operator verifies the actual owner's decision and current revocation independently; self-authored JSON cannot prove human identity or a live revocation registry.
 
 Use docs/release/OWNER_PACKET.vi.md as a template. A release manifest is not prepared by this documentation update; current builds and live environments have not been certified.
+
+## Checker scope (moved from AGENTS.md, 2026-11-15)
+
+Review `docs/release/release-profile.json` and run `node --test scripts/release-evidence.test.mjs` for changed gate code. The read-only checker uses immutable source/artifact/config/evidence hashes and exact target approval; it performs no deployment and does not enforce remote permissions. Preserve dirty work and current migration blockers. The cloud target allowlist remains empty until Owner-reviewed environment mapping and actual enforcement are verified.

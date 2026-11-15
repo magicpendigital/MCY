@@ -45,7 +45,9 @@ Add a new offline test to the `unit` list in `scripts/run-suite.mjs`, not as a n
 
 ## Branches and outside actions
 
-- `main` is the only working branch (each push builds Vercel Preview and updates `motchutyoga.magicpendigital.com`; the Vercel Production branch is the parked branch `production` — never push to it, Production is not promoted). `codex-mcy-p1-preview` is frozen history: never push to it. Agents work on their own branch (`claude/*`, `codex/*`, `mca/*`) and merge into `main` only when the Owner asks.
+- **`main` is the single source of truth for MCY data** (code, `PLAN.md`, `plans/`, `docs/`, `content/`, migrations, release ledger). Each push builds Vercel Preview and updates `motchutyoga.magicpendigital.com`. Parked branch `production` (Vercel Production, not promoted) and frozen `origin/codex-mcy-p1-preview`: never push to either.
+- Agents work on their own branch or worktree (`claude/*`, `codex/*`, `mca/*`), commit there in small steps, and **no task is finished until its commits are merged into `main`** (a branch that holds the only copy of finished work is a process failure). Merge is `git merge --no-ff` into local `main` once the risk-tier gates pass; the push to `origin/main` still needs the Owner's request. Never leave finished work uncommitted, never reset or overwrite another agent's dirty tree.
+- **Close-out:** when a branch is merged and has no open task, delete it and its worktree in the same session (`git worktree remove`, `git branch -d`; never `-D`, never a branch with uncommitted or unmerged work). Keep only `main`, `production`, and branches with a live task in `plans/active/`. Dated backup/safety branches become tags `archive/<name>` once confirmed redundant, never long-lived branches. Start and end each session with `git branch -vv` and `git worktree list`; record leftovers and why in `PLAN.md`. Procedure: [BRANCH_HYGIENE](docs/quality/BRANCH_HYGIENE.md).
 - Pushing, deploying, installing on the phone, uploading to Play, applying migrations/Edge, sending email and any live data write each need the Owner's request in that task. No `--force`.
 
 ## Hard gates — read first, every task
@@ -115,4 +117,4 @@ Call `keyboard.hide()` before pushing/popping/replacing routes, opening any shee
 
 ## Release evidence workflow - 2026-10-04
 
-Read [the project release runbook](docs/release/RELEASE_RUNBOOK.md) for staging, packaging, production planning or a release handoff; use [the Vietnamese owner packet](docs/release/OWNER_PACKET.vi.md). Review docs/release/release-profile.json and run node --test scripts/release-evidence.test.mjs for changed gate code. The read-only checker uses immutable source/artifact/config/evidence hashes and exact target approval; it performs no deployment and does not enforce remote permissions. Preserve dirty work and current migration blockers. Cloud target allowlist remains empty until owner-reviewed environment mapping and actual enforcement are verified; never copy live user data into staging.
+Read [the release runbook](docs/release/RELEASE_RUNBOOK.md) (checker details, cloud allowlist stays empty until Owner-reviewed mapping) and [the Vietnamese owner packet](docs/release/OWNER_PACKET.vi.md) for staging, packaging or a release handoff; run `node --test scripts/release-evidence.test.mjs` for changed gate code. Never copy live user data into staging.
