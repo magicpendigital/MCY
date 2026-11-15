@@ -5,6 +5,7 @@ test.use({ viewport: { width: 390, height: 844 } });
 async function openDiscover(page: Page) {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
   await expect(page.getByTestId("lesson-finder")).toBeVisible();
 }
@@ -40,7 +41,8 @@ test("the finder lists matching lessons by area and length and opens the chosen 
 test("home offers the three shortest lessons and a guest's empty Journey invites a first record", async ({ page }) => {
   await openDiscover(page);
   await nav(page, "Hôm nay").click();
-  const picks = page.getByTestId("home-quick-picks").locator(".mcy-finder-row");
+  // Scoped to the current screen: the guest's first Hôm nay stays parked beneath check-in with its own rows.
+  const picks = page.getByTestId("flow-current").getByTestId("home-quick-picks").locator(".mcy-finder-row");
   await expect(picks).toHaveCount(3);
   const seconds = (await picks.locator(".mcy-finder-time").allInnerTexts()).map(text => Number.parseInt(text, 10));
   expect(seconds).toEqual([...seconds].sort((a, b) => a - b));
@@ -64,6 +66,7 @@ test("welcome shows the Owner-approved benefit lines (2026-10-23)", async ({ pag
 test("a guest goes from the body map straight to the finder, with a shortcut the learner can take or ignore", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await expect(page.locator(".mcy-step-count")).not.toContainText("Bước");
   await expect(page.locator(".mcy-checkin-progress")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" })).toHaveCount(0);
@@ -93,12 +96,14 @@ test("a guest goes from the body map straight to the finder, with a shortcut the
 test("a guest can skip the body check-in and land on the finder, or save a note without choosing a lesson", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.locator('[data-testid="flow-fixed-footer"]').getByRole("button", { name: "Bỏ qua ghi nhận cơ thể" }).click();
   await expect(page.getByTestId("lesson-finder")).toBeVisible();
   await expect(page.getByTestId("finder-checkin-suggestion")).toHaveCount(0);
 
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.locator(".mcy-body-status-actions").getByRole("button", { name: "Mệt", exact: true }).click();
   await page.getByRole("button", { name: "Chỉ ghi lại cảm nhận hôm nay, không chọn bài" }).click();
   await expect(page.getByRole("heading", { name: "Hành trình của bạn" })).toBeVisible();

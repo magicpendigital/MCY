@@ -17,6 +17,7 @@ const serve = (page: Page, body: unknown | null) => page.route("**/content-publi
 async function openDiscover(page: Page) {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
   await expect(page.getByTestId("lesson-finder")).toBeVisible();
 }

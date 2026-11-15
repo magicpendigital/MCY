@@ -42,6 +42,7 @@ const noSmallFields = async (page: Page, expectAtLeast: number) => {
 test("the body-region note is at least 16px and fits the screen", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).tap();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).tap();
   await page.getByRole("button", { name: "Cổ: Chạm để ghi" }).tap();
   await expect(page.getByRole("dialog")).toBeVisible();
   await noSmallFields(page, 1);
@@ -51,6 +52,7 @@ test("the body-region note is at least 16px and fits the screen", async ({ page 
 test("the reflection note after a lesson is at least 16px and fits the screen", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).tap();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).tap();
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).tap();
   await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).tap();
   const play = page.getByRole("button", { name: /Phát bài học/ });

@@ -4,6 +4,7 @@ import { expect, test } from "@playwright/test";
 test("overall body states Mệt and Khó chịu can be chosen, summarised and left without a body record for a guest", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   const status = page.locator(".mcy-body-status-actions");
   await expect(status.getByRole("button")).toHaveText(["Bình thường", "Mệt", "Khó chịu", "Bỏ qua phần cảm nhận"]);
 
