@@ -16,12 +16,12 @@ import { App as CapacitorApp } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
 import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, energyLabel, sideLabel, type AppLocale } from "./i18n";
 import {
-  ArrowLeftIcon, ArrowRightIcon, ExclamationTriangleIcon, ReloadIcon, CheckIcon, ChevronDownIcon,
-  HeartIcon, InfoCircledIcon, LockClosedIcon, MagicWandIcon,
-  PersonIcon, PlayIcon, ReaderIcon,
+  ArrowLeftIcon, ArrowRightIcon, CheckIcon, ChevronDownIcon,
+  InfoCircledIcon, MagicWandIcon,
+  PersonIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
-import { authRedirectUrl, backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, hasStoredAuthSession, shouldInitializeAuthForCurrentLaunch, syncAuthEmailLocale } from "./backend/supabase";
+import { authRedirectUrl, backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, shouldInitializeAuthForCurrentLaunch, syncAuthEmailLocale } from "./backend/supabase";
 import { readEmailLocale, rememberEmailLocale } from "./backend/emailLocale";
 import { EmailLanguageSelect } from "./backend/EmailLanguageSelect";
 import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage, passwordSignInMessage } from "./backend/passwordAuth";
@@ -52,7 +52,6 @@ import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { makeSnapshot, snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo, persistConsentChanges, persistCurrentCheckin, persistProfile, toLearnerCheckinPayload } from "./app/persistence";
 import { authErrorMessage, handleNativeAuthUrl } from "./app/auth";
-import { Brand } from "./app/ui/Brand";
 import { Action, Choice, DemoNote, Eyebrow } from "./app/ui/controls";
 import { Header } from "./app/ui/Header";
 import { BodyMap } from "./app/body/BodyMap";
@@ -62,6 +61,8 @@ import { finishAtAuthDestination, RoutesContext } from "./app/navigation";
 import { FlowRouteFocusManager, withFlowScreenAccessibility } from "./app/accessibility";
 import { RouteSuspense } from "./app/RouteSuspense";
 import { BottomNav } from "./app/BottomNav";
+import { WelcomeScreen } from "./screens/welcome/WelcomeScreen";
+import { WelcomeFooter } from "./screens/welcome/WelcomeFooter";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -566,42 +567,6 @@ function AuthSessionRouter() {
     else finishAtAuthDestination(flow, ROUTES, normalizeAuthDestination(state.authReturnTo));
   }, [flow, state.authReturnTo, state.backendStatus, state.consentPolicyVersions, state.onboardingComplete, state.privacyAccepted, state.signedIn, state.termsAccepted]);
   return null;
-}
-
-function WelcomeScreen() {
-  const { state } = useDemo();
-  const locale = state.locale;
-  const storedSession = hasStoredAuthSession();
-  const restoreNote = storedSession && state.backendStatus === "loading"
-    ? <section className="mcy-restore-card" role="status"><span className="mcy-restore-icon spinning" aria-hidden="true"><ReloadIcon /></span><div><strong>{msg(locale, "session.restoring")}</strong><p>{msg(locale, "session.restoringHint")}</p></div></section>
-    : storedSession && state.backendStatus === "error"
-      ? <section className="mcy-restore-card failed" role="alert"><span className="mcy-restore-icon" aria-hidden="true"><ExclamationTriangleIcon /></span><div><strong>{msg(locale, "session.restoreFailedTitle")}</strong><p>{msg(locale, "session.restoreFailed")}</p></div><button className="mcy-restore-retry" onClick={() => window.dispatchEvent(new Event(SESSION_RESTORE_RETRY_EVENT))}>{msg(locale, "session.retry")}</button></section>
-      : null;
-  return <MobileScroll className="mcy-scroll welcome"><main className="mcy-welcome">
-    <img className="mcy-welcome-photo" src="/assets/welcome-portrait-1024.webp" srcSet="/assets/welcome-portrait-512.webp 512w, /assets/welcome-portrait-1024.webp 1024w" sizes="(min-width: 700px) 450px, 100vw" alt={locale === "en-US" ? "A woman resting on a yoga mat" : "Người ngồi thư giãn trên thảm yoga"} loading="eager" fetchPriority="high" decoding="async" />
-    <div className="mcy-welcome-top"><Brand locale={locale} heading />{import.meta.env.DEV && <LocaleToggle />}<p>{msg(locale, "brand.slogan")}</p>{locale === "en-US" && <small className="mcy-slogan-note">{msg(locale, "brand.sloganNote")}</small>}</div>
-    <div className="mcy-welcome-benefits"><div><span><PlayIcon /></span>{msg(locale, "welcome.benefit1")}</div><div><span><HeartIcon /></span>{msg(locale, "welcome.benefit2")}</div><div><span><LockClosedIcon /></span>{msg(locale, "welcome.benefit3")}</div></div>
-    {restoreNote}
-    <p className="mcy-welcome-quote">{msg(locale, "welcome.quote")}</p>
-  </main></MobileScroll>;
-}
-
-function LocaleToggle() {
-  const { state, update } = useDemo();
-  const locale = state.locale;
-  return <button className="mcy-language-toggle" aria-label={msg(locale, locale === "vi-VN" ? "locale.switchToEnglish" : "locale.switchToVietnamese")} onClick={() => update({ locale: locale === "vi-VN" ? "en-US" : "vi-VN" })}>{locale === "vi-VN" ? "VI / EN*" : "EN / VI"}</button>;
-}
-
-function WelcomeFooter() {
-  const flow = useFlow();
-  const { state, update } = useDemo();
-  const locale = state.locale;
-  const restoringStoredSession = hasStoredAuthSession() && state.backendStatus !== "ready";
-  return <div className="mcy-flow-footer mcy-welcome-footer mcy-welcome-bottom">
-    <Action onClick={() => { update({ checkinStep: 1 }); flow.push(ROUTES.checkin); }}>{msg(locale, "welcome.tryGuest")}</Action>
-    {!restoringStoredSession && <div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.login")}</button></div>}
-    {!restoringStoredSession && <small>{msg(locale, "welcome.note")}</small>}
-  </div>;
 }
 
 function AuthEmailScreen() {
