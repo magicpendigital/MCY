@@ -598,7 +598,7 @@ function WelcomeFooter() {
   const locale = state.locale;
   const restoringStoredSession = hasStoredAuthSession() && state.backendStatus !== "ready";
   return <div className="mcy-flow-footer mcy-welcome-footer mcy-welcome-bottom">
-    <Action onClick={() => { update({ checkinStep: 1 }); flow.push(ROUTES.checkin); }}>{msg(locale, "welcome.tryGuest")}</Action>
+    <Action onClick={() => flow.replace(ROUTES.home)}>{msg(locale, "welcome.tryGuest")}</Action>
     {!restoringStoredSession && <div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.login")}</button></div>}
     {!restoringStoredSession && <small>{msg(locale, "welcome.note")}</small>}
   </div>;
@@ -945,13 +945,13 @@ function HomeScreen() {
   return <MobileScroll className="mcy-scroll"><main className="mcy-page">
     <Eyebrow>{previous ? "MỘT LẦN QUAY LẠI, KHÔNG CẦN VỘI" : "MỖI BUỔI BẮT ĐẦU TỪ HÔM NAY"}</Eyebrow>
     <h1>{previous ? "Hôm nay bạn muốn bắt đầu thế nào?" : "Một chút thời gian cho chính mình."}</h1>
-    <p className="mcy-lead">Ghi lại điều bạn muốn cho hôm nay, rồi tự chọn một bài học video miễn phí. Bạn không cần đăng nhập để xem bài.</p>
+    <p className="mcy-lead">Chọn một bài ngắn bên dưới để bắt đầu ngay. Bạn không cần đăng nhập hay điền gì trước.</p>
     {paceMemory ? <div className="mcy-memory-hint"><MagicWandIcon /><span>Lần trước bạn nói nhịp hơi nhanh. Lần này bạn có thể chọn chậm hơn.</span></div> : null}
-    <div className="mcy-home-photo"><img src="/assets/today-neck-stretch-1200.webp" srcSet="/assets/today-neck-stretch-600.webp 600w, /assets/today-neck-stretch-1200.webp 1200w" sizes="(min-width: 700px) 450px, 100vw" alt="Hình minh họa buổi tập yoga tại nhà" loading="lazy" decoding="async" /><span>Một bài học miễn phí, do bạn tự chọn</span></div>
-    <div className="mcy-home-cta"><Action onClick={() => flow.push(ROUTES.checkin)}>{previous ? "Ghi nhận hôm nay" : "Bắt đầu check-in"}</Action><span>Không cần check-in để duyệt bài học</span></div>
     <HomeQuickPicks />
+    <div className="mcy-home-cta"><Action secondary onClick={() => flow.push(ROUTES.checkin)}>{previous ? "Ghi nhận hôm nay" : "Bắt đầu check-in"}</Action><span>Tùy chọn · ghi nhận cơ thể trước hay sau khi tập đều được</span></div>
+    <div className="mcy-home-photo"><img src="/assets/today-neck-stretch-1200.webp" srcSet="/assets/today-neck-stretch-600.webp 600w, /assets/today-neck-stretch-1200.webp 1200w" sizes="(min-width: 700px) 450px, 100vw" alt="Hình minh họa buổi tập yoga tại nhà" loading="lazy" decoding="async" /><span>Một bài học miễn phí, do bạn tự chọn</span></div>
     <div className="mcy-section-label">BẠN SẼ ĐI QUA</div>
-    <div className="mcy-steps-list"><div><b>01</b><span>Check-in ngắn<small>Ghi nhận cảm nhận, năng lượng hoặc bỏ qua.</small></span></div><div><b>02</b><span>Tự chọn bài học<small>Duyệt từng video miễn phí ngay trong ứng dụng.</small></span></div><div><b>03</b><span>Phản hồi của bạn<small>Ghi lại cảm nhận sau buổi nếu bạn muốn.</small></span></div></div>
+    <div className="mcy-steps-list"><div><b>01</b><span>Chọn một bài ngắn<small>Xem video miễn phí ngay trong ứng dụng.</small></span></div><div><b>02</b><span>Tập theo nhịp của bạn<small>Dừng bất cứ lúc nào bạn thấy cần.</small></span></div><div><b>03</b><span>Ghi nhận nếu bạn muốn<small>Check-in và phản hồi sau buổi đều là tùy chọn.</small></span></div></div>
     <DemoNote>Khi đăng nhập, hồ sơ, lựa chọn quyền và check-in đã đồng ý lưu sẽ được kết nối với tài khoản của bạn.</DemoNote>
   </main></MobileScroll>;
 }

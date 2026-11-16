@@ -18,6 +18,7 @@ async function openFirstLesson(page: Page, api: "fake" | "blocked") {
   await page.route("https://www.youtube.com/iframe_api", route => api === "fake" ? route.fulfill({ status: 200, contentType: "text/javascript", body: fakeApi }) : route.abort("blockedbyclient"));
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
   await page.getByTestId("free-course-catalog").getByRole("button", { name: /Một chút chuyển động nhẹ/ }).click();
   await page.locator(".mcy-course-play").click();

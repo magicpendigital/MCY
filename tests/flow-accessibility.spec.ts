@@ -4,6 +4,7 @@ import { expect, test } from "@playwright/test";
 test("parked flow entries are inert and hidden from assistive technology", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Hôm nay, cơ thể bạn cảm thấy thế nào?" })).toBeVisible();
 
   const entries = page.locator(".flow-screen");
@@ -26,9 +27,11 @@ test("parked flow entries are inert and hidden from assistive technology", async
 test("returning to a route re-exposes it and parks the one that was current", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Hôm nay, cơ thể bạn cảm thấy thế nào?" })).toBeVisible();
   await page.getByRole("button", { name: "Quay lại" }).click();
   await expect(page.locator(".flow-screen")).toHaveCount(1);
   await expect(page.locator('.flow-screen[data-flow-current="true"]')).toHaveJSProperty("inert", false);
-  await expect(page.getByRole("button", { name: "Trải nghiệm thử" })).toBeVisible();
+  // Back from check-in re-exposes Hôm nay, the screen a guest enters first (Chào is replaced, not parked beneath it).
+  await expect(page.getByRole("heading", { name: "Một chút thời gian cho chính mình." })).toBeVisible();
 });

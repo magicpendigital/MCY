@@ -247,6 +247,8 @@ async function activate(target: Locator, touch: boolean) {
 
 async function openGuestCheckin(page: Page, touch = false, locale: "vi-VN" | "en-US" = "vi-VN") {
   await activate(page.locator(".mcy-welcome-bottom .mcy-action"), touch);
+  // A guest now lands on Hôm nay first; check-in is the optional second choice there.
+  await activate(page.getByRole("button", { name: "Bắt đầu check-in", exact: true }), touch);
   await expect(page.getByRole("heading", { name: locale === "en-US" ? "How does your body feel today?" : "Hôm nay, cơ thể bạn cảm thấy thế nào?" })).toBeVisible();
   if (locale === "en-US") await expect(page.locator(".mcy-header-title")).toHaveText("A Little Yoga");
 }
@@ -376,6 +378,7 @@ test("learner-facing MVP surfaces do not expose preview or mock copy", async ({ 
   await page.goto("/?mode=web");
   await expect(learnerSurface).not.toContainText(forbiddenCopy);
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await expect(learnerSurface).not.toContainText(forbiddenCopy);
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
   await expect(learnerSurface).not.toContainText(forbiddenCopy);
@@ -426,7 +429,7 @@ test("critical lesson art loads promptly while secondary images stay deferred", 
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
   await page.locator(".mcy-bottom-nav button").first().click();
   await expect(page.getByRole("heading", { name: "Một chút thời gian cho chính mình." })).toBeVisible();
-  const homePhoto = page.locator(".mcy-home-photo img");
+  const homePhoto = page.locator("[data-testid='flow-current'] .mcy-home-photo img");
   await expect(homePhoto).toHaveAttribute("loading", "lazy");
   await expect(homePhoto).toHaveAttribute("decoding", "async");
   await expect(homePhoto).toHaveAttribute("src", "/assets/today-neck-stretch-1200.webp");
@@ -450,7 +453,7 @@ test("responsive WebP candidates select higher-resolution assets on high-density
 
     await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
     await page.locator(".mcy-bottom-nav button").first().click();
-    const homePhoto = page.locator(".mcy-home-photo img");
+    const homePhoto = page.locator("[data-testid='flow-current'] .mcy-home-photo img");
     await homePhoto.scrollIntoViewIfNeeded();
     await expect.poll(() => homePhoto.evaluate(image => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0)).toBe(true);
     expect(await homePhoto.evaluate(image => (image as HTMLImageElement).currentSrc)).toMatch(/today-neck-stretch-1200\.webp$/);
@@ -489,7 +492,8 @@ test("guest can browse free lessons without an account and retains check-in choi
   await expect(page.getByTestId("free-course-catalog")).toBeVisible();
   // The finder offers the matching label as a shortcut the learner can take or ignore; nothing is filtered for them.
   await expect(page.getByTestId("finder-checkin-suggestion")).toContainText("Xem bài: Cổ và vai");
-  await expect(page.locator(".mcy-finder-row")).toHaveCount(0);
+  // Scoped to the current screen: Hôm nay, entered first as a guest, stays parked beneath with its own three lesson rows.
+  await expect(page.locator("[data-testid='flow-current'] .mcy-finder-row")).toHaveCount(0);
   await expect(page.locator("[data-testid='flow-current'] .mcy-checkin-page")).toHaveCount(0);
   await expect.poll(() => assistantRequests.length).toBe(0);
 });
@@ -1464,6 +1468,7 @@ test("short portrait keeps welcome, lesson and reflection actions inside the vie
     expect(welcomeLayout.wordmarkRight).toBeLessThanOrEqual(welcomeLayout.screenRight);
     expect(welcomeLayout.horizontalOverflow).toBe(false);
     await welcomeAction.tap();
+    await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).tap();
 
     await page.getByRole("button", { name: "Tìm bài học ngắn" }).tap();
     await expect(page.getByTestId("free-course-catalog")).toBeVisible();
@@ -1539,6 +1544,7 @@ test("bottom navigation has an opaque surface and readable muted labels", async 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
 
   const inactiveItems = page.locator(".mcy-bottom-nav button:not([aria-current='page'])");

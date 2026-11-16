@@ -9,6 +9,7 @@ const jpeg = Buffer.from("/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP////////////////////
 async function openCourse(page: import("@playwright/test").Page) {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
   await expect(page.getByTestId("free-course-catalog")).toBeVisible({ timeout: 30_000 });
   await page.getByRole("button", { name: /Một chút chuyển động nhẹ/ }).click();
@@ -63,6 +64,7 @@ test("each course ends with provisional benefits and cautions, labelled as await
 test("check-in offers Mông in the trunk group with left, right and both, and the step-one hint is a footnote", async ({ page }) => {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   const hint = page.locator(".mcy-star-hint");
   await expect(hint.first()).toContainText("Chọn điểm trên hình hoặc nhóm vùng tay chân bên dưới", { timeout: 30_000 });
   await expect(hint.first().locator(".mcy-star")).toHaveText("*");
