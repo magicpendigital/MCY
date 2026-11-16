@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — Tách tệp điểm nóng (Prototype.tsx, prototype.css, i18n.ts)
 
-Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); lát 1 gộp vào `main` 2026-11-14 (Owner duyệt); lát 2 gộp vào `main` 2026-11-14 (Owner duyệt); lát 3 gộp vào `main` 2026-11-14 (Owner duyệt); lát 4 gộp vào `main` 2026-11-15 (Owner duyệt); lát 5 gộp vào `main` 2026-11-16 (Owner duyệt); lát 6 gộp vào `main` 2026-11-16 (Owner duyệt).
+Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); lát 1 gộp vào `main` 2026-11-14 (Owner duyệt); lát 2 gộp vào `main` 2026-11-14 (Owner duyệt); lát 3 gộp vào `main` 2026-11-14 (Owner duyệt); lát 4 gộp vào `main` 2026-11-15 (Owner duyệt); lát 5 gộp vào `main` 2026-11-16 (Owner duyệt); lát 6 gộp vào `main` 2026-11-16 (Owner duyệt); lát 7 xong 2026-11-16 trên nhánh `claude/lat-7-consent`, chờ Owner duyệt gộp.
 
 ## 1. Mục tiêu
 `src/Prototype.tsx` (170 KB) bị 25% commit chạm, `src/prototype.css` (97 KB) 21%, `src/i18n.ts` 14%. Hai việc song song gần như luôn đụng nhau. Tách thành mỗi màn/tính năng một tệp để agent làm song song theo vùng và đọc ít ngữ cảnh hơn.
@@ -59,3 +59,4 @@ Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md)
 - [x] 5 Lát 4: `app/navigation.tsx`, `accessibility.tsx`, `RouteSuspense.tsx`, `BottomNav.tsx` (thêm context route; Claude làm lại tay sau khi job mca hỏng; 139 → 136 KB; `npm test`, `check:ios15` PASS; Playwright 218/223, 5 lỗi hết giờ khi máy nặng, chạy lại 5/5 PASS)
 - [x] 6 Lát 5: `screens/welcome/WelcomeScreen.tsx` (+ `LocaleToggle`), `WelcomeFooter.tsx` (dùng `useRoutes()`; 136 → 132 KB; `npm test`, `check:ios15`, Playwright 223/223 PASS)
 - [x] 7 Lát 6: `screens/auth/AuthEmailScreen.tsx`, `AuthCodeScreen.tsx` (dùng `useRoutes()`; nguyên văn trừ 2 dòng `useRoutes()`; 132 → 121 KB; `npm test`, `check:ios15` PASS; Playwright 221/225, 4 lỗi khi máy 100% CPU — auth-callback:65, learner-ux:465, learner-ux:915, practice-flow:42 — chạy lại riêng 5/5 PASS)
+- [x] 8 Lát 7: `screens/consent/ConsentScreen.tsx`, `ConsentFooter.tsx` (dùng `useRoutes()`, kể cả `finishAtAuthDestination(flow, routes, …)`; nguyên văn trừ 1 dòng `useRoutes()`; 121 → 112 KB; `npm test`, `check:ios15` PASS; Playwright 224/225, learner-ux:1038 hết giờ khi máy nặng, chạy lại PASS)
