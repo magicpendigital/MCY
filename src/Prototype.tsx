@@ -21,12 +21,10 @@ import {
   PersonIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
-import { authRedirectUrl, backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, shouldInitializeAuthForCurrentLaunch, syncAuthEmailLocale } from "./backend/supabase";
-import { readEmailLocale, rememberEmailLocale } from "./backend/emailLocale";
-import { EmailLanguageSelect } from "./backend/EmailLanguageSelect";
-import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage, passwordSignInMessage } from "./backend/passwordAuth";
+import { backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
+import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage } from "./backend/passwordAuth";
 import { observeLearnerSession } from "./backend/learnerSession";
-import { NATIVE_AUTH_PENDING_KEY, rememberNativeAuthUrl } from "./backend/nativeAuth";
+import { rememberNativeAuthUrl } from "./backend/nativeAuth";
 import { isWebAuthCallback } from "./backend/authRouting";
 import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
 import {
@@ -51,7 +49,7 @@ import { aiPracticeOffered, hasCheckinBaseline, hasCurrentAiConsent, isCheckinAu
 import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { makeSnapshot, snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo, persistConsentChanges, persistCurrentCheckin, persistProfile, toLearnerCheckinPayload } from "./app/persistence";
-import { authErrorMessage, handleNativeAuthUrl } from "./app/auth";
+import { handleNativeAuthUrl } from "./app/auth";
 import { Action, Choice, DemoNote, Eyebrow } from "./app/ui/controls";
 import { Header } from "./app/ui/Header";
 import { BodyMap } from "./app/body/BodyMap";
@@ -63,6 +61,8 @@ import { RouteSuspense } from "./app/RouteSuspense";
 import { BottomNav } from "./app/BottomNav";
 import { WelcomeScreen } from "./screens/welcome/WelcomeScreen";
 import { WelcomeFooter } from "./screens/welcome/WelcomeFooter";
+import { AuthEmailScreen } from "./screens/auth/AuthEmailScreen";
+import { AuthCodeScreen } from "./screens/auth/AuthCodeScreen";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -567,155 +567,6 @@ function AuthSessionRouter() {
     else finishAtAuthDestination(flow, ROUTES, normalizeAuthDestination(state.authReturnTo));
   }, [flow, state.authReturnTo, state.backendStatus, state.consentPolicyVersions, state.onboardingComplete, state.privacyAccepted, state.signedIn, state.termsAccepted]);
   return null;
-}
-
-function AuthEmailScreen() {
-  const flow = useFlow();
-  const keyboard = useKeyboard();
-  const { state, update } = useDemo();
-  const [email, setEmail] = useState(state.accountEmail);
-  const [emailLocale, setEmailLocale] = useState(() => readEmailLocale(state.locale));
-  const [error, setError] = useState("");
-  const [sending, setSending] = useState(false);
-  const [method, setMethod] = useState<"code" | "password">("code");
-  const [password, setPassword] = useState("");
-  const usePassword = state.authMode === "login" && method === "password";
-  const submitPassword = async () => {
-    keyboard.hide();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError("Kiểm tra lại địa chỉ email bạn vừa nhập."); return; }
-    if (!password) { setError("Nhập mật khẩu để tiếp tục."); return; }
-    if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-    setSending(true);
-    setError("");
-    try {
-      const client = await getSupabaseClient();
-      if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-      const { data, error: authError } = await client.auth.signInWithPassword({ email: email.trim(), password });
-      if (authError || !data.user) { setError(passwordSignInMessage(authError)); return; }
-      setPassword("");
-      update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? email.trim(), backendStatus: "loading", backendError: "" });
-      window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
-      if (data.session && !Capacitor.isNativePlatform()) await syncAuthEmailLocale(data.session, readEmailLocale(state.locale));
-    } catch (cause) {
-      setError(passwordSignInMessage(cause));
-    } finally {
-      setSending(false);
-    }
-  };
-  const submit = async () => {
-    keyboard.hide();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError("Kiểm tra lại địa chỉ email bạn vừa nhập."); return; }
-    if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-    setSending(true);
-    setError("");
-    try {
-      const native = Capacitor.isNativePlatform();
-      if (native) window.localStorage.setItem(NATIVE_AUTH_PENDING_KEY, String(Date.now()));
-      const client = await getSupabaseClient();
-      if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-      const { error: authError } = await client.auth.signInWithOtp({
-        email: email.trim(),
-        options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl("learner", emailLocale), data: { locale: emailLocale } },
-      });
-      if (authError) {
-        if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-        setError(authErrorMessage(authError, "Chưa gửi được email xác minh. Hãy thử lại sau."));
-        return;
-      }
-      update({ accountEmail: email.trim(), authCode: "" });
-      flow.replace(ROUTES.authCode);
-    } catch (cause) {
-      if (Capacitor.isNativePlatform()) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-      setError(authErrorMessage(cause, "Chưa gửi được email xác minh. Hãy thử lại sau."));
-    } finally {
-      setSending(false);
-    }
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
-    <Eyebrow>{state.authMode === "create" ? "TẠO TÀI KHOẢN" : "ĐĂNG NHẬP"}</Eyebrow>
-    <h1>{state.authMode === "create" ? "Tạo tài khoản nhanh bằng email" : usePassword ? "Đăng nhập bằng mật khẩu" : "Đăng nhập nhanh qua email"}</h1>
-    {state.authMode === "create" && <p className="mcy-lead">Một Chút Yoga sẽ gửi email xác minh tới địa chỉ bạn cung cấp.</p>}
-    <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
-    {state.authMode === "login" && <div className="mcy-chip-grid mcy-auth-method" role="group" aria-label="Cách đăng nhập"><Choice selected={!usePassword} disabled={sending} onClick={() => { setMethod("code"); setError(""); }}>Mã hoặc liên kết qua email</Choice><Choice selected={usePassword} disabled={sending} onClick={() => { setMethod("password"); setError(""); }}>Mật khẩu</Choice></div>}
-    {usePassword && <label className="mcy-form-field">Mật khẩu<KeyboardInput type="password" autoComplete="current-password" aria-label="Mật khẩu" value={password} onChange={event => { setPassword(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>}
-    {!usePassword && <EmailLanguageSelect value={emailLocale} disabled={sending} onChange={locale => { setEmailLocale(locale); rememberEmailLocale(locale); }} />}
-    {error && <div className="mcy-form-error" role="alert">{error}</div>}
-    {!backendConfigured && <div className="mcy-alert">Backend chưa kết nối ở môi trường hiện tại. Bạn vẫn có thể xem và thử luồng khách.</div>}
-    <Action disabled={sending || !backendConfigured} onClick={usePassword ? submitPassword : submit}>{usePassword ? (sending ? "Đang đăng nhập…" : "Đăng nhập") : sending ? "Đang gửi…" : state.authMode === "create" ? "Gửi email xác minh" : "Gửi mã"}</Action>
-    {state.authMode === "login" && (usePassword
-      ? <DemoNote>Chưa đặt mật khẩu? Chọn “Mã hoặc liên kết qua email” để đăng nhập, rồi đặt mật khẩu trong Cá nhân → Bảo mật tài khoản.</DemoNote>
-      : <DemoNote>Email gửi tới bạn có cả mã và liên kết một lần: nhập mã trong ứng dụng hoặc mở liên kết, dùng cách nào thuận tiện hơn.</DemoNote>)}
-    {state.authMode === "create" && isCheckinAuthReturn(state.authReturnTo) && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); flow.replace(ROUTES.discover); }}>Xem bài học video miễn phí</button>}
-    {state.authMode === "create" && <DemoNote>Email xác minh chỉ dùng qua Supabase Auth. Hãy hoàn tất trên cùng thiết bị để tiếp tục đúng phiên.</DemoNote>}
-  </main></MobileScroll>;
-}
-
-function AuthCodeScreen() {
-  const flow = useFlow();
-  const keyboard = useKeyboard();
-  const { state, update } = useDemo();
-  const [code, setCode] = useState(state.authCode);
-  const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
-  const [verifying, setVerifying] = useState(false);
-  const [resending, setResending] = useState(false);
-  const verify = async () => {
-    keyboard.hide();
-    if (!/^(?:\d{6}|\d{8})$/.test(code)) { setError("Nhập đủ mã xác minh trong email để tiếp tục."); return; }
-    if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-    setVerifying(true);
-    try {
-      const client = await getSupabaseClient();
-      if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-      const { data, error: authError } = await client.auth.verifyOtp({ email: state.accountEmail, token: code, type: "email" });
-      if (authError || !data.user) { setError("Mã không hợp lệ hoặc đã hết hạn. Hãy kiểm tra hộp thư và thử lại."); return; }
-      if (data.session && !Capacitor.isNativePlatform()) await syncAuthEmailLocale(data.session, readEmailLocale(state.locale));
-      if (Capacitor.isNativePlatform()) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-      update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? state.accountEmail, backendStatus: "loading", backendError: "" });
-      window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Chưa xác minh được mã. Hãy thử lại.");
-    } finally {
-      setVerifying(false);
-    }
-  };
-  const resend = async () => {
-    if (!backendConfigured) return;
-    setResending(true);
-    const native = Capacitor.isNativePlatform();
-    try {
-      if (native) window.localStorage.setItem(NATIVE_AUTH_PENDING_KEY, String(Date.now()));
-      const client = await getSupabaseClient();
-      if (!client) return;
-      const emailLocale = readEmailLocale(state.locale);
-      const { error: authError } = await client.auth.signInWithOtp({ email: state.accountEmail, options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl("learner", emailLocale), data: { locale: emailLocale } } });
-      if (authError) {
-        if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-        setError(authErrorMessage(authError, "Chưa gửi lại được email xác minh."));
-        setNotice("");
-      } else {
-        setError("");
-        setNotice("Email xác minh mới đã được gửi. Mã hoặc liên kết cũ có thể hết hiệu lực.");
-      }
-    } catch (cause) {
-      if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-      setNotice("");
-      setError(authErrorMessage(cause, "Chưa gửi lại được email xác minh."));
-    } finally {
-      setResending(false);
-    }
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
-    <Eyebrow>XÁC MINH EMAIL</Eyebrow><h1>Kiểm tra hộp thư của bạn.</h1>
-    <p className="mcy-lead">Email đã gửi tới <strong>{state.accountEmail}</strong>. Nếu thư có mã xác minh, nhập mã bên dưới. Nếu thư có liên kết, mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
-    <label className="mcy-form-field">Mã xác minh (nếu email có mã)<KeyboardInput inputMode="numeric" autoComplete="one-time-code" aria-label="Mã xác minh" placeholder="Nhập mã trong email" value={code} onChange={event => { setCode(event.target.value.replace(/\D/g, "").slice(0, 8)); setError(""); }} onBlur={() => keyboard.hide()} /></label>
-    <div className="mcy-code-hint">Mã hoặc liên kết chỉ dùng một lần. Không gửi mã cho người khác.</div>
-    {error && <div className="mcy-form-error" role="alert">{error}</div>}
-    {notice && <div className="mcy-inline-note" role="status"><InfoCircledIcon />{notice}</div>}
-    <Action disabled={verifying} onClick={verify}>{verifying ? "Đang xác minh…" : "Xác minh email"}</Action>
-    <div className="mcy-auth-secondary"><button disabled={resending} onClick={() => { setCode(""); void resend(); }}>{resending ? "Đang gửi…" : "Gửi lại email"}</button><button onClick={() => flow.replace(ROUTES.authEmail)}>Đổi email</button></div>
-    <DemoNote>Mở liên kết trên cùng thiết bị đã yêu cầu xác minh. Trên điện thoại, liên kết sẽ quay lại ứng dụng.</DemoNote>
-  </main></MobileScroll>;
 }
 
 function ConsentScreen() {
