@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — Lát 0: khách xem được bài trong ≤3 chạm (check-in thành tùy chọn)
 
-Trạng thái: đã làm xong trên nhánh, chờ Owner xem và gộp vào `main` (duyệt 2026-11-15, Owner trả lời "Đồng ý cho làm lát 0" và "Đồng ý đổi check-in là tùy chọn, sau khi đã xem bài"). Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-15-three-tap-guest-path.md`. Khi xong, cập nhật `PLAN.md`.
+Trạng thái: đã gộp vào `main` (`a89ed98`, PR #1, 16/11); còn chờ Owner đọc nguyên văn chữ mới (mục 12) rồi mới chuyển sang `plans/done/` (duyệt 2026-11-15, Owner trả lời "Đồng ý cho làm lát 0" và "Đồng ý đổi check-in là tùy chọn, sau khi đã xem bài"). Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-15-three-tap-guest-path.md`. Khi xong, cập nhật `PLAN.md`.
 
 ## 1. Mục tiêu
 Nhóm tester báo: (1) muốn vào bài học trong ≤3 chạm; (2) ngại điền form khảo sát vì chưa thấy giá trị, chỉ muốn xem ngay bài hợp với mình. Từ code (15/11): đường ngắn nhất của khách là 4 chạm (Chào → Check-in → Khám phá → Phát), và check-in không đổi bài nào hiện ra. Lát 0 là bản vá nhỏ nhất đạt ≤3 chạm bằng thứ đã có: nút "Trải nghiệm thử" vào màn Hôm nay thay vì check-in; trên Hôm nay, khối "Bắt đầu nhẹ nhàng" (3 bài ngắn nhất) lên trước, check-in thành lối phụ. Đường: Chào (1) → bài ở Hôm nay (2) → Phát (3). Các lát sau (chip theo vùng, chuỗi clip tự chuyển, phản hồi 1 chạm, tài khoản sau buổi 2–3) có kế hoạch riêng.
