@@ -34,6 +34,7 @@ const manifestOf = (...units: Array<[typeof imageUnit, "complete" | "none"]>) =>
 async function openDiscover(page: Page) {
   await page.goto("/?mode=web");
   await page.getByRole("button", { name: "Trải nghiệm thử" }).click();
+  await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
   await page.getByRole("button", { name: "Tìm bài học ngắn" }).click();
   // The first run compiles the lazy Khám phá chunk on a cold dev server, so allow it extra time.
   await expect(page.getByRole("heading", { name: "Bài học yoga miễn phí" })).toBeVisible({ timeout: 30_000 });

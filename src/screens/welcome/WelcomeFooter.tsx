@@ -12,7 +12,7 @@ export function WelcomeFooter() {
   const locale = state.locale;
   const restoringStoredSession = hasStoredAuthSession() && state.backendStatus !== "ready";
   return <div className="mcy-flow-footer mcy-welcome-footer mcy-welcome-bottom">
-    <Action onClick={() => { update({ checkinStep: 1 }); flow.push(routes.checkin); }}>{msg(locale, "welcome.tryGuest")}</Action>
+    <Action onClick={() => flow.replace(routes.home)}>{msg(locale, "welcome.tryGuest")}</Action>
     {!restoringStoredSession && <div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(routes.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(routes.authEmail); }}>{msg(locale, "welcome.login")}</button></div>}
     {!restoringStoredSession && <small>{msg(locale, "welcome.note")}</small>}
   </div>;
