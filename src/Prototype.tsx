@@ -14,21 +14,19 @@ import "@fontsource/source-serif-4/vietnamese-400.css";
 import "@fontsource/source-serif-4/vietnamese-400-italic.css";
 import { App as CapacitorApp } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
-import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, energyLabel, sideLabel, type AppLocale } from "./i18n";
+import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, sideLabel, type AppLocale } from "./i18n";
 import {
-  ArrowLeftIcon, ArrowRightIcon, ExclamationTriangleIcon, ReloadIcon, CheckIcon, ChevronDownIcon,
-  HeartIcon, InfoCircledIcon, LockClosedIcon, MagicWandIcon,
-  PersonIcon, PlayIcon, ReaderIcon,
+  ArrowLeftIcon, ArrowRightIcon, CheckIcon,
+  InfoCircledIcon,
+  PersonIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
 import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
-import { authRedirectUrl, backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, hasStoredAuthSession, shouldInitializeAuthForCurrentLaunch, syncAuthEmailLocale } from "./backend/supabase";
-import { readEmailLocale, rememberEmailLocale } from "./backend/emailLocale";
-import { EmailLanguageSelect } from "./backend/EmailLanguageSelect";
-import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage, passwordSignInMessage } from "./backend/passwordAuth";
+import { backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
+import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage } from "./backend/passwordAuth";
 import { observeLearnerSession } from "./backend/learnerSession";
-import { NATIVE_AUTH_PENDING_KEY, rememberNativeAuthUrl } from "./backend/nativeAuth";
+import { rememberNativeAuthUrl } from "./backend/nativeAuth";
 import { isWebAuthCallback } from "./backend/authRouting";
-import { BODY_REGIONS, BODY_REGION_GROUPS, bodyRegionCodes, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodyRegionGroup, type BodySide } from "./bodyRegions";
+import { BODY_REGIONS, bodyRegionCodes, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodySide } from "./bodyRegions";
 import {
   deleteLearnerCheckin,
   CONSENT_POLICY_VERSIONS,
@@ -41,18 +39,16 @@ import {
   saveConsentEvent,
   type ConsentPurpose,
 } from "./backend/learnerData";
-import type { FreeCourseId } from "./courses/freeCourses";
 import type { PracticeContext } from "../supabase/functions/_shared/practiceContract";
 import { rememberedPace } from "./practice/feedbackMemory";
-import type { DemoState, Energy, Observation, Outcome, Pace } from "./app/model";
+import type { DemoState, Observation, Outcome, Pace } from "./app/model";
 import { clearAccountScopedState, DemoContext, initialState, useDemo } from "./app/state";
 import { AUTH_SIGN_IN_EVENT, SESSION_RESTORE_RETRY_EVENT } from "./app/events";
-import { aiPracticeOffered, hasCheckinBaseline, hasCurrentAiConsent, isCheckinAuthReturn, latestFeedback, normalizeAuthDestination } from "./app/predicates";
+import { hasCurrentAiConsent, latestFeedback, normalizeAuthDestination } from "./app/predicates";
 import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { makeSnapshot, snapshotFromDatabase } from "./app/snapshots";
-import { consentStateForDemo, persistConsentChanges, persistCurrentCheckin, persistProfile, toLearnerCheckinPayload } from "./app/persistence";
-import { authErrorMessage, handleNativeAuthUrl } from "./app/auth";
-import { Brand } from "./app/ui/Brand";
+import { consentStateForDemo, persistProfile } from "./app/persistence";
+import { handleNativeAuthUrl } from "./app/auth";
 import { Action, Choice, DemoNote, Eyebrow } from "./app/ui/controls";
 import { Header } from "./app/ui/Header";
 import { BodyMap } from "./app/body/BodyMap";
@@ -62,6 +58,16 @@ import { finishAtAuthDestination, RoutesContext } from "./app/navigation";
 import { FlowRouteFocusManager, withFlowScreenAccessibility } from "./app/accessibility";
 import { RouteSuspense } from "./app/RouteSuspense";
 import { BottomNav } from "./app/BottomNav";
+import { WelcomeScreen } from "./screens/welcome/WelcomeScreen";
+import { WelcomeFooter } from "./screens/welcome/WelcomeFooter";
+import { ConsentScreen } from "./screens/consent/ConsentScreen";
+import { ConsentFooter } from "./screens/consent/ConsentFooter";
+import { OnboardingScreen } from "./screens/onboarding/OnboardingScreen";
+import { HomeScreen } from "./screens/home/HomeScreen";
+import { CheckinScreen } from "./screens/checkin/CheckinScreen";
+import { CheckinFooter } from "./screens/checkin/CheckinFooter";
+import { AuthEmailScreen } from "./screens/auth/AuthEmailScreen";
+import { AuthCodeScreen } from "./screens/auth/AuthCodeScreen";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -78,9 +84,6 @@ const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
 
-function EnergyFace({ level }: { level: number }) {
-  return <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="currentColor" opacity=".14" /><circle cx="12" cy="15" r="1.2" fill="currentColor" /><circle cx="24" cy="15" r="1.2" fill="currentColor" /><path d={level < 2 ? "M12 25 Q18 20 24 25" : level === 2 ? "M13 23 Q18 25 23 23" : "M11 21 Q18 29 25 21"} stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" /></svg>;
-}
 type HelpArticleId = "body-map" | "pause-video" | "journey-record" | "ai-scope";
 const AI_OFF_PRIVACY_DETAIL = "Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng và bạn đồng ý riêng. AI nhận lựa chọn được xác nhận của lượt hiện tại; không gửi hội thoại trước đó, tên/email, ghi chú tự do hay feedback lịch sử. AI chỉ chọn nội dung đã duyệt, không tạo động tác hoặc chẩn đoán. Khi tắt, không gửi yêu cầu mô hình.";
 const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; lead: string; paragraphs: string[] }> = [
@@ -568,340 +571,6 @@ function AuthSessionRouter() {
   return null;
 }
 
-function WelcomeScreen() {
-  const { state } = useDemo();
-  const locale = state.locale;
-  const storedSession = hasStoredAuthSession();
-  const restoreNote = storedSession && state.backendStatus === "loading"
-    ? <section className="mcy-restore-card" role="status"><span className="mcy-restore-icon spinning" aria-hidden="true"><ReloadIcon /></span><div><strong>{msg(locale, "session.restoring")}</strong><p>{msg(locale, "session.restoringHint")}</p></div></section>
-    : storedSession && state.backendStatus === "error"
-      ? <section className="mcy-restore-card failed" role="alert"><span className="mcy-restore-icon" aria-hidden="true"><ExclamationTriangleIcon /></span><div><strong>{msg(locale, "session.restoreFailedTitle")}</strong><p>{msg(locale, "session.restoreFailed")}</p></div><button className="mcy-restore-retry" onClick={() => window.dispatchEvent(new Event(SESSION_RESTORE_RETRY_EVENT))}>{msg(locale, "session.retry")}</button></section>
-      : null;
-  return <MobileScroll className="mcy-scroll welcome"><main className="mcy-welcome">
-    <img className="mcy-welcome-photo" src="/assets/welcome-portrait-1024.webp" srcSet="/assets/welcome-portrait-512.webp 512w, /assets/welcome-portrait-1024.webp 1024w" sizes="(min-width: 700px) 450px, 100vw" alt={locale === "en-US" ? "A woman resting on a yoga mat" : "Người ngồi thư giãn trên thảm yoga"} loading="eager" fetchPriority="high" decoding="async" />
-    <div className="mcy-welcome-top"><Brand locale={locale} heading />{import.meta.env.DEV && <LocaleToggle />}<p>{msg(locale, "brand.slogan")}</p>{locale === "en-US" && <small className="mcy-slogan-note">{msg(locale, "brand.sloganNote")}</small>}</div>
-    <div className="mcy-welcome-benefits"><div><span><PlayIcon /></span>{msg(locale, "welcome.benefit1")}</div><div><span><HeartIcon /></span>{msg(locale, "welcome.benefit2")}</div><div><span><LockClosedIcon /></span>{msg(locale, "welcome.benefit3")}</div></div>
-    {restoreNote}
-    <p className="mcy-welcome-quote">{msg(locale, "welcome.quote")}</p>
-  </main></MobileScroll>;
-}
-
-function LocaleToggle() {
-  const { state, update } = useDemo();
-  const locale = state.locale;
-  return <button className="mcy-language-toggle" aria-label={msg(locale, locale === "vi-VN" ? "locale.switchToEnglish" : "locale.switchToVietnamese")} onClick={() => update({ locale: locale === "vi-VN" ? "en-US" : "vi-VN" })}>{locale === "vi-VN" ? "VI / EN*" : "EN / VI"}</button>;
-}
-
-function WelcomeFooter() {
-  const flow = useFlow();
-  const { state, update } = useDemo();
-  const locale = state.locale;
-  const restoringStoredSession = hasStoredAuthSession() && state.backendStatus !== "ready";
-  return <div className="mcy-flow-footer mcy-welcome-footer mcy-welcome-bottom">
-    <Action onClick={() => flow.replace(ROUTES.home)}>{msg(locale, "welcome.tryGuest")}</Action>
-    {!restoringStoredSession && <div className="mcy-welcome-auth"><button onClick={() => { update({ authMode: "create", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.createAccount")}</button><button onClick={() => { update({ authMode: "login", authReturnTo: "home" }); flow.push(ROUTES.authEmail); }}>{msg(locale, "welcome.login")}</button></div>}
-    {!restoringStoredSession && <small>{msg(locale, "welcome.note")}</small>}
-  </div>;
-}
-
-function AuthEmailScreen() {
-  const flow = useFlow();
-  const keyboard = useKeyboard();
-  const { state, update } = useDemo();
-  const [email, setEmail] = useState(state.accountEmail);
-  const [emailLocale, setEmailLocale] = useState(() => readEmailLocale(state.locale));
-  const [error, setError] = useState("");
-  const [sending, setSending] = useState(false);
-  const [method, setMethod] = useState<"code" | "password">("code");
-  const [password, setPassword] = useState("");
-  const usePassword = state.authMode === "login" && method === "password";
-  const submitPassword = async () => {
-    keyboard.hide();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError("Kiểm tra lại địa chỉ email bạn vừa nhập."); return; }
-    if (!password) { setError("Nhập mật khẩu để tiếp tục."); return; }
-    if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-    setSending(true);
-    setError("");
-    try {
-      const client = await getSupabaseClient();
-      if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-      const { data, error: authError } = await client.auth.signInWithPassword({ email: email.trim(), password });
-      if (authError || !data.user) { setError(passwordSignInMessage(authError)); return; }
-      setPassword("");
-      update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? email.trim(), backendStatus: "loading", backendError: "" });
-      window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
-      if (data.session && !Capacitor.isNativePlatform()) await syncAuthEmailLocale(data.session, readEmailLocale(state.locale));
-    } catch (cause) {
-      setError(passwordSignInMessage(cause));
-    } finally {
-      setSending(false);
-    }
-  };
-  const submit = async () => {
-    keyboard.hide();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) { setError("Kiểm tra lại địa chỉ email bạn vừa nhập."); return; }
-    if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-    setSending(true);
-    setError("");
-    try {
-      const native = Capacitor.isNativePlatform();
-      if (native) window.localStorage.setItem(NATIVE_AUTH_PENDING_KEY, String(Date.now()));
-      const client = await getSupabaseClient();
-      if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-      const { error: authError } = await client.auth.signInWithOtp({
-        email: email.trim(),
-        options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl("learner", emailLocale), data: { locale: emailLocale } },
-      });
-      if (authError) {
-        if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-        setError(authErrorMessage(authError, "Chưa gửi được email xác minh. Hãy thử lại sau."));
-        return;
-      }
-      update({ accountEmail: email.trim(), authCode: "" });
-      flow.replace(ROUTES.authCode);
-    } catch (cause) {
-      if (Capacitor.isNativePlatform()) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-      setError(authErrorMessage(cause, "Chưa gửi được email xác minh. Hãy thử lại sau."));
-    } finally {
-      setSending(false);
-    }
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
-    <Eyebrow>{state.authMode === "create" ? "TẠO TÀI KHOẢN" : "ĐĂNG NHẬP"}</Eyebrow>
-    <h1>{state.authMode === "create" ? "Tạo tài khoản nhanh bằng email" : usePassword ? "Đăng nhập bằng mật khẩu" : "Đăng nhập nhanh qua email"}</h1>
-    {state.authMode === "create" && <p className="mcy-lead">Một Chút Yoga sẽ gửi email xác minh tới địa chỉ bạn cung cấp.</p>}
-    <label className="mcy-form-field">Email<KeyboardInput inputMode="email" autoComplete="email" aria-label="Địa chỉ email" placeholder="ban@example.com" value={email} onChange={event => { setEmail(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>
-    {state.authMode === "login" && <div className="mcy-chip-grid mcy-auth-method" role="group" aria-label="Cách đăng nhập"><Choice selected={!usePassword} disabled={sending} onClick={() => { setMethod("code"); setError(""); }}>Mã hoặc liên kết qua email</Choice><Choice selected={usePassword} disabled={sending} onClick={() => { setMethod("password"); setError(""); }}>Mật khẩu</Choice></div>}
-    {usePassword && <label className="mcy-form-field">Mật khẩu<KeyboardInput type="password" autoComplete="current-password" aria-label="Mật khẩu" value={password} onChange={event => { setPassword(event.target.value); setError(""); }} onBlur={() => keyboard.hide()} /></label>}
-    {!usePassword && <EmailLanguageSelect value={emailLocale} disabled={sending} onChange={locale => { setEmailLocale(locale); rememberEmailLocale(locale); }} />}
-    {error && <div className="mcy-form-error" role="alert">{error}</div>}
-    {!backendConfigured && <div className="mcy-alert">Backend chưa kết nối ở môi trường hiện tại. Bạn vẫn có thể xem và thử luồng khách.</div>}
-    <Action disabled={sending || !backendConfigured} onClick={usePassword ? submitPassword : submit}>{usePassword ? (sending ? "Đang đăng nhập…" : "Đăng nhập") : sending ? "Đang gửi…" : state.authMode === "create" ? "Gửi email xác minh" : "Gửi mã"}</Action>
-    {state.authMode === "login" && (usePassword
-      ? <DemoNote>Chưa đặt mật khẩu? Chọn “Mã hoặc liên kết qua email” để đăng nhập, rồi đặt mật khẩu trong Cá nhân → Bảo mật tài khoản.</DemoNote>
-      : <DemoNote>Email gửi tới bạn có cả mã và liên kết một lần: nhập mã trong ứng dụng hoặc mở liên kết, dùng cách nào thuận tiện hơn.</DemoNote>)}
-    {state.authMode === "create" && isCheckinAuthReturn(state.authReturnTo) && <button className="mcy-quiet-link" onClick={() => { keyboard.hide(); flow.replace(ROUTES.discover); }}>Xem bài học video miễn phí</button>}
-    {state.authMode === "create" && <DemoNote>Email xác minh chỉ dùng qua Supabase Auth. Hãy hoàn tất trên cùng thiết bị để tiếp tục đúng phiên.</DemoNote>}
-  </main></MobileScroll>;
-}
-
-function AuthCodeScreen() {
-  const flow = useFlow();
-  const keyboard = useKeyboard();
-  const { state, update } = useDemo();
-  const [code, setCode] = useState(state.authCode);
-  const [error, setError] = useState("");
-  const [notice, setNotice] = useState("");
-  const [verifying, setVerifying] = useState(false);
-  const [resending, setResending] = useState(false);
-  const verify = async () => {
-    keyboard.hide();
-    if (!/^(?:\d{6}|\d{8})$/.test(code)) { setError("Nhập đủ mã xác minh trong email để tiếp tục."); return; }
-    if (!backendConfigured) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-    setVerifying(true);
-    try {
-      const client = await getSupabaseClient();
-      if (!client) { setError("Backend chưa được cấu hình cho môi trường này."); return; }
-      const { data, error: authError } = await client.auth.verifyOtp({ email: state.accountEmail, token: code, type: "email" });
-      if (authError || !data.user) { setError("Mã không hợp lệ hoặc đã hết hạn. Hãy kiểm tra hộp thư và thử lại."); return; }
-      if (data.session && !Capacitor.isNativePlatform()) await syncAuthEmailLocale(data.session, readEmailLocale(state.locale));
-      if (Capacitor.isNativePlatform()) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-      update({ authCode: "", signedIn: true, userId: data.user.id, accountEmail: data.user.email ?? state.accountEmail, backendStatus: "loading", backendError: "" });
-      window.dispatchEvent(new Event(AUTH_SIGN_IN_EVENT));
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Chưa xác minh được mã. Hãy thử lại.");
-    } finally {
-      setVerifying(false);
-    }
-  };
-  const resend = async () => {
-    if (!backendConfigured) return;
-    setResending(true);
-    const native = Capacitor.isNativePlatform();
-    try {
-      if (native) window.localStorage.setItem(NATIVE_AUTH_PENDING_KEY, String(Date.now()));
-      const client = await getSupabaseClient();
-      if (!client) return;
-      const emailLocale = readEmailLocale(state.locale);
-      const { error: authError } = await client.auth.signInWithOtp({ email: state.accountEmail, options: { shouldCreateUser: state.authMode === "create", emailRedirectTo: authRedirectUrl("learner", emailLocale), data: { locale: emailLocale } } });
-      if (authError) {
-        if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-        setError(authErrorMessage(authError, "Chưa gửi lại được email xác minh."));
-        setNotice("");
-      } else {
-        setError("");
-        setNotice("Email xác minh mới đã được gửi. Mã hoặc liên kết cũ có thể hết hiệu lực.");
-      }
-    } catch (cause) {
-      if (native) window.localStorage.removeItem(NATIVE_AUTH_PENDING_KEY);
-      setNotice("");
-      setError(authErrorMessage(cause, "Chưa gửi lại được email xác minh."));
-    } finally {
-      setResending(false);
-    }
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
-    <Eyebrow>XÁC MINH EMAIL</Eyebrow><h1>Kiểm tra hộp thư của bạn.</h1>
-    <p className="mcy-lead">Email đã gửi tới <strong>{state.accountEmail}</strong>. Nếu thư có mã xác minh, nhập mã bên dưới. Nếu thư có liên kết, mở trên {Capacitor.isNativePlatform() ? "điện thoại này" : "trình duyệt này"}.</p>
-    <label className="mcy-form-field">Mã xác minh (nếu email có mã)<KeyboardInput inputMode="numeric" autoComplete="one-time-code" aria-label="Mã xác minh" placeholder="Nhập mã trong email" value={code} onChange={event => { setCode(event.target.value.replace(/\D/g, "").slice(0, 8)); setError(""); }} onBlur={() => keyboard.hide()} /></label>
-    <div className="mcy-code-hint">Mã hoặc liên kết chỉ dùng một lần. Không gửi mã cho người khác.</div>
-    {error && <div className="mcy-form-error" role="alert">{error}</div>}
-    {notice && <div className="mcy-inline-note" role="status"><InfoCircledIcon />{notice}</div>}
-    <Action disabled={verifying} onClick={verify}>{verifying ? "Đang xác minh…" : "Xác minh email"}</Action>
-    <div className="mcy-auth-secondary"><button disabled={resending} onClick={() => { setCode(""); void resend(); }}>{resending ? "Đang gửi…" : "Gửi lại email"}</button><button onClick={() => flow.replace(ROUTES.authEmail)}>Đổi email</button></div>
-    <DemoNote>Mở liên kết trên cùng thiết bị đã yêu cầu xác minh. Trên điện thoại, liên kết sẽ quay lại ứng dụng.</DemoNote>
-  </main></MobileScroll>;
-}
-
-function ConsentScreen() {
-  const { state, update } = useDemo();
-  const togglePurpose = (key: "aiConsent" | "saveFeedbackConsent" | "teacherShareConsent" | "marketingConsent") => {
-    if (key === "aiConsent") update({ aiConsent: !state.aiConsent });
-    if (key === "saveFeedbackConsent") update({ saveFeedbackConsent: !state.saveFeedbackConsent });
-    if (key === "teacherShareConsent" && state.teacherShareConsent) update({ teacherShareConsent: false });
-    if (key === "marketingConsent") update({ marketingConsent: !state.marketingConsent });
-  };
-  return <MobileScroll className="mcy-scroll"><main lang="vi" className="mcy-page mcy-auth-page">
-    <Eyebrow>A05 · QUYỀN VÀ ĐIỀU KHOẢN</Eyebrow><h1>Bạn chọn dữ liệu nào được dùng.</h1>
-    <p className="mcy-lead">Mỗi mục đích là một lựa chọn riêng. Phiên bản hiện hành được hiển thị trước khi bạn đồng ý; nội dung pháp lý cuối cùng sẽ được cập nhật trước khi mở rộng phát hành.</p>
-    {state.locale === "en-US" && <div className="mcy-locale-note" role="note">This consent screen is shown in Vietnamese. Consent evidence records the language displayed as vi-VN.</div>}
-    <section className="mcy-consent-card required"><span className="mcy-tag">CẦN ĐỂ TIẾP TỤC TRONG APP</span><strong>Điều khoản dịch vụ và thông báo quyền riêng tư · phiên bản 0.1</strong><p>Supabase đã xác minh email. Đồng ý để tiếp tục sử dụng tài khoản; lựa chọn và phiên bản được ghi thành sự kiện.</p><button aria-pressed={state.termsAccepted && state.privacyAccepted} onClick={() => { const value = !(state.termsAccepted && state.privacyAccepted); update({ termsAccepted: value, privacyAccepted: value }); }}><i>{state.termsAccepted && state.privacyAccepted ? "✓" : ""}</i>{state.termsAccepted && state.privacyAccepted ? "Đã đồng ý phiên bản 0.1" : "Tôi đồng ý điều khoản và thông báo · phiên bản 0.1"}</button></section>
-    {([
-      ["aiConsent", "Cho phép AI hỗ trợ trao đổi ngắn", "Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng cho phiên của bạn. Khi bạn xác nhận lựa chọn và đồng ý AI hiện hành, chỉ thời lượng, năng lượng, mục tiêu, mã vùng và sở thích hiện tại được gửi tới dịch vụ AI bên ngoài. Không gửi hội thoại trước đó, tên/email, ghi chú tự do hoặc feedback lịch sử. AI chỉ chọn nội dung đã duyệt, không tạo động tác hoặc chẩn đoán. Bạn có thể rút đồng ý bất cứ lúc nào. Nội dung quyền riêng tư vẫn là bản rà soát, chưa phải văn bản pháp lý cuối cùng.", state.aiConsent],
-      ["saveFeedbackConsent", "Lưu check-in cơ thể và năng lượng", "Cho phép lưu các lần check-in và ghi chú để xem trong Hành trình. Phản hồi sau buổi hiện chỉ được giữ trong phiên.", state.saveFeedbackConsent],
-      ["teacherShareConsent", "Chia sẻ với một giáo viên cụ thể", "Chưa có lớp được kết nối. Lựa chọn này luôn tắt cho đến khi bạn chọn rõ người nhận, phạm vi và thời hạn.", state.teacherShareConsent],
-      ["marketingConsent", "Nhận tin về nội dung mới", "Tùy chọn; tách khỏi thông báo dịch vụ và nhắc tập.", state.marketingConsent],
-    ] as const).map(([key, title, description, value]) => <section className="mcy-consent-card" key={key}><strong>{title}</strong><p>{description}</p><button disabled={key === "teacherShareConsent" && !value} aria-pressed={value} onClick={() => togglePurpose(key)}><i>{value ? "✓" : ""}</i>{key === "teacherShareConsent" && !value ? "Chưa có lớp được kết nối" : value && key === "teacherShareConsent" ? "Rút đồng ý" : value ? "Cho phép" : "Không cho phép"}</button></section>)}
-    <div className="mcy-form-error subtle">Từ chối AI, bạn vẫn có thể tự chọn video miễn phí. Từ chối lưu thì check-in chỉ còn trong phiên và không được ghi vào tài khoản.</div>
-    {state.onboardingComplete && isCheckinAuthReturn(state.authReturnTo) && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.saveFeedbackConsent ? "Xác nhận tiếp tục sẽ gắn nháp với tài khoản của bạn." : "Bạn chưa cho phép lưu check-in; nháp chỉ dùng trong phiên này."} Nếu không muốn dùng nháp nữa, chọn Bỏ nháp.</p></div>}
-    <DemoNote>Mỗi thay đổi được ghi thành sự kiện đồng ý riêng của tài khoản. Ngôn ngữ và phiên bản hiển thị được lưu cùng lựa chọn.</DemoNote>
-  </main></MobileScroll>;
-}
-
-function ConsentFooter() {
-  const flow = useFlow();
-  const { state, setState } = useDemo();
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
-  const actor = useRef({ id: state.userId, signedIn: state.signedIn, generation: 0 });
-  const retryKeys = useRef(new Map<string, string>());
-  const captureContinuation = useLearnerContinuation();
-  if (actor.current.id !== state.userId || actor.current.signedIn !== state.signedIn) actor.current = { id: state.userId, signedIn: state.signedIn, generation: actor.current.generation + 1 };
-  useEffect(() => () => { actor.current.generation++; }, []);
-  const hasTransferDraft = state.onboardingComplete && isCheckinAuthReturn(state.authReturnTo);
-  const continueNext = async (discardDraft = false) => {
-    if (!state.termsAccepted || !state.privacyAccepted || saving) return;
-    setSaving(true);
-    setError("");
-    const expectedUserId = state.userId, expectedSignedIn = state.signedIn, generation = actor.current.generation;
-    const continuation = captureContinuation();
-    const current = () => continuation() && actor.current.id === expectedUserId && actor.current.signedIn === expectedSignedIn && actor.current.generation === generation;
-    try {
-      const saved = await persistConsentChanges(state, "onboarding", retryKeys.current);
-      if (!current()) return;
-      if (saved.hasUnsettledWrites) {
-        setState(previous => continuation(previous) ? { ...previous, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions } : previous);
-        setError("Một lần ghi quyền chưa được xác nhận. Lựa chọn trên màn hình vẫn là nháp; chọn Tiếp tục để đối chiếu lại trước khi đổi quyền hoặc đi tiếp.");
-        return;
-      }
-      setState(previous => !continuation(previous) || previous.userId !== expectedUserId || previous.signedIn !== expectedSignedIn ? previous : ({
-        ...previous,
-        consentBaseline: saved.consents,
-        consentPolicyVersions: saved.policyVersions,
-        termsAccepted: saved.consents.terms, privacyAccepted: saved.consents.privacy,
-        saveFeedbackConsent: saved.consents.wellbeing_data, aiConsent: saved.consents.ai_processing,
-        teacherShareConsent: saved.consents.teacher_sharing, notificationEnabled: saved.consents.notifications,
-        marketingConsent: saved.consents.marketing,
-        ...(discardDraft ? { preObservations: [], regions: [], bodyStatus: null, energy: null, pendingCheckinIdempotencyKey: null, pendingCheckinPayload: null } : {}),
-      }));
-      if (!saved.matchesRequested) { setError("Quyền dữ liệu đã thay đổi. Kiểm tra và chọn lại trước khi tiếp tục."); return; }
-      if (state.onboardingComplete) {
-        if (!discardDraft && isCheckinAuthReturn(state.authReturnTo) && state.saveFeedbackConsent) {
-          await persistCurrentCheckin({ ...state, consentBaseline: saved.consents, consentPolicyVersions: saved.policyVersions, privacyAccepted: true }, setState, "practice_preparation", current);
-        }
-        if (!current()) return;
-        const destination = discardDraft ? (isCheckinAuthReturn(state.authReturnTo) ? "discover" : "home") : normalizeAuthDestination(state.authReturnTo);
-        finishAtAuthDestination(flow, ROUTES, destination);
-      } else flow.replace(ROUTES.onboarding);
-    } catch (cause) {
-      if (!current()) return;
-      setError(cause instanceof Error ? cause.message : "Chưa lưu được lựa chọn của bạn.");
-    } finally {
-      setSaving(false);
-    }
-  };
-  return <div className="mcy-flow-footer mcy-consent-footer">
-    {error && <div className="mcy-consent-footer-error" role="alert">Chưa lưu được lựa chọn: {error}</div>}
-    <Action disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(); }}>{saving ? "Đang lưu lựa chọn…" : hasTransferDraft ? state.saveFeedbackConsent ? "Xác nhận chuyển nháp" : "Tiếp tục với nháp trong phiên" : "Tiếp tục"}</Action>
-    {hasTransferDraft && <button className="mcy-quiet-link" disabled={!state.termsAccepted || !state.privacyAccepted || saving} onClick={() => { void continueNext(true); }}>Bỏ nháp</button>}
-  </div>;
-}
-
-function OnboardingScreen() {
-  const flow = useFlow();
-  const keyboard = useKeyboard();
-  const { state, update, setState } = useDemo();
-  const [name, setName] = useState(state.displayName);
-  const [showTransfer, setShowTransfer] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
-  const captureContinuation = useLearnerContinuation();
-  const complete = async (discardDraft = false) => {
-    if (saving) return;
-    keyboard.hide();
-    setSaving(true);
-    setError("");
-    const current = captureContinuation();
-    try {
-      const displayName = name.trim();
-      const nextState = discardDraft ? {
-        ...state,
-        preObservations: [],
-        regions: [],
-        bodyStatus: null,
-        energy: null,
-        pendingCheckinIdempotencyKey: null,
-        pendingCheckinPayload: null,
-      } : state;
-      await persistProfile(nextState, displayName, nextState.bodyStyle, nextState.locale);
-      if (!current()) return;
-      if (!discardDraft && isCheckinAuthReturn(nextState.authReturnTo) && nextState.saveFeedbackConsent) {
-        await persistCurrentCheckin({ ...nextState, displayName, onboardingComplete: true }, setState, "practice_preparation", current);
-      }
-      if (!current()) return;
-      setState(previous => !current(previous) ? previous : ({ ...previous,
-        displayName,
-        onboardingComplete: true,
-        backendStatus: "ready",
-        backendError: "",
-        ...(discardDraft ? {
-          preObservations: [], regions: [], bodyStatus: null, energy: null,
-          pendingCheckinIdempotencyKey: null,
-          pendingCheckinPayload: null,
-        } : {}),
-      }));
-      const destination = discardDraft ? (isCheckinAuthReturn(state.authReturnTo) ? "discover" : "home") : normalizeAuthDestination(state.authReturnTo);
-      finishAtAuthDestination(flow, ROUTES, destination);
-    } catch (cause) {
-      if (!current()) return;
-      setError(cause instanceof Error ? cause.message : "Chưa hoàn tất được thiết lập tài khoản.");
-    } finally {
-      setSaving(false);
-    }
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-auth-page">
-    <Eyebrow>A04 · THIẾT LẬP TỐI THIỂU</Eyebrow><h1>Chỉ thêm điều hữu ích.</h1>
-    <p className="mcy-lead">Tên hiển thị không bắt buộc. Hình minh họa là sở thích hiển thị, không dùng để suy luận giới hay sức khỏe.</p>
-    <label className="mcy-form-field">Tên hiển thị · tùy chọn<KeyboardInput autoComplete="nickname" aria-label="Tên hiển thị" placeholder="Bạn muốn được gọi là gì?" value={name} onChange={event => setName(event.target.value)} onBlur={() => keyboard.hide()} /></label>
-    <section className="mcy-account-panel"><strong>Hình minh họa cơ thể</strong><p>Chọn hình dễ dùng nhất; có thể đổi bất cứ lúc nào.</p><BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></section>
-    {showTransfer && <div className="mcy-consent-card"><strong>Nháp check-in trong phiên này</strong><p>{state.preObservations.length || state.regions.length ? `${state.preObservations.length || state.regions.length} vùng đã ghi, ${state.minutes} phút${state.energy ? `, năng lượng ${state.energy}` : ""}.` : "Chưa có ghi nhận cơ thể trong phiên này."} Tiếp tục sẽ gắn nháp với tài khoản hiện tại theo lựa chọn lưu của bạn.</p><div className="mcy-auth-secondary"><button disabled={saving} onClick={() => { void complete(); }}>Xác nhận chuyển nháp</button><button disabled={saving} onClick={() => { void complete(true); }}>Bỏ nháp</button></div></div>}
-    {error && <div className="mcy-form-error" role="alert">{error}</div>}
-    {!showTransfer && <Action disabled={saving} onClick={() => setShowTransfer(true)}>Tiếp tục</Action>}
-    {!showTransfer && <button className="mcy-quiet-link" disabled={saving} onClick={() => { if (isCheckinAuthReturn(state.authReturnTo)) setShowTransfer(true); else void complete(); }}>{saving ? "Đang lưu…" : "Để sau"}</button>}
-    <DemoNote>Hồ sơ và lựa chọn được đồng bộ với tài khoản. Check-in chỉ ghi server nếu bạn đã cho phép lưu.</DemoNote>
-  </main></MobileScroll>;
-}
-
 function ReadinessScreen() {
   const flow = useFlow();
   const [result, setResult] = useState<"within_scope" | "unknown" | "needs_review" | "stop_guidance" | null>(null);
@@ -916,228 +585,6 @@ function ReadinessScreen() {
 }
 
 // Three shortest clips, ordered by length only. This is a gentle first look, not a pick based on the check-in.
-function HomeQuickPicks() {
-  const flow = useFlow();
-  const { update } = useDemo();
-  const [picks, setPicks] = useState<{ courseId: FreeCourseId; lessonId: string; title: string; courseTitle: string; time: string }[] | null>(null);
-  useEffect(() => {
-    let active = true;
-    void Promise.all([import("./courses/contentSnapshot"), import("./courses/lessonFinder")]).then(async ([snapshot, finder]) => {
-      const { courses } = await snapshot.loadCatalog();
-      if (active) setPicks(finder.shortestLessons(courses, 3).map(item => ({ courseId: item.courseId, lessonId: item.lesson.id, title: item.lesson.title, courseTitle: item.courseTitle, time: finder.formatLessonDuration(item.seconds) })));
-    }).catch(() => { if (active) setPicks([]); });
-    return () => { active = false; };
-  }, []);
-  if (!picks?.length) return null;
-  return <section className="mcy-quickpicks" aria-labelledby="quickpicks-heading" data-testid="home-quick-picks">
-    <h2 id="quickpicks-heading">Bắt đầu nhẹ nhàng</h2>
-    <p>Ba bài ngắn nhất trong thư viện, để làm quen trước khi chọn thêm.</p>
-    {picks.map(item => <button key={item.lessonId} type="button" className="mcy-finder-row" onClick={() => { update({ selectedCourseId: item.courseId, selectedLessonId: item.lessonId }); flow.push(ROUTES.courseDetail); }}><span className="mcy-finder-time">{item.time}</span><span><strong>{item.title}</strong><small>{item.courseTitle}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
-    <button type="button" className="mcy-quiet-link" onClick={() => flow.push(ROUTES.discover)}>Xem tất cả 38 bài</button>
-  </section>;
-}
-
-function HomeScreen() {
-  const flow = useFlow();
-  const { state } = useDemo();
-  const previous = [...state.history].reverse().find(item => item.kind === "Sau tập");
-  const paceMemory = rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace);
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page">
-    <Eyebrow>{previous ? "MỘT LẦN QUAY LẠI, KHÔNG CẦN VỘI" : "MỖI BUỔI BẮT ĐẦU TỪ HÔM NAY"}</Eyebrow>
-    <h1>{previous ? "Hôm nay bạn muốn bắt đầu thế nào?" : "Một chút thời gian cho chính mình."}</h1>
-    <p className="mcy-lead">Chọn một bài ngắn bên dưới để bắt đầu ngay. Bạn không cần đăng nhập hay điền gì trước.</p>
-    {paceMemory ? <div className="mcy-memory-hint"><MagicWandIcon /><span>Lần trước bạn nói nhịp hơi nhanh. Lần này bạn có thể chọn chậm hơn.</span></div> : null}
-    <HomeQuickPicks />
-    <div className="mcy-home-cta"><Action secondary onClick={() => flow.push(ROUTES.checkin)}>{previous ? "Ghi nhận hôm nay" : "Bắt đầu check-in"}</Action><span>Tùy chọn · ghi nhận cơ thể trước hay sau khi tập đều được</span></div>
-    <div className="mcy-home-photo"><img src="/assets/today-neck-stretch-1200.webp" srcSet="/assets/today-neck-stretch-600.webp 600w, /assets/today-neck-stretch-1200.webp 1200w" sizes="(min-width: 700px) 450px, 100vw" alt="Hình minh họa buổi tập yoga tại nhà" loading="lazy" decoding="async" /><span>Một bài học miễn phí, do bạn tự chọn</span></div>
-    <div className="mcy-section-label">BẠN SẼ ĐI QUA</div>
-    <div className="mcy-steps-list"><div><b>01</b><span>Chọn một bài ngắn<small>Xem video miễn phí ngay trong ứng dụng.</small></span></div><div><b>02</b><span>Tập theo nhịp của bạn<small>Dừng bất cứ lúc nào bạn thấy cần.</small></span></div><div><b>03</b><span>Ghi nhận nếu bạn muốn<small>Check-in và phản hồi sau buổi đều là tùy chọn.</small></span></div></div>
-    <DemoNote>Khi đăng nhập, hồ sơ, lựa chọn quyền và check-in đã đồng ý lưu sẽ được kết nối với tài khoản của bạn.</DemoNote>
-  </main></MobileScroll>;
-}
-
-function CheckinScreen() {
-  const flow = useFlow();
-  const { state, update, setState } = useDemo();
-  const locale = state.locale;
-  const [regionGroup, setRegionGroup] = useState<BodyRegionGroup>("trunk");
-  // Energy and time are for account check-ins; a guest goes from the body map straight to the lesson finder.
-  useEffect(() => { if (!state.signedIn && state.checkinStep === 2) update({ checkinStep: 1 }); }, [state.signedIn, state.checkinStep]);
-  const [showStepTwoScrollHint, setShowStepTwoScrollHint] = useState(false);
-  useLayoutEffect(() => {
-    const scroll = document.querySelector<HTMLElement>("[data-testid='flow-current'] .mobile-scroll");
-    if (scroll) scroll.scrollTop = 0;
-  }, [state.checkinStep]);
-  useEffect(() => {
-    if (flow.current.id !== ROUTES.checkin.id || state.checkinStep !== 2) {
-      setShowStepTwoScrollHint(false);
-      return;
-    }
-    const scroll = document.querySelector<HTMLElement>('[data-testid="flow-current"] [data-flow-route="checkin"][data-flow-active="true"] .mobile-scroll');
-    const content = scroll?.querySelector<HTMLElement>(".mobile-scroll-content");
-    if (!scroll) return;
-    const updateScrollHint = () => {
-      const remaining = scroll.scrollHeight - scroll.clientHeight - scroll.scrollTop;
-      const next = scroll.scrollHeight > scroll.clientHeight + 8 && remaining > 8;
-      setShowStepTwoScrollHint(current => current === next ? current : next);
-    };
-    const resizeObserver = new ResizeObserver(updateScrollHint);
-    resizeObserver.observe(scroll);
-    if (content) resizeObserver.observe(content);
-    scroll.addEventListener("scroll", updateScrollHint, { passive: true });
-    updateScrollHint();
-    return () => {
-      resizeObserver.disconnect();
-      scroll.removeEventListener("scroll", updateScrollHint);
-    };
-  }, [flow.current.id, state.checkinStep]);
-  const [editing, setEditing] = useState<BodyRegion | null>(null);
-  const [editingStoredSide, setEditingStoredSide] = useState<BodySide | undefined>();
-  const [suggestedSide, setSuggestedSide] = useState<BodySide | undefined>();
-  const [pendingStatus, setPendingStatus] = useState<"none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable" | null>(null);
-  const [saving, setSaving] = useState(false);
-  const [saveError, setSaveError] = useState("");
-  const [saveNotice, setSaveNotice] = useState("");
-  useEffect(() => { setSaving(false); setSaveError(""); setSaveNotice(""); }, [flow.current.key]);
-  const captureContinuation = useLearnerContinuation();
-  const latestCheckinState = useRef(state); latestCheckinState.current = state;
-  const selected = editing ? state.preObservations.find(item => item.region === editing && item.side === editingStoredSide) ?? state.preObservations.find(item => item.region === editing) : undefined;
-  const openRegion = (region: BodyRegion, preferredSide?: BodySide) => {
-    const entries = state.preObservations.filter(item => item.region === region);
-    const current = preferredSide
-      ? entries.find(item => item.side === preferredSide) ?? entries.find(item => item.side === "both" || item.side === "unspecified")
-      : entries[0];
-    const storedSide = current?.side ?? preferredSide ?? "unspecified";
-    setEditingStoredSide(storedSide);
-    setSuggestedSide(preferredSide ?? current?.side ?? "unspecified");
-    setEditing(region);
-  };
-  const closeRegion = () => { setEditing(null); setEditingStoredSide(undefined); setSuggestedSide(undefined); };
-  const saveObservation = (observation: Observation) => setState(previous => {
-    const preObservations = replaceBodyObservation(previous.preObservations, observation, editingStoredSide ?? observation.side);
-    return { ...previous, bodyStatus: "reported", preObservations, regions: [...new Set(preObservations.map(item => item.region))] };
-  });
-  const deleteObservation = () => { if (!editing || !editingStoredSide) return; setState(previous => { const preObservations = removeBodyObservation(previous.preObservations, editing, editingStoredSide); return { ...previous, preObservations, regions: [...new Set(preObservations.map(item => item.region))], bodyStatus: preObservations.length ? "reported" : null }; }); };
-  const chooseStatus = (value: "none_now" | "uncertain" | "skipped" | "tired" | "uncomfortable") => {
-    if (state.preObservations.length) setPendingStatus(value);
-    else update({ bodyStatus: value, preObservations: [], regions: [] });
-  };
-  const standalone = async () => {
-    if (saving) return;
-    setSaving(true);
-    setSaveError("");
-    setSaveNotice("");
-    const current = captureContinuation();
-    try {
-      const remote = await persistCurrentCheckin(state, setState, "standalone", current);
-      if (!current()) return;
-      const original = state.pendingCheckinPayload ?? toLearnerCheckinPayload(state, "standalone", "comparison");
-      const latestDraft = toLearnerCheckinPayload(latestCheckinState.current, "standalone", original.idempotencyKey);
-      const sameDraft = latestDraft.bodyStatus === original.bodyStatus && latestDraft.energyLevel === original.energyLevel
-        && JSON.stringify(latestDraft.observations) === JSON.stringify(original.observations);
-      if (!sameDraft) { setSaveNotice(locale === "en-US" ? "The previous record is confirmed. Your edits remain in the draft; save again to create a new record." : "Đã xác nhận bản ghi trước. Nháp vừa sửa vẫn được giữ; chọn lưu lần nữa để tạo bản ghi mới."); setSaving(false); return; }
-      setState(previous => !current(previous) ? previous : ({
-        ...previous,
-        history: !remote && previous.saveFeedbackConsent ? [...previous.history, makeSnapshot("Ghi riêng", previous.bodyStatus, previous.preObservations)] : previous.history,
-        preObservations: [], postObservations: [], regions: [], bodyStatus: null, energy: null,
-        pendingCheckinIdempotencyKey: null,
-        pendingCheckinPayload: null,
-      }));
-    } catch (cause) {
-      if (!current()) return;
-      setSaveError(cause instanceof Error ? cause.message : "Chưa lưu được check-in. Kiểm tra mạng rồi thử lại.");
-      setSaving(false);
-      return;
-    }
-    setSaving(false);
-    if (!current()) return;
-    flow.push(ROUTES.journey);
-  };
-  const statusDescription = state.bodyStatus === "none_now" ? msg(locale, "checkin.selectedNone") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.selectedUnsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.selectedSkipped") : state.bodyStatus === "tired" ? msg(locale, "checkin.selectedTired") : state.bodyStatus === "uncomfortable" ? msg(locale, "checkin.selectedUncomfortable") : "";
-  const bodySummary = state.bodyStatus === "none_now" ? msg(locale, "checkin.noDiscomfort") : state.bodyStatus === "uncertain" ? msg(locale, "checkin.unsure") : state.bodyStatus === "skipped" ? msg(locale, "checkin.skipBody") : state.bodyStatus === "tired" ? msg(locale, "checkin.tired") : state.bodyStatus === "uncomfortable" ? msg(locale, "checkin.uncomfortable") : state.preObservations.map(item => `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""} · ${item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(", ");
-  return <MobileScroll className="mcy-scroll"><main className={`mcy-page mcy-checkin-page step-${state.checkinStep}`}>
-    <div className="mcy-step-count" aria-live="polite">{state.signedIn ? formatMessage(locale, "checkin.stepCount", { step: state.checkinStep }) : null}<span>{msg(locale, state.checkinStep === 1 ? "checkin.step1.label" : "checkin.step2.label")}</span></div>
-    <h1>{msg(locale, state.checkinStep === 1 ? "checkin.step1.title" : "checkin.step2.title")}</h1>
-    <p className="mcy-lead">{state.checkinStep === 2 && aiPracticeOffered(state) ? (locale === "en-US" ? "Confirm your time, then choose reviewed content with AI or browse on your own." : "Xác nhận thời gian rồi chọn nội dung đã duyệt cùng AI, hoặc tự xem thư viện.") : msg(locale, state.checkinStep === 1 ? "checkin.step1.lead" : "checkin.step2.lead")}</p>
-    {state.checkinStep === 1 ? <div className="mcy-checkin-content checkin-step-body">
-      <div className="mcy-checkin-illustration">
-        <div className="mcy-scroll-hint mcy-star-hint"><span className="mcy-star" aria-hidden="true">*</span><em>{msg(locale, "checkin.scrollHint")}</em></div>
-        <div className="mcy-body-groups" aria-label={locale === "en-US" ? "Body areas" : "Nhóm vùng cơ thể"}>{(["trunk", "arms", "legs"] as BodyRegionGroup[]).map(group => <button key={group} aria-pressed={regionGroup === group} onClick={() => setRegionGroup(group)}>{msg(locale, `checkin.group.${group}` as "checkin.group.trunk" | "checkin.group.arms" | "checkin.group.legs")}<small>{state.preObservations.filter(item => BODY_REGION_GROUPS[group].includes(item.region)).length}</small></button>)}</div>
-        <BodyMap observations={state.preObservations} bodyStyle={state.bodyStyle} locale={locale} group={regionGroup} onSelect={openRegion} />
-        <BodyStylePicker value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} />
-      </div>
-      <div className="mcy-checkin-fields">
-        <h2 className="mcy-inline-section-title">{msg(locale, "checkin.regions")}</h2>
-        <div className="mcy-region-list" aria-label={locale === "en-US" ? "Choose a body area" : "Chọn vùng cơ thể"}>{BODY_REGION_GROUPS[regionGroup].map(region => { const items = state.preObservations.filter(entry => entry.region === region); const detail = items.length ? items.map(item => `${isPairedBodyRegion(region) && item.side !== "unspecified" ? `${sideLabel(locale, item.side)} · ` : ""}${item.status === "uncertain" ? msg(locale, "checkin.unsure") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}`).join(" / ") : msg(locale, "checkin.tapToRecord"); return <button key={region} className={items.length ? "selected" : ""} onClick={() => openRegion(region)}><span>{regionLabel(locale, region)}</span><small>{detail}</small><ArrowRightIcon /></button>; })}</div>
-        <div className="mcy-body-status-actions"><p>{locale === "en-US" ? "Or choose one overall state describing the whole body:" : "Hoặc chọn trạng thái chung mô tả cả cơ thể:"}</p><div><Choice selected={state.bodyStatus === "none_now"} onClick={() => chooseStatus("none_now")}>{msg(locale, "checkin.noDiscomfort")}</Choice><Choice selected={state.bodyStatus === "tired"} onClick={() => chooseStatus("tired")}>{msg(locale, "checkin.tired")}</Choice><Choice selected={state.bodyStatus === "uncomfortable"} onClick={() => chooseStatus("uncomfortable")}>{msg(locale, "checkin.uncomfortable")}</Choice><Choice selected={state.bodyStatus === "skipped"} onClick={() => chooseStatus("skipped")}>{msg(locale, "checkin.skipBody")}</Choice></div></div>
-        {statusDescription && <p className="mcy-status-caption">{statusDescription}</p>}
-        {!state.signedIn && (state.preObservations.length > 0 || (state.bodyStatus && state.bodyStatus !== "skipped")) && <>
-          <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : msg(locale, "checkin.standalone")}</button>
-          {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
-          {saveNotice && <p role="status">{saveNotice}</p>}
-        </>}
-        <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
-      </div>
-    </div> : <div className="mcy-checkin-step-two">
-      {showStepTwoScrollHint && <div className="mcy-scroll-hint mcy-checkin-step-two-scroll-hint"><ChevronDownIcon aria-hidden="true" />{msg(locale, "checkin.step2.scrollHint")}</div>}
-      <section className="mcy-energy-card"><h2>{msg(locale, "checkin.energy")} <small>({msg(locale, "checkin.optional")})</small></h2><div className="mcy-energy-options">{(["Rất thấp", "Thấp", "Bình thường", "Khá ổn", "Tràn đầy"] as Energy[]).map((value, index) => <button key={value} aria-pressed={state.energy === value} onClick={() => update({ energy: value })}><EnergyFace level={index} /><span>{energyLabel(locale, value)}</span></button>)}</div></section>
-      <section className="mcy-field-section compact"><h2>{msg(locale, "checkin.duration")}</h2><div className="mcy-chip-grid">{([5, 10, 15] as const).map(time => <Choice key={time} selected={state.minutes === time} onClick={() => update({ minutes: time })}>{formatMessage(locale, "checkin.minutes", { minutes: localizedNumber(locale, time) })}</Choice>)}</div>{locale !== "en-US" && <p className="mcy-field-hint">Mỗi bài trong thư viện dài từ vài chục giây đến khoảng 1 phút; bạn có thể xem nhiều bài liên tiếp trong khoảng thời gian này.</p>}</section>
-      <div className="mcy-checkin-summary"><span><strong>{locale === "en-US" ? "Body check-in" : "Cảm nhận cơ thể"}</strong><small>{bodySummary || (locale === "en-US" ? "Not added" : "Chưa ghi nhận")}</small></span><button onClick={() => update({ checkinStep: 1 })}>{locale === "en-US" ? "Edit" : "Sửa"}</button></div>
-      {state.pendingCheckinPayload && <p role="status">{locale === "en-US" ? "The previous save is unconfirmed. Retry that exact record first; edits remain in your draft." : "Lần lưu trước chưa được xác nhận. Hãy thử lại đúng bản ghi đó trước; phần sửa được giữ trong nháp."}</p>}
-      <button className="mcy-standalone-link" disabled={saving} onClick={() => { void standalone(); }}>{saving ? (locale === "en-US" ? "Saving check-in…" : "Đang lưu check-in…") : state.pendingCheckinPayload ? (locale === "en-US" ? "Retry the previous record" : "Thử lại bản ghi trước") : msg(locale, "checkin.standalone")}</button>
-      {saveError && <div className="mcy-form-error" role="alert">{locale === "en-US" ? "Couldn't save check-in: " : "Chưa lưu được check-in: "}{saveError}</div>}
-      {saveNotice && <p role="status">{saveNotice}</p>}
-      <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "checkin.disclaimer")}</div>
-    </div>}
-    <RegionEditor region={editing} current={selected} suggestedSide={suggestedSide} onClose={closeRegion} onSave={saveObservation} onDelete={deleteObservation} />
-    <BottomSheet open={Boolean(pendingStatus)} onOpenChange={open => { if (!open) setPendingStatus(null); }} title="Đổi lựa chọn vùng cơ thể" description="Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau." snap={0.38}><div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { update({ bodyStatus: pendingStatus, preObservations: [], regions: [] }); setPendingStatus(null); }}>Đổi lựa chọn <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setPendingStatus(null)}>Giữ các vùng đã ghi</button></div></BottomSheet>
-  </main></MobileScroll>;
-}
-
-function CheckinFooter() {
-  const flow = useFlow();
-  const { state, update } = useDemo();
-  const locale = state.locale;
-  const [confirmSkip, setConfirmSkip] = useState(false);
-  const browseFreeLessons = () => {
-    update({ dialogueChoice: null, dialogueText: "", unrecognizedText: "", aiConversation: [], aiPending: false, aiError: "", checkinBaselineReady: hasCheckinBaseline(state) });
-    flow.push(ROUTES.discover);
-  };
-  const openOptionalAccount = () => {
-    update({ authReturnTo: "discover", authMode: "create" });
-    flow.push(ROUTES.authEmail);
-  };
-  const advanceStep = () => update({ checkinStep: 2 });
-  // Guests have no energy/time step: skipping goes straight to the lesson finder.
-  const applySkip = () => {
-    if (state.signedIn) { update({ checkinStep: 2, bodyStatus: "skipped", preObservations: [], regions: [] }); return; }
-    update({ checkinStep: 1, bodyStatus: "skipped", preObservations: [], regions: [], checkinBaselineReady: false });
-    flow.push(ROUTES.discover);
-  };
-  const skipBody = () => {
-    if (state.preObservations.length) { setConfirmSkip(true); return; }
-    applySkip();
-  };
-  return <div className="mcy-flow-footer single mcy-checkin-footer">
-    {state.signedIn && <div className="mcy-checkin-progress" aria-hidden="true">
-      <span className="mcy-progress-track"><i className={state.checkinStep === 1 ? "active" : "done"} /><i className={state.checkinStep === 2 ? "active" : ""} /></span>
-    </div>}
-    {!state.signedIn ? <>
-      <Action onClick={browseFreeLessons}>{msg(locale, "checkin.guest.find")}</Action>
-      <div className="mcy-checkin-footer-options"><button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button></div>
-    </> : state.checkinStep === 1 ? <>
-      <Action onClick={advanceStep}>{msg(locale, "checkin.step1.next")}</Action>
-      <div className="mcy-checkin-footer-options"><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button><button onClick={browseFreeLessons}>{msg(locale, "checkin.directPlan")}</button></div>
-    </> : <>
-      {aiPracticeOffered(state) ? <><Action onClick={() => { update({ checkinBaselineReady: hasCheckinBaseline(state) }); flow.push(ROUTES.dailyPractice); }}>{locale === "en-US" ? "Choose today's practice with AI" : "Chọn buổi hôm nay cùng AI"}</Action><button className="mcy-quiet-link" onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</button></> : <Action onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</Action>}
-      <div className="mcy-checkin-footer-options">{!state.signedIn && <button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button>}<button onClick={() => update({ checkinStep: 1 })}>{msg(locale, "checkin.backToBody")}</button></div>
-    </>}
-    <BottomSheet open={confirmSkip} onOpenChange={setConfirmSkip} title={locale === "en-US" ? "Skip the body check-in?" : "Bỏ ghi nhận vùng cơ thể?"} description={locale === "en-US" ? "The areas you entered will be cleared from this check-in. You can add them again later." : "Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau."} snap={0.38}>
-      <div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { applySkip(); setConfirmSkip(false); }}>{locale === "en-US" ? "Skip and continue" : "Bỏ qua và tiếp tục"} <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setConfirmSkip(false)}>{locale === "en-US" ? "Keep my entries" : "Giữ các vùng đã ghi"}</button></div>
-    </BottomSheet>
-  </div>;
-}
-
 function ReflectionScreen() {
   const keyboard = useKeyboard();
   const { state, update, setState } = useDemo();

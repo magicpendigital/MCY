@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — Tách tệp điểm nóng (Prototype.tsx, prototype.css, i18n.ts)
 
-Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); lát 1 gộp vào `main` 2026-11-14 (Owner duyệt); lát 2 gộp vào `main` 2026-11-14 (Owner duyệt); lát 3 gộp vào `main` 2026-11-14 (Owner duyệt); lát 4 gộp vào `main` 2026-11-15 (Owner duyệt); tiếp: lát 5.
+Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); lát 1 gộp vào `main` 2026-11-14 (Owner duyệt); lát 2 gộp vào `main` 2026-11-14 (Owner duyệt); lát 3 gộp vào `main` 2026-11-14 (Owner duyệt); lát 4 gộp vào `main` 2026-11-15 (Owner duyệt); lát 5 gộp vào `main` 2026-11-16 (Owner duyệt); lát 6 gộp vào `main` 2026-11-16 (Owner duyệt); lát 7 gộp vào `main` 2026-11-16 (Owner duyệt); lát 8 gộp vào `main` 2026-11-17 (Owner duyệt); lát 9 gộp vào `main` 2026-11-17 (Owner duyệt); lát 10 gộp vào `main` 2026-11-18 (Owner duyệt).
 
 ## 1. Mục tiêu
 `src/Prototype.tsx` (170 KB) bị 25% commit chạm, `src/prototype.css` (97 KB) 21%, `src/i18n.ts` 14%. Hai việc song song gần như luôn đụng nhau. Tách thành mỗi màn/tính năng một tệp để agent làm song song theo vùng và đọc ít ngữ cảnh hơn.
@@ -56,4 +56,10 @@ Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md)
 - [x] 2 Lát 1: `app/model.ts`, `state.tsx`, `events.ts`, `predicates.ts` (mca `20261114-1315-5fe8`; chuyển nguyên văn; `Prototype.tsx` 170 → 163 KB; `npm test` 22/22, `check:ios15`, Playwright 223/223 PASS)
 - [x] 3 Lát 2: `useLearnerContinuation`, `snapshots`, `persistence`, `auth` (mca `20261114-1340-9837`; nguyên văn; 163 → 152 KB; `npm test`, `check:ios15` PASS; Playwright 222/223 — lỗi duy nhất là test Carousel chập chờn của fixture runtime, không liên quan)
 - [x] 4 Lát 3: `app/ui/*`, `app/body/*` (mca `20261114-1536-b4be`; nguyên văn; 152 → 139 KB; `npm test`, `check:ios15`, Playwright 223/223 PASS)
-- [x] 5 Lát 4: `app/navigation.tsx`, `accessibility.tsx`, `RouteSuspense.tsx`, `BottomNav.tsx` (thêm context route)
+- [x] 5 Lát 4: `app/navigation.tsx`, `accessibility.tsx`, `RouteSuspense.tsx`, `BottomNav.tsx` (thêm context route; Claude làm lại tay sau khi job mca hỏng; 139 → 136 KB; `npm test`, `check:ios15` PASS; Playwright 218/223, 5 lỗi hết giờ khi máy nặng, chạy lại 5/5 PASS)
+- [x] 6 Lát 5: `screens/welcome/WelcomeScreen.tsx` (+ `LocaleToggle`), `WelcomeFooter.tsx` (dùng `useRoutes()`; 136 → 132 KB; `npm test`, `check:ios15`, Playwright 223/223 PASS)
+- [x] 7 Lát 6: `screens/auth/AuthEmailScreen.tsx`, `AuthCodeScreen.tsx` (dùng `useRoutes()`; nguyên văn trừ 2 dòng `useRoutes()`; 132 → 121 KB; `npm test`, `check:ios15` PASS; Playwright 221/225, 4 lỗi khi máy 100% CPU — auth-callback:65, learner-ux:465, learner-ux:915, practice-flow:42 — chạy lại riêng 5/5 PASS)
+- [x] 8 Lát 7: `screens/consent/ConsentScreen.tsx`, `ConsentFooter.tsx` (dùng `useRoutes()`, kể cả `finishAtAuthDestination(flow, routes, …)`; nguyên văn trừ 1 dòng `useRoutes()`; 121 → 112 KB; `npm test`, `check:ios15` PASS; Playwright 224/225, learner-ux:1038 hết giờ khi máy nặng, chạy lại PASS)
+- [x] 9 Lát 8: `screens/onboarding/OnboardingScreen.tsx` (dùng `useRoutes()`; nguyên văn trừ 1 dòng `useRoutes()`; 112 → 108 KB; `npm test`, `check:ios15` PASS; Playwright 224/225, mobile-runtime:137 lỗi khi máy nặng, chạy lại PASS)
+- [x] 10 Lát 9: `screens/home/HomeScreen.tsx` (+ `HomeQuickPicks`; dùng `useRoutes()`; import động `courses/*` đổi sang `../../courses/`; 108 → 104 KB; `npm test`, `check:ios15` PASS; Playwright 223/225, content-catalog:77 và content-hub:33 lỗi khi máy nặng, chạy lại 18/18 PASS)
+- [x] 11 Lát 10: `screens/checkin/CheckinScreen.tsx` (+ `EnergyFace`) và `CheckinFooter.tsx` (dùng `useRoutes()`; nguyên văn trừ 2 dòng `useRoutes()`; 104 → 84 KB; `npm test`, `check:ios15` PASS; Playwright 222/225, auth-email:63, content-catalog:110 và mobile-runtime:74 lỗi khi máy nặng, chạy lại 20/20 PASS)
