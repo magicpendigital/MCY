@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — Tách tệp điểm nóng (Prototype.tsx, prototype.css, i18n.ts)
 
-Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); lát 1 gộp vào `main` 2026-11-14 (Owner duyệt); lát 2 gộp vào `main` 2026-11-14 (Owner duyệt); lát 3 gộp vào `main` 2026-11-14 (Owner duyệt); lát 4 gộp vào `main` 2026-11-15 (Owner duyệt); lát 5 gộp vào `main` 2026-11-16 (Owner duyệt); lát 6 gộp vào `main` 2026-11-16 (Owner duyệt); lát 7 gộp vào `main` 2026-11-16 (Owner duyệt); lát 8 gộp vào `main` 2026-11-17 (Owner duyệt).
+Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md): 18 lát TSX + 8 lát CSS); lát 1 gộp vào `main` 2026-11-14 (Owner duyệt); lát 2 gộp vào `main` 2026-11-14 (Owner duyệt); lát 3 gộp vào `main` 2026-11-14 (Owner duyệt); lát 4 gộp vào `main` 2026-11-15 (Owner duyệt); lát 5 gộp vào `main` 2026-11-16 (Owner duyệt); lát 6 gộp vào `main` 2026-11-16 (Owner duyệt); lát 7 gộp vào `main` 2026-11-16 (Owner duyệt); lát 8 gộp vào `main` 2026-11-17 (Owner duyệt); lát 9 xong 2026-11-17 trên nhánh `claude/lat-9-home`, chờ Owner duyệt gộp.
 
 ## 1. Mục tiêu
 `src/Prototype.tsx` (170 KB) bị 25% commit chạm, `src/prototype.css` (97 KB) 21%, `src/i18n.ts` 14%. Hai việc song song gần như luôn đụng nhau. Tách thành mỗi màn/tính năng một tệp để agent làm song song theo vùng và đọc ít ngữ cảnh hơn.
@@ -61,3 +61,4 @@ Trạng thái: bước 1 xong (2026-11-14, [bản đồ](split-hot-files-map.md)
 - [x] 7 Lát 6: `screens/auth/AuthEmailScreen.tsx`, `AuthCodeScreen.tsx` (dùng `useRoutes()`; nguyên văn trừ 2 dòng `useRoutes()`; 132 → 121 KB; `npm test`, `check:ios15` PASS; Playwright 221/225, 4 lỗi khi máy 100% CPU — auth-callback:65, learner-ux:465, learner-ux:915, practice-flow:42 — chạy lại riêng 5/5 PASS)
 - [x] 8 Lát 7: `screens/consent/ConsentScreen.tsx`, `ConsentFooter.tsx` (dùng `useRoutes()`, kể cả `finishAtAuthDestination(flow, routes, …)`; nguyên văn trừ 1 dòng `useRoutes()`; 121 → 112 KB; `npm test`, `check:ios15` PASS; Playwright 224/225, learner-ux:1038 hết giờ khi máy nặng, chạy lại PASS)
 - [x] 9 Lát 8: `screens/onboarding/OnboardingScreen.tsx` (dùng `useRoutes()`; nguyên văn trừ 1 dòng `useRoutes()`; 112 → 108 KB; `npm test`, `check:ios15` PASS; Playwright 224/225, mobile-runtime:137 lỗi khi máy nặng, chạy lại PASS)
+- [x] 10 Lát 9: `screens/home/HomeScreen.tsx` (+ `HomeQuickPicks`; dùng `useRoutes()`; import động `courses/*` đổi sang `../../courses/`; 108 → 104 KB; `npm test`, `check:ios15` PASS; Playwright 223/225, content-catalog:77 và content-hub:33 lỗi khi máy nặng, chạy lại 18/18 PASS)
