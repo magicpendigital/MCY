@@ -14,19 +14,19 @@ import "@fontsource/source-serif-4/vietnamese-400.css";
 import "@fontsource/source-serif-4/vietnamese-400-italic.css";
 import { App as CapacitorApp } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
-import { bodyLevelLabel, formatMessage, guidedChoiceLabel, localizedNumber, msg, regionLabel, sideLabel, type AppLocale } from "./i18n";
+import { msg, type AppLocale } from "./i18n";
 import {
   ArrowLeftIcon, ArrowRightIcon, CheckIcon,
   InfoCircledIcon,
   PersonIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
-import { BottomSheet, Carousel, FlowStack, KeyboardInput, KeyboardTextarea, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
+import { BottomSheet, Carousel, FlowStack, KeyboardInput, MobileScroll, type FlowScreen, useFlow, useKeyboard } from "./mobile";
 import { backendConfigured, clientChannel, getAccountBoundSupabaseClient, getSupabaseClient, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
 import { checkNewPassword, PASSWORD_CHECK_MESSAGES, passwordChangeMessage } from "./backend/passwordAuth";
 import { observeLearnerSession } from "./backend/learnerSession";
 import { rememberNativeAuthUrl } from "./backend/nativeAuth";
 import { isWebAuthCallback } from "./backend/authRouting";
-import { BODY_REGIONS, bodyRegionCodes, isPairedBodyRegion, removeBodyObservation, replaceBodyObservation, type BodyRegion, type BodySide } from "./bodyRegions";
+import { bodyRegionCodes } from "./bodyRegions";
 import {
   deleteLearnerCheckin,
   CONSENT_POLICY_VERSIONS,
@@ -41,12 +41,12 @@ import {
 } from "./backend/learnerData";
 import type { PracticeContext } from "../supabase/functions/_shared/practiceContract";
 import { rememberedPace } from "./practice/feedbackMemory";
-import type { DemoState, Observation, Outcome, Pace } from "./app/model";
+import type { DemoState } from "./app/model";
 import { clearAccountScopedState, DemoContext, initialState, useDemo } from "./app/state";
 import { AUTH_SIGN_IN_EVENT, SESSION_RESTORE_RETRY_EVENT } from "./app/events";
 import { hasCurrentAiConsent, latestFeedback, normalizeAuthDestination } from "./app/predicates";
 import { useLearnerContinuation } from "./app/useLearnerContinuation";
-import { makeSnapshot, snapshotFromDatabase } from "./app/snapshots";
+import { snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo, persistProfile } from "./app/persistence";
 import { handleNativeAuthUrl } from "./app/auth";
 import { Action, Choice, DemoNote, Eyebrow } from "./app/ui/controls";
@@ -66,6 +66,9 @@ import { OnboardingScreen } from "./screens/onboarding/OnboardingScreen";
 import { HomeScreen } from "./screens/home/HomeScreen";
 import { CheckinScreen } from "./screens/checkin/CheckinScreen";
 import { CheckinFooter } from "./screens/checkin/CheckinFooter";
+import { ReflectionScreen } from "./screens/reflection/ReflectionScreen";
+import { ReflectionFooter } from "./screens/reflection/ReflectionFooter";
+import { SyncScreen } from "./screens/reflection/SyncScreen";
 import { AuthEmailScreen } from "./screens/auth/AuthEmailScreen";
 import { AuthCodeScreen } from "./screens/auth/AuthCodeScreen";
 
@@ -584,70 +587,6 @@ function ReadinessScreen() {
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-readiness-page"><Eyebrow>A06 · TRƯỚC KHI THỰC HÀNH</Eyebrow><h1>Hôm nay bạn có muốn tiếp tục thật nhẹ nhàng không?</h1><p className="mcy-lead">Chọn theo cảm nhận của bạn. Đây không phải chẩn đoán hay đánh giá an toàn y tế.</p><div className="mcy-account-panel"><strong>Nếu bạn chưa chắc, bạn có thể dừng lại.</strong><p>MCY hiện chưa tạo gợi ý tự động. Bạn luôn tự chọn bài học và có thể dừng bất cứ lúc nào.</p></div><div className="mcy-readiness-options"><button aria-pressed={result === "within_scope"} onClick={() => choose("within_scope")}><strong>Tôi muốn tiếp tục nhẹ nhàng</strong><small>Đi tới thư viện bài học miễn phí.</small></button><button aria-pressed={result === "unknown"} onClick={() => choose("unknown")}><strong>Tôi chưa chắc</strong><small>Xem thư viện mà không dùng phản hồi để cá nhân hóa.</small></button><button aria-pressed={result === "needs_review"} onClick={() => choose("needs_review")}><strong>Tôi cần người xem cùng</strong><small>Mở hướng dẫn và hỗ trợ.</small></button><button aria-pressed={result === "stop_guidance"} onClick={() => choose("stop_guidance")}><strong>Tôi muốn dừng hôm nay</strong><small>Không chọn bài lúc này.</small></button></div>{result === "stop_guidance" && <div className="mcy-alert">Mình sẽ không đề xuất bài lúc này. Nếu bạn cần hỗ trợ khẩn cấp, hãy liên hệ dịch vụ phù hợp tại nơi bạn đang ở.</div>}{result === "needs_review" && <div className="mcy-alert">Hiện chưa có phiên tư vấn trực tiếp trong ứng dụng. Bạn có thể xem hướng dẫn chung.</div>}<Action disabled={!result} onClick={advance}>{result === "within_scope" || result === "unknown" ? "Xem bài học miễn phí" : result === "needs_review" ? "Mở hướng dẫn" : "Kết thúc ở đây"}</Action><button className="mcy-quiet-link" onClick={() => flow.replace(ROUTES.discover)}>Bỏ qua câu hỏi · xem bài học miễn phí</button><DemoNote>Chỉ những điều bạn chủ động ghi nhận mới xuất hiện trong check-in và Hành trình.</DemoNote></main></MobileScroll>;
 }
 
-// Three shortest clips, ordered by length only. This is a gentle first look, not a pick based on the check-in.
-function ReflectionScreen() {
-  const keyboard = useKeyboard();
-  const { state, update, setState } = useDemo();
-  const locale = state.locale;
-  const beforeObservations = state.reflectionBeforeObservations;
-  const [editing, setEditing] = useState<BodyRegion | null>(null);
-  const [editingStoredSide, setEditingStoredSide] = useState<BodySide | undefined>();
-  const [suggestedSide, setSuggestedSide] = useState<BodySide | undefined>();
-  const [chooseNewRegion, setChooseNewRegion] = useState(false);
-  const current = editing ? state.postObservations.find(item => item.region === editing && item.side === editingStoredSide) ?? state.postObservations.find(item => item.region === editing) : undefined;
-  const openRegion = (region: BodyRegion, preferredSide?: BodySide) => {
-    const entries = state.postObservations.filter(item => item.region === region);
-    const prior = beforeObservations.filter(item => item.region === region);
-    const currentEntry = preferredSide
-      ? entries.find(item => item.side === preferredSide) ?? entries.find(item => item.side === "both" || item.side === "unspecified")
-      : entries[0];
-    const base = currentEntry ?? (preferredSide ? prior.find(item => item.side === preferredSide) ?? prior.find(item => item.side === "both" || item.side === "unspecified") : prior[0]);
-    const storedSide = currentEntry?.side ?? base?.side ?? preferredSide ?? "unspecified";
-    setEditingStoredSide(storedSide);
-    setSuggestedSide(preferredSide ?? base?.side ?? "unspecified");
-    setEditing(region);
-  };
-  const closeEditor = () => { setEditing(null); setEditingStoredSide(undefined); setSuggestedSide(undefined); };
-  const saveRegion = (value: Observation) => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: replaceBodyObservation(previous.postObservations, value, editingStoredSide ?? value.side) }));
-  const removeRegion = () => { if (!editing || !editingStoredSide) return; setState(previous => { const postObservations = removeBodyObservation(previous.postObservations, editing, editingStoredSide); return { ...previous, postObservations, postBodyStatus: postObservations.length ? "reported" : null }; }); };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-reflection-page">
-    <h1>{msg(locale, "reflection.title")}</h1><p className="mcy-lead">{msg(locale, "reflection.lead")}</p>
-    {state.reflectionLessonTitle && <div className="mcy-inline-note"><InfoCircledIcon />{msg(locale, "course.reflectionLesson")} {state.reflectionLessonTitle}</div>}
-    <div className="mcy-before-after"><div><BodyMap observations={beforeObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><span>{msg(locale, "reflection.before")}</span></div><span className="mcy-before-arrow"><ArrowRightIcon /></span><div><BodyMap observations={state.postObservations} bodyStyle={state.bodyStyle} compact locale={locale} /><span>{msg(locale, "reflection.after")}</span></div></div>
-    <p className="mcy-reflection-hint">{msg(locale, "reflection.hint")}</p>
-    <section className="mcy-field-section"><h2>{msg(locale, "reflection.preRegions")}</h2>{beforeObservations.length ? <div className="mcy-reflection-regions">{beforeObservations.map(item => { const after = state.postObservations.find(entry => entry.region === item.region && (entry.side === item.side || (entry.side === "both" && (item.side === "left" || item.side === "right")))); const area = `${regionLabel(locale, item.region)}${isPairedBodyRegion(item.region) && item.side !== "unspecified" ? ` · ${sideLabel(locale, item.side)}` : ""}`; return <div key={`${item.region}-${item.side}`} className="mcy-reflection-region-row"><button onClick={() => openRegion(item.region, item.side)}><span><strong>{area}</strong><small>{msg(locale, "reflection.before")}: {item.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, item.level ?? msg(locale, "checkin.notRecorded"))}</small></span><span><small>{msg(locale, "reflection.after")}</small><strong>{after ? after.status === "uncertain" ? bodyLevelLabel(locale, "Chưa rõ") : bodyLevelLabel(locale, after.level ?? msg(locale, "checkin.notRecorded")) : msg(locale, "reflection.tapToRecord")}</strong></span><ArrowRightIcon /></button><button className="mcy-keep-region" onClick={() => setState(previous => ({ ...previous, postBodyStatus: "reported", postObservations: replaceBodyObservation(previous.postObservations, { ...item, note: "" }, item.side) }))}>{msg(locale, "reflection.keepSame")}</button></div>; })}</div> : <p className="mcy-inline-note">{msg(locale, "reflection.notCheckedIn")}</p>}</section>
-    <button className="mcy-standalone-link" onClick={() => setChooseNewRegion(true)}>{msg(locale, "reflection.addRegion")}</button>
-    {beforeObservations.length > 0 && <div className="mcy-post-options"><button onClick={() => update({ postObservations: beforeObservations.map(item => ({ ...item, note: "" })), postBodyStatus: "reported" })}>{msg(locale, "reflection.keepAll")}</button><button onClick={() => update({ postObservations: [], postBodyStatus: "uncertain" })}>{msg(locale, "reflection.unsureAfter")}</button></div>}
-    <section className="mcy-field-section"><h2>{msg(locale, "reflection.overall")} <small>{msg(locale, "reflection.optional")}</small></h2><div className="mcy-reflection-grid">{(["Dễ chịu hơn", "Như cũ", "Khó chịu hơn", "Chưa rõ"] as Exclude<Outcome, null>[]).map(value => <Choice key={value} selected={state.outcome === value} onClick={() => update({ outcome: value })}>{guidedChoiceLabel(locale, value)}</Choice>)}</div></section>
-    <section className="mcy-field-section compact"><h2>{msg(locale, "reflection.pace")} <small>{msg(locale, "reflection.optional")}</small></h2><div className="mcy-chip-grid">{(["Vừa", "Hơi nhanh", "Hơi chậm"] as Exclude<Pace, null>[]).map(value => <Choice key={value} selected={state.pace === value} onClick={() => update({ pace: value })}>{guidedChoiceLabel(locale, value)}</Choice>)}</div></section>
-    {state.outcome === "Khó chịu hơn" ? <div className="mcy-alert">{msg(locale, "reflection.alert")}</div> : null}
-    <label className="mcy-note-label">{msg(locale, "reflection.notePrompt")} <small>{msg(locale, "reflection.noteScope")}</small><KeyboardTextarea placeholder={msg(locale, "reflection.notePlaceholder")} value={state.note} onChange={event => update({ note: event.target.value })} onBlur={() => keyboard.hide()} /></label>
-    <DemoNote>{msg(locale, "reflection.note")}</DemoNote>
-    <RegionEditor region={editing} current={current} suggestedSide={suggestedSide} onSave={saveRegion} onClose={closeEditor} onDelete={removeRegion} />
-    <BottomSheet open={chooseNewRegion} onOpenChange={setChooseNewRegion} title={msg(locale, "reflection.chooseRegion")} description={msg(locale, "reflection.newRegionHelp")} snap={0.48}><div className="mcy-picker-list">{BODY_REGIONS.map(region => <button key={region} onClick={() => { setChooseNewRegion(false); openRegion(region); }}>{regionLabel(locale, region)}</button>)}</div></BottomSheet>
-  </main></MobileScroll>;
-}
-
-function ReflectionFooter() {
-  const flow = useFlow();
-  const keyboard = useKeyboard();
-  const { state, setState } = useDemo();
-  const locale = state.locale;
-  const save = (skip: boolean) => {
-    keyboard.hide();
-    const recordedAt = new Date();
-    setState(previous => {
-      const before = makeSnapshot("Trước tập", previous.reflectionBeforeStatus, previous.reflectionBeforeObservations, {}, recordedAt);
-      const after = makeSnapshot("Sau tập", skip ? "skipped" : previous.postBodyStatus ?? (previous.postObservations.length ? "reported" : null), skip ? [] : previous.postObservations, { lessonTitle: previous.reflectionLessonTitle || undefined, outcome: skip ? null : previous.outcome, pace: skip ? null : previous.pace, note: skip ? "" : previous.note, endedEarly: previous.endedEarly, feedbackSkipped: skip }, recordedAt);
-      const localBefore = previous.currentRemoteCheckinId || !previous.reflectionHasCheckinBaseline ? [] : [before];
-      return { ...previous, history: previous.saveFeedbackConsent ? [...previous.history, ...localBefore, after] : previous.history, lastReflection: after, preObservations: [], postObservations: [], bodyStatus: null, postBodyStatus: null, regions: [], outcome: null, pace: null, note: "", checkinBaselineReady: false, reflectionHasCheckinBaseline: false, reflectionBeforeStatus: null, reflectionBeforeObservations: [], reflectionLessonTitle: "" };
-    });
-    flow.replace(ROUTES.sync);
-  };
-  return <div className="mcy-flow-footer"><button className="mcy-quiet-link" onClick={() => save(true)}>{msg(locale, "reflection.skip")}</button><Action onClick={() => save(false)}>{msg(locale, "reflection.save")}</Action></div>;
-}
-
-
 function ProfileScreen() {
   const flow = useFlow();
   const { state, setState, update } = useDemo();
@@ -883,40 +822,6 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
 
 function PrivacyToggle({ title, detail, value, onToggle, actionLabels, disabled = false }: { title: string; detail: string; value: boolean; onToggle: (value: boolean) => void; actionLabels?: { active: string; inactive: string }; disabled?: boolean }) {
   return <div className="mcy-account-panel mcy-toggle-row"><span><strong>{title}</strong><small>{detail}</small></span><button disabled={disabled} aria-pressed={value} className={value ? "on" : ""} onClick={() => onToggle(!value)}><i>{value ? "✓" : ""}</i><span>{value ? actionLabels?.active ?? "Bật" : actionLabels?.inactive ?? "Tắt"}</span></button></div>;
-}
-
-function SyncScreen() {
-  const flow = useFlow();
-  const { state } = useDemo();
-  const locale = state.locale;
-  const latest = state.lastReflection ?? lastOf(state.history);
-  const reflectionTitle = latest?.feedbackSkipped
-    ? msg(locale, "sync.skippedTitle")
-    : latest?.kind === "Sau tập"
-      ? latest.endedEarly
-        ? msg(locale, "sync.endedEarlyTitle")
-        : latest.outcome || latest.observations.length || latest.status === "uncertain" || latest.status === "none_now" || latest.status === "tired" || latest.status === "uncomfortable"
-          ? msg(locale, "sync.reflectionTitle")
-          : msg(locale, "sync.noFeelingTitle")
-      : msg(locale, "sync.noReflectionTitle");
-  const reflectionDetail = [
-    latest?.outcome ? formatMessage(locale, "sync.overall", { feeling: guidedChoiceLabel(locale, latest.outcome) }) : msg(locale, "sync.noOverall"),
-    latest?.status === "skipped" && !latest.feedbackSkipped ? msg(locale, "sync.skippedBody") : "",
-    latest?.observations.length ? formatMessage(locale, "sync.observationCount", { count: localizedNumber(locale, latest.observations.length) }) : msg(locale, "sync.noObservation"),
-  ].filter(Boolean).join(" ");
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-sync-page">
-    <Eyebrow>{msg(locale, "sync.eyebrow")}</Eyebrow>
-    <h1>{msg(locale, "sync.title")}</h1>
-    <p className="mcy-lead">{msg(locale, "sync.lead")}</p>
-    <div className="mcy-sync-card">
-      <span className="mcy-state-pill">{msg(locale, "sync.sessionOnlyPill")}</span>
-      <strong>{reflectionTitle}</strong><p>{reflectionDetail}</p>
-    </div>
-    {!state.saveFeedbackConsent && <p className="mcy-inline-note">{msg(locale, "sync.noConsent")}</p>}
-    <Action secondary onClick={() => flow.replace(ROUTES.journey)}>{msg(locale, "sync.openJourney")}</Action>
-    <button className="mcy-quiet-link" onClick={() => flow.replace(ROUTES.home)}>{msg(locale, "sync.done")}</button>
-    <DemoNote>{msg(locale, "sync.note")}</DemoNote>
-  </main></MobileScroll>;
 }
 
 function HelpArticleScreen({ articleId }: { articleId: HelpArticleId }) {

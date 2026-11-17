@@ -7,6 +7,7 @@ import { useRoutes } from "../../app/navigation";
 import { useDemo } from "../../app/state";
 import { Action, DemoNote, Eyebrow } from "../../app/ui/controls";
 
+// Three shortest clips, ordered by length only. This is a gentle first look, not a pick based on the check-in.
 function HomeQuickPicks() {
   const flow = useFlow();
   const routes = useRoutes();
