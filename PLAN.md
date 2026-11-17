@@ -1,6 +1,6 @@
 # PLAN — bảng tiến độ sống của MCY (Một chút yoga)
 
-> **Cập nhật lần cuối: 2026-11-16** — `main` là nhánh dữ liệu chính duy nhất (cả checkout chính `D:/Projects/MCY`), việc xong phải commit + merge vào `main` rồi xoá nhánh ([BRANCH_HYGIENE](docs/quality/BRANCH_HYGIENE.md)); đã dọn 9 nhánh đã merge; Owner duyệt roadmap A–E (14/11); tiếp theo: giai đoạn A (đóng 1.0) và tách tệp điểm nóng qua mca (lát 4 ở `main` 15/11; tiếp: lát 5).
+> **Cập nhật lần cuối: 2026-11-17** — `main` là nhánh dữ liệu chính duy nhất (cả checkout chính `D:/Projects/MCY`), việc xong phải commit + merge vào `main` rồi xoá nhánh ([BRANCH_HYGIENE](docs/quality/BRANCH_HYGIENE.md)); đã dọn 9 nhánh đã merge; Owner duyệt roadmap A–E (14/11); tiếp theo: giai đoạn A (đóng 1.0) và tách tệp điểm nóng qua mca (lát 4 ở `main` 15/11; tiếp: lát 5).
 > Tệp đầu tiên Owner và mọi agent đọc. Trả lời: *đang ở đâu, còn gì, chờ ai*. Chi tiết việc lớn ở `plans/active/` (đang làm), `plans/done/` (đã chạy tốt), `plans/backlog/` (chưa làm). Quy tắc lâu dài ở `AGENTS.md`; lịch sử theo ngày ở `docs/status/`.
 
 ## Quy tắc cập nhật
@@ -27,7 +27,7 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 | Bản 1.0.7 (batch 9) | INC-005 (zoom ô nhập trên iOS) từ commit 98e598a: Play Internal testing 1.0.7 (phát hành 15/11), APK trên máy thử (cài 14/11); web Preview theo `main` nên đã đi trước | ✅ đã phát hành; ⬜ chờ Owner kiểm trên iPhone iOS 15 thật (`?debug=viewport`) |
 | Roadmap A–E (thay G0–G8) | A đóng 1.0 → B vá vòng lặp + đo lường → C Closed testing 12 người/14 ngày, nhắc tập, nhịp tuần → D tăng trưởng hữu cơ + Production (~1/2027) → E hiện diện (có điều kiện, ≥ Q1/2027); avatar hoãn. Đã duyệt Q1–Q8; mốc ngày là ước tính. [Kế hoạch](plans/active/2026-11-14-roadmap-retention-loop.md) | 🟡 đã duyệt hướng; mỗi giai đoạn B–E cần kế hoạch riêng trước khi sửa code; A: 1.0.7 đã phát hành 15/11, còn ⬜ iPhone iOS 15 thật |
 | Lát 0: khách ≤3 chạm (15/11) | Phản hồi tester: muốn vào bài ≤3 chạm, ngại form. "Trải nghiệm thử" vào Hôm nay, khối 3 bài ngắn lên trước, check-in thành tùy chọn. [Kế hoạch](plans/active/2026-11-15-three-tap-guest-path.md) | ✅ ở `main` (`a89ed98`, PR [#1](https://github.com/magicpendigital/MCY/pull/1), 16/11, Owner yêu cầu gộp); CI xanh, Playwright 225/225; chưa phát hành Play; iPhone iOS 15 thật CHƯA CHẠY; ⬜ chờ Owner đọc nguyên văn chữ Hôm nay
-| Thiết kế trợ lý AI trung tâm (16/11) | Owner quyết 16/11: khe trợ lý ở trung tâm (lớp 1 gợi ý theo quy tắc); cho nhập tự do lớp 3 (cần kế hoạch R3); AI chỉ cho tài khoản; ngân sách OpenRouter chỉ Owner quyết. [Thiết kế](plans/backlog/ai-assistant-central-design.md), đã ghi vào `AGENTS.md` và `PRODUCT_DECISIONS.md` | 🟡 tên và giọng điệu chờ Owner chọn (đề xuất "Chút"); lát 1 (chip + chuỗi clip) chưa có kế hoạch; AI thật chờ duyệt chuyên môn
+| Thiết kế trợ lý AI trung tâm (17/11) | Owner quyết 16–17/11: khe trợ lý ở trung tâm (lớp 1 gợi ý theo quy tắc); tên **Chút** và giọng điệu đã duyệt; cho nhập tự do lớp 3 (cần kế hoạch R3); AI chỉ cho tài khoản; ngân sách OpenRouter chỉ Owner quyết. [Thiết kế](plans/backlog/ai-assistant-central-design.md), [UI trên Artifact](https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg); quyết định đã ghi vào `AGENTS.md` và `PRODUCT_DECISIONS.md` | 🟡 chờ Owner xem UI và chốt 4 điểm (tự chuyển bài, chữ Hôm nay, tần suất mời tài khoản, chuỗi nhẹ); lát 1 chưa có kế hoạch; AI thật chờ duyệt chuyên môn
 
 ## Lỗi đã thấy, chưa sửa
 - mca: job lỗi (auth/mạng) bị xoá worktree kèm thay đổi chưa commit (15/11, lát 4 run `20261114-1845-cd90`). Khi giao mca, coi worktree của job là tạm; nếu job hỏng thì lấy diff ra ngay hoặc làm lại.
@@ -36,7 +36,7 @@ Ký hiệu: ✅ xong · 🟡 làm một phần · ⬜ chưa làm · ⛔ chờ Ow
 ## 3. Đang chờ Owner (mỗi mục một quyết định)
 - ⛔ Supabase Auth redirect allowlist: thêm `https://mcy-git-main-magicpens-projects.vercel.app/auth/callback` nếu cần đăng nhập trên alias nhánh (domain chính không đổi).
 - iPhone iOS 15 thật: ảnh `?debug=viewport` sau bản sửa INC-005.
-- Trợ lý (16/11): chọn tên và giọng điệu (mục 7 của [thiết kế](plans/backlog/ai-assistant-central-design.md)); nhãn và nhóm clip cho lát 1; người duyệt chuyên môn có tên (cũng cần cho danh sách từ khóa dừng ở lớp 3); đọc nguyên văn chữ mới trên Hôm nay. Thí nghiệm feed dọc (phương án C) đã đồng ý thử, cần kế hoạch riêng.
+- Trợ lý (17/11): xem [UI trên Artifact](https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg) và chốt 4 điểm ở mục 9 của [thiết kế](plans/backlog/ai-assistant-central-design.md); nhãn và nhóm clip cho lát 1; người duyệt chuyên môn có tên (cũng cần cho danh sách từ khóa dừng ở lớp 3); đọc nguyên văn chữ mới trên Hôm nay. Thí nghiệm feed dọc (phương án C) đã đồng ý thử, cần kế hoạch riêng.
 - Cho roadmap: xác nhận hiện trạng Closed testing (đã mở chưa, bao nhiêu tester) trước khi lập kế hoạch giai đoạn C; chữ màn chào mới, chữ và nhóm clip cho gợi ý, chữ đồng ý đo lường (giai đoạn B); tên người duyệt chuyên môn.
 - Mở cổng: ba chân chó, duyệt chuyên môn ảnh AI, hồ sơ giáo viên đầu tiên, ≥5 bài AI đã duyệt, Play Data safety, reset upload key trước production, sửa runtime bảo vệ (`styles.css`, `FlowStack.tsx`).
 
