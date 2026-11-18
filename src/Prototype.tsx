@@ -43,7 +43,7 @@ import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo } from "./app/persistence";
 import { handleNativeAuthUrl } from "./app/auth";
-import { Action, DemoNote, Eyebrow } from "./app/ui/controls";
+import { Action, DemoNote } from "./app/ui/controls";
 import { Header } from "./app/ui/Header";
 import { BodyMap } from "./app/body/BodyMap";
 import { BodyStylePicker } from "./app/body/BodyStylePicker";
@@ -65,11 +65,13 @@ import { ReflectionFooter } from "./screens/reflection/ReflectionFooter";
 import { SyncScreen } from "./screens/reflection/SyncScreen";
 import { AuthEmailScreen } from "./screens/auth/AuthEmailScreen";
 import { AuthCodeScreen } from "./screens/auth/AuthCodeScreen";
-import { AccountRow } from "./app/ui/AccountRow";
 import { PrivacyToggle } from "./screens/account/PrivacyToggle";
-import { HELP_ARTICLES, type HelpArticleId } from "./screens/help/articles";
+import type { HelpArticleId } from "./screens/help/articles";
 import { ProfileScreen } from "./screens/account/ProfileScreen";
 import { AccountDetailScreen } from "./screens/account/AccountDetailScreen";
+import { ReadinessScreen } from "./screens/readiness/ReadinessScreen";
+import { HelpArticleScreen } from "./screens/help/HelpArticleScreen";
+import { DiscoverDetailScreen } from "./screens/discover/DiscoverDetailScreen";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -526,34 +528,4 @@ function AuthSessionRouter() {
     else finishAtAuthDestination(flow, ROUTES, normalizeAuthDestination(state.authReturnTo));
   }, [flow, state.authReturnTo, state.backendStatus, state.consentPolicyVersions, state.onboardingComplete, state.privacyAccepted, state.signedIn, state.termsAccepted]);
   return null;
-}
-
-function ReadinessScreen() {
-  const flow = useFlow();
-  const [result, setResult] = useState<"within_scope" | "unknown" | "needs_review" | "stop_guidance" | null>(null);
-  const choose = (value: NonNullable<typeof result>) => setResult(value);
-  const advance = () => {
-    if (result === "within_scope") flow.replace(ROUTES.discover);
-    else if (result === "unknown") flow.replace(ROUTES.discover);
-    else if (result === "needs_review") flow.replace(ROUTES.help);
-    else if (result === "stop_guidance") flow.replace(ROUTES.home);
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-readiness-page"><Eyebrow>A06 · TRƯỚC KHI THỰC HÀNH</Eyebrow><h1>Hôm nay bạn có muốn tiếp tục thật nhẹ nhàng không?</h1><p className="mcy-lead">Chọn theo cảm nhận của bạn. Đây không phải chẩn đoán hay đánh giá an toàn y tế.</p><div className="mcy-account-panel"><strong>Nếu bạn chưa chắc, bạn có thể dừng lại.</strong><p>MCY hiện chưa tạo gợi ý tự động. Bạn luôn tự chọn bài học và có thể dừng bất cứ lúc nào.</p></div><div className="mcy-readiness-options"><button aria-pressed={result === "within_scope"} onClick={() => choose("within_scope")}><strong>Tôi muốn tiếp tục nhẹ nhàng</strong><small>Đi tới thư viện bài học miễn phí.</small></button><button aria-pressed={result === "unknown"} onClick={() => choose("unknown")}><strong>Tôi chưa chắc</strong><small>Xem thư viện mà không dùng phản hồi để cá nhân hóa.</small></button><button aria-pressed={result === "needs_review"} onClick={() => choose("needs_review")}><strong>Tôi cần người xem cùng</strong><small>Mở hướng dẫn và hỗ trợ.</small></button><button aria-pressed={result === "stop_guidance"} onClick={() => choose("stop_guidance")}><strong>Tôi muốn dừng hôm nay</strong><small>Không chọn bài lúc này.</small></button></div>{result === "stop_guidance" && <div className="mcy-alert">Mình sẽ không đề xuất bài lúc này. Nếu bạn cần hỗ trợ khẩn cấp, hãy liên hệ dịch vụ phù hợp tại nơi bạn đang ở.</div>}{result === "needs_review" && <div className="mcy-alert">Hiện chưa có phiên tư vấn trực tiếp trong ứng dụng. Bạn có thể xem hướng dẫn chung.</div>}<Action disabled={!result} onClick={advance}>{result === "within_scope" || result === "unknown" ? "Xem bài học miễn phí" : result === "needs_review" ? "Mở hướng dẫn" : "Kết thúc ở đây"}</Action><button className="mcy-quiet-link" onClick={() => flow.replace(ROUTES.discover)}>Bỏ qua câu hỏi · xem bài học miễn phí</button><DemoNote>Chỉ những điều bạn chủ động ghi nhận mới xuất hiện trong check-in và Hành trình.</DemoNote></main></MobileScroll>;
-}
-
-function HelpArticleScreen({ articleId }: { articleId: HelpArticleId }) {
-  const flow = useFlow();
-  const article = HELP_ARTICLES.find(item => item.id === articleId) ?? HELP_ARTICLES[0];
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-detail">
-    <Eyebrow>HƯỚNG DẪN SỬ DỤNG</Eyebrow>
-    <h1>{article.title}</h1>
-    <p className="mcy-lead">{article.lead}</p>
-    <section className="mcy-article-body">{article.paragraphs.map((paragraph, index) => <p key={`${article.id}-${index}`}>{paragraph}</p>)}</section>
-    {article.id === "ai-scope" && <AccountRow title="Mở cài đặt quyền riêng tư" detail="Xem hoặc thay đổi lựa chọn AI" onClick={() => flow.push(ROUTES.privacy)} />}
-    <DemoNote>Hướng dẫn sử dụng chung, không thay thế tư vấn y tế. Nếu cần hỗ trợ tài khoản hoặc dữ liệu, hiện chưa có kênh gửi yêu cầu trong ứng dụng.</DemoNote>
-  </main></MobileScroll>;
-}
-
-function DiscoverDetailScreen() {
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-discover-detail"><Eyebrow>HƯỚNG DẪN</Eyebrow><h1>Tự chọn nội dung theo điều bạn cần hôm nay.</h1><p className="mcy-lead">Check-in, duyệt bài học miễn phí và ghi lại cảm nhận nếu bạn muốn.</p><section className="mcy-article-body"><p>Check-in là điều bạn tự ghi nhận ở thời điểm hiện tại. Bạn có thể chọn từng vùng cơ thể, chọn mức phù hợp hoặc bỏ qua vùng chưa muốn ghi. Check-in không thay cho chẩn đoán.</p><p>MCY chưa tự ghép video thành buổi tập hoặc chọn bài dựa trên check-in. Quay lại Khám phá để tự duyệt danh mục; mỗi video là một bài riêng và chưa được đánh giá theo nhu cầu sức khỏe cá nhân.</p><p>Trong lúc thực hành, hãy theo nhịp của mình và dừng nếu bài tập không phù hợp. Sau đó, bạn có thể ghi riêng từng vùng là dễ chịu hơn, như cũ, khó chịu hơn, chưa rõ hoặc bỏ qua.</p></section><DemoNote>Đây là hướng dẫn sử dụng chung, không phải tư vấn y tế. Nếu cần chăm sóc, hãy tìm hỗ trợ phù hợp tại nơi bạn đang ở.</DemoNote></main></MobileScroll>;
 }
