@@ -1,0 +1,3 @@
+export function PrivacyToggle({ title, detail, value, onToggle, actionLabels, disabled = false }: { title: string; detail: string; value: boolean; onToggle: (value: boolean) => void; actionLabels?: { active: string; inactive: string }; disabled?: boolean }) {
+  return <div className="mcy-account-panel mcy-toggle-row"><span><strong>{title}</strong><small>{detail}</small></span><button disabled={disabled} aria-pressed={value} className={value ? "on" : ""} onClick={() => onToggle(!value)}><i>{value ? "✓" : ""}</i><span>{value ? actionLabels?.active ?? "Bật" : actionLabels?.inactive ?? "Tắt"}</span></button></div>;
+}

@@ -16,7 +16,7 @@ import { App as CapacitorApp } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
 import { msg, type AppLocale } from "./i18n";
 import {
-  ArrowLeftIcon, ArrowRightIcon, CheckIcon,
+  ArrowLeftIcon, CheckIcon,
   InfoCircledIcon,
   PersonIcon, ReaderIcon,
 } from "@radix-ui/react-icons";
@@ -71,6 +71,10 @@ import { ReflectionFooter } from "./screens/reflection/ReflectionFooter";
 import { SyncScreen } from "./screens/reflection/SyncScreen";
 import { AuthEmailScreen } from "./screens/auth/AuthEmailScreen";
 import { AuthCodeScreen } from "./screens/auth/AuthCodeScreen";
+import { AccountRow } from "./app/ui/AccountRow";
+import { ACCOUNT_DELETION_WEB_URL, AI_OFF_PRIVACY_DETAIL, PRIVACY_POLICY_WEB_URL, TERMS_WEB_URL, type AccountPanel } from "./screens/account/accountData";
+import { PrivacyToggle } from "./screens/account/PrivacyToggle";
+import { HELP_ARTICLES, type HelpArticleId } from "./screens/help/articles";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -86,51 +90,6 @@ const ReadingPublishScreen = lazy(() => import("./library/ReadingPublishScreen")
 const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
-
-type HelpArticleId = "body-map" | "pause-video" | "journey-record" | "ai-scope";
-const AI_OFF_PRIVACY_DETAIL = "Trợ lý chỉ hoạt động khi máy chủ xác nhận sẵn sàng và bạn đồng ý riêng. AI nhận lựa chọn được xác nhận của lượt hiện tại; không gửi hội thoại trước đó, tên/email, ghi chú tự do hay feedback lịch sử. AI chỉ chọn nội dung đã duyệt, không tạo động tác hoặc chẩn đoán. Khi tắt, không gửi yêu cầu mô hình.";
-const HELP_ARTICLES: Array<{ id: HelpArticleId; title: string; detail: string; lead: string; paragraphs: string[] }> = [
-  {
-    id: "body-map",
-    title: "Cách ghi nhận từng vùng cơ thể",
-    detail: "Chọn vùng, bên và mức bạn muốn ghi",
-    lead: "Check-in ghi lại điều bạn tự cảm nhận ở thời điểm hiện tại.",
-    paragraphs: [
-      "Chạm vào vùng trên hình hoặc chọn tên vùng trong danh sách để mở phần ghi nhận. Với vùng có hai bên, bạn có thể chọn trái, phải hoặc cả hai; mỗi bên được lưu riêng nếu cảm nhận khác nhau.",
-      "Chọn mức phù hợp và thêm ghi chú nếu muốn. “Bình thường”, “Chưa rõ” và “Bỏ qua” là các lựa chọn riêng; vùng chưa chọn không được hiểu thành một phản hồi.",
-    ],
-  },
-  {
-    id: "pause-video",
-    title: "Nếu muốn dừng giữa buổi",
-    detail: "Bạn có thể dừng video bất cứ lúc nào",
-    lead: "Bạn tự quyết định có tiếp tục hay không.",
-    paragraphs: [
-      "Dùng nút tạm dừng trong trình phát video, hoặc quay lại để chọn bài khác. MCY không xác nhận bạn đã xem hết video.",
-      "Nếu một chuyển động không phù hợp với bạn, hãy dừng lại. Phản hồi sau buổi là tùy chọn và có thể ghi “không thay đổi”, “khó chịu hơn”, “chưa rõ” hoặc bỏ qua.",
-    ],
-  },
-  {
-    id: "journey-record",
-    title: "Cách xem và xóa một bản ghi",
-    detail: "Mở Hành trình để xem hoặc quản lý bản ghi",
-    lead: "Hành trình chỉ hiển thị những gì bạn đã ghi nhận và cho phép lưu.",
-    paragraphs: [
-      "Mở Hành trình, chọn một ngày rồi chọn bản ghi cần xem. Bạn có thể xem các vùng đã ghi, bên cơ thể, mức tự chọn và ghi chú nếu có.",
-      "Để xóa, mở bản ghi và chọn xóa; ứng dụng sẽ yêu cầu xác nhận trước khi gửi thao tác. Nếu dịch vụ chưa xác nhận, ứng dụng sẽ báo lỗi để bạn biết bản ghi chưa được xóa.",
-    ],
-  },
-  {
-    id: "ai-scope",
-    title: "AI dùng check-in trong phạm vi nào?",
-    detail: "Tìm hiểu trạng thái AI và quyền riêng tư",
-    lead: "Trạng thái AI được máy chủ xác nhận trước khi gửi lựa chọn.",
-    paragraphs: [
-      "Khi trợ lý chưa sẵn sàng cho phiên của bạn, ứng dụng không gửi yêu cầu chọn buổi tới mô hình. Bạn vẫn có thể tự chọn các bài học video miễn phí.",
-      "Khi trợ lý sẵn sàng, xử lý AI cần sự đồng ý riêng và chỉ nhận lựa chọn đã xác nhận trong lượt hiện tại. Hội thoại trước đó, tên, email, ghi chú tự do và feedback lịch sử không được gửi. Mô hình chỉ chọn nội dung đã duyệt, không tự tạo động tác hoặc chẩn đoán.",
-    ],
-  },
-];
 
 const HELP_ARTICLE_ROUTES: Record<HelpArticleId, FlowScreen> = withFlowScreenAccessibility({
   "body-map": { id: "help-body-map", header: () => <Header title="Hướng dẫn check-in" back />, headerHeight: 55, render: () => <HelpArticleScreen articleId="body-map" /> },
@@ -660,16 +619,6 @@ function ProfileScreen() {
   </main></MobileScroll>;
 }
 
-function AccountRow({ title, detail, onClick, danger = false }: { title: string; detail: string; onClick: () => void; danger?: boolean }) {
-  return <button className={`mcy-account-row${danger ? " danger" : ""}`} onClick={onClick}><span><strong>{title}</strong><small>{detail}</small></span><ArrowRightIcon /></button>;
-}
-
-type AccountPanel = "edit" | "privacy" | "memory" | "sharing" | "security" | "notifications" | "access" | "help";
-const LEGAL_WEB_ORIGIN = "https://motchutyoga.magicpendigital.com";
-const ACCOUNT_DELETION_WEB_URL = `${LEGAL_WEB_ORIGIN}/delete-account.html`;
-const PRIVACY_POLICY_WEB_URL = `${LEGAL_WEB_ORIGIN}/privacy.html`;
-const TERMS_WEB_URL = `${LEGAL_WEB_ORIGIN}/terms.html`;
-
 function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
   const flow = useFlow();
   const keyboard = useKeyboard();
@@ -818,10 +767,6 @@ function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
   if (panel === "access") return screen("QUYỀN NỘI DUNG", "Những gì đang mở cho bạn.", "Khóa học miễn phí có thể học không cần giao dịch. Mục này cho biết nội dung trả phí hiện có trong ứng dụng.", <><div className="mcy-access-card"><span className="mcy-tag">HỌC MIỄN PHÍ</span><strong>Khóa học trong Khám phá</strong><p>Bạn có thể xem các bài học video ngay trong ứng dụng mà không cần mua quyền truy cập.</p></div><div className="mcy-empty large"><ReaderIcon /><strong>Chưa có khóa học trả phí</strong><p>Giao dịch, thời hạn học và quyền lợi đi kèm hiện chưa được cung cấp trong ứng dụng.</p></div><button className="mcy-quiet-link" onClick={() => flow.push(ROUTES.discover)}>Mở Khám phá</button></>);
   if (panel === "help") return screen("HỖ TRỢ", "Tìm hướng dẫn rõ ràng.", "Chọn một chủ đề để xem hướng dẫn. Hiện chưa thể gửi yêu cầu tài khoản từ ứng dụng.", <><label className="mcy-form-field">Tìm hướng dẫn<KeyboardInput aria-label="Tìm hướng dẫn" value={query} onChange={event => setQuery(event.target.value)} onBlur={() => keyboard.hide()} placeholder="Ví dụ: phản hồi sau tập" /></label><div className="mcy-help-results">{filteredHelpArticles.length ? filteredHelpArticles.map(article => <AccountRow key={article.id} title={article.title} detail={article.detail} onClick={() => flow.push(HELP_ARTICLE_ROUTES[article.id])} />) : <p className="mcy-help-empty" role="status">Chưa tìm thấy hướng dẫn phù hợp. Thử một từ khác.</p>}</div><div className="mcy-account-panel"><strong>Chưa thể gửi yêu cầu trong ứng dụng</strong><p>Các mục bên dưới là hướng dẫn tham khảo; hiện chưa có nội dung nào được gửi tới đội ngũ hỗ trợ của MCY.</p></div>{error && <div className="mcy-form-error">{error}</div>}</>);
    return screen("YÊU CẦU VỀ DỮ LIỆU", "Yêu cầu về dữ liệu tài khoản.", "Chức năng gửi yêu cầu xuất hoặc xóa dữ liệu chưa sẵn sàng. Bạn có thể xem hướng dẫn quyền riêng tư hoặc liên hệ kênh chính thức của MCY.", <><div className="mcy-empty large"><InfoCircledIcon /><strong>Hiện chưa thể gửi yêu cầu trong ứng dụng</strong><p>Ứng dụng chưa tiếp nhận yêu cầu xuất hoặc xóa dữ liệu, nên chưa có thao tác nào được thực hiện.</p></div><AccountRow title="Quyền riêng tư" detail="Xem phạm vi lưu và chia sẻ" onClick={() => flow.push(ROUTES.privacy)} /><AccountRow title="Hướng dẫn và hỗ trợ" detail="Đọc các hướng dẫn đang có" onClick={() => flow.push(ROUTES.help)} /> </>);
-}
-
-function PrivacyToggle({ title, detail, value, onToggle, actionLabels, disabled = false }: { title: string; detail: string; value: boolean; onToggle: (value: boolean) => void; actionLabels?: { active: string; inactive: string }; disabled?: boolean }) {
-  return <div className="mcy-account-panel mcy-toggle-row"><span><strong>{title}</strong><small>{detail}</small></span><button disabled={disabled} aria-pressed={value} className={value ? "on" : ""} onClick={() => onToggle(!value)}><i>{value ? "✓" : ""}</i><span>{value ? actionLabels?.active ?? "Bật" : actionLabels?.inactive ?? "Tắt"}</span></button></div>;
 }
 
 function HelpArticleScreen({ articleId }: { articleId: HelpArticleId }) {
