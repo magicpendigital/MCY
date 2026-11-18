@@ -43,11 +43,7 @@ import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo } from "./app/persistence";
 import { handleNativeAuthUrl } from "./app/auth";
-import { Action, DemoNote } from "./app/ui/controls";
 import { Header } from "./app/ui/Header";
-import { BodyMap } from "./app/body/BodyMap";
-import { BodyStylePicker } from "./app/body/BodyStylePicker";
-import { RegionEditor } from "./app/body/RegionEditor";
 import { finishAtAuthDestination, HelpRoutesContext, RoutesContext } from "./app/navigation";
 import { FlowRouteFocusManager, withFlowScreenAccessibility } from "./app/accessibility";
 import { RouteSuspense } from "./app/RouteSuspense";
@@ -74,12 +70,12 @@ import { HelpArticleScreen } from "./screens/help/HelpArticleScreen";
 import { DiscoverDetailScreen } from "./screens/discover/DiscoverDetailScreen";
 import { ReadingLessonRoute, ReadingLibraryRoute, ReadingPreviewRoute, ReadingPublishRoute } from "./screens/reading/routes";
 import { MyClassesRoute } from "./screens/classes/MyClassesRoute";
+import { CourseDetailRoute } from "./screens/discover/CourseDetailRoute";
+import { DiscoverRoute } from "./screens/discover/DiscoverRoute";
+import { JourneyRoute } from "./screens/journey/JourneyRoute";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
-const CourseDetailScreen = lazy(() => import("./courses/CourseDetailScreen"));
-const DiscoverScreen = lazy(() => import("./courses/DiscoverScreen"));
-const LazyJourneyScreen = lazy(() => import("./JourneyScreen"));
 const PracticeFlowScreen = lazy(() => import("./practice/PracticeFlowScreen"));
 const ReadingLessonFooter = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLessonFooter })));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
@@ -124,24 +120,6 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
 
-function CourseDetailRoute() {
-  const flow = useFlow();
-  const { state, update } = useDemo();
-  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening the lesson…" : "Đang mở bài học…"}</div></main></MobileScroll>}>
-    <CourseDetailScreen
-      locale={state.locale}
-      selectedCourseId={state.selectedCourseId}
-      selectedLessonId={state.selectedLessonId}
-      active={flow.current.id === ROUTES.courseDetail.id}
-      onSelectLesson={lessonId => update({ selectedLessonId: lessonId })}
-      onRecordReflection={(courseTitle, lessonTitle) => {
-        update({ checkinBaselineReady: false, reflectionHasCheckinBaseline: state.checkinBaselineReady, reflectionBeforeStatus: state.checkinBaselineReady ? state.bodyStatus : null, reflectionBeforeObservations: state.checkinBaselineReady ? [...state.preObservations] : [], reflectionLessonTitle: `${courseTitle} · ${lessonTitle}`, postObservations: [], postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly: false });
-        flow.push(ROUTES.reflection);
-      }}
-    />
-  </RouteSuspense>;
-}
-
 function PracticeRoute() {
   const flow = useFlow();
   const { state, update } = useDemo();
@@ -182,48 +160,6 @@ function PracticeCapabilityObserver() {
     return () => controller.abort();
   }, [state.userId, state.signedIn, state.aiConsent, setState]);
   return null;
-}
-
-function DiscoverRoute() {
-  const flow = useFlow();
-  const { state, update } = useDemo();
-  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening free lessons…" : "Đang mở bài học miễn phí…"}</div></main></MobileScroll>}>
-    <DiscoverScreen
-      locale={state.locale}
-      onOpenCourse={(courseId, firstLessonId) => {
-        update({ selectedCourseId: courseId, selectedLessonId: firstLessonId });
-        flow.push(ROUTES.courseDetail);
-      }}
-      onOpenGuide={() => flow.push(ROUTES.discoverDetail)}
-      onOpenReading={entry => {
-        if (!entry) { flow.push(ROUTES.readingLibrary); return; }
-        void import("./library/ReadingLearnerScreens").then(module => module.openReadingEntry(entry));
-        flow.push(ROUTES.readingLesson);
-      }}
-      checkinRegions={state.preObservations.map(item => item.region)}
-    />
-  </RouteSuspense>;
-}
-
-function JourneyRoute() {
-  const flow = useFlow();
-  const { state, setState, update } = useDemo();
-  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">{state.locale === "en-US" ? "Opening your journey…" : "Đang mở Hành trình…"}</div></main></MobileScroll>}>
-    <LazyJourneyScreen
-      state={state}
-      setState={setState}
-      update={update}
-      BodyMapComponent={BodyMap}
-      BodyStylePickerComponent={BodyStylePicker}
-      RegionEditorComponent={RegionEditor}
-      ActionComponent={Action}
-      DemoNoteComponent={DemoNote}
-      onStartNext={() => {
-        update({ dialogueChoice: null, dialogueText: "", aiConversation: [], aiPending: false, aiError: "", minutes: 10, energy: null, regions: [], preObservations: [], postObservations: [], bodyStatus: null, postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly: false, usePreviousFeedback: false, lastReflection: null, checkinBaselineReady: false, reflectionHasCheckinBaseline: false, reflectionBeforeStatus: null, reflectionBeforeObservations: [], reflectionLessonTitle: "", currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null, pendingCheckinPayload: null });
-        flow.push(ROUTES.checkin);
-      }}
-    />
-  </RouteSuspense>;
 }
 
 export default function Prototype() {
