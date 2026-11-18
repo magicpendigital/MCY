@@ -1,6 +1,6 @@
 # UI/UX cho mô hình trả phí: khóa học trả phí và AI cho khách hàng trả phí — 2026-11-18
 
-Nguồn: Owner 18/11: "sau này có khóa học trả phí; AI chỉ dành cho khách hàng trả phí". Đây là **phân tích và đề xuất**, chưa phải lệnh làm. Bản 1.0 vẫn không thanh toán và không AI (`AGENTS.md`); mọi tên gói, giá, chu kỳ dưới đây là chỗ giữ chỗ **do Owner đặt**. Canvas: trang "Mô hình trả phí" tại https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg (T1 bậc quyền, T2 luồng; T3 màn hình và T4 hệ thống còn chờ đăng).
+Nguồn: Owner 18/11: "sau này có khóa học trả phí; AI chỉ dành cho khách hàng trả phí". Đây là **phân tích và đề xuất**, chưa phải lệnh làm. Bản 1.0 vẫn không thanh toán và không AI (`AGENTS.md`); mọi tên gói, giá, chu kỳ dưới đây là chỗ giữ chỗ **do Owner đặt**. Canvas: trang "Mô hình trả phí" tại https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg (T1 bậc quyền, T2 luồng, T3 màn hình, T4 thanh toán và hoàn tiền, T5 hệ thống, AI, video, lộ trình).
 
 ## 1. Bậc quyền đề xuất
 
@@ -11,8 +11,8 @@ Nguồn: Owner 18/11: "sau này có khóa học trả phí; AI chỉ dành cho k
 | Mọi thông tin an toàn (câu dừng khi đau, hướng dẫn, rút đồng ý, xóa tài khoản) | Có | Có | Có | Có |
 | Hành trình lưu trên tài khoản | Chỉ trên máy | Có | Có | Có |
 | Xem thử một bài của khóa trả phí | Có | Có | Có | Có |
-| Toàn bộ khóa học trả phí | Không | Không | Theo gói (Owner quyết) | Khóa đã mua |
-| Chút AI (lớp 2–3) | Không | Không | Có, sau các cổng an toàn | Không, trừ khi Owner gộp |
+| Toàn bộ khóa học trả phí | Không | Không | Khóa được đưa vào gói | Khóa đã mua |
+| Chút AI (lớp 2–3) | Không | Không | Có, sau các cổng an toàn | Có nếu khóa bật “kèm AI”, trong phạm vi và hạn của khóa |
 
 Khách không mua được: quyền phải gắn với tài khoản để khôi phục khi đổi máy. Lúc mua là thời điểm tạo tài khoản tự nhiên thứ hai.
 
@@ -56,17 +56,38 @@ Khách không mua được: quyền phải gắn với tài khoản để khôi 
 4. Không quảng bá AI trước khi AI thật chạy.
 5. Quyết vị trí lưu video trả phí trước khi quay khóa.
 
-## 6. Cần Owner quyết
+## 6. Quyết định của Owner (18/11) và việc còn mở
 
-1. Mô hình giá: thuê bao, mua lẻ khóa, hay lai.
-2. AI gộp vào gói thành viên hay bán riêng; có dùng thử AI không (ngân sách do Owner, không agent nào đề xuất con số).
-3. Khóa trả phí do ai quay và có gồm lớp trực tiếp ("Lớp của tôi") không.
-4. Nền tảng thanh toán (Play Billing cho Android; web dùng cổng nào) và chính sách hoàn tiền.
-5. Gói miễn phí gồm những gì (đề xuất: giữ nguyên 38 clip, Chút lớp 1, Hành trình).
-6. Mốc thời gian: đề xuất "giai đoạn F" sau Closed testing; điều kiện vào: ≥ 1 khóa trả phí đã duyệt, người duyệt chuyên môn có tên, quyết định thanh toán và video có bảo vệ, kiểm Play Console cho Việt Nam.
+Đã quyết: (1) mô hình giá **lai** (thuê bao + mua lẻ khóa); (2) AI **theo gói** và có thể **kèm từng khóa** (lúc đặt giá khóa có tùy chọn "bao gồm AI"; bật thì người mua dùng được AI); (3) khóa trả phí **Owner tự quay**; (5) gói miễn phí giữ 38 clip, Chút lớp 1, Hành trình; (6) **giai đoạn F** sau Closed testing, điều kiện vào: ≥ 1 khóa trả phí đã duyệt, người duyệt chuyên môn có tên, quyết định thanh toán và video có bảo vệ, kiểm Play Console cho Việt Nam.
+
+Còn mở (Owner quyết, agent không đề xuất con số ngân sách): phương án quản lý quyền A (tự làm trên Supabase, nhận thông báo Google Play) hay B (dịch vụ như RevenueCat); Android trước, web sau; pháp nhân đứng bán và hồ sơ thanh toán Google; con số hoàn tiền; phạm vi AI kèm khóa (toàn app hay chỉ ngữ cảnh khóa) và thời hạn/hạn mức; có dùng thử AI không; khóa trả phí có gồm lớp trực tiếp không; kênh hỗ trợ.
+
+## 7. Nền tảng thanh toán (đề xuất, ⚑ = cần kiểm nguồn chính thống)
+
+- **Android trong app: Google Play Billing, bắt buộc** cho hàng hóa số (khóa, thuê bao, quyền AI). Không dẫn ra ngoài để mua. Thanh toán thay thế chỉ ở một số thị trường; Việt Nam không thấy ⚑. Cần hồ sơ thanh toán và nhận tiền về Việt Nam ⚑; phí dịch vụ của Google ảnh hưởng giá ⚑.
+- **Web (sau, F3):** Stripe nhiều nguồn nói chưa cho doanh nghiệp đăng ký tại Việt Nam ⚑; cổng nội địa (MoMo, VNPay, PayOS/VietQR, ZaloPay) hợp mua lẻ một lần hơn thuê bao tự gia hạn; merchant-of-record nước ngoài cần kiểm điều kiện Việt Nam ⚑.
+- **Hợp nhất quyền:** bảng quyền của MCY là nguồn sự thật duy nhất (client và AI chỉ đọc). Nguồn cấp dữ liệu thay thế được: A tự làm (Edge Function nhận RTDN, gọi Play Developer API) hoặc B dịch vụ quản lý quyền (thêm bên xử lý dữ liệu: cập nhật chính sách riêng tư và Data safety). Chọn đầu giai đoạn F sau thử với license tester.
+- **Bảng quyền:** user_id, product_id, source (play/web/owner_grant/promo), status, expires_at, ai_included, ai_until, ai_quota, nhật ký. AI mở khi: (gói còn hạn HOẶC khóa còn hạn có ai_included) VÀ đồng ý AI riêng VÀ cổng hệ thống + ngân sách Owner VÀ hạn mức người dùng; kiểm ở máy chủ.
+- **Giá và tùy chọn AI** nằm ở bản ghi "ưu đãi" tách khỏi nội dung đã duyệt, để đổi giá không đổi hash bài đã duyệt.
+- **Video trả phí:** nơi lưu có liên kết phát có chữ ký, hết hạn ngắn, HLS (dịch vụ video có token, Supabase Storage + liên kết ký, Vimeo riêng tư; chưa so giá, cần thử một video trên điện thoại thật). Không chặn được quay màn hình; mục tiêu là chặn chia sẻ liên kết và xem khi chưa có quyền.
+
+## 8. Chính sách hoàn tiền (bản nháp để Owner và pháp lý quyết; số trong [ ] do Owner đặt)
+
+- Khóa mua lẻ: hoàn 100% trong [7] ngày nếu đã xem chưa quá [30]% số bài; ngoài mức đó không hoàn trừ lỗi hệ thống.
+- Thuê bao: hủy bất cứ lúc nào, quyền giữ đến hết chu kỳ đã trả; không hoàn phần chu kỳ đã bắt đầu, trừ trong [48 giờ] sau tự gia hạn; nhắc trước khi gia hạn năm.
+- Khóa kèm AI: AI là một phần của quyền; hoàn tiền thu hồi cả khóa và AI của lần mua đó; không hoàn "từng phần AI".
+- Lỗi của MCY (trừ hai lần, đã trả không mở khóa, video không xem được kéo dài, khóa bị gỡ vì an toàn/chuyên môn): hoàn 100% bất kể thời hạn.
+- Qua Google Play: Google xử lý trong 48 giờ đầu ⚑; sau đó Owner xử lý bằng công cụ hoàn tiền trong Play Console.
+- Sau hoàn tiền/hủy: thu hồi quyền của lần mua đó, không xóa Hành trình hay dữ liệu cá nhân; Chút về gợi ý theo quy tắc.
+- Quy trình: kênh hỗ trợ thật (Owner quyết), phản hồi trong [2] ngày làm việc, hoàn qua đúng kênh đã trả, ghi sổ. Không quảng bá yoga như chữa bệnh.
+- **Cần người phụ trách pháp lý xác nhận ⚑:** luật bảo vệ quyền lợi người tiêu dùng (hợp đồng từ xa, quyền hủy, thông tin trước khi mua), quy định thương mại điện tử về hàng hóa số, hóa đơn điện tử và thuế dịch vụ số, điều khoản bán hàng của Google Play. Thời hạn và tỷ lệ trên chỉ là điểm khởi đầu, không phải luật.
+
+## 9. Lộ trình giai đoạn F (đề xuất)
+
+F0 (trong bản miễn phí): trường `access`, hàm `hasEntitlement`, khe "Gói và mua hàng" ẩn; không đổi gì người dùng thấy. F1: video có bảo vệ + ≥ 1 khóa + người duyệt có tên. F2: bảng quyền, Play Billing với license tester trong Closed testing, điều khoản và hoàn tiền đăng công khai, cập nhật Data safety. F3: web mua lẻ (tùy chọn). F4: AI trả phí, chỉ khi AI thật chạy.
 
 Nguồn chính sách: [Google Play Payments / Alternative billing (trợ giúp)](https://support.google.com/googleplay/android-developer/answer/12348241), [Learn about Google Play & alternative billing systems](https://support.google.com/googleplay/answer/11174377). Danh sách thị trường thay đổi theo thời gian; trang trợ giúp hiện hành mới là nguồn chuẩn.
 
 ## Chưa kiểm
 
-Mọi mục là phân tích, chưa có người dùng thử; chính sách cửa hàng chỉ đọc qua tìm kiếm (chưa kiểm trong Play Console cho Việt Nam); các màn hình T3 và sơ đồ hệ thống T4 chưa đăng lên canvas.
+Mọi mục là phân tích, chưa có người dùng thử; chính sách cửa hàng chỉ đọc qua tìm kiếm (chưa kiểm trong Play Console cho Việt Nam); thông tin Play Billing, cổng thanh toán Việt Nam và RevenueCat đọc qua tìm kiếm (nguồn thứ cấp), chưa gọi thử, chưa có license tester, chưa đối chiếu pháp lý, chưa so phí; canvas chưa được dựng để xem bằng mắt khi viết.
