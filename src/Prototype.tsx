@@ -72,6 +72,8 @@ import { AccountDetailScreen } from "./screens/account/AccountDetailScreen";
 import { ReadinessScreen } from "./screens/readiness/ReadinessScreen";
 import { HelpArticleScreen } from "./screens/help/HelpArticleScreen";
 import { DiscoverDetailScreen } from "./screens/discover/DiscoverDetailScreen";
+import { ReadingLessonRoute, ReadingLibraryRoute, ReadingPreviewRoute, ReadingPublishRoute } from "./screens/reading/routes";
+import { MyClassesRoute } from "./screens/classes/MyClassesRoute";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -79,12 +81,7 @@ const CourseDetailScreen = lazy(() => import("./courses/CourseDetailScreen"));
 const DiscoverScreen = lazy(() => import("./courses/DiscoverScreen"));
 const LazyJourneyScreen = lazy(() => import("./JourneyScreen"));
 const PracticeFlowScreen = lazy(() => import("./practice/PracticeFlowScreen"));
-const ReadingPreviewScreen = lazy(() => import("./library/ReadingPreviewScreen"));
-const ReadingLibraryScreen = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLibraryScreen })));
-const ReadingLessonScreen = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLessonScreen })));
 const ReadingLessonFooter = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLessonFooter })));
-const ReadingPublishScreen = lazy(() => import("./library/ReadingPublishScreen"));
-const MyClassesScreen = lazy(() => import("./classes/MyClassesScreen"));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
 
@@ -126,39 +123,6 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
   myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
-
-const readingFallback = <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở bài đọc…</div></main></MobileScroll>;
-function ReadingLibraryRoute() {
-  const flow = useFlow();
-  return <RouteSuspense fallback={readingFallback}><ReadingLibraryScreen onOpened={() => flow.push(ROUTES.readingLesson)} /></RouteSuspense>;
-}
-function ReadingLessonRoute() {
-  const flow = useFlow();
-  return <RouteSuspense fallback={readingFallback}><ReadingLessonScreen onCheckin={() => flow.push(ROUTES.checkin)} onOpened={() => undefined} /></RouteSuspense>;
-}
-function ReadingPublishRoute() {
-  const { state } = useDemo();
-  if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để cấu hình hiển thị cho học viên.</div></main></MobileScroll>;
-  return <RouteSuspense fallback={readingFallback}><ReadingPublishScreen key={state.userId} userId={state.userId} /></RouteSuspense>;
-}
-
-function MyClassesRoute() {
-  const flow = useFlow();
-  const { state } = useDemo();
-  if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để xem lớp và nhận xét của bạn.</div></main></MobileScroll>;
-  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở lớp…</div></main></MobileScroll>}>
-    <MyClassesScreen key={state.userId} userId={state.userId} active={flow.current.id === ROUTES.myClasses.id} />
-  </RouteSuspense>;
-}
-
-function ReadingPreviewRoute() {
-  const flow = useFlow();
-  const { state } = useDemo();
-  if (!state.userId) return <MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đăng nhập để xem trước nội dung được giao cho bạn.</div></main></MobileScroll>;
-  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><div className="mcy-inline-note" role="status">Đang mở xem trước…</div></main></MobileScroll>}>
-    <ReadingPreviewScreen key={state.userId} userId={state.userId} active={flow.current.id === ROUTES.readingPreview.id} />
-  </RouteSuspense>;
-}
 
 function CourseDetailRoute() {
   const flow = useFlow();
