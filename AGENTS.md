@@ -61,7 +61,7 @@ Add a new offline test to the `unit` list in `scripts/run-suite.mjs`, not as a n
 
 ## Product direction and scope (confirmed by the Owner)
 
-- **Core loop (Owner 2026-11-16):** a guest starts a lesson in ≤3 taps; check-in is optional and comes after watching → practice → honest reflection → a better-informed next choice. The assistant slot sits at the centre of Hôm nay: rule-based "Gợi ý" first, real AI only behind its gates and for accounts only; the OpenRouter budget is the Owner's alone. Courses, teacher content and human-led classes support the loop.
+- **Core loop (Owner 2026-11-16):** a guest starts a lesson in ≤3 taps; check-in is optional and comes after watching → practice → honest reflection → a better-informed next choice. The assistant slot sits at the centre of Hôm nay: rule-based "Gợi ý" first, real AI only behind its gates and for paying members only; the OpenRouter budget is the Owner's alone. Courses, teacher content and human-led classes support the loop.
 - **Honesty:** every entry is the learner's own self-report. Reflection allows better, unchanged, worse, uncertain, skipped. Never present missing feedback as improvement, demo data as outcomes, or yoga as treating/curing a condition; no diagnosis or medical claims.
 - **Release 1.0 scope (2026-10-23):** guest use, optional account with cloud sync, no AI, no new practice sessions; payments out of scope. Android application ID `com.magicpendigital.motchutyoga` (permanent); domain `motchutyoga.magicpendigital.com`; public operator name Magicpen Digital; the Owner is responsible for legal/policy and support; Play developer account is Tuyên Trịnh. Production is Vietnamese-only; English is a partial internal preview.
 - **Platforms:** web on Vercel Preview (branch `main`, the single working branch since 2026-11-13; the old `codex-mcy-p1-preview` is frozen; Vercel Production branch is not `main` and Production is not promoted), Android through Capacitor (test phone Air1 Ultra with the parallel debug app `.mcydebug`; Play Internal testing), iOS project prepared but not built or tested. Narrow mobile browsers and ≥900 px screens open the frameless web surface; `?mode=review&device=iphone|pixel-10` keeps the simulator.
@@ -92,7 +92,7 @@ Lives in [`PLAN.md`](PLAN.md) (section 4, updated in place). Do not keep status 
 
 ## Prototype Instructions
 
-Read this file in full before planning or implementing any mobile-app change. Run the app yourself for previews (never give server-start steps) and verify the rendered app and its primary interactions. Do not deploy to Sites unless the user asks to share, publish or deploy. Before substantial visual changes read the brand/design files and the user's references; record durable decisions compactly (hard gate 6). When implementing from a selected generated mock, treat that image as the source of truth for layout, density, spacing, colour, typography, content and hierarchy.
+Read this file in full before planning or implementing any mobile-app change. Run the app yourself for previews (never give server-start steps) and verify the rendered app and its primary interactions. Do not deploy to Sites unless asked to share, publish or deploy. Before substantial visual changes read the brand/design files and the user's references; record durable decisions compactly (hard gate 6). When implementing from a selected generated mock, treat that image as the source of truth for layout, density, spacing, colour, typography, content and hierarchy.
 
 ## Editing Boundary
 
