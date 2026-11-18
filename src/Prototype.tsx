@@ -75,6 +75,7 @@ import { AccountRow } from "./app/ui/AccountRow";
 import { ACCOUNT_DELETION_WEB_URL, AI_OFF_PRIVACY_DETAIL, PRIVACY_POLICY_WEB_URL, TERMS_WEB_URL, type AccountPanel } from "./screens/account/accountData";
 import { PrivacyToggle } from "./screens/account/PrivacyToggle";
 import { HELP_ARTICLES, type HelpArticleId } from "./screens/help/articles";
+import { ProfileScreen } from "./screens/account/ProfileScreen";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
@@ -544,79 +545,6 @@ function ReadinessScreen() {
     else if (result === "stop_guidance") flow.replace(ROUTES.home);
   };
   return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-readiness-page"><Eyebrow>A06 · TRƯỚC KHI THỰC HÀNH</Eyebrow><h1>Hôm nay bạn có muốn tiếp tục thật nhẹ nhàng không?</h1><p className="mcy-lead">Chọn theo cảm nhận của bạn. Đây không phải chẩn đoán hay đánh giá an toàn y tế.</p><div className="mcy-account-panel"><strong>Nếu bạn chưa chắc, bạn có thể dừng lại.</strong><p>MCY hiện chưa tạo gợi ý tự động. Bạn luôn tự chọn bài học và có thể dừng bất cứ lúc nào.</p></div><div className="mcy-readiness-options"><button aria-pressed={result === "within_scope"} onClick={() => choose("within_scope")}><strong>Tôi muốn tiếp tục nhẹ nhàng</strong><small>Đi tới thư viện bài học miễn phí.</small></button><button aria-pressed={result === "unknown"} onClick={() => choose("unknown")}><strong>Tôi chưa chắc</strong><small>Xem thư viện mà không dùng phản hồi để cá nhân hóa.</small></button><button aria-pressed={result === "needs_review"} onClick={() => choose("needs_review")}><strong>Tôi cần người xem cùng</strong><small>Mở hướng dẫn và hỗ trợ.</small></button><button aria-pressed={result === "stop_guidance"} onClick={() => choose("stop_guidance")}><strong>Tôi muốn dừng hôm nay</strong><small>Không chọn bài lúc này.</small></button></div>{result === "stop_guidance" && <div className="mcy-alert">Mình sẽ không đề xuất bài lúc này. Nếu bạn cần hỗ trợ khẩn cấp, hãy liên hệ dịch vụ phù hợp tại nơi bạn đang ở.</div>}{result === "needs_review" && <div className="mcy-alert">Hiện chưa có phiên tư vấn trực tiếp trong ứng dụng. Bạn có thể xem hướng dẫn chung.</div>}<Action disabled={!result} onClick={advance}>{result === "within_scope" || result === "unknown" ? "Xem bài học miễn phí" : result === "needs_review" ? "Mở hướng dẫn" : "Kết thúc ở đây"}</Action><button className="mcy-quiet-link" onClick={() => flow.replace(ROUTES.discover)}>Bỏ qua câu hỏi · xem bài học miễn phí</button><DemoNote>Chỉ những điều bạn chủ động ghi nhận mới xuất hiện trong check-in và Hành trình.</DemoNote></main></MobileScroll>;
-}
-
-function ProfileScreen() {
-  const flow = useFlow();
-  const { state, setState, update } = useDemo();
-  const [signingOut, setSigningOut] = useState(false);
-  const [error, setError] = useState("");
-  const feedback = rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace);
-  // Owner/reviewer accounts get an extra entry when the server reports unpublished reading units for them.
-  const [previewUnits, setPreviewUnits] = useState(0);
-  const previewUserId = state.signedIn ? state.userId : null;
-  useEffect(() => {
-    setPreviewUnits(0);
-    if (!backendConfigured || !previewUserId) return;
-    let current = true;
-    void import("./library/readingPreviewApi").then(({ readPreviewList }) => readPreviewList(previewUserId)).then(result => {
-      if (current) setPreviewUnits(result.status === "allowed" ? result.units.length : 0);
-    }).catch(() => undefined);
-    return () => { current = false; };
-  }, [previewUserId]);
-  // A learner enrolled in a teacher's class gets "Lớp của tôi" when the server confirms it; everyone else sees nothing new.
-  const [classCount, setClassCount] = useState(0);
-  useEffect(() => {
-    setClassCount(0);
-    if (!backendConfigured || !previewUserId) return;
-    let current = true;
-    void import("./classes/classApi").then(({ readClassList }) => readClassList(previewUserId)).then(result => {
-      if (current) setClassCount(result.status === "allowed" ? result.enrollments.length : 0);
-    }).catch(() => undefined);
-    return () => { current = false; };
-  }, [previewUserId]);
-  const signOut = async () => {
-    if (!backendConfigured) return;
-    setSigningOut(true);
-    setError("");
-    try {
-      const client = await getSupabaseClient();
-      if (!client) return;
-      const { error: signOutError } = await client.auth.signOut({ scope: "local" });
-      if (signOutError) setError(signOutError.message);
-    } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Chưa đăng xuất được. Hãy thử lại.");
-    } finally {
-      setSigningOut(false);
-    }
-  };
-  return <MobileScroll className="mcy-scroll"><main className="mcy-page mcy-account-home">
-    <Eyebrow>CÁ NHÂN · {state.signedIn ? "TÀI KHOẢN HỌC VIÊN" : "KHÁCH"}</Eyebrow><h1>{state.signedIn ? `Chào${state.displayName ? `, ${state.displayName}` : " bạn"}.` : "Bạn kiểm soát tài khoản và dữ liệu."}</h1>
-    <p className="mcy-lead">{state.signedIn ? `${state.accountEmail} · Đã xác minh qua Supabase Auth.` : "Bạn có thể xem nội dung mà không cần tài khoản. Đăng nhập để lưu hồ sơ, lựa chọn quyền và check-in đã đồng ý."}</p>
-    {!state.signedIn ? <div className="mcy-profile-card"><span className="mcy-tag">TÀI KHOẢN</span><strong>Lưu hành trình trên tài khoản của bạn</strong><p>Đăng nhập bằng email để đồng bộ hồ sơ, quyền dữ liệu và check-in có đồng ý.</p><button onClick={() => { update({ authMode: "create", authReturnTo: "profile" }); flow.push(ROUTES.authEmail); }}>Tạo tài khoản hoặc đăng nhập</button></div> : <div className="mcy-profile-card"><span className="mcy-tag">TRẠNG THÁI</span><strong>Đang dùng tài khoản học viên</strong><p>Hồ sơ, quyền riêng tư và check-in được lưu theo lựa chọn của bạn.</p><button disabled={signingOut} onClick={() => { void signOut(); }}>{signingOut ? "Đang đăng xuất…" : "Đăng xuất thiết bị này"}</button></div>}
-    {error && <div className="mcy-form-error" role="alert">{error}</div>}
-    <div className="mcy-account-group"><span className="mcy-section-label">HỒ SƠ VÀ QUYỀN DỮ LIỆU</span>
-      <AccountRow title="Thông tin cá nhân" detail={state.displayName || "Tên tùy chọn · ngôn ngữ · hình minh họa"} onClick={() => flow.push(ROUTES.editProfile)} />
-      <AccountRow title={state.aiCapability === "ready" ? "AI và điều được nhớ" : "Điều được nhớ"} detail={feedback ? "Có phản hồi để xem nguồn và cách rút lại" : "Chưa có thông tin được nhớ"} onClick={() => flow.push(ROUTES.memory)} />
-      <AccountRow title="Quyền riêng tư và đồng ý" detail="Mỗi mục đích, phiên bản và cách thay đổi" onClick={() => flow.push(ROUTES.privacy)} />
-      <AccountRow title="Bảo mật tài khoản" detail="Email, phiên đăng nhập và xác minh lại" onClick={() => flow.push(ROUTES.security)} />
-      <AccountRow title="Nhắc tập và thông báo" detail="Tùy chọn kênh, giờ và múi giờ" onClick={() => flow.push(ROUTES.notifications)} />
-      <AccountRow title="Nội dung và quyền đang có" detail="Khóa học miễn phí · quyền trả phí" onClick={() => flow.push(ROUTES.access)} />
-      <AccountRow title="Chia sẻ với giáo viên" detail="Chưa có lớp được kết nối · mặc định tắt" onClick={() => flow.push(ROUTES.sharing)} />
-    </div>
-    {classCount > 0 && <div className="mcy-account-group"><span className="mcy-section-label">LỚP VÀ NHẬN XÉT</span>
-      <AccountRow title="Lớp của tôi" detail={`${classCount} lớp · nhận xét giảng viên đã gửi cho bạn`} onClick={() => flow.push(ROUTES.myClasses)} />
-    </div>}
-    {previewUnits > 0 && <div className="mcy-account-group"><span className="mcy-section-label">DÀNH CHO BIÊN TẬP</span>
-      <AccountRow title="Xem trước nội dung" detail={`${previewUnits} bài đọc có hình · chỉ Owner hoặc người được giao thấy`} onClick={() => flow.push(ROUTES.readingPreview)} />
-      <AccountRow title="Hiển thị cho học viên" detail="Bật hoặc tắt từng bài đã duyệt · mặc định tắt" onClick={() => flow.push(ROUTES.readingPublish)} />
-    </div>}
-    <div className="mcy-account-group"><span className="mcy-section-label">TRỢ GIÚP VÀ YÊU CẦU</span>
-      <AccountRow title="Hướng dẫn và liên hệ" detail="Đọc hướng dẫn; chưa gửi được yêu cầu trong ứng dụng" onClick={() => flow.push(ROUTES.help)} />
-      <AccountRow title="Xuất hoặc xóa dữ liệu" detail="Ứng dụng chưa tiếp nhận yêu cầu xuất hoặc xóa" onClick={() => flow.push(ROUTES.help)} />
-    </div>
-    <DemoNote>Hồ sơ, lựa chọn quyền và check-in được lưu theo trạng thái tài khoản. Nếu một tính năng chưa có kết nối, ứng dụng sẽ nói rõ trước khi bạn gửi dữ liệu.</DemoNote>
-  </main></MobileScroll>;
 }
 
 function AccountDetailScreen({ panel }: { panel: AccountPanel }) {
