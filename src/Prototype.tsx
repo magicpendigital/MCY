@@ -18,12 +18,11 @@ import { msg } from "./i18n";
 import {
   ArrowLeftIcon, CheckIcon,
 } from "@radix-ui/react-icons";
-import { Carousel, FlowStack, MobileScroll, type FlowScreen, useFlow } from "./mobile";
+import { Carousel, FlowStack, type FlowScreen, useFlow } from "./mobile";
 import { backendConfigured, getSupabaseClient, shouldInitializeAuthForCurrentLaunch } from "./backend/supabase";
 import { observeLearnerSession } from "./backend/learnerSession";
 import { rememberNativeAuthUrl } from "./backend/nativeAuth";
 import { isWebAuthCallback } from "./backend/authRouting";
-import { bodyRegionCodes } from "./bodyRegions";
 import {
   deleteLearnerCheckin,
   CONSENT_POLICY_VERSIONS,
@@ -33,12 +32,10 @@ import {
   hasCurrentRequiredConsent,
   REQUIRED_CONSENT_POLICY_VERSIONS,
 } from "./backend/learnerData";
-import type { PracticeContext } from "../supabase/functions/_shared/practiceContract";
-import { rememberedPace } from "./practice/feedbackMemory";
 import type { DemoState } from "./app/model";
 import { clearAccountScopedState, DemoContext, initialState, useDemo } from "./app/state";
 import { AUTH_SIGN_IN_EVENT, SESSION_RESTORE_RETRY_EVENT } from "./app/events";
-import { hasCurrentAiConsent, latestFeedback, normalizeAuthDestination } from "./app/predicates";
+import { latestFeedback, normalizeAuthDestination } from "./app/predicates";
 import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo } from "./app/persistence";
@@ -46,7 +43,6 @@ import { handleNativeAuthUrl } from "./app/auth";
 import { Header } from "./app/ui/Header";
 import { finishAtAuthDestination, HelpRoutesContext, RoutesContext } from "./app/navigation";
 import { FlowRouteFocusManager, withFlowScreenAccessibility } from "./app/accessibility";
-import { RouteSuspense } from "./app/RouteSuspense";
 import { BottomNav } from "./app/BottomNav";
 import { WelcomeScreen } from "./screens/welcome/WelcomeScreen";
 import { WelcomeFooter } from "./screens/welcome/WelcomeFooter";
@@ -73,10 +69,11 @@ import { MyClassesRoute } from "./screens/classes/MyClassesRoute";
 import { CourseDetailRoute } from "./screens/discover/CourseDetailRoute";
 import { DiscoverRoute } from "./screens/discover/DiscoverRoute";
 import { JourneyRoute } from "./screens/journey/JourneyRoute";
+import { PracticeRoute } from "./screens/practice/PracticeRoute";
+import { PracticeCapabilityObserver } from "./app/PracticeCapabilityObserver";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
 const TeacherWorkspace = lazy(() => import("./staff/teacher").then(module => ({ default: module.TeacherWorkspace })));
-const PracticeFlowScreen = lazy(() => import("./practice/PracticeFlowScreen"));
 const ReadingLessonFooter = lazy(() => import("./library/ReadingLearnerScreens").then(module => ({ default: module.ReadingLessonFooter })));
 const ContentReviewWorkspace = lazy(() => import("./practice/ContentReviewWorkspace"));
 const WebAuthCallback = lazy(() => import("./backend/AuthCallback"));
@@ -119,48 +116,6 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
   myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
-
-function PracticeRoute() {
-  const flow = useFlow();
-  const { state, update } = useDemo();
-  const context: Omit<PracticeContext, "revision" | "pace" | "guidance" | "floor"> = {
-    locale: state.locale, minutes: state.minutes, energy: state.energy, intent: state.intent, bodyStatus: state.bodyStatus,
-    regions: [...new Set(state.preObservations.flatMap(item => bodyRegionCodes(item.region, item.side)))],
-  };
-  return <RouteSuspense fallback={<MobileScroll className="mcy-scroll"><main className="mcy-page"><p role="status">Đang mở buổi học…</p></main></MobileScroll>}><PracticeFlowScreen
-    context={context} userId={state.userId} consentCurrent={hasCurrentAiConsent(state)} active={flow.current.id === ROUTES.dailyPractice.id}
-    previousWasTooFast={Boolean(rememberedPace(state.history, state.saveFeedbackConsent && state.rememberPace))}
-    onBrowse={() => flow.push(ROUTES.discover)} onConsent={() => flow.push(ROUTES.privacy)} onAdjust={() => flow.pop()}
-    onReflect={(title, endedEarly) => {
-      update({ checkinBaselineReady: false, reflectionHasCheckinBaseline: state.checkinBaselineReady, reflectionBeforeStatus: state.checkinBaselineReady ? state.bodyStatus : null, reflectionBeforeObservations: state.checkinBaselineReady ? [...state.preObservations] : [], reflectionLessonTitle: title, postObservations: [], postBodyStatus: null, outcome: null, pace: null, note: "", endedEarly });
-      flow.push(ROUTES.reflection);
-    }}
-  /></RouteSuspense>;
-}
-
-function PracticeCapabilityObserver() {
-  const { state, setState } = useDemo();
-  const user = useRef(state.userId); user.current = state.userId;
-  useEffect(() => {
-    const actor = state.userId;
-    if (!actor || !state.signedIn) { setState(p => ({ ...p, aiCapability: "disabled" })); return; }
-    const controller = new AbortController();
-    setState(p => ({ ...p, aiCapability: "checking" }));
-    void (async () => {
-      let capability: DemoState["aiCapability"] = "disabled";
-      try {
-        const client = await getSupabaseClient();
-        if (controller.signal.aborted || user.current !== actor) return;
-        const response = await client?.functions.invoke("mcy-ai-assistant", { signal: controller.signal, body: { action: "capability" } });
-        if (!response?.error && response?.data?.available === true && response.data.contractVersion === "reviewed-practice-1") capability = "ready";
-        else if (response?.data?.reason === "not_ready") capability = "not_ready";
-      } catch { /* fail closed, no provider request */ }
-      if (!controller.signal.aborted && user.current === actor) setState(p => p.userId === actor ? { ...p, aiCapability: capability } : p);
-    })();
-    return () => controller.abort();
-  }, [state.userId, state.signedIn, state.aiConsent, setState]);
-  return null;
-}
 
 export default function Prototype() {
   const workspace = new URLSearchParams(window.location.search).get("workspace");
