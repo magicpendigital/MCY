@@ -1,0 +1,8 @@
+.mcy-offer-card, .mcy-profile-card { margin-top: 19px; padding: 17px; border: 1px solid var(--mcy-border); border-radius: 16px; background: #eef2e9; }
+.mcy-offer-card h2 { margin: 7px 0; }
+.mcy-offer-card p, .mcy-profile-card p { margin: 5px 0; color: #617364; font-size: 12px; line-height: 1.5; }
+.mcy-offer-card small { color: var(--mcy-clay); font-size: 10px; font-weight: 800; }
+.mcy-profile-card { display: flex; flex-direction: column; background: var(--mcy-paper); }
+.mcy-profile-card strong { margin-top: 9px; font: 20px var(--font-editorial); }
+.mcy-reset { display: flex; width: 100%; min-height: 47px; align-items: center; justify-content: center; gap: 7px; margin-top: 25px; border: 1px solid #e4c9b9; border-radius: 13px; background: #fff7f1; color: var(--mcy-clay); font-size: 12px; font-weight: 800; }
+.mcy-reset svg { width: 16px; height: 16px; }
