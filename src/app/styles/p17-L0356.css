@@ -1,0 +1,27 @@
+.mcy-dialogue .mcy-ai-avatar { color: #516b54; }
+.mcy-ai-context { margin: 16px 0 11px; padding: 12px 13px; border: 1px solid #dde5d9; border-radius: 14px; background: #f7f8f3; }
+.mcy-ai-context p { margin: 7px 0 0; color: #49594b; font-size: 12px; line-height: 1.5; }
+.mcy-ai-privacy-note { margin: 8px 0 0; color: #69776b; font-size: 10px; line-height: 1.45; }
+.mcy-dialogue .mcy-bubble.ai { background: #f2eee8; color: #35483b; }
+.mcy-dialogue .mcy-bubble.ai.quiet { background: #eaf0e7; }
+.mcy-dialogue .mcy-bubble.mine { background: #e9e2d6; }
+.mcy-dialogue .mcy-section-label { margin-top: 10px; }
+.mcy-dialogue .mcy-action { background: var(--mcy-clay); }
+.mcy-dialogue .mcy-prior-actions { margin-top: 4px; }
+.mcy-choice:disabled { cursor: progress; opacity: .56; }
+
+.mcy-plan-page > h1 { margin: 1px 0 1px; }
+.mcy-page .mcy-subtitle { margin: 0 0 7px; font: 22px/1.12 var(--font-editorial); }
+.mcy-plan-page .mcy-lead { margin-bottom: 16px; }
+.mcy-movements { margin: 12px 0; }
+.mcy-movements h3 { margin: 0 0 9px; font: 700 13px/1.2 system-ui,sans-serif; }
+.mcy-movement-track { gap: 8px; }
+.mcy-movement-track article { width: 104px; flex: none; text-align: center; }
+.mcy-movement-track img { width: 104px; height: 78px; border-radius: 10px; object-fit: cover; }
+.mcy-movement-track span { display: block; margin-top: 5px; font-size: 11px; }
+.mcy-gentle-option { display: grid; width: 100%; grid-template-columns: 34px 1fr 18px; gap: 10px; align-items: center; padding: 12px; border: 1px solid #ebe7de; border-radius: 15px; background: #f4f1e9; color: #344d3b; text-align: left; }
+.mcy-gentle-option .mcy-open-space-mark { width: 30px; height: 30px; }
+.mcy-gentle-option strong { display: block; font: 16px/1.2 var(--font-editorial); }
+.mcy-gentle-option small { display: block; margin-top: 3px; color: #67766a; font-size: 10px; }
+.mcy-reason-card { margin: 14px 0; padding: 10px 12px; border-color: #ece9e2; background: #f7f6ef; }
+.mcy-reason-card p { font-size: 11px; }

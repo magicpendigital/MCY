@@ -1,0 +1,5 @@
+.mcy-flow-footer { display: flex; height: 100%; align-items: flex-start; gap: 12px; padding: 8px 22px calc(var(--mobile-safe-area-height) + 8px); border-top: 1px solid #efece5; background: var(--color-canvas); }
+.mcy-flow-footer .mcy-quiet-link { width: 95px; flex: none; margin: 0; }
+.mcy-flow-footer .mcy-action { width: auto; min-height: 51px; flex: 1; background: var(--mcy-clay); }
+.device-screen[data-device="pixel-10"] .mcy-flow-footer { padding-bottom: 9px; }
+.mcy-flow-footer.single .mcy-action { background: var(--mcy-clay); }

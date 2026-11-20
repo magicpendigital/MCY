@@ -1,0 +1,5 @@
+@media (max-height: 760px) {
+  .mcy-welcome { min-height: 760px; }
+  .mcy-welcome-benefits { margin-top: 30px; }
+  .mcy-body-map { height: 320px; }
+}
