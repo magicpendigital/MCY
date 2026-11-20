@@ -1,0 +1,13 @@
+.mcy-journey-summary { display: flex; gap: 13px; align-items: center; margin: 19px 0 27px; padding: 15px; border-radius: 16px; background: #e8eee3; }
+.mcy-journey-summary > strong { color: #4f7153; font: 48px var(--font-editorial); }
+.mcy-journey-summary > span { font-size: 13px; font-weight: 780; }
+.mcy-journey-summary small { display: block; margin-top: 3px; color: #708072; font-size: 10px; font-weight: 450; }
+.mcy-history-card { padding: 16px; border: 1px solid var(--mcy-border); border-radius: 16px; background: var(--mcy-paper); }
+.mcy-history-card > span { color: #8b968c; font-size: 10px; font-weight: 750; }
+.mcy-history-card h2 { margin: 7px 0 4px; }
+.mcy-history-card p { margin: 0 0 12px; color: var(--mcy-muted); font-size: 11px; }
+.mcy-history-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.mcy-history-tags span { padding: 7px 8px; border-radius: 20px; background: #eef2ea; color: #536a56; font-size: 10px; font-weight: 730; }
+.mcy-history-card blockquote { margin: 12px 0 0; padding: 0 0 0 12px; border-left: 2px solid #bb937c; color: #6a7267; font-size: 11px; line-height: 1.5; }
+.mcy-insight { margin: 14px 0 19px; }
+.mcy-insight button, .mcy-profile-card button { margin-top: 9px; padding: 4px 0; border: 0; background: transparent; color: var(--mcy-clay); font-size: 11px; font-weight: 800; text-align: left; }

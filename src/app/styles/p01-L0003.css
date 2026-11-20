@@ -1,0 +1,53 @@
+* { box-sizing: border-box; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+.mcy-scroll { min-height: 100%; container-name:mcy-app-viewport; container-type:inline-size; background: var(--mcy-bg); color: var(--mcy-ink); }
+.flow-fixed-header { background: var(--mcy-bg); }
+.mcy-page { min-height: 100%; padding: 19px 22px calc(var(--flow-footer-height, 0px) + var(--mobile-safe-area-height) + 29px); }
+.mcy-page h1, .mcy-welcome h1:not(.mcy-brand) { margin: 9px 0 13px; color: var(--mcy-ink); font: 34px/1.12 var(--font-editorial); letter-spacing: -.012em; }
+.mcy-page h2 { margin: 0; font: 23px/1.2 var(--font-editorial); letter-spacing: 0; }
+.mcy-lead { margin: 0 0 22px; color: var(--mcy-muted); font-size: 14px; line-height: 1.55; }
+.mcy-eyebrow, .mcy-section-label { color: var(--mcy-clay); font-size: 10px; font-weight: 850; letter-spacing: .15em; }
+.mcy-section-label { margin: 28px 0 12px; color: #748273; }
+.mcy-brand { display: inline-flex; align-items: center; gap: 8px; color: var(--mcy-ink); font: 24px var(--font-editorial); letter-spacing: -.012em; white-space: nowrap; }
+.mcy-brand.compact { font-size: 18px; }
+.mcy-brand-mark, .mcy-header-symbol { display: inline-grid; width: 27px; height: 27px; place-items: center; border-radius: 50%; background: var(--color-sage-soft); color: var(--color-forest); }
+.mcy-brand-mark svg, .mcy-header-symbol svg { width: 15px; height: 15px; }
+.mcy-header { display: grid; height: 55px; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: center; padding: 0 14px; border-bottom: 1px solid #e9ede4; background: var(--mcy-bg); }
+.mcy-header-title { justify-self: center; overflow: hidden; color: var(--mcy-ink); font-size: 13px; font-weight: 760; text-overflow: ellipsis; white-space: nowrap; }
+.mcy-header-symbol { justify-self: center; }
+.mcy-icon-button { display: grid; width: 43px; height: 43px; place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--mcy-ink); transition: transform var(--motion-instant) var(--ease-standard), background-color var(--motion-quick) var(--ease-standard); }
+.mcy-icon-button svg { width: 18px; height: 18px; }
+.mcy-action { display: flex; width: 100%; min-height: 53px; align-items: center; justify-content: center; gap: 11px; padding: 12px 18px; border: 0; border-radius: var(--radius-pill); background: var(--mcy-clay); box-shadow: var(--shadow-action); color: var(--color-on-dark); font-size: 14px; font-weight: 800; text-align: center; transition: background-color var(--motion-quick) var(--ease-standard), transform var(--motion-instant) var(--ease-standard), box-shadow var(--motion-quick) var(--ease-standard); }
+.mcy-action svg { width: 16px; height: 16px; flex: none; }
+.mcy-action.secondary { border: 1px solid var(--mcy-border); background: var(--mcy-paper); box-shadow: none; color: var(--mcy-ink); }
+.mcy-action:disabled { cursor: not-allowed; opacity: .5; }
+.mcy-quiet-link { display: flex; min-height: 44px; width: 100%; align-items: center; justify-content: center; margin: 6px 0 0; border: 0; background: transparent; color: var(--mcy-sage); font-size: 12px; font-weight: 780; text-align: center; }
+.mcy-inline-note, .mcy-info-note { display: flex; align-items: flex-start; gap: 9px; margin: 19px 0; color: #6f7a71; font-size: 11px; line-height: 1.5; }
+.mcy-inline-note svg, .mcy-info-note svg { width: 15px; height: 15px; flex: none; color: #927a63; }
+.mcy-info-note { margin-top: 18px; padding: 12px; border-radius: 11px; background: #f0f0e9; }
+.mcy-step-count { display: flex; justify-content: space-between; align-items: center; margin: 1px 0 18px; color: var(--mcy-clay); font-size: 10px; font-weight: 850; letter-spacing: .11em; }
+.mcy-step-count span { color: #89958a; font-weight: 650; letter-spacing: 0; text-transform: none; }
+.mcy-tag { color: var(--mcy-clay); font-size: 10px; font-weight: 850; letter-spacing: .09em; }
+.mcy-choice { display: flex; min-height: 45px; align-items: center; justify-content: center; padding: 10px 11px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-control); background: var(--mcy-paper); color: var(--color-text-muted); font-size: 12px; font-weight: 710; text-align: center; transition: background-color var(--motion-quick) var(--ease-standard), border-color var(--motion-quick) var(--ease-standard), color var(--motion-quick) var(--ease-standard); }
+.mcy-choice.selected { border-color: var(--color-forest); background: var(--color-sage-soft); box-shadow: inset 0 0 0 1px var(--color-forest); color: var(--color-ink); }
+.mcy-time-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; margin: 23px 0 28px; }
+.mcy-time-grid .mcy-choice { min-height: 83px; flex-direction: column; gap: 1px; font: 31px var(--font-editorial); }
+.mcy-time-grid .mcy-choice small { font: 700 11px system-ui, sans-serif; }
+.mcy-chip-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.mcy-chip-grid .mcy-choice { flex: 1 1 auto; }
+.mcy-field-section { margin: 24px 0 26px; }
+.mcy-field-section h2 { margin-bottom: 13px; font: 700 14px/1.4 system-ui, sans-serif; }
+.mcy-field-section h2 small { margin-left: 5px; color: #9b9f96; font-size: 10px; font-weight: 500; }
+.mcy-context-card, .mcy-reason-card, .mcy-insight { display: flex; gap: 12px; align-items: flex-start; padding: 15px; border: 1px solid #dbe4d8; border-radius: 15px; background: #f0f4ed; }
+.mcy-context-card { margin: 16px 0; }
+.mcy-context-card strong { font-size: 12px; }
+.mcy-context-card p, .mcy-reason-card p, .mcy-insight p { margin: 4px 0 0; color: #586c5d; font-size: 12px; line-height: 1.45; }
+.mcy-source-icon { display: grid; width: 27px; height: 27px; flex: none; place-items: center; border-radius: 50%; background: #dce9db; color: #4b6b51; }
+.mcy-source-icon svg { width: 15px; height: 15px; }
+.mcy-alert { margin: 16px 0; padding: 14px; border-left: 3px solid #a86443; border-radius: 0 10px 10px 0; background: #f8eee6; color: #78503d; font-size: 12px; line-height: 1.5; }
+.mcy-empty { padding: 15px; border: 1px dashed #cfdbcf; border-radius: 13px; color: #6b796f; font-size: 12px; line-height: 1.5; }
+.mcy-empty.large { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 25px; padding: 30px 17px; text-align: center; }
+.mcy-empty.large > svg { width: 24px; height: 24px; color: var(--mcy-sage); }
+.mcy-empty.large strong { color: var(--mcy-ink); font-size: 15px; }
+.mcy-empty.large p { margin: 0 0 10px; }
