@@ -1,24 +1,11 @@
+import { viApp, enApp } from "./i18n/app";
+import { viWelcome, enWelcome } from "./i18n/welcome";
+
 export type AppLocale = "vi-VN" | "en-US";
 
 const vi = {
-  "brand.name": "Một chút yoga",
-  "brand.slogan": "Vạn chút an yên",
-  "brand.sloganNote": "",
-  "welcome.benefit1": "Khám phá cơ thể qua từng chuyển động",
-  "welcome.benefit2": "Lắng nghe cơ thể, thấu hiểu chính mình",
-  "welcome.benefit3": "Chọn lộ trình riêng, tập theo nhịp của bạn",
-  "welcome.quote": "“An yên bắt đầu từ những điều nhỏ bé”",
-  "welcome.tryGuest": "Trải nghiệm thử",
-  "welcome.createAccount": "Tạo tài khoản",
-  "welcome.login": "Đăng nhập",
-  "welcome.note": "Đăng nhập để lưu check-in và xem lại trong Hành trình",
-  "session.restoring": "Đang khôi phục phiên đăng nhập…",
-  "session.restoringHint": "Bạn không cần đăng nhập lại.",
-  "session.restoreFailedTitle": "Chưa kết nối được tài khoản",
-  "session.restoreFailed": "Phiên đăng nhập của bạn vẫn được giữ trên máy. Hãy kiểm tra mạng rồi thử lại.",
-  "session.retry": "Thử lại",
-  "locale.switchToEnglish": "English · đang hoàn thiện",
-  "locale.switchToVietnamese": "Tiếng Việt",
+  ...viApp,
+  ...viWelcome,
   "checkin.step1.title": "Hôm nay, cơ thể bạn cảm thấy thế nào?",
   "checkin.step1.lead": "Chạm vào vùng bạn thấy căng, mỏi hoặc khó chịu. Bạn cũng có thể chọn tên vùng bên dưới.",
   "checkin.step2.title": "Hôm nay bạn muốn dành bao lâu để chăm sóc cơ thể?",
@@ -218,24 +205,8 @@ const vi = {
 } as const;
 
 const en: Record<keyof typeof vi, string> = {
-  "brand.name": "A Little Yoga",
-  "brand.slogan": "A little more peace",
-  "brand.sloganNote": "ENGLISH PREVIEW · SOME SCREENS REMAIN IN VIETNAMESE",
-  "welcome.benefit1": "Explore your body through each movement",
-  "welcome.benefit2": "Listen to your body and understand yourself",
-  "welcome.benefit3": "Choose your own path and practice at your own pace",
-  "welcome.quote": "“A little calm can begin with small things.”",
-  "welcome.tryGuest": "Try it out",
-  "welcome.createAccount": "Create account",
-  "welcome.login": "Sign in",
-  "welcome.note": "Sign in to save check-ins and revisit them in Journey",
-  "session.restoring": "Restoring your session…",
-  "session.restoringHint": "You don't need to sign in again.",
-  "session.restoreFailedTitle": "Couldn't reach your account",
-  "session.restoreFailed": "Your sign-in is still kept on this device. Check your connection and try again.",
-  "session.retry": "Try again",
-  "locale.switchToEnglish": "English · in progress",
-  "locale.switchToVietnamese": "Vietnamese",
+  ...enApp,
+  ...enWelcome,
   "checkin.step1.title": "How does your body feel today?",
   "checkin.step1.lead": "Tap an area that feels tense or uncomfortable, or choose it from the list below.",
   "checkin.step2.title": "How much time would you like to spend caring for your body today?",

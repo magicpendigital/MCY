@@ -1,0 +1,36 @@
+// Welcome screen: benefits, sign-in choices, session restore, language switch. Data only: msg(), overrides and the key type stay in src/i18n.ts.
+export const viWelcome = {
+  "welcome.benefit1": "Khám phá cơ thể qua từng chuyển động",
+  "welcome.benefit2": "Lắng nghe cơ thể, thấu hiểu chính mình",
+  "welcome.benefit3": "Chọn lộ trình riêng, tập theo nhịp của bạn",
+  "welcome.quote": "“An yên bắt đầu từ những điều nhỏ bé”",
+  "welcome.tryGuest": "Trải nghiệm thử",
+  "welcome.createAccount": "Tạo tài khoản",
+  "welcome.login": "Đăng nhập",
+  "welcome.note": "Đăng nhập để lưu check-in và xem lại trong Hành trình",
+  "session.restoring": "Đang khôi phục phiên đăng nhập…",
+  "session.restoringHint": "Bạn không cần đăng nhập lại.",
+  "session.restoreFailedTitle": "Chưa kết nối được tài khoản",
+  "session.restoreFailed": "Phiên đăng nhập của bạn vẫn được giữ trên máy. Hãy kiểm tra mạng rồi thử lại.",
+  "session.retry": "Thử lại",
+  "locale.switchToEnglish": "English · đang hoàn thiện",
+  "locale.switchToVietnamese": "Tiếng Việt",
+} as const;
+
+export const enWelcome: Record<keyof typeof viWelcome, string> = {
+  "welcome.benefit1": "Explore your body through each movement",
+  "welcome.benefit2": "Listen to your body and understand yourself",
+  "welcome.benefit3": "Choose your own path and practice at your own pace",
+  "welcome.quote": "“A little calm can begin with small things.”",
+  "welcome.tryGuest": "Try it out",
+  "welcome.createAccount": "Create account",
+  "welcome.login": "Sign in",
+  "welcome.note": "Sign in to save check-ins and revisit them in Journey",
+  "session.restoring": "Restoring your session…",
+  "session.restoringHint": "You don't need to sign in again.",
+  "session.restoreFailedTitle": "Couldn't reach your account",
+  "session.restoreFailed": "Your sign-in is still kept on this device. Check your connection and try again.",
+  "session.retry": "Try again",
+  "locale.switchToEnglish": "English · in progress",
+  "locale.switchToVietnamese": "Vietnamese",
+};

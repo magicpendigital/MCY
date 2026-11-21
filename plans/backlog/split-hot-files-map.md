@@ -44,6 +44,10 @@ C1 dòng 1–144 · C2 145–273 · C3 274–419 · C4 420–558 · C5 559–685
 - `.mcy-welcome` khai báo ở 8 chỗ; gom theo tên sẽ đổi cascade. Không đổi selector list, specificity; không CSS Modules, nesting, `@layer`.
 - Ngân sách iOS 15 đếm toàn `src/` (viewport units 16/16, container units 7/7, `:has()` 10/10, `@container` 3/3): tách một khối `@container` thành hai sẽ vượt trần. Scanner đã quét đệ quy, không cần sửa test.
 
+## Lát i18n (lập 2026-11-22, sau CSS)
+`src/i18n.ts` (511 dòng, 214 key × 2 ngôn ngữ) giữ vai trò facade: `AppLocale`, `MessageKey`, `screenOverrides`, `msg()`, `formatMessage()` và các hàm nhãn. Mỗi lát chuyển một nhóm key liên tiếp sang `src/i18n/<nhóm>.ts`, chỉ chứa dữ liệu (`vi<Nhóm>` `as const` và `en<Nhóm>: Record<keyof typeof vi<Nhóm>, string>`); facade trải lại `...vi<Nhóm>` / `...en<Nhóm>` đúng chỗ cũ nên thứ tự key, nội dung chữ và `MessageKey` không đổi. Không tạo `src/i18n/index.ts` (để `./i18n` vẫn trỏ tới facade). Bằng chứng mỗi lát: kết xuất bảng `vi`/`en` trước/sau giống hệt từng byte (cả thứ tự key).
+I1 `brand` → `app.ts`; `welcome`, `session`, `locale` → `welcome.ts` (18 key) · I2 `checkin`, `regionEditor` (46 key; cân nhắc chuyển cả bảng nhãn vùng/mức/bên/năng lượng, giữ hàm ở facade) · I3 `dialogue` (17 key, hiện không màn nào gọi; chuyển nguyên, không xoá) · I4 `reflection`, `sync` (42 key) · I5 `journey` (65 key) · I6 `discover`, `course` (26 key; phải sửa `tests/screen-text-keys.test.mjs` để đọc cả `src/i18n/*.ts`, giữ nguyên các khẳng định, và chú thích trong `contentWorkspaceContract.ts`).
+
 ## Kiểm mỗi lát
 `npm run check:quick` khi sửa; trước khi giao: `npm test && npm run check:ios15 && npm run test:runtime && npm run test:sites`, cộng so ảnh trước/sau (mobile hẹp, landscape thấp, desktop, iPhone/Pixel review, reduced motion). `learner-ux` chụp ảnh nhưng không so ảnh tự động; `mobile-runtime.spec.ts` chỉ chạy fixture runtime.
 
