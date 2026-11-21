@@ -1,0 +1,41 @@
+.mcy-conversation { display: flex; flex-direction: column; gap: 8px; margin: 17px 0 23px; }
+.mcy-ai-avatar { display: flex; align-items: center; gap: 6px; color: var(--mcy-plum); font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+.mcy-ai-avatar svg { width: 15px; height: 15px; }
+.mcy-bubble { max-width: 91%; padding: 13px 15px; border-radius: 4px 15px 15px 15px; background: #ece7ee; color: #4d4353; font-size: 12px; line-height: 1.52; }
+.mcy-bubble strong { color: #423348; }
+.mcy-bubble.ai.quiet { background: #f1edf1; }
+.mcy-bubble.mine { align-self: flex-end; border-radius: 15px 4px 15px 15px; background: #dfe8dc; color: #355039; }
+.mcy-prior-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.mcy-prior-actions .mcy-choice { min-height: 41px; font-size: 11px; }
+.dialogue-chips .mcy-choice { flex: 0 1 auto; }
+.mcy-composer { display: flex; gap: 7px; margin: 19px 0 6px; }
+.mcy-composer input { flex: 1; min-width: 0; min-height: 46px; padding: 0 12px; border: 1px solid #dbe3d8; border-radius: 12px; outline-color: #799678; background: var(--mcy-paper); color: var(--mcy-ink); font-size: 16px; }
+.mcy-composer button { display: grid; width: 47px; flex: none; place-items: center; border: 0; border-radius: 12px; background: var(--mcy-sage); color: white; }
+.mcy-composer button svg { width: 19px; height: 19px; }
+
+.mcy-plan-card { overflow: hidden; margin: 20px 0 13px; border: 1px solid var(--mcy-border); border-radius: 18px; background: var(--mcy-paper); box-shadow: 0 6px 24px #4d604312; }
+.mcy-plan-image { position: relative; height: 206px; overflow: hidden; }
+.mcy-plan-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.8); }
+.mcy-plan-time { position: absolute; right: 13px; bottom: 13px; display: flex; gap: 5px; align-items: center; padding: 7px 10px; border-radius: 20px; background: #fffdf8f0; color: var(--mcy-clay); font-size: 12px; font-weight: 850; }
+.mcy-plan-time svg { width: 14px; height: 14px; }
+.mcy-plan-body { padding: 16px; }
+.mcy-plan-body h2 { margin: 5px 0 6px; font-size: 26px; }
+.mcy-plan-body p { margin: 0; color: var(--mcy-muted); font-size: 12px; line-height: 1.45; }
+.mcy-plan-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.mcy-plan-meta span { padding: 6px 8px; border-radius: 20px; background: #eef2e9; color: #526c56; font-size: 10px; font-weight: 750; }
+.mcy-reason-card { margin: 0 0 19px; }
+.mcy-reason-card small { display: block; margin-top: 8px; color: #819183; font-size: 10px; line-height: 1.4; }
+.mcy-alternatives { margin-top: 27px; }
+.mcy-alternatives h2 { font-size: 21px; }
+.mcy-alternatives > p { margin: 6px 0 12px; color: var(--mcy-muted); font-size: 11px; }
+.mcy-alternatives > button { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 10px; margin-top: 7px; padding: 12px; border: 1px solid var(--mcy-border); border-radius: 12px; background: var(--mcy-paper); color: var(--mcy-ink); text-align: left; }
+.mcy-alternatives > button span { display: flex; flex-direction: column; gap: 3px; }
+.mcy-alternatives > button strong { font-size: 12px; }
+.mcy-alternatives > button small { color: var(--mcy-muted); font-size: 10px; }
+.mcy-alternatives > button svg { width: 17px; height: 17px; flex: none; color: var(--mcy-clay); }
+
+.mcy-player-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin: 13px 0; }
+.mcy-player-controls button { display: flex; min-height: 55px; align-items: center; gap: 8px; padding: 8px; border: 1px solid var(--mcy-border); border-radius: 12px; background: var(--mcy-paper); color: var(--mcy-ink); font-size: 11px; font-weight: 750; }
+.mcy-player-controls button:disabled { opacity: .55; }
+.mcy-player-controls button span { display: grid; width: 28px; height: 28px; flex: none; place-items: center; border-radius: 50%; background: var(--mcy-pale); }
+.mcy-player-controls button svg { width: 14px; height: 14px; }

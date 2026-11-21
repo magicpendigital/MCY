@@ -1,0 +1,12 @@
+.mcy-bottom-nav { display: grid; height: 68px; grid-template-columns: repeat(4,1fr); align-items: stretch; padding: 5px 9px 1px; border-top: 1px solid #e0e6dc; background: var(--color-surface); }
+.mcy-bottom-nav button { display: flex; min-width: 0; align-items: center; justify-content: center; flex-direction: column; gap: 3px; border: 0; border-radius: 10px; background: transparent; color: var(--color-text-muted); font-size: var(--text-caption); font-weight: 680; transition: transform var(--motion-instant) var(--ease-standard), background-color var(--motion-quick) var(--ease-standard), color var(--motion-quick) var(--ease-standard); }
+.mcy-bottom-nav button[aria-current="page"] { color: #376242; background: #eef3eb; font-weight: 850; }
+.mcy-bottom-nav svg { width: 18px; height: 18px; }
+.mcy-scroll button:focus-visible, .mcy-header button:focus-visible, .mcy-bottom-nav button:focus-visible { outline: 2px solid #895039; outline-offset: 2px; }
+@media (max-height: 760px) {
+  .mcy-welcome { min-height: 730px; }
+  .mcy-welcome-copy { margin-top: 27px; }
+  .mcy-welcome-copy h1 { font-size: 43px; }
+  .mcy-welcome-photo { top: 213px; }
+  .mcy-home-photo { height: 183px; }
+}

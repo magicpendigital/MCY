@@ -1,0 +1,18 @@
+.mcy-welcome { min-height: 852px; padding: 76px 20px calc(var(--mobile-safe-area-height) + 18px); background: #f6f0e8; }
+.mcy-welcome-photo { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; object-fit: cover; object-position: 55% center; filter: saturate(.83); }
+.mcy-welcome::after { inset: 0; height: auto; background: linear-gradient(90deg,#fffaf5 0%,#fffaf5db 28%,#fffaf540 70%,transparent 100%),linear-gradient(0deg,#fffaf5 0%,#fffaf500 30%); }
+.mcy-welcome-top { position: relative; z-index: 2; }
+.mcy-language-toggle { position:absolute; top:3px; right:0; z-index:3; min-height:32px; padding:5px 10px; border:1px solid #d8e1d3; border-radius:999px; background:#fffaf5dc; color:var(--mcy-sage); font-size:10px; font-weight:780; letter-spacing:.035em; }
+.mcy-language-toggle:hover { background:#fffaf5; }
+.mcy-language-toggle:focus-visible { outline:2px solid var(--mcy-clay); outline-offset:2px; }
+.mcy-welcome-top > h1.mcy-brand { margin: 0; }
+.mcy-welcome-top .mcy-brand { align-items: flex-start; }
+.mcy-welcome-top .mcy-brand .mcy-open-space-mark { margin-left: 89px; }
+.mcy-welcome-top > p { max-width: 255px; margin: 8px 0 0 3px; color: #425549; font-size: 17px; line-height: 1.36; }
+.mcy-welcome-benefits { position: relative; z-index: 2; display: grid; gap: 16px; margin-top: 44px; }
+.mcy-welcome-benefits > div { display: flex; align-items: center; gap: 12px; color: #425549; font-size: 13px; line-height: 1.35; }
+.mcy-welcome-benefits > div > span { display: grid; width: 43px; height: 43px; flex: none; place-items: center; border-radius: 50%; background: #f6e9dfd9; color: #915841; }
+.mcy-welcome-benefits svg { width: 23px; height: 23px; }
+.mcy-welcome-bottom { right: 20px; bottom: calc(var(--mobile-safe-area-height) + 18px); left: 20px; }
+.mcy-welcome-bottom > p { max-width: 240px; margin: 0 0 38px 5px; color: #455d4a; font: italic 22px/1.28 var(--font-editorial); }
+.mcy-welcome-bottom small { margin-top: 9px; color: #7c776f; font-size: 9px; }

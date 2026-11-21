@@ -10,6 +10,15 @@ export function useRoutes() {
   return routes;
 }
 
+// The help article routes, provided next to the learner routes for the same reason.
+export const HelpRoutesContext = createContext<Record<string, FlowScreen> | null>(null);
+
+export function useHelpRoutes() {
+  const routes = useContext(HelpRoutesContext);
+  if (!routes) throw new Error("Prototype help routes missing");
+  return routes;
+}
+
 export function finishAtAuthDestination(flow: ReturnType<typeof useFlow>, routes: Record<string, FlowScreen>, destination: string) {
   const target = routes[destination] ?? routes.home;
   let targetIndex = -1;
