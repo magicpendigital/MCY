@@ -1,6 +1,6 @@
 # UI/UX cho mô hình trả phí: khóa học trả phí và AI cho khách hàng trả phí — 2026-11-18
 
-Nguồn: Owner 18/11: "sau này có khóa học trả phí; AI chỉ dành cho khách hàng trả phí". Đây là **phân tích và đề xuất**, chưa phải lệnh làm. Bản 1.0 vẫn không thanh toán và không AI (`AGENTS.md`); mọi tên gói, giá, chu kỳ dưới đây là chỗ giữ chỗ **do Owner đặt**. Canvas: trang "Mô hình trả phí" tại https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg (T1 bậc quyền, T2 luồng, T3 màn hình, T4 thanh toán và hoàn tiền, T5 hệ thống, AI, video, lộ trình).
+Nguồn: Owner 18/11: "sau này có khóa học trả phí; AI chỉ dành cho khách hàng trả phí". Đây là **phân tích và đề xuất**, chưa phải lệnh làm. Bản 1.0 vẫn không thanh toán và không AI (`AGENTS.md`); mọi tên gói, giá, chu kỳ dưới đây là chỗ giữ chỗ **do Owner đặt**. Canvas: trang "Mô hình trả phí" tại https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg (T1 bậc quyền, T2 luồng, T3 màn hình, T4 thanh toán và hoàn tiền, T5 hệ thống/AI/video/lộ trình, T6 người duyệt chuyên môn).
 
 ## 1. Bậc quyền đề xuất
 
@@ -60,7 +60,15 @@ Khách không mua được: quyền phải gắn với tài khoản để khôi 
 
 Đã quyết: (1) mô hình giá **lai** (thuê bao + mua lẻ khóa); (2) AI **theo gói** và có thể **kèm từng khóa** (lúc đặt giá khóa có tùy chọn "bao gồm AI"; bật thì người mua dùng được AI); (3) khóa trả phí **Owner tự quay**; (5) gói miễn phí giữ 38 clip, Chút lớp 1, Hành trình; (6) **giai đoạn F** sau Closed testing, điều kiện vào: ≥ 1 khóa trả phí đã duyệt, người duyệt chuyên môn có tên, quyết định thanh toán và video có bảo vệ, kiểm Play Console cho Việt Nam.
 
-Còn mở (Owner quyết, agent không đề xuất con số ngân sách): phương án quản lý quyền A (tự làm trên Supabase, nhận thông báo Google Play) hay B (dịch vụ như RevenueCat); Android trước, web sau; pháp nhân đứng bán và hồ sơ thanh toán Google; con số hoàn tiền; phạm vi AI kèm khóa (toàn app hay chỉ ngữ cảnh khóa) và thời hạn/hạn mức; có dùng thử AI không; khóa trả phí có gồm lớp trực tiếp không; kênh hỗ trợ.
+Owner quyết thêm ngày 21/11 (phần lớn "theo đề xuất"):
+- Quản lý quyền: bảng quyền của MCY là nguồn sự thật; chọn A (tự làm) hay B (dịch vụ như RevenueCat) ở đầu giai đoạn F sau khi thử license tester; **Android trước, web sau**.
+- Con số hoàn tiền: **7 ngày · 30% · 48 giờ · phản hồi trong 2 ngày làm việc**.
+- Kênh hỗ trợ: email Owner cung cấp (magicpendigital@gmail.com).
+- **Pháp nhân đứng bán: Owner cập nhật sau** (đang đăng ký với Google). Không điền thay.
+- **Người duyệt chuyên môn có tên: tài khoản Owner**, kèm thiết kế mời hoặc giao quyền cho người khác: [reviewer-role-design.md](reviewer-role-design.md) và canvas T6.
+- Mặc định theo đề xuất (đổi được): AI kèm khóa chỉ trong ngữ cảnh khóa, thời hạn AI = thời hạn truy cập khóa, hạn mức theo người do Owner đặt khi bật; chưa dùng thử AI; khóa trả phí chưa gồm lớp trực tiếp; thuê bao tháng trước, năm để sau.
+
+Còn mở: pháp nhân bán và hồ sơ thanh toán Google (Owner đang làm); con số ngân sách AI và hạn mức (chỉ Owner); đối chiếu pháp lý cho hoàn tiền, hóa đơn điện tử, thuế; kiểm Play Console cho Việt Nam.
 
 ## 7. Nền tảng thanh toán (đề xuất, ⚑ = cần kiểm nguồn chính thống)
 
