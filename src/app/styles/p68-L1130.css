@@ -1,0 +1,6 @@
+.mcy-finder-row { display: flex; width: 100%; min-height: 60px; align-items: center; gap: 12px; padding: 9px 2px; border: 0; border-bottom: 1px solid #ecefe6; background: transparent; color: var(--mcy-ink); text-align: left; }
+.mcy-finder-row > span:nth-child(2) { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 2px; }
+.mcy-finder-row strong { font: 16px/1.25 var(--font-editorial); }
+.mcy-finder-row small { color: var(--mcy-muted); font-size: 13px; }
+.mcy-finder-row svg { flex: none; color: var(--mcy-clay); }
+.mcy-finder-time { flex: none; min-width: 64px; padding: 5px 9px; border-radius: 999px; background: #f0ece3; color: #6b4a3a; font: 700 12.5px/1.1 var(--font-sans); text-align: center; }

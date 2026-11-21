@@ -1,0 +1,13 @@
+/* Course benefits and cautions, at the bottom of a course (Owner request 2026-11-02; draft until a qualified reviewer approves). */
+.mcy-course-guidance { margin: 22px 0 8px; padding: 16px; border: 1px solid var(--mcy-border); border-radius: 16px; background: var(--mcy-paper); }
+.mcy-course-guidance h2 { margin: 0 0 8px; }
+.mcy-course-guidance h3 { margin: 14px 0 6px; color: var(--color-forest-dark); font: 700 15px/1.3 var(--font-sans); }
+.mcy-course-guidance ul { margin: 0; padding-left: 20px; color: var(--mcy-ink); font-size: 15px; line-height: 1.55; }
+.mcy-course-guidance li + li { margin-top: 6px; }
+.mcy-course-guidance-draft { margin: 0 0 4px; padding: 10px 12px; border-radius: 12px; background: var(--color-terracotta-soft); color: #5d3a2c; font-size: 14px; line-height: 1.45; }
+
+/* Content snapshot: Editors choice block and the author byline on a lesson (no newer CSS features). */
+.mcy-editors-choice { margin: 18px 0 8px; }
+.mcy-editors-choice h2 { margin: 2px 0 8px; font-size: 18px; line-height: 1.3; }
+.mcy-editors-choice small { display: block; margin-top: 2px; color: var(--mcy-muted); font-size: 12px; }
+.mcy-course-byline { margin: 8px 0 0; color: var(--mcy-muted); font-size: 12px; line-height: 1.4; }
