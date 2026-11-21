@@ -19,145 +19,15 @@
 @import "./screens/reflection/styles/p18-L0385.css";
 @import "./screens/journey/styles/p19-L0397.css";
 @import "./app/styles/p20-L0414.css";
-
-/* Body check-in, honest reflection, and snapshot journey. */
-.mcy-body-map-v2 { display:flex; width:100%; min-width:0; flex-direction:column; align-items:center; margin:2px 0 0; }
-.mcy-body-art { position:relative; width:min(100%, 310px); height:auto; aspect-ratio:2 / 3; overflow:visible; }
-.mcy-body-art > img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:contain; user-select:none; -webkit-user-drag:none; }
-.mcy-body-fallback { display:grid; height:100%; place-items:center; margin:0; padding:20px; border:1px solid #e5e7dd; border-radius:16px; background:#f4f1e9; color:#5b6a5b; text-align:center; font-size:12px; }
-.mcy-map-pin { position:absolute; z-index:1; display:grid; width:48px; height:48px; padding:0; place-items:center; transform:translate(-50%,-50%); border:0; border-radius:50%; background:#fbf7ed99; color:#755647; cursor:pointer; }
-.mcy-map-pin > span { display:grid; width:28px; height:28px; place-items:center; border:2px solid #a98970; border-radius:50%; background:#fffaf1; box-shadow:0 0 0 5px #fff9f19c; font-size:17px; font-weight:700; line-height:1; }
-.mcy-map-pin svg { width:15px; height:15px; }
-.mcy-map-pin.is-reported > span { border-color:#be684f; background:#d88970; color:#fff; }
-.mcy-map-pin.is-high > span { border-color:#a6473b; background:#b55748; color:#fff; }
-.mcy-map-pin.is-clear > span { border-color:#597a5c; background:#78a17a; color:#fff; }
-.mcy-map-pin.is-uncertain > span { border-color:#8b928b; background:#e9e9e2; color:#47574a; }
-.mcy-map-pin:focus-visible { outline:2px solid #304c37; outline-offset:2px; }
-.mcy-body-orientation { display:block; margin:-1px 0 3px; color:#7b8679; font-size:10px; letter-spacing:.06em; text-transform:uppercase; }
-.mcy-body-map-v2.compact .mcy-body-art { width:min(100%, 128px); height:auto; aspect-ratio:2 / 3; }
-.mcy-body-map-v2.compact .mcy-map-pin { width:32px; height:32px; }
-.mcy-body-map-v2.compact .mcy-map-pin > span { width:20px; height:20px; border-width:1.5px; box-shadow:0 0 0 3px #fff9f1a8; font-size:11px; }
-.mcy-style-link { display:flex; align-items:center; gap:4px; margin:0 auto 14px; padding:4px 7px; border:0; background:transparent; color:#4e684f; font-size:12px; text-decoration:underline; text-underline-offset:3px; }
-.mcy-style-link svg { width:14px; height:14px; }
-.mcy-style-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:12px 18px 5px; }
-.mcy-style-options button { position:relative; display:flex; min-width:0; flex-direction:column; align-items:center; gap:5px; padding:5px 5px 9px; border:1px solid #e3e5dc; border-radius:13px; background:#fffdf8; color:#34493b; }
-.mcy-style-options button.selected { border-color:#5b795c; background:#eff3ea; }
-.mcy-style-options img { width:100%; height:112px; border-radius:8px; background:var(--mcy-bg); object-fit:contain; object-position:center; }
-.mcy-style-options strong { font-size:11px; font-weight:650; white-space:nowrap; }
-.mcy-style-options svg { position:absolute; top:8px; right:8px; width:17px; height:17px; padding:2px; border-radius:50%; background:#426249; color:white; }
-.mcy-sheet-footnote { margin:5px 20px 22px; color:#728071; font-size:11px; line-height:1.45; }
-.mcy-region-editor, .mcy-sheet-actions { padding:14px 20px 24px; }
-.mcy-region-editor > strong { display:block; margin:18px 0 8px; color:#344c3b; font-size:13px; }
-.mcy-editor-options { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.mcy-editor-options .mcy-choice { min-height:45px; }
-.mcy-editor-options.side .mcy-choice { font-size:11px; }
-.mcy-editor-note { display:block; margin:18px 0 16px; color:#344c3b; font-size:13px; font-weight:650; }
-.mcy-editor-note small { color:#899285; font-size:10px; font-weight:400; }
-.mcy-editor-note textarea { display:block; width:100%; min-height:70px; margin-top:8px; padding:11px; border:1px solid #dfe2d8; border-radius:12px; background:#fffdf8; color:#2a3e31; resize:vertical; font-size:16px; }
-.mcy-region-editor > .mcy-quiet-link { margin:11px auto 0; }
-.mcy-region-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 15px; }
-.mcy-region-list button { display:grid; grid-template-columns:1fr 14px; align-items:center; min-height:55px; padding:8px 10px; border:1px solid #e6e4da; border-radius:12px; background:#fffcf7; color:#314a3b; text-align:left; }
-.mcy-region-list button.selected { border-color:#a3b49e; background:#f1f5ed; }
-.mcy-region-list button > span { font:16px/1.08 var(--font-editorial); }
-.mcy-region-list button small { overflow:hidden; grid-column:1; margin-top:3px; color:#768371; font-size:10px; white-space:nowrap; text-overflow:ellipsis; }
-.mcy-region-list button svg { grid-column:2; grid-row:1 / span 2; width:14px; height:14px; }
-.mcy-body-status-actions { padding:12px; border:1px solid #e8e6de; border-radius:14px; background:#f8f6ef; }
-.mcy-body-status-actions p { margin:0 0 9px; color:#4d6052; font-size:11px; font-weight:700; }
-.mcy-body-status-actions > div { display:flex; flex-wrap:wrap; gap:6px; }
-.mcy-body-status-actions .mcy-choice { flex:1 1 30%; min-height:42px; padding:6px; font-size:10px; }
-.mcy-status-caption { margin:7px 2px 14px; color:#697b69; font-size:11px; line-height:1.4; }
-.mcy-standalone-link { display:block; width:100%; min-height:40px; margin:10px 0 16px; border:0; background:transparent; color:#46634c; font-size:12px; text-decoration:underline; text-underline-offset:3px; }
-.mcy-checkin-page .mcy-energy-card { margin-top:0; margin-bottom:14px; }
-.mcy-checkin-page .mcy-energy-options { gap:3px; }
-.mcy-checkin-page .mcy-energy-options span { font-size:10px; white-space:normal; line-height:1.15; }
-.mcy-checkin-page .mcy-energy-options button { min-height:58px; }
-.mcy-flow-footer.single .mcy-action { width:100%; }
-.mcy-flow-footer.mcy-checkin-footer { flex-direction:column; align-items:stretch; gap:0; }
-.mcy-flow-footer.mcy-checkin-footer .mcy-action { min-height:51px; flex:none; }
-.mcy-flow-footer.mcy-checkin-footer .mcy-quiet-link { width:100%; min-height:30px; flex:none; }
-.mcy-checkin-footer.single .mcy-action { background:var(--mcy-clay); }
-.mcy-reflection-hint { margin:4px 0 19px; color:#738071; font-size:11px; line-height:1.45; }
-.mcy-reflection-regions { display:grid; gap:7px; margin-top:9px; }
-.mcy-reflection-region-row { overflow:hidden; border:1px solid #e5e7df; border-radius:12px; background:#fffdf8; }
-.mcy-reflection-region-row > button:first-child { display:grid; width:100%; grid-template-columns:1fr 1fr 16px; gap:8px; align-items:center; min-height:62px; padding:10px; border:0; background:transparent; color:#2e4336; text-align:left; }
-.mcy-reflection-regions button > span { display:grid; gap:4px; }
-.mcy-reflection-regions strong { font-size:12px; }
-.mcy-reflection-regions small { color:#778576; font-size:10px; }
-.mcy-reflection-regions svg { width:16px; height:16px; }
-.mcy-keep-region { width:100%; min-height:32px; padding:5px 10px; border:0; border-top:1px solid #e5e9df; background:#f3f6ee; color:#4c6c51; font-size:10px; text-align:left; }
-.mcy-post-options { display:flex; gap:8px; margin:-4px 0 17px; }
-.mcy-post-options button { flex:1; min-height:38px; padding:6px 8px; border:1px solid #dfe5da; border-radius:10px; background:#f4f7ef; color:#4b664e; font-size:10px; }
-.mcy-journey-toolbar { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:14px 0 12px; }
-.mcy-journey-toolbar .mcy-view-tabs { width:148px; flex:none; margin:0; }
-.mcy-journey-toolbar .mcy-view-tabs button { min-height:34px; font-size:11px; }
-.mcy-example-link { border:0; background:transparent; color:#496a50; font-size:11px; text-align:right; text-decoration:underline; text-underline-offset:3px; }
-.mcy-timeline-head { display:flex; align-items:center; justify-content:space-between; margin:17px 0 9px; }
-.mcy-timeline-head strong { color:#344c3b; font-size:12px; }
-.mcy-timeline-head button { border:0; background:transparent; color:#627c62; font-size:10px; text-decoration:underline; }
-.mcy-timeline-track { gap:7px; padding:0 1px 4px; }
-.mcy-timeline-track > button { display:flex; width:73px; min-height:73px; flex:none; flex-direction:column; align-items:center; justify-content:center; gap:3px; border:1px solid #e1e5da; border-radius:13px; background:#f6f5ee; color:#405546; }
-.mcy-timeline-track > button.selected { border-color:#557459; background:#48664e; color:#fffef9; }
-.mcy-timeline-track small { font-size:8px; letter-spacing:.09em; }
-.mcy-timeline-track strong { font:24px/1 var(--font-editorial); }
-.mcy-timeline-track span { font-size:9px; white-space:nowrap; }
-.mcy-snapshot-card { margin:17px 0 12px; padding:13px; border:1px solid #e4e4d9; border-radius:16px; background:#fffdf8; }
-.mcy-snapshot-heading > span { color:#7c8b79; font-size:9px; font-weight:700; letter-spacing:.08em; }
-.mcy-snapshot-heading h2 { margin:3px 0 9px; font-size:20px; line-height:1.2; }
-.mcy-record-track { gap:7px; padding:0 0 5px; }
-.mcy-record-track > button { min-height:32px; flex:none; padding:6px 11px; border:1px solid #e3e5da; border-radius:20px; background:#f7f7f0; color:#536853; font-size:10px; white-space:nowrap; }
-.mcy-record-track > button[aria-pressed="true"] { border-color:#5b775d; background:#e7efe4; color:#315039; }
-.mcy-snapshot-card .mcy-body-map-v2 { margin:6px auto 3px; }
-.mcy-snapshot-card .mcy-body-art { width:min(100%, 160px); }
-.mcy-snapshot-list { display:grid; gap:5px; }
-.mcy-snapshot-list > button { display:grid; grid-template-columns:12px 1fr 16px; gap:8px; align-items:center; min-height:42px; padding:6px 7px; border:0; border-bottom:1px solid #edede4; background:transparent; color:#394d3d; text-align:left; }
-.mcy-snapshot-list > button strong { display:block; font-size:12px; }
-.mcy-snapshot-list > button small { color:#788475; font-size:10px; }
-.mcy-snapshot-list > button svg { width:15px; height:15px; }
-.mcy-snapshot-dot { width:10px; height:10px; border-radius:50%; background:#bd725b; }
-.mcy-snapshot-list > p, .mcy-snapshot-empty { padding:12px; border-radius:10px; background:#f6f5ed; color:#6d7b6a; font-size:11px; line-height:1.45; }
-.mcy-snapshot-meta { margin:9px 4px; color:#657463; font-size:11px; }
-.mcy-snapshot-note { margin:10px 0; padding:10px 12px; border-left:2px solid #b37d64; background:#f8f5ed; color:#536453; font:italic 13px/1.4 var(--font-editorial); }
-.mcy-delete-link { display:block; margin:12px 0 0 auto; border:0; background:transparent; color:#9a5d50; font-size:11px; text-decoration:underline; }
-.mcy-compare-toggle { display:flex; width:100%; min-height:46px; align-items:center; justify-content:space-between; padding:10px 12px; border:1px solid #dfe4d9; border-radius:12px; background:#f4f6ee; color:#3e5b44; font-size:13px; font-weight:700; }
-.mcy-compare-card, .mcy-region-trend { margin:12px 0 19px; padding:13px; border:1px solid #e4e5db; border-radius:14px; background:#fffdf8; }
-.mcy-compare-card h2, .mcy-region-trend h2 { font-size:20px; }
-.mcy-compare-card p, .mcy-region-trend p { margin:7px 0 12px; color:#718070; font-size:11px; line-height:1.43; }
-.mcy-compare-pickers { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
-.mcy-compare-pickers button { min-height:68px; padding:8px; border:1px solid #e0e6db; border-radius:10px; background:#f5f6ef; color:#3b543f; text-align:left; }
-.mcy-compare-pickers small { display:block; margin-bottom:5px; color:#80917d; font-size:9px; }
-.mcy-compare-pickers strong { font-size:10px; line-height:1.3; }
-.mcy-compare-warning { padding:9px; background:#f8f0df; }
-.mcy-compare-rows { display:grid; margin-top:10px; }
-.mcy-compare-rows > div { display:flex; justify-content:space-between; gap:8px; padding:8px 2px; border-bottom:1px solid #eceee8; font-size:11px; }
-.mcy-compare-rows strong { white-space:nowrap; }
-.mcy-compare-rows span { display:flex; align-items:center; gap:3px; color:#6a7869; text-align:right; }
-.mcy-compare-rows span small { color:#a15e4c; font-size:9px; white-space:nowrap; }
-.mcy-compare-rows svg { width:12px; height:12px; flex:none; }
-.mcy-trend-track { gap:6px; padding-bottom:8px; }
-.mcy-trend-track button { min-height:33px; flex:none; padding:6px 11px; border:1px solid #dce3d9; border-radius:20px; background:#f5f6ef; color:#5b715d; font-size:11px; }
-.mcy-trend-track button[aria-pressed="true"] { border-color:#496b4e; background:#48664e; color:#fff; }
-.mcy-trend-observations { display:grid; gap:2px; margin:5px 0 8px; }
-.mcy-trend-observations button { display:grid; grid-template-columns:1fr auto 14px; gap:6px; align-items:center; min-height:38px; border:0; border-bottom:1px solid #ebece4; background:transparent; color:#344c3c; text-align:left; font-size:11px; }
-.mcy-trend-observations strong { font-weight:700; }
-.mcy-trend-observations svg { width:14px; height:14px; }
-.mcy-region-trend > small { display:block; margin-top:10px; color:#7a8776; font-size:10px; line-height:1.4; }
-.mcy-detail-sheet, .mcy-picker-list { padding:15px 20px 24px; }
-.mcy-detail-sheet strong { color:#3c5843; font:19px var(--font-editorial); }
-.mcy-detail-sheet p { color:#6f7e70; font-size:12px; line-height:1.5; }
-.mcy-picker-list { display:grid; gap:6px; }
-.mcy-picker-list button { min-height:42px; padding:9px; border:1px solid #e2e8dd; border-radius:9px; background:#fafbf6; color:#3e5843; text-align:left; font-size:12px; }
-.mcy-sheet-actions .mcy-quiet-link { margin:9px auto 0; }
-
-/* Upper-body map: responsive portrait flow and side-by-side landscape layout. */
-.mcy-checkin-content { display:grid; grid-template-columns:minmax(0,1fr); gap:0; }
-.mcy-checkin-illustration, .mcy-checkin-fields, .mcy-snapshot-map, .mcy-snapshot-details { min-width:0; }
-.mcy-checkin-illustration { display:flex; flex-direction:column; align-items:center; }
-.mcy-checkin-fields { width:100%; }
-.mcy-checkin-illustration .mcy-body-art { width:min(100%, 280px); }
-.mcy-snapshot-body { display:grid; min-width:0; grid-template-columns:minmax(124px,.95fr) minmax(0,1.05fr); gap:8px; align-items:center; }
-.mcy-snapshot-map { display:flex; min-width:0; flex-direction:column; align-items:center; }
-.mcy-snapshot-map .mcy-body-orientation { max-width:100%; font-size:8px; text-align:center; }
-.mcy-snapshot-details { width:100%; }
+@import "./app/styles/p21-L0420.css";
+@import "./screens/checkin/styles/p22-L0455.css";
+@import "./app/styles/p23-L0466.css";
+@import "./screens/checkin/styles/p24-L0467.css";
+@import "./app/styles/p25-L0471.css";
+@import "./screens/checkin/styles/p26-L0472.css";
+@import "./screens/reflection/styles/p27-L0476.css";
+@import "./screens/journey/styles/p28-L0487.css";
+@import "./app/styles/p29-L0541.css";
 
 /* Brand mark reveal and restrained app feedback */
 .mcy-scroll { font-family: var(--font-sans); }

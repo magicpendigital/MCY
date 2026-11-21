@@ -1,0 +1,17 @@
+.mcy-detail-sheet, .mcy-picker-list { padding:15px 20px 24px; }
+.mcy-detail-sheet strong { color:#3c5843; font:19px var(--font-editorial); }
+.mcy-detail-sheet p { color:#6f7e70; font-size:12px; line-height:1.5; }
+.mcy-picker-list { display:grid; gap:6px; }
+.mcy-picker-list button { min-height:42px; padding:9px; border:1px solid #e2e8dd; border-radius:9px; background:#fafbf6; color:#3e5843; text-align:left; font-size:12px; }
+.mcy-sheet-actions .mcy-quiet-link { margin:9px auto 0; }
+
+/* Upper-body map: responsive portrait flow and side-by-side landscape layout. */
+.mcy-checkin-content { display:grid; grid-template-columns:minmax(0,1fr); gap:0; }
+.mcy-checkin-illustration, .mcy-checkin-fields, .mcy-snapshot-map, .mcy-snapshot-details { min-width:0; }
+.mcy-checkin-illustration { display:flex; flex-direction:column; align-items:center; }
+.mcy-checkin-fields { width:100%; }
+.mcy-checkin-illustration .mcy-body-art { width:min(100%, 280px); }
+.mcy-snapshot-body { display:grid; min-width:0; grid-template-columns:minmax(124px,.95fr) minmax(0,1.05fr); gap:8px; align-items:center; }
+.mcy-snapshot-map { display:flex; min-width:0; flex-direction:column; align-items:center; }
+.mcy-snapshot-map .mcy-body-orientation { max-width:100%; font-size:8px; text-align:center; }
+.mcy-snapshot-details { width:100%; }

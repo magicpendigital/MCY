@@ -1,0 +1,11 @@
+.mcy-reflection-hint { margin:4px 0 19px; color:#738071; font-size:11px; line-height:1.45; }
+.mcy-reflection-regions { display:grid; gap:7px; margin-top:9px; }
+.mcy-reflection-region-row { overflow:hidden; border:1px solid #e5e7df; border-radius:12px; background:#fffdf8; }
+.mcy-reflection-region-row > button:first-child { display:grid; width:100%; grid-template-columns:1fr 1fr 16px; gap:8px; align-items:center; min-height:62px; padding:10px; border:0; background:transparent; color:#2e4336; text-align:left; }
+.mcy-reflection-regions button > span { display:grid; gap:4px; }
+.mcy-reflection-regions strong { font-size:12px; }
+.mcy-reflection-regions small { color:#778576; font-size:10px; }
+.mcy-reflection-regions svg { width:16px; height:16px; }
+.mcy-keep-region { width:100%; min-height:32px; padding:5px 10px; border:0; border-top:1px solid #e5e9df; background:#f3f6ee; color:#4c6c51; font-size:10px; text-align:left; }
+.mcy-post-options { display:flex; gap:8px; margin:-4px 0 17px; }
+.mcy-post-options button { flex:1; min-height:38px; padding:6px 8px; border:1px solid #dfe5da; border-radius:10px; background:#f4f7ef; color:#4b664e; font-size:10px; }
