@@ -1,6 +1,6 @@
 # Thiết kế bổ sung — Trợ lý AI là điểm nhấn trung tâm (đề xuất, chờ Owner duyệt)
 
-Ngày 2026-11-15. Nguồn: yêu cầu của Owner "muốn trợ lý AI là một trong những điểm nhấn trung tâm của ứng dụng; nếu chưa có thì cần thiết kế bổ sung", sau khi Owner đồng ý hướng "xem bài trước, hỏi sau" ([kế hoạch lát 0](../active/2026-11-15-three-tap-guest-path.md)). Đây là **đề xuất**, chưa phải quyết định và chưa phải lệnh làm. Mọi cổng an toàn hiện có giữ nguyên.
+Ngày 2026-11-15. Nguồn: yêu cầu của Owner "muốn trợ lý AI là một trong những điểm nhấn trung tâm của ứng dụng; nếu chưa có thì cần thiết kế bổ sung", sau khi Owner đồng ý hướng "xem bài trước, hỏi sau" ([kế hoạch lát 0](../active/2026-11-15-three-tap-guest-path.md)). Ngày 16/11 Owner đã quyết 4 trong 5 mục ở mục 6; ngày 17/11 Owner chọn tên **Chút** và đồng ý giọng điệu đề xuất (mục 7); thiết kế UI ở mục 9. Đây vẫn là **thiết kế, chưa phải lệnh làm**: mỗi lớp cần kế hoạch riêng được duyệt trước khi sửa code. Mọi cổng an toàn hiện có giữ nguyên.
 
 ## 1. Kết quả rà soát: có gì, thiếu gì
 
@@ -80,10 +80,63 @@ NHẮC TẬP       (giai đoạn C) cùng giọng của trợ lý, cục bộ, k
 
 Phương án C (feed dọc kiểu Shorts) Owner đã đồng ý thử: làm thành một thí nghiệm có kế hoạch riêng, không chặn P1–P4. Nó dùng cùng danh mục clip, nên P2 là điều kiện chung.
 
-## 6. Cần Owner quyết
+## 6. Quyết định của Owner (2026-11-16)
 
-1. **Cập nhật quyết định cũ.** Hiện `AGENTS.md` ghi "chatbot độc lập không phải lối vào chính" và 1.0 "không AI". Đề xuất: cho phép **khe trợ lý ở trung tâm (lớp 1)** trong 1.x, còn AI thật chỉ sau các cổng ở mục 4. Chưa sửa `AGENTS.md` và `PRODUCT_DECISIONS.md` cho đến khi Owner xác nhận.
-2. Tên và giọng điệu của trợ lý.
-3. Có cho nhập câu tự do ở lớp 3 không (khác hẳn hợp đồng "không văn bản tự do" hiện nay)?
-4. AI cho khách hay chỉ cho tài khoản? Đề xuất: chỉ tài khoản (chi phí, an toàn, đồng ý).
-5. Người duyệt chuyên môn có tên, và ngân sách OpenRouter.
+| # | Quyết định | Hệ quả |
+|---|---|---|
+| 1 | **Cho phép khe trợ lý ở trung tâm** (lớp 1 là gợi ý theo quy tắc) | Làm trong lát 1. AI thật vẫn chỉ sau các cổng ở mục 4. Giao diện chỉ ghi "AI" khi có mô hình thật. |
+| 2 | **Có cho nhập tự do ở lớp 3** | Đồng ý về nguyên tắc. Mục 8 là ràng buộc **đề xuất**; cần kế hoạch R3 riêng, bộ kiểm an toàn mở rộng và Owner duyệt chính sách dữ liệu trước khi bật. |
+| 3 | **AI chỉ cho tài khoản** | Khách chỉ dùng lớp 1 (chip, quy tắc). Khớp với việc mời tạo tài khoản sau buổi thứ 2–3. |
+| 4 | **Ngân sách OpenRouter chỉ do Owner duyệt và quyết định** | Agent không đề xuất con số, không đặt hay đổi hạn mức/cổng chi tiêu; chỉ báo khi một bước cần chi phí. Giữ đúng quy tắc hiện có. |
+| 5 | **Tên "Chút" và giọng điệu đề xuất** (17/11) | Dùng tên "Trợ lý Chút"; câu mẫu ở mục 7 vẫn là bản nháp cần Owner đọc nguyên văn trước khi vào ứng dụng. Chưa kiểm nhãn hiệu. |
+
+Còn mở: người duyệt chuyên môn có tên (G8), cũng là điều kiện cho mục 2 vì danh sách từ khóa dừng cần người có chuyên môn xem.
+
+## 7. Tên và giọng điệu: phân tích và đề xuất (Owner đã chọn "Chút" và đồng ý giọng điệu, 17/11)
+
+Tiêu chí: hợp thương hiệu (Một chút yoga, "Vạn chút an yên", mẫu "Khoảng mở"); dễ gõ và dễ nói tiếng Việt; không giả làm người hay người hướng dẫn thật (giữ trung thực, không nhầm với giảng viên Huyền My); không đụng chức năng khác; đọc trơn trong câu giao diện. Việc kiểm nhãn hiệu chưa làm, cần Owner hoặc người phụ trách pháp lý.
+
+| Phương án | Điểm mạnh | Điểm yếu | Nhận xét |
+|---|---|---|---|
+| **A. "Chút"** (Trợ lý Chút) | Lấy từ chính thương hiệu; ngắn, ấm, gọi được ("Chút ơi"); hợp slogan "Vạn chút an yên" | "chút" là từ rất thường gặp trong giao diện ("một chút", "hơi chút") nên dễ đọc nhầm; trung tính về giới | **Đề xuất.** Luôn viết kèm "Trợ lý Chút" ở lần đầu và trong nhãn; tránh dùng "chút" làm danh từ chung gần tên. |
+| **B. "Nhịp"** (Trợ lý Nhịp) | Mô tả đúng việc (chọn nhịp tập), không giống người | Trùng khái niệm "nhịp tập" và "nhịp tuần" (roadmap Q6); kém ấm | Dự phòng nếu A gây nhầm. |
+| **C. "An"** | Gợi "an yên" | Là tên người rất phổ biến, dễ bị coi là người thật hoặc gán giới; khó nghe trong giọng nói | Không đề xuất. |
+| **D. Không đặt tên** ("Gợi ý của Một chút") | An toàn nhất về trung thực | Khó thành điểm nhấn trung tâm | Dùng cho lớp 1 nếu Owner muốn giữ tên tới khi có AI thật. |
+
+Đề xuất: **A, "Chút"**. Khi lớp 1 chưa dùng AI, thẻ ghi rõ "Gợi ý theo vùng bạn chọn · chưa dùng AI"; khi lớp 2 bật, đổi thành "Gợi ý bởi AI · chỉ chọn trong bài đã duyệt". Chưa có hình đại diện (đã hoãn). Bản tiếng Anh để sau (Production chỉ tiếng Việt); không tự đặt tên Anh.
+
+**Giọng điệu** (đề xuất, mọi câu dưới đây là bản nháp cần Owner đọc và kiểm dấu tiếng Việt):
+- Xưng "mình", gọi "bạn" (đã dùng ở màn "Phạm vi hỗ trợ"). Câu ngắn, tối đa hai câu mỗi lần, bình tĩnh, không dấu chấm than, không biểu tượng cảm xúc.
+- Mời, không ra lệnh: "bạn có thể thử", không "hãy phải". Không hứa kết quả cơ thể, không từ "chữa", "giảm đau", "cải thiện". Không so sánh, không nhắc nợ hay tạo cảm giác có lỗi khi bỏ buổi.
+- Nói thật về giới hạn: không có cảm xúc hay trải nghiệm riêng; nói rõ khi chưa có bài khớp; không thay người hướng dẫn.
+- Câu an toàn (đau, dừng, từ khóa đỏ) là **mẫu cố định**, không do mô hình sinh ra.
+
+| Trạng thái | Câu mẫu (nháp) |
+|---|---|
+| Chào | "Chào bạn. Hôm nay bạn muốn tập gì?" |
+| Gợi ý | "Mình chọn 3 bài ngắn cho vùng cổ và vai, khoảng 3 phút. Bạn có thể dừng bất cứ lúc nào." |
+| Lý do | "Vì bạn chọn cổ và vai." |
+| Chưa có bài khớp | "Mình chưa có bài khớp với lựa chọn này. Đây là vài bài nhẹ nhàng chung." |
+| Sau phản hồi | "Cảm ơn bạn đã ghi lại. Mình sẽ nhớ nhịp này nếu bạn cho phép." |
+| Đau hoặc khó chịu | "Nếu bạn đang đau hoặc khó chịu, hãy dừng lại và nghỉ. Mình không thay được người hướng dẫn." |
+| Hết lượt trong ngày | "Hôm nay mình hết lượt gợi ý. Bạn vẫn tự chọn bài được." |
+| Nhãn AI | "Gợi ý bởi AI · chỉ chọn trong bài đã được duyệt" |
+
+## 8. Nhập tự do ở lớp 3: ràng buộc đề xuất (chưa được duyệt)
+
+Quyết định của Owner mở đường, nhưng hợp đồng hiện nay cố ý **không** nhận văn bản tự do. Đề xuất đi theo hai bước để dữ liệu rời máy ít nhất:
+
+1. **Bước 3a, không nhà cung cấp.** Bộ hiểu ý định chạy trên máy: chuẩn hóa chữ (bỏ hoa thường, so khớp không dấu), bảng đồng nghĩa cho vùng, thời gian và ý định ("mỏi vai", "5 phút", "thư giãn"), tối đa khoảng 120 ký tự (con số để thử). Không hiểu thì hỏi lại bằng chip, không đoán. Danh sách từ khóa dừng ("đau dữ dội", "tê", "chóng mặt", "khó thở", "chấn thương", "thai", "mới phẫu thuật"…) do **người có chuyên môn** duyệt; khớp thì hiện câu dừng cố định và dừng hẳn, không gọi nhà cung cấp, không lưu.
+2. **Bước 3b, chỉ khi 3a chưa đủ.** Bộ phân loại bằng mô hình ánh xạ câu sang enum; chỉ gửi đúng câu đó (không danh tính, lịch sử), ZDR, kết quả ép về enum bằng JSON Schema, vứt câu ngay sau khi xử lý, không ghi log, có giới hạn tần suất. Chống chèn lệnh: đầu ra không thể ra ngoài enum.
+
+Chung: câu nhập không vào Hành trình, không thành bản ghi quan sát; chỉ enum suy ra mới dùng, và là "ý định tập", không phải "vùng khó chịu". Lời đồng ý AI cần chữ mới nói rõ có gửi câu nhập (đổi phiên bản đồng ý, mọi người được hỏi lại; chữ do Owner duyệt, không phải phê duyệt pháp lý). Mở rộng `tests/practice-safety-suite.test.mjs`: chèn lệnh, hỏi chẩn đoán hoặc điều trị ("bị thoát vị đĩa đệm nên tập gì"), trẻ em, nội dung tự hại, ngôn ngữ lẫn. Chỉ tài khoản dùng 3b (quyết định 3). Khách có dùng bộ 3a hay chỉ chip: đề xuất chỉ chip ở bước đầu cho đơn giản.
+
+## 9. Thiết kế UI (17/11, nháp để Owner xem)
+
+Canvas thiết kế: https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg (riêng tư, chia sẻ từ menu Share của trang). 14 màn, dùng token và nhận diện MCY, dữ liệu clip thật:
+- Hàng 1, khách, lớp 1: Hôm nay có thẻ Chút và chip vùng; Hôm nay khi quay lại ("Tiếp tục" một chạm); chuỗi đang phát; chuyển bài có đếm ngược 3 giây và nút Dừng.
+- Hàng 2: phản hồi một chạm với năm trạng thái trung thực; tấm mời tài khoản sau buổi 2–3; màn khi đau hoặc khó chịu (câu cố định, không dùng AI); bốn trạng thái và lỗi.
+- Hàng 3, tài khoản: Hôm nay có nhãn AI và ô nhập tự do; Chút hiểu ý; từ khóa dừng; Hồ sơ "Chút và dữ liệu" (bản nháp chữ đồng ý).
+- Hàng 4: Hành trình "Chút ghi nhận" (số đếm thật, ngày trống giữ nguyên, không phần trăm) và bảng quy cách cho người làm.
+
+Điều cần Owner chốt từ bản thiết kế: tự chuyển bài (trái dòng "không tự chuyển nếu chưa có nghiên cứu" của hệ thống thiết kế, nên đề xuất đếm ngược 3 giây có Dừng); chữ mới trên Hôm nay; tần suất mời tài khoản; chuỗi nhẹ cho người đang đau (chỉ khi có người duyệt chuyên môn). Thiết kế chưa phải giao diện đã làm; lát 1 cần kế hoạch riêng được duyệt trước khi sửa code.
