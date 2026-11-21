@@ -1,0 +1,16 @@
+.mcy-journey-page > h1 { margin-top: 1px; }
+.mcy-view-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 9px 0 15px; }
+.mcy-view-tabs button { min-height: 41px; border: 0; border-radius: 24px; background: #f0efe9; color: #556655; font-size: 12px; }
+.mcy-view-tabs button[aria-pressed="true"] { background: #435e48; color: white; }
+.mcy-journey-map { display: grid; grid-template-columns: 57% 43%; align-items: center; min-height: 260px; }
+.mcy-journey-map .mcy-body-map { height: 258px; }
+.mcy-journey-map > div:last-child { display: grid; gap: 15px; }
+.mcy-journey-map > div:last-child > div { padding-bottom: 7px; border-bottom: 1px solid #e6e6de; }
+.mcy-journey-map strong { display: block; font: 15px/1.2 var(--font-editorial); }
+.mcy-journey-map small { color: #758273; font-size: 11px; }
+.mcy-trend-card { margin: 12px 0 18px; padding: 14px; border: 1px solid #e9e7dc; border-radius: 15px; background: #fffdf8; }
+.mcy-trend-card > strong { display: block; font: 16px/1.2 var(--font-editorial); }
+.mcy-trend-card > small { color: #728171; font-size: 10px; }
+.mcy-trend-card svg { display: block; width: 100%; margin-top: 6px; }
+.mcy-trend-labels { display: flex; justify-content: space-between; gap: 5px; color: #859084; font-size: 9px; }
+.mcy-journey-page .mcy-history-card { margin-top: 5px; }

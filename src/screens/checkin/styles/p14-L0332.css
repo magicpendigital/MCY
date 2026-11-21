@@ -1,0 +1,12 @@
+.mcy-energy-card { margin: 4px 0 19px; padding: 16px 12px 12px; border: 1px solid #ede7dd; border-radius: 17px; background: #fffdf9e8; }
+.mcy-energy-card h2 { margin: 0 0 13px; font: 700 14px/1.2 system-ui,sans-serif; }
+.mcy-energy-options { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 2px; }
+.mcy-energy-options button { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 5px; padding: 2px 0 0; border: 0; background: transparent; color: #9d7b66; }
+.mcy-energy-options button[aria-pressed="true"] { color: #45694b; font-weight: 750; }
+.mcy-energy-options svg { width: 39px; height: 39px; border-radius: 50%; }
+.mcy-energy-options button[aria-pressed="true"] svg { outline: 2px solid #45694b; outline-offset: 2px; }
+.mcy-energy-options span { font-size: 9px; white-space: nowrap; }
+.mcy-field-section.compact { margin: 16px 0 18px; }
+.mcy-checkin-actions { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+.mcy-checkin-actions .mcy-quiet-link { width: 100px; flex: none; margin: 0; }
+.mcy-checkin-actions .mcy-action { width: auto; flex: 1; background: var(--mcy-clay); }

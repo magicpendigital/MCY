@@ -8,153 +8,17 @@
 @import "./screens/discover/styles/p07-L0145.css";
 @import "./screens/account/styles/p08-L0251.css";
 @import "./app/styles/p09-L0260.css";
-
-/* Concept reference: warm editorial layouts, body awareness and illustrated practice. */
-.mcy-scroll, .flow-fixed-header { background: var(--mcy-bg); }
-.mcy-page { padding: 19px 24px calc(var(--flow-footer-height, 0px) + var(--mobile-safe-area-height) + 28px); }
-.mcy-page h1 { font-size: 35px; line-height: 1.07; letter-spacing: -.012em; }
-.mcy-flow-route-accessibility { position: absolute; inset: 0; min-width: 0; }
-.mobile-app-viewport .mcy-flow-route-accessibility :focus-visible,
-.mobile-app-viewport .flow-fixed-header :focus-visible,
-.mobile-app-viewport .flow-fixed-footer :focus-visible { outline: 3px solid var(--color-focus) !important; outline-offset: 3px !important; box-shadow: 0 0 0 2px var(--color-canvas) !important; }
-.mcy-lead { color: #45554b; font-size: 14px; line-height: 1.52; }
-.mcy-header { grid-template-columns: 45px minmax(0,1fr) 45px; border-bottom-color: #eeeae2; background: #fffcf9ed; }
-.mcy-header-title { font: 22px/1 var(--font-editorial); text-align: center; }
-.mcy-open-space-mark { width: 31px; height: 31px; color: var(--color-forest); }
-.mcy-brand { flex-direction: column; gap: 1px; font-size: 43px; letter-spacing: -.02em; line-height: 1.08; }
-.mcy-brand .mcy-open-space-mark { width: 60px; height: 60px; }
-.mcy-brand.compact { flex-direction: row; font-size: 21px; }
-.mcy-brand.compact .mcy-open-space-mark { width: 24px; height: 24px; }
-.mcy-action { min-height: 51px; border-radius: var(--radius-pill); background: var(--mcy-clay); box-shadow: var(--shadow-action); font: 700 15px/1.2 var(--font-sans); }
-.mcy-action svg { width: 20px; height: 20px; }
-.mcy-choice.selected { border-color: var(--color-forest); background: var(--color-sage-soft); color: var(--color-ink); }
-
-.mcy-welcome { min-height: 852px; padding: 76px 20px calc(var(--mobile-safe-area-height) + 18px); background: #f6f0e8; }
-.mcy-welcome-photo { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; object-fit: cover; object-position: 55% center; filter: saturate(.83); }
-.mcy-welcome::after { inset: 0; height: auto; background: linear-gradient(90deg,#fffaf5 0%,#fffaf5db 28%,#fffaf540 70%,transparent 100%),linear-gradient(0deg,#fffaf5 0%,#fffaf500 30%); }
-.mcy-welcome-top { position: relative; z-index: 2; }
-.mcy-language-toggle { position:absolute; top:3px; right:0; z-index:3; min-height:32px; padding:5px 10px; border:1px solid #d8e1d3; border-radius:999px; background:#fffaf5dc; color:var(--mcy-sage); font-size:10px; font-weight:780; letter-spacing:.035em; }
-.mcy-language-toggle:hover { background:#fffaf5; }
-.mcy-language-toggle:focus-visible { outline:2px solid var(--mcy-clay); outline-offset:2px; }
-.mcy-welcome-top > h1.mcy-brand { margin: 0; }
-.mcy-welcome-top .mcy-brand { align-items: flex-start; }
-.mcy-welcome-top .mcy-brand .mcy-open-space-mark { margin-left: 89px; }
-.mcy-welcome-top > p { max-width: 255px; margin: 8px 0 0 3px; color: #425549; font-size: 17px; line-height: 1.36; }
-.mcy-welcome-benefits { position: relative; z-index: 2; display: grid; gap: 16px; margin-top: 44px; }
-.mcy-welcome-benefits > div { display: flex; align-items: center; gap: 12px; color: #425549; font-size: 13px; line-height: 1.35; }
-.mcy-welcome-benefits > div > span { display: grid; width: 43px; height: 43px; flex: none; place-items: center; border-radius: 50%; background: #f6e9dfd9; color: #915841; }
-.mcy-welcome-benefits svg { width: 23px; height: 23px; }
-.mcy-welcome-bottom { right: 20px; bottom: calc(var(--mobile-safe-area-height) + 18px); left: 20px; }
-.mcy-welcome-bottom > p { max-width: 240px; margin: 0 0 38px 5px; color: #455d4a; font: italic 22px/1.28 var(--font-editorial); }
-.mcy-welcome-bottom small { margin-top: 9px; color: #7c776f; font-size: 9px; }
-
-.mcy-checkin-page > h1 { margin-top: 1px; }
-.mcy-checkin-page > .mcy-lead { margin-bottom: 3px; }
-.mcy-body-map { position: relative; height: 363px; margin: 0 -4px; overflow: hidden; }
-.mcy-body-map > img { display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
-.mcy-region { position: absolute; left: 51%; display: flex; align-items: center; gap: 26px; width: 160px; min-height: 34px; border: 0; background: transparent; color: #33463a; text-align: left; transform: translateY(-50%); }
-.mcy-region.region-0 { top: 22%; }
-.mcy-region.region-1 { top: 35%; }
-.mcy-region.region-2 { top: 49%; }
-.mcy-region-dot { position: relative; display: block; width: 22px; height: 22px; flex: none; border: 5px solid #fff9f3; border-radius: 50%; background: #dbbeb0; box-shadow: 0 0 0 5px #e8d6cb9e; }
-.mcy-region.active .mcy-region-dot { background: #cc7057; box-shadow: 0 0 0 6px #df9c7e66; }
-.mcy-region-dot::after { position: absolute; top: 6px; left: 21px; width: 19px; border-top: 1px solid #bb7c66; content: ""; }
-.mcy-region-name { font: 13px/1.1 var(--font-editorial); white-space: nowrap; }
-.mcy-body-map.compact { width: 100%; height: 218px; margin: 0; }
-.mcy-body-map.compact .mcy-region { left: 46%; width: 25px; min-height: 25px; }
-.mcy-body-map.compact .mcy-region-dot { width: 16px; height: 16px; border-width: 3px; box-shadow: 0 0 0 3px #e8d6cb9e; }
-.mcy-body-map.compact .mcy-region-dot::after, .mcy-body-map.compact .mcy-region-name { display: none; }
-.mcy-body-map.tone-better .mcy-region.active .mcy-region-dot { background: #81ae82; box-shadow: 0 0 0 4px #9ac69a78; }
-.mcy-body-map.tone-same .mcy-region.active .mcy-region-dot { background: #d9bb9a; box-shadow: 0 0 0 4px #d9bb9a80; }
-.mcy-body-map.tone-worse .mcy-region.active .mcy-region-dot { background: #bf6854; box-shadow: 0 0 0 4px #bf685480; }
-.mcy-body-map.tone-unknown .mcy-region.active .mcy-region-dot { background: #aeb5ac; box-shadow: 0 0 0 4px #aeb5ac7c; }
-.mcy-energy-card { margin: 4px 0 19px; padding: 16px 12px 12px; border: 1px solid #ede7dd; border-radius: 17px; background: #fffdf9e8; }
-.mcy-energy-card h2 { margin: 0 0 13px; font: 700 14px/1.2 system-ui,sans-serif; }
-.mcy-energy-options { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 2px; }
-.mcy-energy-options button { display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 5px; padding: 2px 0 0; border: 0; background: transparent; color: #9d7b66; }
-.mcy-energy-options button[aria-pressed="true"] { color: #45694b; font-weight: 750; }
-.mcy-energy-options svg { width: 39px; height: 39px; border-radius: 50%; }
-.mcy-energy-options button[aria-pressed="true"] svg { outline: 2px solid #45694b; outline-offset: 2px; }
-.mcy-energy-options span { font-size: 9px; white-space: nowrap; }
-.mcy-field-section.compact { margin: 16px 0 18px; }
-.mcy-checkin-actions { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
-.mcy-checkin-actions .mcy-quiet-link { width: 100px; flex: none; margin: 0; }
-.mcy-checkin-actions .mcy-action { width: auto; flex: 1; background: var(--mcy-clay); }
-.mcy-flow-footer { display: flex; height: 100%; align-items: flex-start; gap: 12px; padding: 8px 22px calc(var(--mobile-safe-area-height) + 8px); border-top: 1px solid #efece5; background: var(--color-canvas); }
-.mcy-flow-footer .mcy-quiet-link { width: 95px; flex: none; margin: 0; }
-.mcy-flow-footer .mcy-action { width: auto; min-height: 51px; flex: 1; background: var(--mcy-clay); }
-.device-screen[data-device="pixel-10"] .mcy-flow-footer { padding-bottom: 9px; }
-.mcy-flow-footer.single .mcy-action { background: var(--mcy-clay); }
-.mcy-checkin-page > h1 { font-size: 32px; line-height: 1.03; }
-.mcy-checkin-page > .mcy-lead { font-size: 12px; line-height: 1.42; }
-.mcy-checkin-page .mcy-body-map { height: 305px; }
-.mcy-checkin-page .mcy-energy-card { padding: 12px 10px 10px; }
-.mcy-checkin-page .mcy-energy-card h2 { margin-bottom: 9px; }
-.mcy-checkin-page .mcy-energy-options svg { width: 34px; height: 34px; }
-
-.mcy-dialogue .mcy-ai-avatar { color: #516b54; }
-.mcy-ai-context { margin: 16px 0 11px; padding: 12px 13px; border: 1px solid #dde5d9; border-radius: 14px; background: #f7f8f3; }
-.mcy-ai-context p { margin: 7px 0 0; color: #49594b; font-size: 12px; line-height: 1.5; }
-.mcy-ai-privacy-note { margin: 8px 0 0; color: #69776b; font-size: 10px; line-height: 1.45; }
-.mcy-dialogue .mcy-bubble.ai { background: #f2eee8; color: #35483b; }
-.mcy-dialogue .mcy-bubble.ai.quiet { background: #eaf0e7; }
-.mcy-dialogue .mcy-bubble.mine { background: #e9e2d6; }
-.mcy-dialogue .mcy-section-label { margin-top: 10px; }
-.mcy-dialogue .mcy-action { background: var(--mcy-clay); }
-.mcy-dialogue .mcy-prior-actions { margin-top: 4px; }
-.mcy-choice:disabled { cursor: progress; opacity: .56; }
-
-.mcy-plan-page > h1 { margin: 1px 0 1px; }
-.mcy-page .mcy-subtitle { margin: 0 0 7px; font: 22px/1.12 var(--font-editorial); }
-.mcy-plan-page .mcy-lead { margin-bottom: 16px; }
-.mcy-movements { margin: 12px 0; }
-.mcy-movements h3 { margin: 0 0 9px; font: 700 13px/1.2 system-ui,sans-serif; }
-.mcy-movement-track { gap: 8px; }
-.mcy-movement-track article { width: 104px; flex: none; text-align: center; }
-.mcy-movement-track img { width: 104px; height: 78px; border-radius: 10px; object-fit: cover; }
-.mcy-movement-track span { display: block; margin-top: 5px; font-size: 11px; }
-.mcy-gentle-option { display: grid; width: 100%; grid-template-columns: 34px 1fr 18px; gap: 10px; align-items: center; padding: 12px; border: 1px solid #ebe7de; border-radius: 15px; background: #f4f1e9; color: #344d3b; text-align: left; }
-.mcy-gentle-option .mcy-open-space-mark { width: 30px; height: 30px; }
-.mcy-gentle-option strong { display: block; font: 16px/1.2 var(--font-editorial); }
-.mcy-gentle-option small { display: block; margin-top: 3px; color: #67766a; font-size: 10px; }
-.mcy-reason-card { margin: 14px 0; padding: 10px 12px; border-color: #ece9e2; background: #f7f6ef; }
-.mcy-reason-card p { font-size: 11px; }
-
-
-.mcy-reflection-page > h1 { margin-top: 1px; }
-.mcy-reflection-page > .mcy-lead { margin-bottom: 3px; }
-.mcy-before-after { display: grid; grid-template-columns: 1fr 27px 1fr; gap: 3px; align-items: center; margin: 2px -6px 10px; }
-.mcy-before-after > div { text-align: center; }
-.mcy-before-after > div > span { display: block; margin-top: -7px; padding: 5px; border-radius: 15px; background: #fffefa; font-size: 12px; }
-.mcy-before-arrow svg { width: 22px; height: 22px; }
-.mcy-feeling-legend { display: flex; justify-content: space-between; gap: 5px; margin: 15px 0; color: #6a7569; font-size: 10px; }
-.mcy-feeling-legend span::before { display: inline-block; width: 12px; height: 12px; margin-right: 5px; border-radius: 50%; background: #bf6854; content: ""; vertical-align: -2px; }
-.mcy-feeling-legend .same::before { background: #d9bb9a; }
-.mcy-feeling-legend .better::before { background: #81ae82; }
-.mcy-reflection-grid .mcy-choice { min-height: 48px; }
-
-.mcy-journey-page > h1 { margin-top: 1px; }
-.mcy-view-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 9px 0 15px; }
-.mcy-view-tabs button { min-height: 41px; border: 0; border-radius: 24px; background: #f0efe9; color: #556655; font-size: 12px; }
-.mcy-view-tabs button[aria-pressed="true"] { background: #435e48; color: white; }
-.mcy-journey-map { display: grid; grid-template-columns: 57% 43%; align-items: center; min-height: 260px; }
-.mcy-journey-map .mcy-body-map { height: 258px; }
-.mcy-journey-map > div:last-child { display: grid; gap: 15px; }
-.mcy-journey-map > div:last-child > div { padding-bottom: 7px; border-bottom: 1px solid #e6e6de; }
-.mcy-journey-map strong { display: block; font: 15px/1.2 var(--font-editorial); }
-.mcy-journey-map small { color: #758273; font-size: 11px; }
-.mcy-trend-card { margin: 12px 0 18px; padding: 14px; border: 1px solid #e9e7dc; border-radius: 15px; background: #fffdf8; }
-.mcy-trend-card > strong { display: block; font: 16px/1.2 var(--font-editorial); }
-.mcy-trend-card > small { color: #728171; font-size: 10px; }
-.mcy-trend-card svg { display: block; width: 100%; margin-top: 6px; }
-.mcy-trend-labels { display: flex; justify-content: space-between; gap: 5px; color: #859084; font-size: 9px; }
-.mcy-journey-page .mcy-history-card { margin-top: 5px; }
-
-@media (max-height: 760px) {
-  .mcy-welcome { min-height: 760px; }
-  .mcy-welcome-benefits { margin-top: 30px; }
-  .mcy-body-map { height: 320px; }
-}
+@import "./app/styles/p10-L0273.css";
+@import "./screens/welcome/styles/p11-L0293.css";
+@import "./screens/checkin/styles/p12-L0312.css";
+@import "./app/styles/p13-L0314.css";
+@import "./screens/checkin/styles/p14-L0332.css";
+@import "./app/styles/p15-L0344.css";
+@import "./screens/checkin/styles/p16-L0349.css";
+@import "./app/styles/p17-L0356.css";
+@import "./screens/reflection/styles/p18-L0385.css";
+@import "./screens/journey/styles/p19-L0397.css";
+@import "./app/styles/p20-L0414.css";
 
 /* Body check-in, honest reflection, and snapshot journey. */
 .mcy-body-map-v2 { display:flex; width:100%; min-width:0; flex-direction:column; align-items:center; margin:2px 0 0; }

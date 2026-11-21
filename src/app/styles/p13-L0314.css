@@ -1,0 +1,18 @@
+.mcy-body-map { position: relative; height: 363px; margin: 0 -4px; overflow: hidden; }
+.mcy-body-map > img { display: block; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.mcy-region { position: absolute; left: 51%; display: flex; align-items: center; gap: 26px; width: 160px; min-height: 34px; border: 0; background: transparent; color: #33463a; text-align: left; transform: translateY(-50%); }
+.mcy-region.region-0 { top: 22%; }
+.mcy-region.region-1 { top: 35%; }
+.mcy-region.region-2 { top: 49%; }
+.mcy-region-dot { position: relative; display: block; width: 22px; height: 22px; flex: none; border: 5px solid #fff9f3; border-radius: 50%; background: #dbbeb0; box-shadow: 0 0 0 5px #e8d6cb9e; }
+.mcy-region.active .mcy-region-dot { background: #cc7057; box-shadow: 0 0 0 6px #df9c7e66; }
+.mcy-region-dot::after { position: absolute; top: 6px; left: 21px; width: 19px; border-top: 1px solid #bb7c66; content: ""; }
+.mcy-region-name { font: 13px/1.1 var(--font-editorial); white-space: nowrap; }
+.mcy-body-map.compact { width: 100%; height: 218px; margin: 0; }
+.mcy-body-map.compact .mcy-region { left: 46%; width: 25px; min-height: 25px; }
+.mcy-body-map.compact .mcy-region-dot { width: 16px; height: 16px; border-width: 3px; box-shadow: 0 0 0 3px #e8d6cb9e; }
+.mcy-body-map.compact .mcy-region-dot::after, .mcy-body-map.compact .mcy-region-name { display: none; }
+.mcy-body-map.tone-better .mcy-region.active .mcy-region-dot { background: #81ae82; box-shadow: 0 0 0 4px #9ac69a78; }
+.mcy-body-map.tone-same .mcy-region.active .mcy-region-dot { background: #d9bb9a; box-shadow: 0 0 0 4px #d9bb9a80; }
+.mcy-body-map.tone-worse .mcy-region.active .mcy-region-dot { background: #bf6854; box-shadow: 0 0 0 4px #bf685480; }
+.mcy-body-map.tone-unknown .mcy-region.active .mcy-region-dot { background: #aeb5ac; box-shadow: 0 0 0 4px #aeb5ac7c; }

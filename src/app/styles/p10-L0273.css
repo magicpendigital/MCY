@@ -1,0 +1,19 @@
+/* Concept reference: warm editorial layouts, body awareness and illustrated practice. */
+.mcy-scroll, .flow-fixed-header { background: var(--mcy-bg); }
+.mcy-page { padding: 19px 24px calc(var(--flow-footer-height, 0px) + var(--mobile-safe-area-height) + 28px); }
+.mcy-page h1 { font-size: 35px; line-height: 1.07; letter-spacing: -.012em; }
+.mcy-flow-route-accessibility { position: absolute; inset: 0; min-width: 0; }
+.mobile-app-viewport .mcy-flow-route-accessibility :focus-visible,
+.mobile-app-viewport .flow-fixed-header :focus-visible,
+.mobile-app-viewport .flow-fixed-footer :focus-visible { outline: 3px solid var(--color-focus) !important; outline-offset: 3px !important; box-shadow: 0 0 0 2px var(--color-canvas) !important; }
+.mcy-lead { color: #45554b; font-size: 14px; line-height: 1.52; }
+.mcy-header { grid-template-columns: 45px minmax(0,1fr) 45px; border-bottom-color: #eeeae2; background: #fffcf9ed; }
+.mcy-header-title { font: 22px/1 var(--font-editorial); text-align: center; }
+.mcy-open-space-mark { width: 31px; height: 31px; color: var(--color-forest); }
+.mcy-brand { flex-direction: column; gap: 1px; font-size: 43px; letter-spacing: -.02em; line-height: 1.08; }
+.mcy-brand .mcy-open-space-mark { width: 60px; height: 60px; }
+.mcy-brand.compact { flex-direction: row; font-size: 21px; }
+.mcy-brand.compact .mcy-open-space-mark { width: 24px; height: 24px; }
+.mcy-action { min-height: 51px; border-radius: var(--radius-pill); background: var(--mcy-clay); box-shadow: var(--shadow-action); font: 700 15px/1.2 var(--font-sans); }
+.mcy-action svg { width: 20px; height: 20px; }
+.mcy-choice.selected { border-color: var(--color-forest); background: var(--color-sage-soft); color: var(--color-ink); }
