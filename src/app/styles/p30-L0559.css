@@ -1,0 +1,23 @@
+/* Brand mark reveal and restrained app feedback */
+.mcy-scroll { font-family: var(--font-sans); }
+.mcy-page h1, .mcy-page h2, .mcy-welcome h1:not(.mcy-brand), .mcy-brand { font-family: var(--font-editorial); }
+.mcy-open-space-mark { display: block; flex: none; color: var(--color-ink); overflow: visible; }
+.mcy-mark-arc { stroke-dasharray: 100; stroke-dashoffset: 0; }
+.mcy-mark-point { transform-box: fill-box; transform-origin: center; }
+.mcy-open-space-mark-animated .mcy-mark-arc { stroke-dashoffset: 100; animation: mcy-mark-draw var(--motion-emphasis) var(--ease-emphasized) 80ms both; }
+.mcy-open-space-mark-animated .mcy-mark-point { opacity: 0; transform: scale(.94); animation: mcy-mark-point-in 180ms var(--ease-standard) 570ms both; }
+.mcy-brand-animated .mcy-brand-wordmark { opacity: 0; animation: mcy-wordmark-in 180ms var(--ease-standard) 780ms both; }
+.mcy-action:active:not(:disabled), .mcy-icon-button:active, .mcy-bottom-nav button:active { transform: scale(.985); }
+.mcy-choice:active { background-color: var(--color-sage-soft); }
+.mcy-scroll button:focus-visible, .mcy-header button:focus-visible, .mcy-bottom-nav button:focus-visible { outline-color: var(--color-focus); }
+@keyframes mcy-mark-draw { to { stroke-dashoffset: 0; } }
+@keyframes mcy-mark-point-in { to { opacity: 1; transform: scale(1); } }
+@keyframes mcy-wordmark-in { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .mcy-open-space-mark-animated .mcy-mark-arc { stroke-dashoffset: 0; }
+  .mcy-open-space-mark-animated .mcy-mark-point { opacity: 1; transform: none; }
+  .mcy-brand-animated .mcy-brand-wordmark { opacity: 1; animation: none; }
+  .mcy-action:active:not(:disabled), .mcy-icon-button:active, .mcy-bottom-nav button:active { transform: none; }
+}
