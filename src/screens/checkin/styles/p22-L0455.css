@@ -1,0 +1,11 @@
+.mcy-region-list { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:0 0 15px; }
+.mcy-region-list button { display:grid; grid-template-columns:1fr 14px; align-items:center; min-height:55px; padding:8px 10px; border:1px solid #e6e4da; border-radius:12px; background:#fffcf7; color:#314a3b; text-align:left; }
+.mcy-region-list button.selected { border-color:#a3b49e; background:#f1f5ed; }
+.mcy-region-list button > span { font:16px/1.08 var(--font-editorial); }
+.mcy-region-list button small { overflow:hidden; grid-column:1; margin-top:3px; color:#768371; font-size:10px; white-space:nowrap; text-overflow:ellipsis; }
+.mcy-region-list button svg { grid-column:2; grid-row:1 / span 2; width:14px; height:14px; }
+.mcy-body-status-actions { padding:12px; border:1px solid #e8e6de; border-radius:14px; background:#f8f6ef; }
+.mcy-body-status-actions p { margin:0 0 9px; color:#4d6052; font-size:11px; font-weight:700; }
+.mcy-body-status-actions > div { display:flex; flex-wrap:wrap; gap:6px; }
+.mcy-body-status-actions .mcy-choice { flex:1 1 30%; min-height:42px; padding:6px; font-size:10px; }
+.mcy-status-caption { margin:7px 2px 14px; color:#697b69; font-size:11px; line-height:1.4; }

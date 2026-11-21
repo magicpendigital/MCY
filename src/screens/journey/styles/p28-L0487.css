@@ -1,0 +1,54 @@
+.mcy-journey-toolbar { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:14px 0 12px; }
+.mcy-journey-toolbar .mcy-view-tabs { width:148px; flex:none; margin:0; }
+.mcy-journey-toolbar .mcy-view-tabs button { min-height:34px; font-size:11px; }
+.mcy-example-link { border:0; background:transparent; color:#496a50; font-size:11px; text-align:right; text-decoration:underline; text-underline-offset:3px; }
+.mcy-timeline-head { display:flex; align-items:center; justify-content:space-between; margin:17px 0 9px; }
+.mcy-timeline-head strong { color:#344c3b; font-size:12px; }
+.mcy-timeline-head button { border:0; background:transparent; color:#627c62; font-size:10px; text-decoration:underline; }
+.mcy-timeline-track { gap:7px; padding:0 1px 4px; }
+.mcy-timeline-track > button { display:flex; width:73px; min-height:73px; flex:none; flex-direction:column; align-items:center; justify-content:center; gap:3px; border:1px solid #e1e5da; border-radius:13px; background:#f6f5ee; color:#405546; }
+.mcy-timeline-track > button.selected { border-color:#557459; background:#48664e; color:#fffef9; }
+.mcy-timeline-track small { font-size:8px; letter-spacing:.09em; }
+.mcy-timeline-track strong { font:24px/1 var(--font-editorial); }
+.mcy-timeline-track span { font-size:9px; white-space:nowrap; }
+.mcy-snapshot-card { margin:17px 0 12px; padding:13px; border:1px solid #e4e4d9; border-radius:16px; background:#fffdf8; }
+.mcy-snapshot-heading > span { color:#7c8b79; font-size:9px; font-weight:700; letter-spacing:.08em; }
+.mcy-snapshot-heading h2 { margin:3px 0 9px; font-size:20px; line-height:1.2; }
+.mcy-record-track { gap:7px; padding:0 0 5px; }
+.mcy-record-track > button { min-height:32px; flex:none; padding:6px 11px; border:1px solid #e3e5da; border-radius:20px; background:#f7f7f0; color:#536853; font-size:10px; white-space:nowrap; }
+.mcy-record-track > button[aria-pressed="true"] { border-color:#5b775d; background:#e7efe4; color:#315039; }
+.mcy-snapshot-card .mcy-body-map-v2 { margin:6px auto 3px; }
+.mcy-snapshot-card .mcy-body-art { width:min(100%, 160px); }
+.mcy-snapshot-list { display:grid; gap:5px; }
+.mcy-snapshot-list > button { display:grid; grid-template-columns:12px 1fr 16px; gap:8px; align-items:center; min-height:42px; padding:6px 7px; border:0; border-bottom:1px solid #edede4; background:transparent; color:#394d3d; text-align:left; }
+.mcy-snapshot-list > button strong { display:block; font-size:12px; }
+.mcy-snapshot-list > button small { color:#788475; font-size:10px; }
+.mcy-snapshot-list > button svg { width:15px; height:15px; }
+.mcy-snapshot-dot { width:10px; height:10px; border-radius:50%; background:#bd725b; }
+.mcy-snapshot-list > p, .mcy-snapshot-empty { padding:12px; border-radius:10px; background:#f6f5ed; color:#6d7b6a; font-size:11px; line-height:1.45; }
+.mcy-snapshot-meta { margin:9px 4px; color:#657463; font-size:11px; }
+.mcy-snapshot-note { margin:10px 0; padding:10px 12px; border-left:2px solid #b37d64; background:#f8f5ed; color:#536453; font:italic 13px/1.4 var(--font-editorial); }
+.mcy-delete-link { display:block; margin:12px 0 0 auto; border:0; background:transparent; color:#9a5d50; font-size:11px; text-decoration:underline; }
+.mcy-compare-toggle { display:flex; width:100%; min-height:46px; align-items:center; justify-content:space-between; padding:10px 12px; border:1px solid #dfe4d9; border-radius:12px; background:#f4f6ee; color:#3e5b44; font-size:13px; font-weight:700; }
+.mcy-compare-card, .mcy-region-trend { margin:12px 0 19px; padding:13px; border:1px solid #e4e5db; border-radius:14px; background:#fffdf8; }
+.mcy-compare-card h2, .mcy-region-trend h2 { font-size:20px; }
+.mcy-compare-card p, .mcy-region-trend p { margin:7px 0 12px; color:#718070; font-size:11px; line-height:1.43; }
+.mcy-compare-pickers { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.mcy-compare-pickers button { min-height:68px; padding:8px; border:1px solid #e0e6db; border-radius:10px; background:#f5f6ef; color:#3b543f; text-align:left; }
+.mcy-compare-pickers small { display:block; margin-bottom:5px; color:#80917d; font-size:9px; }
+.mcy-compare-pickers strong { font-size:10px; line-height:1.3; }
+.mcy-compare-warning { padding:9px; background:#f8f0df; }
+.mcy-compare-rows { display:grid; margin-top:10px; }
+.mcy-compare-rows > div { display:flex; justify-content:space-between; gap:8px; padding:8px 2px; border-bottom:1px solid #eceee8; font-size:11px; }
+.mcy-compare-rows strong { white-space:nowrap; }
+.mcy-compare-rows span { display:flex; align-items:center; gap:3px; color:#6a7869; text-align:right; }
+.mcy-compare-rows span small { color:#a15e4c; font-size:9px; white-space:nowrap; }
+.mcy-compare-rows svg { width:12px; height:12px; flex:none; }
+.mcy-trend-track { gap:6px; padding-bottom:8px; }
+.mcy-trend-track button { min-height:33px; flex:none; padding:6px 11px; border:1px solid #dce3d9; border-radius:20px; background:#f5f6ef; color:#5b715d; font-size:11px; }
+.mcy-trend-track button[aria-pressed="true"] { border-color:#496b4e; background:#48664e; color:#fff; }
+.mcy-trend-observations { display:grid; gap:2px; margin:5px 0 8px; }
+.mcy-trend-observations button { display:grid; grid-template-columns:1fr auto 14px; gap:6px; align-items:center; min-height:38px; border:0; border-bottom:1px solid #ebece4; background:transparent; color:#344c3c; text-align:left; font-size:11px; }
+.mcy-trend-observations strong { font-weight:700; }
+.mcy-trend-observations svg { width:14px; height:14px; }
+.mcy-region-trend > small { display:block; margin-top:10px; color:#7a8776; font-size:10px; line-height:1.4; }
