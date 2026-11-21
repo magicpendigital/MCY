@@ -1,0 +1,17 @@
+@media (max-height:680px) and (orientation:portrait) {
+  .flow-fixed-footer:has(.mcy-welcome-footer) { height:clamp(128px,23svh,156px); }
+  .flow-fixed-footer:has(.mcy-consent-footer) { height:clamp(148px,27svh,164px); }
+  .mcy-welcome { padding-top:35px; }
+.mcy-welcome-top .mcy-brand { font-size:30px; font-size:clamp(28px,8.5cqi,32px); }
+.mcy-welcome-top .mcy-brand .mcy-open-space-mark { width:38px; height:38px; margin-left:54px; margin-left:clamp(48px,16cqi,60px); }
+  .mcy-welcome-top > p { margin-top:4px; font-size:13px; }
+  .mcy-welcome-benefits { gap:7px; margin-top:12px; }
+  .mcy-welcome-benefits > div { gap:8px; font-size:11px; }
+  .mcy-welcome-benefits > div > span { width:33px; height:33px; }
+  .mcy-welcome-benefits svg { width:18px; height:18px; }
+  .mcy-welcome-quote { display:none; }
+  .mcy-flow-footer.mcy-welcome-footer { padding-top:6px; }
+  .mcy-flow-footer.mcy-welcome-footer .mcy-action { min-height:44px; }
+  .mcy-flow-footer.mcy-welcome-footer .mcy-welcome-auth button { min-height:28px; }
+  .mcy-flow-footer.mcy-welcome-footer small { font-size:8px; }
+}

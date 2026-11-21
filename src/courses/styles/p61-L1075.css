@@ -1,0 +1,20 @@
+@media (min-width:900px) and (min-height:880px) {
+  .mobile-web-stage[data-runtime-mode="web"] .mcy-course-video-portrait {
+    width: min(100%, 360px, calc(56.25vh - 264px));
+    width: min(100%, 360px, calc(56.25dvh - 264px));
+  }
+}
+
+@media (max-width:360px) and (max-height:700px) and (orientation:portrait) {
+  .mcy-course-detail-page { padding-top:10px; }
+  .mcy-course-detail-page > h1 { margin-top:6px; margin-bottom:8px; font-size:29px; line-height:1.05; }
+  .mcy-course-detail-page > .mcy-lead { margin-bottom:10px; font-size:14px; line-height:1.45; }
+  .mcy-course-detail-meta { gap:5px; margin:9px 0; }
+  .mcy-course-detail-meta span { padding:5px 7px; font-size:var(--text-body); }
+  .mcy-course-featured { grid-template-columns:minmax(0,1fr); gap:8px; margin:10px 0 18px; padding:9px; }
+  .mcy-course-play > span { bottom:9px; padding:8px 11px; font-size:14px; }
+  .mcy-course-featured-copy { padding:2px 3px; }
+  .mcy-course-featured-copy h2 { margin:5px 0; font-size:21px; }
+  .mcy-course-featured-copy p { margin:6px 0; font-size:14px; line-height:1.45; }
+  .mcy-course-featured-copy small { margin-top:7px; font-size:14px; }
+}
