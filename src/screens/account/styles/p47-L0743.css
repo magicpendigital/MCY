@@ -1,0 +1,9 @@
+.mcy-toggle-row { display:flex; align-items:center; justify-content:space-between; gap:13px; }
+.mcy-toggle-row > span { display:flex; min-width:0; flex-direction:column; gap:5px; }
+.mcy-toggle-row > span strong { margin:0; }
+.mcy-toggle-row > span small { color:var(--mcy-muted); font-size:12px; line-height:1.5; }
+.mcy-toggle-row > button { display:flex; min-width:56px; min-height:30px; flex:none; align-items:center; justify-content:center; gap:4px; padding:4px 8px; border:1px solid #e1e4dc; border-radius:20px; background:#fffdf8; color:#8b9388; font-size:9px; font-weight:800; }
+.mcy-toggle-row > button.on { border-color:#cad9c9; background:#e7eee4; color:#4d6a50; }
+.mcy-toggle-row > button i { font-style:normal; }
+.mcy-toggle { min-height:35px; margin-top:7px; padding:7px 10px; border:1px solid #dfe6dc; border-radius:8px; background:#fffdf8; color:#536f55; font-size:10px; font-weight:800; }
+.mcy-policy-meta { display:grid; gap:6px; margin:14px 0; padding:11px 12px; border-radius:9px; background:#f3f2ea; color:#798477; font-size:9px; }

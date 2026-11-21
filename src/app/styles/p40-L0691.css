@@ -1,0 +1,18 @@
+.mcy-flow-footer.mcy-welcome-footer,
+.mcy-flow-footer.mcy-consent-footer { display:grid; grid-template-columns:minmax(0,1fr); align-content:center; gap:2px; padding:8px 20px calc(var(--device-safe-area-bottom,34px) + 8px); border-top:1px solid #e9e6de; background:var(--color-canvas); box-shadow:0 -9px 24px rgb(40 61 49 / 7%); }
+.mcy-flow-footer.mcy-welcome-footer { gap:0; }
+.mcy-flow-footer.mcy-welcome-footer .mcy-action,
+.mcy-flow-footer.mcy-consent-footer .mcy-action { width:100%; min-height:48px; flex:none; }
+.mcy-flow-footer.mcy-consent-footer .mcy-quiet-link { width:100%; min-height:32px; margin:0; }
+.mcy-consent-footer-error { max-height:32px; overflow:auto; padding:4px 7px; border-left:2px solid #a94d42; border-radius:0 6px 6px 0; background:#f8ebe7; color:#8e493f; font-size:10px; line-height:1.35; scrollbar-width:none; }
+.mcy-consent-footer-error::-webkit-scrollbar { display:none; }
+.mcy-flow-footer.mcy-welcome-footer .mcy-welcome-auth { gap:22px; margin:1px 0 0; }
+.mcy-flow-footer.mcy-welcome-footer .mcy-welcome-auth button { min-height:32px; }
+.mcy-flow-footer.mcy-welcome-footer small { display:block; margin-top:3px; color:#7c776f; font-size:9px; line-height:1.35; text-align:center; }
+.mobile-app-viewport:not([data-platform="android"]) .flow-fixed-footer:has(.mcy-welcome-footer, .mcy-consent-footer) { background:var(--color-canvas); }
+.mobile-app-viewport:not([data-platform="android"]) .flow-fixed-footer:has(.mcy-welcome-footer, .mcy-consent-footer)::after { position:absolute; top:100%; right:0; left:0; height:var(--device-safe-area-bottom,0px); background:var(--color-canvas); content:""; pointer-events:none; }
+.mcy-form-field { display:flex; flex-direction:column; gap:8px; margin:17px 0; color:var(--mcy-ink); font-size:12px; font-weight:780; }
+.mcy-form-field input, .mcy-form-field textarea { width:100%; min-height:49px; padding:11px 13px; border:1px solid #dfe5da; border-radius:11px; outline-color:#879a7f; background:var(--mcy-paper); color:var(--mcy-ink); font-size:16px; }
+.mcy-form-field textarea { min-height:100px; resize:vertical; line-height:1.5; }
+.mcy-form-error { margin:11px 0; padding:11px 12px; border-left:3px solid #a94d42; border-radius:0 9px 9px 0; background:#f8ebe7; color:#8e493f; font-size:11px; line-height:1.5; }
+.mcy-form-error.subtle { border-left-color:#b49b70; background:#f6f1e6; color:#76684f; }

@@ -1,0 +1,8 @@
+.mcy-reauth { display:flex; align-items:flex-start; gap:9px; margin:18px 0; color:#596d5d; font-size:10px; line-height:1.5; }
+.mcy-reauth input { width:17px; height:17px; flex:none; margin:0; accent-color:#5d795e; }
+.mcy-request-card { margin:10px 0; padding:13px; border:1px solid #e3e8df; border-radius:12px; background:#fffdf8; }
+.mcy-request-card > div { display:flex; align-items:center; justify-content:space-between; gap:6px; }
+.mcy-request-card > div small { color:#899288; font-size:8px; }
+.mcy-request-card > strong { display:block; margin:10px 0 4px; color:#38553f; font-size:12px; }
+.mcy-request-card p { margin:0; color:#778377; font-size:9px; line-height:1.45; }
+.mcy-state-pill { display:inline-block; padding:6px 9px; border-radius:20px; background:#edf1e7; color:var(--color-forest); font-size:var(--text-caption); font-weight:750; letter-spacing:.03em; }

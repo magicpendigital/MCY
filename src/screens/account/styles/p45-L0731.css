@@ -1,0 +1,5 @@
+.mcy-help-results { margin:12px 0 16px; }
+.mcy-help-results .mcy-account-row { min-height:66px; padding:12px; }
+.mcy-help-results .mcy-account-row strong { font-size:13px; line-height:1.35; }
+.mcy-help-results .mcy-account-row small { color:var(--mcy-muted); font-size:11px; line-height:1.45; }
+.mcy-help-empty { margin:12px 0; padding:16px; border-radius:12px; background:var(--color-sage-soft); color:var(--mcy-muted); font-size:14px; line-height:1.5; }

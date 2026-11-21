@@ -1,0 +1,7 @@
+.mcy-account-row.static { cursor:default; }
+.mcy-account-row.static > button { padding:7px; border:1px solid #e7e4d9; border-radius:7px; background:#fffdf8; color:#60755f; font-size:9px; font-weight:800; }
+.mcy-account-panel, .mcy-access-card { margin:13px 0; padding:14px; border:1px solid #e2e7de; border-radius:13px; background:#f6f7f1; }
+.mcy-account-panel > strong, .mcy-access-card > strong { display:block; margin-bottom:6px; color:#38553f; font-size:12px; }
+.mcy-account-panel > p, .mcy-access-card > p { margin:5px 0; color:var(--mcy-muted); font-size:12px; line-height:1.5; }
+.mcy-account-panel .mcy-style-link { margin-top:6px; }
+.mcy-account-panel ul { margin:8px 0 2px; padding-left:17px; color:#69786c; font-size:10px; line-height:1.8; }
