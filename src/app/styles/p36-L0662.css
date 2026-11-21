@@ -1,0 +1,23 @@
+@media (max-width:360px) and (orientation:portrait) {
+  .mcy-page { padding-right:17px; padding-left:17px; }
+  .mcy-checkin-illustration .mcy-body-art { width:min(100%, 210px); }
+  .mcy-snapshot-body { grid-template-columns:minmax(108px,.9fr) minmax(0,1.1fr); gap:6px; }
+  .mcy-snapshot-card .mcy-body-art { width:min(100%, 136px); }
+  .mcy-body-map-v2.compact .mcy-body-art { width:min(100%, 116px); }
+}
+
+@container mcy-app-viewport (min-width:620px) {
+  .mcy-checkin-page { padding:12px 20px calc(var(--flow-footer-height, 0px) + var(--mobile-safe-area-height) + 20px); }
+  .mcy-checkin-page > h1 { max-width:850px; margin:0 auto 6px; font-size:28px; line-height:1.04; }
+  .mcy-checkin-page > .mcy-lead { max-width:850px; margin:0 auto 12px; }
+  .mcy-checkin-content { max-width:900px; grid-template-columns:minmax(190px,.78fr) minmax(0,1.22fr); gap:18px; align-items:start; margin:0 auto; }
+  .mcy-checkin-illustration { position:sticky; top:4px; align-self:start; }
+  .mcy-checkin-illustration .mcy-body-art { width:min(100%, 208px); }
+  .mcy-body-orientation { margin-top:1px; font-size:8px; }
+  .mcy-checkin-fields .mcy-energy-card { margin-top:0; }
+  .mcy-snapshot-body { grid-template-columns:minmax(175px,.78fr) minmax(0,1.22fr); gap:10px; align-items:start; }
+  .mcy-snapshot-map { position:sticky; top:4px; align-self:start; }
+  .mcy-snapshot-card .mcy-body-art { width:min(100%, 200px); }
+  .mcy-snapshot-details { padding-top:8px; }
+  .mcy-before-after { max-width:600px; margin-right:auto; margin-left:auto; }
+}
