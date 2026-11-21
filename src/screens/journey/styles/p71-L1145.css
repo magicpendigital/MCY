@@ -1,0 +1,6 @@
+.mcy-journey-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin: 8px 0 20px; padding: 22px 20px; border: 1px solid var(--color-border-strong); border-radius: 22px; background: linear-gradient(160deg, #f4efe4 0%, var(--mcy-paper) 70%); }
+.mcy-journey-empty > svg { width: 30px; height: 30px; color: var(--mcy-clay); }
+.mcy-journey-empty h2 { font: 24px/1.2 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-journey-empty p { margin: 0 0 6px; color: #45554b; font-size: 15px; line-height: 1.55; }
+.mcy-journey-empty small { color: var(--mcy-muted); font-size: 13.5px; line-height: 1.5; }
+.mcy-journey-empty .mcy-action { width: 100%; }

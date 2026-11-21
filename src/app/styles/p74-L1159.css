@@ -1,0 +1,5 @@
+/* Shown by RouteBoundary when one screen fails to load (INC-001). */
+.mcy-route-failed { margin: 28px 20px; padding: 18px; border: 1px solid #e0c3ad; border-radius: 16px; background: var(--color-terracotta-soft); color: #5d3a2c; }
+.mcy-route-failed strong { display: block; margin-bottom: 6px; color: #6f3626; font-size: 17px; }
+.mcy-route-failed p { margin: 0 0 14px; font-size: 15px; line-height: 1.5; }
+.mcy-route-failed button { min-height: 48px; width: 100%; border: 1px solid var(--mcy-clay); border-radius: 999px; background: var(--mcy-clay); color: #fff; font: 700 15px/1.2 var(--font-sans); }
