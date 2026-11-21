@@ -1,0 +1,4 @@
+.mcy-sync-card { display:flex; flex-direction:column; gap:9px; margin:19px 0; padding:16px; border:1px solid #dce6d9; border-radius:15px; background:#f0f5ed; }
+.mcy-sync-card > strong { color:#34523b; font:20px var(--font-editorial); }
+.mcy-sync-card > p { margin:0; color:#68796b; font-size:10px; line-height:1.5; }
+.mcy-sync-page > .mcy-action.secondary { margin-top:9px; }

@@ -1,0 +1,7 @@
+.mcy-account-row { display:flex; width:100%; min-height:59px; align-items:center; justify-content:space-between; gap:12px; padding:10px 11px; border:0; border-top:1px solid #e9ebe4; background:transparent; color:var(--mcy-ink); text-align:left; }
+.mcy-account-row:hover { background:#f3f5ef; }
+.mcy-account-row > span:first-child { display:flex; min-width:0; flex-direction:column; gap:4px; }
+.mcy-account-row strong { color:#385540; font-size:11px; }
+.mcy-account-row small { color:#849084; font-size:9px; line-height:1.4; }
+.mcy-account-row > svg { width:15px; height:15px; flex:none; color:#a76d4d; }
+.mcy-account-row.danger strong { color:#985247; }

@@ -1,0 +1,21 @@
+@container mcy-app-viewport (min-width:620px) {
+  .mcy-catalog-scroll-cue { display: none; }
+  .mcy-account-home, .mcy-account-detail, .mcy-auth-page, .mcy-sync-page, .mcy-readiness-page, .mcy-discover-detail { max-width:960px; margin:0 auto; }
+  .mcy-account-home { padding-right:35px; padding-left:35px; }
+  .mcy-account-group { max-width:820px; }
+  .mcy-account-row { min-height:55px; }
+  .mcy-consent-card { max-width:850px; }
+}
+
+@container mcy-app-viewport (max-width:619px) {
+  .mcy-catalog-scroll-cue {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 0 10px;
+    color: var(--mcy-muted);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .mcy-catalog-scroll-cue svg { width: 14px; height: 14px; flex: none; color: var(--mcy-forest); }
+}

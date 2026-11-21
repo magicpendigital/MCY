@@ -1,0 +1,7 @@
+@media (max-height:700px) and (orientation:landscape) {
+  .mcy-welcome { min-height:690px; }
+  .mcy-welcome-photo { top:170px; height:62%; }
+  .mcy-welcome-bottom { bottom:calc(var(--mobile-safe-area-height) + 9px); }
+  .mcy-welcome-bottom > p { margin:0 0 5px; }
+  .mcy-welcome-bottom .mcy-action { min-height:43px; }
+}
