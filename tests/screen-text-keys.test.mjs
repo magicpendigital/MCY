@@ -1,12 +1,18 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {readFileSync} from 'node:fs';
+import {readFileSync,readdirSync} from 'node:fs';
 import {screenTextKeys,isScreenTextKey,validScreenValue} from '../supabase/functions/_shared/contentWorkspaceContract.ts';
 
-// i18n.ts keeps its tables private; read the file text so the check needs no module changes.
-const i18n=readFileSync(new URL('../src/i18n.ts',import.meta.url),'utf8');
-const viBlock=i18n.slice(i18n.indexOf('const vi = {'),i18n.indexOf('const en:'));
-const enBlock=i18n.slice(i18n.indexOf('const en:'));
+// The texts live in src/i18n.ts and its data files src/i18n/*.ts; read the file text so the check needs no module changes.
+// In each file the vi table runs from `const vi… = {` to `const en…:`, and the en table from there to the end.
+const i18nFiles=[new URL('../src/i18n.ts',import.meta.url),...readdirSync(new URL('../src/i18n/',import.meta.url)).filter(f=>f.endsWith('.ts')).sort().map(f=>new URL('../src/i18n/'+f,import.meta.url))];
+let viBlock='',enBlock='';
+for(const file of i18nFiles){
+  const text=readFileSync(file,'utf8');
+  const vi=text.search(/const vi\w* = \{/),en=text.search(/const en\w*:/);
+  if(vi<0||en<vi)continue;
+  viBlock+=text.slice(vi,en)+'\n';enBlock+=text.slice(en)+'\n';
+}
 const valueOf=(block,key)=>{
   const start=block.indexOf('"'+key+'": "');
   if(start<0)return null;

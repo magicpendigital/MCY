@@ -8,7 +8,7 @@ export const authorableKinds: readonly ContentKind[] = ["video_lesson", "course_
 // Screen texts an author may replace through the content workspace (also read by the learner app and the Edge publisher, which is why
 // it lives in this import-free file). Everything NOT listed is locked ("đã chốt"): Owner-approved copy, consent and privacy notes,
 // safety and body-check wording stay in the app code and change only with the Owner's sign-off and a release. Add a key only when the
-// Owner agrees the text may change without a release; it must exist in src/i18n.ts (a test checks), carry no {placeholder}, and not be
+// Owner agrees the text may change without a release; it must exist in the app texts (src/i18n/*.ts, joined in src/i18n.ts; a test checks), carry no {placeholder}, and not be
 // a privacy, consent, safety or medical statement.
 export const screenTextKeys = [
   "discover.freeCourses",
