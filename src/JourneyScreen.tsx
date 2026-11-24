@@ -96,8 +96,9 @@ export default function JourneyScreen({
     .sort((left, right) => left.date.localeCompare(right.date) || left.time.localeCompare(right.time));
   const maxDay = Math.max(localDateOrdinal(todayLocalDate()), ...snapshots.map(item => item.day));
   const days = Array.from({ length: range }, (_, index) => maxDay - (range - 1 - index));
-  const selected = snapshots.find(item => item.id === selectedId && item.day === selectedDay);
   const daySnapshots = snapshots.filter(item => item.day === selectedDay);
+  // Until the learner picks an entry, show the newest one of the chosen day, so a just-saved check-in is visible at once.
+  const selected = selectedId === null ? lastOf(daySnapshots) : snapshots.find(item => item.id === selectedId && item.day === selectedDay);
   const detail = selected?.observations.find(item => item.region === detailRegion && item.side === detailSide) ?? selected?.observations.find(item => item.region === detailRegion);
   const editCurrent = selected?.observations.find(item => item.region === editingRegion && item.side === editingStoredSide) ?? selected?.observations.find(item => item.region === editingRegion);
   const a = snapshots.find(item => item.id === compareA);
@@ -137,7 +138,7 @@ export default function JourneyScreen({
     <Carousel ariaLabel={msg(state.locale, "journey.title")} className="mcy-timeline-carousel" contentClassName="mcy-timeline-track">{days.map(day => { const count = snapshots.filter(item => item.day === day).length; const date = dateFromOrdinal(day); return <button key={day} className={selectedDay === day ? "selected" : ""} aria-pressed={selectedDay === day} onClick={() => chooseDay(day)}><small>{formatMessage(state.locale, "journey.month", { month: date.slice(5, 7) })}</small><strong>{date.slice(8, 10)}</strong><span>{count ? formatMessage(state.locale, "journey.recordCount", { count: localizedNumber(state.locale, count) }) : msg(state.locale, "journey.noRecord")}</span></button>; })}</Carousel>
     <section className="mcy-snapshot-card" aria-label={msg(state.locale, "journey.currentRecord")}>
       <div className="mcy-snapshot-heading"><span>{msg(state.locale, selected?.remoteId ? "journey.accountRecord" : "journey.sessionRecord")}</span><h2>{selected ? snapshotLabel(selected, state.locale) : `${prettyDate(dateFromOrdinal(selectedDay), state.locale)} · ${msg(state.locale, "journey.noRecordForDay")}`}</h2>{selected?.lessonTitle && <small>{msg(state.locale, "course.reflectionLesson")} {selected.lessonTitle}</small>}</div>
-      {daySnapshots.length > 1 && <Carousel ariaLabel={msg(state.locale, "journey.sameDayEntries")} className="mcy-record-carousel" contentClassName="mcy-record-track">{daySnapshots.map(item => <button key={item.id} aria-pressed={selectedId === item.id} onClick={() => setSelectedId(item.id)}>{snapshotLabel(item, state.locale)}</button>)}</Carousel>}
+      {daySnapshots.length > 1 && <Carousel ariaLabel={msg(state.locale, "journey.sameDayEntries")} className="mcy-record-carousel" contentClassName="mcy-record-track">{daySnapshots.map(item => <button key={item.id} aria-pressed={selected?.id === item.id} onClick={() => setSelectedId(item.id)}>{snapshotLabel(item, state.locale)}</button>)}</Carousel>}
       {selected ? <div className="mcy-snapshot-body">
         <div className="mcy-snapshot-map"><BodyMapComponent observations={selected.observations} bodyStyle={state.bodyStyle} locale={state.locale} onSelect={(region, side) => { setDetailRegion(region); setDetailSide(side); }} showAll={false} /><BodyStylePickerComponent value={state.bodyStyle} onChange={bodyStyle => update({ bodyStyle })} /></div>
         <div className="mcy-snapshot-details">

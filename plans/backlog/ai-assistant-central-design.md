@@ -140,3 +140,5 @@ Canvas thiết kế: https://claude.ai/artifact/Uxw44YQsBvUdCFffPfPcHg (riêng t
 - Hàng 4: Hành trình "Chút ghi nhận" (số đếm thật, ngày trống giữ nguyên, không phần trăm) và bảng quy cách cho người làm.
 
 Điều cần Owner chốt từ bản thiết kế: tự chuyển bài (trái dòng "không tự chuyển nếu chưa có nghiên cứu" của hệ thống thiết kế, nên đề xuất đếm ngược 3 giây có Dừng); chữ mới trên Hôm nay; tần suất mời tài khoản; chuỗi nhẹ cho người đang đau (chỉ khi có người duyệt chuyên môn). Thiết kế chưa phải giao diện đã làm; lát 1 cần kế hoạch riêng được duyệt trước khi sửa code.
+
+**Owner 24/11:** đồng ý các phương án đề xuất: tự chuyển bài bằng đếm ngược 3 giây có nút Dừng; mời tài khoản chỉ sau buổi 2–3, một lần mỗi lượt, chọn "Để sau" thì không hỏi lại ngay (con số khoảng cách giữa hai lần mời Owner đặt khi duyệt kế hoạch lát 1); chuỗi nhẹ cho người đang đau chỉ bật khi có người duyệt chuyên môn có tên. Chữ mới trên Hôm nay vẫn đưa Owner đọc nguyên văn trước khi gộp. Lát 1 là bước 3 trong [hàng việc 24/11](../active/2026-11-24-ux-sequence.md).

@@ -61,7 +61,6 @@ import { PrivacyToggle } from "./screens/account/PrivacyToggle";
 import type { HelpArticleId } from "./screens/help/articles";
 import { ProfileScreen } from "./screens/account/ProfileScreen";
 import { AccountDetailScreen } from "./screens/account/AccountDetailScreen";
-import { ReadinessScreen } from "./screens/readiness/ReadinessScreen";
 import { HelpArticleScreen } from "./screens/help/HelpArticleScreen";
 import { DiscoverDetailScreen } from "./screens/discover/DiscoverDetailScreen";
 import { ReadingLessonRoute, ReadingLibraryRoute, ReadingPreviewRoute, ReadingPublishRoute } from "./screens/reading/routes";
@@ -113,7 +112,6 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   readingLibrary: { id: "reading-library", header: () => <Header title="Bài đọc có hình" back />, headerHeight: 55, render: () => <ReadingLibraryRoute /> },
   readingLesson: { id: "reading-lesson", header: () => <Header title="Bài đọc" back />, headerHeight: 55, footer: flow => <Suspense fallback={null}><ReadingLessonFooter onBack={() => flow.pop()} /></Suspense>, footerHeight: 88, render: () => <ReadingLessonRoute /> },
   readingPublish: { id: "reading-publish", header: () => <Header title="Hiển thị cho học viên" back />, headerHeight: 55, render: () => <ReadingPublishRoute /> },
-  readiness: { id: "readiness", header: () => <Header title="Phạm vi hỗ trợ" back />, headerHeight: 55, render: () => <ReadinessScreen /> },
   myClasses: { id: "my-classes", header: () => <Header title="Lớp của tôi" back />, headerHeight: 55, render: () => <MyClassesRoute /> },
 });
 

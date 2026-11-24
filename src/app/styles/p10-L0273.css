@@ -9,6 +9,7 @@
 .mcy-lead { color: #45554b; font-size: 14px; line-height: 1.52; }
 .mcy-header { grid-template-columns: 45px minmax(0,1fr) 45px; border-bottom-color: #eeeae2; background: #fffcf9ed; }
 .mcy-header-title { font: 22px/1 var(--font-editorial); text-align: center; }
+.mcy-header-title.is-screen { font-size: 19px; }
 .mcy-open-space-mark { width: 31px; height: 31px; color: var(--color-forest); }
 .mcy-brand { flex-direction: column; gap: 1px; font-size: 43px; letter-spacing: -.02em; line-height: 1.08; }
 .mcy-brand .mcy-open-space-mark { width: 60px; height: 60px; }
