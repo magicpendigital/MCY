@@ -84,8 +84,7 @@ async function beginCheckin(page:Page) {
   const start=page.locator('[data-testid="flow-current"] [data-flow-route="home"][data-flow-active="true"]').getByRole('button',{name:/^(Bắt đầu check-in|Ghi nhận hôm nay)$/});
   await expect(start).toHaveCount(1); // Wait for the outgoing retained FlowStack screen to finish its transition.
   await start.click();
-  await page.getByRole('button',{name:'Bình thường',exact:true}).click();
-  await page.getByRole('button',{name:'Tiếp: năng lượng và thời gian'}).click();
+  // One-step check-in (plan 2026-11-24 step 2): no energy/time screen.
   await page.getByRole('button',{name:'Bình thường',exact:true}).click();
 }
 const saveOnly = (page:Page)=>page.getByRole('button',{name:'Chỉ ghi lại cảm nhận hôm nay, không chọn bài',exact:true});

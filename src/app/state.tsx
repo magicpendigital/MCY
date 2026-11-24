@@ -4,7 +4,7 @@ import { emptyConsentState } from "../backend/learnerData";
 import type { DemoState } from "./model";
 
 export const initialState: DemoState = {
-  locale: "vi-VN", checkinStep: 1,
+  locale: "vi-VN",
   minutes: 10, energy: null, regions: [], bodyStyle: "feminine", bodyStatus: null, preObservations: [], postObservations: [], postBodyStatus: null, intent: "Bắt nhịp",
   dialogueChoice: null, dialogueText: "", unrecognizedText: "", aiConversation: [], aiPending: false, aiError: "",
   aiCapability: "disabled",
@@ -16,7 +16,7 @@ export const initialState: DemoState = {
   reflectionBeforeStatus: null,
   reflectionBeforeObservations: [],
   reflectionLessonTitle: "",
-  endedEarly: false, rememberPace: true, usePreviousFeedback: false, history: [],
+  endedEarly: false, rememberPace: true, usePreviousFeedback: false, history: [], guestJournal: [], guestJournalPersistent: true,
   signedIn: false, userId: null, backendStatus: backendConfigured ? "loading" : "ready", backendError: "", remoteCheckins: [], currentRemoteCheckinId: null, pendingCheckinIdempotencyKey: null,
   accountEmail: "", authReturnTo: "home", authMode: "create", authCode: "", displayName: "",
   onboardingComplete: false, termsAccepted: false, privacyAccepted: false, consentBaseline: emptyConsentState, consentPolicyVersions: {}, aiConsent: false, saveFeedbackConsent: false, teacherShareConsent: false,
@@ -32,6 +32,7 @@ export function useDemo() {
   return { ...context, update };
 }
 
+// Account-scoped only: the device's guest journal (guestJournal) is kept on purpose and reappears in guest mode.
 export function clearAccountScopedState(previous: DemoState): DemoState {
   return {
     ...previous,
@@ -40,7 +41,6 @@ export function clearAccountScopedState(previous: DemoState): DemoState {
     accountEmail: "",
     displayName: "",
     bodyStyle: "feminine",
-    checkinStep: 1,
     minutes: 10,
     energy: null,
     regions: [],

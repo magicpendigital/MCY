@@ -1,20 +1,14 @@
-// Check-in and region editor texts, plus the body label tables (region, energy, level, side). Data only: msg(), the label
+// Check-in and region editor texts, plus the body label tables (region, level, side). Data only: msg(), the label
 // functions, overrides and the key type stay in src/i18n.ts.
 import type { AppLocale } from "../i18n";
 
 export const viCheckin = {
   "checkin.step1.title": "Hôm nay, cơ thể bạn cảm thấy thế nào?",
   "checkin.step1.lead": "Chạm vào vùng bạn thấy căng, mỏi hoặc khó chịu. Bạn cũng có thể chọn tên vùng bên dưới.",
-  "checkin.step2.title": "Hôm nay bạn muốn dành bao lâu để chăm sóc cơ thể?",
-  "checkin.step2.lead": "Hiện chưa có gợi ý tự động. Bạn có thể tự chọn bài học miễn phí mà không cần đăng nhập.",
   "checkin.step1.label": "Cảm nhận cơ thể",
-  "checkin.step2.label": "Năng lượng và thời gian",
   "checkin.scrollHint": "Chọn điểm trên hình hoặc nhóm vùng tay chân bên dưới",
-  "checkin.step2.scrollHint": "Cuộn xuống để xem thêm lựa chọn",
   "checkin.orientation": "Toàn thân nhìn từ phía sau · trái/phải theo bạn",
   "checkin.chooseStyle": "Đổi hình minh họa",
-  "checkin.energy": "Năng lượng hôm nay",
-  "checkin.optional": "không bắt buộc",
   "checkin.regions": "Hoặc chọn một vùng",
   "checkin.group.trunk": "Thân mình",
   "checkin.group.arms": "Tay",
@@ -24,18 +18,11 @@ export const viCheckin = {
   "checkin.noDiscomfort": "Bình thường",
   "checkin.unsure": "Chưa xác định",
   "checkin.skipBody": "Bỏ qua phần cảm nhận",
-  "checkin.duration": "Hôm nay bạn có bao lâu?",
-  "checkin.minutes": "{minutes} phút",
-  "checkin.step1.next": "Tiếp: năng lượng và thời gian",
   "checkin.guest.find": "Tìm bài học ngắn",
   "checkin.step1.skip": "Bỏ qua ghi nhận cơ thể",
-  "checkin.step2.guest": "Tự chọn bài học video miễn phí",
   "checkin.step2.account": "Lưu bằng tài khoản",
-  "checkin.backToBody": "Quay lại cảm nhận cơ thể",
-  "checkin.directPlan": "Tự chọn bài học miễn phí",
   "checkin.standalone": "Chỉ ghi lại cảm nhận hôm nay, không chọn bài",
   "checkin.disclaimer": "Bạn chỉ cần chia sẻ điều mình thấy. Đây không phải đánh giá sức khỏe.",
-  "checkin.stepCount": "Bước {step} / 2",
   "regionEditor.prompt": "Ngay lúc này, vùng này khiến bạn cảm thấy thế nào?",
   "regionEditor.side": "Bên nào?",
   "regionEditor.note": "Ghi chú riêng vùng này",
@@ -49,21 +36,17 @@ export const viCheckin = {
   "checkin.uncomfortable": "Khó chịu",
   "checkin.selectedTired": "Đã chọn: Mệt. Bạn có thể đổi lại.",
   "checkin.selectedUncomfortable": "Đã chọn: Khó chịu. Bạn có thể đổi lại.",
+  "checkin.guestSaveNote": "Chỉ lưu trên máy này, không gửi đi đâu. Bạn có thể xóa trong Hành trình.",
+  "checkin.guestSaveSessionOnly": "Máy này đang chặn bộ nhớ, nên ghi nhận chỉ được giữ đến khi bạn đóng hoặc tải lại app. Không gửi đi đâu.",
 } as const;
 
 export const enCheckin: Record<keyof typeof viCheckin, string> = {
   "checkin.step1.title": "How does your body feel today?",
   "checkin.step1.lead": "Tap an area that feels tense or uncomfortable, or choose it from the list below.",
-  "checkin.step2.title": "How much time would you like to spend caring for your body today?",
-  "checkin.step2.lead": "There are no automated suggestions right now. Browse free lessons without signing in.",
   "checkin.step1.label": "Body check-in",
-  "checkin.step2.label": "Energy and time",
   "checkin.scrollHint": "Choose a point or switch between body, arms and legs",
-  "checkin.step2.scrollHint": "Scroll down to see more options",
   "checkin.orientation": "Full body, viewed from behind · left/right are yours",
   "checkin.chooseStyle": "Change illustration",
-  "checkin.energy": "Your energy today",
-  "checkin.optional": "optional",
   "checkin.regions": "Or choose an area",
   "checkin.group.trunk": "Torso",
   "checkin.group.arms": "Arms",
@@ -73,18 +56,11 @@ export const enCheckin: Record<keyof typeof viCheckin, string> = {
   "checkin.noDiscomfort": "Normal",
   "checkin.unsure": "Not sure",
   "checkin.skipBody": "Skip body check-in",
-  "checkin.duration": "How much time do you have?",
-  "checkin.minutes": "{minutes} min",
-  "checkin.step1.next": "Next: energy and time",
   "checkin.guest.find": "Find a short lesson",
   "checkin.step1.skip": "Skip body check-in",
-  "checkin.step2.guest": "Browse free video lessons",
   "checkin.step2.account": "Save with an account",
-  "checkin.backToBody": "Back to body check-in",
-  "checkin.directPlan": "Browse free video lessons",
   "checkin.standalone": "Save today's check-in without choosing a session",
   "checkin.disclaimer": "Share only what you notice. This is not a health assessment.",
-  "checkin.stepCount": "Step {step} of 2",
   "regionEditor.prompt": "How does this area feel right now?",
   "regionEditor.side": "Which side?",
   "regionEditor.note": "A note for this area",
@@ -98,6 +74,8 @@ export const enCheckin: Record<keyof typeof viCheckin, string> = {
   "checkin.uncomfortable": "Uncomfortable",
   "checkin.selectedTired": "Tired selected. You can change this later.",
   "checkin.selectedUncomfortable": "Uncomfortable selected. You can change this later.",
+  "checkin.guestSaveNote": "Saved only on this device and never sent anywhere. You can delete it in Journey.",
+  "checkin.guestSaveSessionOnly": "This device is blocking storage, so the entry is kept only until you close or reload the app. Nothing is sent anywhere.",
 };
 
 export const regionLabels: Record<AppLocale, Record<string, string>> = {
@@ -111,11 +89,6 @@ export const regionLabels: Record<AppLocale, Record<string, string>> = {
     upper_arm: "Upper arm", elbow: "Elbow", forearm_wrist: "Forearm · wrist",
     hand: "Hand", knee: "Knee", foot: "Foot",
   },
-};
-
-export const energyLabels: Record<AppLocale, Record<string, string>> = {
-  "vi-VN": { "Rất thấp": "Rất thấp", "Thấp": "Thấp", "Bình thường": "Bình thường", "Khá ổn": "Khá ổn", "Tràn đầy": "Tràn đầy" },
-  "en-US": { "Rất thấp": "Very low", "Thấp": "Low", "Bình thường": "Okay", "Khá ổn": "Good", "Tràn đầy": "Full" },
 };
 
 export const levelLabels: Record<AppLocale, Record<string, string>> = {

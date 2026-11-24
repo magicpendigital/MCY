@@ -269,21 +269,21 @@ test('check-in retry sends the exact frozen record and keeps later edits for a n
   });
   await page.goto('/?mode=web');
   await page.getByRole('button', { name: 'Bắt đầu check-in', exact: true }).click();
-  await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
-  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian' }).click();
+  // One-step check-in (plan 2026-11-24 step 2): the draft edit is now the overall state, and energy is no longer asked (null).
   await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
   await page.getByRole('button', { name: 'Chỉ ghi lại cảm nhận hôm nay, không chọn bài', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Thử lại bản ghi trước', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Rất thấp', exact: true }).click();
+  await page.locator('.mcy-body-status-actions').getByRole('button', { name: 'Mệt', exact: true }).click();
   await page.getByRole('button', { name: 'Thử lại bản ghi trước', exact: true }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Nháp vừa sửa vẫn được giữ' })).toBeVisible();
   await expect(page.getByRole('alert')).toHaveCount(0);
   expect(requests).toHaveLength(2); expect(requests[1]).toEqual(requests[0]);
-  await expect(page.getByRole('button', { name: 'Rất thấp', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.mcy-body-status-actions').getByRole('button', { name: 'Mệt', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: 'Chỉ ghi lại cảm nhận hôm nay, không chọn bài', exact: true }).click();
   await expect.poll(() => requests.length).toBe(3);
   expect(requests[2].p_idempotency_key).not.toBe(requests[0].p_idempotency_key);
-  expect(requests[0].p_energy_level).toBe(2); expect(requests[2].p_energy_level).toBe(0);
+  expect(requests[0].p_body_status).toBe('none_now'); expect(requests[2].p_body_status).toBe('tired');
+  expect(requests[0].p_energy_level).toBeNull(); expect(requests[2].p_energy_level).toBeNull();
 });
 
 for (const returnToA of [false, true]) test(`delayed check-in cannot navigate or restore a draft for ${returnToA ? 'a new A session after A to B to A' : 'a different B account'}`, async ({ page }) => {
@@ -297,8 +297,6 @@ for (const returnToA of [false, true]) test(`delayed check-in cannot navigate or
   });
   await page.goto('/?mode=web');
   await page.getByRole('button', { name: 'Bắt đầu check-in', exact: true }).click();
-  await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
-  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian' }).click();
   await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
   await page.getByRole('button', { name: 'Chỉ ghi lại cảm nhận hôm nay, không chọn bài', exact: true }).click(); await started.promise;
   await switchActor(page, B); await expect.poll(() => reads[B]).toBeGreaterThan(0);
@@ -324,10 +322,8 @@ test('delayed check-in confirmation does not navigate away from the lesson libra
   await page.goto('/?mode=web');
   await page.getByRole('button', { name: 'Bắt đầu check-in', exact: true }).click();
   await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
-  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian' }).click();
-  await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
   await page.getByRole('button', { name: 'Chỉ ghi lại cảm nhận hôm nay, không chọn bài', exact: true }).click(); await started.promise;
-  await page.getByRole('button', { name: 'Tự chọn bài học video miễn phí', exact: true }).click();
+  await page.getByRole('button', { name: 'Tìm bài học ngắn', exact: true }).click();
   await expect(page.locator('[data-testid="flow-current"] > [data-flow-route]')).toHaveAttribute('data-flow-route', 'discover');
   const response = page.waitForResponse(r => r.url().endsWith('/save_my_checkin_for_current_user_with_current_consent'));
   release.release(); await (await response).json();
@@ -348,10 +344,8 @@ test('leaving and returning to the library keeps the old check-in continuation i
   const active = page.getByTestId('flow-current');
   await page.getByRole('button', { name: 'Bắt đầu check-in', exact: true }).click();
   await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
-  await page.getByRole('button', { name: 'Tiếp: năng lượng và thời gian' }).click();
-  await page.getByRole('button', { name: 'Bình thường', exact: true }).click();
   await page.getByRole('button', { name: 'Chỉ ghi lại cảm nhận hôm nay, không chọn bài', exact: true }).click(); await started.promise;
-  await page.getByRole('button', { name: 'Tự chọn bài học video miễn phí', exact: true }).click();
+  await page.getByRole('button', { name: 'Tìm bài học ngắn', exact: true }).click();
   await page.getByRole('button', { name: /Cách chọn bài học video/ }).click();
   await expect(active).toHaveCount(1);
   await expect(active.locator('[data-flow-route]')).toHaveAttribute('data-flow-route', 'discover-detail');

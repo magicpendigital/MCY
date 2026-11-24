@@ -29,7 +29,6 @@ async function learner(page: Page, handle: (route: Route, body: any) => Promise<
 async function enterPractice(page: Page, query = "?mode=web") {
   await page.goto(`/${query}`);
   await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
-  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
   await page.getByRole("button", { name: "Chọn buổi hôm nay cùng AI" }).click();
   await expect(page.getByRole("heading", { name: "Một buổi phù hợp với hôm nay." })).toBeVisible();
   await page.getByRole("button", { name: "Nhịp chậm", exact: true }).click();
@@ -149,9 +148,8 @@ test("late consent-save success cannot revoke AI consent of a different account"
 test("closed capability preserves manual entry and never exposes a sample as reviewed AI content", async ({ page }) => {
   await learner(page, async () => { throw new Error("Unexpected model request"); }, false);
   await page.goto("/?mode=web"); await page.getByRole("button", { name: "Bắt đầu check-in", exact: true }).click();
-  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
   await expect(page.getByRole("button", { name: "Chọn buổi hôm nay cùng AI" })).toHaveCount(0);
-  await expect(page.getByRole("button", { name: "Tự chọn bài học video miễn phí", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Tìm bài học ngắn", exact: true })).toBeVisible();
 });
 
 test("multimodal draft is readable on narrow web, preserves image ratio and pauses audio between sections", async ({ page }) => {
@@ -201,12 +199,9 @@ test("the AI practice path is not offered when the check-in reports tiredness or
   const status = page.locator(".mcy-body-status-actions");
   for (const label of ["Mệt", "Khó chịu"]) {
     await status.getByRole("button", { name: label, exact: true }).click();
-    await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
     await expect(page.getByRole("button", { name: "Chọn buổi hôm nay cùng AI" })).toHaveCount(0);
-    await expect(page.getByRole("button", { name: "Tự chọn bài học video miễn phí" })).toBeVisible();   // manual browsing stays
-    await page.getByRole("button", { name: "Quay lại cảm nhận cơ thể" }).click();
+    await expect(page.getByRole("button", { name: "Tìm bài học ngắn" })).toBeVisible();   // manual browsing stays
   }
   await status.getByRole("button", { name: "Bình thường", exact: true }).click();
-  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
   await expect(page.getByRole("button", { name: "Chọn buổi hôm nay cùng AI" })).toBeVisible();
 });

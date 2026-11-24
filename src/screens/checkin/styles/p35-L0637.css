@@ -1,7 +1,6 @@
 @media (orientation: landscape) and (max-height: 520px) {
   .flow-fixed-footer:has(.mcy-checkin-footer) { height: 100px; }
   .mcy-flow-footer.mcy-checkin-footer { gap: 4px; padding: 4px 16px calc(var(--device-safe-area-bottom, 34px) + 4px); }
-  .mcy-checkin-progress { min-height: 24px; }
   .mcy-flow-footer.mcy-checkin-footer .mcy-action { min-height: 44px; }
   .mcy-flow-footer.mcy-checkin-footer .mcy-checkin-footer-options button { min-height: 36px; font-size: var(--text-caption); }
 }

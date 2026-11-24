@@ -24,3 +24,11 @@ export function aiPracticeOffered(state: Pick<DemoState, "aiCapability" | "bodyS
 export function hasCheckinBaseline(state: Pick<DemoState, "bodyStatus">) {
   return state.bodyStatus !== null && state.bodyStatus !== "skipped";
 }
+// The device's guest journal belongs to settled guest mode only. It is hidden, and a check-in is never saved to it,
+// while a session is being restored, and also when a stored sign-in could not be restored ("error"): that person is
+// an account holder, so their entry must not land silently in the device journal and then vanish once they sign in.
+// `storedAuthSession` is hasStoredAuthSession() from the caller (kept as a parameter so this stays pure).
+export function showsGuestJournal(state: Pick<DemoState, "signedIn" | "backendStatus">, storedAuthSession: boolean) {
+  if (state.signedIn || state.backendStatus === "loading") return false;
+  return !storedAuthSession || state.backendStatus === "ready";
+}

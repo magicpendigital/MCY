@@ -1362,14 +1362,22 @@ test("short portrait and landscape mobile viewports keep the check-in actions re
   }
 });
 
-test("short second check-in step signals when more choices are available by scrolling", async ({ page }) => {
+test("signed-in check-in is one screen and an account never sees the device's guest journal", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
-  // The energy/time step belongs to account check-ins, so this uses a fictional signed-in learner.
+  // One-step check-in for everyone (plan 2026-11-24 step 2): no energy/time step, no step count, no progress bar.
   const userId = "44444444-4444-4444-8444-444444444444";
   const session = { access_token: "fictional-step-two-token", token_type: "bearer", expires_in: 3600, expires_at: Math.floor(Date.now() / 1000) + 3600, refresh_token: "fictional-refresh", user: { id: userId, aud: "authenticated", role: "authenticated", email: "step-two@example.test", email_confirmed_at: "2026-01-01T00:00:00Z", app_metadata: {}, user_metadata: {}, identities: [], created_at: "2026-01-01T00:00:00Z" } };
-  await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), session);
+  // A fictional guest entry already on this device: the account must not see it, and nothing may upload it.
+  const guestJournal = { version: 1, entries: [{ id: "guest-device-entry", date: "2026-11-20", time: "08:30", kind: "Ghi riêng", status: "tired", observations: [] }] };
+  await page.addInitScript(([value, journal]) => {
+    localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value));
+    localStorage.setItem("mcy.guest.journal.v1", JSON.stringify(journal));
+  }, [session, guestJournal] as const);
+  const writes: string[] = [];
   await page.route("https://mcy-playwright.invalid/**", route => {
-    const path = new URL(route.request().url()).pathname;
+    const request = route.request();
+    const path = new URL(request.url()).pathname;
+    if (request.method() !== "GET" && (request.postData() ?? "").includes("guest-device-entry")) writes.push(path);
     if (path.endsWith("/profiles")) return route.fulfill({ json: { user_id: userId, display_name: "Step Two", locale: "vi-VN", body_display_preference: "neutral" } });
     if (path.endsWith("/get_my_consent_state")) return route.fulfill({ json: { ...emptyConsentState, terms: true, privacy: true, wellbeing_data: true } });
     if (path.endsWith("/get_my_consent_policy_versions")) return route.fulfill({ json: CONSENT_POLICY_VERSIONS });
@@ -1378,35 +1386,33 @@ test("short second check-in step signals when more choices are available by scro
     return route.fulfill({ json: path.endsWith("/user") ? session.user : [] });
   });
   await page.goto("/?mode=web");
+  // Signed-in marker first: a restored account skips the welcome screen, so nothing below can pass while still restoring.
+  await expect(page.getByRole("button", { name: "Trải nghiệm thử" })).toHaveCount(0);
   await page.getByRole("button", { name: "Bắt đầu check-in" }).click();
-  await expect(page.locator(".mcy-step-count")).toContainText("Bước 1 / 2");
-  await page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" }).click();
-  await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu để chăm sóc cơ thể?" })).toBeVisible();
+  await expect(page.locator(".mcy-step-count")).toContainText("Cảm nhận cơ thể");
+  await expect(page.locator(".mcy-step-count")).not.toContainText("Bước");
+  await expect(page.locator(".mcy-checkin-progress")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Tiếp: năng lượng và thời gian" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "5 phút" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Hôm nay bạn muốn dành bao lâu để chăm sóc cơ thể?" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Tìm bài học ngắn", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Chọn buổi hôm nay cùng AI" })).toHaveCount(0);
+  await page.locator(".mcy-body-status-actions").getByRole("button", { name: "Mệt", exact: true }).click();
+  // Account save, not the device journal: the save link shows, with no guest note, account offer or restore card.
+  await expect(page.getByRole("button", { name: "Chỉ ghi lại cảm nhận hôm nay, không chọn bài", exact: true })).toBeVisible();
+  await expect(page.getByTestId("guest-save-note")).toHaveCount(0);
+  await expect(page.getByTestId("checkin-restore")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Lưu bằng tài khoản" })).toHaveCount(0);
 
-  const scroll = page.locator('.mcy-flow-route-accessibility[data-flow-route="checkin"][data-flow-active="true"] .mobile-scroll');
-  const hint = page.locator(".mcy-checkin-step-two-scroll-hint");
-  await expect.poll(() => scroll.evaluate(element => element.scrollHeight - element.clientHeight)).toBeGreaterThan(8);
-  await expect(hint).toContainText("Cuộn xuống để xem thêm lựa chọn");
-  await expect(hint).toBeVisible();
-  const hintContrast = await hint.evaluate(element => {
-    const style = getComputedStyle(element);
-    const luminance = (color: string) => {
-      const [r, g, b] = color.match(/[\d.]+/g)!.slice(0, 3).map(channel => Number(channel) / 255).map(channel => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
-      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    };
-    const foreground = luminance(style.color);
-    const background = luminance(style.backgroundColor);
-    return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
-  });
-  expect(hintContrast).toBeGreaterThanOrEqual(4.5);
-
-  await scroll.evaluate(element => element.scrollTo({ top: element.scrollHeight, behavior: "instant" }));
-  await expect.poll(() => hint.isVisible()).toBe(false);
-
-  await scroll.evaluate(element => element.scrollTo({ top: 0, behavior: "instant" }));
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  await expect.poll(() => scroll.evaluate(element => element.scrollHeight - element.clientHeight)).toBeLessThanOrEqual(8);
-  await expect(hint).toHaveCount(0);
+  await page.goto("/?mode=web");
+  await expect(page.getByRole("button", { name: "Trải nghiệm thử" })).toHaveCount(0);
+  await page.getByRole("navigation", { name: "Điều hướng chính" }).getByRole("button", { name: /Hành trình/ }).click();
+  await expect(page.getByRole("heading", { name: "Hành trình của bạn" })).toBeVisible();
+  await expect(page.locator(".mcy-journey-empty")).toBeVisible();
+  await expect(page.getByText("CHỈ LƯU TRÊN MÁY NÀY")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Xóa mọi ghi nhận trên máy này" })).toHaveCount(0);
+  expect(writes).toEqual([]);
+  expect(await page.evaluate(() => localStorage.getItem("mcy.guest.journal.v1"))).toContain("guest-device-entry");
 });
 
 test("short landscape keeps welcome choices and all benefits clear of the fixed footer", async ({ browser }) => {
