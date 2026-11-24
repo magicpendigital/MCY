@@ -26,7 +26,7 @@ function HomeQuickPicks() {
     <h2 id="quickpicks-heading">Bắt đầu nhẹ nhàng</h2>
     <p>Ba bài ngắn nhất trong thư viện, để làm quen trước khi chọn thêm.</p>
     {picks.map(item => <button key={item.lessonId} type="button" className="mcy-finder-row" onClick={() => { update({ selectedCourseId: item.courseId, selectedLessonId: item.lessonId }); flow.push(routes.courseDetail); }}><span className="mcy-finder-time">{item.time}</span><span><strong>{item.title}</strong><small>{item.courseTitle}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
-    <button type="button" className="mcy-quiet-link" onClick={() => flow.push(routes.discover)}>Xem tất cả 38 bài</button>
+    <button type="button" className="mcy-quiet-link" onClick={() => flow.push(routes.discover)}>Xem tất cả bài học</button>
   </section>;
 }
 

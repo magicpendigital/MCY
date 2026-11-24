@@ -250,7 +250,8 @@ async function openGuestCheckin(page: Page, touch = false, locale: "vi-VN" | "en
   // A guest now lands on Hôm nay first; check-in is the optional second choice there.
   await activate(page.getByRole("button", { name: "Bắt đầu check-in", exact: true }), touch);
   await expect(page.getByRole("heading", { name: locale === "en-US" ? "How does your body feel today?" : "Hôm nay, cơ thể bạn cảm thấy thế nào?" })).toBeVisible();
-  if (locale === "en-US") await expect(page.locator(".mcy-header-title")).toHaveText("A Little Yoga");
+  // Sub-screens show their own title; check-in has an English title in the preview.
+  if (locale === "en-US") await expect(page.locator(".mcy-header-title")).toHaveText("Today's check-in");
 }
 
 for (const device of ["iphone", "pixel-10"] as const) {

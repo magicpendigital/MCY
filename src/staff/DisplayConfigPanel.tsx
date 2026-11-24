@@ -91,7 +91,7 @@ export default function DisplayConfigPanel({ userId }: { userId: string }) {
   const save = async () => {
     if (!config || !dirty || stale) return;
     const data = await call({ action: "save_display", expectedVersion: version, config }, true);
-    if (data?.receipt) { setNotice("Đã lưu cấu hình và ghi nhật ký. App học viên chưa đọc cấu hình này (giai đoạn 4), nên học viên chưa thấy thay đổi."); await load(); }
+    if (data?.receipt) { setNotice(`Đã lưu cấu hình và ghi nhật ký. ${data.snapshotSynced === true ? "Bản công khai cho học viên đã cập nhật; app thấy thay đổi ở lần mở sau." : data.snapshotSynced === false ? "Chưa cập nhật được bản công khai nên học viên chưa thấy thay đổi này." : "Máy chủ này chưa bật bản công khai; app học viên dùng nội dung đi kèm."}`); await load(); }
   };
 
   return <section className="owner-panel owner-display" aria-label="Cấu hình hiển thị trên app">

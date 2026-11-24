@@ -225,7 +225,7 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
     if (!version || uncertain) return;
     setVisConfirm(false);
     const data = await run({ action: "set_visibility", itemId: version.item_id, seq: version.seq, visible }, true);
-    if (data?.receipt) { setNotice(visible ? "Đã bật hiển thị cho phiên bản này và ghi nhật ký. App chưa đọc kho nội dung (giai đoạn 4), nên học viên chưa thấy thay đổi." : "Đã tắt hiển thị và ghi nhật ký."); await open(version.item_id, version.seq, true); }
+    if (data?.receipt) { setNotice(`${visible ? "Đã bật hiển thị cho phiên bản này và ghi nhật ký." : "Đã tắt hiển thị và ghi nhật ký."} ${data.snapshotSynced === true ? "Bản công khai cho học viên đã cập nhật; app thấy thay đổi ở lần mở sau." : data.snapshotSynced === false ? "Chưa cập nhật được bản công khai nên học viên chưa thấy thay đổi này." : "Máy chủ này chưa bật bản công khai; app học viên dùng nội dung đi kèm."}`); await open(version.item_id, version.seq, true); }
   };
   const needsAll = reviewChecks.every(k => checks[k] || exemptChecks.includes(k) || decision !== "approved");
   const canReview = Boolean(version && version.status === "submitted" && version.seq === version.latest_seq);
@@ -318,7 +318,7 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
             {row && <button type="button" disabled={busy || uncertain} onClick={() => void setVisible(false)}>Tắt hiển thị</button>}
             {(canShow && (!row || !row.effective)) && (!visConfirm ? <button type="button" className="owner-primary" disabled={busy || uncertain} onClick={() => setVisConfirm(true)}>{row ? "Bật lại hiển thị" : "Bật hiển thị"}</button>
               : <span role="alertdialog" aria-label="Xác nhận bật hiển thị"><strong>Bật hiển thị phiên bản {version.seq}?</strong> <button type="button" className="owner-primary" disabled={busy} onClick={() => void setVisible(true)}>Xác nhận bật</button> <button type="button" onClick={() => setVisConfirm(false)}>Hủy</button></span>)}
-            <p className="owner-hub-note">Công tắc chỉ có hiệu lực khi bật sau lần duyệt gần nhất. Mỗi nội dung chỉ có một phiên bản đang bật. App học viên đọc kho nội dung ở giai đoạn 4; hiện app vẫn dùng nội dung trong mã.</p></>;
+            <p className="owner-hub-note">Công tắc chỉ có hiệu lực khi bật sau lần duyệt gần nhất. Mỗi nội dung chỉ có một phiên bản đang bật. App học viên đọc bản công khai mới nhất của kho nội dung; khi chưa có bản công khai, app dùng nội dung đi kèm.</p></>;
         })()}
       </section>
 
