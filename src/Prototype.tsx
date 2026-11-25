@@ -39,6 +39,8 @@ import { latestFeedback, normalizeAuthDestination } from "./app/predicates";
 import { useLearnerContinuation } from "./app/useLearnerContinuation";
 import { snapshotFromDatabase } from "./app/snapshots";
 import { consentStateForDemo } from "./app/persistence";
+import { loadGuestJournal, writeGuestJournal } from "./app/guestJournal";
+import { BODY_REGIONS } from "./bodyRegions";
 import { handleNativeAuthUrl } from "./app/auth";
 import { Header } from "./app/ui/Header";
 import { finishAtAuthDestination, HelpRoutesContext, RoutesContext } from "./app/navigation";
@@ -165,15 +167,27 @@ function TeacherWorkspacePortal() {
 
 function LearnerPrototype() {
   const reviewConsentScreen = import.meta.env.DEV && new URLSearchParams(window.location.search).get("review-screen") === "consent";
-  const [state, setState] = useState<DemoState>(() => reviewConsentScreen ? {
-    ...initialState,
-    signedIn: true,
-    onboardingComplete: true,
-    termsAccepted: true,
-    privacyAccepted: true,
-    consentBaseline: { ...emptyConsentState, terms: true, privacy: true },
-    consentPolicyVersions: REQUIRED_CONSENT_POLICY_VERSIONS,
-  } : initialState);
+  const [state, setState] = useState<DemoState>(() => {
+    if (reviewConsentScreen) return {
+      ...initialState,
+      signedIn: true,
+      onboardingComplete: true,
+      termsAccepted: true,
+      privacyAccepted: true,
+      consentBaseline: { ...emptyConsentState, terms: true, privacy: true },
+      consentPolicyVersions: REQUIRED_CONSENT_POLICY_VERSIONS,
+    };
+    // Guest check-ins saved on this device earlier; shown only in guest mode (showsGuestJournal).
+    const guest = loadGuestJournal(BODY_REGIONS);
+    return { ...initialState, guestJournal: guest.entries, guestJournalPersistent: guest.persistent };
+  });
+  // Every change to the guest journal (save, edit, delete one, delete all) is written back to this device only.
+  const loadedGuestJournal = useRef(state.guestJournal);
+  useEffect(() => {
+    if (state.guestJournal === loadedGuestJournal.current) return;
+    loadedGuestJournal.current = state.guestJournal;
+    if (!writeGuestJournal(state.guestJournal)) setState(previous => previous.guestJournalPersistent ? { ...previous, guestJournalPersistent: false } : previous);
+  }, [state.guestJournal]);
   const [authInitNonce, setAuthInitNonce] = useState(0);
   const authStarted = useRef(false);
   useEffect(() => {

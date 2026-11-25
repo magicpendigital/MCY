@@ -49,7 +49,6 @@
     margin-inline:auto;
   }
 
-  .mobile-web-stage[data-runtime-mode="web"] .mcy-checkin-footer .mcy-checkin-progress,
   .mobile-web-stage[data-runtime-mode="web"] .mcy-checkin-footer .mcy-checkin-footer-options {
     width:100%;
     max-width:560px;

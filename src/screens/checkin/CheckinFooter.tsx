@@ -21,11 +21,9 @@ export function CheckinFooter() {
     update({ authReturnTo: "discover", authMode: "create" });
     flow.push(routes.authEmail);
   };
-  const advanceStep = () => update({ checkinStep: 2 });
-  // Guests have no energy/time step: skipping goes straight to the lesson finder.
+  // One screen for everyone: skipping clears the body entries and goes straight to the lesson finder.
   const applySkip = () => {
-    if (state.signedIn) { update({ checkinStep: 2, bodyStatus: "skipped", preObservations: [], regions: [] }); return; }
-    update({ checkinStep: 1, bodyStatus: "skipped", preObservations: [], regions: [], checkinBaselineReady: false });
+    update({ bodyStatus: "skipped", preObservations: [], regions: [], checkinBaselineReady: false });
     flow.push(routes.discover);
   };
   const skipBody = () => {
@@ -33,19 +31,10 @@ export function CheckinFooter() {
     applySkip();
   };
   return <div className="mcy-flow-footer single mcy-checkin-footer">
-    {state.signedIn && <div className="mcy-checkin-progress" aria-hidden="true">
-      <span className="mcy-progress-track"><i className={state.checkinStep === 1 ? "active" : "done"} /><i className={state.checkinStep === 2 ? "active" : ""} /></span>
-    </div>}
-    {!state.signedIn ? <>
-      <Action onClick={browseFreeLessons}>{msg(locale, "checkin.guest.find")}</Action>
-      <div className="mcy-checkin-footer-options"><button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button></div>
-    </> : state.checkinStep === 1 ? <>
-      <Action onClick={advanceStep}>{msg(locale, "checkin.step1.next")}</Action>
-      <div className="mcy-checkin-footer-options"><button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button><button onClick={browseFreeLessons}>{msg(locale, "checkin.directPlan")}</button></div>
-    </> : <>
-      {aiPracticeOffered(state) ? <><Action onClick={() => { update({ checkinBaselineReady: hasCheckinBaseline(state) }); flow.push(routes.dailyPractice); }}>{locale === "en-US" ? "Choose today's practice with AI" : "Chọn buổi hôm nay cùng AI"}</Action><button className="mcy-quiet-link" onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</button></> : <Action onClick={browseFreeLessons}>{msg(locale, "checkin.step2.guest")}</Action>}
-      <div className="mcy-checkin-footer-options">{!state.signedIn && <button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button>}<button onClick={() => update({ checkinStep: 1 })}>{msg(locale, "checkin.backToBody")}</button></div>
-    </>}
+    {state.signedIn && aiPracticeOffered(state)
+      ? <><Action onClick={() => { update({ checkinBaselineReady: hasCheckinBaseline(state) }); flow.push(routes.dailyPractice); }}>{locale === "en-US" ? "Choose today's practice with AI" : "Chọn buổi hôm nay cùng AI"}</Action><button className="mcy-quiet-link" onClick={browseFreeLessons}>{msg(locale, "checkin.guest.find")}</button></>
+      : <Action onClick={browseFreeLessons}>{msg(locale, "checkin.guest.find")}</Action>}
+    <div className="mcy-checkin-footer-options">{!state.signedIn && <button onClick={openOptionalAccount}>{msg(locale, "checkin.step2.account")}</button>}<button onClick={skipBody}>{msg(locale, "checkin.step1.skip")}</button></div>
     <BottomSheet open={confirmSkip} onOpenChange={setConfirmSkip} title={locale === "en-US" ? "Skip the body check-in?" : "Bỏ ghi nhận vùng cơ thể?"} description={locale === "en-US" ? "The areas you entered will be cleared from this check-in. You can add them again later." : "Các vùng vừa ghi sẽ được xóa khỏi lần check-in này. Bạn có thể chọn lại sau."} snap={0.38}>
       <div className="mcy-sheet-actions"><button className="mcy-action" onClick={() => { applySkip(); setConfirmSkip(false); }}>{locale === "en-US" ? "Skip and continue" : "Bỏ qua và tiếp tục"} <ArrowRightIcon /></button><button className="mcy-quiet-link" onClick={() => setConfirmSkip(false)}>{locale === "en-US" ? "Keep my entries" : "Giữ các vùng đã ghi"}</button></div>
     </BottomSheet>

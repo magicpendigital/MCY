@@ -13,7 +13,6 @@ export type DialogueChoice = "Nhiều hướng dẫn" | "Nhịp chậm" | "Ít l
 export type DialogueMessage = { role: "user" | "assistant"; content: string };
 export type Outcome = "Dễ chịu hơn" | "Như cũ" | "Khó chịu hơn" | "Chưa rõ" | null;
 export type Pace = "Vừa" | "Hơi nhanh" | "Hơi chậm" | null;
-export type CheckinStep = 1 | 2;
 
 export type Snapshot = {
   id: string; day: number; date: string; time: string; kind: "Trước tập" | "Sau tập" | "Ghi riêng";
@@ -24,7 +23,6 @@ export type Snapshot = {
 
 export type DemoState = {
   locale: AppLocale;
-  checkinStep: CheckinStep;
   minutes: number;
   energy: Energy | null;
   regions: BodyRegion[];
@@ -55,6 +53,10 @@ export type DemoState = {
   rememberPace: boolean;
   usePreviousFeedback: boolean;
   history: Snapshot[];
+  /** Guest check-ins kept only on this device (src/app/guestJournal.ts); shown only while not signed in. */
+  guestJournal: Snapshot[];
+  /** False when device storage is blocked: guest entries then last for this session only. */
+  guestJournalPersistent: boolean;
   signedIn: boolean;
   userId: string | null;
   backendStatus: "loading" | "ready" | "error";

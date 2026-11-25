@@ -1,6 +1,6 @@
 import { viApp, enApp } from "./i18n/app";
 import { viWelcome, enWelcome } from "./i18n/welcome";
-import { viCheckin, enCheckin, regionLabels, energyLabels, levelLabels, sideLabels } from "./i18n/checkin";
+import { viCheckin, enCheckin, regionLabels, levelLabels, sideLabels } from "./i18n/checkin";
 import { viDialogue, enDialogue } from "./i18n/dialogue";
 import { viReflection, enReflection } from "./i18n/reflection";
 import { viJourney, enJourney } from "./i18n/journey";
@@ -45,10 +45,6 @@ export function msg(locale: AppLocale, key: MessageKey): string {
 
 export function regionLabel(locale: AppLocale, value: string): string {
   return regionLabels[locale][value] ?? value;
-}
-
-export function energyLabel(locale: AppLocale, value: string): string {
-  return energyLabels[locale][value] ?? value;
 }
 
 const guidedChoiceLabels: Record<AppLocale, Record<string, string>> = {

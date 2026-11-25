@@ -14,7 +14,6 @@
   .mcy-checkin-illustration { position:sticky; top:4px; align-self:start; }
   .mcy-checkin-illustration .mcy-body-art { width:min(100%, 208px); }
   .mcy-body-orientation { margin-top:1px; font-size:8px; }
-  .mcy-checkin-fields .mcy-energy-card { margin-top:0; }
   .mcy-snapshot-body { grid-template-columns:minmax(175px,.78fr) minmax(0,1.22fr); gap:10px; align-items:start; }
   .mcy-snapshot-map { position:sticky; top:4px; align-self:start; }
   .mcy-snapshot-card .mcy-body-art { width:min(100%, 200px); }

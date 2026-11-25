@@ -52,3 +52,6 @@
 .mcy-trend-observations strong { font-weight:700; }
 .mcy-trend-observations svg { width:14px; height:14px; }
 .mcy-region-trend > small { display:block; margin-top:10px; color:#7a8776; font-size:10px; line-height:1.4; }
+.mcy-journey-device { margin: 14px 0 4px; padding: 12px 14px; border: 1px solid #ebece4; border-radius: 14px; background: #fffdf9; }
+.mcy-journey-device p { margin: 0; color: #5f6b5c; font-size: 12px; line-height: 1.45; }
+.mcy-journey-device .mcy-delete-link { min-height: 40px; margin: 6px 0 0; padding: 0; font-size: 12px; }
