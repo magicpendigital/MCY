@@ -135,3 +135,44 @@ Khám phá → trang khóa trực tuyến (giới thiệu, giảng viên, lịch
 - Chrome extensions: "Audio recording and screen capture" (`tabCapture`, offscreen document, Chrome 116+).
 - Google Play Payments policy; blog Android 2020 về ngoại lệ tạm thời cho lớp trực tuyến.
 - Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 (thuvienphapluat.vn, hatinh.gov.vn).
+
+## 11. Owner trả lời ngày 25/11 và phương án điều chỉnh
+
+| # | Owner quyết | Hệ quả |
+|---|---|---|
+| 1 | Khóa trả phí **có** lớp trực tiếp: PT 1-1 và lớp online nhóm | Thay mặc định 21/11 "khóa trả phí chưa gồm lớp trực tiếp". Mô hình dữ liệu thêm `kind` cho đợt học: `pt_1_1` (sĩ số 1) hoặc `group`. |
+| 2 | Muốn dùng YouTube nếu được, để tiết kiệm chi phí lưu trữ giai đoạn đầu | Xem phương án Y bên dưới. Quy tắc "video trả phí không đặt ở YouTube unlisted" **chưa đổi**: cần Owner chấp nhận rủi ro ở điểm Y-a. |
+| 3 | Dùng cả Zoom và Meet tùy buổi; **chưa có gói ghi hình**, đang dùng phần mềm ghi bên thứ ba | Ghi hình đám mây không dùng được lúc này. Extension Chrome trở thành **phương án chính**, không còn là dự phòng. |
+| 4 | Học viên được từ chối ghi hình; video trả phí không công khai trên app, chỉ người đã mua xem theo tài khoản | Cần đồng ý ghi hình riêng cho từng học viên; ai từ chối thì tắt camera và ẩn tên trong buổi, hoặc buổi đó chỉ ghi phần giảng viên. Quyền xem kiểm ở server theo tài khoản đã ghi danh. |
+| 5 | (chưa trả lời) sĩ số, vắng/hủy buổi | Còn mở. Với PT 1-1, cần quy định dời buổi. |
+| 6 | Có thử đợt đầu (LC0). Học viên Việt Nam chuyển khoản vào tài khoản giảng viên; quốc tế để sau | Thanh toán nằm **ngoài app**; Owner hoặc giảng viên xác nhận đã nhận tiền rồi ghi danh tay trong workspace. |
+
+### Phương án Y: ghi bằng extension, lưu trên YouTube
+
+- **Ghi:** extension Chrome (Manifest V3) ghi tab Zoom web hoặc Meet bằng `tabCapture` + tài liệu offscreen, kèm tiếng micro của giảng viên; lưu tệp WebM/MP4 trên máy giảng viên. Bắt đầu ghi cần một lần bấm của giảng viên (Chrome bắt buộc). Có báo "đang ghi" trong buổi. ⚑
+  - Giới hạn: không ghi được app Zoom cài trên máy (chỉ Zoom chạy trong trình duyệt); đóng tab hoặc máy ngủ là dừng ghi; nên ghi thành từng đoạn để mất ít nếu lỗi.
+- **Đưa lên YouTube, giai đoạn đầu:** giảng viên tải tệp lên YouTube Studio bằng tay, chọn **Không công khai (unlisted)**, rồi dán link vào buổi học trong workspace MCY. Không cần API, không cần kiểm định của YouTube.
+  - Tải tự động qua API: dự án API chưa qua kiểm định của YouTube chỉ tải được video **riêng tư** và không đổi được chế độ cho tới khi qua kiểm định ⚑. Để sau, khi có nhiều buổi.
+  - Chế độ **riêng tư** chia sẻ theo từng tài khoản Google không dùng được trong app (học viên phải đăng nhập Google trong khung nhúng; giới hạn số người được chia sẻ ⚑).
+- **Y-a. Rủi ro Owner phải chấp nhận nếu chọn YouTube:** link unlisted ai có cũng xem được, kể cả người chưa mua, nếu học viên chép link ra ngoài. App chỉ cho người đã mua mở trang xem lại và không hiện link thô, nhưng **không chặn được** việc chia sẻ link. Video có hình học viên làm rủi ro nặng hơn: nên ưu tiên khung hình chỉ có giảng viên.
+- **Nhận xét có mốc thời gian:** dùng được với YouTube. Trong workspace, giảng viên xem video nhúng; nút "Gắn mốc" lấy thời điểm đang phát (IFrame API cho phép). Học viên chạm chip `12:34` để nhảy tới đúng đoạn.
+- **Ảnh cắt:** không lấy được từ khung YouTube. Extension giữ tệp gốc trên máy giảng viên nên có thể cắt ảnh từ tệp đó, hoặc giảng viên chụp màn hình; ảnh nhỏ tải lên Storage riêng tư của MCY, chỉ học viên của buổi xem được.
+- **Khi doanh thu đủ:** chuyển video sang nơi lưu có bảo vệ (lựa chọn F1) mà không đổi luồng của học viên; dữ liệu buổi học chỉ lưu "nguồn video" nên đổi nguồn không phá mốc thời gian.
+
+### Thanh toán đợt thử (chuyển khoản) ⚑
+- App (nhất là bản Android trên Play) **không hiện giá, số tài khoản hay hướng dẫn chuyển khoản** cho khóa này; Google Play yêu cầu nội dung số bán trong app dùng Play Billing. Hướng dẫn chuyển khoản đi qua kênh ngoài app (email, Zalo, trang web riêng). Cần kiểm lại chính sách Play cho dịch vụ 1-1 trực tiếp. ⚑
+- Nhận tiền qua tài khoản cá nhân của giảng viên: hóa đơn, thuế và hoàn tiền là trách nhiệm Owner/giảng viên; agent không điền pháp nhân hay giá.
+- Ghi danh sau chuyển khoản là thao tác có kiểm toán trong workspace (ai xác nhận, lúc nào), không phải học viên tự mở quyền.
+
+### Lát triển khai điều chỉnh
+| Lát | Nội dung |
+|---|---|
+| LC0 | Trang khóa trực tuyến (PT 1-1, nhóm); Lớp của tôi đọc lịch thật; Owner ghi danh tay sau chuyển khoản; một đợt thử |
+| LC1 | Lịch, link phòng họp chỉ người ghi danh thấy, hộp thư trong app, email + tệp .ics, nhắc theo đồng ý |
+| LC2 | Nhận xét sau buổi gắn với buổi họp; đồng ý ghi hình từng học viên |
+| LC3 | Extension Chrome ghi tab (bản thử với một giảng viên), tệp trên máy giảng viên |
+| LC4 | Gắn link YouTube unlisted vào buổi (chỉ khi Owner chấp nhận Y-a); trang xem lại chỉ cho người đã ghi danh |
+| LC5 | Mốc thời gian và ảnh cắt trong nhận xét |
+| LC6 | Tải lên tự động qua API (sau kiểm định YouTube) hoặc chuyển sang nơi lưu có bảo vệ |
+
+Thứ tự trong hàng việc chung: các lát này cần migration và Edge Function (R3), nên xếp sau bước 6 (vai người duyệt), trừ khi Owner muốn chen LC0 lên trước.
