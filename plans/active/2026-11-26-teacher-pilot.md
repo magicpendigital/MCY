@@ -153,6 +153,9 @@ Kịch bản đợt N (ngoài app). Owner và GV1 tự làm, agent không giữ 
 ### Thay đổi trong lúc làm P0
 - Email đã có tài khoản: Auth không gửi thư mời cho địa chỉ đã có tài khoản (`email_exists`). Trước đây lời mời sẽ kẹt ở "chưa xác nhận". Thêm RPC `mcy_teacher_invite_mark_existing_account` vào migration `20261002204228` (chưa áp nên còn sửa được). Edge trả `existing_account` và ô mời nói rõ: không gửi thư; Owner nhắn GV1 đăng nhập bằng mã gửi qua email rồi mở trang giáo viên. Nhận lời mời vẫn cần email đã xác minh của chính tài khoản khớp mã băm, nên cổng không lỏng hơn.
 - Ô "Mời giáo viên" thay thẻ khóa trong workspace Owner (`src/staff/TeacherInvitePanel.tsx`): chuẩn hóa email, một khóa idempotency cho mỗi địa chỉ (bấm lại không gửi thư thứ hai), không lưu email trong trình duyệt, báo lỗi trung thực (cổng đóng, không phải Owner, chưa xác nhận gửi).
+- Tập dượt PGlite (`npm run test:teacher-control-plane-rehearsal`, cần `MCY_PGLITE_MODULE_PATH`): chuỗi 31 migration staging đã áp rồi `20261002204228`; 7/7 đạt. Áp sạch, chỉ thêm 8 RPC (security definer, `search_path` rỗng, chỉ service_role được EXECUTE); anon/authenticated không đọc/ghi/TRUNCATE bảng lời mời. Đủ luồng mời → gửi → nhận, giới hạn 3/giờ, lời mời hết hạn/không chắc, email đã có tài khoản, người lạ, email chưa xác minh, tên sai, vai trò đã thu hồi.
+- Edge tính mã băm từ email của phiên đã xác minh (không nhận mã băm từ trình duyệt), nên SQL tin mã băm là đúng thiết kế.
+- **Giới hạn đã biết (backlog):** giảng viên đã bị thu hồi quyền không thể được mời lại bằng cùng email (RPC nhận lời mời kiểm tra lời mời đã dùng trước). Không ảnh hưởng pilot; nếu cần mời lại sẽ sửa bằng migration riêng.
 - **Điểm chặn:** phiên cloud này không có công cụ Supabase (không connector, không CLI, không khóa). Bước 1, 4, 5 cần một phiên có connector Supabase của Owner (máy Windows của Owner) hoặc cách khác do Owner chọn.
 
 ## Progress
