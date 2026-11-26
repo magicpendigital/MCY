@@ -1,0 +1,95 @@
+/* Chút slice 1: assistant card on Hôm nay, sequence, end and pain screens. iOS 15 safe: no :has, @container, color-mix,
+   nesting or dynamic viewport units. Every control is at least 48px tall. */
+.mcy-chut-card { margin: 4px 0 6px; padding: 16px 16px 12px; border: 1px solid var(--mcy-border); border-radius: var(--radius-card); background: #fffdf8; box-shadow: var(--shadow-card); }
+.mcy-chut-head { display: flex; align-items: center; gap: 12px; }
+.mcy-chut-avatar { display: inline-flex; width: 40px; height: 40px; flex: none; align-items: center; justify-content: center; border-radius: 50%; background: var(--mcy-pale); color: var(--mcy-sage); }
+.mcy-chut-avatar svg { width: 26px; height: 26px; }
+.mcy-chut-head h2 { margin: 0; font: 600 19px/1.2 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-chut-head small { display: block; margin-top: 2px; color: var(--mcy-muted); font-size: 12px; line-height: 1.4; }
+.mcy-chut-role { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; background: var(--mcy-pale); color: var(--mcy-sage); font: 700 11px/1.4 var(--font-sans); vertical-align: middle; }
+.mcy-chut-greeting { margin: 14px 0 12px; color: var(--mcy-ink); font: 18px/1.35 var(--font-editorial); }
+.mcy-chut-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mcy-chut-chip { display: flex; min-height: 64px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; padding: 10px 12px; border: 1px solid var(--mcy-border); border-radius: 12px; background: var(--mcy-paper, #fff); color: var(--mcy-ink); text-align: left; }
+.mcy-chut-chip strong { font-size: 15px; font-weight: 700; line-height: 1.25; }
+.mcy-chut-chip small { color: var(--mcy-muted); font-size: 12px; line-height: 1.3; }
+.mcy-chut-chip:active { background: var(--mcy-pale); }
+.mcy-chut-chip:focus-visible, .mcy-chut-pain-link:focus-visible, .mcy-chut-primary:focus-visible, .mcy-chut-secondary:focus-visible, .mcy-chut-choice:focus-visible, .mcy-chut-toggle button:focus-visible, .mcy-chut-play:focus-visible { outline: 2px solid var(--mcy-sage); outline-offset: 2px; }
+.mcy-chut-note { margin: 12px 0 4px; color: var(--mcy-muted); font-size: 12.5px; line-height: 1.5; }
+.mcy-chut-pain-link { display: flex; width: 100%; min-height: 48px; align-items: center; justify-content: space-between; gap: 8px; padding: 0 2px; border: 0; border-top: 1px solid var(--mcy-border); background: none; color: var(--mcy-clay); font-size: 14px; font-weight: 700; text-align: left; }
+.mcy-chut-pain-link svg { width: 16px; height: 16px; flex: none; }
+
+/* Quick picks under the card: a small label instead of the old serif heading. */
+.mcy-quickpicks h2#quickpicks-heading { margin: 0 0 6px; color: #748273; font: 850 10px/1.4 var(--font-sans); letter-spacing: .15em; }
+
+.mcy-chut-page h1 { margin: 6px 0 8px; font: 30px/1.15 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-chut-fallback { margin: 0 0 12px; padding: 10px 12px; border-radius: 12px; background: var(--mcy-clay-pale); color: var(--mcy-ink); font-size: 13px; line-height: 1.5; }
+.mcy-chut-video { position: relative; overflow: hidden; width: min(62%, 230px); margin: 0 auto; border-radius: 14px; background: #1f2a23; aspect-ratio: 9 / 16; }
+.mcy-chut-video-landscape { width: 100%; aspect-ratio: 16 / 9; }
+.mcy-chut-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.mcy-chut-play { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; color: #fff; }
+.mcy-chut-poster { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; text-align: left; }
+.mcy-chut-poster img { position: absolute; top: 0; left: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; user-select: none; }
+.mcy-chut-poster::before { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; background: linear-gradient(180deg, rgba(31, 42, 35, .15), rgba(31, 42, 35, .8)); }
+.mcy-chut-poster strong, .mcy-chut-poster small { position: relative; z-index: 2; }
+.mcy-chut-poster strong { font-size: 13px; line-height: 1.3; }
+.mcy-chut-poster small { font-size: 12px; opacity: .85; }
+.mcy-chut-play-label { position: absolute; z-index: 3; top: 50%; left: 50%; display: inline-flex; min-height: 48px; align-items: center; gap: 6px; padding: 0 18px; border-radius: 999px; background: var(--mcy-clay); color: #fff; font-size: 15px; font-weight: 800; transform: translate(-50%, -50%); }
+.mcy-chut-play-label svg { width: 18px; height: 18px; }
+.mcy-chut-offline { margin: 12px 0 0; padding: 12px; border-radius: 12px; background: var(--mcy-clay-pale); }
+.mcy-chut-offline p { margin: 0 0 8px; color: var(--mcy-ink); font-size: 13.5px; line-height: 1.5; }
+.mcy-chut-progress { display: flex; justify-content: space-between; gap: 10px; margin: 14px 0 4px; color: var(--mcy-muted); font-size: 13px; }
+.mcy-chut-progress strong { color: var(--mcy-ink); }
+.mcy-chut-clip-title { margin: 2px 0 4px; font: 20px/1.25 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-chut-hint { margin: 0 0 8px; color: var(--mcy-muted); font-size: 13px; }
+.mcy-chut-countdown { margin: 12px 0; padding: 14px; border: 1px solid var(--mcy-border); border-radius: 14px; background: var(--mcy-pale); }
+.mcy-chut-countdown [role="status"] { display: flex; flex-direction: column; gap: 2px; color: var(--mcy-ink); font-size: 14px; }
+.mcy-chut-countdown-bar { display: block; overflow: hidden; height: 4px; margin: 10px 0; border-radius: 4px; background: rgba(66, 93, 72, .18); }
+.mcy-chut-countdown-bar span { display: block; width: 100%; height: 100%; background: var(--mcy-sage); transform-origin: left center; animation: mcy-chut-countdown 3s linear forwards; }
+@keyframes mcy-chut-countdown { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+.mcy-chut-countdown-actions, .mcy-chut-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mcy-chut-controls { margin: 12px 0; grid-template-columns: 1fr; }
+.mcy-chut-primary, .mcy-chut-secondary { display: flex; width: 100%; min-height: 48px; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 999px; font-size: 14px; font-weight: 800; text-align: center; }
+.mcy-chut-primary { border: 0; background: var(--mcy-clay); color: #fff; }
+.mcy-chut-secondary { border: 1px solid var(--mcy-border); background: var(--mcy-paper, #fff); color: var(--mcy-ink); }
+.mcy-chut-toggle { margin: 8px 0 12px; }
+.mcy-chut-toggle button { display: flex; width: 100%; min-height: 56px; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; border: 0; background: none; color: var(--mcy-ink); text-align: left; }
+.mcy-chut-toggle-copy strong { display: block; font-size: 14px; }
+.mcy-chut-toggle-copy small { display: block; color: var(--mcy-muted); font-size: 12px; line-height: 1.4; }
+.mcy-chut-switch { position: relative; width: 44px; height: 26px; flex: none; border-radius: 13px; background: #c9cfc4; transition: background-color .2s; }
+.mcy-chut-switch span { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform .2s; }
+.mcy-chut-toggle button[aria-checked="true"] .mcy-chut-switch { background: var(--mcy-sage); }
+.mcy-chut-toggle button[aria-checked="true"] .mcy-chut-switch span { transform: translateX(18px); }
+.mcy-chut-toggle p { margin: 0; color: var(--mcy-muted); font-size: 12px; line-height: 1.45; }
+.mcy-chut-reason { margin: 4px 0 14px; padding: 10px 12px; border-left: 3px solid var(--mcy-sage); background: #f6f8f3; color: var(--mcy-ink); font-size: 13px; line-height: 1.5; }
+.mcy-chut-upcoming h3 { margin: 8px 0; color: #748273; font: 850 10px/1.4 var(--font-sans); letter-spacing: .15em; }
+.mcy-chut-upcoming ol { margin: 0; padding: 0; list-style: none; }
+.mcy-chut-upcoming li { display: flex; min-height: 48px; align-items: center; gap: 12px; border-bottom: 1px solid var(--mcy-border); }
+.mcy-chut-upcoming li > span:last-child { display: flex; flex-direction: column; }
+.mcy-chut-upcoming strong { color: var(--mcy-ink); font-size: 14px; font-weight: 600; }
+.mcy-chut-upcoming small { color: var(--mcy-muted); font-size: 12px; }
+.mcy-chut-upcoming-number { display: inline-flex; width: 28px; height: 28px; flex: none; align-items: center; justify-content: center; border-radius: 50%; background: var(--mcy-pale); color: var(--mcy-sage); font-size: 12px; font-weight: 800; }
+.mcy-chut-page .mcy-quiet-link { min-height: 48px; }
+
+.mcy-chut-eyebrow { color: var(--mcy-clay); font-size: 10px; font-weight: 850; letter-spacing: .15em; }
+.mcy-chut-end-count { margin: 0 0 16px; color: var(--mcy-muted); font-size: 14px; }
+.mcy-chut-question h2 { margin: 0 0 12px; font: 19px/1.35 var(--font-editorial); color: var(--mcy-ink); }
+.mcy-chut-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mcy-chut-choice { display: flex; min-height: 52px; flex-direction: column; align-items: center; justify-content: center; padding: 8px 10px; border: 1px solid var(--mcy-border); border-radius: 12px; background: var(--mcy-paper, #fff); color: var(--mcy-ink); font-size: 14px; font-weight: 700; text-align: center; }
+.mcy-chut-choice:disabled { opacity: .55; }
+.mcy-chut-choice-skip { grid-column: 1 / -1; }
+.mcy-chut-choice-skip small { margin-top: 2px; color: var(--mcy-muted); font-size: 12px; font-weight: 400; line-height: 1.4; }
+.mcy-chut-thanks p { margin: 0 0 14px; color: var(--mcy-ink); font: 18px/1.4 var(--font-editorial); }
+.mcy-chut-done { margin-top: 8px; }
+.mcy-chut-invite small { display: block; margin-top: 4px; color: var(--mcy-muted); font-size: 12px; line-height: 1.45; text-align: center; }
+
+.mcy-chut-fixed-label { display: inline-block; margin: 4px 0 12px; padding: 4px 10px; border-radius: 999px; background: var(--mcy-pale); color: var(--mcy-sage); font-size: 11px; font-weight: 800; }
+.mcy-chut-pain p { margin: 0 0 12px; color: var(--mcy-ink); font-size: 14.5px; line-height: 1.55; }
+.mcy-chut-pain .mcy-chut-pain-lead { font: 21px/1.35 var(--font-editorial); }
+.mcy-chut-pain .mcy-chut-primary { margin-top: 18px; }
+.mcy-chut-pain .mcy-chut-secondary { margin-top: 10px; }
+.mcy-chut-pain-small { display: block; margin-top: 8px; color: var(--mcy-muted); font-size: 12px; line-height: 1.45; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mcy-chut-countdown-bar { display: none; }
+  .mcy-chut-switch, .mcy-chut-switch span { transition: none; }
+}

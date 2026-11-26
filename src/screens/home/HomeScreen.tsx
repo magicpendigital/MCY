@@ -6,6 +6,7 @@ import { rememberedPace } from "../../practice/feedbackMemory";
 import { useRoutes } from "../../app/navigation";
 import { useDemo } from "../../app/state";
 import { Action, DemoNote, Eyebrow } from "../../app/ui/controls";
+import { ChutCard } from "../chut/ChutCard";
 
 // Three shortest clips, ordered by length only. This is a gentle first look, not a pick based on the check-in.
 function HomeQuickPicks() {
@@ -23,8 +24,7 @@ function HomeQuickPicks() {
   }, []);
   if (!picks?.length) return null;
   return <section className="mcy-quickpicks" aria-labelledby="quickpicks-heading" data-testid="home-quick-picks">
-    <h2 id="quickpicks-heading">Bắt đầu nhẹ nhàng</h2>
-    <p>Ba bài ngắn nhất trong thư viện, để làm quen trước khi chọn thêm.</p>
+    <h2 id="quickpicks-heading">HOẶC BẮT ĐẦU NHẸ NHÀNG · 3 BÀI NGẮN NHẤT</h2>
     {picks.map(item => <button key={item.lessonId} type="button" className="mcy-finder-row" onClick={() => { update({ selectedCourseId: item.courseId, selectedLessonId: item.lessonId }); flow.push(routes.courseDetail); }}><span className="mcy-finder-time">{item.time}</span><span><strong>{item.title}</strong><small>{item.courseTitle}</small></span><ArrowRightIcon aria-hidden="true" /></button>)}
     <button type="button" className="mcy-quiet-link" onClick={() => flow.push(routes.discover)}>Xem tất cả bài học</button>
   </section>;
@@ -39,7 +39,7 @@ export function HomeScreen() {
   return <MobileScroll className="mcy-scroll"><main className="mcy-page">
     <Eyebrow>{previous ? "MỘT LẦN QUAY LẠI, KHÔNG CẦN VỘI" : "MỖI BUỔI BẮT ĐẦU TỪ HÔM NAY"}</Eyebrow>
     <h1>{previous ? "Hôm nay bạn muốn bắt đầu thế nào?" : "Một chút thời gian cho chính mình."}</h1>
-    <p className="mcy-lead">Chọn một bài ngắn bên dưới để bắt đầu ngay. Bạn không cần đăng nhập hay điền gì trước.</p>
+    <ChutCard />
     {paceMemory ? <div className="mcy-memory-hint"><MagicWandIcon /><span>Lần trước bạn nói nhịp hơi nhanh. Lần này bạn có thể chọn chậm hơn.</span></div> : null}
     <HomeQuickPicks />
     <div className="mcy-home-cta"><Action secondary onClick={() => flow.push(routes.checkin)}>{previous ? "Ghi nhận hôm nay" : "Bắt đầu check-in"}</Action><span>Tùy chọn · ghi nhận cơ thể trước hay sau khi tập đều được</span></div>

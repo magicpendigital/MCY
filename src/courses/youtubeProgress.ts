@@ -35,7 +35,7 @@ export class WatchAccumulator {
   }
 }
 
-type YTPlayer = { getCurrentTime(): number; getDuration(): number; getPlayerState(): number };
+type YTPlayer = { getCurrentTime(): number; getDuration(): number; getPlayerState(): number; loadVideoById?: (videoId: string) => void };
 type YTNamespace = { Player: new (frame: HTMLIFrameElement, options: { events: { onReady?: () => void; onStateChange?: (event: { data: number }) => void; onError?: () => void } }) => YTPlayer };
 declare global { interface Window { YT?: YTNamespace; onYouTubeIframeAPIReady?: () => void } }
 
@@ -104,4 +104,76 @@ export function trackPlayback(frame: HTMLIFrameElement, onProgress: (progress: P
   }).catch(() => { if (!stopped) onUnavailable(); });
 
   return () => { stopped = true; if (timer !== undefined) window.clearInterval(timer); };
+}
+
+export type SequencePlayerHandlers = {
+  /** Progress of the clip that is loaded now, as trackPlayback reports it. */
+  onProgress: (progress: PlaybackProgress) => void;
+  /** The loaded clip reached its end (reported once per clip). */
+  onEnded: () => void;
+  /** The player API cannot be used: the caller must offer a manual "next" control. */
+  onUnavailable: () => void;
+};
+export type SequencePlayer = {
+  /** Loads the next clip in the same player, which keeps the chance of autoplay; false when that is not possible. */
+  load: (videoId: string) => boolean;
+  stop: () => void;
+};
+
+/**
+ * Like trackPlayback, but for a Chút sequence: it also reports the end of each clip and can switch the clip inside the
+ * same iframe. Never destroys the player (React owns the iframe). If the API never answers, onUnavailable is called.
+ */
+export function controlSequencePlayer(frame: HTMLIFrameElement, handlers: SequencePlayerHandlers): SequencePlayer {
+  let stopped = false;
+  let timer: number | undefined;
+  let player: YTPlayer | null = null;
+  let ready = false;
+  let accumulator = new WatchAccumulator();
+  let lastState: PlaybackState = "other";
+  let endedReported = false;
+  let ticks = 0;
+  const toState = (code: number): PlaybackState => code === STATE.PLAYING ? "playing" : code === STATE.PAUSED ? "paused" : code === STATE.ENDED ? "ended" : "other";
+  const sample = (forceReport: boolean) => {
+    if (stopped || !player) return;
+    let state: PlaybackState;
+    try {
+      state = toState(player.getPlayerState());
+      accumulator.tick(player.getCurrentTime(), state === "playing", player.getDuration());
+    } catch { return; }
+    if (state === "ended") accumulator.markEnded();
+    ticks += 1;
+    if (forceReport || state !== lastState || (state === "playing" && ticks % 5 === 0)) {
+      lastState = state;
+      handlers.onProgress(accumulator.summary(state));
+    }
+    if (state === "ended" && !endedReported) { endedReported = true; handlers.onEnded(); }
+    if (state === "playing") endedReported = false;
+  };
+  void loadYouTubeApi().then(YT => {
+    if (stopped) return;
+    try {
+      player = new YT.Player(frame, { events: {
+        onReady: () => { ready = true; if (!stopped && timer === undefined) timer = window.setInterval(() => sample(false), 1000); },
+        onStateChange: () => sample(true),
+        onError: () => { if (!stopped) handlers.onUnavailable(); },
+      } });
+    } catch {
+      if (!stopped) handlers.onUnavailable();
+    }
+  }).catch(() => { if (!stopped) handlers.onUnavailable(); });
+
+  return {
+    load: videoId => {
+      if (stopped || !player || !ready || typeof player.loadVideoById !== "function") return false;
+      try { player.loadVideoById(videoId); } catch { return false; }
+      accumulator = new WatchAccumulator();
+      lastState = "other";
+      // The old clip may still read "ended" for a moment: the new one must play before its end can count.
+      endedReported = true;
+      ticks = 0;
+      return true;
+    },
+    stop: () => { stopped = true; if (timer !== undefined) window.clearInterval(timer); },
+  };
 }
