@@ -71,6 +71,9 @@ import { CourseDetailRoute } from "./screens/discover/CourseDetailRoute";
 import { DiscoverRoute } from "./screens/discover/DiscoverRoute";
 import { JourneyRoute } from "./screens/journey/JourneyRoute";
 import { PracticeRoute } from "./screens/practice/PracticeRoute";
+import { ChutSequenceHeader, ChutSequenceScreen } from "./screens/chut/ChutSequenceScreen";
+import { ChutEndScreen } from "./screens/chut/ChutEndScreen";
+import { ChutPainScreen } from "./screens/chut/ChutPainScreen";
 import { PracticeCapabilityObserver } from "./app/PracticeCapabilityObserver";
 
 const OwnerWorkspace = lazy(() => import("./staff/owner").then(module => ({ default: module.OwnerWorkspace })));
@@ -109,6 +112,9 @@ const ROUTES: Record<string, FlowScreen> = withFlowScreenAccessibility({
   help: { id: "help", header: () => <Header title="Hướng dẫn và hỗ trợ" back />, headerHeight: 55, render: () => <AccountDetailScreen panel="help" /> },
   sync: { id: "sync", header: () => <Header title="Phản hồi sau tập" back />, headerHeight: 55, render: () => <SyncScreen /> },
   discoverDetail: { id: "discover-detail", header: () => <Header title="Chi tiết nội dung" back />, headerHeight: 55, render: () => <DiscoverDetailScreen /> },
+  chutSequence: { id: "chut-sequence", header: () => <ChutSequenceHeader />, headerHeight: 55, render: () => <ChutSequenceScreen /> },
+  chutEnd: { id: "chut-end", header: () => <Header />, headerHeight: 55, render: () => <ChutEndScreen /> },
+  chutPain: { id: "chut-pain", header: () => <Header back />, headerHeight: 55, render: () => <ChutPainScreen /> },
   courseDetail: { id: "course-detail", header: () => <Header title="Khóa học miễn phí" back />, headerHeight: 55, render: () => <CourseDetailRoute /> },
   readingPreview: { id: "reading-preview", header: () => <Header title="Xem trước nội dung" back />, headerHeight: 55, render: () => <ReadingPreviewRoute /> },
   readingLibrary: { id: "reading-library", header: () => <Header title="Bài đọc có hình" back />, headerHeight: 55, render: () => <ReadingLibraryRoute /> },

@@ -71,5 +71,5 @@ Trạng thái: Owner cho bắt đầu ngày 24/11 ("Đồng ý gộp và push, b
 - [x] 1 Sửa mã và test (24/11; Playwright 227/227)
 - [x] 2 QC độc lập: PASS kèm 6 điểm nên sửa; đã sửa 5 điểm (lưu khi đang khôi phục phiên, đọc không ghi đè, bài test tách tài khoản chờ đăng nhập, thêm test, dọn mã bước 2); điểm màu chữ là báo nhầm; Playwright 230/230
 - [x] 3 Kiểm cuối ở agent gốc (check:quick, npm test, check:ios15 PASS; 6 spec liên quan 78/78), PLAN.md, commit
-- [ ] 4 Owner đọc nguyên văn chữ mới, xem privacy.html, cho gộp
+- [x] 4 Owner cho gộp 25/11 (PR #4); privacy.html còn chờ Owner xem
 - Ghi chú: AI (đang tắt) vẫn gửi `minutes: 10` và `intent` mặc định trong `PracticeRoute.tsx`; sửa khi làm Chút lát 1 (bước 3).

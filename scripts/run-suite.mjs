@@ -30,6 +30,7 @@ export const suites = {
     "test:teacher-control-plane",
     "test:teacher-migration-contract",
     "test:guest-journal",
+    "test:chut",
   ],
 };
 // `npm test`: everything that runs without a build, each step once (test:sites needs dist/, so it runs after check:ios15 in CI and `npm run verify`).

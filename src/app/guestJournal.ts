@@ -1,4 +1,4 @@
-import type { BodyLevel, BodyStatus, Observation, Snapshot } from "./model";
+import type { BodyLevel, BodyStatus, Observation, Outcome, Snapshot } from "./model";
 
 // Device-only journal for guests (no account). A guest's saved check-ins stay on this device under one versioned
 // key and are never sent anywhere. They are shown only while the app is in guest mode: a signed-in account never
@@ -20,6 +20,9 @@ const STATUSES: readonly Exclude<BodyStatus, null>[] = ["reported", "none_now", 
 const LEVELS: readonly BodyLevel[] = ["Không khó chịu", "Nhẹ", "Vừa", "Nhiều"];
 const SIDES: readonly Observation["side"][] = ["unspecified", "left", "right", "both"];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
+// A "Sau tập" entry from the end of a Chút sequence also keeps its title, the one-tap answer and whether it ended early.
+const OUTCOMES: readonly Exclude<Outcome, null>[] = ["Dễ chịu hơn", "Như cũ", "Khó chịu hơn", "Chưa rõ"];
+const MAX_LESSON_TITLE = 200;
 
 function defaultStorage(): StorageLike | null {
   try { return typeof window === "undefined" ? null : window.localStorage; } catch { return null; }
@@ -47,7 +50,11 @@ function parseEntry(value: unknown, regions: ReadonlySet<string>): Snapshot | nu
   if (!Array.isArray(item.observations) || item.observations.length > MAX_OBSERVATIONS) return null;
   const observations = item.observations.map(entry => parseObservation(entry, regions));
   if (observations.some(entry => entry === null)) return null;
-  return { id: item.id, day: dayOf(item.date), date: item.date, time: item.time, kind: item.kind as Snapshot["kind"], status: item.status ?? null, observations: observations as Observation[] };
+  const entry: Snapshot = { id: item.id, day: dayOf(item.date), date: item.date, time: item.time, kind: item.kind as Snapshot["kind"], status: item.status ?? null, observations: observations as Observation[] };
+  if (typeof item.lessonTitle === "string" && item.lessonTitle && item.lessonTitle.length <= MAX_LESSON_TITLE) entry.lessonTitle = item.lessonTitle;
+  if (OUTCOMES.includes(item.outcome as Exclude<Outcome, null>)) entry.outcome = item.outcome as Outcome;
+  if (item.endedEarly === true) entry.endedEarly = true;
+  return entry;
 }
 
 /** Reads stored entries, dropping anything malformed. Never throws. */
@@ -71,11 +78,14 @@ export function parseGuestJournal(raw: string | null, regions: readonly string[]
   }
 }
 
-/** Only the fields a check-in needs; the newest GUEST_JOURNAL_LIMIT entries are kept, the oldest dropped. */
+/** Only the fields a check-in (or a Chút "Sau tập" answer) needs; the newest GUEST_JOURNAL_LIMIT entries are kept, the oldest dropped. */
 export function serializeGuestJournal(entries: readonly Snapshot[]): string {
   const kept = entries.slice(-GUEST_JOURNAL_LIMIT).map(item => ({
     id: item.id, date: item.date, time: item.time, kind: item.kind, status: item.status,
     observations: item.observations.map(entry => ({ region: entry.region, side: entry.side, level: entry.level, status: entry.status, note: entry.note })),
+    ...(item.lessonTitle ? { lessonTitle: item.lessonTitle.slice(0, MAX_LESSON_TITLE) } : {}),
+    ...(item.outcome ? { outcome: item.outcome } : {}),
+    ...(item.endedEarly ? { endedEarly: true } : {}),
   }));
   return JSON.stringify({ version: VERSION, entries: kept });
 }

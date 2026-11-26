@@ -135,3 +135,108 @@ Khám phá → trang khóa trực tuyến (giới thiệu, giảng viên, lịch
 - Chrome extensions: "Audio recording and screen capture" (`tabCapture`, offscreen document, Chrome 116+).
 - Google Play Payments policy; blog Android 2020 về ngoại lệ tạm thời cho lớp trực tuyến.
 - Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 (thuvienphapluat.vn, hatinh.gov.vn).
+
+## 11. Owner trả lời ngày 25/11 và phương án điều chỉnh
+
+| # | Owner quyết | Hệ quả |
+|---|---|---|
+| 1 | Khóa trả phí **có** lớp trực tiếp: PT 1-1 và lớp online nhóm | Thay mặc định 21/11 "khóa trả phí chưa gồm lớp trực tiếp". Mô hình dữ liệu thêm `kind` cho đợt học: `pt_1_1` (sĩ số 1) hoặc `group`. |
+| 2 | Muốn dùng YouTube nếu được, để tiết kiệm chi phí lưu trữ giai đoạn đầu | Xem phương án Y bên dưới. Quy tắc "video trả phí không đặt ở YouTube unlisted" **chưa đổi**: cần Owner chấp nhận rủi ro ở điểm Y-a. |
+| 3 | Dùng cả Zoom và Meet tùy buổi; **chưa có gói ghi hình**, đang dùng phần mềm ghi bên thứ ba | Ghi hình đám mây không dùng được lúc này. Extension Chrome trở thành **phương án chính**, không còn là dự phòng. |
+| 4 | Học viên được từ chối ghi hình; video trả phí không công khai trên app, chỉ người đã mua xem theo tài khoản | Cần đồng ý ghi hình riêng cho từng học viên; ai từ chối thì tắt camera và ẩn tên trong buổi, hoặc buổi đó chỉ ghi phần giảng viên. Quyền xem kiểm ở server theo tài khoản đã ghi danh. |
+| 5 | (chưa trả lời) sĩ số, vắng/hủy buổi | Còn mở. Với PT 1-1, cần quy định dời buổi. |
+| 6 | Có thử đợt đầu (LC0). Học viên Việt Nam chuyển khoản vào tài khoản giảng viên; quốc tế để sau | Thanh toán nằm **ngoài app**; Owner hoặc giảng viên xác nhận đã nhận tiền rồi ghi danh tay trong workspace. |
+
+### Phương án Y: ghi bằng extension, lưu trên YouTube
+
+- **Ghi:** extension Chrome (Manifest V3) ghi tab Zoom web hoặc Meet bằng `tabCapture` + tài liệu offscreen, kèm tiếng micro của giảng viên; lưu tệp WebM/MP4 trên máy giảng viên. Bắt đầu ghi cần một lần bấm của giảng viên (Chrome bắt buộc). Có báo "đang ghi" trong buổi. ⚑
+  - Giới hạn: không ghi được app Zoom cài trên máy (chỉ Zoom chạy trong trình duyệt); đóng tab hoặc máy ngủ là dừng ghi; nên ghi thành từng đoạn để mất ít nếu lỗi.
+- **Đưa lên YouTube, giai đoạn đầu:** giảng viên tải tệp lên YouTube Studio bằng tay, chọn **Không công khai (unlisted)**, rồi dán link vào buổi học trong workspace MCY. Không cần API, không cần kiểm định của YouTube.
+  - Tải tự động qua API: dự án API chưa qua kiểm định của YouTube chỉ tải được video **riêng tư** và không đổi được chế độ cho tới khi qua kiểm định ⚑. Để sau, khi có nhiều buổi.
+  - Chế độ **riêng tư** chia sẻ theo từng tài khoản Google không dùng được trong app (học viên phải đăng nhập Google trong khung nhúng; giới hạn số người được chia sẻ ⚑).
+- **Y-a. Rủi ro Owner phải chấp nhận nếu chọn YouTube:** link unlisted ai có cũng xem được, kể cả người chưa mua, nếu học viên chép link ra ngoài. App chỉ cho người đã mua mở trang xem lại và không hiện link thô, nhưng **không chặn được** việc chia sẻ link. Video có hình học viên làm rủi ro nặng hơn: nên ưu tiên khung hình chỉ có giảng viên.
+- **Nhận xét có mốc thời gian:** dùng được với YouTube. Trong workspace, giảng viên xem video nhúng; nút "Gắn mốc" lấy thời điểm đang phát (IFrame API cho phép). Học viên chạm chip `12:34` để nhảy tới đúng đoạn.
+- **Ảnh cắt:** không lấy được từ khung YouTube. Extension giữ tệp gốc trên máy giảng viên nên có thể cắt ảnh từ tệp đó, hoặc giảng viên chụp màn hình; ảnh nhỏ tải lên Storage riêng tư của MCY, chỉ học viên của buổi xem được.
+- **Khi doanh thu đủ:** chuyển video sang nơi lưu có bảo vệ (lựa chọn F1) mà không đổi luồng của học viên; dữ liệu buổi học chỉ lưu "nguồn video" nên đổi nguồn không phá mốc thời gian.
+
+### Thanh toán đợt thử (chuyển khoản) ⚑
+- App (nhất là bản Android trên Play) **không hiện giá, số tài khoản hay hướng dẫn chuyển khoản** cho khóa này; Google Play yêu cầu nội dung số bán trong app dùng Play Billing. Hướng dẫn chuyển khoản đi qua kênh ngoài app (email, Zalo, trang web riêng). Cần kiểm lại chính sách Play cho dịch vụ 1-1 trực tiếp. ⚑
+- Nhận tiền qua tài khoản cá nhân của giảng viên: hóa đơn, thuế và hoàn tiền là trách nhiệm Owner/giảng viên; agent không điền pháp nhân hay giá.
+- Ghi danh sau chuyển khoản là thao tác có kiểm toán trong workspace (ai xác nhận, lúc nào), không phải học viên tự mở quyền.
+
+### Lát triển khai điều chỉnh
+| Lát | Nội dung |
+|---|---|
+| LC0 | Trang khóa trực tuyến (PT 1-1, nhóm); Lớp của tôi đọc lịch thật; Owner ghi danh tay sau chuyển khoản; một đợt thử |
+| LC1 | Lịch, link phòng họp chỉ người ghi danh thấy, hộp thư trong app, email + tệp .ics, nhắc theo đồng ý |
+| LC2 | Nhận xét sau buổi gắn với buổi họp; đồng ý ghi hình từng học viên |
+| LC3 | Extension Chrome ghi tab (bản thử với một giảng viên), tệp trên máy giảng viên |
+| LC4 | Gắn link YouTube unlisted vào buổi (chỉ khi Owner chấp nhận Y-a); trang xem lại chỉ cho người đã ghi danh |
+| LC5 | Mốc thời gian và ảnh cắt trong nhận xét |
+| LC6 | Tải lên tự động qua API (sau kiểm định YouTube) hoặc chuyển sang nơi lưu có bảo vệ |
+
+Thứ tự trong hàng việc chung: các lát này cần migration và Edge Function (R3), nên xếp sau bước 6 (vai người duyệt), trừ khi Owner muốn chen LC0 lên trước.
+
+## 12. Owner trả lời ngày 26/11, đề xuất vắng/hủy và thứ tự LC0
+
+Owner viết 26/11: "Chấp nhận rủi ro link YouTube không công khai bị chia sẻ. Sĩ số không cố định (theo tình hình học viên đăng ký thực tế), chính sách vắng / hủy hãy đề xuất giúp tôi, học viên vắng có thể xem lại buổi học trực tuyến và vẫn cần làm bài tập sau buổi tập để giảng viên / trợ lý AI nhận xét. Hãy phân tích, đánh giá và đề xuất quyết định hợp lý cho việc làm lớp trực tuyến thử trước hay sau bước 6."
+
+| # | Quyết định | Hệ quả |
+|---|---|---|
+| Y-a | **Chấp nhận** rủi ro link unlisted bị chia sẻ | LC4 được làm. Bản ghi của lớp trả phí được đặt ở YouTube không công khai. App không hiện link thô; trang xem lại chỉ mở cho tài khoản đã ghi danh. Khung hình ưu tiên chỉ có giảng viên. Học viên từ chối ghi hình thì không xuất hiện trong bản ghi. |
+| Sĩ số | **Không cố định**, theo số đăng ký thực tế | Không có trường sĩ số tối đa bắt buộc. Giảng viên có thể đặt một con số "tối đa" tùy chọn cho từng đợt; để trống thì không giới hạn. PT 1-1 luôn có 1 học viên. |
+| Vắng | Học viên vắng **xem lại bản ghi** và **vẫn làm bài tập sau buổi** để giảng viên hoặc trợ lý AI nhận xét | Thêm "bài tập sau buổi" vào LC2: học viên nộp bài, giảng viên nhận xét. Nhận xét bằng AI chỉ bật sau các cổng AI hiện có (tài khoản trả phí, đồng ý AI, hạn mức do Owner duyệt) và cần kế hoạch R3 riêng. AI gợi ý, giảng viên xem trước khi gửi. |
+
+### Chính sách vắng/hủy đề xuất (chờ Owner chốt các con số)
+Các con số dưới đây là đề xuất của agent. Owner sửa hoặc đồng ý; agent không tự đặt giá hay mức hoàn tiền mới.
+
+**Lớp nhóm online**
+1. Học viên vắng: không hoàn tiền, không có buổi bù. Học viên xem lại bản ghi trong thời hạn khóa và nộp bài tập trong **7 ngày** sau buổi để được nhận xét như người có mặt.
+2. Buổi không có bản ghi (lỗi ghi, hoặc cả lớp từ chối ghi hình): giảng viên gửi tóm tắt buổi và bài tập; nếu có đợt khác cùng nội dung thì học viên vắng được vào học buổi đó.
+3. Học viên báo vắng trước **2 giờ** (không bắt buộc) để giảng viên biết; không mất quyền gì.
+4. Giảng viên hủy hoặc dời buổi: báo trước **24 giờ** qua email và hộp thư trong app; buổi được dời sang ngày khác. Hủy sát giờ hoặc giảng viên không tới: buổi bù cho cả lớp. Từ lần thứ hai trong cùng một khóa, học viên được hoàn tiền phần buổi đó theo chính sách hoàn tiền chung.
+5. Đợt mở mà quá ít người đăng ký: giảng viên có thể gộp sang đợt sau; học viên chọn chuyển đợt hoặc hoàn tiền đầy đủ.
+
+**PT 1-1**
+1. Dời lịch miễn phí nếu báo trước **24 giờ**.
+2. Báo dưới 24 giờ hoặc không tới: buổi tính là đã dùng. Mỗi gói có **1 lần** ngoại lệ vì ốm hoặc việc gấp.
+3. Học viên tới muộn: buổi vẫn kết thúc đúng giờ đã hẹn.
+4. Giảng viên dời hoặc hủy: dời miễn phí. Giảng viên không tới: học viên được thêm một buổi.
+5. Gói buổi có hạn dùng (đề xuất: số buổi × **1 tuần**, ví dụ 8 buổi dùng trong 8 tuần). Hết hạn thì buổi còn lại hết hiệu lực, trừ khi Owner gia hạn.
+6. Buổi 1-1 **mặc định không ghi hình**. Chỉ ghi khi học viên yêu cầu và đồng ý; bản ghi chỉ học viên đó xem.
+
+**Chung:** hoàn tiền theo quy định 21/11 (7 ngày, 30%, 48 giờ, phản hồi trong 2 ngày làm việc). Mọi lần dời, hủy hay ghi danh được ghi lại: ai làm, lúc nào. Chữ chính sách đưa học viên đọc trước khi chuyển khoản; đây là chữ để Owner duyệt, không phải tư vấn pháp lý.
+
+### LC0 trước hay sau bước 6: phân tích
+
+**Hai việc không phụ thuộc nhau.**
+- Bước 6 (vai người duyệt chuyên môn: mời hoặc gán người khác) chỉ cần khi có người duyệt thứ hai. Hiện Owner đã là người duyệt (quyết định 21/11).
+- LC0 cần ghi danh có kiểm toán do Owner làm và trang "Lớp của tôi" đọc lịch thật. Cả hai dùng vai Owner và giảng viên đã có.
+- Cả hai đều cần migration (R3). Quy tắc "một migration mỗi thay đổi" bắt chúng đi lần lượt, nhưng thứ tự là tự chọn.
+
+**Những thứ LC0 thực sự cần trước:**
+1. **Bảng quyền dùng (F0) là nguồn sự thật duy nhất** (quyết định 21/11). Ghi danh lớp phải là một dòng quyền dùng, không làm bảng riêng, để sau này mua khóa trên Play không phải gộp hai hệ thống. Nghĩa là phần dữ liệu của F0 (trường `access`, hàm `hasEntitlement`, bảng quyền dùng) phải làm cùng hoặc trước LC0. Trong hàng việc, F0 hiện ở bước 7.
+2. **Bước 4 và 5** dọn màn đồng ý, màn Cá nhân và workspace nhân sự. LC0 thêm màn ghi danh vào workspace, nên làm sau bước 5 thì tránh sửa cùng tệp hai lần.
+3. **Chính sách Play** ⚑. App Android không được hiện giá hay hướng dẫn chuyển khoản. Đề xuất: LC0 chỉ bật trên web (Vercel Preview). Bản Android không hiện trang khóa trực tuyến cho tới khi kiểm xong chính sách.
+
+**Thứ có thể làm ngay, không cần mã:** chạy một **đợt thử ngoài app**.
+- Ghi danh qua Zalo hoặc email.
+- Học trên Zoom hoặc Meet; ghi bằng phần mềm Owner đang dùng.
+- Gửi link YouTube không công khai trực tiếp cho học viên.
+- Nhận bài tập qua email.
+
+Đợt này cho câu trả lời thật về nhu cầu, giờ học, số người vắng, ai từ chối ghi hình, mà không phải chờ hay tạo rủi ro cho app. Dữ liệu học viên ở ngoài app (Zalo/email) là trách nhiệm của Owner và giảng viên; không chép vào staging.
+
+**Đề xuất quyết định:**
+- (a) Chạy đợt thử ngoài app ngay khi Owner sẵn sàng.
+- (b) Trong app, đưa **LC0 lên trước bước 6**: thứ tự mới 3 → 4 → 5 → **F0 + LC0** → 6 → F1–F4.
+  - Bước 6 lùi lại vì chưa có người duyệt thứ hai để mời.
+  - LC0 làm chung với F0 để chỉ có một bảng quyền dùng.
+- (c) LC0 chỉ chạy trên web cho tới khi kiểm xong chính sách Play.
+- (d) Những gì học được ở đợt thử ngoài app (giờ học, tỉ lệ vắng, mẫu bài tập) đưa vào kế hoạch LC0 trước khi viết mã.
+
+Điều kiện để giữ thứ tự cũ (bước 6 trước): Owner đã có tên người duyệt thứ hai cần mời ngay. Hoặc phần trả phí (F) phải chờ Closed testing như quyết định 18/11, và Owner muốn LC0 theo cùng mốc đó.
+
+Rủi ro của đề xuất:
+- Theo quyết định 18/11, phần trả phí bắt đầu sau Closed testing. Làm F0 sớm (chỉ phần dữ liệu, chưa bán gì) không trái ý đó, nhưng Owner cần xác nhận.
+- LC0 trên web vẫn là thu tiền ngoài app cho nội dung trong app. Kiểm lại với chính sách Play trước khi mở trên Android.
