@@ -144,6 +144,23 @@ test("a pasted YouTube link is recognised, and the player loads only when the te
   await expect(form.locator("iframe")).toHaveCount(0);
 });
 
+test("the primary 'Soạn bài mới' button is actually visible: solid background and readable text", async ({ page }) => {
+  await openTeacher(page, (r, body) => body.action === "list_content" ? reply(r, 200, { role: "teacher", items: [] }) : reply(r, 400, { error: "unexpected" }));
+  const button = page.getByRole("button", { name: "Soạn bài mới" });
+  await expect(button).toBeVisible();
+  const look = await button.evaluate(el => {   // a transparent background with near-white text once hid this button (W0, 27/11)
+    const parse = (value: string) => (value.match(/[\d.]+/g) ?? []).map(Number);
+    const style = getComputedStyle(el);
+    const [br, bg, bb, ba = 1] = parse(style.backgroundColor);
+    const [fr, fg, fb] = parse(style.color);
+    const lum = (r: number, g: number, b: number) => [r, g, b].map(c => { const s = c / 255; return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4; }).reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
+    const [hi, lo] = [lum(br, bg, bb), lum(fr, fg, fb)].sort((a, b) => b - a);
+    return { alpha: ba, contrast: (hi + 0.05) / (lo + 0.05) };
+  });
+  expect(look.alpha).toBe(1);
+  expect(look.contrast).toBeGreaterThanOrEqual(4.5);
+});
+
 test("a refused write is explained and a conflict asks for a reload", async ({ page }) => {
   await openTeacher(page, (r, body) => {
     if (body.action === "list_content") return reply(r, 200, { role: "teacher", items: [] });
