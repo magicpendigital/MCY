@@ -101,4 +101,4 @@ Khi đọc mã còn thấy thêm một lỗi nhỏ, sửa chung trong việc nà
 - [x] Owner duyệt §12 theo khuyến nghị (27/11): thư riêng qua Resend, chặn tài khoản Owner/nhân sự, sửa `redirectTo`, thứ tự bí mật → migration → Edge → push; để 2 lời mời 27/11 tự hết hạn
 - [x] Bước 2–5 (mã + test + gộp): commit `a33efd6`, mọi bộ kiểm PASS
 - [x] Bước 6–7: Owner nhập 2 bí mật; áp migration (`20261127072022`), đọc lại quyền đạt; Edge v4, chưa đăng nhập → 401. [Biên nhận](../../docs/status/receipts/2026-11-27-teacher-invite-existing-account-staging.md)
-- [ ] Bước 8: Owner mời thử (tài khoản học viên và tài khoản mới), báo thư có đến không
+- [x] Bước 8: Owner 27/11 báo thư đến hộp thư, người nhận đăng nhập trang giảng viên thành công (chưa thử nhánh tài khoản mới hoàn toàn đi hết tới khi nhận lời mời)
