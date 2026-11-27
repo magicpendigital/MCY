@@ -9,15 +9,16 @@ import "./owner.css";
 // A teacher's own video lessons (phase 3): write, save a new version, send it to the Owner, read the Owner's notes. The teacher
 // sees and edits only their own lessons; the Owner decides whether and where anything shows in the app. The name shown with a
 // lesson comes from the activated teacher profile, never from what is typed here.
-type Row = { item_id: string; kind: string; author_label: string | null; seq: number; title: string; status: "draft" | "submitted"; review: { decision: "pending" | "approved" | "changes_requested" | "withdrawn"; revision: number } };
+type Row = { item_id: string; kind: string; author_kind?: string; author_label: string | null; seq: number; title: string; status: "draft" | "submitted"; review: { decision: "pending" | "approved" | "changes_requested" | "withdrawn"; revision: number } };
 type Version = { item_id: string; kind?: string; seq: number; latest_seq: number; title: string; payload: Record<string, unknown>; status: "draft" | "submitted"; review: { decision: string } };
 type Note = { seq: number; note: string; at: string };
 type Form = { id: string | null; seq: number; title: string; youtubeId: string; summary: string; duration: string; orientation: "portrait" | "landscape"; tags: string; areas: string[] };
 const blank: Form = { id: null, seq: 0, title: "", youtubeId: "", summary: "", duration: "", orientation: "portrait", tags: "", areas: [] };
 // A free course (S1): the teacher's own video lessons in order. The server accepts only the teacher's own lessons and no
 // benefit/caution guidance (that is MCY-reviewed wording); the Owner reviews and switches the course on like a lesson.
-type CourseForm = { id: string | null; seq: number; title: string; summary: string; lessonIds: string[] };
-const blankCourse: CourseForm = { id: null, seq: 0, title: "", summary: "", lessonIds: [] };
+// The form has three steps (canvas board G, Owner 28/11): name and description, choose and order lessons, preview as learners see it.
+type CourseForm = { id: string | null; seq: number; title: string; summary: string; lessonIds: string[]; step: 1 | 2 | 3 };
+const blankCourse: CourseForm = { id: null, seq: 0, title: "", summary: "", lessonIds: [], step: 1 };
 const ids = (v: unknown): string[] => Array.isArray(v) ? v.filter((s): s is string => typeof s === "string") : [];
 const errorText: Record<string, string> = {
   content_conflict: "Nội dung vừa thay đổi ở nơi khác. Tải lại trước khi lưu tiếp.",
@@ -90,7 +91,7 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
   };
   const edit = (v: Version) => {
     const p = v.payload;
-    if (kindOf(v) === "course_group") { setCourse({ id: v.item_id, seq: v.latest_seq, title: v.title, summary: String(p.summary ?? ""), lessonIds: ids(p.lessonIds) }); return; }
+    if (kindOf(v) === "course_group") { setCourse({ id: v.item_id, seq: v.latest_seq, title: v.title, summary: String(p.summary ?? ""), lessonIds: ids(p.lessonIds), step: 1 }); return; }
     setForm({ id: v.item_id, seq: v.latest_seq, title: v.title, youtubeId: String(p.youtubeId ?? ""), summary: String(p.summary ?? ""), duration: String(p.durationLabel ?? ""), orientation: p.orientation === "landscape" ? "landscape" : "portrait", tags: Array.isArray(p.tags) ? (p.tags as string[]).join(", ") : "", areas: Array.isArray(p.areas) ? (p.areas as string[]) : lessonAreas({ title: v.title }, "gentle") });
   };
   const save = async (andSubmit: boolean) => {
@@ -139,6 +140,17 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
   const label = rows?.find(r => r.author_label)?.author_label ?? null;
   const lessons = (rows ?? []).filter(r => r.kind === "video_lesson");
   const courses = (rows ?? []).filter(r => r.kind === "course_group");
+  const lessonRow = (lessonId: string) => lessons.find(l => l.item_id === lessonId);
+  const approvedCount = (list: string[]) => list.filter(id => lessonRow(id)?.review.decision === "approved").length;
+  const courseLine = (list: string[]) => `${approvedCount(list)}/${list.length} bài đã được Owner duyệt. Học viên chỉ thấy những bài đã duyệt, sau khi Owner duyệt và bật hiển thị khóa.`;
+  const startCourse = (lessonIds: string[]) => { setVersion(null); setForm(null); setPreviewId(null); setCourse({ ...blankCourse, lessonIds }); setNotice(""); setError(""); };
+  const goStep = (to: 1 | 2 | 3) => {
+    if (!course) return;
+    const problem = to === 2 && (!course.title.trim() || !course.summary.trim()) ? "Khóa cần tên và mô tả."
+      : to === 3 && !course.lessonIds.length ? "Chọn ít nhất một bài video của bạn." : "";
+    if (problem) { setError(problem); return; }
+    setError(""); setC({ step: to });
+  };
   const titleOf = (lessonId: string) => lessons.find(l => l.item_id === lessonId)?.title ?? lessonId;
   const isCourse = version ? kindOf(version) === "course_group" : false;
 
@@ -182,26 +194,43 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
     {rows && <section className="owner-teacher-courses" aria-label="Khóa miễn phí của tôi">
       <div className="owner-panel-heading"><div><h3>Khóa miễn phí của tôi</h3>
         <p>Gom các bài video của bạn thành một khóa miễn phí, theo thứ tự học. Khóa và từng bài trong khóa đều cần Owner duyệt và bật hiển thị; học viên chỉ thấy những bài đã duyệt.</p></div>
-        <button type="button" className="owner-primary" disabled={busy || lessons.length === 0} onClick={() => { setVersion(null); setForm(null); setPreviewId(null); setCourse({ ...blankCourse }); setNotice(""); }}>Tạo khóa mới</button></div>
+        <button type="button" className="owner-primary" disabled={busy || lessons.length === 0} onClick={() => startCourse([])}>Tạo khóa mới</button></div>
       {lessons.length === 0 ? <p className="owner-hub-note">Cần có ít nhất một bài video trước khi tạo khóa.</p>
         : courses.length === 0 && !course ? <p className="owner-hub-note">Bạn chưa có khóa nào.</p> : null}
       {courses.length > 0 && <ul className="owner-hub-list" aria-label="Khóa của tôi">{courses.map(r => <li key={r.item_id}>
         <button type="button" aria-pressed={version?.item_id === r.item_id} disabled={busy} onClick={() => void open(r.item_id)}><strong>{r.title}</strong><span>{statusLabel(r)} · phiên bản {r.seq}</span></button></li>)}</ul>}
     </section>}
 
-    {course && <form className="owner-hub-compose" aria-label="Soạn khóa miễn phí" onSubmit={e => { e.preventDefault(); void saveCourse(false); }}>
+    {course && <form className="owner-hub-compose" aria-label="Soạn khóa miễn phí" onSubmit={e => { e.preventDefault(); if (course.step === 3) void saveCourse(false); else goStep(course.step === 1 ? 2 : 3); }}>
       <fieldset disabled={busy || stale}><legend>{course.id ? "Sửa khóa (tạo phiên bản mới)" : "Khóa miễn phí mới"}</legend>
-        <label className="owner-field">Tên khóa<input required maxLength={200} value={course.title} onChange={e => setC({ title: e.target.value })} /></label>
-        <label className="owner-field">Khóa này dành cho ai, học được gì (mô tả)<textarea required maxLength={1000} value={course.summary} onChange={e => setC({ summary: e.target.value })} /></label>
-        <fieldset className="owner-field"><legend>Chọn bài video của bạn</legend>
-          {lessons.map(l => <label key={l.item_id} style={{ display: "block" }}><input type="checkbox" checked={course.lessonIds.includes(l.item_id)} onChange={e => toggle(l.item_id, e.target.checked)} /> {l.title} <span className="owner-hub-note">({statusLabel(l)})</span></label>)}
-        </fieldset>
-        {course.lessonIds.length > 0 && <ol aria-label="Thứ tự bài trong khóa">{course.lessonIds.map((lessonId, i) => <li key={lessonId}>{titleOf(lessonId)}{" "}
-          <button type="button" aria-label={`Đưa “${titleOf(lessonId)}” lên`} disabled={i === 0} onClick={() => move(i, -1)}>Lên</button>{" "}
-          <button type="button" aria-label={`Đưa “${titleOf(lessonId)}” xuống`} disabled={i === course.lessonIds.length - 1} onClick={() => move(i, 1)}>Xuống</button></li>)}</ol>}
-        <p className="owner-hub-note">Khóa miễn phí. Lời về lợi ích và lưu ý sức khỏe do MCY biên soạn và duyệt riêng, không nhập ở đây.</p>
+        <ol aria-label="Các bước tạo khóa">{["Tên và mô tả", "Chọn và sắp bài", "Xem trước"].map((name, i) =>
+          <li key={name} aria-current={course.step === i + 1 ? "step" : undefined}>{course.step === i + 1 ? <strong>Bước {i + 1}: {name}</strong> : `Bước ${i + 1}: ${name}`}</li>)}</ol>
+        {course.step === 1 && <>
+          <label className="owner-field">Tên khóa<input required maxLength={200} value={course.title} onChange={e => setC({ title: e.target.value })} /></label>
+          <label className="owner-field">Mô tả: khóa dành cho ai, học được gì<textarea required maxLength={1000} value={course.summary} onChange={e => setC({ summary: e.target.value })} /></label>
+          <p className="owner-hub-note">Khóa miễn phí. Lời về lợi ích và lưu ý sức khỏe do MCY biên soạn và duyệt riêng, không nhập ở đây.</p>
+        </>}
+        {course.step === 2 && <>
+          <fieldset className="owner-field"><legend>Chọn bài video của bạn</legend>
+            {lessons.map(l => <label key={l.item_id} style={{ display: "block" }}><input type="checkbox" checked={course.lessonIds.includes(l.item_id)} onChange={e => toggle(l.item_id, e.target.checked)} /> {l.title} <span className="owner-hub-note">({statusLabel(l)})</span></label>)}
+          </fieldset>
+          {course.lessonIds.length > 0 && <ol aria-label="Thứ tự bài trong khóa">{course.lessonIds.map((lessonId, i) => <li key={lessonId}>{titleOf(lessonId)}{" "}
+            <button type="button" aria-label={`Đưa “${titleOf(lessonId)}” lên`} disabled={i === 0} onClick={() => move(i, -1)}>Lên</button>{" "}
+            <button type="button" aria-label={`Đưa “${titleOf(lessonId)}” xuống`} disabled={i === course.lessonIds.length - 1} onClick={() => move(i, 1)}>Xuống</button></li>)}</ol>}
+          {course.lessonIds.length > 0 && <p className="owner-inline-warning" data-testid="course-approved-count">{courseLine(course.lessonIds)}</p>}
+        </>}
+        {course.step === 3 && <section aria-label="Xem trước khóa như học viên thấy">
+          <h4>{course.title.trim()}</h4>
+          {label && <p className="owner-hub-note">Giảng viên: {label}</p>}
+          <p>{course.summary.trim()}</p>
+          <ol>{course.lessonIds.map(lessonId => <li key={lessonId}>{titleOf(lessonId)}{lessonRow(lessonId)?.review.decision === "approved" ? "" : " · chưa hiện với học viên cho tới khi bài được duyệt"}</li>)}</ol>
+          <p className="owner-hub-note" data-testid="course-approved-count">{courseLine(course.lessonIds)}</p>
+        </section>}
         <div className="owner-form-footer"><span>Mỗi lần lưu tạo một phiên bản mới; phiên bản cũ giữ nguyên.</span>
-          <button type="submit" className="owner-primary">Lưu nháp</button> <button type="button" className="owner-primary" onClick={() => void saveCourse(true)}>Lưu và gửi duyệt</button> <button type="button" onClick={() => setCourse(null)}>Đóng</button></div>
+          {course.step > 1 && <button type="button" onClick={() => goStep(course.step === 3 ? 2 : 1)}>Quay lại</button>}{" "}
+          {course.step < 3 && <button type="button" className="owner-primary" onClick={() => goStep(course.step === 1 ? 2 : 3)}>Tiếp</button>}{" "}
+          {course.step === 3 && <><button type="submit">Lưu nháp</button>{" "}<button type="button" className="owner-primary" onClick={() => void saveCourse(true)}>Lưu và gửi duyệt</button></>}{" "}
+          <button type="button" onClick={() => setCourse(null)}>Đóng</button></div>
       </fieldset></form>}
 
     {version && !form && !course && <article className="owner-hub-detail" aria-label={`${isCourse ? "Khóa" : "Bài"} · ${version.title}`}>
@@ -209,8 +238,12 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
         {version.seq === version.latest_seq && <button type="button" disabled={busy} onClick={() => edit(version)}>Sửa (phiên bản mới)</button>}
         {version.status === "draft" && version.seq === version.latest_seq && <button type="button" className="owner-primary" disabled={busy || stale} onClick={() => void submitOnly()}>Gửi duyệt</button>}</div>
       <p>{String(version.payload.summary ?? "")}</p>
-      {isCourse ? <ol aria-label="Bài trong khóa">{ids(version.payload.lessonIds).map(lessonId => <li key={lessonId}>{titleOf(lessonId)}</li>)}</ol>
-        : <p className="owner-hub-note">{String(version.payload.durationLabel ?? "")} · YouTube {String(version.payload.youtubeId ?? "")}</p>}
+      {isCourse ? <><ol aria-label="Bài trong khóa">{ids(version.payload.lessonIds).map(lessonId => { const r = lessonRow(lessonId);
+          return <li key={lessonId}>{titleOf(lessonId)} <span className="owner-hub-note">({r ? statusLabel(r) : "không còn trong danh sách bài của bạn"})</span></li>; })}</ol>
+          <p className="owner-hub-note" data-testid="course-approved-count">{courseLine(ids(version.payload.lessonIds))}</p></>
+        : <><p className="owner-hub-note">{String(version.payload.durationLabel ?? "")} · YouTube {String(version.payload.youtubeId ?? "")}</p>
+          <p className="owner-hub-note">Bài chỉ tới học viên khi nằm trong một khóa đã được Owner duyệt và bật hiển thị.{" "}
+            <button type="button" disabled={busy || stale} onClick={() => startCourse([version.item_id])}>Tạo khóa với bài này</button></p></>}
       <section aria-label="Ghi chú của Owner"><h4>Ghi chú của Owner</h4>
         {notes.length === 0 ? <p className="owner-hub-note">Owner chưa có ghi chú cho bài này.</p> : <ul>{notes.map((n, i) => <li key={i}><strong>Phiên bản {n.seq}:</strong> {n.note}</li>)}</ul>}</section>
     </article>}

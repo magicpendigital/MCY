@@ -7,7 +7,7 @@ Trạng thái: đã duyệt (Owner 27/11: "GV tự tạo khóa miễn phí: có,
 Lát S1 trong [rà soát use case](../backlog/teacher-content-use-cases-2026-11-27.md) §4. Khi rà soát tìm ra một chỗ chặn: ảnh chụp công khai (`buildManifest`) chỉ đưa ra những bài video **nằm trong một khóa (`course_group`) đã duyệt và đang hiện**. Bài của giảng viên dù Owner đã duyệt vẫn không tới học viên nếu Owner không tự gom vào khóa. Hiện máy chủ chỉ cho giảng viên lưu `video_lesson`. S1 cho giảng viên tạo "khóa miễn phí" gồm các bài video **của chính mình**, gửi Owner duyệt như một bài. Owner duyệt, yêu cầu sửa và bật hiển thị bằng màn Nội dung sẵn có.
 
 ## 2. Tiêu chí xong
-- Ở thẻ "Bài video của tôi" có mục "Khóa miễn phí của tôi" với nút "Tạo khóa mới". Form có tên khóa, mô tả, và danh sách bài video của chính giảng viên để chọn và sắp thứ tự (Lên/Xuống). Lưu nháp, Lưu và gửi duyệt, Sửa (phiên bản mới) hoạt động như với bài.
+- Ở thẻ "Bài video của tôi" có mục "Khóa miễn phí của tôi" với nút "Tạo khóa mới". Form 3 bước theo bảng G của canvas (Owner duyệt 28/11): (1) tên khóa, mô tả; (2) chọn bài video của chính giảng viên, mỗi bài kèm trạng thái, sắp thứ tự (Lên/Xuống), dòng "x/y bài đã được Owner duyệt"; (3) xem trước như học viên thấy, bài chưa duyệt ghi "chưa hiện". Chi tiết bài có lối tắt "Tạo khóa với bài này". Lưu nháp, Lưu và gửi duyệt, Sửa (phiên bản mới) hoạt động như với bài.
 - Chưa có bài video nào thì không tạo được khóa; trang nói rõ vì sao.
 - Máy chủ (SQL) nhận `course_group` của giảng viên chỉ khi:
   - mọi `lessonIds` là bài `video_lesson` do chính giảng viên đó soạn;
@@ -25,7 +25,7 @@ Lát S1 trong [rà soát use case](../backlog/teacher-content-use-cases-2026-11-
 - Mới `supabase/migrations/<version>_teacher_course_groups.sql`: vá tại chỗ `public.mcy_content_save_version`, có chặn lệch (drift guard) giống `20261108162119_content_display.sql` §5. Mới `tests/teacher-course-group-rehearsal.cjs` + script `test:teacher-course-group-rehearsal`.
 - `src/staff/TeacherContentPanel.tsx` (mục khóa, bước 4 trong hướng dẫn); `tests/teacher-content.spec.ts`; `PLAN.md`; bản rà soát use case.
 - Mức rủi ro cao nhất: **R3** theo [review matrix](../../.claude/skills/mcy-change-review/references/review-matrix.md), vì đổi hàm `security definer` quyết định ai được ghi nội dung (vai trò, quyền ghi).
-- Hiện trạng: `main` = `origin/main` = `bf64cab`, nhánh `claude/teacher-s0-authoring-ux` (`c889a20`, cùng cây). Không có tệp dở của người khác. Hành vi phải giữ: luồng bài video của giảng viên, luồng Owner soạn/duyệt khóa MCY, ảnh chụp công khai.
+- Hiện trạng: lập khi `main` = `origin/main` = `bf64cab`; làm tiếp 28/11 trên `main` = `origin/main` = `e018b11` (đã có W0). Không có tệp dở của người khác. Hành vi phải giữ: luồng bài video của giảng viên, luồng Owner soạn/duyệt khóa MCY, ảnh chụp công khai.
 
 ## 4. Cố ý không đụng
 - Edge `owner-control-plane`: đã nhận `course_group` (`authorableKinds`) và kiểm dạng payload. Lỗi mới dùng mã `22023` nên Edge trả `invalid_content` sẵn có. **Không cần deploy Edge.**
@@ -84,8 +84,8 @@ Lát S1 trong [rà soát use case](../backlog/teacher-content-use-cases-2026-11-
 - Áp migration lên `mcy-staging`: chờ Owner yêu cầu. Không deploy Edge (không cần).
 
 ## Progress
-- [ ] 1 migration + tập dượt
-- [ ] 2 giao diện
-- [ ] 3 test và cổng
-- [ ] 4 PLAN, commit, gộp vào `main` ở máy
+- [x] 1 migration + tập dượt (PGlite 24/24 cùng ba bản tập dượt kề; bản `teacher-control-plane` ghi S1 là "chưa lên staging")
+- [x] 2 giao diện (form 3 bước, x/y, lối tắt; 28/11)
+- [x] 3 test và cổng (`teacher-content.spec.ts` 10/10, `check:quick`, `npm test`, `check:ios15` PASS)
+- [x] 4 PLAN, commit, gộp vào `main` ở máy (28/11)
 - [ ] 5 áp lên staging (chờ Owner)
