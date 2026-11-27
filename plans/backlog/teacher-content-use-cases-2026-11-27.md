@@ -86,12 +86,12 @@ Ký hiệu: ✅ có và chạy trên staging · ◐ có một phần · ✗ chư
 ## Quyết định của Owner (27/11)
 | # | Quyết định | Hệ quả |
 |---|---|---|
-| 1 | Làm S0 ngay: **đồng ý** | Xong ở máy, commit `a90e3a2` ([kế hoạch](../active/2026-11-27-teacher-authoring-s0.md)); chờ Owner cho push. |
+| 1 | Làm S0 ngay: **đồng ý** | Commit `a90e3a2` ([kế hoạch](../active/2026-11-27-teacher-authoring-s0.md)); Owner 27/11 cho push, đã lên `origin/main` (`bf64cab`). |
 | 2 | Kho "Soạn bài" cũ: **(a)** giữ làm kịch bản nháp, sau gắn vào bài video | S2 gắn kịch bản (đoạn có mốc giờ, lời dẫn, câu dừng, nhịp thở) vào phiên bản bài video; không xóa kho cũ. |
 | 3 | "Bài giảng có hình": **(c)**, tức là bài giảng có hình ảnh minh họa bên trong | S3 gồm cả ảnh minh họa trong nội dung bài (ảnh + chữ theo từng tư thế/đoạn) và ảnh bìa. Cần bucket ảnh riêng tư, Owner duyệt từng ảnh trong phiên bản, quyền dùng ảnh và người trong ảnh, nhãn ảnh AI. Kế hoạch R3 riêng. |
 | 4 | GV tự tạo khóa miễn phí: **có**, GV đề xuất, Owner duyệt như bài | S1. |
 | 5 | **Bán theo khóa**, không bán lẻ từng bài | "Bài video thu phí" (A4) = bài nằm trong khóa trả phí hoặc gói; không có giá cho từng bài. Giữ mô hình 18/11 (thuê bao + mua lẻ khóa). |
-| 6 | Thứ tự S0 → S1/S2 → P1 → P2 → F: **đồng ý** | P1/P2 vẫn theo kế hoạch pilot (quyết định 8 của pilot). Vị trí của S3 chưa xếp; agent đề xuất làm sau S1/S2, trước P1, nếu Owner muốn có bài minh họa sớm. |
+| 6 | Thứ tự S0 → S1/S2 → P1 → P2 → F: **đồng ý** | P1/P2 vẫn theo kế hoạch pilot (quyết định 8 của pilot). Owner 27/11 đồng ý vị trí S3 theo đề xuất: thứ tự là **S0 → S1/S2 → S3 → P1 → P2 → F**. |
 | 7 | Đánh giá công khai của học viên (C7): **chưa làm** | Dùng cảm nhận riêng tư (C1) trước. |
 
 ## Chưa kiểm
