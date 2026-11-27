@@ -3,6 +3,7 @@ import { getAccountBoundSupabaseClient } from "../backend/supabase";
 import { validPayload } from "../../supabase/functions/_shared/contentWorkspaceContract";
 import { AreaPicker } from "./AreaPicker";
 import { lessonAreas } from "../courses/lessonFinder";
+import { youtubeIdFrom } from "./youtubeInput";
 import "./owner.css";
 
 // A teacher's own video lessons (phase 3): write, save a new version, send it to the Owner, read the Owner's notes. The teacher
@@ -20,6 +21,7 @@ const errorText: Record<string, string> = {
   content_kind_not_allowed: "Giảng viên chỉ soạn bài video.",
   invalid_content: "Nội dung chưa hợp lệ. Hãy kiểm lại các trường.",
   content_item_not_found: "Không tìm thấy bài này.",
+  youtube_input: "Chưa nhận ra video YouTube. Dán link của video (ví dụ youtube.com/watch?v=… hoặc youtu.be/…) hoặc mã 11 ký tự.",
 };
 const statusLabel = (r: Pick<Row, "status" | "review">) => r.status === "draft" ? "Nháp, chưa gửi" : r.review.decision === "approved" ? "Đã được Owner duyệt" : r.review.decision === "changes_requested" ? "Cần chỉnh sửa" : r.review.decision === "withdrawn" ? "Kết quả duyệt đã rút" : "Đã gửi, chờ Owner duyệt";
 
@@ -32,6 +34,7 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
   const [stale, setStale] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [previewId, setPreviewId] = useState<string | null>(null);
   const pending = useRef(false);
   const generation = useRef(0);
   const account = useRef(userId); account.current = userId;
@@ -83,8 +86,10 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
   };
   const save = async (andSubmit: boolean) => {
     if (!form || stale) return;
+    const videoId = youtubeIdFrom(form.youtubeId);
+    if (!videoId) { setError(errorText.youtube_input); return; }
     const tags = form.tags.split(",").map(t => t.trim()).filter(Boolean);
-    const payload = { youtubeId: form.youtubeId.trim(), summary: form.summary.trim(), durationLabel: form.duration.trim(), orientation: form.orientation, areas: form.areas, ...(tags.length ? { tags } : {}) };
+    const payload = { youtubeId: videoId, summary: form.summary.trim(), durationLabel: form.duration.trim(), orientation: form.orientation, areas: form.areas, ...(tags.length ? { tags } : {}) };
     if (!form.title.trim() || !validPayload("video_lesson", payload)) { setError(errorText.invalid_content); return; }
     const saved = await call({ action: "save_content", itemId: form.id, kind: "video_lesson", title: form.title.trim(), payload, expectedSeq: form.seq }, true);
     const receipt = saved?.receipt as { item_id?: string; seq?: number } | undefined;
@@ -103,12 +108,18 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
     if (sent?.receipt) { setNotice("Đã gửi cho Owner duyệt."); await loadList(); await open(version.item_id, true); }
   };
   const set = (patch: Partial<Form>) => setForm(f => f ? { ...f, ...patch } : f);
+  const typedId = form ? youtubeIdFrom(form.youtubeId) : null;
   const label = rows?.find(r => r.author_label)?.author_label ?? null;
 
   return <section className="owner-panel owner-teacher-content" aria-label="Bài video của tôi">
     <div className="owner-panel-heading"><div><span className="owner-kicker">GIẢNG VIÊN</span><h2>Bài video của tôi</h2>
       <p>Bạn soạn và gửi bài cho Owner duyệt. Owner quyết định bài có hiện trong ứng dụng hay không. Bạn chỉ thấy bài của chính mình.</p></div>
-      <button type="button" className="owner-primary" disabled={busy} onClick={() => { setVersion(null); setForm({ ...blank }); setNotice(""); }}>Soạn bài mới</button></div>
+      <button type="button" className="owner-primary" disabled={busy} onClick={() => { setVersion(null); setForm({ ...blank }); setPreviewId(null); setNotice(""); }}>Soạn bài mới</button></div>
+    <ol className="owner-hub-note" aria-label="Cách đưa một bài video lên">
+      <li>Tải video lên kênh YouTube của chính bạn (công khai hoặc không công khai), rồi bấm “Soạn bài mới” và dán link video.</li>
+      <li>Bấm “Xem thử video” để chắc đúng video, rồi điền mô tả, thời lượng và vùng cơ thể.</li>
+      <li>Bấm “Lưu và gửi duyệt”. Owner xem và quyết định; bài chỉ hiện với học viên sau khi Owner duyệt và bật hiển thị.</li>
+    </ol>
     <p className="owner-hub-note" data-testid="author-label">{label ? `Tên hiển thị với học viên: ${label} (lấy từ hồ sơ giảng viên đã kích hoạt của bạn).` : "Chưa có tên hiển thị: tên chỉ hiện khi hồ sơ giảng viên của bạn đã được kích hoạt."}</p>
     {busy && <p role="status">Đang đối chiếu với máy chủ…</p>}
     {error && <p className="owner-error" role="alert">{error}</p>}
@@ -122,14 +133,18 @@ export default function TeacherContentPanel({ userId }: { userId: string }) {
     {form && <form className="owner-hub-compose" aria-label="Soạn bài video" onSubmit={e => { e.preventDefault(); void save(false); }}>
       <fieldset disabled={busy || stale}><legend>{form.id ? "Sửa bài (tạo phiên bản mới)" : "Bài video mới"}</legend>
         <label className="owner-field">Tiêu đề<input required maxLength={200} value={form.title} onChange={e => set({ title: e.target.value })} /></label>
-        <label className="owner-field">Mã video YouTube (11 ký tự)<input required value={form.youtubeId} onChange={e => set({ youtubeId: e.target.value })} /></label>
+        <label className="owner-field">Link hoặc mã video YouTube<input required inputMode="url" autoComplete="off" spellCheck={false} placeholder="https://youtu.be/…" value={form.youtubeId} onChange={e => { set({ youtubeId: e.target.value }); setPreviewId(null); }} /></label>
+        <p className="owner-hub-note" data-testid="youtube-id-status">{!form.youtubeId.trim() ? "Dán link video trên kênh YouTube của bạn, hoặc mã 11 ký tự." : typedId ? `Mã video: ${typedId}` : "Chưa nhận ra video YouTube từ nội dung này."}</p>
+        <div><button type="button" disabled={!typedId} onClick={() => setPreviewId(typedId)}>Xem thử video</button></div>
+        {previewId && previewId === typedId && <div className="owner-video-preview" style={{ position: "relative", width: "100%", maxWidth: form.orientation === "portrait" ? 320 : 640, aspectRatio: form.orientation === "portrait" ? "9 / 16" : "16 / 9" }}>
+          <iframe title="Xem thử video YouTube" src={`https://www.youtube-nocookie.com/embed/${previewId}?playsinline=1&rel=0&modestbranding=1`} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }} allow="accelerometer; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen /></div>}
         <label className="owner-field">Bạn sẽ làm gì trong bài này (mô tả)<textarea required maxLength={1000} value={form.summary} onChange={e => set({ summary: e.target.value })} /></label>
         <label className="owner-field">Thời lượng (m:ss)<input required value={form.duration} placeholder="0:43" onChange={e => set({ duration: e.target.value })} /></label>
         <label className="owner-field">Khung hình<select value={form.orientation} onChange={e => set({ orientation: e.target.value as Form["orientation"] })}><option value="portrait">Dọc</option><option value="landscape">Ngang</option></select></label>
         <label className="owner-field">Thẻ (cách nhau bằng dấu phẩy)<input value={form.tags} onChange={e => set({ tags: e.target.value })} /></label>
         <AreaPicker value={form.areas} onChange={areas => set({ areas })} />
         <div className="owner-form-footer"><span>Mỗi lần lưu tạo một phiên bản mới; phiên bản cũ giữ nguyên.</span>
-          <button type="submit" className="owner-primary">Lưu nháp</button> <button type="button" className="owner-primary" onClick={() => void save(true)}>Lưu và gửi duyệt</button> <button type="button" onClick={() => setForm(null)}>Đóng</button></div>
+          <button type="submit" className="owner-primary">Lưu nháp</button> <button type="button" className="owner-primary" onClick={() => void save(true)}>Lưu và gửi duyệt</button> <button type="button" onClick={() => { setForm(null); setPreviewId(null); }}>Đóng</button></div>
       </fieldset></form>}
 
     {version && !form && <article className="owner-hub-detail" aria-label={`Bài · ${version.title}`}>

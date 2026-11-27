@@ -76,11 +76,11 @@ test("writing a lesson validates locally, saves a version with the exact expecte
   await page.getByRole("list", { name: "Bài của tôi" }).getByRole("button", { name: /Bài của tôi/ }).click();
   await page.getByRole("button", { name: "Sửa (phiên bản mới)" }).click();
   const form = page.getByRole("form", { name: "Soạn bài video" });
-  await form.getByLabel("Mã video YouTube (11 ký tự)").fill("short");
+  await form.getByLabel("Link hoặc mã video YouTube").fill("short");
   await form.getByRole("button", { name: "Lưu và gửi duyệt" }).click();
-  await expect(page.getByRole("alert").filter({ hasText: "Nội dung chưa hợp lệ" })).toBeVisible();
+  await expect(page.getByRole("alert").filter({ hasText: "Chưa nhận ra video YouTube" })).toBeVisible();
   expect(writes).toHaveLength(0);
-  await form.getByLabel("Mã video YouTube (11 ký tự)").fill("BBBBBBBBBBB");
+  await form.getByLabel("Link hoặc mã video YouTube").fill("https://www.youtube.com/watch?v=BBBBBBBBBBB&t=12s");   // a pasted link is stored as its 11-character id
   await form.getByLabel("Bạn sẽ làm gì trong bài này (mô tả)").fill("Bạn sẽ làm ba chuyển động nhẹ cho cổ.");
   await form.getByLabel("Lưng", { exact: true }).check();                                      // the author files the lesson under areas; nothing is guessed from the title
   await form.getByLabel("Cổ và vai").check();
@@ -93,6 +93,57 @@ test("writing a lesson validates locally, saves a version with the exact expecte
   expect(writes[1]).toMatchObject({ itemId: mine.item_id, expectedSeq: 2 });
 });
 
+test("the teacher page opens on the video lessons, with the three steps, and the old script tab says it never publishes", async ({ page }) => {
+  await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), auth);
+  await page.route("https://*.supabase.co/**", route => route.abort("blockedbyclient"));
+  let accepted = false;
+  const order: string[] = [];
+  await page.route("**/functions/v1/teacher-control-plane", route => {
+    const body = route.request().postDataJSON();
+    order.push(body.action);
+    if (body.action === "accept_invite") { accepted = true; return reply(route, 200, { status: "active" }); }
+    if (body.action === "list_drafts") return accepted ? reply(route, 200, { drafts: [] }) : reply(route, 403, { error: "workspace_access_required" });
+    return reply(route, 400, { error: "unexpected" });
+  });
+  await page.route("**/functions/v1/teacher-collaboration", route => reply(route, 404, { error: "not_available" }));
+  await page.route(endpoint, route => { const body = route.request().postDataJSON(); order.push(body.action); return body.action === "list_content" ? reply(route, 200, { role: "teacher", items: [] }) : reply(route, 200, { notes: [] }); });
+  await page.goto("/?workspace=teacher");
+  await expect(page.getByRole("button", { name: "Bài video của tôi", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("list", { name: "Cách đưa một bài video lên" }).getByRole("listitem")).toHaveCount(3);
+  await expect(page.getByText("Bạn chưa có bài nào.")).toBeVisible();
+  expect(order.indexOf("accept_invite")).toBeGreaterThanOrEqual(0);
+  expect(order.indexOf("list_content")).toBeGreaterThan(order.indexOf("accept_invite"));   // a new teacher's invite is accepted before the lessons are read
+  await page.getByRole("button", { name: "Kịch bản nháp", exact: true }).click();
+  await expect(page.getByTestId("script-draft-note")).toContainText("chưa gửi Owner duyệt");
+});
+
+test("a pasted YouTube link is recognised, and the player loads only when the teacher asks for a preview", async ({ page }) => {
+  const players: string[] = [];
+  await page.route("https://www.youtube-nocookie.com/embed/**", route => { players.push(route.request().url()); return route.fulfill({ status: 200, contentType: "text/html", body: "<!doctype html><title>Embedded player fixture</title>" }); });
+  await page.route("https://www.youtube.com/**", route => route.abort("blockedbyclient"));
+  await openTeacher(page, (r, body) => body.action === "list_content" ? reply(r, 200, { role: "teacher", items: [] }) : reply(r, 400, { error: "unexpected" }));
+  await page.getByRole("button", { name: "Soạn bài mới" }).click();
+  const form = page.getByRole("form", { name: "Soạn bài video" });
+  const field = form.getByLabel("Link hoặc mã video YouTube");
+  const preview = form.getByRole("button", { name: "Xem thử video" });
+  for (const [input, id] of [["youtu.be/CCCCCCCCCCC?si=x", "CCCCCCCCCCC"], ["https://youtube.com/shorts/DDDDDDDDDDD", "DDDDDDDDDDD"], ["https://m.youtube.com/watch?feature=share&v=EEEEEEEEEEE", "EEEEEEEEEEE"]] as const) {
+    await field.fill(input);
+    await expect(form.getByTestId("youtube-id-status")).toHaveText(`Mã video: ${id}`);
+  }
+  for (const bad of ["https://evil.example/watch?v=CCCCCCCCCCC", "javascript:alert(1)", "https://youtube.com/watch?v=short"]) {
+    await field.fill(bad);
+    await expect(form.getByTestId("youtube-id-status")).toHaveText("Chưa nhận ra video YouTube từ nội dung này.");
+    await expect(preview).toBeDisabled();
+  }
+  await field.fill("https://youtu.be/CCCCCCCCCCC");
+  expect(players).toHaveLength(0);
+  await expect(form.locator("iframe")).toHaveCount(0);
+  await preview.click();
+  await expect(form.locator('iframe[src^="https://www.youtube-nocookie.com/embed/CCCCCCCCCCC?"]')).toHaveCount(1);
+  await field.fill("https://youtu.be/DDDDDDDDDDD");                                                   // changing the link closes the old preview
+  await expect(form.locator("iframe")).toHaveCount(0);
+});
+
 test("a refused write is explained and a conflict asks for a reload", async ({ page }) => {
   await openTeacher(page, (r, body) => {
     if (body.action === "list_content") return reply(r, 200, { role: "teacher", items: [] });
@@ -101,7 +152,7 @@ test("a refused write is explained and a conflict asks for a reload", async ({ p
   await page.getByRole("button", { name: "Soạn bài mới" }).click();
   const form = page.getByRole("form", { name: "Soạn bài video" });
   await form.getByLabel("Tiêu đề").fill("Bài mới");
-  await form.getByLabel("Mã video YouTube (11 ký tự)").fill("AAAAAAAAAAA");
+  await form.getByLabel("Link hoặc mã video YouTube").fill("AAAAAAAAAAA");
   await form.getByLabel("Bạn sẽ làm gì trong bài này (mô tả)").fill("Mô tả ngắn");
   await form.getByLabel("Thời lượng (m:ss)").fill("1:00");
   await form.getByRole("button", { name: "Lưu nháp" }).click();

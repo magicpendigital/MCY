@@ -61,6 +61,14 @@ test("an existing learner account that received the instructions email is report
   await expect(page.getByRole("status").filter({ hasText: "đã gửi thư hướng dẫn" })).toContainText("72 giờ");
 });
 
+test("a status this page does not know (an old tab after a server update) asks for a reload and never says nothing was sent", async ({ page }) => {
+  await openOwner(page, route => reply(route, 200, { status: "some_newer_status" }));
+  await page.getByLabel("Email giảng viên").fill("member@example.test");
+  await page.getByRole("button", { name: "Gửi lời mời" }).click();
+  await expect(page.getByRole("status").filter({ hasText: "trang này là bản cũ" })).toContainText("tải lại trang");
+  await expect(page.getByText("Chưa gửi được lời mời")).toHaveCount(0);
+});
+
 test("an Owner or staff address is refused without an invitation or email", async ({ page }) => {
   await openOwner(page, route => reply(route, 200, { status: "existing_staff_account" }));
   await page.getByLabel("Email giảng viên").fill("staff@example.test");

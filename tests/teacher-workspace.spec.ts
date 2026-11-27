@@ -98,6 +98,7 @@ test("teacher access remains invite-only and draft create/read/update are server
   });
 
   await page.goto("/?workspace=teacher");
+  await page.getByRole("button", { name: "Kịch bản nháp", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Bài học của bạn." })).toBeVisible();
   await expect(page.getByRole("button", { name: "Tạo bản nháp" }).first()).toBeVisible();
   expect(invocations.slice(0, 3).map(item => item.action)).toEqual(["list_drafts", "accept_invite", "list_drafts"]);
@@ -190,6 +191,7 @@ test("invited teacher can save from the long form on a short, narrow mobile view
   });
 
   await page.goto("/?workspace=teacher");
+  await page.getByRole("button", { name: "Kịch bản nháp", exact: true }).click();
   await page.getByRole("button", { name: "Tạo bản nháp" }).first().click();
   await expect(page.getByLabel("Tiêu đề bài học")).toBeVisible();
   const layout = await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: window.innerWidth }));
@@ -261,6 +263,7 @@ test("teacher editor preserves local text on a version conflict and reloads only
   });
 
   await page.goto("/?workspace=teacher");
+  await page.getByRole("button", { name: "Kịch bản nháp", exact: true }).click();
   await page.getByRole("button", { name: /Bài học đã lưu/ }).click();
   await page.getByLabel("Tóm tắt").fill("Thay đổi cục bộ chưa lưu.");
   await page.getByRole("button", { name: "Lưu bản nháp riêng" }).click();
@@ -288,6 +291,7 @@ test("teacher draft-save quota explains the limit and keeps unsaved work visible
   });
 
   await page.goto("/?workspace=teacher");
+  await page.getByRole("button", { name: "Kịch bản nháp", exact: true }).click();
   await page.getByRole("button", { name: "Tạo bản nháp" }).first().click();
   await page.getByLabel("Tiêu đề bài học").fill("Thực hành ngắn trong ngày");
   await page.getByLabel("Chuyển động").fill("Xoay vai nhẹ");
@@ -352,6 +356,7 @@ test("a late draft read cannot replace the workspace after the signed-in account
   });
 
   await page.goto("/?workspace=teacher");
+  await page.getByRole("button", { name: "Kịch bản nháp", exact: true }).click();
   await page.getByRole("button", { name: /Bản nháp riêng của tài khoản A/ }).click();
   await readStarted;
 
