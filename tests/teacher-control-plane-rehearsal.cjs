@@ -12,6 +12,9 @@ const later = ['20261023171210_delete_my_account.sql', '20261102173348_reading_p
   '20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql',
   '20261110175347_content_snapshot_screens.sql'];
 const candidate = '20261127031613_teacher_control_plane_rpcs.sql';
+// Follow-up candidate (Owner request 2026-11-27): replayed after the teacher candidate in its own fixture below.
+const followUp = '20261127120000_teacher_invite_account_kind.sql';
+const followUpRpcs = ['mcy_teacher_invite_account_kind', 'mcy_teacher_invite_mark_existing_account_emailed'];
 const notOnStaging = ['20261003031137_limit_my_consent_events.sql', '20261005004000_private_teacher_collaboration.sql', '20261009181735_ai_read_admission_state.sql'];
 const rpcs = ['mcy_teacher_prepare_invite', 'mcy_teacher_invite_mark_delivered', 'mcy_teacher_invite_delivery_failed',
   'mcy_teacher_invite_mark_existing_account', 'mcy_teacher_accept_own_invite', 'mcy_teacher_list_own_drafts',
@@ -34,13 +37,14 @@ const aclSnapshot = db => one(db, `select jsonb_object_agg(k, v) as v from (
     cmd || '|' || array_to_string(roles, ',') || '|' || coalesce(qual, '') || '|' || coalesce(with_check, '') from pg_policies
 ) s`).then(r => r.v);
 
-async function fixture() {
+async function fixture({ withFollowUp = false } = {}) {
   const db = await newDb();
   for (const f of later) await db.exec(read(f));
-  const before = await aclSnapshot(db);
+  let before = await aclSnapshot(db);
   // Supabase's default privileges grant new public functions to anon/authenticated; the candidate must revoke them itself.
   await db.exec('alter default privileges in schema public grant all on functions to anon, authenticated, service_role;');
   await db.exec(read(candidate));
+  if (withFollowUp) { before = await aclSnapshot(db); await db.exec(read(followUp)); }
   const after = await aclSnapshot(db);
   for (const [u, email, confirmed] of [[O, 'owner'], [O2, 'owner2'], [T, 'teacher'], [X, 'stranger'], [N, 'unconfirmed', false], [L, 'learner'], [E, 'existing']]) {
     await db.query('insert into auth.users(id,email,email_confirmed_at) values($1,$2,$3)', [u, `fictional-${email}@example.test`, confirmed === false ? null : new Date()]);
@@ -74,7 +78,7 @@ test('the chain under test is exactly what staging has, with the candidate repla
   assert.equal(staged.length, 31, 'staging listed 31 applied migrations through 20261110175347 before the candidate');
   assert.equal(candidate.slice(0, 14), '20261127031613', 'the candidate carries its remote staging version');
   assert.equal(new Set(staged).size, staged.length);
-  assert.deepEqual([...staged, candidate, ...notOnStaging].sort(), all, 'a new migration file appeared: decide whether staging has it and update this chain');
+  assert.deepEqual([...staged, candidate, followUp, ...notOnStaging].sort(), all, 'a new migration file appeared: decide whether staging has it and update this chain');
   assert.ok(staged.every(f => f.slice(0, 14) <= '20261110175347'));
 });
 
@@ -272,5 +276,77 @@ test('strangers, unconfirmed accounts and mismatched profile names are refused; 
     await db.query(`update private.workspace_invites set created_at = now() - interval '2 hours'`);
     await sentInvite(db, H.T, key(4));
     await denied(() => accept(db, T, H.T), '42501');
+  } finally { await db.close(); }
+});
+
+const accountKind = (db, actor, email) => svc(db, 'select public.mcy_teacher_invite_account_kind($1::uuid,$2) as v', [actor, email]);
+const emailed = (db, actor, invite) => svc(db, 'select public.mcy_teacher_invite_mark_existing_account_emailed($1::uuid,$2::uuid) as v', [actor, invite]);
+const mail = n => `fictional-${n}@example.test`;
+
+test('the follow-up adds only its two RPCs, service_role only, and widens nothing older', async () => {
+  const { db, before, after } = await fixture({ withFollowUp: true });
+  try {
+    const added = Object.keys(after).filter(k => !(k in before)).sort();
+    assert.deepEqual(added.map(k => k.replace(/^fn:public\.(\w+)\(.*$/, '$1')).sort(), [...followUpRpcs].sort());
+    for (const k of Object.keys(before)) assert.equal(after[k], before[k], `${k} changed`);
+    for (const name of followUpRpcs) {
+      const f = await one(db, `select p.prosecdef, p.proconfig, coalesce(p.proacl::text,'') acl,
+        has_function_privilege('anon', p.oid, 'execute') a, has_function_privilege('authenticated', p.oid, 'execute') u,
+        has_function_privilege('service_role', p.oid, 'execute') s from pg_proc p where p.proname=$1`, [name]);
+      assert.equal(f.prosecdef, true, `${name} security definer`);
+      assert.deepEqual(f.proconfig, ['search_path=""'], `${name} empty search_path`);
+      assert.deepEqual([f.a, f.u, f.s], [false, false, true], `${name} EXECUTE only for service_role`);
+      assert.doesNotMatch(f.acl, /[{,]=[a-zA-Z*]*X/, `${name} not executable by PUBLIC`);
+    }
+    await db.exec(`set role authenticated; set request.jwt.claim.sub='${L}'; set request.jwt.claim.role='authenticated';`);
+    try { await denied(() => db.query('select public.mcy_teacher_invite_account_kind($1::uuid,$2)', [O, mail('learner')]), '42501'); }
+    finally { await db.exec('reset role;'); }
+  } finally { await db.close(); }
+});
+
+test('account kind: none, learner (a teacher-only role still counts as learner), staff; Owner only; audited without the address', async () => {
+  const { db } = await fixture({ withFollowUp: true });
+  try {
+    assert.equal(await accountKind(db, O, mail('nobody')), 'none');
+    assert.equal(await accountKind(db, O, mail('learner')), 'learner');
+    assert.equal(await accountKind(db, O, mail('unconfirmed')), 'learner', 'an unconfirmed account still exists');
+    await db.query(`insert into private.role_assignments(user_id,role,scope_type,reason) values($1,'teacher','global','Fictional fixture')`, [E]);
+    assert.equal(await accountKind(db, O, mail('existing')), 'learner');
+    assert.equal(await accountKind(db, O, mail('owner2')), 'staff');
+    await db.query(`insert into private.role_assignments(user_id,role,scope_type,reason) values($1,'support','global','Fictional fixture')`, [X]);
+    assert.equal(await accountKind(db, O, mail('stranger')), 'staff');
+    // An ended staff role no longer counts.
+    await db.query(`update private.role_assignments set starts_at = now() - interval '2 days', ends_at = now() - interval '1 day' where user_id=$1`, [X]);
+    assert.equal(await accountKind(db, O, mail('stranger')), 'learner');
+    const refusals = (await db.query(`select actor_id, outcome, object_id, metadata from private.audit_events where action='teacher.invite.refused_staff_account'`)).rows;
+    assert.deepEqual(refusals.map(r => [r.actor_id, r.outcome, r.object_id]), [[O, 'denied', null], [O, 'denied', null]]);
+    for (const r of refusals) assert.doesNotMatch(JSON.stringify(r.metadata), /@|example/, 'no address in the audit');
+    // Not an Owner, or a malformed / non-normalised address.
+    await denied(() => accountKind(db, L, mail('learner')), '42501');
+    await denied(() => accountKind(db, T, mail('learner')), '42501');
+    for (const bad of [' fictional-learner@example.test', 'Fictional-Learner@example.test', 'no-at-sign', 'a@b', '', `${'a'.repeat(250)}@x.test`]) {
+      await denied(() => accountKind(db, O, bad), '22023');
+    }
+    await denied(() => accountKind(db, O, null), '22023');
+    assert.equal((await one(db, 'select count(*)::int c from private.workspace_invites')).c, 0, 'the lookup creates no invitation');
+  } finally { await db.close(); }
+});
+
+test('an existing account settled by the instructions email records email_sent and can then be accepted', async () => {
+  const { db } = await fixture({ withFollowUp: true });
+  try {
+    const r = await prepare(db, O, H.E, H.O, key(1));
+    await denied(() => emailed(db, L, r.invite_id), '42501');
+    assert.equal(await emailed(db, O2, r.invite_id), false, 'another Owner cannot settle it');
+    assert.equal(await emailed(db, O, r.invite_id), true);
+    assert.equal(await emailed(db, O, r.invite_id), false, 'only an in_progress invite can be settled');
+    assert.equal(await existing(db, O, r.invite_id), false);
+    assert.equal((await invite(db, r.invite_id)).delivery_state, 'sent');
+    const events = await audit(db, r.invite_id);
+    assert.deepEqual(events.map(a => a.action), ['teacher.invite.prepared', 'teacher.invite.delivery_confirmed']);
+    assert.deepEqual(events[1].metadata, { delivery_state: 'sent', email_sent: true, existing_account: true });
+    assert.deepEqual(await prepare(db, O, H.E, H.O, key(2)), { invite_id: r.invite_id, delivery_state: 'sent' }, 'a second click sends nothing');
+    assert.deepEqual(await accept(db, E, H.E), { status: 'active', role: 'teacher' });
+    assert.equal(await emailed(db, O, r.invite_id), false, 'an accepted invite cannot be settled again');
   } finally { await db.close(); }
 });

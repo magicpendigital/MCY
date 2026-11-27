@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — thư mời giảng viên cho tài khoản đã có
 
-Trạng thái: chờ duyệt (lập 27/11). Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-27-teacher-invite-existing-account.md`. Khi xong, cập nhật `PLAN.md`. Thuộc P0 của [kế hoạch thử giảng viên](2026-11-26-teacher-pilot.md).
+Trạng thái: Owner đã duyệt §12 theo khuyến nghị (27/11), đang làm. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-27-teacher-invite-existing-account.md`. Khi xong, cập nhật `PLAN.md`. Thuộc P0 của [kế hoạch thử giảng viên](2026-11-26-teacher-pilot.md).
 
 Quy ước riêng tư: kho mã công khai. Không ghi email của bất kỳ ai vào tệp nào; người được mời gọi là GV1 hoặc "người được mời".
 
@@ -17,7 +17,7 @@ Khi đọc mã còn thấy thêm một lỗi nhỏ, sửa chung trong việc nà
 - Mời một email đang có vai Owner hoặc nhân sự khác: **không gửi thư**. Ô mời báo rõ đây là tài khoản quản trị và giải thích vì sao không nên dùng nó để thử vai giảng viên. Lời mời không được tạo, hoặc bị đóng ngay; audit ghi lý do.
 - Mời một email chưa có tài khoản: thư mời của Auth dẫn thẳng tới trang giảng viên (`workspace=teacher`).
 - Bấm mời lại cùng email: không gửi thư thứ hai (giữ idempotency hiện có). Giới hạn 3 lời mời mỗi giờ vẫn giữ.
-- Thư không chứa mã đăng nhập hay link đăng nhập (không có token). Thư chỉ dẫn tới trang giảng viên, ở đó người được mời tự đăng nhập bằng mã của chính mình.
+- Thư không chứa mã đăng nhập hay link đăng nhập (không có token). Thư chỉ dẫn tới trang giảng viên, ở đó người được mời tự đăng nhập bằng liên kết xác minh gửi tới chính email của mình.
 - Lệnh ở mục 10 chạy xanh. Có biên nhận staging, không có email.
 
 ## 3. Phạm vi sửa
@@ -71,7 +71,7 @@ Khi đọc mã còn thấy thêm một lỗi nhỏ, sửa chung trong việc nà
 
 ## 9. Cách thử
 1. Owner mời một email **đã có tài khoản học viên thường** (không phải tài khoản Owner). Kỳ vọng: ô mời báo đã gửi; hộp thư nhận "Lời mời giảng viên — Một chút yoga" (xem cả thư rác).
-2. Người được mời bấm nút trong thư, đăng nhập bằng mã, đặt tên hiển thị ở Cá nhân, mở lại trang giảng viên. Kỳ vọng: vào được trang giảng viên.
+2. Người được mời bấm nút trong thư, bấm "Gửi liên kết xác minh" và mở thư xác minh, đặt tên hiển thị ở Cá nhân, mở lại trang giảng viên. Kỳ vọng: vào được trang giảng viên.
 3. Owner bấm mời lại cùng email. Kỳ vọng: "đã gửi trước đó", không có thư thứ hai.
 4. Owner mời email của tài khoản Owner khác. Kỳ vọng: không có thư; ô mời báo đây là tài khoản quản trị.
 5. Owner mời một email chưa có tài khoản. Kỳ vọng: thư mời của Auth; bấm link thì vào trang giảng viên.
@@ -98,6 +98,6 @@ Khi đọc mã còn thấy thêm một lỗi nhỏ, sửa chung trong việc nà
 ## Progress
 - [x] Đọc staging 27/11: 2 lời mời, cả hai `existing_account`, không gửi thư (đúng thiết kế P0)
 - [x] Lập kế hoạch (27/11)
-- [ ] Owner duyệt §12
+- [x] Owner duyệt §12 theo khuyến nghị (27/11): thư riêng qua Resend, chặn tài khoản Owner/nhân sự, sửa `redirectTo`, thứ tự bí mật → migration → Edge → push; để 2 lời mời 27/11 tự hết hạn
 - [ ] Bước 2–5 (mã + test + gộp)
 - [ ] Bước 6–8 (bí mật, staging, thử thật, biên nhận)

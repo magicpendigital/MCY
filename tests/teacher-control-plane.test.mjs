@@ -71,6 +71,8 @@ function harness(options = {}) {
   const authCalls = [];
   const profileCalls = [];
   const hashedEmails = [];
+  const inviteOptions = [];
+  const sentEmails = [];
   const identity = options.identity === undefined
     ? { id: TEACHER_ID, email: "teacher@example.test", email_confirmed_at: "2026-09-01T00:00:00Z" }
     : options.identity;
@@ -102,8 +104,9 @@ function harness(options = {}) {
           },
           auth: {
             admin: {
-              inviteUserByEmail: async email => {
+              inviteUserByEmail: async (email, inviteOption) => {
                 invitations.push(email);
+                inviteOptions.push(inviteOption);
                 if (options.inviteThrows) throw options.inviteThrows;
                 return { data: { user: { id: "77777777-7777-4777-8777-777777777777" } }, error: options.inviteError ?? null };
               },
@@ -120,8 +123,13 @@ function harness(options = {}) {
       hashedEmails.push(email);
       return `opaque-hmac:${email.length}`;
     },
+    emailSender: apiKey => async message => {
+      sentEmails.push({ apiKey, ...message });
+      if (options.emailThrows) throw options.emailThrows;
+      return options.emailAccepted ?? true;
+    },
   });
-  return { handler, calls, invitations, authCalls, profileCalls, hashedEmails };
+  return { handler, calls, invitations, authCalls, profileCalls, hashedEmails, inviteOptions, sentEmails };
 }
 
 function defaultRpc(name) {
@@ -146,6 +154,8 @@ function defaultRpc(name) {
   if (name === "mcy_teacher_accept_own_invite") return { data: { status: "active", role: "teacher" }, error: null };
   if (name === "mcy_teacher_invite_mark_delivered") return { data: true, error: null };
   if (name === "mcy_teacher_invite_mark_existing_account") return { data: true, error: null };
+  if (name === "mcy_teacher_invite_mark_existing_account_emailed") return { data: true, error: null };
+  if (name === "mcy_teacher_invite_account_kind") return { data: "none", error: null };
   return { data: null, error: null };
 }
 
@@ -395,9 +405,13 @@ test("Owner invitation hashes the normalized email, pins teacher role, and never
   assert.equal(serialized.includes("teacher+pilot@example.test"), false);
   assert.deepEqual(invite.invitations, ["teacher+pilot@example.test"]);
   assert.deepEqual(invite.calls.map(call => call.name), [
-    "mcy_ai_get_owner_config", "mcy_teacher_prepare_invite", "mcy_teacher_invite_mark_delivered",
+    "mcy_ai_get_owner_config", "mcy_teacher_invite_account_kind", "mcy_teacher_prepare_invite", "mcy_teacher_invite_mark_delivered",
   ]);
-  const prepared = invite.calls[1];
+  assert.deepEqual(invite.calls[1].args, { p_actor_id: OWNER_ID, p_email: "teacher+pilot@example.test" });
+  assert.deepEqual(invite.inviteOptions, [{ redirectTo: "https://motchutyoga.magicpendigital.com/auth/callback?workspace=teacher&email_locale=vi-VN" }],
+    "a new invitee lands on the teacher workspace, not the learner app");
+  assert.equal(invite.sentEmails.length, 0);
+  const prepared = invite.calls[2];
   assert.equal(invite.calls[0].args.p_actor_id, OWNER_ID);
   assert.equal(prepared.args.p_actor_id, OWNER_ID);
   assert.equal(prepared.args.p_email_hash, "opaque-hmac:26");
@@ -438,7 +452,7 @@ test("returned or thrown invitation delivery errors are recorded as unconfirmed"
   });
 });
 
-test("an address that already has an account is recorded without an email and reported to the Owner", async () => {
+test("without a configured sender, an address that already has an account is recorded without an email and reported to the Owner", async () => {
   for (const code of ["email_exists", "user_already_exists"]) {
     const existing = harness({
       env: { MCY_TEACHER_INVITES_ENABLED: "true" },
@@ -450,8 +464,9 @@ test("an address that already has an account is recorded without an email and re
     assert.deepEqual(JSON.parse(serialized), { status: "existing_account" });
     assert.equal(serialized.includes("pilot@example.test"), false);
     assert.deepEqual(existing.calls.map(call => call.name), [
-      "mcy_ai_get_owner_config", "mcy_teacher_prepare_invite", "mcy_teacher_invite_mark_existing_account",
+      "mcy_ai_get_owner_config", "mcy_teacher_invite_account_kind", "mcy_teacher_prepare_invite", "mcy_teacher_invite_mark_existing_account",
     ]);
+    assert.equal(existing.sentEmails.length, 0);
     assert.deepEqual(existing.calls.at(-1).args, { p_actor_id: TEACHER_ID, p_invite_id: INVITE_ID });
   }
 
@@ -542,4 +557,129 @@ test("teacher invite email HMAC is keyed, deterministic, and does not expose the
   assert.equal(first, repeated);
   assert.notEqual(first, differentKey);
   assert.equal(first.includes(email), false);
+});
+
+const SENDER_ENV = { MCY_TEACHER_INVITES_ENABLED: "true", RESEND_API_KEY: "re_test_key_never_returned", MCY_TEACHER_INVITE_FROM: "Một chút yoga <moi@example.test>" };
+
+test("an existing learner account gets the teacher-instructions email, without Auth and without any sign-in token", async () => {
+  const learner = harness({ env: SENDER_ENV, responses: { mcy_teacher_invite_account_kind: { data: "learner", error: null } } });
+  const response = await learner.handler(request({ action: "invite_teacher", email: " Pilot@Example.test ", idempotency_key: IDEMPOTENCY_KEY }));
+  const serialized = await response.text();
+  assert.equal(response.status, 200);
+  assert.deepEqual(JSON.parse(serialized), { status: "sent_existing_account" });
+  assert.equal(serialized.includes("pilot@example.test") || serialized.includes("re_test_key"), false);
+  assert.equal(learner.invitations.length, 0, "Auth is not asked to invite a known account");
+  assert.deepEqual(learner.calls.map(call => call.name), [
+    "mcy_ai_get_owner_config", "mcy_teacher_invite_account_kind", "mcy_teacher_prepare_invite", "mcy_teacher_invite_mark_existing_account_emailed",
+  ]);
+  assert.deepEqual(learner.calls.at(-1).args, { p_actor_id: TEACHER_ID, p_invite_id: INVITE_ID });
+  assert.equal(learner.sentEmails.length, 1);
+  const [mail] = learner.sentEmails;
+  assert.equal(mail.apiKey, "re_test_key_never_returned");
+  assert.equal(mail.from, "Một chút yoga <moi@example.test>");
+  assert.equal(mail.to, "pilot@example.test");
+  assert.equal(mail.subject, "Lời mời làm giảng viên · Một chút yoga");
+  assert.equal(mail.idempotencyKey, `mcy-teacher-invite-${INVITE_ID}`);
+  for (const body of [mail.html, mail.text]) {
+    assert.match(body, /https:\/\/motchutyoga\.magicpendigital\.com\/\?workspace=teacher/);
+    assert.match(body, /72 giờ/);
+    assert.match(body, /Gửi liên kết xác minh/);
+    assert.match(body, /Cá nhân/);
+    assert.doesNotMatch(body, /token|code=|auth\/callback|pilot@example\.test/i, "no sign-in token and no address in the email");
+  }
+  assert.match(mail.html, /^<!doctype html>/);
+  assert.match(mail.html, /#8E4B35/);
+});
+
+test("Auth's own existing-account refusal also takes the instructions-email path when a sender is configured", async () => {
+  const raced = harness({ env: SENDER_ENV, inviteError: { code: "email_exists", status: 422 } });
+  assert.deepEqual(await jsonResponse(await raced.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))), {
+    status: 200, body: { status: "sent_existing_account" },
+  });
+  assert.equal(raced.invitations.length, 1);
+  assert.equal(raced.sentEmails.length, 1);
+  assert.equal(raced.calls.at(-1).name, "mcy_teacher_invite_mark_existing_account_emailed");
+});
+
+test("Owner and staff accounts are refused before any invitation or email", async () => {
+  const staff = harness({ env: SENDER_ENV, responses: { mcy_teacher_invite_account_kind: { data: "staff", error: null } } });
+  assert.deepEqual(await jsonResponse(await staff.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))), {
+    status: 200, body: { status: "existing_staff_account" },
+  });
+  assert.deepEqual(staff.calls.map(call => call.name), ["mcy_ai_get_owner_config", "mcy_teacher_invite_account_kind"]);
+  assert.equal(staff.invitations.length, 0);
+  assert.equal(staff.sentEmails.length, 0);
+  assert.equal(staff.hashedEmails.length, 0);
+
+  for (const bad of [{ data: "owner", error: null }, { data: null, error: null }]) {
+    const odd = harness({ env: SENDER_ENV, responses: { mcy_teacher_invite_account_kind: bad } });
+    assert.equal((await odd.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))).status, 503);
+    assert.equal(odd.calls.length, 2);
+  }
+  const notOwner = harness({ env: SENDER_ENV, responses: { mcy_teacher_invite_account_kind: { data: null, error: { code: "42501", message: "Owner role required" } } } });
+  assert.equal((await notOwner.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))).status, 403);
+});
+
+test("a refused, failed or thrown instructions email is recorded as unconfirmed and never resent", async () => {
+  for (const failure of [{ emailAccepted: false }, { emailThrows: new Error("provider secret must not escape") }]) {
+    let state = "ready";
+    const attempt = harness({
+      env: SENDER_ENV,
+      ...failure,
+      responses: {
+        mcy_teacher_invite_account_kind: { data: "learner", error: null },
+        mcy_teacher_prepare_invite: () => ({ data: { invite_id: INVITE_ID, delivery_state: state }, error: null }),
+        mcy_teacher_invite_delivery_failed: () => { state = "uncertain"; return { data: true, error: null }; },
+      },
+    });
+    const body = { action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY };
+    const first = await attempt.handler(request(body));
+    const serialized = await first.text();
+    assert.equal(first.status, 503);
+    assert.deepEqual(JSON.parse(serialized), { error: "invitation_delivery_unconfirmed" });
+    assert.equal(serialized.includes("provider secret"), false);
+    assert.equal(attempt.calls.some(call => call.name === "mcy_teacher_invite_mark_existing_account_emailed"), false);
+    assert.equal((await attempt.handler(request(body))).status, 409);
+    assert.equal(attempt.sentEmails.length, 1, "no second email");
+  }
+
+  const unrecorded = harness({
+    env: SENDER_ENV,
+    responses: {
+      mcy_teacher_invite_account_kind: { data: "learner", error: null },
+      mcy_teacher_invite_mark_existing_account_emailed: { data: false, error: null },
+    },
+  });
+  assert.deepEqual(await jsonResponse(await unrecorded.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))), {
+    status: 503, body: { error: "invitation_delivery_unconfirmed" },
+  });
+});
+
+test("a malformed sender address falls back to the no-email path instead of sending", async () => {
+  for (const from of ["not an address", "a@b.test\r\nBcc: x@y.test", ""]) {
+    const misconfigured = harness({
+      env: { ...SENDER_ENV, MCY_TEACHER_INVITE_FROM: from },
+      responses: { mcy_teacher_invite_account_kind: { data: "learner", error: null } },
+    });
+    assert.deepEqual(await jsonResponse(await misconfigured.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))), {
+      status: 200, body: { status: "existing_account" },
+    });
+    assert.equal(misconfigured.sentEmails.length, 0);
+  }
+});
+
+test("the Resend sender posts one bounded request and reports only success or failure", async () => {
+  const { createResendSender } = await import("../supabase/functions/_shared/teacherInviteEmail.ts");
+  const requests = [];
+  const message = { from: "a@b.test", to: "c@d.test", subject: "S", html: "<p>h</p>", text: "t", idempotencyKey: "k-1" };
+  const ok = createResendSender("re_key", async (url, init) => { requests.push({ url, init }); return new Response("{}", { status: 200 }); });
+  assert.equal(await ok(message), true);
+  assert.equal(requests[0].url, "https://api.resend.com/emails");
+  assert.equal(requests[0].init.method, "POST");
+  assert.equal(requests[0].init.headers.Authorization, "Bearer re_key");
+  assert.equal(requests[0].init.headers["Idempotency-Key"], "k-1");
+  assert.deepEqual(JSON.parse(requests[0].init.body), { from: "a@b.test", to: ["c@d.test"], subject: "S", html: "<p>h</p>", text: "t" });
+  assert.ok(requests[0].init.signal);
+  assert.equal(await createResendSender("re_key", async () => new Response("{}", { status: 422 }))(message), false);
+  assert.equal(await createResendSender("re_key", async () => { throw new Error("network"); })(message), false);
 });
