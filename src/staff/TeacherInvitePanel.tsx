@@ -93,6 +93,13 @@ export default function TeacherInvitePanel() {
         setEmail("");
         return;
       }
+      // A 200 with a status this page does not know means the server is newer than this tab: something may have been sent, so never
+      // say "not sent"; ask for a reload instead of a retry (a retry with the same key is safe, but the page cannot read the answer).
+      if (typeof status === "string" && status) {
+        setNotice("Máy chủ đã nhận yêu cầu, nhưng trang này là bản cũ nên chưa đọc được kết quả. Hãy tải lại trang trước khi mời tiếp; không cần gửi lại.");
+        setEmail("");
+        return;
+      }
       setError(inviteFailureMessage("teacher_service_unavailable"));
     } catch {
       setError(inviteFailureMessage("teacher_service_unavailable"));
