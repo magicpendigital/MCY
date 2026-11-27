@@ -10,7 +10,7 @@ const directory = path.join(__dirname, '../supabase/migrations');
 const sql = name => fs.readFileSync(path.join(directory, name), 'utf8').replace(/\r\n/g, '\n');
 const baseline = sql('20260930160616_allow_unset_model_for_disabled_ai.sql');
 const repair = sql('20261007174155_fix_owner_config_conflict_sqlstate.sql');
-const teacher = sql('20261002204228_teacher_control_plane_rpcs.sql');
+const teacher = sql('20261127031613_teacher_control_plane_rpcs.sql');
 const signature = 'public.mcy_ai_save_owner_config(uuid,integer,boolean,text,text,numeric,integer,integer,integer)';
 const ids = Array.from({ length: 8 }, (_, index) => `11000000-0000-4000-8000-${String(index + 1).padStart(12, '0')}`);
 const [owner, learner, teacherA, teacherB, reviewer, revoked, expired, future] = ids;

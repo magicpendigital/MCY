@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — thử nghiệm giảng viên (pilot GV)
 
-Trạng thái: **đang làm P0** (lập 26/11; Owner duyệt quyết định 1–7 ngày 26/11 và yêu cầu triển khai tiếp; quyết định 8–12 còn chờ). Chưa đụng staging. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-26-teacher-pilot.md`. Khi xong, cập nhật `PLAN.md`.
+Trạng thái: **đang làm P0** (lập 26/11; Owner duyệt quyết định 1–7 ngày 26/11 và yêu cầu triển khai tiếp; quyết định 8–12 còn chờ). Bước 1–5 xong 27/11 (migration staging `20261127031613`, Edge `teacher-control-plane` v1); bước 6–8 chờ Owner và GV1. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-26-teacher-pilot.md`. Khi xong, cập nhật `PLAN.md`.
 
 Quy ước riêng tư: kho mã nay **công khai**. Không ghi email của giảng viên vào bất kỳ tệp nào. Owner cho phép (26/11) tên hiển thị của giảng viên đầu tiên là tên thật của giảng viên; trong tài liệu vẫn gọi là **GV1** cho gọn. Email chỉ được Owner nhập vào ô mời, ngay lúc mời.
 
@@ -156,12 +156,15 @@ Kịch bản đợt N (ngoài app). Owner và GV1 tự làm, agent không giữ 
 - Tập dượt PGlite (`npm run test:teacher-control-plane-rehearsal`, cần `MCY_PGLITE_MODULE_PATH`): chuỗi 31 migration staging đã áp rồi `20261002204228`; 7/7 đạt. Áp sạch, chỉ thêm 8 RPC (security definer, `search_path` rỗng, chỉ service_role được EXECUTE); anon/authenticated không đọc/ghi/TRUNCATE bảng lời mời. Đủ luồng mời → gửi → nhận, giới hạn 3/giờ, lời mời hết hạn/không chắc, email đã có tài khoản, người lạ, email chưa xác minh, tên sai, vai trò đã thu hồi.
 - Edge tính mã băm từ email của phiên đã xác minh (không nhận mã băm từ trình duyệt), nên SQL tin mã băm là đúng thiết kế.
 - **Giới hạn đã biết (backlog):** giảng viên đã bị thu hồi quyền không thể được mời lại bằng cùng email (RPC nhận lời mời kiểm tra lời mời đã dùng trước). Không ảnh hưởng pilot; nếu cần mời lại sẽ sửa bằng migration riêng.
-- **Điểm chặn:** phiên cloud này không có công cụ Supabase (không connector, không CLI, không khóa). Bước 1, 4, 5 cần một phiên có connector Supabase của Owner (máy Windows của Owner) hoặc cách khác do Owner chọn.
+- ~~Điểm chặn: phiên cloud không có công cụ Supabase.~~ Đã gỡ 27/11: phiên trên máy Owner dùng Supabase CLI và Management API.
+- **27/11, bước 1, 4, 5 trên staging:** staging khớp chuỗi (31 đã áp, `20261002204228` chưa áp). Tập dượt lại 7/7. Áp đúng một migration, version remote **`20261127031613`**; tệp local đã đổi tên theo version này, test và README cập nhật. Đọc lại: 8 RPC `security definer`, `search_path` rỗng, chỉ service_role có EXECUTE; anon/authenticated/service_role không có quyền nào trên `private.workspace_invites`; số đếm nội dung không đổi. Owner nhập 3 biến; deploy `teacher-control-plane` v1 (`verify_jwt`), gọi không đăng nhập → 401. Staging có sẵn 2 dòng vai teacher (1 còn hiệu lực, 1 hết hạn) nhưng 0 hồ sơ giáo viên; RPC nhận lời mời tái dùng các dòng này. [Biên nhận](../../docs/status/receipts/2026-11-27-teacher-control-plane-staging.md).
 
 ## Progress
 - [x] Phân tích hiện trạng và lập kế hoạch (26/11)
 - [x] Owner duyệt quyết định 1–7 (26/11); 8–12 còn chờ
 - [x] Đợt N ngoài app: đang chạy (2 lớp trên Google Meet, Owner báo 26/11)
-- [ ] P0 bước 1–9
+- [x] P0 bước 1–5 (bước 2–3 ở `main` `2255dfa` 26/11; bước 1, 4, 5 trên staging 27/11)
+- [ ] P0 bước 6–8 (Owner mời GV1, GV1 soạn bài, Owner duyệt) — chờ Owner và GV1
+- [ ] P0 bước 9 (biên nhận phần 6–8 + `PLAN.md` sau khi Owner thử)
 - [ ] Kế hoạch riêng P1 (F0 + LC0)
 - [ ] Kế hoạch riêng P2
