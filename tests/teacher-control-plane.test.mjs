@@ -145,6 +145,7 @@ function defaultRpc(name) {
   if (name === "mcy_teacher_prepare_invite") return { data: { invite_id: INVITE_ID, delivery_state: "ready" }, error: null };
   if (name === "mcy_teacher_accept_own_invite") return { data: { status: "active", role: "teacher" }, error: null };
   if (name === "mcy_teacher_invite_mark_delivered") return { data: true, error: null };
+  if (name === "mcy_teacher_invite_mark_existing_account") return { data: true, error: null };
   return { data: null, error: null };
 }
 
@@ -435,6 +436,37 @@ test("returned or thrown invitation delivery errors are recorded as unconfirmed"
   assert.deepEqual(await jsonResponse(await finalizationFailed.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))), {
     status: 503, body: { error: "invitation_delivery_unconfirmed" },
   });
+});
+
+test("an address that already has an account is recorded without an email and reported to the Owner", async () => {
+  for (const code of ["email_exists", "user_already_exists"]) {
+    const existing = harness({
+      env: { MCY_TEACHER_INVITES_ENABLED: "true" },
+      inviteError: { code, status: 422, message: "A user with this email address has already been registered" },
+    });
+    const response = await existing.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }));
+    const serialized = await response.text();
+    assert.equal(response.status, 200);
+    assert.deepEqual(JSON.parse(serialized), { status: "existing_account" });
+    assert.equal(serialized.includes("pilot@example.test"), false);
+    assert.deepEqual(existing.calls.map(call => call.name), [
+      "mcy_ai_get_owner_config", "mcy_teacher_prepare_invite", "mcy_teacher_invite_mark_existing_account",
+    ]);
+    assert.deepEqual(existing.calls.at(-1).args, { p_actor_id: TEACHER_ID, p_invite_id: INVITE_ID });
+  }
+
+  const unrecorded = harness({
+    env: { MCY_TEACHER_INVITES_ENABLED: "true" },
+    inviteError: { code: "email_exists", status: 422 },
+    responses: { mcy_teacher_invite_mark_existing_account: { data: false, error: null } },
+  });
+  assert.deepEqual(await jsonResponse(await unrecorded.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))), {
+    status: 503, body: { error: "invitation_delivery_unconfirmed" },
+  });
+
+  const otherCode = harness({ env: { MCY_TEACHER_INVITES_ENABLED: "true" }, inviteError: { code: "over_email_send_rate_limit", status: 429 } });
+  assert.equal((await otherCode.handler(request({ action: "invite_teacher", email: "pilot@example.test", idempotency_key: IDEMPOTENCY_KEY }))).status, 503);
+  assert.equal(otherCode.calls.at(-1).name, "mcy_teacher_invite_delivery_failed");
 });
 
 test("duplicate invitation requests never resend for sent, in-progress, or uncertain attempts", async () => {

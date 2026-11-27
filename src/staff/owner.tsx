@@ -9,6 +9,7 @@ import "./owner.css";
 const ContentReviewPanel = lazy(() => import("./ContentReviewPanel"));
 const ContentHubPanel = lazy(() => import("./ContentHubPanel"));
 const DisplayConfigPanel = lazy(() => import("./DisplayConfigPanel"));
+const TeacherInvitePanel = lazy(() => import("./TeacherInvitePanel"));
 
 type ModelOption = {
   id: string;
@@ -317,7 +318,7 @@ export function OwnerWorkspace() {
           {notice && <p className="owner-success" role="status">{notice}</p>}{error && config && <p className="owner-error" role="alert">{error}</p>}
         </form>
 
-        <section className="owner-panel owner-teacher-gate"><div><span className="owner-kicker">PILOT GIÁO VIÊN</span><h2>Chưa mở quyền mời hoặc tải media.</h2><p>Cần hoàn tất API lời mời, kiểm thử theo vai trò, reviewer độc lập, quyền và thời hạn lưu nội dung, cùng hạn mức lưu trữ. Hiện chưa thể gửi lời mời, tạo hồ sơ giáo viên hoặc lưu bản nháp tại đây.</p></div><span className="owner-locked">ĐANG KHÓA</span></section>
+        <Suspense fallback={<p role="status">Đang mở ô mời giáo viên…</p>}><TeacherInvitePanel /></Suspense>
         </>}
       </>}
     </main>}

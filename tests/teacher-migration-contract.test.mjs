@@ -11,14 +11,15 @@ const rpcSignatures = {
   mcy_teacher_prepare_invite: "uuid, text, text, uuid, text, text, integer",
   mcy_teacher_invite_mark_delivered: "uuid, uuid",
   mcy_teacher_invite_delivery_failed: "uuid, uuid",
+  mcy_teacher_invite_mark_existing_account: "uuid, uuid",
   mcy_teacher_accept_own_invite: "uuid, text, text",
   mcy_teacher_list_own_drafts: "uuid",
   mcy_teacher_read_own_draft: "uuid, uuid",
   mcy_teacher_save_own_draft: "uuid, jsonb",
 };
 
-test("teacher RPC migration defines only the seven server-side control-plane entry points", () => {
-  assert.equal((migration.match(/create or replace function public\.mcy_teacher_/g) ?? []).length, 7);
+test("teacher RPC migration defines only the eight server-side control-plane entry points", () => {
+  assert.equal((migration.match(/create or replace function public\.mcy_teacher_/g) ?? []).length, 8);
   for (const [name, signature] of Object.entries(rpcSignatures)) {
     const start = migration.indexOf(`create or replace function public.${name}(`);
     assert.notEqual(start, -1, `${name} exists`);

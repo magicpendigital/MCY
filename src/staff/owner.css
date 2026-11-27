@@ -199,3 +199,6 @@
 .owner-screen-keys label { display: grid; gap: 4px; margin-bottom: 12px; font-size: 13px; }
 .owner-screen-keys label > span { font-weight: 650; word-break: break-all; }
 .owner-screen-keys label > small { font-weight: 450; }
+.owner-teacher-invite { margin-top: 17px; }
+.owner-teacher-invite-form { display: grid; gap: 4px; }
+.owner-teacher-invite-form .owner-form-footer { justify-content: flex-end; }

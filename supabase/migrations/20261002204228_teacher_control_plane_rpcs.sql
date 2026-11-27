@@ -225,6 +225,54 @@ begin
 end
 $$;
 
+-- The address already belongs to a registered account, so the Auth provider
+-- sends no invitation email (it refuses with email_exists). That refusal proves
+-- no email went out; the Owner tells the teacher directly to sign in with a
+-- one-time code and open the teacher workspace. Acceptance still requires that
+-- account's own confirmed email to match the invited hash, so the gate is the
+-- same as for a delivered invitation.
+create or replace function public.mcy_teacher_invite_mark_existing_account(
+  p_actor_id uuid,
+  p_invite_id uuid
+)
+returns boolean
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_updated integer;
+begin
+  if p_actor_id is null or p_invite_id is null or not exists (
+    select 1 from private.role_assignments r
+    where r.user_id = p_actor_id and r.role = 'owner' and r.scope_type = 'global'
+      and r.status = 'active' and r.starts_at <= pg_catalog.now()
+      and (r.ends_at is null or r.ends_at > pg_catalog.now())
+  ) then
+    raise exception using errcode = '42501', message = 'Owner role required';
+  end if;
+
+  update private.workspace_invites i
+  set delivery_state = 'sent', delivery_updated_at = pg_catalog.now()
+  where i.id = p_invite_id and i.invited_by = p_actor_id
+    and i.role = 'teacher' and i.scope_type = 'global'
+    and i.accepted_at is null and i.delivery_state = 'in_progress';
+  get diagnostics v_updated = row_count;
+  if v_updated = 1 then
+    insert into private.audit_events (
+      actor_id, actor_type, action, object_schema, object_table, object_id,
+      outcome, reason, metadata
+    ) values (
+      p_actor_id, 'user', 'teacher.invite.existing_account', 'private', 'workspace_invites', p_invite_id,
+      'success', 'Address already has an account; no email was sent and the Owner notifies the teacher directly',
+      pg_catalog.jsonb_build_object('delivery_state', 'sent', 'email_sent', false)
+    );
+    return true;
+  end if;
+  return false;
+end
+$$;
+
 create or replace function public.mcy_teacher_accept_own_invite(
   p_actor_id uuid,
   p_email_hash text,
@@ -682,6 +730,7 @@ $$;
 revoke all on function public.mcy_teacher_prepare_invite(uuid, text, text, uuid, text, text, integer) from public, anon, authenticated;
 revoke all on function public.mcy_teacher_invite_mark_delivered(uuid, uuid) from public, anon, authenticated;
 revoke all on function public.mcy_teacher_invite_delivery_failed(uuid, uuid) from public, anon, authenticated;
+revoke all on function public.mcy_teacher_invite_mark_existing_account(uuid, uuid) from public, anon, authenticated;
 revoke all on function public.mcy_teacher_accept_own_invite(uuid, text, text) from public, anon, authenticated;
 revoke all on function public.mcy_teacher_list_own_drafts(uuid) from public, anon, authenticated;
 revoke all on function public.mcy_teacher_read_own_draft(uuid, uuid) from public, anon, authenticated;
@@ -690,6 +739,7 @@ revoke all on function public.mcy_teacher_save_own_draft(uuid, jsonb) from publi
 grant execute on function public.mcy_teacher_prepare_invite(uuid, text, text, uuid, text, text, integer) to service_role;
 grant execute on function public.mcy_teacher_invite_mark_delivered(uuid, uuid) to service_role;
 grant execute on function public.mcy_teacher_invite_delivery_failed(uuid, uuid) to service_role;
+grant execute on function public.mcy_teacher_invite_mark_existing_account(uuid, uuid) to service_role;
 grant execute on function public.mcy_teacher_accept_own_invite(uuid, text, text) to service_role;
 grant execute on function public.mcy_teacher_list_own_drafts(uuid) to service_role;
 grant execute on function public.mcy_teacher_read_own_draft(uuid, uuid) to service_role;

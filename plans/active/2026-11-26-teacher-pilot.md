@@ -1,9 +1,9 @@
 <!-- plan-template v1 -->
 # Kế hoạch — thử nghiệm giảng viên (pilot GV)
 
-Trạng thái: **chờ Owner duyệt** (lập 26/11, chưa sửa code, chưa đụng staging). Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-26-teacher-pilot.md`. Khi xong, cập nhật `PLAN.md`.
+Trạng thái: **đang làm P0** (lập 26/11; Owner duyệt quyết định 1–7 ngày 26/11 và yêu cầu triển khai tiếp; quyết định 8–12 còn chờ). Chưa đụng staging. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-26-teacher-pilot.md`. Khi xong, cập nhật `PLAN.md`.
 
-Quy ước riêng tư: kho mã nay **công khai**. Không ghi tên hay email của giảng viên vào bất kỳ tệp nào. Trong tài liệu gọi là **giảng viên thử nghiệm đầu tiên (GV1)**. Email chỉ được Owner nhập vào ô mời, ngay lúc mời.
+Quy ước riêng tư: kho mã nay **công khai**. Không ghi email của giảng viên vào bất kỳ tệp nào. Owner cho phép (26/11) tên hiển thị của giảng viên đầu tiên là tên thật của giảng viên; trong tài liệu vẫn gọi là **GV1** cho gọn. Email chỉ được Owner nhập vào ô mời, ngay lúc mời.
 
 ## 1. Mục tiêu
 Owner yêu cầu 26/11: phân tích và lên kế hoạch tính năng giảng viên để bắt đầu thử nghiệm. Cụ thể: (A) giảng viên đăng nhập và soạn bài; (B) học viên đăng ký lớp/khóa của giảng viên; (C) giảng viên dạy, rồi nhận xét học viên sau buổi. Kế hoạch này đi từ phần nhỏ nhất chạy được trước. Lớp trực tuyến dựa trên các quyết định đã có ở [live-class-design §11–§12](../backlog/live-class-design-2026-11-24.md): Owner chấp nhận rủi ro link YouTube không công khai; sĩ số không cố định; người vắng xem bản ghi và vẫn làm bài tập.
@@ -140,10 +140,28 @@ Kịch bản đợt N (ngoài app). Owner và GV1 tự làm, agent không giữ 
 11. **Chính sách vắng/hủy (§12 của thiết kế lớp trực tuyến)** dùng cho đợt N. Khuyên: dùng bản đề xuất (bài tập nộp trong 7 ngày; GV báo dời trước 24 giờ). Owner sửa các con số nếu muốn.
 12. **Nhận xét bằng AI:** không có trong pilot miễn phí. Khuyên: để kế hoạch R3 riêng, sau cổng AI.
 
+## Quyết định của Owner (26/11)
+1. Đợt N: **đồng ý**; đang có 2 lớp trực tuyến chạy qua Google Meet.
+2. Làm P0 trên staging, chỉ web: **đồng ý**.
+3. Thao tác ra ngoài của P0 (áp migration, deploy Edge, Owner nhập 3 biến server, push lên `main`): **đồng ý**, theo thứ tự trong mục 12.3.
+4. Mời qua ô "Mời giáo viên" trong workspace Owner: **đồng ý**.
+5. Kích hoạt hồ sơ GV1; tên hiển thị là tên thật của giảng viên (GV1 tự nhập trong Cá nhân): **đồng ý**.
+6. Duyệt ở `private`, xem như học viên rồi mới bật hiển thị: **đồng ý**.
+7. Chỉ video trên kênh YouTube của chính GV1; Owner ghi căn cứ quyền khi duyệt: **đồng ý**.
+8–12: **chưa trả lời** (thứ tự P1/P2, tên trong tài liệu cũ, GV thấy gì ở P2, chính sách vắng/hủy, AI nhận xét). P0 không phụ thuộc các mục này.
+
+### Thay đổi trong lúc làm P0
+- Email đã có tài khoản: Auth không gửi thư mời cho địa chỉ đã có tài khoản (`email_exists`). Trước đây lời mời sẽ kẹt ở "chưa xác nhận". Thêm RPC `mcy_teacher_invite_mark_existing_account` vào migration `20261002204228` (chưa áp nên còn sửa được). Edge trả `existing_account` và ô mời nói rõ: không gửi thư; Owner nhắn GV1 đăng nhập bằng mã gửi qua email rồi mở trang giáo viên. Nhận lời mời vẫn cần email đã xác minh của chính tài khoản khớp mã băm, nên cổng không lỏng hơn.
+- Ô "Mời giáo viên" thay thẻ khóa trong workspace Owner (`src/staff/TeacherInvitePanel.tsx`): chuẩn hóa email, một khóa idempotency cho mỗi địa chỉ (bấm lại không gửi thư thứ hai), không lưu email trong trình duyệt, báo lỗi trung thực (cổng đóng, không phải Owner, chưa xác nhận gửi).
+- Tập dượt PGlite (`npm run test:teacher-control-plane-rehearsal`, cần `MCY_PGLITE_MODULE_PATH`): chuỗi 31 migration staging đã áp rồi `20261002204228`; 7/7 đạt. Áp sạch, chỉ thêm 8 RPC (security definer, `search_path` rỗng, chỉ service_role được EXECUTE); anon/authenticated không đọc/ghi/TRUNCATE bảng lời mời. Đủ luồng mời → gửi → nhận, giới hạn 3/giờ, lời mời hết hạn/không chắc, email đã có tài khoản, người lạ, email chưa xác minh, tên sai, vai trò đã thu hồi.
+- Edge tính mã băm từ email của phiên đã xác minh (không nhận mã băm từ trình duyệt), nên SQL tin mã băm là đúng thiết kế.
+- **Giới hạn đã biết (backlog):** giảng viên đã bị thu hồi quyền không thể được mời lại bằng cùng email (RPC nhận lời mời kiểm tra lời mời đã dùng trước). Không ảnh hưởng pilot; nếu cần mời lại sẽ sửa bằng migration riêng.
+- **Điểm chặn:** phiên cloud này không có công cụ Supabase (không connector, không CLI, không khóa). Bước 1, 4, 5 cần một phiên có connector Supabase của Owner (máy Windows của Owner) hoặc cách khác do Owner chọn.
+
 ## Progress
 - [x] Phân tích hiện trạng và lập kế hoạch (26/11)
-- [ ] Owner duyệt các quyết định ở mục 12
-- [ ] Đợt N ngoài app
+- [x] Owner duyệt quyết định 1–7 (26/11); 8–12 còn chờ
+- [x] Đợt N ngoài app: đang chạy (2 lớp trên Google Meet, Owner báo 26/11)
 - [ ] P0 bước 1–9
 - [ ] Kế hoạch riêng P1 (F0 + LC0)
 - [ ] Kế hoạch riêng P2

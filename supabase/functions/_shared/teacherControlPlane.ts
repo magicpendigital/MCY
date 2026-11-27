@@ -213,6 +213,12 @@ export async function hashTeacherInviteEmail(email: string, secret: string): Pro
   return Array.from(new Uint8Array(signed), byte => byte.toString(16).padStart(2, "0")).join("");
 }
 
+/** The Auth provider refuses to invite an address that already has an account. */
+function isExistingAccountRefusal(error: unknown): boolean {
+  if (!isRecord(error)) return false;
+  return error.code === "email_exists" || error.code === "user_already_exists";
+}
+
 function identityHasConfirmedEmail(identity: TeacherIdentity | null): identity is TeacherIdentity & { id: string; email: string; email_confirmed_at: string } {
   return Boolean(identity?.id && UUID_PATTERN.test(identity.id) && identity.email?.trim()
     && identity.email_confirmed_at);
@@ -343,11 +349,24 @@ export function createTeacherControlPlaneHandler(dependencies: TeacherControlPla
         if (prepared.data.delivery_state === "uncertain") return json(409, { error: "invitation_delivery_unconfirmed" });
 
         let deliveryFailed = false;
+        let existingAccount = false;
         try {
           const delivery = await server.auth.admin.inviteUserByEmail(email);
-          deliveryFailed = Boolean(delivery.error);
+          existingAccount = isExistingAccountRefusal(delivery.error);
+          deliveryFailed = Boolean(delivery.error) && !existingAccount;
         } catch {
           deliveryFailed = true;
+        }
+        if (existingAccount) {
+          // The provider refused before sending anything: no email went out. The
+          // invitation stays bound to the address hash, and the Owner tells the
+          // teacher to sign in with a one-time code and open the teacher workspace.
+          const marked = await server.rpc("mcy_teacher_invite_mark_existing_account", {
+            p_actor_id: actorId,
+            p_invite_id: prepared.data.invite_id,
+          });
+          if (marked.error || marked.data !== true) return json(503, { error: "invitation_delivery_unconfirmed" });
+          return json(200, { status: "existing_account" });
         }
         if (deliveryFailed) {
           await Promise.resolve(server.rpc("mcy_teacher_invite_delivery_failed", {
