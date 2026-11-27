@@ -1,5 +1,6 @@
-// Replays the migration chain applied on mcy-staging (through 20261110175347) and then the pending
-// 20261002204228_teacher_control_plane_rpcs.sql LAST, as it would land on staging, with fictional platform scaffolding.
+// Replays the migration chain applied on mcy-staging (through 20261110175347) and then
+// 20261127031613_teacher_control_plane_rpcs.sql LAST, exactly as it landed on staging on 2026-11-27 (remote version
+// 20261127031613; the source was written as 20261002204228 and renamed to the remote version), with fictional platform scaffolding.
 // Supplements, and is not, live Supabase evidence. Needs @electric-sql/pglite (MCY_PGLITE_MODULE_PATH).
 const { test } = require('node:test');
 const { assert, fs, dir, read, one, newDb, denied, hex, chain } = require('./support/pglite-chain.cjs');
@@ -10,7 +11,7 @@ const { assert, fs, dir, read, one, newDb, denied, hex, chain } = require('./sup
 const later = ['20261023171210_delete_my_account.sql', '20261102173348_reading_publication.sql', '20261102173513_add_glute_body_region.sql',
   '20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql',
   '20261110175347_content_snapshot_screens.sql'];
-const candidate = '20261002204228_teacher_control_plane_rpcs.sql';
+const candidate = '20261127031613_teacher_control_plane_rpcs.sql';
 const notOnStaging = ['20261003031137_limit_my_consent_events.sql', '20261005004000_private_teacher_collaboration.sql', '20261009181735_ai_read_admission_state.sql'];
 const rpcs = ['mcy_teacher_prepare_invite', 'mcy_teacher_invite_mark_delivered', 'mcy_teacher_invite_delivery_failed',
   'mcy_teacher_invite_mark_existing_account', 'mcy_teacher_accept_own_invite', 'mcy_teacher_list_own_drafts',
@@ -70,7 +71,8 @@ const draft = { locale: 'vi-VN', title: 'Fictional draft', duration_seconds: 60,
 test('the chain under test is exactly what staging has, with the candidate replayed last', () => {
   const all = fs.readdirSync(dir).filter(n => /^\d{14}_.+\.sql$/.test(n)).sort();
   const staged = [...chain, ...later];
-  assert.equal(staged.length, 31, 'staging lists 31 applied migrations through 20261110175347');
+  assert.equal(staged.length, 31, 'staging listed 31 applied migrations through 20261110175347 before the candidate');
+  assert.equal(candidate.slice(0, 14), '20261127031613', 'the candidate carries its remote staging version');
   assert.equal(new Set(staged).size, staged.length);
   assert.deepEqual([...staged, candidate, ...notOnStaging].sort(), all, 'a new migration file appeared: decide whether staging has it and update this chain');
   assert.ok(staged.every(f => f.slice(0, 14) <= '20261110175347'));
