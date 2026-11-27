@@ -12,8 +12,8 @@ const later = ['20261023171210_delete_my_account.sql', '20261102173348_reading_p
   '20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql',
   '20261110175347_content_snapshot_screens.sql'];
 const candidate = '20261127031613_teacher_control_plane_rpcs.sql';
-// Follow-up candidate (Owner request 2026-11-27): replayed after the teacher candidate in its own fixture below.
-const followUp = '20261127120000_teacher_invite_account_kind.sql';
+// Follow-up (Owner request 2026-11-27), on staging: replayed after the teacher candidate in its own fixture below.
+const followUp = '20261127072022_teacher_invite_account_kind.sql'; // applied to staging 2026-11-27 as remote version 20261127072022 (written as 20261127120000)
 const followUpRpcs = ['mcy_teacher_invite_account_kind', 'mcy_teacher_invite_mark_existing_account_emailed'];
 const notOnStaging = ['20261003031137_limit_my_consent_events.sql', '20261005004000_private_teacher_collaboration.sql', '20261009181735_ai_read_admission_state.sql'];
 const rpcs = ['mcy_teacher_prepare_invite', 'mcy_teacher_invite_mark_delivered', 'mcy_teacher_invite_delivery_failed',

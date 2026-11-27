@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — thư mời giảng viên cho tài khoản đã có
 
-Trạng thái: Owner đã duyệt §12 theo khuyến nghị (27/11), đang làm. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-27-teacher-invite-existing-account.md`. Khi xong, cập nhật `PLAN.md`. Thuộc P0 của [kế hoạch thử giảng viên](2026-11-26-teacher-pilot.md).
+Trạng thái: Owner đã duyệt §12 (27/11); mã, migration `20261127072022` và Edge v4 đã lên staging; chờ Owner thử thật. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-27-teacher-invite-existing-account.md`. Khi xong, cập nhật `PLAN.md`. Thuộc P0 của [kế hoạch thử giảng viên](2026-11-26-teacher-pilot.md).
 
 Quy ước riêng tư: kho mã công khai. Không ghi email của bất kỳ ai vào tệp nào; người được mời gọi là GV1 hoặc "người được mời".
 
@@ -99,5 +99,6 @@ Khi đọc mã còn thấy thêm một lỗi nhỏ, sửa chung trong việc nà
 - [x] Đọc staging 27/11: 2 lời mời, cả hai `existing_account`, không gửi thư (đúng thiết kế P0)
 - [x] Lập kế hoạch (27/11)
 - [x] Owner duyệt §12 theo khuyến nghị (27/11): thư riêng qua Resend, chặn tài khoản Owner/nhân sự, sửa `redirectTo`, thứ tự bí mật → migration → Edge → push; để 2 lời mời 27/11 tự hết hạn
-- [ ] Bước 2–5 (mã + test + gộp)
-- [ ] Bước 6–8 (bí mật, staging, thử thật, biên nhận)
+- [x] Bước 2–5 (mã + test + gộp): commit `a33efd6`, mọi bộ kiểm PASS
+- [x] Bước 6–7: Owner nhập 2 bí mật; áp migration (`20261127072022`), đọc lại quyền đạt; Edge v4, chưa đăng nhập → 401. [Biên nhận](../../docs/status/receipts/2026-11-27-teacher-invite-existing-account-staging.md)
+- [ ] Bước 8: Owner mời thử (tài khoản học viên và tài khoản mới), báo thư có đến không
