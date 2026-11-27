@@ -137,7 +137,7 @@
 .owner-content-review button:disabled { cursor:wait; opacity:.6; }
 .owner-content-review button.owner-primary { background:var(--owner-green,#425d48); color:#fff; }
 .owner-content-review :focus-visible { outline:3px solid #9a563e; outline-offset:3px; }
-.owner-content-review { --owner-ink:var(--color-ink); --owner-leaf:var(--color-forest); --owner-muted:var(--color-text-muted); --owner-border:var(--color-border); --owner-clay:var(--color-terracotta-action); --owner-paper:var(--color-surface); font-family:var(--font-sans); }
+.owner-content-review, .owner-teacher-content { --owner-ink:var(--color-ink); --owner-leaf:var(--color-forest); --owner-muted:var(--color-text-muted); --owner-border:var(--color-border); --owner-clay:var(--color-terracotta-action); --owner-paper:var(--color-surface); font-family:var(--font-sans); }
 .owner-content-review * { box-sizing:border-box; }
 .owner-content-review .owner-field select,.owner-content-review .owner-field textarea { min-height:48px; }
 .owner-content-review .owner-field textarea { min-height:120px; }

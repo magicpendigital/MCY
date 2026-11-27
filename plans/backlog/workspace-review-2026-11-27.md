@@ -30,10 +30,17 @@ Sau đó giữ thứ tự S3 → P1 → P2 → F.
 - Không hiện "cải thiện %".
 - Số liệu chỉ là số gộp, có ngưỡng.
 
-## Owner cần quyết
+## Owner quyết 28/11
 
-- **Q1:** sửa nút ngay?
-- **Q2:** dùng bố cục thanh bên?
-- **Q3:** làm T1 trước, T2 sau?
-- **Q4:** giảng viên có xem số của bài mình không?
-- **Q5:** trang Owner mở vào thẻ Nội dung và có thẻ Giảng viên?
+Owner đồng ý cả 5 đề xuất.
+
+- **Q1 · Có:** sửa nút ngay.
+  - W0 làm xong ở nhánh `claude/teacher-w0-button`.
+  - Đã thêm kiểm Playwright: nền phải đặc, độ tương phản từ 4.5 trở lên.
+- **Q2 · Có:** dùng bố cục thanh bên. "Kịch bản nháp" chuyển xuống nhóm Khác.
+- **Q3 · Theo đề xuất:** T1 làm trong W1–W2. T2 để sau bản 1.0, hoặc khi Owner duyệt lời chính sách.
+- **Q4 · Có:** khi T2 bật, giảng viên xem số gộp của bài mình, ngưỡng 5.
+- **Q5 · Có:** trang Owner mở vào thẻ Nội dung, có thêm thẻ Giảng viên, ô mời chuyển sang thẻ đó.
+
+Thứ tự làm: W0 → S1 → W1 → W2 → (T2 khi Owner duyệt chính sách) → S3 → P1 → P2 → F.
+Bước có migration hoặc Edge cần Owner yêu cầu áp trong chính bước đó.
