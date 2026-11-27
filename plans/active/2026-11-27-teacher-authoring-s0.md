@@ -1,7 +1,7 @@
 <!-- plan-template v1 -->
 # Kế hoạch — S0: trang giảng viên mở đúng chỗ soạn bài video
 
-Trạng thái: đã duyệt (Owner 27/11: "Làm S0 ngay"); mã xong, chờ Owner cho push và thử. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-27-teacher-authoring-s0.md`. Khi xong, cập nhật `PLAN.md`.
+Trạng thái: đã duyệt (Owner 27/11: "Làm S0 ngay"); đã push lên `main` 27/11, chờ Owner/giảng viên thử. Lập **trước khi sửa code**; đây cũng là phiếu tiếp nhận (intake) theo [TASK_LIFECYCLE](../../docs/quality/TASK_LIFECYCLE.md). Kiểm bằng `npm run check:plan plans/active/2026-11-27-teacher-authoring-s0.md`. Khi xong, cập nhật `PLAN.md`.
 
 ## 1. Mục tiêu
 Owner 27/11: giảng viên thử đăng nhập được nhưng "chưa có mục cho phép nhập link youtube bài giảng". Ô YouTube đã có ở thẻ "Bài video của tôi", nhưng thẻ mở sẵn là kho "Soạn bài" cũ không có video và không xuất bản được. Lát S0 trong [rà soát use case](../backlog/teacher-content-use-cases-2026-11-27.md) §4 chỉ sửa giao diện trang giảng viên để giảng viên vào thẳng chỗ soạn bài video, dán được cả link và xem thử video trước khi lưu. Kèm theo: ô mời giảng viên nói trung thực khi máy chủ trả trạng thái lạ (lỗi thẻ cũ ngày 27/11).
@@ -68,4 +68,5 @@ Owner 27/11: giảng viên thử đăng nhập được nhưng "chưa có mục 
 - [x] 1–3 mã
 - [x] 4 test và cổng: `check:quick`, `npm test`, `check:ios15` (tĩnh) PASS; Playwright msedge 21/21 PASS (3 spec giảng viên/mời)
 - [x] 5 PLAN, commit, gộp vào `main` ở máy
-- [ ] Owner cho push; Owner/giảng viên thử trên Preview
+- [x] Owner cho push (27/11): `check:ios15` PASS, đã lên `origin/main` (`bf64cab`)
+- [ ] Owner/giảng viên thử trên Preview

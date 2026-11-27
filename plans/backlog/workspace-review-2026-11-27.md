@@ -37,10 +37,13 @@ Owner đồng ý cả 5 đề xuất.
 - **Q1 · Có:** sửa nút ngay.
   - W0 làm xong ở nhánh `claude/teacher-w0-button`.
   - Đã thêm kiểm Playwright: nền phải đặc, độ tương phản từ 4.5 trở lên.
+  - Đã lên `origin/main` (`e018b11`).
 - **Q2 · Có:** dùng bố cục thanh bên. "Kịch bản nháp" chuyển xuống nhóm Khác.
 - **Q3 · Theo đề xuất:** T1 làm trong W1–W2. T2 để sau bản 1.0, hoặc khi Owner duyệt lời chính sách.
 - **Q4 · Có:** khi T2 bật, giảng viên xem số gộp của bài mình, ngưỡng 5.
 - **Q5 · Có:** trang Owner mở vào thẻ Nội dung, có thêm thẻ Giảng viên, ô mời chuyển sang thẻ đó.
+
+S1 xong ở máy 28/11 (form 3 bước, x/y, lối tắt); migration chờ Owner cho áp.
 
 Thứ tự làm: W0 → S1 → W1 → W2 → (T2 khi Owner duyệt chính sách) → S3 → P1 → P2 → F.
 Bước có migration hoặc Edge cần Owner yêu cầu áp trong chính bước đó.

@@ -93,7 +93,7 @@ test("writing a lesson validates locally, saves a version with the exact expecte
   expect(writes[1]).toMatchObject({ itemId: mine.item_id, expectedSeq: 2 });
 });
 
-test("the teacher page opens on the video lessons, with the three steps, and the old script tab says it never publishes", async ({ page }) => {
+test("the teacher page opens on the video lessons, with the four steps, and the old script tab says it never publishes", async ({ page }) => {
   await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), auth);
   await page.route("https://*.supabase.co/**", route => route.abort("blockedbyclient"));
   let accepted = false;
@@ -109,7 +109,9 @@ test("the teacher page opens on the video lessons, with the three steps, and the
   await page.route(endpoint, route => { const body = route.request().postDataJSON(); order.push(body.action); return body.action === "list_content" ? reply(route, 200, { role: "teacher", items: [] }) : reply(route, 200, { notes: [] }); });
   await page.goto("/?workspace=teacher");
   await expect(page.getByRole("button", { name: "Bài video của tôi", exact: true })).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByRole("list", { name: "Cách đưa một bài video lên" }).getByRole("listitem")).toHaveCount(3);
+  const steps = page.getByRole("list", { name: "Cách đưa một bài video lên" }).getByRole("listitem");
+  await expect(steps).toHaveCount(4);                                                          // S1 adds the course step: learners see lessons through a course
+  await expect(steps.last()).toContainText("Khóa miễn phí của tôi");
   await expect(page.getByText("Bạn chưa có bài nào.")).toBeVisible();
   expect(order.indexOf("accept_invite")).toBeGreaterThanOrEqual(0);
   expect(order.indexOf("list_content")).toBeGreaterThan(order.indexOf("accept_invite"));   // a new teacher's invite is accepted before the lessons are read
@@ -197,4 +199,80 @@ test("the Owner must write a note to the author when asking for changes, and it 
   expect(calls.map(c => c.action)).toEqual(["review_content", "save_author_note"]);
   expect(calls[0]).toMatchObject({ itemId: teacherRow.item_id, seq: 1, decision: "changes_requested" });
   expect(calls[1]).toMatchObject({ itemId: teacherRow.item_id, seq: 1, note: "Hãy rút gọn phần mô tả xuống hai câu." });
+});
+
+// S1 (board G, Owner 28/11): a teacher groups own lessons into a free course in three steps; the learner count is honest.
+const approvedLesson = lessonRow({ item_id: "video-2222222222222222", title: "Bài đã duyệt", status: "submitted", review: { decision: "approved", revision: 1 }, approved_seq: 1 });
+const waitingLesson = lessonRow({ item_id: "video-3333333333333333", title: "Bài chờ duyệt", status: "submitted", review: { decision: "pending", revision: 0 } });
+
+test("a free course is made in three steps from the teacher's own lessons, with an honest learner count, and saved as course_group", async ({ page }) => {
+  const writes: Record<string, any>[] = [];
+  await openTeacher(page, (r, body) => {
+    if (body.action === "list_content") return reply(r, 200, { role: "teacher", items: [approvedLesson, waitingLesson] });
+    if (body.action === "read_content") return reply(r, 200, { version: version(row({ item_id: "group-dddddddddddddddd", kind: "course_group", title: "Buổi sáng nhẹ", seq: 1, status: "submitted" }), { summary: "Cho người mới", lessonIds: [waitingLesson.item_id, approvedLesson.item_id] }), published: false });
+    if (body.action === "read_author_notes") return reply(r, 200, { notes: [] });
+    writes.push(body);
+    return reply(r, 200, { receipt: { item_id: "group-dddddddddddddddd", seq: 1, status: body.action === "submit_content" ? "submitted" : "draft" } });
+  });
+  await page.getByRole("button", { name: "Tạo khóa mới" }).click();
+  const form = page.getByRole("form", { name: "Soạn khóa miễn phí" });
+  await expect(form.locator("[aria-current=step]")).toContainText("Bước 1");
+  await form.getByRole("button", { name: "Tiếp" }).click();                                   // step 1 needs a name and a description
+  await expect(page.getByRole("alert").filter({ hasText: "Khóa cần tên và mô tả." })).toBeVisible();
+  await form.getByLabel("Tên khóa").fill("Buổi sáng nhẹ");
+  await form.getByLabel("Mô tả: khóa dành cho ai, học được gì").fill("Cho người mới");
+  await form.getByRole("button", { name: "Tiếp" }).click();
+  await expect(form.locator("[aria-current=step]")).toContainText("Bước 2");
+  await form.getByRole("button", { name: "Tiếp" }).click();                                   // step 2 needs at least one lesson
+  await expect(page.getByRole("alert").filter({ hasText: "Chọn ít nhất một bài video của bạn." })).toBeVisible();
+  await expect(form.getByText("Bài chờ duyệt (Đã gửi, chờ Owner duyệt)")).toBeVisible();     // each lesson shows its status
+  await form.getByRole("checkbox", { name: /Bài đã duyệt/ }).check();
+  await form.getByRole("checkbox", { name: /Bài chờ duyệt/ }).check();
+  await form.getByRole("button", { name: "Đưa “Bài chờ duyệt” lên" }).click();
+  await expect(form.getByRole("list", { name: "Thứ tự bài trong khóa" }).getByRole("listitem").first()).toContainText("Bài chờ duyệt");
+  await expect(form.getByTestId("course-approved-count")).toContainText("1/2 bài đã được Owner duyệt");
+  await form.getByRole("button", { name: "Tiếp" }).click();
+  const preview = form.getByRole("region", { name: "Xem trước khóa như học viên thấy" });
+  await expect(preview).toContainText("Buổi sáng nhẹ");
+  await expect(preview).toContainText("Giảng viên: Giảng viên Thử");
+  await expect(preview.getByRole("listitem").first()).toContainText("chưa hiện với học viên cho tới khi bài được duyệt");
+  await expect(preview.getByRole("listitem").nth(1)).not.toContainText("chưa hiện");
+  await form.getByRole("button", { name: "Quay lại" }).click();
+  await expect(form.locator("[aria-current=step]")).toContainText("Bước 2");
+  await form.getByRole("button", { name: "Tiếp" }).click();
+  expect(writes).toHaveLength(0);
+  await form.getByRole("button", { name: "Lưu và gửi duyệt" }).click();
+  await expect(page.getByText("Đã lưu và gửi cho Owner duyệt.")).toBeVisible();
+  expect(writes.map(w => w.action)).toEqual(["save_content", "submit_content"]);
+  expect(writes[0]).toMatchObject({ itemId: null, kind: "course_group", title: "Buổi sáng nhẹ", expectedSeq: 0, payload: { summary: "Cho người mới", lessonIds: [waitingLesson.item_id, approvedLesson.item_id] } });
+  expect(Object.keys(writes[0].payload).sort()).toEqual(["lessonIds", "summary"]);          // no benefit/caution wording from the teacher
+  const detail = page.getByRole("article", { name: "Khóa · Buổi sáng nhẹ" });
+  await expect(detail.getByTestId("course-approved-count")).toContainText("1/2 bài đã được Owner duyệt");
+  await expect(detail.getByRole("list", { name: "Bài trong khóa" })).toContainText("Bài đã duyệt (Đã được Owner duyệt)");
+});
+
+test("a lesson offers 'Tạo khóa với bài này', and a course cannot be started without any lesson", async ({ page }) => {
+  let items: unknown[] = [];
+  await openTeacher(page, (r, body) => {
+    if (body.action === "list_content") return reply(r, 200, { role: "teacher", items });
+    if (body.action === "read_content") return reply(r, 200, { version: version(approvedLesson, lessonPayload), published: false });
+    if (body.action === "read_author_notes") return reply(r, 200, { notes: [] });
+    return reply(r, 400, { error: "unexpected" });
+  });
+  await expect(page.getByRole("button", { name: "Tạo khóa mới" })).toBeDisabled();
+  await expect(page.getByText("Cần có ít nhất một bài video trước khi tạo khóa.")).toBeVisible();
+  items = [approvedLesson, waitingLesson];
+  await page.reload();
+  await page.getByRole("button", { name: "Bài video của tôi", exact: true }).click();
+  await page.getByRole("list", { name: "Bài của tôi" }).getByRole("button", { name: /Bài đã duyệt/ }).click();
+  await page.getByRole("button", { name: "Tạo khóa với bài này" }).click();
+  const form = page.getByRole("form", { name: "Soạn khóa miễn phí" });
+  await form.getByLabel("Tên khóa").fill("Khóa thử");
+  await form.getByLabel("Mô tả: khóa dành cho ai, học được gì").fill("Mô tả");
+  await form.getByLabel("Mô tả: khóa dành cho ai, học được gì").press("Enter");   // Enter in a textarea adds a line, never saves
+  await form.getByLabel("Tên khóa").press("Enter");                                // Enter moves to the next step, never saves early
+  await expect(form.locator("[aria-current=step]")).toContainText("Bước 2");
+  await expect(form.getByRole("checkbox", { name: /Bài đã duyệt/ })).toBeChecked();
+  await expect(form.getByRole("checkbox", { name: /Bài chờ duyệt/ })).not.toBeChecked();
+  await expect(form.getByTestId("course-approved-count")).toContainText("1/1 bài đã được Owner duyệt");
 });

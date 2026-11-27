@@ -16,6 +16,9 @@ const candidate = '20261127031613_teacher_control_plane_rpcs.sql';
 const followUp = '20261127072022_teacher_invite_account_kind.sql'; // applied to staging 2026-11-27 as remote version 20261127072022 (written as 20261127120000)
 const followUpRpcs = ['mcy_teacher_invite_account_kind', 'mcy_teacher_invite_mark_existing_account_emailed'];
 const notOnStaging = ['20261003031137_limit_my_consent_events.sql', '20261005004000_private_teacher_collaboration.sql', '20261009181735_ai_read_admission_state.sql'];
+// S1 (teacher free courses) is NOT on staging yet; tests/teacher-course-group-rehearsal.cjs replays it after this chain. When it is
+// applied, it is renamed to its remote version and joins the staged chain there.
+const pendingCandidates = ['20261127150000_teacher_course_groups.sql'];
 const rpcs = ['mcy_teacher_prepare_invite', 'mcy_teacher_invite_mark_delivered', 'mcy_teacher_invite_delivery_failed',
   'mcy_teacher_invite_mark_existing_account', 'mcy_teacher_accept_own_invite', 'mcy_teacher_list_own_drafts',
   'mcy_teacher_read_own_draft', 'mcy_teacher_save_own_draft'];
@@ -78,7 +81,7 @@ test('the chain under test is exactly what staging has, with the candidate repla
   assert.equal(staged.length, 31, 'staging listed 31 applied migrations through 20261110175347 before the candidate');
   assert.equal(candidate.slice(0, 14), '20261127031613', 'the candidate carries its remote staging version');
   assert.equal(new Set(staged).size, staged.length);
-  assert.deepEqual([...staged, candidate, followUp, ...notOnStaging].sort(), all, 'a new migration file appeared: decide whether staging has it and update this chain');
+  assert.deepEqual([...staged, candidate, followUp, ...notOnStaging, ...pendingCandidates].sort(), all, 'a new migration file appeared: decide whether staging has it and update this chain');
   assert.ok(staged.every(f => f.slice(0, 14) <= '20261110175347'));
 });
 
