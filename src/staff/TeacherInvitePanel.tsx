@@ -8,7 +8,8 @@ import { newId } from "../compat";
  * address the Owner types. Nothing here is stored in the browser.
  */
 
-type InviteResult = "sent" | "already_sent" | "existing_account";
+type InviteResult = "sent" | "already_sent" | "existing_account" | "sent_existing_account" | "existing_staff_account";
+const INVITE_RESULTS: readonly InviteResult[] = ["sent", "already_sent", "existing_account", "sent_existing_account", "existing_staff_account"];
 
 function normalizeEmail(value: string): string {
   return value.trim().toLowerCase();
@@ -41,7 +42,9 @@ export function inviteFailureMessage(code: string): string {
 }
 
 export function inviteSuccessMessage(result: InviteResult): string {
-  if (result === "existing_account") return "Email này đã có tài khoản Một chút yoga nên hệ thống không gửi thư. Lời mời đã được ghi nhận trong 72 giờ: hãy nhắn giảng viên đăng nhập bằng mã gửi qua email, đặt tên hiển thị trong Cá nhân, rồi mở trang dành cho giáo viên.";
+  if (result === "existing_staff_account") return "Email này là tài khoản quản trị (Owner hoặc nhân sự) nên hệ thống không tạo lời mời và không gửi thư. Hãy dùng một tài khoản học viên riêng để thử vai giảng viên.";
+  if (result === "sent_existing_account") return "Email này đã có tài khoản Một chút yoga. Hệ thống đã gửi thư hướng dẫn vào trang giảng viên; lời mời có hiệu lực 72 giờ.";
+  if (result === "existing_account") return "Email này đã có tài khoản Một chút yoga nên hệ thống không gửi thư. Lời mời đã được ghi nhận trong 72 giờ: hãy nhắn giảng viên mở trang dành cho giáo viên, bấm “Gửi liên kết xác minh” với chính email này, và đặt tên hiển thị trong Cá nhân nếu trang yêu cầu.";
   if (result === "already_sent") return "Lời mời cho email này đã được gửi trước đó và vẫn còn hiệu lực. Hệ thống không gửi thêm thư.";
   return "Đã gửi lời mời. Giảng viên có 72 giờ để mở thư, đặt tên hiển thị trong Cá nhân, rồi mở trang dành cho giáo viên.";
 }
@@ -85,8 +88,8 @@ export default function TeacherInvitePanel() {
         return;
       }
       const status = (data as { status?: unknown } | null)?.status;
-      if (status === "sent" || status === "already_sent" || status === "existing_account") {
-        setNotice(inviteSuccessMessage(status));
+      if (INVITE_RESULTS.includes(status as InviteResult)) {
+        setNotice(inviteSuccessMessage(status as InviteResult));
         setEmail("");
         return;
       }

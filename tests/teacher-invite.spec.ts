@@ -51,7 +51,21 @@ test("an existing account is reported honestly with the next step for the Owner"
   await openOwner(page, route => reply(route, 200, { status: "existing_account" }));
   await page.getByLabel("Email giảng viên").fill("member@example.test");
   await page.getByRole("button", { name: "Gửi lời mời" }).click();
-  await expect(page.getByRole("status").filter({ hasText: "không gửi thư" })).toContainText("đăng nhập bằng mã gửi qua email");
+  await expect(page.getByRole("status").filter({ hasText: "không gửi thư" })).toContainText("Gửi liên kết xác minh");
+});
+
+test("an existing learner account that received the instructions email is reported as emailed", async ({ page }) => {
+  await openOwner(page, route => reply(route, 200, { status: "sent_existing_account" }));
+  await page.getByLabel("Email giảng viên").fill("member@example.test");
+  await page.getByRole("button", { name: "Gửi lời mời" }).click();
+  await expect(page.getByRole("status").filter({ hasText: "đã gửi thư hướng dẫn" })).toContainText("72 giờ");
+});
+
+test("an Owner or staff address is refused without an invitation or email", async ({ page }) => {
+  await openOwner(page, route => reply(route, 200, { status: "existing_staff_account" }));
+  await page.getByLabel("Email giảng viên").fill("staff@example.test");
+  await page.getByRole("button", { name: "Gửi lời mời" }).click();
+  await expect(page.getByRole("status").filter({ hasText: "tài khoản quản trị" })).toContainText("không tạo lời mời và không gửi thư");
 });
 
 test("closed gates, a non-Owner and an unconfirmed delivery never claim an invitation was sent", async ({ page }) => {

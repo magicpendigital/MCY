@@ -1,3 +1,13 @@
+import {
+  createResendSender,
+  TEACHER_INVITE_EMAIL_SUBJECT,
+  TEACHER_INVITE_REDIRECT_URL,
+  teacherInviteEmailHtml,
+  teacherInviteEmailText,
+  type TeacherInviteEmailSender,
+  validSenderAddress,
+} from "./teacherInviteEmail.ts";
+
 export type TeacherIdentity = {
   id?: string | null;
   email?: string | null;
@@ -23,7 +33,7 @@ export type TeacherControlPlaneClients = {
     rpc(name: string, args: Record<string, unknown>): PromiseLike<RpcResult>;
     auth: {
       admin: {
-        inviteUserByEmail(email: string): Promise<{ data: unknown; error: unknown | null }>;
+        inviteUserByEmail(email: string, options?: { redirectTo?: string }): Promise<{ data: unknown; error: unknown | null }>;
       };
     };
   };
@@ -36,6 +46,8 @@ export type TeacherControlPlaneDependencies = {
   isBodyTooLarge(error: unknown): boolean;
   isBodyTimeout(error: unknown): boolean;
   hashInviteEmail(email: string, secret: string): Promise<string>;
+  /** Builds the sender for the existing-account instructions email; defaults to the Resend HTTP API. */
+  emailSender?(apiKey: string): TeacherInviteEmailSender;
 };
 
 const STAGING_SUPABASE_URL = "https://mhumbczqrzutdnraafhs.supabase.co";
@@ -327,6 +339,16 @@ export function createTeacherControlPlaneHandler(dependencies: TeacherControlPla
         const ownerCheck = await server.rpc("mcy_ai_get_owner_config", { p_actor_id: actorId });
         if (ownerCheck.error || !ownerCheck.data) return json(403, { error: "owner_access_required" });
 
+        // Which kind of account the address has decides the delivery path. Owner and
+        // staff accounts are refused before any invitation row or email exists.
+        const kindResult = await server.rpc("mcy_teacher_invite_account_kind", { p_actor_id: actorId, p_email: email });
+        if (kindResult.error) return mapRpcFailure(kindResult.error);
+        const accountKind = kindResult.data;
+        if (accountKind !== "none" && accountKind !== "learner" && accountKind !== "staff") {
+          return json(503, { error: "teacher_service_unavailable" });
+        }
+        if (accountKind === "staff") return json(200, { status: "existing_staff_account" });
+
         const actorEmailHash = await dependencies.hashInviteEmail(actorEmail, emailHashSecret);
         const emailHash = await dependencies.hashInviteEmail(email, emailHashSecret);
         const prepared = await server.rpc("mcy_teacher_prepare_invite", {
@@ -348,34 +370,65 @@ export function createTeacherControlPlaneHandler(dependencies: TeacherControlPla
         if (prepared.data.delivery_state === "in_progress") return json(409, { error: "invitation_in_progress" });
         if (prepared.data.delivery_state === "uncertain") return json(409, { error: "invitation_delivery_unconfirmed" });
 
-        let deliveryFailed = false;
-        let existingAccount = false;
-        try {
-          const delivery = await server.auth.admin.inviteUserByEmail(email);
-          existingAccount = isExistingAccountRefusal(delivery.error);
-          deliveryFailed = Boolean(delivery.error) && !existingAccount;
-        } catch {
-          deliveryFailed = true;
-        }
-        if (existingAccount) {
-          // The provider refused before sending anything: no email went out. The
-          // invitation stays bound to the address hash, and the Owner tells the
-          // teacher to sign in with a one-time code and open the teacher workspace.
-          const marked = await server.rpc("mcy_teacher_invite_mark_existing_account", {
-            p_actor_id: actorId,
-            p_invite_id: prepared.data.invite_id,
-          });
-          if (marked.error || marked.data !== true) return json(503, { error: "invitation_delivery_unconfirmed" });
-          return json(200, { status: "existing_account" });
-        }
-        if (deliveryFailed) {
+        const inviteId = prepared.data.invite_id;
+        const recordUnconfirmed = async () => {
           await Promise.resolve(server.rpc("mcy_teacher_invite_delivery_failed", {
             p_actor_id: actorId,
-            p_invite_id: prepared.data.invite_id,
+            p_invite_id: inviteId,
           })).catch(() => undefined);
           // A provider error does not prove that no email was accepted. Keep this
           // idempotency attempt non-retryable until an owner reconciles delivery.
           return json(503, { error: "invitation_delivery_unconfirmed" });
+        };
+
+        let existingAccount = accountKind === "learner";
+        if (!existingAccount) {
+          let deliveryFailed = false;
+          try {
+            const delivery = await server.auth.admin.inviteUserByEmail(email, { redirectTo: TEACHER_INVITE_REDIRECT_URL });
+            existingAccount = isExistingAccountRefusal(delivery.error);
+            deliveryFailed = Boolean(delivery.error) && !existingAccount;
+          } catch {
+            deliveryFailed = true;
+          }
+          if (deliveryFailed) return recordUnconfirmed();
+        }
+
+        if (existingAccount) {
+          const resendKey = dependencies.env("RESEND_API_KEY")?.trim();
+          const from = validSenderAddress(dependencies.env("MCY_TEACHER_INVITE_FROM"));
+          if (!resendKey || !from) {
+            // Without a configured sender, keep the P0 behaviour: no email goes out,
+            // the invitation stays bound to the address hash, and the Owner tells the
+            // teacher directly how to open the teacher workspace.
+            const marked = await server.rpc("mcy_teacher_invite_mark_existing_account", {
+              p_actor_id: actorId,
+              p_invite_id: inviteId,
+            });
+            if (marked.error || marked.data !== true) return json(503, { error: "invitation_delivery_unconfirmed" });
+            return json(200, { status: "existing_account" });
+          }
+          const send = (dependencies.emailSender ?? createResendSender)(resendKey);
+          let accepted = false;
+          try {
+            accepted = await send({
+              from,
+              to: email,
+              subject: TEACHER_INVITE_EMAIL_SUBJECT,
+              html: teacherInviteEmailHtml(),
+              text: teacherInviteEmailText(),
+              idempotencyKey: `mcy-teacher-invite-${inviteId}`,
+            });
+          } catch {
+            accepted = false;
+          }
+          if (!accepted) return recordUnconfirmed();
+          const emailed = await server.rpc("mcy_teacher_invite_mark_existing_account_emailed", {
+            p_actor_id: actorId,
+            p_invite_id: inviteId,
+          });
+          if (emailed.error || emailed.data !== true) return json(503, { error: "invitation_delivery_unconfirmed" });
+          return json(200, { status: "sent_existing_account" });
         }
         const finalized = await server.rpc("mcy_teacher_invite_mark_delivered", {
           p_actor_id: actorId,
