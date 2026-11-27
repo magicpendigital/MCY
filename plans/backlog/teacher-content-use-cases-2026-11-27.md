@@ -74,7 +74,7 @@ Ký hiệu: ✅ có và chạy trên staging · ◐ có một phần · ✗ chư
 | **P2-AI** | AI gợi ý nhận xét cho GV | R3, kế hoạch riêng | Cổng AI; quyết định 12 |
 | **F** | Bài/khóa thu phí, video có bảo vệ, thanh toán | R3 | Sau Closed testing (quyết định 18/11) |
 
-## 5. Owner cần quyết
+## 5. Owner cần quyết (đã trả lời 27/11, xem cuối tệp)
 1. **Làm S0 ngay?** Khuyên: **có**. Chỉ sửa giao diện trang giảng viên, không đụng dữ liệu, giải quyết đúng điều GV1 gặp.
 2. **Kho "Soạn bài" cũ:** (a) giữ làm kịch bản nháp rồi gắn vào bài video ở S2, (b) ẩn đi tới khi có S2, hay (c) xóa hẳn. Khuyên: **(a)**, vì kịch bản có câu dừng và nhịp thở là giá trị riêng của MCY; trong lúc chờ S2, S0 ghi rõ "chưa xuất bản".
 3. **"Bài giảng có hình" nghĩa là gì?** (a) bài đọc ảnh + chữ từng tư thế, (b) ảnh bìa riêng cho bài video, (c) cả hai. Ảnh do ai cung cấp, có người thật trong ảnh không, có dùng ảnh AI không. Khuyên: bắt đầu bằng (b) ảnh bìa (rẻ, ít rủi ro), (a) để sau S2.
@@ -82,6 +82,17 @@ Ký hiệu: ✅ có và chạy trên staging · ◐ có một phần · ✗ chư
 5. **Bán theo bài hay theo khóa?** Paid-tier 18/11 chọn thuê bao + mua lẻ khóa. Khuyên: **giữ, không bán lẻ từng bài**; "bài video thu phí" = bài nằm trong khóa trả phí hoặc gói.
 6. **Thứ tự:** S0 → (S1, S2) → P1 → P2 → F, với P1/P2 theo quyết định 8 của kế hoạch pilot (còn chờ). Khuyên: đồng ý.
 7. **Đánh giá công khai của học viên (C7):** khuyên **chưa làm**; dùng cảm nhận riêng tư (C1) trước.
+
+## Quyết định của Owner (27/11)
+| # | Quyết định | Hệ quả |
+|---|---|---|
+| 1 | Làm S0 ngay: **đồng ý** | Xong ở máy, commit `a90e3a2` ([kế hoạch](../active/2026-11-27-teacher-authoring-s0.md)); chờ Owner cho push. |
+| 2 | Kho "Soạn bài" cũ: **(a)** giữ làm kịch bản nháp, sau gắn vào bài video | S2 gắn kịch bản (đoạn có mốc giờ, lời dẫn, câu dừng, nhịp thở) vào phiên bản bài video; không xóa kho cũ. |
+| 3 | "Bài giảng có hình": **(c)**, tức là bài giảng có hình ảnh minh họa bên trong | S3 gồm cả ảnh minh họa trong nội dung bài (ảnh + chữ theo từng tư thế/đoạn) và ảnh bìa. Cần bucket ảnh riêng tư, Owner duyệt từng ảnh trong phiên bản, quyền dùng ảnh và người trong ảnh, nhãn ảnh AI. Kế hoạch R3 riêng. |
+| 4 | GV tự tạo khóa miễn phí: **có**, GV đề xuất, Owner duyệt như bài | S1. |
+| 5 | **Bán theo khóa**, không bán lẻ từng bài | "Bài video thu phí" (A4) = bài nằm trong khóa trả phí hoặc gói; không có giá cho từng bài. Giữ mô hình 18/11 (thuê bao + mua lẻ khóa). |
+| 6 | Thứ tự S0 → S1/S2 → P1 → P2 → F: **đồng ý** | P1/P2 vẫn theo kế hoạch pilot (quyết định 8 của pilot). Vị trí của S3 chưa xếp; agent đề xuất làm sau S1/S2, trước P1, nếu Owner muốn có bài minh họa sớm. |
+| 7 | Đánh giá công khai của học viên (C7): **chưa làm** | Dùng cảm nhận riêng tư (C1) trước. |
 
 ## Chưa kiểm
 - Chưa mở trang giảng viên trên staging bằng tài khoản GV1 để chụp lại (agent không giữ phiên GV1); hiện trạng §1 dựa trên đọc mã và lời Owner.
