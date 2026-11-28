@@ -88,4 +88,5 @@ Lát S1 trong [rà soát use case](../backlog/teacher-content-use-cases-2026-11-
 - [x] 2 giao diện (form 3 bước, x/y, lối tắt; 28/11)
 - [x] 3 test và cổng (`teacher-content.spec.ts` 10/10, `check:quick`, `npm test`, `check:ios15` PASS)
 - [x] 4 PLAN, commit, gộp vào `main` ở máy (28/11)
-- [ ] 5 áp lên staging (chờ Owner)
+- [x] 5 áp lên staging (Owner 28/11; version `20261128030007`; [biên nhận](../../docs/status/receipts/2026-11-28-teacher-course-groups-staging.md))
+- [ ] 6 Owner/GV1 thử trên Preview
