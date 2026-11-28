@@ -224,9 +224,9 @@ export function TeacherWorkspace() {
   const [linkSent, setLinkSent] = useState(false);
   const [accessState, setAccessState] = useState<"unknown" | "active" | "denied" | "unavailable">("unknown");
   const [collaborationReadyUserId, setCollaborationReadyUserId] = useState<string | null>(null);
-  const [contentReviewOpen, setContentReviewOpen] = useState(false);
-  // "Bài video của tôi" opens first: it is the only place a lesson (with its YouTube link) can be sent to the Owner and published.
-  const [myLessonsOpen, setMyLessonsOpen] = useState(true);
+  // W1 sidebar (Owner 28/11). "Bài video của tôi" opens first: it is the only place a lesson (with its YouTube link) can be sent
+  // to the Owner. The lessons panel stays mounted while another section is open, so a half-written form is never lost.
+  const [section, setSection] = useState<"lessons" | "courses" | "tracking" | "scripts" | "review">("lessons");
   const [drafts, setDrafts] = useState<DraftSummary[]>([]);
   const [form, setForm] = useState<DraftForm | null>(null);
   const [notice, setNotice] = useState("");
@@ -304,8 +304,10 @@ export function TeacherWorkspace() {
     return () => { active = false; unsubscribe?.(); };
   }, []);
 
+  // Keyed on the signed-in account, not the session object: Supabase hands out a new session object on every token refresh
+  // and when the tab becomes visible again, and reloading here would throw away whatever the teacher was typing (Owner 28/11).
   useEffect(() => {
-    if (!session) {
+    if (!sessionUserId) {
       setAccessState(backendConfigured ? "unknown" : "unavailable");
       setLoadingWorkspace(false);
       setSaving(false);
@@ -351,7 +353,7 @@ export function TeacherWorkspace() {
       }
     })();
     return () => { active = false; };
-  }, [session]);
+  }, [sessionUserId]);
 
   const signIn = async (event: FormEvent) => {
     event.preventDefault();
@@ -477,6 +479,8 @@ export function TeacherWorkspace() {
     ? { ...current, segments: current.segments.filter((_, segmentIndex) => segmentIndex !== index) }
     : current);
 
+  const panelView = section === "lessons" || section === "courses" || section === "tracking" ? section : null;
+  const navItem = (id: typeof section, name: string) => <button type="button" aria-current={section === id ? "page" : undefined} onClick={() => setSection(id)}>{name}</button>;
   return <div className="teacher-shell">
     <header className="teacher-topbar">
       <a className="teacher-brand" href="/" aria-label="Một chút yoga, về ứng dụng học viên">
@@ -498,9 +502,10 @@ export function TeacherWorkspace() {
     </main>}
 
     {backendConfigured && session && <main className="teacher-main">
-      <section className="teacher-intro teacher-workspace-intro"><span className="teacher-kicker">KHÔNG GIAN SOẠN BÀI</span><h1>Bài học của bạn.</h1><p>Bản nháp được lưu riêng cho tài khoản có quyền. Chỉ soạn nội dung có căn cứ quyền sử dụng; mọi bản nháp cần được rà soát riêng trước khi có thể đến với học viên.</p><div className="teacher-staging-badge"><i />MÔI TRƯỜNG STAGING · KHÔNG PHẢI PRODUCTION</div></section>
-      <nav className="owner-workspace-tabs" aria-label="Chức năng giáo viên"><button type="button" className="teacher-secondary" aria-pressed={myLessonsOpen} onClick={() => { setContentReviewOpen(false); setMyLessonsOpen(true); }}>Bài video của tôi</button><button type="button" className="teacher-secondary" aria-pressed={!contentReviewOpen && !myLessonsOpen} onClick={() => { setContentReviewOpen(false); setMyLessonsOpen(false); }}>Kịch bản nháp</button><button type="button" className="teacher-secondary" aria-pressed={contentReviewOpen} onClick={() => { setMyLessonsOpen(false); setContentReviewOpen(true); }}>Duyệt nội dung được giao</button></nav>
-      {myLessonsOpen ? (loadingWorkspace || accessState === "unknown" ? <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền giảng viên…</h2></section> : accessState === "denied" ? <section className="teacher-state-card"><span className="teacher-kicker">QUYỀN TRUY CẬP</span><h2>Chưa có lời mời giáo viên.</h2><p>{error}</p><p>Email đã xác minh không tự cấp quyền giáo viên. Nếu bạn nghĩ đây là nhầm lẫn, hãy liên hệ Owner qua kênh hỗ trợ đã được xác nhận.</p></section> : <Suspense fallback={<p role="status">Đang mở bài video của tôi…</p>}><TeacherContentPanel key={session.user.id} userId={session.user.id} /></Suspense>) : contentReviewOpen ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={session.user.id} userId={session.user.id} /></Suspense> : <>
+      <section className="teacher-intro teacher-workspace-intro teacher-intro-compact"><span className="teacher-kicker">KHÔNG GIAN SOẠN BÀI</span><h1>Bài học của bạn.</h1><div className="teacher-staging-badge"><i />MÔI TRƯỜNG STAGING · KHÔNG PHẢI PRODUCTION</div></section>
+      <div className="teacher-layout"><nav className="teacher-sidebar" aria-label="Chức năng giáo viên">{navItem("lessons", "Bài video của tôi")}{navItem("courses", "Khóa học của tôi")}{navItem("tracking", "Theo dõi")}<span className="teacher-sidebar-group" aria-hidden="true">Khác</span>{navItem("scripts", "Kịch bản nháp")}{navItem("review", "Duyệt nội dung được giao")}</nav><div className="teacher-layout-main">
+      <div hidden={!panelView}>{loadingWorkspace || accessState === "unknown" ? <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền giảng viên…</h2></section> : accessState === "denied" ? <section className="teacher-state-card"><span className="teacher-kicker">QUYỀN TRUY CẬP</span><h2>Chưa có lời mời giáo viên.</h2><p>{error}</p><p>Email đã xác minh không tự cấp quyền giáo viên. Nếu bạn nghĩ đây là nhầm lẫn, hãy liên hệ Owner qua kênh hỗ trợ đã được xác nhận.</p></section> : <Suspense fallback={<p role="status">Đang mở bài video của tôi…</p>}><TeacherContentPanel key={session.user.id} userId={session.user.id} view={panelView ?? "lessons"} onView={setSection} /></Suspense>}</div>
+      {section === "review" ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={session.user.id} userId={session.user.id} /></Suspense> : section === "scripts" ? <>
       <p className="teacher-privacy-note" data-testid="script-draft-note">Kịch bản nháp (các đoạn có mốc giờ, lời dẫn, lưu ý dừng lại) chỉ lưu riêng cho bạn: chưa gắn với video, chưa gửi Owner duyệt và chưa hiện với học viên. Để đưa bài lên ứng dụng, dùng thẻ “Bài video của tôi”.</p>
       <TeacherCollaborationPanel userId={session.user.id} onReadyChange={setCollaborationReadyUserId} />
       {collaborationReadyUserId !== session.user.id && loadingWorkspace && <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền và tải bản nháp…</h2></section>}
@@ -549,7 +554,8 @@ export function TeacherWorkspace() {
           </form>}
         </section>
       </div>}
-      </>}
+      </> : null}
+      </div></div>
     </main>}
 
     <footer className="teacher-footer"><span>Quyền và quyền sở hữu nháp được kiểm tra ở server · không truy cập hồ sơ học viên</span><span>Chưa có upload media hoặc publish</span></footer>

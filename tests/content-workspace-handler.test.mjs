@@ -122,3 +122,15 @@ test('video lesson payloads accept only known, unique browse areas',()=>{
   assert.equal(validPayload('video_lesson',base),true);
   for(const bad of [['nope'],['back','back'],'back',[1],['back','neck-shoulders','hips-legs','whole-body','poses','back']])assert.equal(validPayload('video_lesson',{...base,areas:bad}),false,JSON.stringify(bad));
 });
+test('read_tracking (W1/T1) takes only the action, sends the verified actor and returns only the items list', async () => {
+  const ok = harness({ rpc: { data: { role: 'teacher', items: [{ item_id: 'video-0123456789abcdef', kind: 'video_lesson', shown_seq: null, on_app: false, history: [], courses: [] }] }, error: null } });
+  const r = await ok.run({ action: 'read_tracking' });
+  assert.deepEqual([r.status, ok.calls[0].name, ok.calls[0].args.p_actor_id, Object.keys(r.body)], [200, 'mcy_content_tracking', actor, ['items']]);
+  for (const body of [{ action: 'read_tracking', itemId: 'video-0123456789abcdef' }, { action: 'read_tracking', actorId: 'someone-else' }]) {
+    const h = harness(); assert.equal((await h.run(body)).status, 400); assert.equal(h.calls.length, 0);
+  }
+  const refused = harness({ rpc: { data: null, error: { code: '42501', message: 'content_review_access_required' } } });
+  assert.deepEqual(await refused.run({ action: 'read_tracking' }), { status: 403, body: { error: 'content_access_required' } });
+  const odd = harness({ rpc: { data: { items: 'x' }, error: null } });
+  assert.equal((await odd.run({ action: 'read_tracking' })).status, 503);
+});

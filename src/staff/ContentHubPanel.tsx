@@ -231,6 +231,10 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
   const canReview = Boolean(version && version.status === "submitted" && version.seq === version.latest_seq);
   const set = (patch: Partial<Draft>) => setDraft(d => d ? { ...d, ...patch } : d);
 
+  const workRef = useRef<HTMLDivElement>(null);
+  const workKey = `${draft ? "draft" : ""}|${version?.item_id ?? ""}`;
+  useEffect(() => { if ((draft || version) && workRef.current && typeof workRef.current.scrollIntoView === "function") workRef.current.scrollIntoView({ block: "nearest" }); }, [workKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return <section className="owner-panel owner-hub" aria-label="Nội dung của toàn ứng dụng">
     <div className="owner-panel-heading"><div><span className="owner-kicker">NỘI DUNG</span><h2>Nội dung của toàn ứng dụng</h2>
       <p>Mọi bài video, nhóm khóa, bài đọc và văn bản màn hình ở một chỗ. Mỗi lần lưu là một phiên bản bất biến. Duyệt chưa làm nội dung hiện lên app.</p></div>
@@ -253,14 +257,17 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
         {!importConfirm ? <button type="button" className="owner-primary" disabled={busy} onClick={() => setImportConfirm(true)}>Nhập nội dung hiện có</button>
           : <div role="alertdialog" aria-label="Xác nhận nhập nội dung"><p><strong>Ghi 55 mục vào kho ở trạng thái đã gửi, chưa duyệt?</strong> Bài đọc giữ nguyên các lần duyệt đã có. Video và nhóm khóa cần bạn duyệt sau.</p>
             <button type="button" className="owner-primary" disabled={busy} onClick={() => void doImport()}>Xác nhận nhập</button> <button type="button" onClick={() => setImportConfirm(false)}>Hủy</button></div>}</div>}
-      {shown.length > 0 && <ul className="owner-hub-list" aria-label="Danh sách nội dung">{shown.map(r => <li key={r.item_id}>
+    </>}
+
+    {/* W1 (Owner 28/11): the open item sits beside the list on wide screens and above it on narrow ones, never below the list. */}
+    <div className={`owner-split${draft || version ? " is-open" : ""}`}><div className="owner-split-list">
+      {rows && shown.length > 0 && <ul className="owner-hub-list" aria-label="Danh sách nội dung">{shown.map(r => <li key={r.item_id}>
         <button type="button" aria-pressed={version?.item_id === r.item_id} disabled={busy} onClick={() => void open(r.item_id)}>
           <strong>{r.title}</strong>
           <span>{kindLabel[r.kind]} · {r.author_kind === "mcy" ? "MCY biên soạn" : (r.author_label ?? "Giảng viên")} · {statusOf(r)}{r.approved_seq && r.approved_seq !== r.seq ? ` · bản ${r.approved_seq} đã duyệt` : ""} · phiên bản {r.seq}</span>
         </button></li>)}</ul>}
-      {rows.length > 0 && shown.length === 0 && <p>Không có nội dung khớp bộ lọc.</p>}
-    </>}
-
+      {rows && rows.length > 0 && shown.length === 0 && <p>Không có nội dung khớp bộ lọc.</p>}
+    </div><div className="owner-split-work" ref={workRef}>
     {draft && <form className="owner-hub-compose" aria-label="Soạn nội dung MCY" onSubmit={e => { e.preventDefault(); void saveDraft(false); }}>
       <fieldset disabled={busy || uncertain}><legend>{draft.id ? "Sửa nội dung MCY (tạo phiên bản mới)" : "Soạn nội dung MCY"}</legend>
         <label className="owner-field">Loại<select aria-label="Loại nội dung" value={draft.kind} disabled={Boolean(draft.id)} onChange={e => setDraft({ ...blankDraft(e.target.value as Draft["kind"]), title: draft.title })}>
@@ -337,5 +344,7 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
         </fieldset>
       </form>
     </article>}
+    {!draft && !version && rows && rows.length > 0 && <p className="owner-hub-note owner-split-empty">Chọn một mục để xem và duyệt.</p>}
+    </div></div>
   </section>;
 }
