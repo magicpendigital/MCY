@@ -59,6 +59,7 @@
     "test:content-review-rehearsal": "node --test tests/content-review-rehearsal.cjs",
     "test:teacher-control-plane-rehearsal": "node --test tests/teacher-control-plane-rehearsal.cjs",
     "test:teacher-course-group-rehearsal": "node --test tests/teacher-course-group-rehearsal.cjs",
+    "test:teacher-tracking-rehearsal": "node --test tests/teacher-tracking-rehearsal.cjs",
     "test:owner-conflict-migration-contract": "node --test tests/owner-conflict-migration-contract.test.mjs",
     "test:owner-conflict-sql-rehearsal": "node --test tests/owner-conflict-migration-rehearsal.cjs tests/owner-conflict-full-schema-rehearsal.cjs",
     "test:owner-conflict-docker-rehearsal": "node scripts/rehearse-owner-conflict-docker.mjs",

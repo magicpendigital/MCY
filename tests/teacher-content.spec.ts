@@ -31,12 +31,13 @@ async function declare(page: Page) {
 }
 
 const lessonRow = (patch: Record<string, unknown> = {}) => row({ item_id: "video-1111111111111111", title: "Bài của tôi", author_label: "Giảng viên Thử", ...patch });
-async function openTeacher(page: Page, handler: (route: Route, body: Record<string, any>) => Promise<unknown> | unknown) {
-  await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), auth);
+// W1: the panel reads tracking silently after each list. Without a fixture it answers like a server that lacks read_tracking.
+async function openTeacher(page: Page, handler: (route: Route, body: Record<string, any>) => Promise<unknown> | unknown, tracking?: unknown[], session: unknown = auth) {
+  await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), session);
   await page.route("https://*.supabase.co/**", route => route.abort("blockedbyclient"));
   await page.route("**/functions/v1/teacher-control-plane", route => reply(route, 404, { error: "not_available" }));
   await page.route("**/functions/v1/teacher-collaboration", route => reply(route, 404, { error: "not_available" }));
-  await page.route(endpoint, route => handler(route, route.request().postDataJSON()));
+  await page.route(endpoint, route => { const body = route.request().postDataJSON(); return body.action === "read_tracking" ? (tracking ? reply(route, 200, { items: tracking }) : reply(route, 400, { error: "invalid_request" })) : handler(route, body); });
   await page.goto("/?workspace=teacher");
   await page.getByRole("button", { name: "Bài video của tôi", exact: true }).click();
 }
@@ -52,7 +53,7 @@ test("a teacher sees only own lessons with status, the author label from the pro
   await expect(page.getByTestId("author-label")).toContainText("Giảng viên Thử");
   const list = page.getByRole("list", { name: "Bài của tôi" });
   await expect(list.getByRole("listitem")).toHaveCount(1);                              // only video lessons; never the Owner's group
-  await expect(list).toContainText("Cần chỉnh sửa");
+  await expect(list).toContainText("Cần sửa");
   await list.getByRole("button", { name: /Bài của tôi/ }).click();
   await expect(page.getByLabel("Ghi chú của Owner")).toContainText("Hãy rút gọn phần mô tả.");
   await expect(page.getByRole("button", { name: /Xuất bản|Bật hiển thị|Ghi kết quả duyệt/ })).toHaveCount(0);
@@ -108,10 +109,10 @@ test("the teacher page opens on the video lessons, with the four steps, and the 
   await page.route("**/functions/v1/teacher-collaboration", route => reply(route, 404, { error: "not_available" }));
   await page.route(endpoint, route => { const body = route.request().postDataJSON(); order.push(body.action); return body.action === "list_content" ? reply(route, 200, { role: "teacher", items: [] }) : reply(route, 200, { notes: [] }); });
   await page.goto("/?workspace=teacher");
-  await expect(page.getByRole("button", { name: "Bài video của tôi", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("navigation", { name: "Chức năng giáo viên" }).getByRole("button", { name: "Bài video của tôi", exact: true })).toHaveAttribute("aria-current", "page");
   const steps = page.getByRole("list", { name: "Cách đưa một bài video lên" }).getByRole("listitem");
   await expect(steps).toHaveCount(4);                                                          // S1 adds the course step: learners see lessons through a course
-  await expect(steps.last()).toContainText("Khóa miễn phí của tôi");
+  await expect(steps.last()).toContainText("Khóa học của tôi");
   await expect(page.getByText("Bạn chưa có bài nào.")).toBeVisible();
   expect(order.indexOf("accept_invite")).toBeGreaterThanOrEqual(0);
   expect(order.indexOf("list_content")).toBeGreaterThan(order.indexOf("accept_invite"));   // a new teacher's invite is accepted before the lessons are read
@@ -214,6 +215,7 @@ test("a free course is made in three steps from the teacher's own lessons, with 
     writes.push(body);
     return reply(r, 200, { receipt: { item_id: "group-dddddddddddddddd", seq: 1, status: body.action === "submit_content" ? "submitted" : "draft" } });
   });
+  await page.getByRole("button", { name: "Khóa học của tôi", exact: true }).click();
   await page.getByRole("button", { name: "Tạo khóa mới" }).click();
   const form = page.getByRole("form", { name: "Soạn khóa miễn phí" });
   await expect(form.locator("[aria-current=step]")).toContainText("Bước 1");
@@ -259,6 +261,7 @@ test("a lesson offers 'Tạo khóa với bài này', and a course cannot be star
     if (body.action === "read_author_notes") return reply(r, 200, { notes: [] });
     return reply(r, 400, { error: "unexpected" });
   });
+  await page.getByRole("button", { name: "Khóa học của tôi", exact: true }).click();
   await expect(page.getByRole("button", { name: "Tạo khóa mới" })).toBeDisabled();
   await expect(page.getByText("Cần có ít nhất một bài video trước khi tạo khóa.")).toBeVisible();
   items = [approvedLesson, waitingLesson];
@@ -266,6 +269,7 @@ test("a lesson offers 'Tạo khóa với bài này', and a course cannot be star
   await page.getByRole("button", { name: "Bài video của tôi", exact: true }).click();
   await page.getByRole("list", { name: "Bài của tôi" }).getByRole("button", { name: /Bài đã duyệt/ }).click();
   await page.getByRole("button", { name: "Tạo khóa với bài này" }).click();
+  await expect(page.getByRole("button", { name: "Khóa học của tôi", exact: true })).toHaveAttribute("aria-current", "page");   // the shortcut opens the course view
   const form = page.getByRole("form", { name: "Soạn khóa miễn phí" });
   await form.getByLabel("Tên khóa").fill("Khóa thử");
   await form.getByLabel("Mô tả: khóa dành cho ai, học được gì").fill("Mô tả");
@@ -275,4 +279,128 @@ test("a lesson offers 'Tạo khóa với bài này', and a course cannot be star
   await expect(form.getByRole("checkbox", { name: /Bài đã duyệt/ })).toBeChecked();
   await expect(form.getByRole("checkbox", { name: /Bài chờ duyệt/ })).not.toBeChecked();
   await expect(form.getByTestId("course-approved-count")).toContainText("1/1 bài đã được Owner duyệt");
+});
+
+// W1 (Owner 28/11). A session that is about to expire makes supabase-js refresh the token (a new session object) on load, on
+// the 30-second ticker and whenever the tab becomes visible again. That once reset the workspace and lost what was typed.
+const refreshing = () => ({ ...auth, expires_in: 20, expires_at: Math.floor(Date.now() / 1000) + 20 });
+async function refreshTokens(page: Page) {
+  let count = 0;
+  await page.route("**/auth/v1/token**", route => { count++; const fresh = refreshing(); return reply(route, 200, { ...fresh, access_token: `fictional-${owner}-${count}`, refresh_token: `fictional-refresh-${count}` }); });
+  return () => count;
+}
+const hideAndShow = (page: Page) => page.evaluate(() => {
+  for (const state of ["hidden", "visible"]) { Object.defineProperty(document, "visibilityState", { value: state, configurable: true }); document.dispatchEvent(new Event("visibilitychange")); }
+});
+
+test("switching browser tabs or refreshing the session keeps a half-written lesson and does not reload the workspace", async ({ page }) => {
+  test.setTimeout(120000);
+  const reads: string[] = [];
+  const refreshes = await refreshTokens(page);
+  await openTeacher(page, (r, body) => { reads.push(body.action); return body.action === "list_content" ? reply(r, 200, { role: "teacher", items: [] }) : reply(r, 400, { error: "unexpected" }); }, undefined, refreshing());
+  await page.getByRole("button", { name: "Soạn bài mới" }).click();
+  const form = page.getByRole("form", { name: "Soạn bài video" });
+  await form.getByLabel("Tiêu đề").fill("Bài đang viết dở");
+  await form.getByLabel("Bạn sẽ làm gì trong bài này (mô tả)").fill("Chưa lưu, đang gõ");
+  const before = refreshes(), lists = reads.filter(a => a === "list_content").length;
+  await hideAndShow(page);
+  await expect.poll(refreshes, { timeout: 45000 }).toBeGreaterThan(before);                     // the token really was refreshed (30-second ticker)
+  await hideAndShow(page);
+  await page.waitForTimeout(500);
+  await expect(form.getByLabel("Tiêu đề")).toHaveValue("Bài đang viết dở");
+  await expect(form.getByLabel("Bạn sẽ làm gì trong bài này (mô tả)")).toHaveValue("Chưa lưu, đang gõ");
+  expect(reads.filter(a => a === "list_content").length).toBe(lists);                         // no reload of the list
+  await page.getByRole("button", { name: "Kịch bản nháp", exact: true }).click();                 // another section and back keeps the form too
+  await page.getByRole("button", { name: "Bài video của tôi", exact: true }).click();
+  await expect(form.getByLabel("Tiêu đề")).toHaveValue("Bài đang viết dở");
+});
+
+test("the Owner's half-written MCY content survives a session refresh and a tab switch", async ({ page }) => {
+  test.setTimeout(120000);
+  const refreshes = await refreshTokens(page);
+  await page.addInitScript(value => localStorage.setItem("sb-mcy-playwright-auth-token", JSON.stringify(value)), refreshing());
+  await page.route("https://*.supabase.co/**", route => route.abort("blockedbyclient"));
+  await page.route(endpoint, route => { const body = route.request().postDataJSON(); if (body.action === "read_ai") return reply(route, 200, ownerPayload); if (body.action === "read_display") return reply(route, 200, { version_no: 1, config: defaultDisplay, log: [], visibility: [] }); return body.action === "list_content" ? reply(route, 200, { role: "owner", items: rows }) : reply(route, 400, { error: "unexpected" }); });
+  await page.goto("/?workspace=owner");
+  await page.getByRole("button", { name: "Nội dung", exact: true }).click();
+  await page.getByRole("button", { name: "Soạn nội dung MCY" }).click();
+  const form = page.getByRole("form", { name: "Soạn nội dung MCY" });
+  await form.getByLabel("Tiêu đề", { exact: true }).fill("Nội dung đang soạn");
+  const before = refreshes();
+  await hideAndShow(page);
+  await expect.poll(refreshes, { timeout: 45000 }).toBeGreaterThan(before);
+  await page.waitForTimeout(500);
+  await expect(form.getByLabel("Tiêu đề", { exact: true })).toHaveValue("Nội dung đang soạn");
+});
+
+const shownLesson = lessonRow({ item_id: "video-4444444444444444", title: "Bài đang hiện", status: "submitted", review: { decision: "approved", revision: 1 }, approved_seq: 1 });
+const draftLesson = lessonRow({ item_id: "video-5555555555555555", title: "Bài nháp", status: "draft" });
+const mixed = [shownLesson, waitingLesson, draftLesson];
+const mixedHandler = (r: Route, body: Record<string, any>) => {
+  if (body.action === "list_content") return reply(r, 200, { role: "teacher", items: mixed });
+  if (body.action === "read_content") return reply(r, 200, { version: version(mixed.find(m => m.item_id === body.itemId) ?? shownLesson, lessonPayload), published: false });
+  if (body.action === "read_author_notes") return reply(r, 200, { notes: [] });
+  return reply(r, 400, { error: "unexpected" });
+};
+
+test("an opened lesson shows beside the list on a wide screen and above it on a narrow one, never below", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openTeacher(page, mixedHandler);
+  const list = page.getByRole("list", { name: "Bài của tôi" });
+  await list.getByRole("button", { name: /Bài nháp/ }).click();
+  const detail = page.getByRole("article", { name: "Bài · Bài nháp" });
+  await expect(detail).toBeVisible();
+  let [l, d] = [await list.boundingBox(), await detail.boundingBox()];
+  expect(d!.x).toBeGreaterThan(l!.x + l!.width - 1);                                            // beside
+  expect(d!.y).toBeLessThan(l!.y + l!.height);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await list.getByRole("button", { name: /Bài chờ duyệt/ }).click();
+  const narrow = page.getByRole("article", { name: "Bài · Bài chờ duyệt" });
+  await expect(narrow).toBeInViewport();
+  [l, d] = [await list.boundingBox(), await narrow.boundingBox()];
+  expect(d!.y + d!.height).toBeLessThanOrEqual(l!.y + 1);                                       // above the list
+});
+
+test("the list has Duyệt and Trên app columns, a status filter, and says 'Chưa rõ' when the server has no tracking", async ({ page }) => {
+  await openTeacher(page, mixedHandler);
+  const list = page.getByRole("list", { name: "Bài của tôi" });
+  await expect(list.getByRole("listitem")).toHaveCount(3);
+  await expect(list.getByRole("listitem").filter({ hasText: "Bài đang hiện" })).toContainText("Đã duyệt");
+  for (const item of await list.getByRole("listitem").all()) await expect(item).toContainText("Chưa rõ");   // never guessed as shown
+  await page.getByLabel("Lọc theo trạng thái").selectOption({ label: "Chờ duyệt" });
+  await expect(list.getByRole("listitem")).toHaveCount(1);
+  await expect(list).toContainText("Bài chờ duyệt");
+  await page.getByLabel("Lọc theo trạng thái").selectOption({ label: "Nháp" });
+  await expect(list).toContainText("Bài nháp");
+  await page.getByLabel("Lọc theo trạng thái").selectOption({ label: "Tất cả" });
+  await list.getByRole("button", { name: /Bài đang hiện/ }).click();
+  const detail = page.getByRole("article", { name: "Bài · Bài đang hiện" });
+  await detail.getByRole("button", { name: "Theo dõi", exact: true }).click();
+  await expect(detail.getByTestId("tracking-unavailable")).toContainText("Không đoán");
+});
+
+test("with tracking, the Theo dõi tab and view show what learners see, the holding courses and the history without the reviewer", async ({ page }) => {
+  const tracking = [
+    { item_id: shownLesson.item_id, kind: "video_lesson", shown_seq: 1, on_app: true, history: [{ event: "review", decision: "approved", seq: 1, at: "2026-11-20T03:00:00Z" }, { event: "submit", seq: 1, at: "2026-11-19T03:00:00Z" }],
+      courses: [{ item_id: "group-eeeeeeeeeeeeeeee", title: "Khóa sáng", own: true, shown: true }, { item_id: "group-ffffffffffffffff", title: "Nhóm của MCY", own: false, shown: true }] },
+    { item_id: waitingLesson.item_id, kind: "video_lesson", shown_seq: null, on_app: false, history: [{ event: "submit", seq: 1, at: "2026-11-21T03:00:00Z" }], courses: [] },
+    { item_id: draftLesson.item_id, kind: "video_lesson", shown_seq: null, on_app: false, history: [], courses: [] },
+  ];
+  await openTeacher(page, mixedHandler, tracking);
+  const list = page.getByRole("list", { name: "Bài của tôi" });
+  await expect(list.getByRole("listitem").filter({ hasText: "Bài đang hiện" })).toContainText("Đang hiện · bản 1");
+  await expect(list.getByRole("listitem").filter({ hasText: "Bài nháp" })).toContainText("Chưa hiện");
+  await list.getByRole("button", { name: /Bài đang hiện/ }).click();
+  const detail = page.getByRole("article", { name: "Bài · Bài đang hiện" });
+  await detail.getByRole("button", { name: "Theo dõi", exact: true }).click();
+  await expect(detail.getByTestId("tracking-shown")).toContainText("phiên bản 1");
+  await expect(detail.getByRole("list", { name: "Khóa chứa bài này" })).toContainText("Khóa sáng · khóa của bạn · đang hiện");
+  await expect(detail.getByRole("list", { name: "Khóa chứa bài này" })).toContainText("Nhóm của MCY · khóa của MCY");
+  await expect(detail.getByRole("list", { name: "Lịch sử gửi và duyệt" }).getByRole("listitem").first()).toContainText("Owner: đã duyệt · phiên bản 1");
+  await page.getByRole("navigation", { name: "Chức năng giáo viên" }).getByRole("button", { name: "Theo dõi", exact: true }).click();
+  const table = page.getByRole("table", { name: "Theo dõi bài và khóa" });
+  await expect(table.getByRole("row")).toHaveCount(4);
+  await expect(table.getByRole("row").filter({ hasText: "Bài nháp" })).toContainText("Chưa gửi");
+  await table.getByRole("button", { name: "Bài chờ duyệt" }).click();                         // opens the lesson on its Theo dõi tab
+  await expect(page.getByRole("article", { name: "Bài · Bài chờ duyệt" }).getByRole("button", { name: "Theo dõi", exact: true })).toHaveAttribute("aria-pressed", "true");
 });

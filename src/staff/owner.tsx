@@ -160,7 +160,7 @@ export function OwnerWorkspace() {
     setSaving(false);
     setNotice("");
     setError("");
-    if (!session || !backendConfigured) {
+    if (!sessionUserId || !backendConfigured) {
       setLoadingConfig(false);
       return;
     }
@@ -194,7 +194,7 @@ export function OwnerWorkspace() {
       }
     })();
     return () => { active = false; };
-  }, [session, reload]);
+  }, [sessionUserId, reload]); // the account, not the session object: a token refresh must not reset the workspace (Owner 28/11)
 
   const signIn = async (event: FormEvent) => {
     event.preventDefault();

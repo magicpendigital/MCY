@@ -162,3 +162,21 @@
 @media (prefers-reduced-motion: reduce) {
   .teacher-shell *, .teacher-shell *::before, .teacher-shell *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* W1 (Owner 28/11): compact header and a sidebar; horizontal on narrow screens. */
+.teacher-intro-compact { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; max-width: none; margin-bottom: 18px; }
+.teacher-intro-compact h1 { margin: 0; font-size: 28px; }
+.teacher-intro-compact .teacher-staging-badge { margin-top: 0; }
+.teacher-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 24px; align-items: start; }
+.teacher-layout-main { min-width: 0; }
+.teacher-sidebar { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 4px; }
+.teacher-sidebar button { min-height: 44px; padding: 10px 12px; border: 1px solid transparent; border-radius: 10px; background: transparent; color: var(--color-ink); font: inherit; font-size: 14px; text-align: left; cursor: pointer; }
+.teacher-sidebar button:hover { background: rgba(66, 93, 72, .06); }
+.teacher-sidebar button[aria-current="page"] { border-color: #425d48; background: #e9eee5; color: #2f4535; font-weight: 600; }
+.teacher-sidebar-group { margin: 14px 12px 2px; color: var(--color-text-muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+@media (max-width: 899px) {
+  .teacher-layout { display: block; }
+  .teacher-sidebar { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .teacher-sidebar button { border-color: #d7ded1; }
+  .teacher-sidebar-group { display: none; }
+}

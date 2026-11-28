@@ -10,7 +10,7 @@ import { syncContentSnapshot, type ContentStorage, type SnapshotSource } from ".
 type Server = ReturnType<OwnerControlPlaneDependencies["clients"]>["server"];
 type Result = { status: number; body: Record<string, unknown> };
 
-const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog", "read_display", "save_display", "set_visibility", "sync_content_snapshot", "read_author_notes", "save_author_note"];
+const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog", "read_display", "save_display", "set_visibility", "sync_content_snapshot", "read_author_notes", "save_author_note", "read_tracking"];
 const allowedKeys: Record<string, string[]> = {
   list_content: ["action"],
   read_content: ["action", "itemId", "seq"],
@@ -24,6 +24,7 @@ const allowedKeys: Record<string, string[]> = {
   sync_content_snapshot: ["action"],
   read_author_notes: ["action", "itemId"],
   save_author_note: ["action", "itemId", "seq", "note"],
+  read_tracking: ["action"],
 };
 const itemId = /^[a-z0-9_-]{1,80}$/;
 const plain = (v: unknown): v is Record<string, unknown> => Boolean(v && typeof v === "object" && !Array.isArray(v));
@@ -69,6 +70,12 @@ export async function handleContentWorkspace(payload: Record<string, unknown>, a
   if (typeof payload.action !== "string" || !actions.includes(payload.action)) return null;
   const action = payload.action;
   if (Object.keys(payload).some(k => !allowedKeys[action].includes(k))) return { status: 400, body: { error: "invalid_request" } };
+
+  // T1 (W1): the version learners may see, review history and the courses that hold each own item; the RPC re-checks the actor.
+  if (action === "read_tracking") {
+    const { data, error } = await server.rpc("mcy_content_tracking", { p_actor_id: actor });
+    return error || !plain(data) || !Array.isArray(data.items) ? failure(error) : { status: 200, body: { items: data.items } };
+  }
 
   if (action === "list_content") {
     const { data, error } = await server.rpc("mcy_content_list", { p_actor_id: actor });
