@@ -1,5 +1,5 @@
 // Replays the migration chain applied on mcy-staging (through 20261128043923, W1/T1) and then the candidate
-// 20261128150000_content_review_shares.sql LAST, with fictional platform scaffolding. Owner 28/11, option A: the Owner invites an
+// 20261128053426_content_review_shares.sql LAST, with fictional platform scaffolding. Owner 28/11, option A: the Owner invites an
 // active teacher to read an MCY lesson or course and comment; the teacher never edits, never decides a review and never changes
 // what learners see. Plus the Owner's list of MCY lessons still without "areas". Supplements, and is not, live Supabase evidence.
 // Needs @electric-sql/pglite (MCY_PGLITE_MODULE_PATH).
@@ -10,7 +10,7 @@ const later = ['20261023171210_delete_my_account.sql', '20261102173348_reading_p
   '20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql',
   '20261110175347_content_snapshot_screens.sql', '20261127031613_teacher_control_plane_rpcs.sql', '20261127072022_teacher_invite_account_kind.sql',
   '20261128030007_teacher_course_groups.sql', '20261128043923_teacher_content_tracking.sql'];
-const candidate = '20261128150000_content_review_shares.sql'; // local candidate; not on staging
+const candidate = '20261128053426_content_review_shares.sql'; // applied on mcy-staging as remote version 20261128053426
 const newFns = ['mcy_content_share_set', 'mcy_content_share_read', 'mcy_content_shared_list', 'mcy_content_share_note', 'mcy_content_legacy_lessons'];
 const newTables = ['mcy_content_shares', 'mcy_content_share_events', 'mcy_content_share_notes'];
 
