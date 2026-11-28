@@ -10,7 +10,7 @@ import { syncContentSnapshot, type ContentStorage, type SnapshotSource } from ".
 type Server = ReturnType<OwnerControlPlaneDependencies["clients"]>["server"];
 type Result = { status: number; body: Record<string, unknown> };
 
-const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog", "read_display", "save_display", "set_visibility", "sync_content_snapshot", "read_author_notes", "save_author_note", "read_tracking"];
+const actions = ["list_content", "read_content", "save_content", "submit_content", "review_content", "import_catalog", "read_display", "save_display", "set_visibility", "sync_content_snapshot", "read_author_notes", "save_author_note", "read_tracking", "share_set", "share_read", "shared_list", "share_note", "legacy_lessons"];
 const allowedKeys: Record<string, string[]> = {
   list_content: ["action"],
   read_content: ["action", "itemId", "seq"],
@@ -25,7 +25,13 @@ const allowedKeys: Record<string, string[]> = {
   read_author_notes: ["action", "itemId"],
   save_author_note: ["action", "itemId", "seq", "note"],
   read_tracking: ["action"],
+  share_set: ["action", "itemId", "reviewerId", "active", "expiresInDays"],
+  share_read: ["action", "itemId"],
+  shared_list: ["action"],
+  share_note: ["action", "itemId", "seq", "note"],
+  legacy_lessons: ["action"],
 };
+const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const itemId = /^[a-z0-9_-]{1,80}$/;
 const plain = (v: unknown): v is Record<string, unknown> => Boolean(v && typeof v === "object" && !Array.isArray(v));
 const natural = (v: unknown, min: number) => typeof v === "number" && Number.isInteger(v) && v >= min && v <= 1_000_000;
@@ -37,6 +43,7 @@ const forbiddenMessages: Record<string, string> = {
   content_kind_not_allowed: "content_kind_not_allowed",
   teacher_content_is_reviewed_not_edited: "teacher_content_is_reviewed_not_edited",
   self_review_not_allowed: "self_review_not_allowed",
+  active_teacher_required: "active_teacher_required",
 };
 function failure(error: { code?: string; message?: string } | null): Result {
   const code = error?.code;
@@ -49,7 +56,7 @@ function failure(error: { code?: string; message?: string } | null): Result {
     if (m === "content_item_not_found") return { status: 404, body: { error: "content_item_not_found" } };
     if (m === "review_checks_incomplete") return { status: 400, body: { error: "review_checks_incomplete" } };
     if (m === "content_not_approved" || m === "editors_choice_not_shown") return { status: 409, body: { error: m } };
-    if (m === "invalid_display_config" || m === "invalid_visibility" || m === "invalid_note") return { status: 400, body: { error: m } };
+    if (m === "invalid_display_config" || m === "invalid_visibility" || m === "invalid_note" || m === "invalid_share") return { status: 400, body: { error: m } };
     return { status: 400, body: { error: "invalid_content" } };
   }
   return { status: 503, body: { error: "content_result_uncertain" } };
@@ -70,6 +77,34 @@ export async function handleContentWorkspace(payload: Record<string, unknown>, a
   if (typeof payload.action !== "string" || !actions.includes(payload.action)) return null;
   const action = payload.action;
   if (Object.keys(payload).some(k => !allowedKeys[action].includes(k))) return { status: 400, body: { error: "invalid_request" } };
+
+  // Sharing (Owner 28/11, option A): the Owner invites an active teacher to view and comment on one MCY lesson or course.
+  // Comment only: no review decision, no edit right, and the Owner's own decision is never touched. The RPCs re-check every actor.
+  if (action === "share_set") {
+    if (typeof payload.itemId !== "string" || !itemId.test(payload.itemId) || typeof payload.reviewerId !== "string" || !uuid.test(payload.reviewerId)
+      || typeof payload.active !== "boolean" || !natural(payload.expiresInDays, 1) || (payload.expiresInDays as number) > 30) return { status: 400, body: { error: "invalid_share" } };
+    const { data, error } = await server.rpc("mcy_content_share_set", { p_actor_id: actor, p_item_id: payload.itemId, p_reviewer_id: payload.reviewerId, p_active: payload.active, p_expires_in_days: payload.expiresInDays });
+    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data } };
+  }
+  if (action === "share_read") {
+    if (typeof payload.itemId !== "string" || !itemId.test(payload.itemId)) return { status: 400, body: { error: "invalid_request" } };
+    const { data, error } = await server.rpc("mcy_content_share_read", { p_actor_id: actor, p_item_id: payload.itemId });
+    return error || !plain(data) ? failure(error) : { status: 200, body: data };
+  }
+  if (action === "shared_list") {
+    const { data, error } = await server.rpc("mcy_content_shared_list", { p_actor_id: actor });
+    return error || !plain(data) || !Array.isArray(data.items) ? failure(error) : { status: 200, body: { items: data.items } };
+  }
+  if (action === "share_note") {
+    if (typeof payload.itemId !== "string" || !itemId.test(payload.itemId) || !natural(payload.seq, 1) || typeof payload.note !== "string" || payload.note.trim().length < 1 || payload.note.length > 1000) return { status: 400, body: { error: "invalid_note" } };
+    const { data, error } = await server.rpc("mcy_content_share_note", { p_actor_id: actor, p_item_id: payload.itemId, p_seq: payload.seq, p_note: payload.note.trim() });
+    return error || !plain(data) ? failure(error) : { status: 200, body: { receipt: data } };
+  }
+  // Standardising (Owner 28/11): MCY video lessons whose latest version has no areas yet. The Owner then saves new versions in the hub.
+  if (action === "legacy_lessons") {
+    const { data, error } = await server.rpc("mcy_content_legacy_lessons", { p_actor_id: actor });
+    return error || !plain(data) || !Array.isArray(data.items) ? failure(error) : { status: 200, body: { items: data.items } };
+  }
 
   // T1 (W1): the version learners may see, review history and the courses that hold each own item; the RPC re-checks the actor.
   if (action === "read_tracking") {

@@ -404,3 +404,109 @@ test("with tracking, the Theo dõi tab and view show what learners see, the hold
   await table.getByRole("button", { name: "Bài chờ duyệt" }).click();                         // opens the lesson on its Theo dõi tab
   await expect(page.getByRole("article", { name: "Bài · Bài chờ duyệt" }).getByRole("button", { name: "Theo dõi", exact: true })).toHaveAttribute("aria-pressed", "true");
 });
+
+// Owner 28/11, sharing option A: comment only. Fictional rows; UI evidence, not role or staging evidence.
+const teacherId = "33333333-3333-4333-8333-333333333333";
+test("the Owner invites a teacher to comment on an MCY item, sees the comments and withdraws; no review or edit right is sent", async ({ page }) => {
+  const calls: Record<string, any>[] = [];
+  let shares: unknown[] = [];
+  await setup(page, (r, body) => {
+    calls.push(body);
+    if (body.action === "list_content") return reply(r, 200, { role: "owner", items: rows, published: false });
+    if (body.action === "read_content") return reply(r, 200, { version: version(mcyRow, { summary: "Fictional group summary", lessonIds: [teacherRow.item_id] }), published: false });
+    if (body.action === "read_author_notes") return reply(r, 200, { notes: [] });
+    if (body.action === "share_read") return reply(r, 200, { shareable: true, shares, eligible: [{ user_id: teacherId, label: "Giảng viên Thử" }], notes: shares.length ? [{ seq: 1, note: "Nên thêm lưu ý cho người đau lưng.", at: "2026-11-28T03:00:00Z", label: "Giảng viên Thử" }] : [] });
+    if (body.action === "share_set") { shares = body.active ? [{ reviewer_id: teacherId, label: "Giảng viên Thử", expires_at: "2026-12-05T03:00:00Z" }] : []; return reply(r, 200, { receipt: { item_id: body.itemId, reviewer_id: teacherId, active: body.active, unchanged: false } }); }
+    return reply(r, 400, { error: "unexpected" });
+  });
+  await page.getByRole("list", { name: "Danh sách nội dung" }).getByRole("button", { name: /Fictional group/ }).click();
+  const section = page.getByRole("region", { name: "Mời giảng viên góp ý" });
+  await expect(section).toContainText("không sửa, không duyệt");
+  await expect(section.getByRole("button", { name: "Mời góp ý" })).toBeDisabled();
+  await section.getByLabel("Giảng viên được mời").selectOption(teacherId);
+  await section.getByLabel("Thời hạn lời mời").selectOption("14");
+  await section.getByRole("button", { name: "Mời góp ý" }).click();
+  await expect(page.getByText("Đã mời góp ý trong 14 ngày", { exact: false })).toBeVisible();
+  expect(calls.find(c => c.action === "share_set")).toEqual({ action: "share_set", itemId: mcyRow.item_id, reviewerId: teacherId, active: true, expiresInDays: 14 });
+  await expect(section.getByRole("list", { name: "Đang được mời" })).toContainText("Giảng viên Thử · đến 05/12");
+  await expect(section.getByLabel("Góp ý của giảng viên")).toContainText("Nên thêm lưu ý cho người đau lưng.");
+  await section.getByRole("button", { name: "Thu hồi" }).click();
+  await expect(page.getByText("Đã thu hồi lời mời", { exact: false })).toBeVisible();
+  const sets = calls.filter(c => c.action === "share_set");
+  expect(sets[sets.length - 1]).toMatchObject({ active: false });
+  expect(calls.some(c => ["review_content", "save_content", "set_visibility"].includes(c.action))).toBe(false);
+});
+
+test("a teacher item never offers sharing, and an older server without sharing shows no share section", async ({ page }) => {
+  await setup(page, (r, body) => {
+    if (body.action === "list_content") return reply(r, 200, { role: "owner", items: rows, published: false });
+    if (body.action === "read_content") return reply(r, 200, { version: version(body.itemId === mcyRow.item_id ? mcyRow : teacherRow, body.itemId === mcyRow.item_id ? { summary: "Fictional group summary", lessonIds: [] } : lessonPayload), published: false });
+    if (body.action === "read_author_notes") return reply(r, 200, { notes: [] });
+    return reply(r, 400, { error: "invalid_request" });
+  });
+  const list = page.getByRole("list", { name: "Danh sách nội dung" });
+  await list.getByRole("button", { name: /Fictional group/ }).click();
+  await expect(page.getByRole("article", { name: "Đánh giá · Fictional group" })).toBeVisible();
+  await list.getByRole("button", { name: /Fictional lesson/ }).click();
+  await expect(page.getByRole("article", { name: "Đánh giá · Fictional lesson" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Mời giảng viên góp ý" })).toHaveCount(0);
+  await expect(page.getByRole("alert")).toHaveCount(0);
+});
+
+test("standardising old MCY lessons shows title guesses as suggestions and saves new versions one by one, stopping at the first refusal", async ({ page }) => {
+  const calls: Record<string, any>[] = [];
+  const legacy = [
+    { item_id: "video-mcy1111111111111", seq: 1, title: "Thả lỏng cổ vai", payload: { ...lessonPayload, youtubeId: "BBBBBBBBBBB", captionsVerified: false } },
+    { item_id: "video-mcy2222222222222", seq: 1, title: "Bài hư cấu hai", payload: { ...lessonPayload, youtubeId: "CCCCCCCCCCC", tags: ["cũ"] } },
+    { item_id: "video-mcy3333333333333", seq: 2, title: "Bài hư cấu ba", payload: { ...lessonPayload, youtubeId: "DDDDDDDDDDD" } },
+  ];
+  await setup(page, (r, body) => {
+    calls.push(body);
+    if (body.action === "list_content") return reply(r, 200, { role: "owner", items: rows, published: false });
+    if (body.action === "legacy_lessons") return reply(r, 200, { items: legacy });
+    if (body.action === "save_content") return body.itemId === legacy[2].item_id ? reply(r, 409, { error: "content_conflict" }) : reply(r, 200, { receipt: { item_id: body.itemId, seq: body.expectedSeq + 1 }, published: false });
+    if (body.action === "submit_content") return reply(r, 200, { receipt: { item_id: body.itemId, seq: body.expectedSeq }, published: false });
+    return reply(r, 400, { error: "unexpected" });
+  });
+  await page.getByRole("button", { name: "Chuẩn hoá bài cũ" }).click();
+  const panel = page.getByRole("region", { name: "Chuẩn hoá bài video cũ" });
+  await expect(panel).toContainText("gợi ý đoán từ tên bài");
+  await expect(panel.getByRole("button", { name: "Lưu và gửi duyệt 0 bài" })).toBeDisabled();
+  await panel.getByLabel("Thẻ của Bài hư cấu hai").fill("lưng, nhẹ nhàng");
+  await panel.getByLabel(/Chọn tất cả/).check();
+  await panel.getByRole("button", { name: "Lưu và gửi duyệt 3 bài" }).click();
+  expect(calls.filter(c => c.action === "save_content")).toHaveLength(0);              // nothing is written before the confirmation
+  await page.getByRole("alertdialog", { name: "Xác nhận chuẩn hoá" }).getByRole("button", { name: "Xác nhận" }).click();
+  await expect(page.getByText("Đã tạo 2/3 phiên bản mới.", { exact: false })).toBeVisible();
+  const saves = calls.filter(c => c.action === "save_content");
+  expect(saves.map(c => [c.itemId, c.expectedSeq])).toEqual([[legacy[0].item_id, 1], [legacy[1].item_id, 1], [legacy[2].item_id, 2]]);
+  expect(saves[0].payload).toMatchObject({ youtubeId: "BBBBBBBBBBB", captionsVerified: false });
+  expect(Array.isArray(saves[0].payload.areas)).toBe(true);
+  expect(saves[1].payload.tags).toEqual(["lưng", "nhẹ nhàng"]);
+  expect(calls.filter(c => c.action === "submit_content").map(c => [c.itemId, c.expectedSeq])).toEqual([[legacy[0].item_id, 2], [legacy[1].item_id, 2]]);
+  expect(calls.some(c => c.action === "review_content" || c.action === "set_visibility")).toBe(false);
+});
+
+test("a teacher reads an MCY lesson they were invited to and sends a comment on the latest version only", async ({ page }) => {
+  const calls: Record<string, any>[] = [];
+  let notes: unknown[] = [];
+  await openTeacher(page, (r, body) => {
+    calls.push(body);
+    if (body.action === "list_content") return reply(r, 200, { role: "teacher", items: [] });
+    if (body.action === "shared_list") return reply(r, 200, { items: [{ item_id: "video-mcy1111111111111", kind: "video_lesson", expires_at: "2026-12-05T03:00:00Z", seq: 3, title: "Thả lỏng cổ vai", payload: { ...lessonPayload, youtubeId: "BBBBBBBBBBB" }, notes }] });
+    if (body.action === "share_note") { notes = [{ seq: body.seq, note: body.note, at: "2026-11-28T04:00:00Z" }]; return reply(r, 200, { receipt: { item_id: body.itemId, seq: body.seq } }); }
+    return reply(r, 400, { error: "invalid_request" });
+  });
+  await page.getByRole("button", { name: "Duyệt nội dung được giao", exact: true }).click();
+  const panel = page.getByRole("region", { name: "Bài MCY được mời góp ý" });
+  await expect(panel).toContainText("Bạn chỉ xem và góp ý. Owner quyết định");
+  const item = panel.getByRole("article", { name: "Góp ý · Thả lỏng cổ vai" });
+  await expect(item).toContainText("Phiên bản 3 · lời mời đến 05/12");
+  await expect(item.getByRole("link", { name: "Xem trên YouTube" })).toHaveAttribute("href", "https://www.youtube.com/watch?v=BBBBBBBBBBB");
+  await expect(item.getByRole("button", { name: /Sửa|Duyệt|Lưu/ })).toHaveCount(0);
+  await item.getByLabel("Góp ý cho Thả lỏng cổ vai").fill("  Nên nói chậm hơn ở phút đầu.  ");
+  await item.getByRole("button", { name: "Gửi góp ý" }).click();
+  await expect(panel.getByText("Đã gửi góp ý cho Owner.")).toBeVisible();
+  expect(calls.find(c => c.action === "share_note")).toEqual({ action: "share_note", itemId: "video-mcy1111111111111", seq: 3, note: "Nên nói chậm hơn ở phút đầu." });
+  await expect(item.getByLabel("Góp ý bạn đã gửi")).toContainText("Nên nói chậm hơn ở phút đầu.");
+});

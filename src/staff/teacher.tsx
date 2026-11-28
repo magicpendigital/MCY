@@ -9,6 +9,7 @@ import "./teacher.css";
 import { TeacherCollaborationPanel } from "./TeacherCollaborationPanel";
 const ContentReviewPanel = lazy(() => import("./ContentReviewPanel"));
 const TeacherContentPanel = lazy(() => import("./TeacherContentPanel"));
+const TeacherSharedPanel = lazy(() => import("./TeacherSharedPanel"));
 
 type DraftSummary = {
   session_id: string;
@@ -505,7 +506,7 @@ export function TeacherWorkspace() {
       <section className="teacher-intro teacher-workspace-intro teacher-intro-compact"><span className="teacher-kicker">KHÔNG GIAN SOẠN BÀI</span><h1>Bài học của bạn.</h1><div className="teacher-staging-badge"><i />MÔI TRƯỜNG STAGING · KHÔNG PHẢI PRODUCTION</div></section>
       <div className="teacher-layout"><nav className="teacher-sidebar" aria-label="Chức năng giáo viên">{navItem("lessons", "Bài video của tôi")}{navItem("courses", "Khóa học của tôi")}{navItem("tracking", "Theo dõi")}<span className="teacher-sidebar-group" aria-hidden="true">Khác</span>{navItem("scripts", "Kịch bản nháp")}{navItem("review", "Duyệt nội dung được giao")}</nav><div className="teacher-layout-main">
       <div hidden={!panelView}>{loadingWorkspace || accessState === "unknown" ? <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền giảng viên…</h2></section> : accessState === "denied" ? <section className="teacher-state-card"><span className="teacher-kicker">QUYỀN TRUY CẬP</span><h2>Chưa có lời mời giáo viên.</h2><p>{error}</p><p>Email đã xác minh không tự cấp quyền giáo viên. Nếu bạn nghĩ đây là nhầm lẫn, hãy liên hệ Owner qua kênh hỗ trợ đã được xác nhận.</p></section> : <Suspense fallback={<p role="status">Đang mở bài video của tôi…</p>}><TeacherContentPanel key={session.user.id} userId={session.user.id} view={panelView ?? "lessons"} onView={setSection} /></Suspense>}</div>
-      {section === "review" ? <Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={session.user.id} userId={session.user.id} /></Suspense> : section === "scripts" ? <>
+      {section === "review" ? <><Suspense fallback={null}><TeacherSharedPanel key={session.user.id} userId={session.user.id} /></Suspense><Suspense fallback={<p role="status">Đang mở phiếu duyệt…</p>}><ContentReviewPanel key={session.user.id} userId={session.user.id} /></Suspense></> : section === "scripts" ? <>
       <p className="teacher-privacy-note" data-testid="script-draft-note">Kịch bản nháp (các đoạn có mốc giờ, lời dẫn, lưu ý dừng lại) chỉ lưu riêng cho bạn: chưa gắn với video, chưa gửi Owner duyệt và chưa hiện với học viên. Để đưa bài lên ứng dụng, dùng thẻ “Bài video của tôi”.</p>
       <TeacherCollaborationPanel userId={session.user.id} onReadyChange={setCollaborationReadyUserId} />
       {collaborationReadyUserId !== session.user.id && loadingWorkspace && <section className="teacher-state-card" role="status"><h2>Đang xác minh quyền và tải bản nháp…</h2></section>}

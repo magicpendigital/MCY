@@ -7,6 +7,7 @@ import type { ReadingUnitContent } from "../../supabase/functions/_shared/readin
 import { ReadingUnitPreview } from "./ReadingUnitPreview";
 import { AreaPicker } from "./AreaPicker";
 import { lessonAreas } from "../courses/lessonFinder";
+import { LegacyLessonsPanel, OwnerShareSection, type ShareState } from "./ContentSharing";
 import "./owner.css";
 
 // Owner content hub (phase 2): every item in the versioned content store in one list, a "see it as a learner" view,
@@ -109,6 +110,8 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
   const [uncertain, setUncertain] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [share, setShare] = useState<ShareState | null>(null);
+  const [legacy, setLegacy] = useState<{ key: number; items: { item_id: string; seq: number; title: string; payload: Record<string, unknown> }[] } | null>(null);
   const pending = useRef(false);
   const generation = useRef(0);
   const account = useRef(userId); account.current = userId;
@@ -147,6 +150,27 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
     try { return await call(body, write); } finally { pending.current = false; setBusy(false); }
   }, [call]);
 
+  // Silent read outside the pending lock and the generation counter: an older server without sharing simply shows no share section.
+  const quietRead = useCallback(async (body: Record<string, unknown>): Promise<Record<string, unknown> | null> => {
+    const actor = userId;
+    try {
+      const client = await getAccountBoundSupabaseClient(actor);
+      const { data, error: failure } = await client.functions.invoke("owner-control-plane", { body });
+      return failure || account.current !== actor || !data || typeof data !== "object" ? null : data as Record<string, unknown>;
+    } catch { return null; }
+  }, [userId]);
+  const loadShare = useCallback(async (v: Version) => {
+    setShare(null);
+    if (v.author_kind !== "mcy" || (v.kind !== "video_lesson" && v.kind !== "course_group")) return;
+    const data = await quietRead({ action: "share_read", itemId: v.item_id });
+    if (data && data.shareable === true && Array.isArray(data.shares) && Array.isArray(data.eligible) && Array.isArray(data.notes)) setShare({ ...(data as unknown as ShareState), item_id: v.item_id });
+  }, [quietRead]);
+  const loadLegacy = useCallback(async () => {
+    const data = await quietRead({ action: "legacy_lessons" });
+    if (data && Array.isArray(data.items)) setLegacy(l => ({ key: (l?.key ?? 0) + 1, items: data.items as NonNullable<typeof legacy>["items"] }));
+    else { setLegacy(null); setError("Máy chủ chưa có chức năng chuẩn hoá bài cũ."); }
+  }, [quietRead]);
+
   const loadList = useCallback(async () => {
     const data = await run({ action: "list_content" }, false);
     if (data && Array.isArray(data.items)) { setRows(data.items as Row[]); setUncertain(false); }
@@ -155,9 +179,10 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
 
   const open = async (itemId: string, seq?: number, keepNotice = false) => {
     if (!keepNotice) setNotice("");
-    setDraft(null);
+    setDraft(null); setLegacy(null);
     const data = await run({ action: "read_content", itemId, ...(seq ? { seq } : {}) }, false);
     if (data && data.version) setVersion(data.version as Version);
+    if (data && data.version) void loadShare(data.version as Version);
     setVisConfirm(false); setAuthorNote(""); setNotes([]);
     if (data && data.version && (data.version as Version).author_kind === "teacher") {
       const n = await run({ action: "read_author_notes", itemId }, false);
@@ -232,13 +257,14 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
   const set = (patch: Partial<Draft>) => setDraft(d => d ? { ...d, ...patch } : d);
 
   const workRef = useRef<HTMLDivElement>(null);
-  const workKey = `${draft ? "draft" : ""}|${version?.item_id ?? ""}`;
-  useEffect(() => { if ((draft || version) && workRef.current && typeof workRef.current.scrollIntoView === "function") workRef.current.scrollIntoView({ block: "nearest" }); }, [workKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  const workKey = `${draft ? "draft" : ""}|${version?.item_id ?? ""}|${legacy ? "legacy" : ""}`;
+  useEffect(() => { if ((draft || version || legacy) && workRef.current && typeof workRef.current.scrollIntoView === "function") workRef.current.scrollIntoView({ block: "nearest" }); }, [workKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return <section className="owner-panel owner-hub" aria-label="Nội dung của toàn ứng dụng">
     <div className="owner-panel-heading"><div><span className="owner-kicker">NỘI DUNG</span><h2>Nội dung của toàn ứng dụng</h2>
       <p>Mọi bài video, nhóm khóa, bài đọc và văn bản màn hình ở một chỗ. Mỗi lần lưu là một phiên bản bất biến. Duyệt chưa làm nội dung hiện lên app.</p></div>
-      <button type="button" className="owner-primary" disabled={busy} onClick={() => { setVersion(null); setDraft(blankDraft()); setNotice(""); }}>Soạn nội dung MCY</button></div>
+      <div className="owner-hub-actions"><button type="button" disabled={busy} onClick={() => { setVersion(null); setDraft(null); setNotice(""); setError(""); void loadLegacy(); }}>Chuẩn hoá bài cũ</button>
+        <button type="button" className="owner-primary" disabled={busy} onClick={() => { setVersion(null); setLegacy(null); setDraft(blankDraft()); setNotice(""); }}>Soạn nội dung MCY</button></div></div>
     {busy && <p role="status">Đang đối chiếu với máy chủ…</p>}
     {error && <p className="owner-error" role="alert">{error}</p>}
     {notice && <p className="owner-success" role="status">{notice}</p>}
@@ -260,7 +286,7 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
     </>}
 
     {/* W1 (Owner 28/11): the open item sits beside the list on wide screens and above it on narrow ones, never below the list. */}
-    <div className={`owner-split${draft || version ? " is-open" : ""}`}><div className="owner-split-list">
+    <div className={`owner-split${draft || version || legacy ? " is-open" : ""}${legacy && !draft && !version ? " is-long" : ""}`}><div className="owner-split-list">
       {rows && shown.length > 0 && <ul className="owner-hub-list" aria-label="Danh sách nội dung">{shown.map(r => <li key={r.item_id}>
         <button type="button" aria-pressed={version?.item_id === r.item_id} disabled={busy} onClick={() => void open(r.item_id)}>
           <strong>{r.title}</strong>
@@ -329,6 +355,8 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
         })()}
       </section>
 
+      {share && share.item_id === version.item_id && <OwnerShareSection key={version.item_id} share={share} run={run} disabled={busy || uncertain} onChanged={async message => { setNotice(message); await loadShare(version); }} />}
+
       <form onSubmit={saveReview} aria-label="Phiếu duyệt">
         <fieldset disabled={busy || uncertain || !canReview}><legend>Khai báo của Owner (tự gõ, bắt buộc)</legend>
           {!canReview && <p className="owner-hub-note">{version.status !== "submitted" ? "Tác giả chưa gửi duyệt phiên bản này." : "Chỉ duyệt phiên bản mới nhất."}</p>}
@@ -344,7 +372,9 @@ export default function ContentHubPanel({ userId }: { userId: string }) {
         </fieldset>
       </form>
     </article>}
-    {!draft && !version && rows && rows.length > 0 && <p className="owner-hub-note owner-split-empty">Chọn một mục để xem và duyệt.</p>}
+    {legacy && !draft && !version && <LegacyLessonsPanel key={legacy.key} items={legacy.items} run={run} disabled={busy || uncertain} onClose={() => setLegacy(null)}
+      onDone={async (message, stopped) => { if (!stopped) await loadList(); setNotice(message); await loadLegacy(); }} />}
+    {!draft && !version && !legacy && rows && rows.length > 0 && <p className="owner-hub-note owner-split-empty">Chọn một mục để xem và duyệt.</p>}
     </div></div>
   </section>;
 }

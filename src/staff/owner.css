@@ -208,6 +208,24 @@
 .owner-split-list { min-width: 0; }
 .owner-split-work { min-width: 0; position: sticky; top: 12px; }
 .owner-split-work > .owner-hub-compose, .owner-split-work > .owner-hub-detail { margin-top: 0; }
+/* Owner 28/11: sharing (comment only) and standardising the older MCY lessons. */
+.owner-hub-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; }
+.owner-hub-share { margin: 16px 0; padding: 14px; border: 1px dashed var(--owner-border); border-radius: 12px; }
+.owner-hub-share h4 { margin: 0 0 8px; font-size: 13px; }
+.owner-hub-share ul { margin: 8px 0; padding-left: 18px; font-size: 13px; line-height: 1.5; }
+.owner-hub-share li { margin-bottom: 6px; }
+.owner-hub-share-form { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.owner-hub-legacy { margin: 0 0 16px; padding: 18px; border: 1px solid var(--owner-border); border-radius: 14px; background: #fff; }
+.owner-hub-legacy-list { margin: 12px 0; padding: 0; list-style: none; }
+.owner-hub-legacy-list > li { padding: 12px 0; border-top: 1px solid #e9e8e0; }
+.owner-hub-legacy-pick, .owner-hub-legacy-all { display: flex; align-items: center; gap: 8px; min-height: 32px; font-size: 13px; }
+.owner-hub-legacy-pick input, .owner-hub-legacy-all input { width: 18px; height: 18px; min-height: 18px; padding: 0; }
+.owner-split.is-long .owner-split-work { position: static; }
+.teacher-shared { margin-bottom: 20px; }
+.teacher-shared-list { margin: 16px 0 0; padding: 0; list-style: none; }
+.teacher-shared-list > li { margin-bottom: 14px; padding: 16px; border: 1px solid var(--owner-border); border-radius: 14px; background: #fff; }
+.teacher-shared-list h3 { margin: 6px 0; font-size: 17px; }
+.teacher-shared-list ul { padding-left: 18px; font-size: 13px; }
 .owner-split-empty { padding: 18px; border: 1px dashed var(--owner-border, #d7ded1); border-radius: 14px; }
 .owner-row-head { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; padding: 0 6px 6px; color: var(--owner-muted); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
 .owner-hub-columns button { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; align-items: baseline; }
