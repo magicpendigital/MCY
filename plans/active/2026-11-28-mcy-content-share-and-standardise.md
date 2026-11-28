@@ -24,7 +24,7 @@ Trạng thái: đã duyệt hướng (Owner 28/11: "2. Đồng ý đề xuất. 
 - Các lệnh `check:quick`, `npm test`, `check:ios15`, rehearsal và Playwright đều xanh.
 
 ## 3. Phạm vi sửa
-- Backend: `supabase/migrations/20261128150000_content_review_shares.sql` (số phiên bản tạm), `supabase/functions/_shared/contentWorkspace.ts`.
+- Backend: `supabase/migrations/20261128053426_content_review_shares.sql` (đã áp mcy-staging), `supabase/functions/_shared/contentWorkspace.ts`.
 - Staff: `src/staff/ContentSharing.tsx` (mới), `src/staff/TeacherSharedPanel.tsx` (mới), `src/staff/ContentHubPanel.tsx`, `src/staff/teacher.tsx`, `src/staff/owner.css`.
 - Tests:
   - `tests/content-share-rehearsal.cjs` (mới);
@@ -85,7 +85,7 @@ Trạng thái: đã duyệt hướng (Owner 28/11: "2. Đồng ý đề xuất. 
 - `npx playwright test tests/teacher-content.spec.ts tests/teacher-workspace.spec.ts tests/content-review.spec.ts tests/content-hub.spec.ts` (msedge)
 
 ## 11. Rủi ro còn lại
-- Chưa áp lên staging. Rehearsal PGlite không phải bằng chứng staging.
+- Đã áp staging và đọc lại quyền; chưa gọi thật với tư cách giảng viên.
 - Vùng gợi ý đoán từ tên bài có thể sai, nên Owner phải xem lại từng bài.
 - Chưa thử trên Preview với GV1. Chưa thử iPhone iOS 15 thật (trang staff).
 
@@ -97,6 +97,6 @@ Trạng thái: đã duyệt hướng (Owner 28/11: "2. Đồng ý đề xuất. 
 - [x] 1 Migration, rehearsal
 - [x] 2 Edge, test handler
 - [x] 3 UI Owner và giảng viên
-- [ ] 4 Cổng kiểm, merge
-- [ ] 5 Áp staging (chờ Owner)
+- [x] 4 Cổng kiểm, merge
+- [x] 5 Áp staging (version `20261128053426`), Edge v19, push (Owner 28/11)
 - [ ] 6 Owner chuẩn hoá và duyệt
