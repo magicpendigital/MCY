@@ -43,7 +43,7 @@ Owner đồng ý cả 5 đề xuất.
 - **Q4 · Có:** khi T2 bật, giảng viên xem số gộp của bài mình, ngưỡng 5.
 - **Q5 · Có:** trang Owner mở vào thẻ Nội dung, có thêm thẻ Giảng viên, ô mời chuyển sang thẻ đó.
 
-S1 xong ở máy 28/11 (form 3 bước, x/y, lối tắt); migration chờ Owner cho áp.
+S1 xong 28/11 (form 3 bước, x/y, lối tắt); migration đã áp lên staging (`20261128030007`), đã push.
 
 Thứ tự làm: W0 → S1 → W1 → W2 → (T2 khi Owner duyệt chính sách) → S3 → P1 → P2 → F.
 Bước có migration hoặc Edge cần Owner yêu cầu áp trong chính bước đó.

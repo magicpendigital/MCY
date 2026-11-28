@@ -1,5 +1,5 @@
-// Replays the migration chain applied on mcy-staging (through 20261127072022) and then the S1 candidate
-// 20261127150000_teacher_course_groups.sql LAST, with fictional platform scaffolding. A teacher may save a course_group made of
+// Replays the migration chain applied on mcy-staging (through 20261127072022) and then the S1 migration
+// 20261128030007_teacher_course_groups.sql LAST, with fictional platform scaffolding. A teacher may save a course_group made of
 // the teacher's own video lessons only, without guidance; the Owner reviews and switches it on; the public snapshot then carries it
 // with the teacher's byline. Supplements, and is not, live Supabase evidence. Needs @electric-sql/pglite (MCY_PGLITE_MODULE_PATH).
 const { test } = require('node:test');
@@ -9,7 +9,7 @@ const { assert, read, one, newDb, denied } = require('./support/pglite-chain.cjs
 const later = ['20261023171210_delete_my_account.sql', '20261102173348_reading_publication.sql', '20261102173513_add_glute_body_region.sql',
   '20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql',
   '20261110175347_content_snapshot_screens.sql', '20261127031613_teacher_control_plane_rpcs.sql', '20261127072022_teacher_invite_account_kind.sql'];
-const candidate = '20261127150000_teacher_course_groups.sql';
+const candidate = '20261128030007_teacher_course_groups.sql'; // on staging 2026-11-28 as remote version 20261128030007 (written as 20261127150000)
 
 const id = n => `55000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
 const O = id(1), T = id(2), U = id(3), S = id(4);
