@@ -1,5 +1,5 @@
 // Replays the migration chain applied on mcy-staging (through 20261128030007, S1) and then the W1/T1 candidate
-// 20261128120000_teacher_content_tracking.sql LAST, with fictional platform scaffolding. A teacher reads, for the teacher's own
+// 20261128043923_teacher_content_tracking.sql LAST, with fictional platform scaffolding. A teacher reads, for the teacher's own
 // lessons and courses only: the version learners may see, whether it reaches the app, send/review history without the reviewer,
 // and the courses that hold a lesson (own courses, plus shown courses). Supplements, and is not, live Supabase evidence.
 // Needs @electric-sql/pglite (MCY_PGLITE_MODULE_PATH).
@@ -10,7 +10,7 @@ const later = ['20261023171210_delete_my_account.sql', '20261102173348_reading_p
   '20261108111116_content_foundation.sql', '20261108162119_content_display.sql', '20261109022545_content_publication.sql',
   '20261110175347_content_snapshot_screens.sql', '20261127031613_teacher_control_plane_rpcs.sql', '20261127072022_teacher_invite_account_kind.sql',
   '20261128030007_teacher_course_groups.sql'];
-const candidate = '20261128120000_teacher_content_tracking.sql'; // local candidate; not on staging
+const candidate = '20261128043923_teacher_content_tracking.sql'; // local candidate; not on staging
 
 const id = n => `56000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
 const O = id(1), T = id(2), U = id(3), S = id(4);
