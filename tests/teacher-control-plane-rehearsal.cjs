@@ -18,7 +18,7 @@ const followUpRpcs = ['mcy_teacher_invite_account_kind', 'mcy_teacher_invite_mar
 const notOnStaging = ['20261003031137_limit_my_consent_events.sql', '20261005004000_private_teacher_collaboration.sql', '20261009181735_ai_read_admission_state.sql'];
 // S1 (teacher free courses) landed on staging 2026-11-28 as remote version 20261128030007 (written as 20261127150000);
 // tests/teacher-course-group-rehearsal.cjs replays it after this chain.
-const laterCandidates = ['20261128030007_teacher_course_groups.sql', '20261128043923_teacher_content_tracking.sql']; // W1/T1 tracking: local candidate, replayed by tests/teacher-tracking-rehearsal.cjs
+const laterCandidates = ['20261128030007_teacher_course_groups.sql', '20261128043923_teacher_content_tracking.sql', '20261128150000_content_review_shares.sql']; // W1/T1 tracking: local candidate, replayed by tests/teacher-tracking-rehearsal.cjs
 const rpcs = ['mcy_teacher_prepare_invite', 'mcy_teacher_invite_mark_delivered', 'mcy_teacher_invite_delivery_failed',
   'mcy_teacher_invite_mark_existing_account', 'mcy_teacher_accept_own_invite', 'mcy_teacher_list_own_drafts',
   'mcy_teacher_read_own_draft', 'mcy_teacher_save_own_draft'];

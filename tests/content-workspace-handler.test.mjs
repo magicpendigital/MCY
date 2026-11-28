@@ -134,3 +134,34 @@ test('read_tracking (W1/T1) takes only the action, sends the verified actor and 
   const odd = harness({ rpc: { data: { items: 'x' }, error: null } });
   assert.equal((await odd.run({ action: 'read_tracking' })).status, 503);
 });
+test('sharing (Owner 28/11, option A) validates strictly, sends the verified actor and maps refusals', async () => {
+  const reviewer = '22222222-2222-4222-8222-222222222222';
+  const ok = harness({ rpc: { data: { item_id: 'video-x', reviewer_id: reviewer, active: true, expires_at: 'x', unchanged: false }, error: null } });
+  const r = await ok.run({ action: 'share_set', itemId: 'video-x', reviewerId: reviewer, active: true, expiresInDays: 7 });
+  assert.deepEqual([r.status, ok.calls[0].name, ok.calls[0].args], [200, 'mcy_content_share_set', { p_actor_id: actor, p_item_id: 'video-x', p_reviewer_id: reviewer, p_active: true, p_expires_in_days: 7 }]);
+  for (const body of [{ action: 'share_set', itemId: 'video-x', reviewerId: 'not-a-uuid', active: true, expiresInDays: 7 }, { action: 'share_set', itemId: 'video-x', reviewerId: reviewer, active: 'yes', expiresInDays: 7 },
+    { action: 'share_set', itemId: 'video-x', reviewerId: reviewer, active: true, expiresInDays: 31 }, { action: 'share_set', itemId: 'video-x', reviewerId: reviewer, active: true }, { action: 'share_set', itemId: 'Bad Id', reviewerId: reviewer, active: true, expiresInDays: 7 },
+    { action: 'share_set', itemId: 'video-x', reviewerId: reviewer, active: true, expiresInDays: 7, decision: 'approved' }]) {
+    const h = harness(); const x = await h.run(body); assert.equal(x.status, 400); assert.equal(h.calls.length, 0);
+  }
+  for (const [error, status, code] of [[{ code: '42501', message: 'active_teacher_required' }, 403, 'active_teacher_required'], [{ code: '42501', message: 'owner_access_required' }, 403, 'owner_access_required'],
+    [{ code: '22023', message: 'invalid_share' }, 400, 'invalid_share'], [{ code: '22023', message: 'content_item_not_found' }, 404, 'content_item_not_found'], [{ code: 'PT429', message: 'content_limit_reached' }, 429, 'content_limit_reached']]) {
+    const h = harness({ rpc: { data: null, error } }); const x = await h.run({ action: 'share_set', itemId: 'video-x', reviewerId: reviewer, active: false, expiresInDays: 1 }); assert.deepEqual([x.status, x.body.error], [status, code]);
+  }
+  const read = harness({ rpc: { data: { shareable: true, shares: [], eligible: [], notes: [] }, error: null } });
+  assert.deepEqual([(await read.run({ action: 'share_read', itemId: 'video-x' })).status, read.calls[0].name], [200, 'mcy_content_share_read']);
+  const list = harness({ rpc: { data: { items: [] }, error: null } });
+  assert.deepEqual(await list.run({ action: 'shared_list' }), { status: 200, body: { items: [] } });
+  assert.equal((await harness().run({ action: 'shared_list', itemId: 'video-x' })).status, 400);
+  const note = harness({ rpc: { data: { item_id: 'video-x', seq: 2 }, error: null } });
+  const n = await note.run({ action: 'share_note', itemId: 'video-x', seq: 2, note: '  Góp ý hư cấu  ' });
+  assert.deepEqual([n.status, note.calls[0].name, note.calls[0].args.p_note, note.calls[0].args.p_actor_id], [200, 'mcy_content_share_note', 'Góp ý hư cấu', actor]);
+  for (const body of [{ action: 'share_note', itemId: 'video-x', seq: 0, note: 'x' }, { action: 'share_note', itemId: 'video-x', seq: 1, note: ' ' }, { action: 'share_note', itemId: 'video-x', seq: 1, note: 'x'.repeat(1001) }]) {
+    const h = harness(); assert.deepEqual([(await h.run(body)).status, h.calls.length], [400, 0]);
+  }
+  const stale = harness({ rpc: { data: null, error: { code: 'PT409', message: 'content_conflict' } } });
+  assert.deepEqual((await stale.run({ action: 'share_note', itemId: 'video-x', seq: 1, note: 'x' })).body, { error: 'content_conflict' });
+  const legacy = harness({ rpc: { data: { items: [{ item_id: 'video-x', seq: 1 }] }, error: null } });
+  const l = await legacy.run({ action: 'legacy_lessons' });
+  assert.deepEqual([l.status, legacy.calls[0].name, l.body.items.length], [200, 'mcy_content_legacy_lessons', 1]);
+});

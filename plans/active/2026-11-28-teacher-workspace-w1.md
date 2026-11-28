@@ -91,4 +91,4 @@ W1 theo bảng G và mục W1 trong [backlog](../backlog/workspace-review-2026-1
 - [x] 3 Hàm đọc T1
 - [x] 4 Thẻ Theo dõi
 - [x] 5 Cổng kiểm, merge
-- [ ] 6 Áp staging (chờ Owner)
+- [x] 6 Áp staging (Owner 28/11: remote 20261128043923, Edge v18, đã push)
